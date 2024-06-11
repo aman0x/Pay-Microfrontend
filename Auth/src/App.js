@@ -7,6 +7,7 @@ import { HomePage } from "./component/Home/index.js"
 import Header from "./Header.js";
 import { Provider } from "react-redux";
 import reduxStore from "./store";
+import SignUpUser from "./component/Signup/index.js";
 const isLogin = false;
 const App = () => (
  
@@ -22,6 +23,7 @@ const App = () => (
             <>
             <Route path="/" Component={LoginUser}/>
             <Route path="/accounts/login" Component={LoginUser}/>
+            <Route path="/accounts/signup" Component={SignUpUser}/>
             </>
             // <>
             // <Route path="/accounts/signup" element={}>

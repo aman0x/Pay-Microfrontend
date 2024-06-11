@@ -11,11 +11,6 @@ function  App (){
   const dispatch = useDispatch()
  return (
   <div>
-     {/* <h1 className="text-center mt-2 font-bold">This is the Container File - {value} <button 
-     className=" text-white bg-purple-700 font-medium rounded-lg text-sm px-5 py-2.5 mb-2"
-     onClick={()=>{
-      dispatch(testActions.increaseValue())
-     }}>Increase</button></h1> */}
      <Auth/>
   </div>
 
