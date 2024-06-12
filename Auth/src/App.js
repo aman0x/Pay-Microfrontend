@@ -8,6 +8,8 @@ import Header from "./Header.js";
 import { Provider } from "react-redux";
 import reduxStore from "./store";
 import SignUpUser from "./component/Signup/index.js";
+import AccountType from "./component/AccountType/index.js";
+import { OtpScreen } from "./component/OtpScreen/index.js";
 const isLogin = false;
 const App = () => (
  
@@ -24,6 +26,8 @@ const App = () => (
             <Route path="/" Component={LoginUser}/>
             <Route path="/accounts/login" Component={LoginUser}/>
             <Route path="/accounts/signup" Component={SignUpUser}/>
+            <Route path="/accounts/type" Component={AccountType}/>
+            <Route path="/accounts/otp-verification" Component={OtpScreen}/>
             </>
             // <>
             // <Route path="/accounts/signup" element={}>

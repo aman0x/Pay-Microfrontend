@@ -109,13 +109,14 @@ export function useUserLoginAuth(){
 export function useUserSignupAuth(){
 
     const handleUserSignup = (data) =>{
-        createUserWithEmailAndPassword(firebaseAuth,data.email,data.password)
-        .then((userCredential)=>{
-            console.log("userData",userCredential)
-        })
-        .catch((err)=>{
-            console.log(err)
-        })
+        window.alert("signedIn")
+        // createUserWithEmailAndPassword(firebaseAuth,data.email,data.password)
+        // .then((userCredential)=>{
+        //     console.log("userData",userCredential)
+        // })
+        // .catch((err)=>{
+        //     console.log(err)
+        // })
     }
     return {handleUserSignup}
 }

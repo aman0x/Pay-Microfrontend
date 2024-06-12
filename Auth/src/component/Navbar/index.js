@@ -12,10 +12,13 @@ export function HeaderNavbar({isLogin = false}){
             className="pl-1 text-2xl font-extrabold size-14 color-linear">.</span></li>
             </div>
           {
+            
             !isLogin?
-            <li >New in Paymorz? <span ><Link to="#" className="color-linear">Sign Up</Link></span></li>
+            <li >New in Paymorz? <span ><Link to="/accounts/signup" className="color-linear" style={{
+              textDecoration:"underline"
+            }}>Sign Up</Link></span></li>
             :
-            <li >Already Have An Account? <span ><Link to="#" className="color-linear">Log In</Link></span></li>
+            <li >Already Have An Account? <span ><Link to="/accounts/login" className="color-linear">Log In</Link></span></li>
           }
           
         </ul>

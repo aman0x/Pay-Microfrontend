@@ -18,7 +18,7 @@ export default function LoginUser() {
   return (
     <div className="grid grid-cols-2 gap-4">
       <div className="flex min-h-full flex-col ">
-        <HeaderNavbar/>
+        <HeaderNavbar />
         <div className="sm:mx-auto sm:w-full  mt-12">
           <h2 className="mt-10 text-center text-sm  text-gray-900">Log in With:</h2>
         </div>
@@ -61,7 +61,7 @@ export default function LoginUser() {
                 <input type="text" id="input-group-1" className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-xl w-full ps-14 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Your Mail."/>
               </div>
               <div className="relative">
-                <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
                  <Lock fontSize='small' color="disabled"/>
                  <PiLineVertical color='gray' />
                 </div>
@@ -71,7 +71,7 @@ export default function LoginUser() {
               </div>
               :
               <div className="relative">
-                <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
                  <Call fontSize='small' color='disabled'/>
                  <PiLineVertical color='gray'/>
                 </div>
@@ -88,11 +88,11 @@ export default function LoginUser() {
           </form>
           <div 
           className='my-5 mx-2 poppins-extralight-italic text-xs px-2'>
-            <p >By clicking Continue, you agree to Paymorz's <span><a className='underline font-semibold'>Terms & Conditions & Privacy Policy.</a></span></p>
+            <p >By clicking Continue, you agree to Paymorz's <span><a className='underline font-semibold' href='#'>Terms & Conditions & Privacy Policy.</a></span></p>
           </div>
           <div class="mt-16 flex items-center justify-between">
-                <span class="border-b w-1/5 lg:w-1/4"></span>
-                <a href="#" class="text-xs text-center text-gray-500 mb-2">or Continue With</a>
+                <span className="border-b w-1/5 lg:w-1/4"></span>
+                <a href="#" className="text-xs text-center text-gray-500 mb-2">or Continue With</a>
                 <span class="border-b w-1/5 lg:w-1/4"></span>
             </div>
           <div className='grid grid-cols-3  items-center m-2  gap-4'>
