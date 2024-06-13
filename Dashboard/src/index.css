@@ -4,7 +4,8 @@
 @tailwind utilities;
 
 :root{
-  --primary:#F0F1F2
+  --primary:#F0F1F2;
+  --black-primary:#232B31
 }
 
 @layer utilities {
@@ -21,9 +22,14 @@
 
 }
 
+.bg-primary{
+  background-color: var(--primary);
+}
+
 .test{
+  
   max-height:100vh;
-   overflow-y: hidden; 
+  /* overflow-y: hidden; */
 
 }
 
@@ -39,6 +45,10 @@
 }
 .primary-linear-gr-bg{
   background-image: linear-gradient(to right, #F6DEC6, #E872D4, #C190D9, #A2DCFE);
+  
+}
+.primary-linear-gr-bg-up{
+  background-image: linear-gradient(to top, #F6DEC6, #E872D4, #C190D9, #A2DCFE);
   
 }
 .poppins-thin {
@@ -112,5 +122,9 @@
   border-radius: 20px;
   border-image: linear-gradient(to right, #F6DEC6, #E872D4, #C190D9, #A2DCFE) 1;
   
+}
+.bg-black-primary{
+  background-color: var(--black-primary);
+  color: white;
 }
 

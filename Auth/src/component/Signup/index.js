@@ -24,7 +24,7 @@ export default function SignUpUser(){
         <div className="flex min-h-full flex-col ">
           <HeaderNavbar isLogin={true}/>
           <div className="sm:mx-auto sm:w-full mt-20">
-            <h2 className="text-center text-sm text-gray-900">
+            <div className="flex justify-center text-sm text-gray-900">
               <button
               style={{
                 display:pageIndex>1 ?"inline":"none",
@@ -32,7 +32,7 @@ export default function SignUpUser(){
               onClick={()=>setPageIndex(1)}
               className='mr-3'>
               <CiCircleChevLeft color='gray' fontSize="large" />
-              </button>Sign Up: &nbsp;&nbsp;<span className='color-linear font-medium '>{`0${pageIndex} / 02`}</span></h2>
+              </button>Sign Up: &nbsp;&nbsp;<span className='color-linear font-medium '>{`0${pageIndex} / 02`}</span></div>
           </div>
              
           <div className="sm:mx-auto sm:w-full sm:max-w-md text-sm mt-2 ">
@@ -76,12 +76,13 @@ export default function SignUpUser(){
                       onChange={(e)=>setPNumber(e.currentTarget.value)}
                       placeholder="Enter Your Phone..."/>
                   </div>
-                  <div className="relative">
-                    <div classNem="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none gap-2">
+                  
+                    <div className="relative">
+                    <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none gap-2">
                     <Mail fontSize='small' color="disabled"/>
                     <PiLineVertical color='gray'/>
                     </div>
-                    <input type="text"  id="input-group-1" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Your Mail..."/>
+                    <input type="password" id="input-group-1" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Your Mail..."/>
                   </div>
                   <div className="relative">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none gap-2">

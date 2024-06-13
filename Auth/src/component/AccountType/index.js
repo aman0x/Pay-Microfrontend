@@ -124,36 +124,36 @@ export default function AccountType(){
                     <input type="text"  id="input-group-1" className="bg-white border-0 border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:outline-none" placeholder="PAN Number"/>
                     </div>
 
-                    <div className="relative">
+                    <div className="relative primary-linear-gr-bg  p-[2px] rounded-xl">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none gap-2">
                     <FaCreditCard color="gray"/>
                     <PiLineVertical color='gray'/>
                     </div>
-                    <input type="text"  id="input-group-1" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:outline-none" placeholder="Aadhar Card"/>
+                    <input type="text"  id="input-group-1" className="bg-white border-0 border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:outline-none" placeholder="Aadhar Card"/>
                     </div>
               </div>
               :
               <div className='flex flex-col gap-3 mt-4'>
-                    <div className="relative">
+                    <div className="relative primary-linear-gr-bg  p-[2px] rounded-xl">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none gap-2">
                     <IoDocumentText color="grey"/>
                     <PiLineVertical color='gray'/>
                     </div>
-                    <input type="text"  id="input-group-1" className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 p-3.5  dark:placeholder-gray-400 " placeholder="Company PAN"/>
+                    <input type="text"  id="input-group-1" className=" bg-white border-0 border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 p-3.5  dark:placeholder-gray-400 focus:outline-none" placeholder="Company PAN"/>
                     </div>
-                    <div className="relative">
+                    <div className="relative ">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none gap-2">
                     <MdBusinessCenter color="gray"/>
                     <PiLineVertical color='gray'/>
                     </div>
-                    <input type="text"  id="input-group-1" disabled className="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:outline-none" placeholder="Company Name"/>
+                    <input type="text"  id="input-group-1" disabled className="bg-gray-200 border-0 border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:outline-none" placeholder="Company Name"/>
                     </div>
-                    <div className="relative">
+                    <div className="relative primary-linear-gr-bg  p-[2px] rounded-xl">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none gap-2">
                     <FaCreditCard color="gray"/>
                     <PiLineVertical color='gray'/>
                     </div>
-                    <input type="text"  id="input-group-1" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:outline-none" placeholder="Aadhar Card"/>
+                    <input type="text"  id="input-group-1" className="bg-white border-0 border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:outline-none" placeholder="Aadhar Card"/>
                     </div>
               </div>
 
