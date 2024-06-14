@@ -6,12 +6,12 @@ import { RiNotification4Fill } from "react-icons/ri";
 import { FaCreditCard,FaGreaterThan,FaLessThan } from "react-icons/fa6";
 import {useState} from "react"
 import "./style.css"
-export function SideNavBar(){
+export  function SideNavBar(){
     const [isNavOpen,setNavOpen] = useState(true)
     const [navIndex,setNavIndex] = useState(0)
     
     return(
-        <div className={`bg-primary ${isNavOpen?'':"nav-close"} flex flex-col h-[85vh]  text-sm justify-between border-gray-400  py-[1.5rem] pr-[1rem] rounded-3xl mx-[1rem] my-[2rem] w-fit transition-all duration-150 shadow-2xl  `}
+        <div className={`bg-primary ${isNavOpen?'min-w-[13.5rem]':"nav-close"} flex flex-col h-[85vh]  text-sm justify-between border-gray-400  py-[1.5rem] pr-[1rem] rounded-3xl mx-[1rem] my-[1rem] w-fit transition-all duration-150 shadow-2xl  `}
         >
             <div className="flex gap-1 items-center pl-4" onClick={()=>setNavOpen(!isNavOpen)}>
             <img
