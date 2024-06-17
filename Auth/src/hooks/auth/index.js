@@ -69,6 +69,7 @@ export function useUserLoginAuth(){
         signInWithPopup(firebaseAuth, provider)
         .then((result) => {
         // The signed-in user info.
+        console.log("fbDat",result)
         const user = result.user;
 
         // This gives you a Facebook Access Token. You can use it to access the Facebook API.
@@ -79,6 +80,7 @@ export function useUserLoginAuth(){
         // ...
         })
         .catch((error) => {
+            console.log("err",error)
         // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;

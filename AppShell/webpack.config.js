@@ -44,7 +44,8 @@ module.exports = (_, argv) => ({
       name: "AppShell",
       filename: "remoteEntry.js",
       remotes: {
-        Auth:"Auth@http://localhost:8004/remoteEntry.js"
+        Auth:"Auth@http://localhost:8004/remoteEntry.js",
+        Dashboard:"Dashboard@http://localhost:8005/remoteEntry.js"
       },
       exposes: {},
       shared: {

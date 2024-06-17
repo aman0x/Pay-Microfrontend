@@ -1,10 +1,9 @@
 import { IoDocumentText } from "react-icons/io5";
 import { FaCreditCard } from "react-icons/fa6";
-
 import Stats from "../Stats";
 function RightSideBar(){
     return(
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-4">
             <QuickAction/>
             <Stats/>
         </div>

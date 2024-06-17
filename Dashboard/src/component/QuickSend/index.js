@@ -47,7 +47,7 @@ const users = [
 export  function QuickSend(){
     return(
         <div className="m-[1rem]">
-           <div className="flex items-center justify-between my-2 ml-3">
+           <div className="flex items-center justify-between my-2">
             <p className="poppins-semibold text-lg">Quick Send</p>
             <p className="poppins-extralight text-xs underline">All Beneficaries</p>
            </div>

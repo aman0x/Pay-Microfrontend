@@ -64,6 +64,13 @@
   background-image: linear-gradient(to top, #F6DEC6, #E872D4, #C190D9, #A2DCFE);
   
 }
+.primary-linear-gr-bg-light{
+ background: linear-gradient(77.11deg, rgba(246, 222, 198, 0.26) -5.32%, rgba(232, 114, 212, 0.26) 48.06%, rgba(193, 144, 217, 0.26) 69.25%, rgba(162, 220, 254, 0.26) 94.8%);
+}
+
+.primary-color{
+  color: var(--primary);
+}
 .primary-btn:hover{
   background-image: linear-gradient(to right, #F6DEC6, #E872D4, #C190D9, #A2DCFE);
   border: 4px solid #e9b6e0;
