@@ -2,10 +2,11 @@ import { SlCalender } from "react-icons/sl";
 import { FaGreaterThan } from "react-icons/fa6";
 import { useState } from "react";
 import CalenderComponent from "./Calender/calender";
+import SpendData from "./SpendData";
 function Stats(){
     const [isCalenderOpen,setCalenderView] = useState(false)
     return(
-    <div >
+    <div className="relative" >
         <div className="flex justify-between">
             <div className="poppins-semibold">Stats</div>
             <div className="flex items-center gap-1" onClick={()=>
@@ -118,6 +119,7 @@ function Stats(){
                 </div>
             </div>
         </div>
+        <SpendData/>
     </div>
     )
    
