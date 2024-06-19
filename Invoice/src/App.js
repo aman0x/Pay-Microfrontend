@@ -3,10 +3,17 @@ import ReactDOM from "react-dom";
 
 import "./index.css";
 import MainInvoice from "./component/Main";
-
+import { BrowserRouter,Routes,Route } from "react-router-dom";
 const App = () => (
   <div className="mt-10 ">
-    <MainInvoice/>
+<BrowserRouter>
+  <Routes>
+    <Route path="/invoice" element={ <MainInvoice/>}/>
+  </Routes>
+  </BrowserRouter>
+   
   </div>
 );
 ReactDOM.render(<App />, document.getElementById("app"));
+
+export default App;
