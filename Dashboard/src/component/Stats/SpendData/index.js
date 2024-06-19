@@ -1,10 +1,12 @@
 import { useState } from "react"
 import { FaSquare } from "react-icons/fa6"
+import ChartComp from "../../Chart/index.js"
 const cards = ['**** **** **** 1001','**** **** **** 1001','**** **** **** 1001','**** **** **** 1001']
 function SpendData(){
     const [isCardMenuOpen,setCardMenuOpen] = useState(false)
     return(
-        <div className="flex flex-col mt-4 gap-2 poppins-light text-sm text-gray-600 relative">
+        
+        <div className="flex flex-col mt-4 gap-2 poppins-light text-sm text-gray-600 ">
             <div className="poppins-semibold text-base text-gray-600">Total Month Spendings</div>
             <div className="text-xs mt-2">Select Card : </div>
             <div className="flex justify-between">
@@ -22,11 +24,15 @@ function SpendData(){
                     <path d="M11 8L9 10L7 8" stroke="#4E5459" stroke-width="1.5" stroke-linecap="round"/>
                     </svg>
                 </div>
-                {isCardMenuOpen && <CardsMenu/>}
+                
             </div>
             <hr className="w-[100%]"/>
-            <div>
-                
+            <div className="absolute">
+            {isCardMenuOpen && <CardsMenu/>}
+            </div>
+            
+            <div className="h-[12rem]">
+            <ChartComp />
             </div>
 
 
@@ -39,13 +45,14 @@ function SpendData(){
                         
             </div>
         </div>
+
     )
 }
 
 function CardsMenu(){
     const [cardIndex,setCardIndex] = useState(0)
     return(
-        <div className="absolute w-[100%] bg-white rounded-2xl top-24 py-[1rem] px-[1.2rem] gap-4">
+        <div className="relative w-[100%] bg-white rounded-2xl top-24  py-[1rem] px-[1.2rem] gap-4">
             <div className="text-sm poppins-semibold my-2 flex gap-1 items-start">
                 <span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -80,6 +87,7 @@ function CardsMenu(){
                 )
             })}
         </div>
+       
         </div>
     )
 }

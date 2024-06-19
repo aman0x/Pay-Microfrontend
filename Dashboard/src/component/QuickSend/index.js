@@ -5,42 +5,42 @@ const users = [
     {
         name: "John Doe",
         username: "john_doe",
-        dp: "https://example.com/images/john_doe.jpg"
+        dp: "#"
     },
     {
         name: "Jane Smith",
         username: "jane_smith",
-        dp: "https://example.com/images/jane_smith.jpg"
+        dp: "#"
     },
     {
         name: "Alex Jones",
         username: "alex_jones",
-        dp: "https://example.com/images/alex_jones.jpg"
+        dp: "#"
     },
     {
         name: "Emma Watson",
         username: "emma_watson",
-        dp: "https://example.com/images/emma_watson.jpg"
+        dp: "#"
     },
     {
         name: "Michael Brown",
         username: "michael_brown",
-        dp: "https://example.com/images/michael_brown.jpg"
+        dp: "#"
     },
     {
         name: "Sarah Lee",
         username: "sarah_lee",
-        dp: "https://example.com/images/sarah_lee.jpg"
+        dp: "#"
     },
     {
         name: "David Clark",
         username: "david_clark",
-        dp: "https://example.com/images/david_clark.jpg"
+        dp: "#"
     },
     {
         name: "Linda Taylor",
         username: "linda_taylor",
-        dp: "https://example.com/images/linda_taylor.jpg"
+        dp: "#"
     }
 ];
 

@@ -8,7 +8,9 @@ import { FcGoogle } from "react-icons/fc";
 import { IoLogoFacebook,IoLogoApple ,IoPerson} from "react-icons/io5";
 import { Mail,Lock, Call} from '@mui/icons-material';
 import { CiCircleChevLeft } from "react-icons/ci";
+import { useNavigate } from 'react-router-dom';
 export default function SignUpUser(){
+  const navigate = useNavigate()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [pNumber,setPNumber] = useState("+91")
@@ -105,12 +107,13 @@ export default function SignUpUser(){
                   onClick={(e) =>{ 
                     e.preventDefault()
                     pageIndex>1 ?
-                     handleUserSignup()
+                    navigate('/accounts/type')
+                    // handleUserSignup()
                      :
                      setPageIndex(2) 
                   }}
-                  className="flex w-full justify-center rounded-xl bg-gray-950 px-3 p-4 text-sm font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                  {pageIndex>1 ? "Sign Up":"Next"}<span className='py-1.5 pl-2 size-5'><FaCircleArrowRight style={{color:'white'}} /></span></button>
+                  className="flex items-center w-full justify-center rounded-xl bg-gray-950 px-3 p-4 text-sm font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                  {pageIndex>1 ? "Sign Up":"Next"}<span className='py-1.5 pl-2 size-6'><FaCircleArrowRight style={{color:'white'}} /></span></button>
               </div>
             </form>
             <div 

@@ -1,68 +1,66 @@
-import { CategoryScale, Chart } from "chart.js";
-import {useState} from "react";
-import { Pie } from "react-chartjs-2";
-Chart.register(CategoryScale)
-const data = {
-    labels: ['Red', 'Orange', 'Blue'],
-    // datasets is an array of objects where each object represents a set of data to display corresponding to the labels above. for brevity, we'll keep it at one object
-    datasets: [
-        {
-          label: 'Popularity of colours',
-          data: [55, 23, 96],
-          // you can set indiviual colors for each bar
-          backgroundColor: [
-            'rgba(255, 255, 255, 0.6)',
-            'rgba(255, 255, 255, 0.6)',
-            'rgba(255, 255, 255, 0.6)'
-          ],
-          borderWidth: 1,
-        }
-    ]
+import React from 'react';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+import { Line } from 'react-chartjs-2';
+import {faker} from "@faker-js/faker"
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+ const options = {
+  responsive: true,
+  maintainAspectRatio: false,
+  tension:0.4,
+  plugins: {
+    legend: {
+      position: 'bottom' 
+    },
+    tooltip: {
+      enabled: false,  
+    },
+    elements:{
+      point:{
+        radius:0
+      }
+    }
+  },
+};
+
+const labels = ['Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct','Nov','Dec'];
+const amounts1 = [0,200,300,400,600,800,900,400,200]
+const amounts2 = [80,500,400,300,700,900,400,200,100]
+ const data = {
+  labels:labels,
+  datasets: [
+    {
+      data: amounts1,
+      borderColor: 'rgb(255, 99, 132)',
+      backgroundColor: 'rgba(255, 99, 132, 0.5)',
+    },
+    {
+      data: amounts2,
+      borderColor: 'rgb(53, 162, 235)',
+      backgroundColor: 'rgba(53, 162, 235, 0.5)',
+    },
+  ],
+};
+ function ChartComp() {
+  return <Line options={options} data={data} />;
 }
 
-function SpendingChart(){
-    const [chartData, setChartData] = useState({
-        labels: Data.map((data) => data.year), 
-        datasets: [
-          {
-            label: "Users Gained ",
-            data: Data.map((data) => data.userGain),
-            backgroundColor: [
-              "rgba(75,192,192,1)",
-              "#ecf0f1",
-              "#50AF95",
-              "#f3ba2f",
-              "#2a71d0"
-            ],
-            borderColor: "black",
-            borderWidth: 2
-          }
-        ]
-      });
-    return(
-        <div>
-            <PieChart chartData={datas}/>
-        </div>
-    )
-}
-
-
-function PieChart({ chartData }) {
-  return (
-    <div className="chart-container">
-      <h2 style={{ textAlign: "center" }}>Pie Chart</h2>
-      <Pie
-        data={chartData}
-        options={{
-          plugins: {
-            title: {
-              display: true,
-              text: "Users Gained between 2016-2020"
-            }
-          }
-        }}
-      />
-    </div>
-  );
-}
-export default SpendingChart;
+export default ChartComp;

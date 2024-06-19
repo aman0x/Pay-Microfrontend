@@ -51,7 +51,7 @@ function YearMonthSheet(){
     const [monthIndex,setMonthIndex] = useState(0)
     const [yearIndex,setYearIndex] = useState(10)
     return(
-        <div className="p-[2rem]  absolute bg-white text-[12px] poppins-light month-sheet right-0 text-gray-600">
+        <div className="p-[2rem]  absolute bg-white text-[12px] poppins-light month-sheet right-0 text-gray-600 ">
         <div className="grid grid-cols-5 gap-5">
             <div className="flex flex-col gap-2 col-span-3">
                 <div  className="text-center">Months</div>

@@ -4,9 +4,11 @@ import { useState } from "react";
 import { IoDocumentText } from "react-icons/io5";
 import { PiLineVertical } from "react-icons/pi";
 import { FaCreditCard,FaCircleArrowRight } from "react-icons/fa6";
+import {useNavigate } from "react-router-dom"
 export default function AccountType(){
+    const navigate  = useNavigate()
     const [isIndividual,setAccountType] = useState(true)
-    const [isValid,setFormValidation] = useState(false)
+    const [isValid,setFormValidation] = useState(true)
     return(
         <div className="grid grid-cols-2 gap-4">
             <div className="flex min-h-full flex-col py-[2rem] px-[2em] gap-2 sm:mx-auto sm:w-full sm:max-w-lg">
@@ -160,7 +162,9 @@ export default function AccountType(){
                }
             <div className='mt-3'>
               <button type="submit"
-                onClick={() => {} }
+                onClick={() => { 
+                    window.location.href = "/dashboard"
+                } }
                 disabled={isValid ?false:true}
                 style={
                 isValid?
@@ -169,8 +173,8 @@ export default function AccountType(){
                     {
                         backgroundColor:"gray"
                     }}
-                className="flex w-full justify-center rounded-xl bg-gray-950 px-3 p-4 text-sm font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                {isIndividual?"Next":"Confirm"}<span className='py-1.5 pl-2 size-5'><FaCircleArrowRight style={{color:'white'}} /></span></button>
+                className="flex w-full items-center justify-center rounded-xl bg-gray-950 px-3 p-4 text-sm font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                {isIndividual?"Next":"Confirm"}<span className='py-1.5 pl-2 size-6'><FaCircleArrowRight style={{color:'white'}} /></span></button>
             </div>
             <div 
             className='my-5 mx-2 poppins-extralight-italic text-xs px-2'>
