@@ -129,13 +129,13 @@ export default function SignUpUser(){
   
               <button
                 onClick={handleLoginWithGoogle}
-                className="bg-white flex flex-col items-center  dark:bg-gray-900 border rounded-xl border-gray-300 shadow-md px-10 py-2 text-sm font-medium text-gray-800 dark:text-white">
+                className="bg-white flex flex-col items-center   border rounded-xl border-gray-300 shadow-md px-10 py-2 text-sm font-medium text-gray-800 ">
                 <span ><FcGoogle className='size-8'/></span>
                 <span> Google</span>
               </button>
               <button
                 onClick={handleLoginWithFacebook}
-                className="bg-white flex flex-col items-center dark:bg-gray-900 border rounded-xl border-gray-300 shadow-md px-8 py-2 text-sm font-medium text-gray-800 dark:text-white"
+                className="bg-white flex flex-col items-center  border rounded-xl border-gray-300 shadow-md px-8 py-2 text-sm font-medium text-gray-800 "
                 >
                   <span><IoLogoApple className='size-8'/></span>
                 <span>Apple</span>
@@ -143,7 +143,7 @@ export default function SignUpUser(){
               </button>
               <button
                 onClick={handleLoginWithFacebook}
-                className="bg-white flex flex-col items-center dark:bg-gray-900 border rounded-xl border-gray-300 shadow-md px-8 py-2 text-sm font-medium text-gray-800 dark:text-white"
+                className="bg-white flex flex-col items-center  border rounded-xl border-gray-300 shadow-md px-8 py-2 text-sm font-medium text-gray-800 "
                 >
                   <span><IoLogoFacebook className='size-8'/></span>
                 <span>Facebook</span>
