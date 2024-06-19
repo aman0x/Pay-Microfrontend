@@ -4,7 +4,7 @@ const Dotenv = require('dotenv-webpack');
 const deps = require("./package.json").dependencies;
 module.exports = (_, argv) => ({
   output: {
-    publicPath: "http://localhost:8003/",
+    publicPath: "http://13.127.168.75:8003/",
   },
 
   resolve: {
@@ -44,8 +44,8 @@ module.exports = (_, argv) => ({
       name: "AppShell",
       filename: "remoteEntry.js",
       remotes: {
-        Auth:"Auth@http://localhost:8004/remoteEntry.js",
-        Dashboard:"Dashboard@http://localhost:8005/remoteEntry.js"
+        Auth:"Auth@http://13.127.168.75:8004/remoteEntry.js",
+        Dashboard:"Dashboard@http://13.127.168.75:8005/remoteEntry.js"
       },
       exposes: {},
       shared: {
