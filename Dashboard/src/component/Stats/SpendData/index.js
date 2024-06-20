@@ -18,7 +18,7 @@ function SpendData(){
                     </div>
                     <div>**** **** **** 1001</div>
                 </div>
-                <div onClick={()=>setCardMenuOpen(!isCardMenuOpen)}>
+                <div onClick={()=>{setCardMenuOpen(!isCardMenuOpen)}}>
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="18" width="18" height="18" rx="9" transform="rotate(90 18 0)" fill="#DFE0E2"/>
                     <path d="M11 8L9 10L7 8" stroke="#4E5459" stroke-width="1.5" stroke-linecap="round"/>

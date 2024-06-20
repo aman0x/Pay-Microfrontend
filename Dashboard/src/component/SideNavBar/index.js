@@ -69,7 +69,9 @@ export  function SideNavBar(){
                 color:"grey"
                 }}
                 onClick={()=>{
+
                     setNavIndex(2)
+                    window.location.href = "/invoice"
                 }}>
                 {navIndex===2?
                 <div className="primary-linear-gr-bg-up h-6 active-bar"> </div>
