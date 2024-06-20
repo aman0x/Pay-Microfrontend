@@ -10,7 +10,7 @@ function TopNavbar(){
             </div>
             <div className="w-96">
             <div class="relative w-full">
-                <input type="text" id="voice-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-2xl block w-full  p-2.5" placeholder="Search..." required />
+                <input type="text" id="voice-search" class="bg-[#DFE0E2] border border-gray-300 text-gray-900 text-sm rounded-2xl block w-full  p-2.5" placeholder="Search..." required />
                 <button type="button" class="absolute inset-y-0 end-0 flex items-center pe-3">
                 <FaSearch color="gray"/>
                 </button>
