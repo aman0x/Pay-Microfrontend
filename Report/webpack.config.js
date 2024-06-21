@@ -43,8 +43,12 @@ module.exports = (_, argv) => ({
     new ModuleFederationPlugin({
       name: "Report",
       filename: "remoteEntry.js",
-      remotes: {},
-      exposes: {},
+      remotes: {
+       
+      },
+      exposes: {
+        "./Report":"./src/App.js"
+      },
       shared: {
         ...deps,
         react: {

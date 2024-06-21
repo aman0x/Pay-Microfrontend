@@ -258,7 +258,7 @@ function InvoiceTable(){
                             </div>
                         </td>
                         <td><div className="td-element">{transaction.recipient}</div></td>
-                        <td><div className="td-element">{transaction.bank}</div></td>
+                        <td><div className="td-element">{transaction.type}</div></td>
                         <td><div className="td-element">{transaction.bank}</div></td>
                         <td><div className="td-element">{transaction.paymentType}</div></td>
                         <td><div className="td-element">{transaction.transactionID}</div></td>

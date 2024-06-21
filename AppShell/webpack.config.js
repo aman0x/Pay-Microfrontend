@@ -48,7 +48,9 @@ module.exports = (_, argv) => ({
         Dashboard:"Dashboard@http://13.127.168.75:8005/remoteEntry.js",
         Invoice:"Invoice@http://13.127.168.75:8001/remoteEntry.js"
       },
-      exposes: {},
+      exposes: {
+       
+      },
       shared: {
         ...deps,
         react: {

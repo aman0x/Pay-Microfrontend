@@ -5,11 +5,10 @@ import { CiLogout } from "react-icons/ci";
 import { RiNotification4Fill } from "react-icons/ri";
 import { FaCreditCard,FaGreaterThan,FaLessThan } from "react-icons/fa6";
 import {useState} from "react"
-import  { useNavigate } from "react-router-dom"
 import "./style.css"
 export  function SideNavBar(){
-    const navigate = useNavigate()
-    const [isNavOpen,setNavOpen] = useState(true)
+    //const navigate = useNavigate()
+    const [isNavOpen,setNavOpen] = useState(false)
     const [navIndex,setNavIndex] = useState(0)
     
     return(
@@ -17,7 +16,7 @@ export  function SideNavBar(){
         >
             <div className="flex gap-1 items-center pl-4" onClick={()=>setNavOpen(!isNavOpen)}>
             <img
-                src="/dashboard/paymorz-logo.png"
+                src="/report/paymorz-logo.png"
                 alt="paymorz-logo"
                 width={isNavOpen?"25px":"40px"}
                 style={{
@@ -35,6 +34,7 @@ export  function SideNavBar(){
                 <button className="flex gap-4 items-center" 
                 onClick={()=>{
                     setNavIndex(0)
+                    window.location.href = "/dashboard"
                 }}
                 style={{
                 color:"grey",
@@ -71,11 +71,7 @@ export  function SideNavBar(){
                 color:"grey"
                 }}
                 onClick={()=>{
-
-                    setNavIndex(2)
-                    window.location.href = "/invoice"
-                    //navigate('/invoice')
-                    
+                    setNavIndex(2)  
                 }}>
                 {navIndex===2?
                 <div className="primary-linear-gr-bg-up h-6 active-bar"> </div>
@@ -93,6 +89,7 @@ export  function SideNavBar(){
                 }}
                 onClick={()=>{
                     setNavIndex(3)
+                    window.location.href = "/invoice"
                 }}>
                 {navIndex===3?
                 <div className="primary-linear-gr-bg-up h-6 active-bar"> </div>

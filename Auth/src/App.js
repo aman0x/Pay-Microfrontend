@@ -12,41 +12,15 @@ import AccountType from "./component/AccountType/index.js";
 import { OtpScreen } from "./component/OtpScreen/index.js";
 const isLogin = false;
 const App = () => (
- 
-  <div className="test">
   <BrowserRouter>
-  <Routes>
-  {
-            isLogin?
-            <>
-              <Route path = "/dashboard" Component={HomePage}/>
-            </>
-            :
-            <>
-            <Route path="/" Component={LoginUser}/>
-            <Route path="/accounts/login" Component={LoginUser}/>
-            <Route path="/accounts/signup" Component={SignUpUser}/>
-            <Route path="/accounts/type" Component={AccountType}/>
-            <Route path="/accounts/otp-verification" Component={OtpScreen}/>
-            </>
-            // <>
-            // <Route path="/accounts/signup" element={}>
-              
-            // <Route path="/accounts/login">
-            //   <LoginUser/>
-            // </Route>
-            // <Route path="/accounts/forgot-password">
-            //   <ForgotPassword/>
-            // </Route>
-            // <Route path = "/">
-            //   <LoginUser/>
-            // </Route>
-            // </>
-            
-          }
-          </Routes>
-  </BrowserRouter>
-  </div>
+    <Routes>
+    <Route path="/" Component={LoginUser}/>
+    <Route path="/accounts/login" Component={LoginUser}/>
+    <Route path="/accounts/signup" Component={SignUpUser}/>
+    <Route path="/accounts/type" Component={AccountType}/>
+    <Route path="/accounts/otp-verification" Component={OtpScreen}/>
+    </Routes>
+    </BrowserRouter>
 );
 ReactDOM.render(
   <Provider store={reduxStore}>
