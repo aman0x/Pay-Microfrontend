@@ -12,12 +12,9 @@ import  {useState} from "react"
 import {useLocation,useParams} from "react-router-dom"
 function App (){
   const [isRightBarShown,setIsRightBarShown] = useState(true)
-  const params = useLocation()
-  {console.log("hwloo",params)}
   return(
+    <BrowserRouter basename="/dashboard">
     <div className="w-full">
-    
-   
     <div className="bg-slate-50 p-[1rem]">
       <div className="flex">
         <div>
@@ -35,7 +32,7 @@ function App (){
          
           </Routes>
            {
-            (isRightBarShown && params.pathname !== '/support') ?
+            isRightBarShown  ?
             <div className="p-[0.8rem] mt-[1.5rem]">
               <RightSideBar/>
             </div>
@@ -48,12 +45,11 @@ function App (){
     </div>
    
   </div>
+  </BrowserRouter>
   )
 };
 const root = ReactDOM.createRoot(document.getElementById('app'));
 root.render(
-  <BrowserRouter basename="/dashboard">
   <App />
-  </BrowserRouter>
 )
 export default App
