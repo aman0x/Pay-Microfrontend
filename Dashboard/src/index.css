@@ -56,6 +56,11 @@
   -webkit-text-fill-color: transparent;
   -webkit-background-clip :text;
 }
+.color-linear-top{
+  background: linear-gradient(to top, #F6DEC6, #E872D4, #C190D9, #A2DCFE);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip :text;
+}
 .primary-linear-gr-bg{
   background-image: linear-gradient(to right, #F6DEC6, #E872D4, #C190D9, #A2DCFE);
   

@@ -12,14 +12,15 @@ import AccountType from "./component/AccountType/index.js";
 import { OtpScreen } from "./component/OtpScreen/index.js";
 const isLogin = false;
 const App = () => (
-  <BrowserRouter>
-    <Routes>
-    <Route path="/" Component={LoginUser}/>
-    <Route path="/accounts/login" Component={LoginUser}/>
-    <Route path="/accounts/signup" Component={SignUpUser}/>
-    <Route path="/accounts/type" Component={AccountType}/>
-    <Route path="/accounts/otp-verification" Component={OtpScreen}/>
-    </Routes>
+ 
+    <BrowserRouter>
+      <Routes>
+      <Route path="/" Component={LoginUser}/>
+      <Route path="/accounts/login" Component={LoginUser}/>
+      <Route path="/accounts/signup" Component={SignUpUser}/>
+      <Route path="/accounts/type" Component={AccountType}/>
+      <Route path="/accounts/otp-verification" Component={OtpScreen}/>
+      </Routes>
     </BrowserRouter>
 );
 ReactDOM.render(

@@ -8,7 +8,7 @@ function LatestActions(){
         <div className="my-[2rem] mx-[rem] ">
             <div className="flex mb-4 items-center gap-6">
                 <div className="poppins-semibold text-lg">Latest Actions</div>
-                <hr className="w-[45rem] poppins-bold text-gray-950"/>
+                <hr className="w-[44rem] poppins-bold text-gray-950"/>
             </div>
             <div className="grid grid-cols-4 gap-4">
                 <div className="pr-[1rem] flex flex-col">

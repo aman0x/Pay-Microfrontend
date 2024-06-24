@@ -2,6 +2,7 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const Dotenv = require('dotenv-webpack');
 const deps = require("./package.json").dependencies;
+const CopyWebpackPlugin  = require('copy-webpack-plugin')
 module.exports = (_, argv) => ({
   output: {
     publicPath: "http://localhost:8004/",
@@ -63,6 +64,13 @@ module.exports = (_, argv) => ({
     new HtmlWebPackPlugin({
       template: "./src/index.html",
     }),
-    new Dotenv()
+    new Dotenv(),
+    new CopyWebpackPlugin({
+      patterns:[
+        {
+          from:'public',to:'public'
+        }
+      ]
+    })
   ],
 });

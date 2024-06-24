@@ -16,7 +16,7 @@ function  App (){
   const dispatch = useDispatch()
   //const navigate = useNavigate()
  return (
-  <div>
+  <div className="">
     
     
     <Auth/>
