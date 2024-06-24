@@ -35,6 +35,7 @@ export  function SideNavBar(){
                 <button className="flex gap-4 items-center" 
                 onClick={()=>{
                     setNavIndex(0)
+                    navigate('/')
                 }}
                 style={{
                 color:"grey",
@@ -55,6 +56,7 @@ export  function SideNavBar(){
                 color:"grey"}}
                 onClick={()=>{
                    setNavIndex(1)
+                   navigate('/payment')
                 }}> 
             {navIndex===1?
                 <div className="primary-linear-gr-bg-up h-6 active-bar"> </div>
@@ -127,6 +129,7 @@ export  function SideNavBar(){
                 color:"grey"
                 }}
                 onClick={()=>{
+                    navigate('/support')
                     setNavIndex(5)
                 }}>
                 {navIndex===5?
