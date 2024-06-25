@@ -17,7 +17,7 @@ export  function PaymentCard(){
                 </div>
             </div>
         <div className="flip-card relative">
-            <div className="rounded-[50%] p-1 bg-black absolute right-1 translate-x-[100%] top-[35%]">
+            <div className="rounded-[50%] p-1 bg-black absolute right-1 translate-x-[100%] top-[40%]">
                     <svg width="9" height="8" viewBox="0 0 9 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 4H7M7 4L4 1M7 4L4 7" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
                     </svg>

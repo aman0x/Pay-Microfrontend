@@ -8,7 +8,7 @@ function TopNavbar(){
     return(
         <div className="flex justify-between ml-"> 
             <div>
-                <div className="poppins-medium">{TopHead}</div>
+                <div className="poppins-medium">Invoice</div>
                 <p className="poppins-light text-sm text-gray-600">🤨 Get more out of Paymorz everyday!</p>
             </div>
             <div className="w-96">
@@ -66,9 +66,6 @@ function getTopName(pathname="/"){
     }
     else if(pathname==="/dashboard/notification"){
         return "Notification"
-    }
-    else if(pathname==="/dashboard/statistic"){
-        return "Statistics"
     }
     else{
         return "Dashboard"

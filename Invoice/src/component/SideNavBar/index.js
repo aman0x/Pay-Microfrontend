@@ -94,8 +94,8 @@ export  function SideNavBar(){
                 color:"grey"
                 }}
                 onClick={()=>{
+                    navigate('/dashboard/statistic')
                     setNavIndex(3)
-                    navigate("/dashboard/statistic")
                 }}>
                 {navIndex===3?
                 <div className="primary-linear-gr-bg-up h-6 active-bar"> </div>

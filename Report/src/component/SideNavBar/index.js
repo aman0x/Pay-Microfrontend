@@ -5,10 +5,11 @@ import { CiLogout } from "react-icons/ci";
 import { RiNotification4Fill } from "react-icons/ri";
 import { FaCreditCard,FaGreaterThan,FaLessThan } from "react-icons/fa6";
 import {useState} from "react"
+import  { useNavigate } from "react-router-dom"
 import "./style.css"
 export  function SideNavBar(){
-    //const navigate = useNavigate()
-    const [isNavOpen,setNavOpen] = useState(false)
+    const navigate = useNavigate()
+    const [isNavOpen,setNavOpen] = useState(true)
     const [navIndex,setNavIndex] = useState(0)
     
     return(
@@ -16,7 +17,7 @@ export  function SideNavBar(){
         >
             <div className="flex gap-1 items-center pl-4" onClick={()=>setNavOpen(!isNavOpen)}>
             <img
-                src="/report/paymorz-logo.png"
+                src="/dashboard/paymorz-logo.png"
                 alt="paymorz-logo"
                 width={isNavOpen?"25px":"40px"}
                 style={{
@@ -34,7 +35,7 @@ export  function SideNavBar(){
                 <button className="flex gap-4 items-center" 
                 onClick={()=>{
                     setNavIndex(0)
-                    window.location.href = "/dashboard"
+                    navigate('/dashboard')
                 }}
                 style={{
                 color:"grey",
@@ -55,6 +56,7 @@ export  function SideNavBar(){
                 color:"grey"}}
                 onClick={()=>{
                    setNavIndex(1)
+                   navigate('/dashboard/payment')
                 }}> 
             {navIndex===1?
                 <div className="primary-linear-gr-bg-up h-6 active-bar"> </div>
@@ -71,7 +73,11 @@ export  function SideNavBar(){
                 color:"grey"
                 }}
                 onClick={()=>{
-                    setNavIndex(2)  
+
+                    setNavIndex(2)
+                    //window.location.href = "/invoice"
+                    navigate('/invoice')
+                    
                 }}>
                 {navIndex===2?
                 <div className="primary-linear-gr-bg-up h-6 active-bar"> </div>
@@ -89,7 +95,7 @@ export  function SideNavBar(){
                 }}
                 onClick={()=>{
                     setNavIndex(3)
-                    window.location.href = "/invoice"
+                    navigate("/dashboard/statistic")
                 }}>
                 {navIndex===3?
                 <div className="primary-linear-gr-bg-up h-6 active-bar"> </div>
@@ -108,6 +114,7 @@ export  function SideNavBar(){
                 }}
                 onClick={()=>{
                     setNavIndex(4)
+                    navigate('/dashboard/notification')
                 }}>
                 {navIndex===4?
                 <div className="primary-linear-gr-bg-up h-6 active-bar"> </div>
@@ -124,6 +131,7 @@ export  function SideNavBar(){
                 color:"grey"
                 }}
                 onClick={()=>{
+                    navigate('/dashboard/support')
                     setNavIndex(5)
                 }}>
                 {navIndex===5?

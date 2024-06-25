@@ -1,22 +1,21 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-const CopyWebpackPlugin  = require('copy-webpack-plugin')
-const Dotenv = require('dotenv-webpack');
+const CopyWebpackPlugin  = require('copy-webpack-plugin');
+const Dotenv = require('dotenv-webpack')
+const path = require('path')
 const deps = require("./package.json").dependencies;
 module.exports = (_, argv) => ({
   output: {
-    publicPath: "http://localhost:8003/",
+    publicPath: `http://localhost:8003/`,
   },
-
   resolve: {
-    extensions: [".tsx", ".ts", ".jsx", ".js", ".json",".css"],
+    extensions: [".tsx", ".ts", ".jsx", ".js", ".json", ".css"],
   },
-
   devServer: {
     port: 8003,
     historyApiFallback: true,
+    
   },
-
   module: {
     rules: [
       {
@@ -39,16 +38,15 @@ module.exports = (_, argv) => ({
       },
     ],
   },
-
   plugins: [
     new ModuleFederationPlugin({
       name: "AppShell",
       filename: "remoteEntry.js",
       remotes: {
-        Auth:"Auth@http://localhost:8004/remoteEntry.js",
-        Dashboard:"Dashboard@http://localhost:8005/remoteEntry.js",
-        Invoice:"Invoice@http://localhost:8001/remoteEntry.js",
-        Report:"Report@http://localhost:8002/remoteEntry.js"
+        Auth: `Auth@http://localhost:8004/remoteEntry.js`,
+        Dashboard: `Dashboard@http://localhost:8005/remoteEntry.js`,
+        Invoice: `Invoice@http://localhost:8001/remoteEntry.js`,
+        Report: `Report@http://localhost:8002/remoteEntry.js`
       },
       exposes: {
        
@@ -68,11 +66,13 @@ module.exports = (_, argv) => ({
     new HtmlWebPackPlugin({
       template: "./src/index.html",
     }),
-    new Dotenv(),
+    new Dotenv({
+      path:path.resolve(__dirname,"../.env")
+    }),
     new CopyWebpackPlugin({
-      patterns:[
+      patterns: [
         {
-          from:'public',to:'public'
+          from: 'public', to: 'public'
         }
       ]
     })
