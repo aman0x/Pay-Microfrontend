@@ -170,15 +170,15 @@ function FAQ(){
 
 function ContactUs(){
     return(
-        <div className="contact-us-card h-[300px] flex flex-col justify-center items-center gap-2 mt-2">
+        <div className="contact-us-card h-[300px] flex flex-col justify-center items-center gap-4 mt-4">
             <div className="poppins-bold">
             Still Have A Questions ?
             </div>
             <div className="w-96 poppins-light text-xs">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
             </div>
-            <div>
-                <button>Contact Us</button>
+            <div className="primary-linear-gr-bg p-[2px] rounded-xl shadow-xl">
+                <button className="py-2 px-[10px]  text-sm poppins-regular bg-white rounded-xl">Contact Us</button>
             </div>
         </div>
     )

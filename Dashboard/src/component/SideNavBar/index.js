@@ -113,6 +113,7 @@ export  function SideNavBar(){
                 }}
                 onClick={()=>{
                     setNavIndex(4)
+                    navigate('/notification')
                 }}>
                 {navIndex===4?
                 <div className="primary-linear-gr-bg-up h-6 active-bar"> </div>

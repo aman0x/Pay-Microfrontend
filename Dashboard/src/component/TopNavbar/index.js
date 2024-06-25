@@ -1,11 +1,14 @@
 import { Avatar } from "@mui/material";
 import { FaSearch } from "react-icons/fa";
+import { useLocation } from "react-router-dom";
 
 function TopNavbar(){
+    const location = useLocation()
+    const TopHead = getTopName(location.pathname)
     return(
         <div className="flex justify-between"> 
             <div>
-                <div className="poppins-medium">Dashboard</div>
+                <div className="poppins-medium">{TopHead}</div>
                 <p className="poppins-light text-sm text-gray-600">🤨 Get more out of Paymorz everyday!</p>
             </div>
             <div className="w-96">
@@ -49,6 +52,24 @@ function TopNavbar(){
            
         </div>
     )
+}
+function getTopName(pathname="/"){
+
+    if(pathname==="/" && pathname ==="/dashboard"){
+        return "Dashboard"
+    }
+    else if(pathname==="/payment"){
+        return "Payments"
+    }
+    else if(pathname==="/support"){
+        return "Support"
+    }
+    else if(pathname==="/notification"){
+        return "Notification"
+    }
+    else{
+        return "Dashboard"
+    }
 }
 
 export default TopNavbar

@@ -6,7 +6,7 @@ import "./style.css"
 
 export  function PaymentCard(){
     return(
-        <div>
+        <div >
             <div className="flex justify-between mb-2">
                 <div className="poppins-semibold">
                     My Cards
@@ -16,7 +16,12 @@ export  function PaymentCard(){
                     <p className="poppins-light text-gray-600 text-sm">Add</p>
                 </div>
             </div>
-        <div className="flip-card ">
+        <div className="flip-card relative">
+            <div className="rounded-[50%] p-2 bg-black absolute">
+                <svg width="9" height="8" viewBox="0 0 9 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 4H7M7 4L4 1M7 4L4 7" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+            </div>
             <div className="flip-card-inner">
                 <div className="flip-card-front flex flex-col px-[2rem] py-[2rem] justify-between ">
                     <div className="flex flex-row justify-between">
