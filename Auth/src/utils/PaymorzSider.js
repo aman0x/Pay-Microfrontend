@@ -1,6 +1,6 @@
 export default function PaymorzSider(){
     return(
-    <div>
+    <div className="">
         <img
         className='hero-img'
         src='/images/login-welcome.png'

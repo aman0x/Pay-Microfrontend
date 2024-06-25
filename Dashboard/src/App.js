@@ -9,6 +9,7 @@ import DashboardMain from "./component/Main/index.js";
 import MainPayment from "./component/Payment/component/Main/index.js";
 import ContactForm from "./component/Support/ContactUsFrom/index.js";
 import Notification from "./component/Notification/index.js";
+import Statistic from "./component/Statistics/index.js";
 
 const Dashboard = () => {
   const [isRightBarShown, setIsRightBarShown] = useState(true);
@@ -17,14 +18,15 @@ const Dashboard = () => {
       <div className="bg-slate-50 p-[1rem]">
         <div className="flex">
           <SideNavBar />
-          <div className="">  
+          <div className="w-full">  
             <TopNavbar />   
-            <div className=" flex">
+            <div className="flex">
               <Routes>
                 <Route path="/" element={<DashboardMain />} />
                 <Route path="/payment" element={<MainPayment />} />
                 <Route path="/support" element={<ContactForm />} />
                 <Route path="/notification" element={<Notification/>}/>
+                 <Route path="/statistic" element={<Statistic/>}/>
               </Routes>
               <RightSideBar/>       
             </div>

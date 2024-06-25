@@ -13,7 +13,7 @@ import reduxStore from "./store";
 function App() {
   const value = useSelector((state) => state.test.value);
   const dispatch = useDispatch();
-  
+ // console.log("env",process.env.REACT_APP_URL)
   return (
     <BrowserRouter>
       <Routes>

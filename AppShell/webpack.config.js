@@ -1,22 +1,21 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-const CopyWebpackPlugin  = require('copy-webpack-plugin')
-const Dotenv = require('dotenv-webpack');
+const CopyWebpackPlugin  = require('copy-webpack-plugin');
+const Dotenv = require('dotenv-webpack')
+const path = require('path')
 const deps = require("./package.json").dependencies;
 module.exports = (_, argv) => ({
   output: {
     publicPath: "http://13.127.168.75:8003/",
   },
-
   resolve: {
-    extensions: [".tsx", ".ts", ".jsx", ".js", ".json",".css"],
+    extensions: [".tsx", ".ts", ".jsx", ".js", ".json", ".css"],
   },
-
   devServer: {
     port: 8003,
     historyApiFallback: true,
+    
   },
-
   module: {
     rules: [
       {
@@ -39,7 +38,6 @@ module.exports = (_, argv) => ({
       },
     ],
   },
-
   plugins: [
     new ModuleFederationPlugin({
       name: "AppShell",
@@ -68,11 +66,13 @@ module.exports = (_, argv) => ({
     new HtmlWebPackPlugin({
       template: "./src/index.html",
     }),
-    new Dotenv(),
+    new Dotenv({
+      path:path.resolve(__dirname,"../.env")
+    }),
     new CopyWebpackPlugin({
-      patterns:[
+      patterns: [
         {
-          from:'public',to:'public'
+          from: 'public', to: 'public'
         }
       ]
     })
