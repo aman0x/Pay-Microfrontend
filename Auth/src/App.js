@@ -1,31 +1,20 @@
+// Auth.js
 import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter,Routes,Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "./index.scss";
 import LoginUser from "./component/Login/index.js";
-import { HomePage } from "./component/Home/index.js"
-import Header from "./Header.js";
-import { Provider } from "react-redux";
-import reduxStore from "./store";
 import SignUpUser from "./component/Signup/index.js";
 import AccountType from "./component/AccountType/index.js";
 import { OtpScreen } from "./component/OtpScreen/index.js";
-const isLogin = false;
-const App = () => (
- 
-    <BrowserRouter>
-      <Routes>
-      <Route path="/" Component={LoginUser}/>
-      <Route path="/accounts/login" Component={LoginUser}/>
-      <Route path="/accounts/signup" Component={SignUpUser}/>
-      <Route path="/accounts/type" Component={AccountType}/>
-      <Route path="/accounts/otp-verification" Component={OtpScreen}/>
-      </Routes>
-    </BrowserRouter>
+
+const Auth = () => (
+  <Routes>
+    <Route path="/" element={<LoginUser />} />
+    <Route path="/accounts/login" element={<LoginUser />} />
+    <Route path="/accounts/signup" element={<SignUpUser />} />
+    <Route path="/accounts/type" element={<AccountType />} />
+    <Route path="/accounts/otp-verification" element={<OtpScreen />} />
+  </Routes>
 );
-ReactDOM.render(
-  <Provider store={reduxStore}>
-<App />
-</Provider>
-, document.getElementById("app"));
-export default App;
+
+export default Auth;

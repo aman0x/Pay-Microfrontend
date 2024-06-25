@@ -1,6 +1,6 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter,Routes,Route } from "react-router-dom";
+// Dashboard.js
+import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import "./index.css";
 import { SideNavBar } from "./component/SideNavBar/index.js";
 import TopNavbar from "./component/TopNavbar/index.js";
@@ -8,48 +8,33 @@ import RightSideBar from "./component/RightSideBar/index.js";
 import DashboardMain from "./component/Main/index.js";
 import MainPayment from "./component/Payment/component/Main/index.js";
 import ContactForm from "./component/Support/ContactUsFrom/index.js";
-import  {useState} from "react"
-import {useLocation,useParams} from "react-router-dom"
-function App (){
-  const [isRightBarShown,setIsRightBarShown] = useState(true)
-  return(
-    <BrowserRouter basename="/dashboard">
-    <div className="w-full">
-    <div className="bg-slate-50 p-[1rem]">
-      <div className="flex">
-        <div>
-        <SideNavBar/>
-        </div>
-        <div className="w-full">
-          <TopNavbar/>
-          <Routes>
-          <Route path = "support" element={<ContactForm/>}/>
-          </Routes>
-          <div className="flex ">
-          <Routes>
-          <Route path="/" element={<DashboardMain/>}/>
-          <Route path="payment" element={<MainPayment/>}/>
-         
-          </Routes>
-           {
-            isRightBarShown  ?
-            <div className="p-[0.8rem] mt-[1.5rem]">
-              <RightSideBar/>
+import Notification from "./component/Notification/index.js";
+
+const Dashboard = () => {
+  const [isRightBarShown, setIsRightBarShown] = useState(true);
+  return (
+    <div className="max-w-[1600px]">
+      <div className="bg-slate-50 p-[1rem]">
+        <div className="flex">
+          <SideNavBar />
+          <div className="">  
+            <TopNavbar />   
+            <div className=" flex">
+              <Routes>
+                <Route path="/" element={<DashboardMain />} />
+                <Route path="/payment" element={<MainPayment />} />
+                <Route path="/support" element={<ContactForm />} />
+                <Route path="/notification" element={<Notification/>}/>
+              </Routes>
+              <RightSideBar/>       
             </div>
-            :
-            null
-           } 
+
           </div>
+          
         </div>
       </div>
     </div>
-   
-  </div>
-  </BrowserRouter>
-  )
+  );
 };
-const root = ReactDOM.createRoot(document.getElementById('app'));
-root.render(
-  <App />
-)
-export default App
+
+export default Dashboard;

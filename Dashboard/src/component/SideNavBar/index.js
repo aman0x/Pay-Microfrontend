@@ -35,7 +35,7 @@ export  function SideNavBar(){
                 <button className="flex gap-4 items-center" 
                 onClick={()=>{
                     setNavIndex(0)
-                    navigate('/')
+                    navigate('/dashboard')
                 }}
                 style={{
                 color:"grey",
@@ -56,7 +56,7 @@ export  function SideNavBar(){
                 color:"grey"}}
                 onClick={()=>{
                    setNavIndex(1)
-                   navigate('/payment')
+                   navigate('/dashboard/payment')
                 }}> 
             {navIndex===1?
                 <div className="primary-linear-gr-bg-up h-6 active-bar"> </div>
@@ -75,8 +75,8 @@ export  function SideNavBar(){
                 onClick={()=>{
 
                     setNavIndex(2)
-                    window.location.href = "/invoice"
-                    //navigate('/invoice')
+                    //window.location.href = "/invoice"
+                    navigate('/invoice')
                     
                 }}>
                 {navIndex===2?
@@ -113,6 +113,7 @@ export  function SideNavBar(){
                 }}
                 onClick={()=>{
                     setNavIndex(4)
+                    navigate('/dashboard/notification')
                 }}>
                 {navIndex===4?
                 <div className="primary-linear-gr-bg-up h-6 active-bar"> </div>
@@ -129,7 +130,7 @@ export  function SideNavBar(){
                 color:"grey"
                 }}
                 onClick={()=>{
-                    navigate('/support')
+                    navigate('/dashboard/support')
                     setNavIndex(5)
                 }}>
                 {navIndex===5?
