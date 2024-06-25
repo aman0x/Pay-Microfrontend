@@ -75,8 +75,8 @@ export  function SideNavBar(){
                 onClick={()=>{
 
                     setNavIndex(2)
-                    window.location.href = "/invoice"
-                    //navigate('/invoice')
+                    //window.location.href = "/invoice"
+                    navigate('/invoice')
                     
                 }}>
                 {navIndex===2?
