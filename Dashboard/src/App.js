@@ -8,27 +8,29 @@ import RightSideBar from "./component/RightSideBar/index.js";
 import DashboardMain from "./component/Main/index.js";
 import MainPayment from "./component/Payment/component/Main/index.js";
 import ContactForm from "./component/Support/ContactUsFrom/index.js";
+import Notification from "./component/Notification/index.js";
 
 const Dashboard = () => {
   const [isRightBarShown, setIsRightBarShown] = useState(true);
   return (
-    <div className="w-full">
+    <div className="max-w-[1600px]">
       <div className="bg-slate-50 p-[1rem]">
         <div className="flex">
           <SideNavBar />
-          <div className="w-full">
-            <TopNavbar />
-            <Routes>
-              <Route path="/" element={<DashboardMain />} />
-              <Route path="/payment" element={<MainPayment />} />
-              <Route path="/support" element={<ContactForm />} />
-            </Routes>
-            {isRightBarShown && (
-              <div className="p-[0.8rem] mt-[1.5rem]">
-                <RightSideBar />
-              </div>
-            )}
+          <div className="">  
+            <TopNavbar />   
+            <div className=" flex">
+              <Routes>
+                <Route path="/" element={<DashboardMain />} />
+                <Route path="/payment" element={<MainPayment />} />
+                <Route path="/support" element={<ContactForm />} />
+                <Route path="/notification" element={<Notification/>}/>
+              </Routes>
+              <RightSideBar/>       
+            </div>
+
           </div>
+          
         </div>
       </div>
     </div>

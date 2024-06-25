@@ -163,8 +163,7 @@ export default function AccountType(){
             <div className='mt-3'>
               <button type="submit"
                 onClick={() => { 
-                //    navigate('/dashboard')
-                window.location.href = "/dashboard"
+                   navigate('/dashboard')
                 } }
                 disabled={isValid ?false:true}
                 style={

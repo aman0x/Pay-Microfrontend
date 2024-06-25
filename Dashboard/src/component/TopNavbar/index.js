@@ -6,7 +6,7 @@ function TopNavbar(){
     const location = useLocation()
     const TopHead = getTopName(location.pathname)
     return(
-        <div className="flex justify-between"> 
+        <div className="flex justify-between ml-"> 
             <div>
                 <div className="poppins-medium">{TopHead}</div>
                 <p className="poppins-light text-sm text-gray-600">🤨 Get more out of Paymorz everyday!</p>
@@ -58,13 +58,13 @@ function getTopName(pathname="/"){
     if(pathname==="/" && pathname ==="/dashboard"){
         return "Dashboard"
     }
-    else if(pathname==="/payment"){
+    else if(pathname==="/dashboard/payment"){
         return "Payments"
     }
-    else if(pathname==="/support"){
+    else if(pathname==="/dashboard/support"){
         return "Support"
     }
-    else if(pathname==="/notification"){
+    else if(pathname==="/dashboard/notification"){
         return "Notification"
     }
     else{

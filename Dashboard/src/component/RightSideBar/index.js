@@ -7,16 +7,13 @@ function RightSideBar(){
     console.log("location",location.pathname)
     return(
         
-            ((location.pathname)!=="/support" && (location.pathname)!=="/notification") ?
-            <div className="p-[0.8rem] mt-[1.5rem] flex flex-col gap-4">
-            <QuickAction/>
-            <Stats/>
-            </div>
-            :
-            <></>
-
-        
-       
+        ((location.pathname)!=="/dashboard/support" && (location.pathname)!=="/dashboard/notification") ?
+        <div className="p-[0.8rem] mt-5 flex flex-col gap-4 ">
+        <QuickAction/>
+        <Stats/>
+        </div>
+        :
+        <></>
     )
 }
 

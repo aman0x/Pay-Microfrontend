@@ -9,7 +9,7 @@ import NoitificationBar from "../NotificationBar/index.js";
 
 function DashboardMain(){
     return(
-      <div className="max-w-[75%] mt-5 bg-primary p-[2rem] rounded-2xl ">
+      <div className=" mt-5 bg-primary p-[2rem] rounded-2xl ">
         <NoitificationBar/>
             <div className="flex gap-4">
             <PaymentCard/>
