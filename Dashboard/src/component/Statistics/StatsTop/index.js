@@ -1,7 +1,5 @@
-import { useState }from "react"
 
-function StatsTop(){
-    const [reportIndex,setReportIndex] = useState(0)
+function StatsTop({reportIndex,setReportIndex}){   
     return(
         <div className="flex flex-col gap-2">
             <div className="flex w-full  bg-[#FFFF] py-[8px] rounded-xl justify-evenly px-2 ">
@@ -42,7 +40,7 @@ function StatsTop(){
                 }}
                 onClick={()=>setReportIndex(2)}
                 >
-                Invoice Sent
+                Invoice Received
                 </button>
             </div>
             <div className="flex poppins-light text-xs text-[#A3A6A9] gap-8 justify-center">

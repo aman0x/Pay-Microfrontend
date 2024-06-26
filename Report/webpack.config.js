@@ -1,78 +1,88 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-const CopyWebpackPlugin  = require('copy-webpack-plugin')
-const Dotenv = require('dotenv-webpack');
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+
 const deps = require("./package.json").dependencies;
-module.exports = (_, argv) => ({
-  output: {
-    publicPath: "http://localhost:8002/",
-  },
+const path = require('path');
+const webpack = require('webpack');
 
-  resolve: {
-    extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
-  },
+module.exports = (env) => {
+  const isProduction = env.NODE_ENV === 'production';
+  const envFile = isProduction ? '../.env.production' : '../.env.development';
+  const envPath = path.resolve(__dirname, envFile);
+  const envVars = require('dotenv').config({ path: envPath }).parsed || {};
 
-  devServer: {
-    port: 8002,
-    historyApiFallback: true,
-  },
+  return {
+    output: {
+      publicPath: `${envVars.APP_URL}:8002/`,
+    },
 
-  module: {
-    rules: [
-      {
-        test: /\.m?js/,
-        type: "javascript/auto",
-        resolve: {
-          fullySpecified: false,
-        },
-      },
-      {
-        test: /\.(css|s[ac]ss)$/i,
-        use: ["style-loader", "css-loader", "postcss-loader"],
-      },
-      {
-        test: /\.(ts|tsx|js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-        },
-      },
-    ],
-  },
+    resolve: {
+      extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
+    },
 
-  plugins: [
-    new ModuleFederationPlugin({
-      name: "Report",
-      filename: "remoteEntry.js",
-      remotes: {
-       
-      },
-      exposes: {
-        "./Report":"./src/App.js"
-      },
-      shared: {
-        ...deps,
-        react: {
-          singleton: true,
-          requiredVersion: deps.react,
-        },
-        "react-dom": {
-          singleton: true,
-          requiredVersion: deps["react-dom"],
-        },
-      },
-    }),
-    new HtmlWebPackPlugin({
-      template: "./src/index.html",
-    }),
-    new Dotenv()
-    ,
-    new CopyWebpackPlugin({
-      patterns:[
+    devServer: {
+      port: 8002,
+      historyApiFallback: true,
+    },
+
+    module: {
+      rules: [
         {
-          from:'public',to:'public'
-        }
-      ]
-    })
-  ],
-});
+          test: /\.m?js/,
+          type: "javascript/auto",
+          resolve: {
+            fullySpecified: false,
+          },
+        },
+        {
+          test: /\.(css|s[ac]ss)$/i,
+          use: ["style-loader", "css-loader", "postcss-loader"],
+        },
+        {
+          test: /\.(ts|tsx|js|jsx)$/,
+          exclude: /node_modules/,
+          use: {
+            loader: "babel-loader",
+          },
+        },
+      ],
+    },
+
+    plugins: [
+      new ModuleFederationPlugin({
+        name: "Report",
+        filename: "remoteEntry.js",
+        remotes: {},
+        exposes: {
+          "./Report": "./src/App.js",
+        },
+        shared: {
+          ...deps,
+          react: {
+            singleton: true,
+            requiredVersion: deps.react,
+          },
+          "react-dom": {
+            singleton: true,
+            requiredVersion: deps["react-dom"],
+          },
+        },
+      }),
+      new HtmlWebPackPlugin({
+        template: "./src/index.html",
+      }),
+      new webpack.DefinePlugin({
+        'process.env': JSON.stringify(envVars),
+      }),
+      new CopyWebpackPlugin({
+        patterns: [
+          {
+            from: "public",
+            to: "public",
+          },
+        ],
+      }),
+    ],
+  };
+};

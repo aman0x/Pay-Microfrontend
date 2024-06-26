@@ -17,7 +17,7 @@ function RightSideBar(){
     )
 }
 
-function QuickAction(){
+export function QuickAction(){
 
     return(
     <div>
