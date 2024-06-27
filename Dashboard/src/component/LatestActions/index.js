@@ -5,7 +5,7 @@ import FilterComponent from "./Filter";
 
 function LatestActions(){
     return(
-        <div className="my-[2rem] mx-[rem] ">
+        <div className="my-[2rem]">
             <div className="flex mb-4 items-center gap-6">
                 <div className="poppins-semibold text-lg">Latest Actions</div>
                 <hr className="w-[44rem] poppins-bold text-gray-950"/>

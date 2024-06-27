@@ -15,7 +15,7 @@ const DUMMY_BANKS = [
 
 function Templates(){
     return(
-        <div className="w-[30rem]  ">
+        <div className="w-full ">
             <div className="flex justify-between mb-4">
                 <p className="poppins-semibold">My Templates</p>
                 <div className="flex text-xs gap-1 items-center">

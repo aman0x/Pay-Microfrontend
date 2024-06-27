@@ -6,7 +6,7 @@ function TopNavbar(){
     const location = useLocation()
     const TopHead = getTopName(location.pathname)
     return(
-        <div className="flex justify-between ml-"> 
+        <div className="flex justify-between w-full"> 
             <div>
                 <div className="poppins-medium">{TopHead}</div>
                 <p className="poppins-light text-sm text-gray-600">🤨 Get more out of Paymorz everyday!</p>
@@ -19,7 +19,7 @@ function TopNavbar(){
                 </button>
             </div>
             </div>
-            <div className="flex gap-3 text-sm  mr-[3rem] items-center">
+            <div className="flex gap-3 text-sm  mr-[1.25rem] items-center">
                     <div className="primary-linear-gr-bg-up p-1 rounded-[50%]">
                         <Avatar src="#"
                         sx={{

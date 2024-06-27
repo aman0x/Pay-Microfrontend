@@ -1,16 +1,22 @@
 import {FaSquare} from "react-icons/fa"
 import CalenderComponent from "../../Stats/Calender/calender"
 import { QuickAction } from "../../RightSideBar"
+import { useState } from "react"
+import CalenderStats from "./calendar"
+import { useNavigate } from "react-router-dom"
 const cards = ['**** **** **** 1001','**** **** **** 1001','**** **** **** 1001','**** **** **** 1001']
 function RightSideStatsBar(){
     const [isCardMenuOpen,setCardMenuOpen] = useState(false)
+    const [calenderIndex,setcalenderIndex] = useState(0)
+   
+
     return(
-        <div>
+        <div className="p-[0.8rem] mt-5 flex flex-col gap-4 " >
             <div>
                 <div className="poppins-semibold text-base">Show Data</div>
                 <div className="poppins-light text-xs">Set Option to show last:</div>
             </div>
-            <div className="flex flex-col mt-4 gap-2 poppins-light text-sm text-gray-600 ">
+            <div className="flex flex-col  gap-2 poppins-light text-sm text-gray-600 ">
                 <div className="text-xs mt-2">Select Card : </div>
                 <div className="flex justify-between">
                     <div className="flex gap-1 items-center">
@@ -30,11 +36,65 @@ function RightSideStatsBar(){
                     
                 </div>
                 <hr className="w-[100%]"/>
-                <div className="absolute">
+                <div className="">
                 {isCardMenuOpen && <CardsMenu/>}
                 </div>
             </div>
-            <CalenderComponent/>
+            <div className="flex w-72  bg-[#F0F1F2] py-[8px] rounded-xl justify-evenly px-2 ">
+                <button
+                className='px-2 py-2 rounded-xl poppins-light text-sm'
+                style={{
+                backgroundColor:calenderIndex===0?"#F0F1F2":null,
+                width:"45%",
+                color:calenderIndex===0?"black":"gray",
+                fontWeight:calenderIndex===0?"bold":"normal",
+                boxShadow:calenderIndex===0?"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px":null
+                }}
+                onClick={()=>setcalenderIndex(0)}
+                >
+                Day
+                </button>
+                <button 
+                className='px-2 py-2 rounded-xl poppins-light text-sm'
+                style={{
+                backgroundColor:calenderIndex===1?"#F0F1F2":null,
+                color:calenderIndex===1?"black":"gray",
+                width:"45%",
+                fontWeight:calenderIndex===1?"bold":"normal",
+                boxShadow:calenderIndex===1?"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px":null
+                }}
+                onClick={()=>setcalenderIndex(1)}
+                >
+                Week
+                </button>
+                <button 
+                className='px-2 py-2 rounded-xl poppins-light text-sm'
+                style={{
+                backgroundColor:calenderIndex===2?"#F0F1F2":null,
+                width:"45%",
+                color:calenderIndex===2?"black":"gray",
+                fontWeight:calenderIndex===2?"bold":"normal",
+                boxShadow:calenderIndex===2?"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px":null
+                }}
+                onClick={()=>setcalenderIndex(2)}
+                >
+                Month
+                </button>
+                <button 
+                className='px-2 py-2 rounded-xl poppins-light text-sm'
+                style={{
+                backgroundColor:calenderIndex===3?"#F0F1F2":null,
+                width:"45%",
+                color:calenderIndex===3?"black":"gray",
+                fontWeight:calenderIndex===3?"bold":"normal",
+                boxShadow:calenderIndex===3?"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px":null
+                }}
+                onClick={()=>setcalenderIndex(3)}
+                >
+                Year
+                </button>
+            </div>
+            <CalenderStats/>
             <QuickAction/>
             <GeneralReport/>
         </div>
@@ -44,7 +104,7 @@ function RightSideStatsBar(){
 function CardsMenu(){
     const [cardIndex,setCardIndex] = useState(0)
     return(
-        <div className="relative w-[100%] bg-white rounded-2xl top-24  py-[1rem] px-[1.2rem] gap-4">
+        <div className="w-[100%] bg-white rounded-2xl  py-[1rem] px-[1.2rem] gap-4">
             <div className="text-sm poppins-semibold my-2 flex gap-1 items-start">
                 <span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -85,12 +145,15 @@ function CardsMenu(){
 }
 
 function GeneralReport(){
+    const navigate = useNavigate()
     return(
         <div>
         <div className="poppins-semibold">General Report</div>
         <div className="poppins-light text-xs">Set Option to Get Report</div>
         <div className="flex flex-col gap-2 p-1 mt-2">
-            <button className="poppins-medium text-sm flex items-center bg p-[1rem] bg-black-primary rounded-xl min-h-[3.5rem] w-72 gap-4 primary-btn ">
+            <button 
+            onClick={()=>{navigate('/report')}}
+            className="poppins-medium text-sm flex items-center bg p-[1rem] bg-black-primary rounded-xl min-h-[3.5rem] w-72 gap-4 primary-btn ">
                <div>
                     <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4.83687 3.7H11.0964C11.4094 3.7 11.6654 3.46 11.6654 3.16667V2.1C11.6654 1.22 10.8972 0.5 9.9583 0.5H5.97496C5.03604 0.5 4.26782 1.22 4.26782 2.1V3.16667C4.26782 3.46 4.52389 3.7 4.83687 3.7Z" fill="#4E5459"/>
@@ -99,7 +162,7 @@ function GeneralReport(){
                </div>
                 <div>Get Monthly Report</div>
             </button>
-            <button className="poppins-medium text-sm flex items-center bg p-[1rem] bg-black-primary rounded-xl min-h-[3.5rem] gap-4 primary-btn">
+            <button className="poppins-medium text-sm flex items-center bg p-[1rem] bg-black-primary rounded-xl w-72 min-h-[3.5rem] gap-4 primary-btn">
                 <div>
                     <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4.83687 3.7H11.0964C11.4094 3.7 11.6654 3.46 11.6654 3.16667V2.1C11.6654 1.22 10.8972 0.5 9.9583 0.5H5.97496C5.03604 0.5 4.26782 1.22 4.26782 2.1V3.16667C4.26782 3.46 4.52389 3.7 4.83687 3.7Z" fill="#4E5459"/>
@@ -108,7 +171,7 @@ function GeneralReport(){
                </div>
                 <div>Get Yearly Report</div>
             </button>
-            <button className="poppins-medium text-sm flex items-center bg p-[1rem] bg-black-primary rounded-xl min-h-[3.5rem] gap-4 primary-btn">
+            <button className="poppins-medium text-sm flex items-center bg p-[1rem] bg-black-primary rounded-xl w-72 min-h-[3.5rem] gap-4 primary-btn">
                 <div>
                     <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M6 14C6 13.7239 5.7417 13.5 5.42308 13.5H1.57692C1.2583 13.5 1 13.7239 1 14C1 14.2761 1.2583 14.5 1.57692 14.5H5.42308C5.7417 14.5 6 14.2761 6 14Z" fill="#4E5459"/>

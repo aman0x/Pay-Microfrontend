@@ -13,7 +13,7 @@ export  function SideNavBar(){
     const [navIndex,setNavIndex] = useState(0)
     
     return(
-        <div className={`bg-primary ${isNavOpen?'min-w-[13.5rem]':"nav-close"} flex flex-col h-[85vh]  text-sm justify-between border-gray-400  py-[1.5rem] pr-[1rem] rounded-3xl mx-[1rem] my-[1rem] w-fit transition-all duration-150 shadow-2xl  `}
+        <div className={`bg-primary ${isNavOpen?'min-w-[13.5rem]':"nav-close"} flex flex-col h-[85vh] max-h-[800px]  text-sm justify-between border-gray-400  py-[1.5rem] pr-[1rem] rounded-3xl mx-[0.5rem] my-[0.5rem]  transition-all duration-150 shadow-2xl overflow-y-hidden`}
         >
             <div className="flex gap-1 items-center pl-4" onClick={()=>setNavOpen(!isNavOpen)}>
             <img
@@ -146,7 +146,9 @@ export  function SideNavBar(){
                     </div>
                 </button>
             </div>
-            <button className="flex gap-4 items-center pl-4" style={{
+            <button className="flex gap-4 items-center pl-4"
+            onClick={()=>navigate('/')}
+             style={{
                 color:"grey"
             }}>
             <span className={`${isNavOpen?"":"nav-element"}`}><CiLogout /></span>

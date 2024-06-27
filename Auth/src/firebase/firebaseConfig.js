@@ -3,17 +3,22 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDnPiEQs12h6jxkjKncpVoLhgnHUxzls0o",
-  authDomain: "paymorz-425412.firebaseapp.com",
-  projectId: "paymorz-425412",
-  storageBucket: "paymorz-425412.appspot.com",
-  messagingSenderId: "635887983795",
-  appId: "1:635887983795:web:2acbbcf0e8a7b1f760a4c6",
-  measurementId: "G-BB3M8P1F8B"
-};
+  "type": "service_account",
+  "project_id": "",
+  "private_key_id": "",
+  "private_key": "",
+  "client_email": "",
+  "client_id": "",
+  "auth_uri": "",
+  "token_uri": "",
+  "auth_provider_x509_cert_url": "",
+  "client_x509_cert_url": "",
+  "universe_domain": "googleapis.com"
+}
 
 // Initialize Firebase
-const firebaseApp = initializeApp(firebaseConfig);
+const firebaseApp = 1
+//initializeApp(firebaseConfig);
 export const firebaseAuth = getAuth(firebaseApp)
 
 export default firebaseApp;

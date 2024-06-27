@@ -125,7 +125,7 @@ function StatsCards({reportIndex=0}){
             {
             reportIndex===1 &&
                 <div className="flex flex-col gap-2">
-                    <div className="flex items-center justify-between  bg-white py-3 px-5 rounded-2xl h-[6rem]">
+                    <div className="flex items-center justify-between  bg-white py-5 px-5 rounded-2xl h-[6rem]">
                         <div className="flex flex-col gap-1">
                             <p className="text-gray-600 poppins-light text-sm">Total Succeeded in INR</p>
                             <p className="poppins-bold">₹ 24,0000.70</p>
@@ -178,7 +178,7 @@ function StatsCards({reportIndex=0}){
             }
             {
             reportIndex===2 &&
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-1">
                 <div className="flex items-center justify-between  bg-white py-3 px-5 rounded-2xl h-[6rem]">
                 <div className="flex flex-col gap-1">
                     <p className="text-gray-600 poppins-light text-sm">Total Paid in INR</p>

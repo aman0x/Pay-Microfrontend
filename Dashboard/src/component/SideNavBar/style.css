@@ -1,5 +1,6 @@
 .nav-close{
         width: 95px;
+        min-width: 95px;
         overflow: hidden;
         font-size: 20px;
 }
