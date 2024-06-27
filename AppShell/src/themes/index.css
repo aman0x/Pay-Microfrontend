@@ -20,7 +20,14 @@
   box-sizing: border-box;
 
 }
+.test{
+  max-width:1600px
+}
 
+
+.bg-primary{
+  background-color: var(--primary);
+}
 
 .hero-img{
   width: 100%;

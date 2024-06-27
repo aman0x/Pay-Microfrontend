@@ -15,6 +15,8 @@ function App() {
   const dispatch = useDispatch();
  // console.log("env",process.env.REACT_APP_URL)
   return (
+    <div className="bg-slate-50">
+    <div className="test mx-auto bg-primary">
     <BrowserRouter>
       <Routes>
         <Route path="/*" element={<Auth />} />
@@ -23,6 +25,8 @@ function App() {
         <Route path="/report/*" element={<Report />} />
       </Routes>
     </BrowserRouter>
+    </div>
+    </div>
   );
 }
 

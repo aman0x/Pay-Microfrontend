@@ -17,13 +17,12 @@ const Dashboard = () => {
   const [isRightBarShown, setIsRightBarShown] = useState(true);
   const location  = useLocation()
   return (
-    <div>
-      <div className="bg-slate-50 p-[1rem] min-w-[1320px]">
+      <div className="bg-slate-50 p-[1rem] flex flex-col">
         <div className="flex justify-center">
           <SideNavBar />
           <div className="">  
             <TopNavbar />   
-            <div className="flex">
+            <div className="flex ml-1">
               <Routes>
                 <Route path="/" element={<DashboardMain />} />
                 <Route path="/payment" element={<MainPayment />} />
@@ -46,7 +45,6 @@ const Dashboard = () => {
           
         </div>
       </div>
-    </div>
   );
 };
 

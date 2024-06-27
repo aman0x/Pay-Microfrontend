@@ -7,12 +7,12 @@ import { SideNavBar } from "./component/SideNavBar"
 import TopNavbar from "./component/TopNavbar/index.js";
 import RightSideBar from "./component/RightSideBar"
 const Invoice = () => (
-  <div className="max-w-[1600px] bg-slate-50 p-[1rem]">
-    <div className="flex">
+  <div className="bg-slate-50 p-[1rem]">
+    <div className="flex justify-center">
       <div>
         <SideNavBar/> 
       </div>
-      <div className="w-full">
+      <div className="">
         <TopNavbar/>
         <div className="flex">
           <Routes>
