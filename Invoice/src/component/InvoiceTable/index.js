@@ -187,10 +187,12 @@ const transactions = [
 import {useState} from "react"
 import { TiTick } from "react-icons/ti";
 import "./style.css"
+import { useNavigate } from "react-router-dom"
 function InvoiceTable(){
 
     const [isDateClicked,setIsDateClicked] = useState(false)
     const statusColor = '#27A963'
+    const navigate = useNavigate()
     return(
         <div className="w-full mt-2 ">
         <table className="w-full  rounded-2xl overflow-hidden   ">
@@ -245,7 +247,9 @@ function InvoiceTable(){
             {
                 transactions.map((transaction)=>{
                     return(
-                        <tr className="text-xs poppins-regular">
+                        <tr className="text-xs poppins-regular"
+                        onClick={()=>navigate(`/invoice/invoice-detail`)}
+                        >
                         <td>
                             <div className="flex items-center gap-3 td-element">
                                 <div className={`w-[12px]  h-[12px] rounded-[4px] ${isDateClicked?'primary-linear-gr-bg':'bg-white'}`} onClick={()=>{setIsDateClicked(!isDateClicked)}}>

@@ -7,7 +7,8 @@ import { SideNavBar } from "./component/SideNavBar"
 import TopNavbar from "./component/TopNavbar/index.js";
 import RightSideBar from "./component/RightSideBar"
 import NewInvoice from "./component/NewInvoices/index.js";
-import { useLocation } from "react-router-dom";
+import InvoiceDetail from "./component/InvoiceDetail/index.js";
+import NewInvoiceDetail from "./component/NewInvoiceDetail/index.js";
 
 const Invoice = () => (
   
@@ -22,6 +23,8 @@ const Invoice = () => (
           <Routes>
             <Route path="/" element={<MainInvoice />} />
             <Route path="/new-invoice" element={<NewInvoice/>}/>
+            <Route path="/invoice-detail" element={<InvoiceDetail/>}/>
+            <Route path="/new-invoice/invoice-detail" element={<NewInvoiceDetail/>}/>
           </Routes>
          
             <RightSideBar/>

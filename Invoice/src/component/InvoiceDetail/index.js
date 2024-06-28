@@ -1,17 +1,16 @@
-import { FaCreditCard } from "react-icons/fa";
-function PaymentDetailPage(){
+function InvoiceDetail(){
     return(
         <div className="mt-5 bg-primary p-[2rem] rounded-2xl flex flex-col gap-3 w-[1300px] ">
             <div className="flex justify-between">
                 <div className="flex gap-1 items-center">
                     <div>
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="18" height="18" rx="9" fill="#55C861" fill-opacity="0.15"/>
-                        <circle cx="9" cy="9" r="4" fill="#27A963"/>
+                        <rect width="18" height="18" rx="9" fill="#FFAC2F" fill-opacity="0.15"/>
+                        <circle cx="9" cy="9" r="4" fill="#FFB442"/>
                         </svg>
                     </div>
                     <div className="text-xs">
-                        Succeeded
+                        InProgress
                     </div>
                 </div>
                 <div className="flex gap-1 items-center">
@@ -29,117 +28,120 @@ function PaymentDetailPage(){
                         <path d="M2.36779 7.88455C2.52489 7.88455 2.65224 8.01191 2.65224 8.169C2.65224 8.71341 2.65285 9.0931 2.69136 9.3796C2.72878 9.65792 2.79722 9.80526 2.90219 9.91024C3.00716 10.0152 3.15453 10.0836 3.43283 10.1211C3.71932 10.1596 4.09901 10.1602 4.64343 10.1602H6.91906C7.46347 10.1602 7.84316 10.1596 8.12967 10.1211C8.40798 10.0836 8.55532 10.0152 8.66031 9.91024C8.76529 9.80526 8.83371 9.65792 8.87114 9.3796C8.90964 9.0931 8.91025 8.71341 8.91025 8.169C8.91025 8.01191 9.03761 7.88455 9.1947 7.88455C9.3518 7.88455 9.47916 8.01191 9.47916 8.169V8.18983C9.47916 8.70852 9.47916 9.12659 9.43497 9.45542C9.38908 9.79681 9.29088 10.0842 9.0626 10.3125C8.83428 10.5408 8.54687 10.639 8.20548 10.6849C7.87665 10.7291 7.45858 10.7291 6.93989 10.7291H4.62262C4.10393 10.7291 3.68585 10.7291 3.35703 10.6849C3.01564 10.639 2.7282 10.5408 2.49991 10.3125C2.27162 10.0842 2.17343 9.79681 2.12753 9.45542C2.08332 9.1266 2.08333 8.70855 2.08333 8.18988V8.169C2.08333 8.01191 2.21069 7.88455 2.36779 7.88455Z" fill="#232B31"/>
                         </svg>
                     </div>
+                </div> 
+            </div>
+                <div className="flex flex-col gap-4 rounded-2xl bg-white p-[1.5rem] w-full">
+                    <div className="flex justify-between">
+                        <div className="flex flex-col gap-1">
+                            <div className="poppins-semibold">Invoice Title</div>
+                            <div className="flex gap-2 items-center">
+                                <div className="text-sm text-[#4E5459]">Invoice ID:</div>
+                                <div className="text-xs">IN1711364044252</div>
+                            </div>
+                            <div className="flex gap-2 items-center">
+                                <div className="text-sm text-[#4E5459]">Date:</div>
+                                <div className="text-xs">4th Apr 2024  01:41 pm</div>
+                            </div> 
+                        </div>
+                        <div className="rounded-xl shadow-md py-[1px] h-14 px-2 w-40 flex flex-col justify-center">
+                            <div className="poppins-semibold text-sm">
+                                Payment :
+                            </div>
+                            <div className="color-linear poppins-semibold">
+                                ₹ 24,000.24
+                            </div>
+                        </div>
+                    </div>
+                    <div className="w-full">
+                        <table className="w-full  rounded-2xl overflow-hidden text-sm poppins-regular">
+                            <tr className="poppins-light text-xs text-white bg-black-primary items-center">
+                                <td>Particular</td>
+                                <td>Quantity</td>
+                                <td>Price Per Quantity</td>
+                                <td>Amount</td>
+                                <td>GST %</td>
+                                <td>Subtotal</td>
+                            </tr>
+                            <tr className="">
+                                <td>Vendor Payment</td>
+                                <td>1</td>
+                                <td>₹ 24,000.24</td>
+                                <td>₹ 24,000.24</td>
+                                <td>20 %</td>
+                                <td>₹ 24,000.24</td>
+                            </tr>
+                            <tr>
+                                <td>Vendor Payment</td>
+                                <td>1</td>
+                                <td>₹ 24,000.24</td>
+                                <td>₹ 24,000.24</td>
+                                <td>20 %</td>
+                                <td>₹ 24,000.24</td>
+                            </tr>
+                            <tr>
+                                <td>Vendor Payment</td>
+                                <td>1</td>
+                                <td>₹ 24,000.24</td>
+                                <td>₹ 24,000.24</td>
+                                <td>20 %</td>
+                                <td>₹ 24,000.24</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div className="flex justify-between gap-1">
+                        <div className="flex items-center">
+                            <div className="color-linear text-base  poppins-semibold">TOTAL</div>
+                            <div className="poppins-lighht text-xs text-[#787D81]">(3 items):</div>
+                        </div>
+                        <div className="color-linear poppins-semibold">
+                            ₹ 24,000.24
+                        </div>
+                    </div>
+                    <hr/>
+                    <div className="grid grid-cols-2 gap-4">
+                        <div className="bg-primary p-[1rem] rounded-xl gap-4">
+                            <div className="text-[#4E5459] poppins-semibold text-sm mb-2">Sent To:</div>
+                            <div className="flex items-center justify-between">
+                                <div className="text-[#A3A6A9] text-xs">Name:</div>
+                                <div><hr className="border-dotted"/></div>
+                                <div className="poppins-semibold text-sm">ANANTHARAPU ARUNA THEJASWINI</div>
+                            </div>
+                            <div className="flex items-center justify-between">
+                                <div className="text-[#A3A6A9] text-xs">Phone:</div>
+                                <div><hr className="border-dotted"/></div>
+                                <div className="poppins-semibold text-sm">+913554546314</div>
+                            </div>
+                            <div className="flex items-center justify-between">
+                                <div className="text-[#A3A6A9] text-xs">Mail:</div>
+                                <div><hr className="border-dotted"/></div>
+                                <div className="poppins-semibold text-sm">contact@mail.com</div>
+                            </div>
+                            
+                        </div>
+                        <div className="bg-primary p-[1rem] rounded-xl gap-4">
+                            <div className="text-[#4E5459] poppins-semibold text-sm mb-2">Bank Details:</div>
+                            <div className="flex items-center justify-between">
+                                <div className="text-[#A3A6A9] text-xs">A/C No.</div>
+                                <div><hr className="border-dotted"/></div>
+                                <div className="poppins-semibold text-sm">50100350093919</div>
+                            </div>
+                            <div className="flex items-center justify-between">
+                                <div className="text-[#A3A6A9] text-xs">Bank</div>
+                                <div><hr className="border-dotted"/></div>
+                                <div className="poppins-semibold text-sm">HDFC Bank, KODAD</div>
+                            </div>
+                            <div className="flex items-center justify-between">
+                                <div className="text-[#A3A6A9] text-xs">IFS Code</div>
+                                <div><hr className="border-dotted"/></div>
+                                <div className="poppins-semibold text-sm">HDFC0001642</div>
+                            </div>
+                            
+                        </div>
+                    </div>
+
                 </div>
+                <div className="w-full h-20 primary-linear-gr-bg flex  items-center px-[1rem] rounded-3xl ">
                 
-            </div>
-            <div className="flex justify-between rounded-2xl bg-white p-[1rem] w-full">
-                <div className="flex flex-col gap-1">
-                    <div className="poppins-semibold">Payment Title</div>
-                    <div className="flex gap-2 items-center">
-                        <div className="text-sm text-[#4E5459]">Transaction ID:</div>
-                        <div className="text-xs">TD1711364044252</div>
-                    </div>
-                    <div className="flex gap-2 items-center">
-                        <div className="text-sm text-[#4E5459]">Date:</div>
-                        <div className="text-xs">4th Apr 2024  01:41 pm</div>
-                    </div>
-                </div>
-                <div className="rounded-xl shadow-md py-[1px] h-14 px-2 w-40 flex flex-col justify-center">
-                    <div className="poppins-semibold text-sm">
-                        Payment :
-                    </div>
-                    <div className="color-linear poppins-semibold">
-                        ₹ 24,000.24
-                    </div>
-                </div>
-
-            </div>
-            <div className="grid grid-cols-2 gap-4"> 
-                <div className="flex flex-col bg-white p-[1rem] rounded-2xl gap-4">
-                    <div className="flex flex-col gap-4">
-                        <div className="poppins-semibold">
-                        Beneficiary Details
-                        </div>
-                        <div className="poppins-semibold">
-                        ANANTHARAPU ARUNA THEJASWINI
-                        </div>
-                    </div>
-                    <div className="flex flex-col gap-1">
-                        <div className="text-[#4E5459] text-xs poppins-semibold">Contact Details:</div>
-                        <div className="flex text-xs justify-between">
-                            <div className="text-[#A3A6A9]">
-                                Phone
-                            </div>
-                            <div>
-                            +91 957 374 96 30
-                            </div>
-                        </div>
-                        <div className="flex text-xs justify-between">
-                            <div className="text-[#A3A6A9]">
-                                Mail
-                            </div>
-                            <div>
-                            customer@mail.com
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div className="flex flex-col gap-1">
-                        <div className="text-[#4E5459] text-xs poppins-semibold">Bank Details:</div>
-                        <div className="flex text-xs justify-between">
-                            <div className="text-[#A3A6A9]">
-                                A/C No
-                            </div>
-                            <div>
-                            50100350093919
-                            </div>
-                        </div>
-                        <div className="flex text-xs justify-between">
-                            <div className="text-[#A3A6A9]">
-                                Bank
-                            </div>
-                            <div>
-                            HDFC Bank, KODAD
-                            </div>
-                        </div>
-                        <div className="flex text-xs justify-between">
-                            <div className="text-[#A3A6A9]">
-                                IFS Code
-                            </div>
-                            <div>
-                            HDFC0001642
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div className="flex flex-col bg-white p-[1rem] rounded-2xl justify-between">
-                <div className="poppins-semibold">Payment Breakdown</div>
-                <div>
-                    <div>
-                        <div className="flex justify-between text-xs">
-                            <div className="text-[#A3A6A9]">Receiver will recieve</div>
-                            <div>₹ 24,000.24</div>
-                        </div>
-
-                    </div>
-                    <div className="flex justify-between text-xs">
-                        <div className="text-[#A3A6A9]">Convenience Fees 1.99%:</div>
-                        <div>₹ 24,000.24</div>
-                    </div>
-                    <div className="flex justify-between text-xs">
-                        <div className="text-[#A3A6A9]">TAX</div>
-                        <div>₹ 24,000.24</div>
-                    </div>
-                </div>
-                <div className="flex justify-between text-sm">
-                    <div className="color-linear poppins-semibold">Total:</div>
-                    <div className="color-linear poppins-semibold">₹ 24,000.24</div>
-                </div>
-                </div>
-            </div>
-            <div className="flex gap-2 items-center">
-                <div className="w-full h-20 primary-linear-gr-bg flex  items-center px-[1rem] rounded-3xl ">   
                     <svg width="100" height="60" viewBox="0 0 117 83" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g opacity="0.5">
                     <path d="M46.0051 50.689L49.3396 55.2148L49.412 55.6294L46.0758 51.1053L46.0051 50.689Z" fill="#ED97CF"/>
@@ -227,13 +229,8 @@ function PaymentDetailPage(){
                     </div>
                 
                 </div>
-                <div>
-                    <button className="poppins-medium text-sm flex items-center bg p-[1rem] bg-black-primary rounded-xl min-w-56 gap-4 primary-btn ">
-                    <FaCreditCard color="gray"/>
-                    <div>Repeat Payment</div>
-                    </button>
-                </div>
-            </div>
+
+          
 
 
             
@@ -241,4 +238,4 @@ function PaymentDetailPage(){
         </div>
     )
 }
-export default PaymentDetailPage;
+export default InvoiceDetail;
