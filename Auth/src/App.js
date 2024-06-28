@@ -8,6 +8,7 @@ import AccountType from "./component/AccountType/index.js";
 import { OtpScreen } from "./component/OtpScreen/index.js";
 
 const Auth = () => (
+  <div className="bg-white">
   <Routes>
     <Route path="/" element={<LoginUser />} />
     <Route path="/accounts/login" element={<LoginUser />} />
@@ -15,6 +16,7 @@ const Auth = () => (
     <Route path="/accounts/type" element={<AccountType />} />
     <Route path="/accounts/otp-verification" element={<OtpScreen />} />
   </Routes>
+  </div>
 );
 
 export default Auth;

@@ -8,7 +8,7 @@ function MainInvoice(){
             <NoitificationBar/>
             <InvoiceTop/>
             <InvoiceTable/>
-        </div>
+            </div>
 
         </div>
         

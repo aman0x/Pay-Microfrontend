@@ -6,9 +6,9 @@ function TopNavbar(){
     const location = useLocation()
     const TopHead = getTopName(location.pathname)
     return(
-        <div className="flex justify-between"> 
+        <div className="flex justify-between "> 
             <div>
-                <div className="poppins-medium">Invoice</div>
+                <div className="poppins-medium">Report</div>
                 <p className="poppins-light text-sm text-gray-600">🤨 Get more out of Paymorz everyday!</p>
             </div>
             <div className="w-96">

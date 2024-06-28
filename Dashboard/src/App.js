@@ -12,15 +12,15 @@ import Notification from "./component/Notification/index.js";
 import Statistic from "./component/Statistics/index.js";
 import RightSideStatsBar from "./component/Statistics/RightSideStatsBar/index.js";
 import PaymentDetailPage from "./component/Payment/component/PaymentDetailPage/index.js";
-
+import Profile from "./component/Profile/index.js";
 const Dashboard = () => {
   const [isRightBarShown, setIsRightBarShown] = useState(true);
   const location  = useLocation()
   return (
-      <div className="bg-slate-50 p-[1rem] flex flex-col">
+      <div className="bg-slate-50 p-[1rem] flex flex-col ">
         <div className="flex justify-center">
           <SideNavBar />
-          <div className="">  
+          <div className="w-full ">  
             <TopNavbar />   
             <div className="flex ml-1">
               <Routes>
@@ -30,6 +30,7 @@ const Dashboard = () => {
                 <Route path="/notification" element={<Notification/>}/>
                  <Route path="/statistic" element={<Statistic/>}/>
                  <Route path="/payment/payment-detail" element={<PaymentDetailPage/>}/>
+                 <Route path="/profile" element={<Profile/>}/>
               </Routes>
               {
                 location.pathname === '/dashboard/statistic' ?

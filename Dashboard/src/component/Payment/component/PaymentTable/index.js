@@ -187,8 +187,9 @@ const transactions = [
 import {useState} from "react"
 import { TiTick } from "react-icons/ti";
 import "./style.css"
+import { useNavigate } from "react-router-dom";
 function PaymentTable(){
-
+  const navigate = useNavigate()
     const [isDateClicked,setIsDateClicked] = useState(false)
     const statusColor = '#27A963'
     return(
@@ -240,9 +241,12 @@ function PaymentTable(){
                 </td>
             </tr>
             {
-                transactions.map((transaction)=>{
+                transactions.map((transaction,i)=>{
                     return(
-                        <tr className="text-xs poppins-regular">
+                        <tr 
+                        onClick={()=>navigate(`/dashboard/payment/payment-detail?${i}`)}
+                        className="text-xs poppins-regular"
+                        >
                         <td>
                             <div className="flex items-center gap-3 td-element">
                                 <div className={`w-[12px]  h-[12px] rounded-[4px] ${isDateClicked?'primary-linear-gr-bg':'bg-white'}`} onClick={()=>{setIsDateClicked(!isDateClicked)}}>

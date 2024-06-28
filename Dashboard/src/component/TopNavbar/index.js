@@ -1,9 +1,10 @@
 import { Avatar } from "@mui/material";
 import { FaSearch } from "react-icons/fa";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function TopNavbar(){
     const location = useLocation()
+    const navigate  = useNavigate()
     const TopHead = getTopName(location.pathname)
     return(
         <div className="flex justify-between w-full"> 
@@ -20,7 +21,9 @@ function TopNavbar(){
             </div>
             </div>
             <div className="flex gap-3 text-sm  mr-[1.25rem] items-center">
-                    <div className="primary-linear-gr-bg-up p-1 rounded-[50%]">
+                    <div className="primary-linear-gr-bg-up p-1 rounded-[50%]" 
+                    onClick={()=>navigate('/dashboard/profile')}
+                    >
                         <Avatar src="#"
                         sx={{
                             fontWeight:"bold",
