@@ -28,7 +28,9 @@ function QuickAction(){
     <div>
         <div className="poppins-semibold">Quick Actions</div>
         <div className="flex flex-col gap-2 p-1 mt-2">
-            <button className="poppins-medium text-sm flex items-center bg p-[1rem] bg-black-primary rounded-xl min-h-[3.5rem] w-72 gap-4 primary-btn ">
+            <button 
+             onClick={()=> navigate('/dashboard/payment/new-payment')}
+            className="poppins-medium text-sm flex items-center bg p-[1rem] bg-black-primary rounded-xl min-h-[3.5rem] w-72 gap-4 primary-btn ">
                 <FaCreditCard color="gray"/>
                 <div>Make a Payment</div>
             </button>

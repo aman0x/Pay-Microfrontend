@@ -1,7 +1,7 @@
 import { IoDocumentText } from "react-icons/io5";
 import { FaCreditCard } from "react-icons/fa6";
 import Stats from "../Stats";
-import { useLocation } from "react-router-dom";
+import { useLocation,useNavigate } from "react-router-dom";
 function RightSideBar(){
     const location = useLocation()
     console.log("location",location.pathname)
@@ -24,12 +24,14 @@ function RightSideBar(){
 }
 
 export function QuickAction(){
-
+    const navigate = useNavigate()
     return(
     <div>
         <div className="poppins-semibold">Quick Actions</div>
         <div className="flex flex-col gap-2 p-1 mt-2">
-            <button className="poppins-medium text-sm flex items-center bg p-[1rem] bg-black-primary rounded-xl min-h-[3.5rem] w-72 gap-4 primary-btn ">
+            <button
+             onClick={()=> navigate('/dashboard/payment/new-payment')}
+              className="poppins-medium text-sm flex items-center bg p-[1rem] bg-black-primary rounded-xl min-h-[3.5rem] w-72 gap-4 primary-btn ">
                 <FaCreditCard color="gray"/>
                 <div>Make a Payment</div>
             </button>
