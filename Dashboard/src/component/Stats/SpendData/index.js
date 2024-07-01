@@ -18,16 +18,16 @@ function SpendData(){
                     </div>
                     <div>**** **** **** 1001</div>
                 </div>
-                <div onClick={()=>{setCardMenuOpen(!isCardMenuOpen)}}>
+                <button onClick={()=>setCardMenuOpen(!isCardMenuOpen)}>
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="18" width="18" height="18" rx="9" transform="rotate(90 18 0)" fill="#DFE0E2"/>
                     <path d="M11 8L9 10L7 8" stroke="#4E5459" stroke-width="1.5" stroke-linecap="round"/>
                     </svg>
-                </div>
+                </button>
                 
             </div>
             <hr className="w-[100%]"/>
-            <div className="absolute">
+            <div className="relative">
             {isCardMenuOpen && <CardsMenu/>}
             </div>
             
@@ -52,7 +52,7 @@ function SpendData(){
 function CardsMenu(){
     const [cardIndex,setCardIndex] = useState(0)
     return(
-        <div className="relative w-[100%] bg-white rounded-2xl top-24  py-[1rem] px-[1.2rem] gap-4">
+        <div className="absolute w-[100%] bg-white rounded-2xl   py-[1rem] px-[1.2rem] gap-4">
             <div className="text-sm poppins-semibold my-2 flex gap-1 items-start">
                 <span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

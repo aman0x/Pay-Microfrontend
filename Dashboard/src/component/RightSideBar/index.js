@@ -11,6 +11,7 @@ function RightSideBar(){
             (location.pathname)!=="/dashboard/support" && 
             (location.pathname)!=="/dashboard/notification" &&
             (location.pathname)!=='/dashboard/payment/payment-detail' &&
+            (location.pathname)!=='/dashboard/payment/new-payment' &&
             (location.pathname)!=='/dashboard/profile'
         ) ?
         <div className="p-[0.8rem] mt-5 flex flex-col gap-4 ">

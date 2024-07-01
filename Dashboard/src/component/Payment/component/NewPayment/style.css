@@ -1,0 +1,10 @@
+.isactive{
+    background: var(--black-primary);
+    color: white;
+}
+.hr-gradient {
+    height: 1px; /* Adjust height as needed */
+    width: 100%;
+    background: linear-gradient(to right, #F6DEC6, #E872D4, #C190D9, #A2DCFE); /* Example gradient */
+    border: none;
+}

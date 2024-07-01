@@ -13,6 +13,8 @@ import Statistic from "./component/Statistics/index.js";
 import RightSideStatsBar from "./component/Statistics/RightSideStatsBar/index.js";
 import PaymentDetailPage from "./component/Payment/component/PaymentDetailPage/index.js";
 import Profile from "./component/Profile/index.js";
+import NewPayment from "./component/Payment/component/NewPayment/index.js";
+import SecondaryTopBar from "./component/SecondaryTopBar/index.js";
 const Dashboard = () => {
   const [isRightBarShown, setIsRightBarShown] = useState(true);
   const location  = useLocation()
@@ -21,7 +23,12 @@ const Dashboard = () => {
         <div className="flex justify-center">
           <SideNavBar />
           <div className="w-full ">  
-            <TopNavbar />   
+            {
+              location.pathname === '/dashboard/payment/new-payment'?
+              <SecondaryTopBar/>
+              : 
+              <TopNavbar /> 
+            }  
             <div className="flex ml-1">
               <Routes>
                 <Route path="/" element={<DashboardMain />} />
@@ -30,6 +37,7 @@ const Dashboard = () => {
                 <Route path="/notification" element={<Notification/>}/>
                  <Route path="/statistic" element={<Statistic/>}/>
                  <Route path="/payment/payment-detail" element={<PaymentDetailPage/>}/>
+                 <Route path ="/payment/new-payment" element={<NewPayment/>}/>
                  <Route path="/profile" element={<Profile/>}/>
               </Routes>
               {
