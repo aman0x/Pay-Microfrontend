@@ -28,7 +28,7 @@ const Invoice = () => {
         :
         <TopNavbar/>
        } 
-        <div className="flex">
+        <div className="flex ml-1">
           <Routes>
             <Route path="/" element={<MainInvoice />} />
             <Route path="/new-invoice" element={<NewInvoice/>}/>
