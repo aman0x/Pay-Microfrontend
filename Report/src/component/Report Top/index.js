@@ -3,7 +3,7 @@ import ReportDownloadButtons from "../ReportFooter"
 function ReportTop({reportIndex,setReportIndex}){
     const currentDisplayDate = reportIndex===0?'2024':'March 2024'
     return(
-        <div>
+        <div className="">
             <div className="flex w-full mt-4 bg-[#FFFF] py-[8px] rounded-xl justify-evenly px-2 ">
                 <button
                 className='px-9 py-2 rounded-xl poppins-light text-sm'

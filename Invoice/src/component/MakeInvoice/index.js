@@ -1,19 +1,21 @@
 import { PiLineVertical } from "react-icons/pi"
 import { FaCircleArrowRight,FaSquare } from "react-icons/fa6"
 import { useState } from "react"
-import PaymentStep2 from "./paymentStep2"
-import PaymentStep3 from "./paymentStep3"
+// import PaymentStep2 from "./paymentStep2"
+// import PaymentStep3 from "./paymentStep3"
 import "./style.css"
+import NewInvoiceStep2 from "./NewInvoiceStep2"
 const cards = ['**** **** **** 1001','**** **** **** 1001','**** **** **** 1001','**** **** **** 1001']
-function NewPayment({isRepeatPayment=false}){
+function MakeInvoice({isRepeatPayment=false}){
     const [isPaymentTypeMenu,setPaymentMenuView] = useState(false)
     const [isReceiverMenu,setReceiversMenuView] = useState(false)
     const [stepIndex,setStepIndex] = useState(0)
 
     return(
         <div className="mt-5 bg-primary p-[2rem] rounded-2xl flex flex-col gap-3 w-full ">
-            <div className="flex justify-evenly gap-2">
-                <div  className="flex flex-col items-center gap-1">
+            <div className="flex justify-around gap-2">
+                <hr className={`my-2 max-w-[20%] ${stepIndex>0? "hr-gradient":"w-full border-t-2 border-gray-200"}`}/>
+                <div  className="flex flex-col items-center gap-1"> 
                     {
                         stepIndex<=0?
                         <div className="p-2">
@@ -70,39 +72,11 @@ function NewPayment({isRepeatPayment=false}){
                         Step <div>2</div>
                     </div>
                 </div>
-                <hr className={`my-2 ${stepIndex>1? "hr-gradient":"w-full border-t-2 border-gray-200"}`}/>
-                <div className="flex flex-col items-center gap-1">
-                    {
-                            stepIndex<=2?
-                            <div className="p-2">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M16 8C16 12.4182 12.4182 16 8 16C3.58172 16 0 12.4182 0 8C0 3.58172 3.58172 0 8 0C12.4182 0 16 3.58172 16 8ZM11.2242 5.57574C11.4586 5.81005 11.4586 6.18995 11.2242 6.42424L7.22424 10.4242C6.98992 10.6586 6.61008 10.6586 6.37574 10.4242L4.77574 8.82424C4.54142 8.58992 4.54142 8.21008 4.77574 7.97576C5.01005 7.74144 5.38995 7.74144 5.62426 7.97576L6.8 9.15144L8.58784 7.3636L10.3758 5.57574C10.6101 5.34142 10.9899 5.34142 11.2242 5.57574Z" fill={stepIndex===0?"#232B31":"#B6B8BA"} />
-                                </svg>
-                            </div>
-                            :
-                            <div>
-                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M17 9C17 13.4182 13.4182 17 9 17C4.58172 17 1 13.4182 1 9C1 4.58172 4.58172 1 9 1C13.4182 1 17 4.58172 17 9ZM12.2242 6.57574C12.4586 6.81005 12.4586 7.18995 12.2242 7.42424L8.22424 11.4242C7.98992 11.6586 7.61008 11.6586 7.37574 11.4242L5.77574 9.82424C5.54142 9.58992 5.54142 9.21008 5.77574 8.97576C6.01005 8.74144 6.38995 8.74144 6.62426 8.97576L7.8 10.1514L9.58784 8.3636L11.3758 6.57574C11.6101 6.34142 11.9899 6.34142 12.2242 6.57574Z" fill="url(#paint0_linear_1298_2821)"/>
-                                <defs>
-                                <linearGradient id="paint0_linear_1298_2821" x1="-1.55083" y1="10.4222" x2="19.666" y2="5.56723" gradientUnits="userSpaceOnUse">
-                                <stop stop-color="#F6DEC6"/>
-                                <stop offset="0.47" stop-color="#E872D4"/>
-                                <stop offset="0.656667" stop-color="#C190D9"/>
-                                <stop offset="0.881578" stop-color="#A2DCFE"/>
-                                </linearGradient>
-                                </defs>
-                                </svg>
-                            </div>
-
-                        }
-                    <div className="poppins-regular text-xs flex gap-1">
-                        Step <div>3</div>
-                    </div>
-                </div>
+                <hr className={`my-2 max-w-[20%] ${stepIndex>1? "hr-gradient":"w-full border-t-2 border-gray-200"}`}/>
             </div>
             {
                 stepIndex===0 &&
-                <div className="mx-auto w-[35%] flex flex-col gap-8 mt-4">
+                <div className="mx-auto w-[45%] flex flex-col gap-8 mt-8">
                 <div className="text-center poppins-semibold">Enter Data</div>
                 <div className="flex flex-col gap-4">
                     <div className="relative">
@@ -164,13 +138,14 @@ function NewPayment({isRepeatPayment=false}){
             }
             {
                 stepIndex===1 &&
-                <PaymentStep2 setStepIndex={setStepIndex}/>
+                <NewInvoiceStep2 setStepIndex={setStepIndex}/>
                 
             }
                 
             {
                 stepIndex===2 &&
-                <PaymentStep3 setStepIndex={setStepIndex}/>
+                null
+                //<PaymentStep3 setStepIndex={setStepIndex}/>
             }
             
         </div>
@@ -260,4 +235,4 @@ function ReceiversMenu(){
         </div>
     )
 }
-export default NewPayment;
+export default MakeInvoice;

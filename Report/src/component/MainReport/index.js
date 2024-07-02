@@ -6,7 +6,7 @@ function MainReport(){
     const [reportIndex,setReportIndex] = useState(0)
     return(
         <div className="flex w-full">
-            <div className="mt-5 bg-primary p-[2rem] rounded-2xl  flex flex-col gap-2">
+            <div className="mt-5 w-full bg-primary p-[2rem] rounded-2xl  flex flex-col gap-2">
             <ReportTop reportIndex={reportIndex} setReportIndex={setReportIndex}/>
             <div>
             <ReportTable reportIndex={reportIndex}/>

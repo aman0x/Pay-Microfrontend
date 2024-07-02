@@ -6,7 +6,8 @@ import SpendData from "./SpendData";
 function Stats(){
     const [isCalenderOpen,setCalenderView] = useState(false)
     return(
-    <div className="relative" >
+        <div>
+             <div className="relative">
         <div className="flex justify-between">
             <div className="poppins-semibold">Stats</div>
             <div className="flex items-center gap-1" onClick={()=>
@@ -121,6 +122,8 @@ function Stats(){
         </div>
         <SpendData/>
     </div>
+        </div>
+   
     )
    
 }

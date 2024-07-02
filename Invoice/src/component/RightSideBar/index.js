@@ -13,7 +13,7 @@ function RightSideBar(){
         (location.pathname)!=="/invoice/invoice-detail" &&
         (location.pathname)!=="/invoice/new-invoice/invoice-detail"
          ?
-        <div className="p-[0.8rem] mt-5 flex flex-col gap-4 ">
+        <div className="p-[0.8rem] pr-0 mt-5 flex flex-col gap-4 ">
         <QuickAction/>
         <Stats/>
         </div>
@@ -35,7 +35,7 @@ function QuickAction(){
                 <div>Make a Payment</div>
             </button>
             <button 
-            onClick={()=> navigate('/invoice/new-invoice')}
+            onClick={()=> navigate('/invoice/send-invoice')}
             className="poppins-medium text-sm flex items-center bg p-[1rem] bg-black-primary rounded-xl min-h-[3.5rem] gap-4 primary-btn">
                 <IoDocumentText color="gray"/>
                 <div>Sent an Invoice</div>

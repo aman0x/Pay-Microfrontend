@@ -93,10 +93,10 @@ export default function LoginUser() {
           className='my-5 mx-2 poppins-extralight-italic text-xs px-2'>
             <p >By clicking Continue, you agree to Paymorz's <span><a className='underline font-semibold' href='#'>Terms & Conditions & Privacy Policy.</a></span></p>
           </div>
-          <div class="mt-16 flex items-center justify-between">
+          <div className="mt-16 flex items-center justify-between">
                 <span className="border-b w-1/5 lg:w-1/4"></span>
                 <a href="#" className="text-xs text-center text-gray-500 mb-2">or Continue With</a>
-                <span class="border-b w-1/5 lg:w-1/4"></span>
+                <span className="border-b w-1/5 lg:w-1/4"></span>
             </div>
           <div className='grid grid-cols-3  items-center m-2  gap-4'>
 

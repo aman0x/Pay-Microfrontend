@@ -15,19 +15,29 @@ import PaymentDetailPage from "./component/Payment/component/PaymentDetailPage/i
 import Profile from "./component/Profile/index.js";
 import NewPayment from "./component/Payment/component/NewPayment/index.js";
 import SecondaryTopBar from "./component/SecondaryTopBar/index.js";
+import MyAccounts from "./component/BankAccount/MyAccounts/index.js";
+import AddNewAccount from "./component/BankAccount/MyAccounts/AddNewAccouunt/index.js";
+import MyBeneficiary from "./component/Beneficiary/MyBeneficiary/index.js";
+import AddNewBeneficiary from "./component/Beneficiary/AddBeneficiary/index.js";
+import MainFooter from "./component/Footer/index.js";
 const Dashboard = () => {
   const [isRightBarShown, setIsRightBarShown] = useState(true);
   const location  = useLocation()
   return (
-      <div className="bg-slate-50 p-[1rem] flex flex-col ">
+      <div className="bg-slate-50  flex flex-col ">
         <div className="flex justify-center">
           <SideNavBar />
           <div className="w-full ">  
             {
-              location.pathname === '/dashboard/payment/new-payment'?
+              ( location.pathname !== '/dashboard/payment/new-payment' &&
+                !location.pathname.startsWith('/dashboard/beneficiary') &&
+                !location.pathname.startsWith('/dashboard/accounts')
+               )?
+               <TopNavbar /> 
+               :
               <SecondaryTopBar/>
-              : 
-              <TopNavbar /> 
+              
+              
             }  
             <div className="flex ml-1">
               <Routes>
@@ -39,6 +49,10 @@ const Dashboard = () => {
                  <Route path="/payment/payment-detail" element={<PaymentDetailPage/>}/>
                  <Route path ="/payment/new-payment" element={<NewPayment/>}/>
                  <Route path="/profile" element={<Profile/>}/>
+                 <Route path="/accounts" element={<MyAccounts/>}/>
+                 <Route path="/accounts/add-new" element={<AddNewAccount/>}/>
+                 <Route path="/beneficiary" element={<MyBeneficiary/>}/>
+                 <Route path="/beneficiary/add-new" element={<AddNewBeneficiary/>}/>
               </Routes>
               {
                 location.pathname === '/dashboard/statistic' ?
@@ -53,6 +67,7 @@ const Dashboard = () => {
           </div>
           
         </div>
+        <MainFooter/>
       </div>
   );
 };
