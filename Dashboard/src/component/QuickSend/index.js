@@ -53,9 +53,9 @@ export  function QuickSend(){
            </div>
            <div className='flex gap-2'>
             {
-                users.map((user)=>{
+                users.map((user,i)=>{
                     return(
-                    <div className='flex flex-col gap-0.5 items-center' >
+                    <div key={i} className='flex flex-col gap-0.5 items-center' >
                     <Avatar sx={{
                         bgcolor:"#F4F4F6",
                         border:"2px solid white",

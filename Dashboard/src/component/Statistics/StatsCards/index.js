@@ -59,22 +59,22 @@ function StatsCards({reportIndex=0}){
                             <path d="M9.06645 2.12298V4.29911C9.06645 4.79672 8.68245 5.19778 8.206 5.19778H1.74912C1.26556 5.19778 0.888672 4.78187 0.888672 4.28425C0.895783 3.445 1.21578 2.68001 1.74912 2.12298C2.28245 1.56595 3.02201 1.22431 3.83267 1.22431H8.206C8.68245 1.22431 9.06645 1.62537 9.06645 2.12298Z" fill="url(#paint2_linear_86_261)"/>
                             <defs>
                             <linearGradient id="paint0_linear_86_261" x1="-1.37873" y1="8.24444" x2="17.4507" y2="3.86736" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#F6DEC6"/>
-                            <stop offset="0.47" stop-color="#E872D4"/>
-                            <stop offset="0.656667" stop-color="#C190D9"/>
-                            <stop offset="0.881578" stop-color="#A2DCFE"/>
+                            <stop stopColor="#F6DEC6"/>
+                            <stop offset="0.47" stopColor="#E872D4"/>
+                            <stop offset="0.656667" stopColor="#C190D9"/>
+                            <stop offset="0.881578" stopColor="#A2DCFE"/>
                             </linearGradient>
                             <linearGradient id="paint1_linear_86_261" x1="-1.37873" y1="8.24444" x2="17.4507" y2="3.86736" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#F6DEC6"/>
-                            <stop offset="0.47" stop-color="#E872D4"/>
-                            <stop offset="0.656667" stop-color="#C190D9"/>
-                            <stop offset="0.881578" stop-color="#A2DCFE"/>
+                            <stop stopColor="#F6DEC6"/>
+                            <stop offset="0.47" stopColor="#E872D4"/>
+                            <stop offset="0.656667" stopColor="#C190D9"/>
+                            <stop offset="0.881578" stopColor="#A2DCFE"/>
                             </linearGradient>
                             <linearGradient id="paint2_linear_86_261" x1="-1.37873" y1="8.24444" x2="17.4507" y2="3.86736" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#F6DEC6"/>
-                            <stop offset="0.47" stop-color="#E872D4"/>
-                            <stop offset="0.656667" stop-color="#C190D9"/>
-                            <stop offset="0.881578" stop-color="#A2DCFE"/>
+                            <stop stopColor="#F6DEC6"/>
+                            <stop offset="0.47" stopColor="#E872D4"/>
+                            <stop offset="0.656667" stopColor="#C190D9"/>
+                            <stop offset="0.881578" stopColor="#A2DCFE"/>
                             </linearGradient>
                             </defs>
                             </svg>
@@ -97,22 +97,22 @@ function StatsCards({reportIndex=0}){
                             <path d="M9.06645 2.12298V4.29911C9.06645 4.79672 8.68245 5.19778 8.206 5.19778H1.74912C1.26556 5.19778 0.888672 4.78187 0.888672 4.28425C0.895783 3.445 1.21578 2.68001 1.74912 2.12298C2.28245 1.56595 3.02201 1.22431 3.83267 1.22431H8.206C8.68245 1.22431 9.06645 1.62537 9.06645 2.12298Z" fill="url(#paint2_linear_86_261)"/>
                             <defs>
                             <linearGradient id="paint0_linear_86_261" x1="-1.37873" y1="8.24444" x2="17.4507" y2="3.86736" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#F6DEC6"/>
-                            <stop offset="0.47" stop-color="#E872D4"/>
-                            <stop offset="0.656667" stop-color="#C190D9"/>
-                            <stop offset="0.881578" stop-color="#A2DCFE"/>
+                            <stop stopColor="#F6DEC6"/>
+                            <stop offset="0.47" stopColor="#E872D4"/>
+                            <stop offset="0.656667" stopColor="#C190D9"/>
+                            <stop offset="0.881578" stopColor="#A2DCFE"/>
                             </linearGradient>
                             <linearGradient id="paint1_linear_86_261" x1="-1.37873" y1="8.24444" x2="17.4507" y2="3.86736" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#F6DEC6"/>
-                            <stop offset="0.47" stop-color="#E872D4"/>
-                            <stop offset="0.656667" stop-color="#C190D9"/>
-                            <stop offset="0.881578" stop-color="#A2DCFE"/>
+                            <stop stopColor="#F6DEC6"/>
+                            <stop offset="0.47" stopColor="#E872D4"/>
+                            <stop offset="0.656667" stopColor="#C190D9"/>
+                            <stop offset="0.881578" stopColor="#A2DCFE"/>
                             </linearGradient>
                             <linearGradient id="paint2_linear_86_261" x1="-1.37873" y1="8.24444" x2="17.4507" y2="3.86736" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#F6DEC6"/>
-                            <stop offset="0.47" stop-color="#E872D4"/>
-                            <stop offset="0.656667" stop-color="#C190D9"/>
-                            <stop offset="0.881578" stop-color="#A2DCFE"/>
+                            <stop stopColor="#F6DEC6"/>
+                            <stop offset="0.47" stopColor="#E872D4"/>
+                            <stop offset="0.656667" stopColor="#C190D9"/>
+                            <stop offset="0.881578" stopColor="#A2DCFE"/>
                             </linearGradient>
                             </defs>
                             </svg>

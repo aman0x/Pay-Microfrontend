@@ -80,8 +80,8 @@ function BanksTable(){
                     </div>
                         <div>Added On</div>
                         <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 4L4 1L7 4" stroke="#B6B8BA" stroke-linecap="round"/>
-                                <path d="M1 9L4 12L7 9" stroke="#B6B8BA" stroke-linecap="round"/>
+                                <path d="M1 4L4 1L7 4" stroke="#B6B8BA" strokeLinecap="round"/>
+                                <path d="M1 9L4 12L7 9" stroke="#B6B8BA" strokeLinecap="round"/>
                         </svg>
                     </div>
                 </td>
@@ -103,12 +103,12 @@ function BanksTable(){
                        <div className="flex flex-col items-center gap-1">
                             <div>
                                 <svg width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1.28564 4L4.28564 1L7.28564 4" stroke="#B6B8BA" stroke-linecap="round"/>
+                                <path d="M1.28564 4L4.28564 1L7.28564 4" stroke="#B6B8BA" strokeLinecap="round"/>
                                 </svg>
                             </div>
                             <div>
                                 <svg width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1.28564 1L4.28564 4L7.28564 1" stroke="#B6B8BA" stroke-linecap="round"/>
+                                <path d="M1.28564 1L4.28564 4L7.28564 1" stroke="#B6B8BA" strokeLinecap="round"/>
                                 </svg>
                             </div>
                        </div>

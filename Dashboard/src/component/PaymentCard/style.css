@@ -1,7 +1,5 @@
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .flip-card {
-    width: 380px;
-    height: 271px;
     perspective: 1000px; /* Remove this if you don't want the 3D effect */
   }
   
@@ -15,7 +13,8 @@
   }
   
   /* Do an horizontal flip when you move the mouse over the flip box container */
-  .flip-card:hover .flip-card-inner {
+
+  .flip-card-transform{
     transform: rotateY(180deg);
   }
   
@@ -30,14 +29,12 @@
   
   /* Style the front side (fallback if image is missing) */
   .flip-card-front {
-    background-image: url("../../../public/dashboard/PaymentCard.png");
+    /* background-image: url("../../../public/dashboard/PaymentCard.png"); */
     color: white;
   }
   
   /* Style the back side */
   .flip-card-back {
-    background-color:   #232B31;
-    border-radius: 8%;
     color: white;
     transform: rotateY(180deg);
   }

@@ -206,8 +206,8 @@ function StatsTable(){
                     </div>
                         <div>Date</div>
                         <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 4L4 1L7 4" stroke="#B6B8BA" stroke-linecap="round"/>
-                                <path d="M1 9L4 12L7 9" stroke="#B6B8BA" stroke-linecap="round"/>
+                                <path d="M1 4L4 1L7 4" stroke="#B6B8BA" strokeLinecap="round"/>
+                                <path d="M1 9L4 12L7 9" stroke="#B6B8BA" strokeLinecap="round"/>
                         </svg>
                     </div>
                 </td>
@@ -224,8 +224,8 @@ function StatsTable(){
                     <div className="flex items-center gap-1 td-element1">
                         <div>Status</div>
                         <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 4L4 1L7 4" stroke="#B6B8BA" stroke-linecap="round"/>
-                                <path d="M1 9L4 12L7 9" stroke="#B6B8BA" stroke-linecap="round"/>
+                                <path d="M1 4L4 1L7 4" stroke="#B6B8BA" strokeLinecap="round"/>
+                                <path d="M1 9L4 12L7 9" stroke="#B6B8BA" strokeLinecap="round"/>
                             </svg>
                     </div>
                 </td>
@@ -233,8 +233,8 @@ function StatsTable(){
                     <div className="flex items-center gap-1 td-element1">
                         <div>Sum</div>
                     <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 4L4 1L7 4" stroke="#B6B8BA" stroke-linecap="round"/>
-                        <path d="M1 9L4 12L7 9" stroke="#B6B8BA" stroke-linecap="round"/>
+                        <path d="M1 4L4 1L7 4" stroke="#B6B8BA" strokeLinecap="round"/>
+                        <path d="M1 9L4 12L7 9" stroke="#B6B8BA" strokeLinecap="round"/>
                     </svg>
                     </div>
                     
@@ -247,9 +247,9 @@ function StatsTable(){
                 
             </tr>
             {
-                transactions.map((transaction)=>{
+                transactions.map((transaction,i)=>{
                     return(
-                        <tr className="text-xs poppins-regular">
+                        <tr key={i} className="text-xs poppins-regular">
                         <td>
                             <div className="flex items-center gap-3 td-element">
                                 <div className={`w-[12px]  h-[12px] rounded-[4px] ${isDateClicked?'primary-linear-gr-bg':'bg-white'}`} onClick={()=>{setIsDateClicked(!isDateClicked)}}>

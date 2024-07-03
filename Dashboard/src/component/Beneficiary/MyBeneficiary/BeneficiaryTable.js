@@ -80,8 +80,8 @@ function BeneficiaryTable(){
                     </div>
                         <div>Added On</div>
                         <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 4L4 1L7 4" stroke="#B6B8BA" stroke-linecap="round"/>
-                                <path d="M1 9L4 12L7 9" stroke="#B6B8BA" stroke-linecap="round"/>
+                                <path d="M1 4L4 1L7 4" stroke="#B6B8BA" strokeLinecap="round"/>
+                                <path d="M1 9L4 12L7 9" stroke="#B6B8BA" strokeLinecap="round"/>
                         </svg>
                     </div>
                 </td>
@@ -97,12 +97,12 @@ function BeneficiaryTable(){
                        <div className="flex flex-col items-center gap-1">
                             <div>
                                 <svg width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1.28564 4L4.28564 1L7.28564 4" stroke="#B6B8BA" stroke-linecap="round"/>
+                                <path d="M1.28564 4L4.28564 1L7.28564 4" stroke="#B6B8BA" strokeLinecap="round"/>
                                 </svg>
                             </div>
                             <div>
                                 <svg width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1.28564 1L4.28564 4L7.28564 1" stroke="#B6B8BA" stroke-linecap="round"/>
+                                <path d="M1.28564 1L4.28564 4L7.28564 1" stroke="#B6B8BA" strokeLinecap="round"/>
                                 </svg>
                             </div>
                        </div>
@@ -148,7 +148,7 @@ function BeneficiaryTable(){
                         <td>
                             <div className="td-element">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M16 8C16 12.4182 12.4182 16 8 16C3.58172 16 0 12.4182 0 8C0 3.58172 3.58172 0 8 0C12.4182 0 16 3.58172 16 8ZM11.2242 5.57574C11.4586 5.81005 11.4586 6.18995 11.2242 6.42424L7.22424 10.4242C6.98992 10.6586 6.61008 10.6586 6.37574 10.4242L4.77574 8.82424C4.54142 8.58992 4.54142 8.21008 4.77574 7.97576C5.01005 7.74144 5.38995 7.74144 5.62426 7.97576L6.8 9.15144L8.58784 7.3636L10.3758 5.57574C10.6101 5.34142 10.9899 5.34142 11.2242 5.57574Z" fill="#27A963"/>
+                                <path fillRule="evenodd" clipRule="evenodd" d="M16 8C16 12.4182 12.4182 16 8 16C3.58172 16 0 12.4182 0 8C0 3.58172 3.58172 0 8 0C12.4182 0 16 3.58172 16 8ZM11.2242 5.57574C11.4586 5.81005 11.4586 6.18995 11.2242 6.42424L7.22424 10.4242C6.98992 10.6586 6.61008 10.6586 6.37574 10.4242L4.77574 8.82424C4.54142 8.58992 4.54142 8.21008 4.77574 7.97576C5.01005 7.74144 5.38995 7.74144 5.62426 7.97576L6.8 9.15144L8.58784 7.3636L10.3758 5.57574C10.6101 5.34142 10.9899 5.34142 11.2242 5.57574Z" fill="#27A963"/>
                                 </svg>
                             </div></td>
                         <td>

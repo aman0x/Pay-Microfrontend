@@ -130,15 +130,15 @@ function FAQ(){
                                     <g id="Frame 17">
                                     <rect x="0.5" y="0.5" width="29" height="29" rx="14.5" stroke="url(#paint0_linear_855_15414)"/>
                                     <g id="Group 3">
-                                    <path id="Vector 5" d="M18.9997 15H11.9997" stroke="#232B31" stroke-width="1.5" stroke-linecap="round"/>
+                                    <path id="Vector 5" d="M18.9997 15H11.9997" stroke="#232B31" strokeWidth="1.5" strokeLinecap="round"/>
                                     </g>
                                     </g>
                                     <defs>
                                     <linearGradient id="paint0_linear_855_15414" x1="-4.78281" y1="17.6667" x2="34.9987" y2="8.56355" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="#F6DEC6"/>
-                                    <stop offset="0.47" stop-color="#E872D4"/>
-                                    <stop offset="0.656667" stop-color="#C190D9"/>
-                                    <stop offset="0.881578" stop-color="#A2DCFE"/>
+                                    <stop stopColor="#F6DEC6"/>
+                                    <stop offset="0.47" stopColor="#E872D4"/>
+                                    <stop offset="0.656667" stopColor="#C190D9"/>
+                                    <stop offset="0.881578" stopColor="#A2DCFE"/>
                                     </linearGradient>
                                     </defs>
                                     </svg>
@@ -147,8 +147,8 @@ function FAQ(){
                                 <button onClick={()=>setfaqQuesIndex(i)}>
                                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <rect x="0.5" y="0.5" width="29" height="29" rx="14.5" stroke="#B6B8BA"/>
-                                    <path d="M15.0004 12V18" stroke="#B6B8BA" stroke-width="1.5" stroke-linecap="round"/>
-                                    <path d="M18.0004 15L12.0004 15" stroke="#B6B8BA" stroke-width="1.5" stroke-linecap="round"/>
+                                    <path d="M15.0004 12V18" stroke="#B6B8BA" strokeWidth="1.5" strokeLinecap="round"/>
+                                    <path d="M18.0004 15L12.0004 15" stroke="#B6B8BA" strokeWidth="1.5" strokeLinecap="round"/>
                                     </svg>
 
 

@@ -3,6 +3,7 @@ import { FaGreaterThan } from "react-icons/fa6";
 import { useState } from "react";
 import CalenderComponent from "./Calender/calender";
 import SpendData from "./SpendData";
+import SliderDate from "./SliderDate";
 function Stats(){
     const [isCalenderOpen,setCalenderView] = useState(false)
     return(
@@ -17,6 +18,9 @@ function Stats(){
                 <p className="poppins-light text-xs text-gray-600" >Calender</p>
             </div>
         </div>
+            <div className="w-72 my-1">
+            <SliderDate/>
+            </div>
         {isCalenderOpen && <CalenderComponent/>}
         <div className="flex flex-col mt-2 gap-2">
             <div className="flex items-center justify-between  bg-white py-3 px-5 rounded-2xl">
@@ -32,22 +36,22 @@ function Stats(){
                     <path d="M9.06645 2.12298V4.29911C9.06645 4.79672 8.68245 5.19778 8.206 5.19778H1.74912C1.26556 5.19778 0.888672 4.78187 0.888672 4.28425C0.895783 3.445 1.21578 2.68001 1.74912 2.12298C2.28245 1.56595 3.02201 1.22431 3.83267 1.22431H8.206C8.68245 1.22431 9.06645 1.62537 9.06645 2.12298Z" fill="url(#paint2_linear_86_261)"/>
                     <defs>
                     <linearGradient id="paint0_linear_86_261" x1="-1.37873" y1="8.24444" x2="17.4507" y2="3.86736" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#F6DEC6"/>
-                    <stop offset="0.47" stop-color="#E872D4"/>
-                    <stop offset="0.656667" stop-color="#C190D9"/>
-                    <stop offset="0.881578" stop-color="#A2DCFE"/>
+                    <stop stopColor="#F6DEC6"/>
+                    <stop offset="0.47" stopColor="#E872D4"/>
+                    <stop offset="0.656667" stopColor="#C190D9"/>
+                    <stop offset="0.881578" stopColor="#A2DCFE"/>
                     </linearGradient>
                     <linearGradient id="paint1_linear_86_261" x1="-1.37873" y1="8.24444" x2="17.4507" y2="3.86736" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#F6DEC6"/>
-                    <stop offset="0.47" stop-color="#E872D4"/>
-                    <stop offset="0.656667" stop-color="#C190D9"/>
-                    <stop offset="0.881578" stop-color="#A2DCFE"/>
+                    <stop stopColor="#F6DEC6"/>
+                    <stop offset="0.47" stopColor="#E872D4"/>
+                    <stop offset="0.656667" stopColor="#C190D9"/>
+                    <stop offset="0.881578" stopColor="#A2DCFE"/>
                     </linearGradient>
                     <linearGradient id="paint2_linear_86_261" x1="-1.37873" y1="8.24444" x2="17.4507" y2="3.86736" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#F6DEC6"/>
-                    <stop offset="0.47" stop-color="#E872D4"/>
-                    <stop offset="0.656667" stop-color="#C190D9"/>
-                    <stop offset="0.881578" stop-color="#A2DCFE"/>
+                    <stop stopColor="#F6DEC6"/>
+                    <stop offset="0.47" stopColor="#E872D4"/>
+                    <stop offset="0.656667" stopColor="#C190D9"/>
+                    <stop offset="0.881578" stopColor="#A2DCFE"/>
                     </linearGradient>
                     </defs>
                     </svg>
@@ -55,7 +59,7 @@ function Stats(){
                     </div>
                     <div>
                     <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 1.5L6 6.5L1 11.5" stroke="#CDCED1" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M1 1.5L6 6.5L1 11.5" stroke="#CDCED1" strokeWidth="1.5" strokeLinecap="round"/>
                     </svg>
                     </div>
                 </div>
@@ -68,20 +72,20 @@ function Stats(){
                 <div className="flex gap-4 items-center">
                     <div className="primary-linear-gr-bg-light p-3 rounded-[50%]">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M2.04717 0.97747C2.78778 0.352584 3.79191 0.00105856 4.83929 0H11.1603C12.2077 0.00105856 13.2118 0.352584 13.9524 0.97747C14.693 1.60236 15.1096 2.44958 15.1109 3.3333V15.3332C15.1105 15.4543 15.0711 15.573 14.9968 15.6766C14.9225 15.7802 14.8162 15.8648 14.6892 15.9213C14.5623 15.9777 14.4195 16.004 14.2762 15.9971C14.1329 15.9903 13.9945 15.9507 13.8759 15.8825L12.2167 14.9245L10.5574 15.8832C10.4259 15.9593 10.2701 16 10.1106 16C9.9511 16 9.79533 15.9593 9.66378 15.8832L8.00452 14.9238L6.34526 15.8832C6.2138 15.9591 6.05818 15.9998 5.89884 15.9998C5.73951 15.9998 5.58389 15.9591 5.45242 15.8832L3.78842 14.9238L2.12442 15.8832C2.00575 15.9516 1.86722 15.9913 1.72374 15.9982C1.58026 16.0051 1.43727 15.9789 1.31015 15.9223C1.18304 15.8657 1.07662 15.781 1.00236 15.6772C0.928088 15.5734 0.888783 15.4544 0.888672 15.3332V3.3333C0.889926 2.44958 1.30655 1.60236 2.04717 0.97747ZM7.99978 11.5556C10.4544 11.5556 12.4442 9.56571 12.4442 7.11111C12.4442 4.65651 10.4544 2.66667 7.99978 2.66667C5.54518 2.66667 3.55534 4.65651 3.55534 7.11111C3.55534 9.56571 5.54518 11.5556 7.99978 11.5556Z" fill="url(#paint0_linear_86_418)"/>
+                    <path fillRule="evenodd" clipRule="evenodd" d="M2.04717 0.97747C2.78778 0.352584 3.79191 0.00105856 4.83929 0H11.1603C12.2077 0.00105856 13.2118 0.352584 13.9524 0.97747C14.693 1.60236 15.1096 2.44958 15.1109 3.3333V15.3332C15.1105 15.4543 15.0711 15.573 14.9968 15.6766C14.9225 15.7802 14.8162 15.8648 14.6892 15.9213C14.5623 15.9777 14.4195 16.004 14.2762 15.9971C14.1329 15.9903 13.9945 15.9507 13.8759 15.8825L12.2167 14.9245L10.5574 15.8832C10.4259 15.9593 10.2701 16 10.1106 16C9.9511 16 9.79533 15.9593 9.66378 15.8832L8.00452 14.9238L6.34526 15.8832C6.2138 15.9591 6.05818 15.9998 5.89884 15.9998C5.73951 15.9998 5.58389 15.9591 5.45242 15.8832L3.78842 14.9238L2.12442 15.8832C2.00575 15.9516 1.86722 15.9913 1.72374 15.9982C1.58026 16.0051 1.43727 15.9789 1.31015 15.9223C1.18304 15.8657 1.07662 15.781 1.00236 15.6772C0.928088 15.5734 0.888783 15.4544 0.888672 15.3332V3.3333C0.889926 2.44958 1.30655 1.60236 2.04717 0.97747ZM7.99978 11.5556C10.4544 11.5556 12.4442 9.56571 12.4442 7.11111C12.4442 4.65651 10.4544 2.66667 7.99978 2.66667C5.54518 2.66667 3.55534 4.65651 3.55534 7.11111C3.55534 9.56571 5.54518 11.5556 7.99978 11.5556Z" fill="url(#paint0_linear_86_418)"/>
                     <defs>
                     <linearGradient id="paint0_linear_86_418" x1="-1.37873" y1="9.42222" x2="17.6797" y2="5.5457" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#F6DEC6"/>
-                    <stop offset="0.47" stop-color="#E872D4"/>
-                    <stop offset="0.656667" stop-color="#C190D9"/>
-                    <stop offset="0.881578" stop-color="#A2DCFE"/>
+                    <stop stopColor="#F6DEC6"/>
+                    <stop offset="0.47" stopColor="#E872D4"/>
+                    <stop offset="0.656667" stopColor="#C190D9"/>
+                    <stop offset="0.881578" stopColor="#A2DCFE"/>
                     </linearGradient>
                     </defs>
                     </svg>
                     </div>
                     <div>
                     <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 1.5L6 6.5L1 11.5" stroke="#CDCED1" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M1 1.5L6 6.5L1 11.5" stroke="#CDCED1" strokeWidth="1.5" strokeLinecap="round"/>
                     </svg>
                     </div>
                 </div>
@@ -94,27 +98,27 @@ function Stats(){
                 <div className="flex gap-4 items-center">
                     <div className="primary-linear-gr-bg-light p-3 rounded-[50%]">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M2.04717 0.97747C2.78778 0.352584 3.79191 0.00105856 4.83929 0H11.1603C12.2077 0.00105856 13.2118 0.352584 13.9524 0.97747C14.693 1.60236 15.1096 2.44958 15.1109 3.3333V15.3332C15.1105 15.4543 15.0711 15.573 14.9968 15.6766C14.9225 15.7802 14.8162 15.8648 14.6892 15.9213C14.5623 15.9777 14.4195 16.004 14.2762 15.9971C14.1329 15.9903 13.9945 15.9507 13.8759 15.8825L12.2167 14.9245L10.5574 15.8832C10.4259 15.9593 10.2701 16 10.1106 16C9.9511 16 9.79533 15.9593 9.66378 15.8832L8.00452 14.9238L6.34526 15.8832C6.2138 15.9591 6.05818 15.9998 5.89884 15.9998C5.73951 15.9998 5.58389 15.9591 5.45242 15.8832L3.78842 14.9238L2.12442 15.8832C2.00575 15.9516 1.86722 15.9913 1.72374 15.9982C1.58026 16.0051 1.43727 15.9789 1.31015 15.9223C1.18304 15.8657 1.07662 15.781 1.00236 15.6772C0.928088 15.5734 0.888783 15.4544 0.888672 15.3332V3.3333C0.889926 2.44958 1.30655 1.60236 2.04717 0.97747ZM7.99978 11.5556C10.4544 11.5556 12.4442 9.56571 12.4442 7.11111C12.4442 4.65651 10.4544 2.66667 7.99978 2.66667C5.54518 2.66667 3.55534 4.65651 3.55534 7.11111C3.55534 9.56571 5.54518 11.5556 7.99978 11.5556Z" fill="url(#paint0_linear_86_1982)"/>
-                    <path d="M7.99984 4.44434L7.99984 9.77767M7.99984 9.77767L10.6665 7.111M7.99984 9.77767L5.33317 7.111" stroke="url(#paint1_linear_86_1982)" stroke-width="0.833333" stroke-linecap="round"/>
+                    <path fillRule="evenodd" clipRule="evenodd" d="M2.04717 0.97747C2.78778 0.352584 3.79191 0.00105856 4.83929 0H11.1603C12.2077 0.00105856 13.2118 0.352584 13.9524 0.97747C14.693 1.60236 15.1096 2.44958 15.1109 3.3333V15.3332C15.1105 15.4543 15.0711 15.573 14.9968 15.6766C14.9225 15.7802 14.8162 15.8648 14.6892 15.9213C14.5623 15.9777 14.4195 16.004 14.2762 15.9971C14.1329 15.9903 13.9945 15.9507 13.8759 15.8825L12.2167 14.9245L10.5574 15.8832C10.4259 15.9593 10.2701 16 10.1106 16C9.9511 16 9.79533 15.9593 9.66378 15.8832L8.00452 14.9238L6.34526 15.8832C6.2138 15.9591 6.05818 15.9998 5.89884 15.9998C5.73951 15.9998 5.58389 15.9591 5.45242 15.8832L3.78842 14.9238L2.12442 15.8832C2.00575 15.9516 1.86722 15.9913 1.72374 15.9982C1.58026 16.0051 1.43727 15.9789 1.31015 15.9223C1.18304 15.8657 1.07662 15.781 1.00236 15.6772C0.928088 15.5734 0.888783 15.4544 0.888672 15.3332V3.3333C0.889926 2.44958 1.30655 1.60236 2.04717 0.97747ZM7.99978 11.5556C10.4544 11.5556 12.4442 9.56571 12.4442 7.11111C12.4442 4.65651 10.4544 2.66667 7.99978 2.66667C5.54518 2.66667 3.55534 4.65651 3.55534 7.11111C3.55534 9.56571 5.54518 11.5556 7.99978 11.5556Z" fill="url(#paint0_linear_86_1982)"/>
+                    <path d="M7.99984 4.44434L7.99984 9.77767M7.99984 9.77767L10.6665 7.111M7.99984 9.77767L5.33317 7.111" stroke="url(#paint1_linear_86_1982)" strokeWidth="0.833333" strokeLinecap="round"/>
                     <defs>
                     <linearGradient id="paint0_linear_86_1982" x1="-1.37873" y1="9.42222" x2="17.6797" y2="5.5457" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#F6DEC6"/>
-                    <stop offset="0.47" stop-color="#E872D4"/>
-                    <stop offset="0.656667" stop-color="#C190D9"/>
-                    <stop offset="0.881578" stop-color="#A2DCFE"/>
+                    <stop stopColor="#F6DEC6"/>
+                    <stop offset="0.47" stopColor="#E872D4"/>
+                    <stop offset="0.656667" stopColor="#C190D9"/>
+                    <stop offset="0.881578" stopColor="#A2DCFE"/>
                     </linearGradient>
                     <linearGradient id="paint1_linear_86_1982" x1="7.52576" y1="3.59406" x2="9.14409" y2="10.6663" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#F6DEC6"/>
-                    <stop offset="0.47" stop-color="#E872D4"/>
-                    <stop offset="0.656667" stop-color="#C190D9"/>
-                    <stop offset="0.881578" stop-color="#A2DCFE"/>
+                    <stop stopColor="#F6DEC6"/>
+                    <stop offset="0.47" stopColor="#E872D4"/>
+                    <stop offset="0.656667" stopColor="#C190D9"/>
+                    <stop offset="0.881578" stopColor="#A2DCFE"/>
                     </linearGradient>
                     </defs>
                     </svg>
                     </div>
                     <div>
                     <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 1.5L6 6.5L1 11.5" stroke="#CDCED1" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M1 1.5L6 6.5L1 11.5" stroke="#CDCED1" strokeWidth="1.5" strokeLinecap="round"/>
                     </svg>
                     </div>
                 </div>

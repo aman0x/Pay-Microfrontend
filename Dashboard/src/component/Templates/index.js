@@ -25,9 +25,9 @@ function Templates(){
             </div>
             <div className="flex flex-col gap-3">
             {
-                DUMMY_BANKS.map((bank)=>{
+                DUMMY_BANKS.map((bank,i)=>{
                     return(
-                        <div className="flex flex-col bg-white p-[1.2rem] rounded-xl min-h-[5.6rem] justify-between">
+                        <div key={i} className="flex flex-col bg-white p-[1.2rem] rounded-xl min-h-[5.6rem] justify-between">
                             <div className="flex justify-between poppins-regular text-xs text-gray-600">
                                 <div className="flex gap-2">
                                 <BsBank2 color="gray" />

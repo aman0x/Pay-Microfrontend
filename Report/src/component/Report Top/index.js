@@ -60,7 +60,7 @@ function ReportTop({reportIndex,setReportIndex}){
                         <div>
                             <button className="secondary-btn rounded-xl bg-[#DFE0E2] p-1">
                             <svg width="5" height="6" viewBox="0 0 5 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4 1L2 3L4 5" stroke="#4E5459" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M4 1L2 3L4 5" stroke="#4E5459" strokeWidth="1.5" strokeLinecap="round"/>
                             </svg>
                             </button>
                         </div>
@@ -68,7 +68,7 @@ function ReportTop({reportIndex,setReportIndex}){
                         <div>
                             <button className="secondary-btn rounded-xl bg-[#DFE0E2] p-1">
                             <svg width="5" height="6" viewBox="0 0 5 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 1L3 3L1 5" stroke="#4E5459" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M1 1L3 3L1 5" stroke="#4E5459" strokeWidth="1.5" strokeLinecap="round"/>
                             </svg>
                             </button>
                         </div>

@@ -3,28 +3,53 @@ import { RiDeleteBin5Fill } from "react-icons/ri";
 import { BiSolidShow } from "react-icons/bi";
 import { IoAddCircleSharp } from "react-icons/io5";
 import "./style.css"
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export  function PaymentCard(){
+    const navigate  = useNavigate()
     return(
-        <div >
+        <div  className="">
             <div className="flex justify-between mb-2">
                 <div className="poppins-semibold">
                     My Cards
                 </div>
-                <div className="flex items-center gap-1">
+                <div 
+                onClick={()=>navigate('/dashboard/card/add-card')}
+                className="flex items-center gap-1 cursor-pointer">
                     <IoAddCircleSharp/>
                     <p className="poppins-light text-gray-600 text-sm">Add</p>
                 </div>
             </div>
-        <div className="flip-card relative">
-            <div className="rounded-[50%] p-1 bg-black absolute right-1 translate-x-[100%] top-[40%]">
+            <FlipCard/>
+        
+        </div>    
+    )
+}
+
+export function FlipCard({cardColorbg="#232B31",isArrowShown=true,width="380px",height="240px"}){
+
+    const navigate  = useNavigate()
+    const [isCardClicked,setCardClicked] = useState(false)
+    const [cardColor,setCardColor] = useState(cardColorbg)
+    return(
+        <div className={`flip-card relative shadow-xl rounded-3xl h-[240px] w-[380px] `}>
+            {
+                isArrowShown ?
+                <div 
+                    onClick={()=>setCardClicked(!isCardClicked)}
+                    className="rounded-[50%] p-[6px] bg-black absolute right-2 translate-x-[100%] top-[42%] primary-arrow z-50">
                     <svg width="9" height="8" viewBox="0 0 9 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 4H7M7 4L4 1M7 4L4 7" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M1 4H7M7 4L4 1M7 4L4 7" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
                     </svg>
-            </div>
-           
-            <div className="flip-card-inner">
-                <div className="flip-card-front flex flex-col px-[2rem] py-[2rem] justify-between ">
+                </div>
+                :
+                null
+            }       
+            <div 
+            onClick={()=>setCardClicked(!isCardClicked)}
+            className={`flip-card-inner ${isCardClicked?"flip-card-transform":""}`}>
+                <div className={`flip-card-front flex flex-col px-[2rem] pt-[1.5rem] justify-between bg-[${cardColor}] rounded-3xl h-full`}>
                     <div className="flex flex-row justify-between">
                         <div className="flex flex-col gap-2">
                         <div className="flex items-center gap-0.5 text-xs">
@@ -34,21 +59,19 @@ export  function PaymentCard(){
                         </div>
                         <div className="poppin-bold">Holder Name</div>
                         </div>
-                        <div>
+                        <div >
                             <img src="/dashboard/visa.png"
                             alt="paymorz-logo"
                             width="60px"
-                            
                             />
                         </div>                    
                     </div>
-                    
                     <div>
                         <p className="poppins-regular">**** **** **** **** 1001</p>
                     </div>
                     <div className="flex justify-between text-xs">
                         <div>
-                            <p className="poppins-thin text-xs mb-2">Exp. Date</p>
+                            <p className="poppins-thin text-xs ">Exp. Date</p>
                             <p>02 / 28</p>
                         </div>
                         <div>
@@ -59,16 +82,18 @@ export  function PaymentCard(){
                         <p className="poppins-thin text-xs mb-2">Balance</p>
                         <p>₹ 100,000</p>
                         </div>
-                        <div className="mt-6 underline poppins-thin text-xs">
-                        <a href="#" >Details</a>
+                        <div 
+                        onClick={()=>navigate('/dashboard/card/card-detail')}
+                        className="mt-6 underline poppins-thin text-xs hover:text-rose-300 ">
+                        <a href="#" className="" >Details</a>
                         </div>
                     </div>
                 <div>
                 </div>
                 </div>
-                <div className="flip-card-back">
-                <div className="flex flex-col px-[2rem] pt-[2rem] gap-12">
-                <div className="flex flex-row justify-between text-xs">
+                <div className={`flip-card-back bg-[${cardColor}] rounded-3xl`}>
+                <div className="flex flex-col  px-[2rem] py-[1.5rem] justify-between  h-full">
+                    <div className="flex flex-row justify-between text-xs">
                         <div>
                             <p className="poppins-thin text-xs mb-2">Payments</p>
                             <p className="poppins-bold">12</p>
@@ -87,10 +112,18 @@ export  function PaymentCard(){
                     <div>
                         <p className="poppins-thin text-xs mb-2">Change Color</p>
                         <div className="flex gap-2">
-                            <img src="/dashboard/color1.png"/>
-                            <img src="/dashboard/color2.png"/>
-                            <img src="/dashboard/color3.png"/>
-                            <img src="/dashboard/color4.png"/>
+                            <img
+                            onClick={()=>setCardColor('#232B31')} 
+                             src="/dashboard/color1.png"/>
+                            <img 
+                             onClick={()=>setCardColor('#E872D4')} 
+                            src="/dashboard/color2.png"/>
+                            <img
+                             onClick={()=>setCardColor('#964EC2')}  
+                            src="/dashboard/color3.png"/>
+                            <img 
+                            onClick={()=>setCardColor('#F6DEC6')} 
+                            src="/dashboard/color4.png"/>
                             
                         </div>
                     </div>
@@ -102,6 +135,5 @@ export  function PaymentCard(){
                 </div>
             </div>
         </div>
-        </div>    
     )
 }

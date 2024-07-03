@@ -9,23 +9,26 @@ import Dashboard from "Dashboard/Dashboard";
 import Invoice from "Invoice/Invoice";
 import Report from "Report/Report";
 import reduxStore from "./store";
-
+import {useLocation} from "react-router-dom"
+import CommonLayout from "./components/CommonLayout";
 function App() {
   const value = useSelector((state) => state.test.value);
   const dispatch = useDispatch();
- // console.log("env",process.env.REACT_APP_URL)
+  const location = useLocation()
+
   return (
-    <div className="bg-slate-50">
-    <div className="test mx-auto bg-primary">
-    <BrowserRouter>
+    <div className="test mx-auto bg-primary bg-slate-50">
       <Routes>
         <Route path="/*" element={<Auth />} />
+      </Routes>
+    <CommonLayout>
+      <Routes>   
         <Route path="/dashboard/*" element={<Dashboard />} />
         <Route path="/invoice/*" element={<Invoice />} />
         <Route path="/report/*" element={<Report />} />
       </Routes>
-    </BrowserRouter>
-    </div>
+      </CommonLayout>
+   
     </div>
   );
 }
@@ -33,7 +36,9 @@ function App() {
 const root = ReactDOM.createRoot(document.getElementById("app"));
 root.render(
   <Provider store={reduxStore}>
+    <BrowserRouter>
     <App />
+    </BrowserRouter>
   </Provider>
 );
 
