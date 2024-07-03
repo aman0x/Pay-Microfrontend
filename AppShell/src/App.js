@@ -18,16 +18,23 @@ function App() {
 
   return (
     <div className="test mx-auto bg-primary bg-slate-50">
-      <Routes>
-        <Route path="/*" element={<Auth />} />
-      </Routes>
-    <CommonLayout>
-      <Routes>   
-        <Route path="/dashboard/*" element={<Dashboard />} />
-        <Route path="/invoice/*" element={<Invoice />} />
-        <Route path="/report/*" element={<Report />} />
-      </Routes>
+      {
+        location.pathname==="/" ||
+        location.pathname.startsWith('/accounts')?
+        <Routes>
+          <Route path="/*" element={<Auth />} />
+       </Routes>
+      :
+      <CommonLayout>
+        <Routes>   
+          <Route path="/dashboard/*" element={<Dashboard />} />
+          <Route path="/invoice/*" element={<Invoice />} />
+          <Route path="/report/*" element={<Report />} />
+        </Routes>
       </CommonLayout>
+      }
+     
+
    
     </div>
   );
