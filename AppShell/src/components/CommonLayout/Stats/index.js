@@ -9,7 +9,7 @@ function Stats(){
     const [isCalenderOpen,setCalenderView] = useState(false)
     const navigate = useNavigate()
     return(
-        <div>
+        <div className="flex flex-col gap-2">
              <div className="relative">
         <div className="flex justify-between">
             <div className="poppins-semibold">Stats</div>
@@ -20,9 +20,9 @@ function Stats(){
                 <p className="poppins-light text-xs text-gray-600" >Calender</p>
             </div>
         </div>
-            <div className="w-72 my-1">
-            <SliderDate/>
-            </div>
+        <div className="w-72 my-4">
+        <SliderDate/>
+        </div>
         {isCalenderOpen && <CalenderComponent/>}
         <div className="flex flex-col mt-2 gap-2">
             <div 

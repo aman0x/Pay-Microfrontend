@@ -16,6 +16,7 @@ export default function SliderDate() {
   return (
     <div className='w-full flex items-center'>
       <Swiper
+        slidesPerView={5}
         cssMode={true}
         navigation={false}
         pagination={false}

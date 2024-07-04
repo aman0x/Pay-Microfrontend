@@ -16,7 +16,11 @@ function CommonLayout({children}){
             {
               ( location.pathname !== '/dashboard/payment/new-payment' &&
                 !location.pathname.startsWith('/dashboard/beneficiary') &&
-                !location.pathname.startsWith('/dashboard/accounts')
+                !location.pathname.startsWith('/dashboard/accounts') &&
+                !location.pathname.startsWith('/dashboard/payment/') &&
+                !location.pathname.startsWith('/dashboard/profile')&&
+                !location.pathname.startsWith('/dashboard/card')&&
+                !location.pathname.startsWith('/invoice/')
                )?
                <TopNavbar /> 
                :
@@ -29,6 +33,7 @@ function CommonLayout({children}){
               
               {
                 location.pathname === '/dashboard/statistic' ?
+                
                 <RightSideStatsBar/>
                 :
                 <RightSideBar/>

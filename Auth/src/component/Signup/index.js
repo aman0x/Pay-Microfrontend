@@ -20,6 +20,8 @@ export default function SignUpUser(){
     const [pageIndex,setPageIndex] = useState(1)
     const { handleUserSignup } = useUserSignupAuth()
     const { handleLoginWithGoogle, handleLoginWithApple, handleLoginWithFacebook, handleLoginWithPhone,handleUserLoginWithEmail } = useUserLoginAuth()
+    const [isPasswordShown,setPasswordShown] = useState(false)
+    const [isPassword2Shown,setPassword2Shown] = useState(false)
   
     return(
         <div className="grid grid-cols-2 gap-4">
@@ -84,22 +86,53 @@ export default function SignUpUser(){
                     <Mail fontSize='small' color="disabled"/>
                     <PiLineVertical color='gray'/>
                     </div>
-                    <input type="password" id="input-group-1" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Your Mail..."/>
+                    <input type="text" id="input-group-1" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Your Mail..."/>
                   </div>
                   <div className="relative">
-                    <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none gap-2">
+                    <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
                     <Lock fontSize='small' color="disabled"/>
-                    <PiLineVertical color='gray'/>
+                    <PiLineVertical color='gray' />
                     </div>
-                    <input type="password" id="input-group-1" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Password..."/>
+                      <input type={isPasswordShown?"text":"password"}  id="input-group-1" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 p-3.5 " placeholder="Enter Password..."/>
+                      <div className='absolute  inset-y-4 end-0 pe-3.5 cursor-pointer' onClick={()=>setPasswordShown(!isPasswordShown)}>
+                        {
+                          isPasswordShown?
+                          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M17.0743 9.47303C17.0743 9.14574 16.8973 8.93084 16.5432 8.50093C15.2479 6.9282 12.3907 4 9.07432 4C5.75792 4 2.90081 6.9282 1.60544 8.50093C1.25138 8.93084 1.07434 9.14574 1.07434 9.47303C1.07434 9.80032 1.25138 10.0152 1.60544 10.4451C2.90081 12.0179 5.75792 14.9461 9.07432 14.9461C12.3907 14.9461 15.2479 12.0179 16.5432 10.4451C16.8973 10.0152 17.0743 9.80032 17.0743 9.47303ZM9.07432 12.2095C10.5857 12.2095 11.8108 10.9844 11.8108 9.47303C11.8108 7.96165 10.5857 6.73651 9.07432 6.73651C7.56304 6.73651 6.33783 7.96165 6.33783 9.47303C6.33783 10.9844 7.56304 12.2095 9.07432 12.2095Z" fill="#B6B8BA"/>
+                          </svg>
+
+                          :
+                          <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M0.994827 1.2246L14.8496 15.0794L16.0742 13.8548L13.6433 11.4239C14.0897 10.9777 14.4662 10.5496 14.7588 10.1944C15.0948 9.78636 15.263 9.5822 15.263 9.27154C15.263 8.96089 15.095 8.7569 14.7589 8.3489C13.5293 6.85591 10.8168 4.076 7.6686 4.076C7.24854 4.076 6.83626 4.12548 6.43422 4.21479L2.21943 0L0.994827 1.2246Z" fill="#DFE0E2"/>
+                          <path d="M5.07084 9.27154C5.07084 8.80351 5.19461 8.3644 5.4112 7.98513L3.21638 5.7903C2.07806 6.64337 1.16153 7.64075 0.578395 8.34873C0.242373 8.75672 0.0742188 8.9609 0.0742188 9.27154C0.0742188 9.58219 0.24223 9.78619 0.578252 10.1942C1.80794 11.6872 4.52034 14.4671 7.6686 14.4671C8.84011 14.4671 9.95118 14.0822 10.948 13.5219L8.95502 11.5289C8.57574 11.7456 8.13663 11.8693 7.6686 11.8693C6.23394 11.8693 5.07084 10.7063 5.07084 9.27154Z" fill="#DFE0E2"/>
+                          </svg>
+                        }
+                  
+                    </div>
                   </div>
                   <div className="relative">
-                    <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none gap-2">
+                    <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
                     <Lock fontSize='small' color="disabled"/>
-                    <PiLineVertical color='gray'/>
+                    <PiLineVertical color='gray' />
                     </div>
-                    <input type="password" id="input-group-1" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Confirm Your Password..."/>
+                      <input type={isPassword2Shown?"text":"password"}  id="input-group-1" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 p-3.5 " placeholder="Enter Password..."/>
+                      <div className='absolute  inset-y-4 end-0 pe-3.5 cursor-pointer' onClick={()=>setPassword2Shown(!isPassword2Shown)}>
+                        {
+                          isPassword2Shown?
+                          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M17.0743 9.47303C17.0743 9.14574 16.8973 8.93084 16.5432 8.50093C15.2479 6.9282 12.3907 4 9.07432 4C5.75792 4 2.90081 6.9282 1.60544 8.50093C1.25138 8.93084 1.07434 9.14574 1.07434 9.47303C1.07434 9.80032 1.25138 10.0152 1.60544 10.4451C2.90081 12.0179 5.75792 14.9461 9.07432 14.9461C12.3907 14.9461 15.2479 12.0179 16.5432 10.4451C16.8973 10.0152 17.0743 9.80032 17.0743 9.47303ZM9.07432 12.2095C10.5857 12.2095 11.8108 10.9844 11.8108 9.47303C11.8108 7.96165 10.5857 6.73651 9.07432 6.73651C7.56304 6.73651 6.33783 7.96165 6.33783 9.47303C6.33783 10.9844 7.56304 12.2095 9.07432 12.2095Z" fill="#B6B8BA"/>
+                          </svg>
+
+                          :
+                          <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M0.994827 1.2246L14.8496 15.0794L16.0742 13.8548L13.6433 11.4239C14.0897 10.9777 14.4662 10.5496 14.7588 10.1944C15.0948 9.78636 15.263 9.5822 15.263 9.27154C15.263 8.96089 15.095 8.7569 14.7589 8.3489C13.5293 6.85591 10.8168 4.076 7.6686 4.076C7.24854 4.076 6.83626 4.12548 6.43422 4.21479L2.21943 0L0.994827 1.2246Z" fill="#DFE0E2"/>
+                          <path d="M5.07084 9.27154C5.07084 8.80351 5.19461 8.3644 5.4112 7.98513L3.21638 5.7903C2.07806 6.64337 1.16153 7.64075 0.578395 8.34873C0.242373 8.75672 0.0742188 8.9609 0.0742188 9.27154C0.0742188 9.58219 0.24223 9.78619 0.578252 10.1942C1.80794 11.6872 4.52034 14.4671 7.6686 14.4671C8.84011 14.4671 9.95118 14.0822 10.948 13.5219L8.95502 11.5289C8.57574 11.7456 8.13663 11.8693 7.6686 11.8693C6.23394 11.8693 5.07084 10.7063 5.07084 9.27154Z" fill="#DFE0E2"/>
+                          </svg>
+                        }
+                  
+                    </div>
                   </div>
+                  
                 </div>
                 }
               <div className='mt-3'>
@@ -112,7 +145,7 @@ export default function SignUpUser(){
                      :
                      setPageIndex(2) 
                   }}
-                  className="flex items-center w-full justify-center rounded-xl bg-gray-950 px-3 p-4 text-sm font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                  className="flex primary-btn items-center w-full justify-center rounded-xl bg-gray-950 px-3 p-4 text-sm font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                   {pageIndex>1 ? "Sign Up":"Next"}<span className='py-1.5 pl-2 size-6'><FaCircleArrowRight style={{color:'white'}} /></span></button>
               </div>
             </form>

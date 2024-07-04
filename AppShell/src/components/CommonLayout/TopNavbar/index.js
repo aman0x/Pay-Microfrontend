@@ -23,7 +23,7 @@ function TopNavbar(){
             </div>
             </div>
             <div className="flex gap-3 text-sm  mr-[1.25rem] items-center">
-                    <div className="primary-linear-gr-bg-up p-1 rounded-[50%]" 
+                    <div className="primary-linear-gr-bg-up p-1 rounded-[50%] shadow-2xl shadow-black" 
                     onClick={()=>navigate('/dashboard/profile')}
                     >
                         <Avatar src="#"
@@ -71,6 +71,9 @@ function getTopName(pathname="/"){
     }
     else if(pathname==="/dashboard/statistic"){
         return "Statistics"
+    }
+    else if(pathname==="/invoice"){
+        return "Invoice"
     }
     else{
         return "Dashboard"

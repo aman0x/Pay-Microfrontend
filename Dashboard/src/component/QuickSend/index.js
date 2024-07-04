@@ -49,7 +49,7 @@ export  function QuickSend(){
         <div >
            <div className="flex items-center justify-between my-2">
             <p className="poppins-semibold text-lg">Quick Send</p>
-            <p className="poppins-extralight text-xs underline">All Beneficaries</p>
+            <p className="poppins-extralight text-xs underline cursor-pointer">All Beneficaries</p>
            </div>
            <div className='flex gap-2'>
             {

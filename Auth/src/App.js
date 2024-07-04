@@ -1,7 +1,7 @@
 // Auth.js
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import "./index.scss";
+import "./index.css";
 import LoginUser from "./component/Login/index.js";
 import SignUpUser from "./component/Signup/index.js";
 import AccountType from "./component/AccountType/index.js";

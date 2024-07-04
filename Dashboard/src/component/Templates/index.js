@@ -52,6 +52,9 @@ function Templates(){
                 })
             }
             </div>
+            <div className="text-right mt-2 cursor-pointer">
+                <p className="poppins-extralight text-xs underline">All Templates</p>
+            </div>
             
         </div>
     )

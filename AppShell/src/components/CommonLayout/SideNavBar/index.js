@@ -13,7 +13,7 @@ export  function SideNavBar(){
     const [navIndex,setNavIndex] = useState(0)
     
     return(
-        <div className={`bg-primary ${isNavOpen?'min-w-[13.5rem]':"nav-close"} flex flex-col h-[85vh] max-h-[800px]  text-sm justify-between border-gray-400  py-[1.5rem] pr-[1rem] rounded-3xl mx-[0.5rem] my-[0.5rem]  transition-all duration-150 shadow-2xl overflow-y-hidden`}
+        <div className={`bg-primary cursor-pointer ${isNavOpen?'min-w-[13.5rem]':"nav-close"} flex flex-col h-[85vh] max-h-[800px]  text-sm justify-between border-gray-400  py-[1.5rem] pr-[1rem] rounded-3xl mx-[0.5rem] my-[0.5rem]  transition-all duration-150 shadow-2xl overflow-y-hidden`}
         >
             <div className="flex gap-1 items-center pl-4" onClick={()=>setNavOpen(!isNavOpen)}>
             <img
@@ -24,15 +24,15 @@ export  function SideNavBar(){
                     marginInline:isNavOpen?'0px':"14px"
                 }}
             />
-            <span style={{display:isNavOpen?"none":"flex"}} >
+            <span className="cursor-pointer" style={{display:isNavOpen?"none":"flex"}} >
                 <FaGreaterThan color="gray" fontSize="14px"/>
             </span>
             <p className="italic pl-1 font-extrabold from-neutral-900 text-base">Paymorz<span 
             className="pl-1 text-xl font-extrabold size-8 color-linear">.</span></p>
-            <span className="ml-9"><FaLessThan color="gray" fontSize="10px"/></span>
+            <span className="ml-9 cursor-pointer"><FaLessThan color="gray" fontSize="10px"/></span>
             </div>
             <div className="flex flex-col gap-1 ">
-                <button className="flex gap-4 items-center" 
+                <button className="flex gap-4 items-center " 
                 onClick={()=>{
                     setNavIndex(0)
                     navigate('/dashboard')
@@ -47,7 +47,7 @@ export  function SideNavBar(){
                 <div className="h-[40px] w-[2.5px]"></div>
                 }
                     <span className={`${isNavOpen?"":"nav-element"}`}><MdDashboard /></span>
-                    <p>Dashboard</p>
+                    <p className="hover:text-black hover:font-semibold">Dashboard</p>
                     <div className="relative primary-linear-gr-bg  p-[1.5px] rounded-2xl">
                     <div className="bg-black-primary rounded-xl py-0.5 px-2 text-xs">1 New</div>
                     </div>
@@ -64,7 +64,7 @@ export  function SideNavBar(){
                 <div className="h-[40px] w-[2.5px]"></div>
                 }
                 <span className={`${isNavOpen?"":"nav-element"}`}><FaCreditCard /></span>
-                    <p className="mr-2">Payments</p>
+                    <p className="hover:text-black hover:font-semibold mr-2">Payments</p>
                     <div className="relative primary-linear-gr-bg  p-[1.5px] rounded-2xl">
                     <div className="bg-black-primary rounded-xl py-0.5 px-2 text-xs">1 New</div>
                     </div>
@@ -85,7 +85,7 @@ export  function SideNavBar(){
                 <div className="h-[40px] w-[2.5px]"></div>
                 }
                 <span className={`${isNavOpen?"":"nav-element"}`}><CgNotes  /></span>
-                    <p className="mr-5">Invoices</p>
+                    <p className=" hover:text-black hover:font-semibold mr-5">Invoices</p>
                     <div className="relative primary-linear-gr-bg  p-[1.5px] rounded-2xl">
                     <div className="bg-black-primary rounded-xl py-0.5 px-2 text-xs">1 New</div>
                     </div>
@@ -103,7 +103,7 @@ export  function SideNavBar(){
                 <div className="h-[40px] w-[2.5px]"></div>
                 }
                 <span className={`${isNavOpen?"":"nav-element"}`} ><RiPieChart2Fill  /></span>
-                    <p className="mr-[1.40rem]" >Statistic</p>
+                    <p className=" hover:text-black hover:font-semibold mr-[1.40rem]" >Statistic</p>
                     <div className="relative primary-linear-gr-bg  p-[1.5px] rounded-2xl">
                     <div className="bg-black-primary rounded-xl py-0.5 px-2 text-xs">1 New</div>
                     </div>
@@ -122,7 +122,7 @@ export  function SideNavBar(){
                 <div className="h-[40px] w-[2.5px]"></div>
                 }
                 <span className={`${isNavOpen?"":"nav-element"}`}><RiNotification4Fill /></span>
-                    <p>Notification</p>
+                    <p className="hover:text-black hover:font-semibold">Notification</p>
                     <div className="relative primary-linear-gr-bg  p-[1.5px] rounded-2xl">
                     <div className="bg-black-primary rounded-xl py-0.5 px-2 text-xs">1 New</div>
                     </div>
@@ -140,7 +140,7 @@ export  function SideNavBar(){
                 <div className="h-[40px] w-[2.5px]"></div>
                 }
                 <span className={`${isNavOpen?"":"nav-element"}`}><MdOutlineHelp /></span>
-                    <p className="mr-6">Support</p>
+                    <p className="hover:text-black hover:font-semibold mr-6">Support</p>
                     <div className="relative primary-linear-gr-bg  p-[1.5px] rounded-2xl">
                     <div className="bg-black-primary rounded-xl py-0.5 px-2 text-xs">1 New</div>
                     </div>
@@ -152,7 +152,7 @@ export  function SideNavBar(){
                 color:"grey"
             }}>
             <span className={`${isNavOpen?"":"nav-element"}`}><CiLogout /></span>
-                <p>Logout</p>
+                <p className="hover:text-black hover:font-semibold">Logout</p>
             </button>
         </div>
     )

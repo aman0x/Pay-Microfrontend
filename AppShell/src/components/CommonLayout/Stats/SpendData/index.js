@@ -37,10 +37,32 @@ function SpendData(){
             <div className="h-[12rem]">
             <ChartComp />
             </div>
+            <div className="flex flex-col gap-1 my-2">
+                <div className="flex justify-between items-center">
+                    <div className="flex justify-between items-center gap-1">
+                        <div className="bg-[#ADA1E6] w-2 h-2 rounded-full"></div>
+                        <div>Income</div>
+                    </div>
+                    <div className="flex justify-between items-center gap-1">
+                        <div>Total: </div>
+                        <div className="poppins-semibold text-black">₹ 24,000.70</div>
+                    </div>
+                </div>
+                <div className="flex justify-between">
+                    <div className="flex justify-between items-center gap-1">
+                        <div className="bg-[#D562BE] w-2 h-2 rounded-full"></div>
+                        <div>Expenses</div>
+                    </div>
+                    <div className="flex justify-between items-center gap-1">
+                        <div>Total: </div>
+                        <div className="poppins-semibold text-black">₹ 24,000.70</div>
+                    </div>
+                </div>
+            </div>
 
 
-            <div className="flex justify-center">
-                <div className="primary-linear-gr-bg p-[2px] rounded-xl">
+            <div className="flex justify-center mt-4">
+                <div className="primary-linear-gr-bg-up p-[2px] rounded-xl">
                 <button
                 onClick={()=>navigate('/dashboard/statistic')}
                 className="bg-primary rounded-xl px-3 py-1 poppins-semibold">

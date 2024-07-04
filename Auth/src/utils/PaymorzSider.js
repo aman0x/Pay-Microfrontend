@@ -5,6 +5,7 @@ export default function PaymorzSider(){
         className='hero-img'
         src='/images/login-welcome.png'
         alt='login-welcome'
+        height="100px"
         />
       </div> 
 

@@ -14,11 +14,11 @@ export function HeaderNavbar({isLogin = false}){
           {
             
             !isLogin?
-            <li >New in Paymorz? <span ><Link to="/accounts/signup" className="color-linear" style={{
+            <li >New in Paymorz? <span ><Link to="/accounts/signup" className="color-linear underline" style={{
               textDecoration:"underline"
             }}>Sign Up</Link></span></li>
             :
-            <li >Already Have An Account? <span ><Link to="/accounts/login" className="color-linear">Log In</Link></span></li>
+            <li >Already Have An Account? <span ><Link to="/accounts/login" className="color-linear underline">Log In</Link></span></li>
           }
           
         </ul>

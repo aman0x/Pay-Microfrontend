@@ -15,4 +15,8 @@
 .nav-element{
    padding-inline: 24px;
 }  
+.nav-element:hover{
+    font-weight: bold;
+    color: black;
+}
 

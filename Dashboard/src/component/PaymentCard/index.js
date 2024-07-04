@@ -49,7 +49,11 @@ export function FlipCard({cardColorbg="#232B31",isArrowShown=true,width="380px",
             <div 
             onClick={()=>setCardClicked(!isCardClicked)}
             className={`flip-card-inner ${isCardClicked?"flip-card-transform":""}`}>
-                <div className={`flip-card-front flex flex-col px-[2rem] pt-[1.5rem] justify-between bg-[${cardColor}] rounded-3xl h-full`}>
+                <div className={`flip-card-front flex flex-col px-[2rem] pt-[1.5rem] justify-between rounded-3xl h-full`}
+                style={{
+                    backgroundColor:cardColor
+                }}
+                >
                     <div className="flex flex-row justify-between">
                         <div className="flex flex-col gap-2">
                         <div className="flex items-center gap-0.5 text-xs">
@@ -91,7 +95,11 @@ export function FlipCard({cardColorbg="#232B31",isArrowShown=true,width="380px",
                 <div>
                 </div>
                 </div>
-                <div className={`flip-card-back bg-[${cardColor}] rounded-3xl`}>
+                <div className={`flip-card-back rounded-3xl`}
+                style={{
+                    backgroundColor:cardColor
+                }}
+                >
                 <div className="flex flex-col  px-[2rem] py-[1.5rem] justify-between  h-full">
                     <div className="flex flex-row justify-between text-xs">
                         <div>
