@@ -84,39 +84,39 @@ function NewInvoiceStep2({setStepIndex}){
                     <div className="grid grid-cols-2 gap-4">
                         <div className="bg-primary p-[1rem] rounded-xl gap-4">
                             <div className="text-[#4E5459] poppins-semibold text-sm mb-2">Sent To:</div>
-                            <div className="flex items-center justify-between">
-                                <div className="text-[#A3A6A9] text-xs">Name:</div>
-                                <div><hr className="border-dotted"/></div>
-                                <div className="poppins-semibold text-sm">ANANTHARAPU ARUNA THEJASWINI</div>
+                            <div className="flex items-center justify-between gap-1">
+                                <div className="text-[#A3A6A9] text-xs min-w-fit">Name:</div>
+                                <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
+                                <div className="poppins-semibold text-sm min-w-fit">ANANTHARAPU ARUNA THEJASWINI</div>
                             </div>
-                            <div className="flex items-center justify-between">
-                                <div className="text-[#A3A6A9] text-xs">Phone:</div>
-                                <div><hr className="border-dotted"/></div>
-                                <div className="poppins-semibold text-sm">+913554546314</div>
+                            <div className="flex items-center justify-between gap-1">
+                                <div className="text-[#A3A6A9] text-xs min-w-fit">Phone:</div>
+                                <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
+                                <div className="poppins-semibold text-sm min-w-fit">+913554546314</div>
                             </div>
-                            <div className="flex items-center justify-between">
-                                <div className="text-[#A3A6A9] text-xs">Mail:</div>
-                                <div><hr className="border-dotted"/></div>
-                                <div className="poppins-semibold text-sm">contact@mail.com</div>
+                            <div className="flex items-center justify-between gap-1">
+                                <div className="text-[#A3A6A9] text-xs min-w-fit">Mail:</div>
+                                <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
+                                <div className="poppins-semibold text-sm min-w-fit">contact@mail.com</div>
                             </div>
                             
                         </div>
                         <div className="bg-primary p-[1rem] rounded-xl gap-4">
                             <div className="text-[#4E5459] poppins-semibold text-sm mb-2">Bank Details:</div>
-                            <div className="flex items-center justify-between">
-                                <div className="text-[#A3A6A9] text-xs">A/C No.</div>
-                                <div><hr className="border-dotted"/></div>
-                                <div className="poppins-semibold text-sm">50100350093919</div>
+                            <div className="flex items-center justify-between gap-1">
+                                <div className="text-[#A3A6A9] text-xs min-w-fit">A/C No.</div>
+                                <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
+                                <div className="poppins-semibold text-sm min-w-fit">50100350093919</div>
                             </div>
-                            <div className="flex items-center justify-between">
-                                <div className="text-[#A3A6A9] text-xs">Bank</div>
-                                <div><hr className="border-dotted"/></div>
-                                <div className="poppins-semibold text-sm">HDFC Bank, KODAD</div>
+                            <div className="flex items-center justify-between gap-1">
+                                <div className="text-[#A3A6A9] text-xs min-w-fit">Bank</div>
+                                <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
+                                <div className="poppins-semibold text-sm min-w-fit">HDFC Bank, KODAD</div>
                             </div>
-                            <div className="flex items-center justify-between">
-                                <div className="text-[#A3A6A9] text-xs">IFS Code</div>
-                                <div><hr className="border-dotted"/></div>
-                                <div className="poppins-semibold text-sm">HDFC0001642</div>
+                            <div className="flex items-center justify-between gap-1">
+                                <div className="text-[#A3A6A9] text-xs min-w-fit">IFS Code</div>
+                                <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
+                                <div className="poppins-semibold text-sm min-w-fit">HDFC0001642</div>
                             </div>
                             
                         </div>

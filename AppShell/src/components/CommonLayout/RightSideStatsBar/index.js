@@ -93,6 +93,7 @@ function RightSideStatsBar(){
                 Year
                 </button>
             </div>
+            <div className="text-[#B6B8BA] text-xs poppins-light">Or Set Date in Calendar:</div>
             <CalenderStats/>
             <QuickAction/>
             <GeneralReport/>

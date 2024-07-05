@@ -154,7 +154,7 @@ function MakeInvoice({isRepeatPayment=false}){
 function PaymentTypeMenu(){
     const [cardIndex,setCardIndex] = useState(0)
     return(
-        <div className="absolute w-[100%] top-10 bg-white rounded-2xl  py-[1rem] px-[1.2rem] gap-4">
+        <div className="absolute w-[100%] top-10 bg-white rounded-2xl  py-[1rem] px-[1.2rem] gap-4 z-50">
             <div className="text-sm poppins-semibold my-2 flex gap-1 items-start">
                 <span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -196,7 +196,7 @@ function PaymentTypeMenu(){
 function ReceiversMenu(){
     const [cardIndex,setCardIndex] = useState(0)
     return(
-        <div className="absolute w-[100%] bg-white rounded-2xl top-10  py-[1rem] px-[1.2rem] gap-4">
+        <div className="absolute w-[100%] bg-white rounded-2xl top-10  py-[1rem] px-[1.2rem] gap-4 z-50">
             <div className="text-sm poppins-semibold my-2 flex gap-1 items-start">
                 <span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

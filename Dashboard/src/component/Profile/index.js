@@ -78,7 +78,7 @@ function Profile() {
                         <div className="flex flex-col">
                             <label className="text-[#A3A6A9] poppins-regular text-xs">First Name</label>
                             <div className="relative">
-                                <input type="text" placeholder="Name" className="bg-transparent border-b-2 w-full py-1" />
+                                <input type="text" placeholder="Name" className="bg-transparent border-b-2 w-full focus:outline-none py-1 " />
                                 <div className="absolute bottom-1 right-0">
                                     <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M13.5 13.6667V16.8C13.9705 16.6387 14.3987 16.3734 14.7527 16.024L16.5233 14.252C16.8732 13.8985 17.1387 13.4705 17.3 13H14.1667C13.9899 13 13.8203 13.0702 13.6953 13.1953C13.5702 13.3203 13.5 13.4899 13.5 13.6667Z" fill="#CDCED1" />
@@ -91,7 +91,7 @@ function Profile() {
                         <div className="flex flex-col">
                             <label className="text-[#A3A6A9] poppins-regular text-xs">Middle Name</label>
                             <div className="relative">
-                                <input type="text" placeholder="Name" className="bg-transparent border-b-2 w-full py-1" />
+                                <input type="text" placeholder="Name" className="bg-transparent border-b-2 w-full py-1 focus:outline-none " />
                                 <div className="absolute bottom-1 right-0">
                                     <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M13.5 13.6667V16.8C13.9705 16.6387 14.3987 16.3734 14.7527 16.024L16.5233 14.252C16.8732 13.8985 17.1387 13.4705 17.3 13H14.1667C13.9899 13 13.8203 13.0702 13.6953 13.1953C13.5702 13.3203 13.5 13.4899 13.5 13.6667Z" fill="#CDCED1" />
@@ -104,7 +104,7 @@ function Profile() {
                         <div className="flex flex-col">
                             <label className="text-[#A3A6A9] poppins-regular text-xs">Last Name</label>
                             <div className="relative">
-                                <input type="text" placeholder="Name" className="bg-transparent border-b-2 w-full py-1" />
+                                <input type="text" placeholder="Name" className="bg-transparent border-b-2 w-full py-1 focus:outline-none " />
                                 <div className="absolute bottom-1 right-0">
                                     <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M13.5 13.6667V16.8C13.9705 16.6387 14.3987 16.3734 14.7527 16.024L16.5233 14.252C16.8732 13.8985 17.1387 13.4705 17.3 13H14.1667C13.9899 13 13.8203 13.0702 13.6953 13.1953C13.5702 13.3203 13.5 13.4899 13.5 13.6667Z" fill="#CDCED1" />
@@ -117,7 +117,7 @@ function Profile() {
                         <div className="flex flex-col">
                             <label className="text-[#A3A6A9] poppins-regular text-xs">Nick Name</label>
                             <div className="relative">
-                                <input type="text" placeholder="Name" className="bg-transparent border-b-2 w-full py-1" />
+                                <input type="text" placeholder="Name" className="bg-transparent border-b-2 w-full py-1 focus:outline-none " />
                                 <div className="absolute bottom-1 right-0">
                                     <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M13.5 13.6667V16.8C13.9705 16.6387 14.3987 16.3734 14.7527 16.024L16.5233 14.252C16.8732 13.8985 17.1387 13.4705 17.3 13H14.1667C13.9899 13 13.8203 13.0702 13.6953 13.1953C13.5702 13.3203 13.5 13.4899 13.5 13.6667Z" fill="#CDCED1" />
@@ -133,7 +133,7 @@ function Profile() {
                         <div className="flex flex-col">
                             <label className="text-[#A3A6A9] poppins-regular text-xs">Account Type</label>
                             <div className="relative">
-                                <input type="text" placeholder="Individual" className="bg-transparent border-b-2 w-full py-1" />
+                                <input type="text" placeholder="Individual" className="bg-transparent border-b-2 w-full py-1 focus:outline-none " />
                                 <div className="absolute bottom-1 right-0">
                                     <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M13.5 13.6667V16.8C13.9705 16.6387 14.3987 16.3734 14.7527 16.024L16.5233 14.252C16.8732 13.8985 17.1387 13.4705 17.3 13H14.1667C13.9899 13 13.8203 13.0702 13.6953 13.1953C13.5702 13.3203 13.5 13.4899 13.5 13.6667Z" fill="#CDCED1" />
@@ -146,7 +146,7 @@ function Profile() {
                         <div className="flex flex-col">
                             <label className="text-[#A3A6A9] poppins-regular text-xs">Phone</label>
                             <div className="relative">
-                                <input type="text" placeholder="+914367902029" className="bg-transparent border-b-2 w-full py-1" />
+                                <input type="text" placeholder="+914367902029" className="bg-transparent border-b-2 w-full py-1 focus:outline-none " />
                                 <div className="absolute bottom-1 right-0">
                                     <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M13.5 13.6667V16.8C13.9705 16.6387 14.3987 16.3734 14.7527 16.024L16.5233 14.252C16.8732 13.8985 17.1387 13.4705 17.3 13H14.1667C13.9899 13 13.8203 13.0702 13.6953 13.1953C13.5702 13.3203 13.5 13.4899 13.5 13.6667Z" fill="#CDCED1" />
@@ -159,7 +159,7 @@ function Profile() {
                         <div className="flex flex-col">
                             <label className="text-[#A3A6A9] poppins-regular text-xs">Email</label>
                             <div className="relative">
-                                <input type="text" placeholder="customer@email.com" className="bg-transparent border-b-2 w-full py-1" />
+                                <input type="text" placeholder="customer@email.com" className="bg-transparent border-b-2 w-full py-1 focus:outline-none " />
                                 <div className="absolute bottom-1 right-0">
                                     <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M13.5 13.6667V16.8C13.9705 16.6387 14.3987 16.3734 14.7527 16.024L16.5233 14.252C16.8732 13.8985 17.1387 13.4705 17.3 13H14.1667C13.9899 13 13.8203 13.0702 13.6953 13.1953C13.5702 13.3203 13.5 13.4899 13.5 13.6667Z" fill="#CDCED1" />
@@ -178,7 +178,7 @@ function Profile() {
                                     </svg>
 
                                 </div>
-                                <input type="password" placeholder="**********" className="bg-transparent border-b-2 w-full px-7 py-1" />
+                                <input type="password" placeholder="**********" className="bg-transparent border-b-2 w-full px-7 py-1 focus:outline-none " />
                                 <div className="absolute bottom-1 right-0">
                                     <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M13.5 13.6667V16.8C13.9705 16.6387 14.3987 16.3734 14.7527 16.024L16.5233 14.252C16.8732 13.8985 17.1387 13.4705 17.3 13H14.1667C13.9899 13 13.8203 13.0702 13.6953 13.1953C13.5702 13.3203 13.5 13.4899 13.5 13.6667Z" fill="#CDCED1" />
@@ -210,24 +210,28 @@ function Profile() {
                 <div className="flex flex-col gap-8 w-full">
                     <div className="flex flex-col gap-2">
                         <div className="poppins-semibold">Personal Info:</div>
-                        <div className="flex gap-12 poppins-light text-[#A3A6A9]">
+                        <div className="flex gap-2 items-center poppins-light text-[#A3A6A9] max-w-96">
                             <div>Name</div>
+                            <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1] "/>
                             <div >***********</div>
                         </div>
-                        <div className="flex gap-12 poppins-light text-[#A3A6A9]">
+                        <div className="flex gap-2 items-center poppins-light text-[#A3A6A9] max-w-96">
                             <div>Region</div>
+                            <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
                             <div>***********</div>
                         </div>
                     </div>
 
                     <div className="flex flex-col gap-2">
                         <div className="poppins-semibold">Uploaded Documents:</div>
-                        <div className="flex gap-12 poppins-light text-[#A3A6A9]">
+                        <div className="flex gap-2 items-center poppins-light text-[#A3A6A9] max-w-96">
                             <div>Name</div>
+                            <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
                             <div>***********</div>
                         </div>
-                        <div className="flex gap-12 poppins-light text-[#A3A6A9]">
-                            <div>Document ID</div>
+                        <div className="flex gap-2 poppins-light items-center text-[#A3A6A9] max-w-96">
+                            <div className="min-w-fit">Document ID</div>
+                            <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
                             <div>***********</div>
                         </div>
                     </div>

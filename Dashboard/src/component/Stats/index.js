@@ -21,6 +21,7 @@ function Stats(){
             <div className="w-72 my-1">
             <SliderDate/>
             </div>
+
         {isCalenderOpen && <CalenderComponent/>}
         <div className="flex flex-col mt-2 gap-2">
             <div className="flex items-center justify-between  bg-white py-3 px-5 rounded-2xl">

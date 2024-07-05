@@ -67,9 +67,9 @@ export default function SliderDate() {
             </div>
         </SwiperSlide>
         <SwiperSlide>
-            <div className='flex justify-center w-fit rounded-2xl '>
+            <div className='flex justify-center w-fit rounded-2xl'>
                 <div className='flex flex-col gap-1 items-center bg-white p-[0.5rem] rounded-2xl w-fit'>
-                    <div className='poppins-bold'>30</div>
+                    <div className='poppins-bold'>30 </div>
                     <div className='poppins-light text-gray-600'>Fri</div>
                 </div>
             </div>
@@ -77,7 +77,7 @@ export default function SliderDate() {
         <SwiperSlide>
             <div className='flex justify-center w-fit rounded-2xl'>
                 <div className='flex flex-col gap-1 items-center bg-white p-[0.5rem] rounded-2xl w-fit'>
-                    <div className='poppins-bold'>31</div>
+                    <div className='poppins-bold'>31 </div>
                     <div className='poppins-light text-gray-600'>Sat</div>
                 </div>
             </div>

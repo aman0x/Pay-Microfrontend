@@ -9,8 +9,8 @@ import { useNavigate } from "react-router-dom";
 export  function PaymentCard(){
     const navigate  = useNavigate()
     return(
-        <div  className="">
-            <div className="flex justify-between mb-2">
+        <div  className="flex flex-col gap-3">
+            <div className="flex justify-between ">
                 <div className="poppins-semibold">
                     My Cards
                 </div>
@@ -18,10 +18,16 @@ export  function PaymentCard(){
                 onClick={()=>navigate('/dashboard/card/add-card')}
                 className="flex items-center gap-1 cursor-pointer">
                     <IoAddCircleSharp/>
-                    <p className="poppins-light text-gray-600 text-sm">Add</p>
+                    <p className="poppins-light text-gray-600 text-sm">New Card</p>
                 </div>
             </div>
             <FlipCard/>
+            <div className="flex gap-1 justify-center items-center">
+                <div className="h-2 w-2 rounded-full primary-linear-gr-bg"></div>
+                <div className="h-1 w-1 rounded-full bg-black"></div>
+                <div className="h-1 w-1 rounded-full bg-black"></div>
+                <div className="h-1 w-1 rounded-full bg-black"></div>
+            </div>
         
         </div>    
     )

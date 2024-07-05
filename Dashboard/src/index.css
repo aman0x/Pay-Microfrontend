@@ -25,7 +25,9 @@
 .bg-primary{
   background-color: var(--primary);
 }
-
+input[type=text]:focus {
+  border: 0px solid #555 !important;
+}
 .input-linear{
   border: 2px solid transparent; 
   border-radius: 20px;
@@ -142,3 +144,4 @@
 }
 
 
+ 
