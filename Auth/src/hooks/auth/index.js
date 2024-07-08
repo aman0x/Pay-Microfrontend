@@ -1,7 +1,10 @@
 // import { GoogleAuthProvider,signInWithPopup,FacebookAuthProvider,signInWithEmailAndPassword, signInWithPhoneNumber ,createUserWithEmailAndPassword,RecaptchaVerifier} from "firebase/auth";
 // import { firebaseAuth } from "../../firebase/firebaseConfig";
 // import { authActions } from "../../store/authSlice";
+import AxiosCall from "../../utils/ApiCall.js"
 import { useDispatch } from "react-redux"
+import { PUBLIC_ENDPOINTS } from "../../utils/Constants.js"
+import { toast } from "react-toastify"
 export function useUserLoginAuth(){
 
     const dispatch = useDispatch()
@@ -115,14 +118,14 @@ export function useUserLoginAuth(){
 export function useUserSignupAuth(){
 
     const handleUserSignup = (data) =>{
-        window.alert("signedIn")
-        // createUserWithEmailAndPassword(firebaseAuth,data.email,data.password)
-        // .then((userCredential)=>{
-        //     console.log("userData",userCredential)
-        // })
-        // .catch((err)=>{
-        //     console.log(err)
-        // })
+        AxiosCall({url:PUBLIC_ENDPOINTS.signIn,method:"POST",PRIVATE_API:false,body:data})
+        .then((data)=>{
+            console.log("Succes",data)
+            toast.success("Signup Succes")
+        })
+        .catch((e)=>{
+            console.log("Error In Signin",e)
+        })
     }
     return {handleUserSignup}
 }

@@ -8,7 +8,7 @@ function AddCard(){
                     <div className="text-center poppins-semibold">Enter Data</div>
                         <div className="flex flex-col gap-2">
                             <div className="relative">
-                                <input type="number" id="input-group-1" className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full ps-14 p-3.5" placeholder="Card Number"/>
+                                <input type="number"   className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full ps-14 p-3.5" placeholder="Card Number"/>
                                 {
                                     !isValid?
                                     <div className="absolute inset-y-0 end-1 flex items-center pe-3">
@@ -21,7 +21,7 @@ function AddCard(){
                                 }
                             </div>
                             <div className="relative">
-                                <input type="text" id="input-group-1" className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full ps-14 p-3.5" placeholder="Card Holder Name"/>
+                                <input type="text"   className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full ps-14 p-3.5" placeholder="Card Holder Name"/>
                                 {
                                     !isValid?
                                     <div className="absolute inset-y-0 end-1 flex items-center pe-3">
@@ -35,7 +35,7 @@ function AddCard(){
                             </div>
                             <div className="grid grid-cols-2 gap-2">
                                 <div className="relative">
-                                    <input type="text" id="input-group-1" className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full ps-14 p-3.5" placeholder="Exp. date"/>
+                                    <input type="text"   className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full ps-14 p-3.5" placeholder="Exp. date"/>
                                 {
                                     !isValid?
                                     <div className="absolute inset-y-0 end-1 flex items-center pe-3">
@@ -48,7 +48,7 @@ function AddCard(){
                                 }  
                                 </div>
                                 <div className="relative">
-                                <input type="number" id="input-group-1" className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full ps-14 p-3.5" placeholder="CVV"/>
+                                <input type="number"   className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full ps-14 p-3.5" placeholder="CVV"/>
                                 {
                                     !isValid?
                                     <div className="absolute inset-y-0 end-1 flex items-center pe-3">

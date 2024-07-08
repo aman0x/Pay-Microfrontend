@@ -52,7 +52,8 @@ module.exports = (env) => {
       new ModuleFederationPlugin({
         name: "Auth",
         filename: "remoteEntry.js",
-        remotes: {},
+        remotes: {
+        },
         exposes: {
           "./Auth": "./src/App.js",
           "./authReducer": "./src/store/authSlice",

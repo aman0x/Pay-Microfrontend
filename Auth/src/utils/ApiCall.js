@@ -2,6 +2,9 @@ import axios from "axios"
 import { useSelector } from "react-redux";
 async function ApiCall({url,method,body,PRIVATE_API = false,header}){
 
+    console.log("success",url,body)
+    return;
+
     try{
         const current_user = useSelector(state => state.auth.user)||null
         let axiosCall;

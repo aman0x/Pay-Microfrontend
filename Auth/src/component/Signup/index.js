@@ -13,7 +13,7 @@ export default function SignUpUser(){
   const navigate = useNavigate()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [pNumber,setPNumber] = useState("+91")
+    const [pNumber,setPNumber] = useState(91)
     const [fName,seFName] = useState('')
     const [mName,setMName] = useState('')
     const [lName,setLname] = useState('')
@@ -49,21 +49,31 @@ export default function SignUpUser(){
                     <IoPerson color='grey' />
                     <PiLineVertical color='gray'/>
                     </div>
-                    <input type="text"  id="input-group-1" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="First Name..."/>
+                    <input type="text" 
+                    value={fName}
+                    onChange={(e)=>seFName(e.target.value)}
+                    required
+                    className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="First Name..."/>
                   </div>
                   <div className="relative">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none gap-2">
                     <IoPerson color='grey' />
                     <PiLineVertical color='gray'/>
                     </div>
-                    <input type="text"  id="input-group-1" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Middle Name..."/>
+                    <input type="text"
+                    value={mName}
+                    onChange={(e)=>setMName(e.target.value)}
+                    className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Middle Name..."/>
                   </div>
                   <div className="relative">
                   <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none gap-2">
                   <IoPerson color='grey' />
                    <PiLineVertical color='gray'/>
                   </div>
-                  <input type="text"  id="input-group-1" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Last Name..."/>
+                  <input type="text" 
+                   value={lName}
+                   onChange={(e)=>setLname(e.target.value)}
+                   className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Last Name..."/>
                   </div>
                 </div>
                 :
@@ -73,11 +83,11 @@ export default function SignUpUser(){
                     <Call fontSize='small' color='disabled'/>
                     <PiLineVertical color='gray'/>
                     </div>
-                    <input type="text" 
-                     id="input-group-1" 
+                    <input type="number"
                      className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       value={pNumber}
-                      onChange={(e)=>setPNumber(e.currentTarget.value)}
+                      onChange={(e)=>setPNumber(e.target.value)}
+                      required
                       placeholder="Enter Your Phone..."/>
                   </div>
                   
@@ -86,14 +96,17 @@ export default function SignUpUser(){
                     <Mail fontSize='small' color="disabled"/>
                     <PiLineVertical color='gray'/>
                     </div>
-                    <input type="text" id="input-group-1" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Your Mail..."/>
+                    <input type="text" 
+                    value={email}
+                    onChange={(e)=>setEmail(e.target.value)}
+                    className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Your Mail..."/>
                   </div>
                   <div className="relative">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
                     <Lock fontSize='small' color="disabled"/>
                     <PiLineVertical color='gray' />
                     </div>
-                      <input type={isPasswordShown?"text":"password"}  id="input-group-1" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 p-3.5 " placeholder="Enter Password..."/>
+                      <input type={isPasswordShown?"text":"password"}  className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 p-3.5 " placeholder="Enter Password..."/>
                       <div className='absolute  inset-y-4 end-0 pe-3.5 cursor-pointer' onClick={()=>setPasswordShown(!isPasswordShown)}>
                         {
                           isPasswordShown?
@@ -115,7 +128,7 @@ export default function SignUpUser(){
                     <Lock fontSize='small' color="disabled"/>
                     <PiLineVertical color='gray' />
                     </div>
-                      <input type={isPassword2Shown?"text":"password"}  id="input-group-1" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 p-3.5 " placeholder="Enter Password..."/>
+                      <input type={isPassword2Shown?"text":"password"}  className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 p-3.5 " placeholder="Enter Password..."/>
                       <div className='absolute  inset-y-4 end-0 pe-3.5 cursor-pointer' onClick={()=>setPassword2Shown(!isPassword2Shown)}>
                         {
                           isPassword2Shown?
@@ -140,8 +153,8 @@ export default function SignUpUser(){
                   onClick={(e) =>{ 
                     e.preventDefault()
                     pageIndex>1 ?
-                    navigate('/accounts/type')
-                    // handleUserSignup()
+                    //navigate('/accounts/type')
+                    handleUserSignup("dummy")
                      :
                      setPageIndex(2) 
                   }}

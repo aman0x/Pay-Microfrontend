@@ -164,3 +164,22 @@ body{
   
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.custom-toast {
+  font-size: 14px; /* Adjust font size */
+  padding: 10px;   /* Adjust padding */
+  max-width: 300px; /* Adjust max width */
+  margin: 0 auto; /* Center the toast */
+}
+
+.custom-toast-body {
+  padding: 5px; /* Adjust padding inside the toast body */
+}
+
+.custom-toast-progress {
+  background-color: #4caf50; /* Customize progress bar color */
+}

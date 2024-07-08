@@ -27,7 +27,7 @@ function App() {
       :
       <CommonLayout>
         <Routes>   
-          <Route path="/dashboard/*" element={<Dashboard />} />
+          <Route path="/dashboard/*" element={<Dashboard  />} />
           <Route path="/invoice/*" element={<Invoice />} />
           <Route path="/report/*" element={<Report />} />
         </Routes>

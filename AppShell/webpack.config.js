@@ -58,7 +58,8 @@ module.exports = (env) => {
           Invoice: `Invoice@${envVars.APP_URL}:8001/remoteEntry.js`,
           Report: `Report@${envVars.APP_URL}:8002/remoteEntry.js`,
         },
-        exposes: {},
+        exposes: {
+        },
         shared: {
           ...deps,
           react: {

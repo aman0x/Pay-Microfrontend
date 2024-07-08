@@ -1,9 +1,7 @@
-import {SideNavBar} from "../SideNavBar/index.js";
+
 import {PaymentCard} from "../PaymentCard/index.js";
 import {QuickSend} from "../QuickSend";
 import Templates from "../Templates/index.js";
-import TopNavbar from "../TopNavbar/index.js";
-import RightSideBar from "../RightSideBar/index.js";
 import LatestActions from "../LatestActions/index.js";
 import NoitificationBar from "../NotificationBar/index.js";
 
