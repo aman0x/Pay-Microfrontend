@@ -1,10 +1,22 @@
 import OtpInput from 'react-otp-input';
 import { useState } from 'react';
-
+import { useLocation } from 'react-router-dom';
+import { useUserLoginAuth } from "#hooks/auth/index.js";
 export function OtpScreen({phNumber='91*******001'}){
     const [code, setCode] = useState("");
+    const {handleValidateOtp} = useUserLoginAuth()
+    const location = useLocation();
+    const phoneNumber = location.state?.phoneNumber;
 
-    const handleChange = (code) => setCode(code);
+    const handleChange = (code) => {
+         setCode(code);
+         if(code.length === 8){
+            handleValidateOtp({
+                otp:code,
+                phone:phoneNumber
+            })
+         }
+    }
     return(
         <div className="h-screen flex flex-col items-center justify-center gap-1 p-[1rem]">
             <h2 className='poppins-bold'>Enter OTP code for verification!</h2>

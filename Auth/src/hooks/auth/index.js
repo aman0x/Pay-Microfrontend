@@ -5,9 +5,13 @@ import AxiosCall from "../../utils/ApiCall.js"
 import { useDispatch } from "react-redux"
 import { PUBLIC_ENDPOINTS } from "../../utils/Constants.js"
 import { toast } from "react-toastify"
+import { useNavigate } from "react-router-dom"
+import { useSelector } from "react-redux"
 export function useUserLoginAuth(){
-
+    const navigate = useNavigate()
     const dispatch = useDispatch()
+    const current_user = useSelector(state => state.auth.user)
+    console.log(current_user)
     const handleLoginWithGoogle = () =>{
         console.log("login with google")
     // const provider = new GoogleAuthProvider();
@@ -40,29 +44,39 @@ export function useUserLoginAuth(){
     }
     const handleUserLoginWithEmail = (data) =>{
         console.log("login with email")
-        // signInWithEmailAndPassword(firebaseAuth,data.email,data.password)
-        // .then((userData)=>{
-        //     console.log("withEmail",userData)
-        // })
-        // .catch(()=>{
-
-        // })
+        const login_data = {
+            email:data.email,
+            password:data.password,
+            is_social_login:false
+        }
+        AxiosCall({url:PUBLIC_ENDPOINTS.login,method:"POST",body:login_data})
+        //axios.post(PUBLIC_ENDPOINTS.login,login_data)
+        .then((data)=>{
+            console.log("login_data",data)
+        })
+        .catch((e)=>{
+            console.log("login_error_data",e)
+        })
 
     }
 
-    const handleLoginWithPhone = (data) =>{
+    const handleLoginWithPhone = (phone) =>{
         console.log("Login with phoen")
-        // captchaVerifier()
-        // const phoneNumber = '+916306278440'
-        // const appVerifier = window.recaptchaVerifier;
-        // signInWithPhoneNumber(firebaseAuth,phoneNumber,appVerifier)
-        // .then((confirmationResult) => {
-        //     window.confirmationResult = confirmationResult;
-        //     console.log(confirmationResult)
-        // })
-        // .catch((error) => {
-        // console.log(error);
-        // });
+        const login_data = {
+            phone:phone,
+            is_social_login:false
+        }
+        AxiosCall({url:PUBLIC_ENDPOINTS.login,method:"POST",body:login_data})
+        .then((data)=>{
+            console.log("login_data",data)
+            navigate('/accounts/otp-verification',{state:{phoneNumber:phone}})
+          
+        })
+        .catch((e)=>{
+            console.log("login_error_data",e)
+           
+        })
+        
 
     }
 
@@ -111,21 +125,40 @@ export function useUserLoginAuth(){
         //   }
     }
 
+    const handleValidateOtp=(data)=>{
+
+        AxiosCall({url:PUBLIC_ENDPOINTS.login,method:"POST",body:data})
+        .then((data)=>{
+            console.log("validate_otp",data)
+           
+          
+        })
+        .catch((e)=>{
+            console.log("valdate_otp",e)
+           
+        })
+        navigate('/dashboard')
+    }
+
     
-    return {handleUserLoginWithEmail,handleLoginWithGoogle,handleLoginWithApple,handleLoginWithFacebook,handleLoginWithPhone}
+    return {handleUserLoginWithEmail,handleLoginWithGoogle,handleLoginWithApple,handleLoginWithFacebook,handleLoginWithPhone,handleValidateOtp}
 }
 
 export function useUserSignupAuth(){
-
+    const navigate = useNavigate()
     const handleUserSignup = (data) =>{
+        console.log("hook_data",data)
+      
         AxiosCall({url:PUBLIC_ENDPOINTS.signIn,method:"POST",PRIVATE_API:false,body:data})
         .then((data)=>{
-            console.log("Succes",data)
-            toast.success("Signup Succes")
+            console.log("Success",data)
+            
         })
         .catch((e)=>{
             console.log("Error In Signin",e)
         })
+        // just for flow
+        navigate('/accounts/type')
     }
     return {handleUserSignup}
 }

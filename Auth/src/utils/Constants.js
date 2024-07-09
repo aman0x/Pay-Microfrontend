@@ -6,8 +6,8 @@ export const PRIVATE_ENDPOINTS = {
 }
 
 export const PUBLIC_ENDPOINTS  = {
-    login:BASE_URL + 'accounts/login',
-    logout:BASE_URL +'accounts/logout',
-    signIn:BASE_URL +'accounts/sign-in'
+    login:BASE_URL + '/api/user/login/',
+    logout:BASE_URL +'',
+    signIn:BASE_URL +'/api/user/register/'
 }
 

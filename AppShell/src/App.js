@@ -10,6 +10,8 @@ import Invoice from "Invoice/Invoice";
 import Report from "Report/Report";
 import reduxStore from "./store";
 import {useLocation} from "react-router-dom"
+import {ToastContainer} from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css'; 
 import CommonLayout from "./components/CommonLayout";
 function App() {
   const value = useSelector((state) => state.test.value);
@@ -18,6 +20,7 @@ function App() {
 
   return (
     <div className="test mx-auto bg-primary bg-slate-50">
+      <ToastContainer limit={1}/>
       {
         location.pathname==="/" ||
         location.pathname.startsWith('/accounts')?
@@ -44,6 +47,7 @@ const root = ReactDOM.createRoot(document.getElementById("app"));
 root.render(
   <Provider store={reduxStore}>
     <BrowserRouter>
+    
     <App />
     </BrowserRouter>
   </Provider>

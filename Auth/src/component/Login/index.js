@@ -10,6 +10,8 @@ import PaymorzSider from '../../utils/PaymorzSider';
 import { useNavigate } from "react-router-dom"
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export default function LoginUser() {
   const navigate = useNavigate()
   const { handleLoginWithGoogle, handleLoginWithApple, handleLoginWithFacebook, handleLoginWithPhone, handleUserLoginWithEmail } = useUserLoginAuth()
@@ -52,10 +54,10 @@ export default function LoginUser() {
             initialValues={{ email: '', password: '' ,phone:''}}
             validate={values => {
               const errors = {};
-              if (!values.email) {
+              if (!values.email && withEmail) {
                 errors.email = 'Required';
               } else if (
-                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email) && withEmail
               ) {
                 errors.email = 'Invalid email address';
               }
@@ -65,18 +67,14 @@ export default function LoginUser() {
               else if(!/^\d{10}$/.test(values.phone) && !withEmail){
                 errors.phone = 'Add Valid Phone number'
               }
-              else if(values.password.toString().length<8){
-
-                errors.password = 'Password Should Be Atleast 8 Characters Long!!'
-              }
               return errors;
             }}
             onSubmit={(values, { setSubmitting }) => {
+              setSubmitting(false)
               console.log(values)
-              setTimeout(() => {
-                
-                setSubmitting(false);
-              }, 400);
+              withEmail?
+              handleUserLoginWithEmail(values)
+              :handleLoginWithPhone(values.phone)
             }}
           >
             {({
@@ -126,7 +124,7 @@ export default function LoginUser() {
                           {
                             isPasswordShown ?
                               <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M17.0743 9.47303C17.0743 9.14574 16.8973 8.93084 16.5432 8.50093C15.2479 6.9282 12.3907 4 9.07432 4C5.75792 4 2.90081 6.9282 1.60544 8.50093C1.25138 8.93084 1.07434 9.14574 1.07434 9.47303C1.07434 9.80032 1.25138 10.0152 1.60544 10.4451C2.90081 12.0179 5.75792 14.9461 9.07432 14.9461C12.3907 14.9461 15.2479 12.0179 16.5432 10.4451C16.8973 10.0152 17.0743 9.80032 17.0743 9.47303ZM9.07432 12.2095C10.5857 12.2095 11.8108 10.9844 11.8108 9.47303C11.8108 7.96165 10.5857 6.73651 9.07432 6.73651C7.56304 6.73651 6.33783 7.96165 6.33783 9.47303C6.33783 10.9844 7.56304 12.2095 9.07432 12.2095Z" fill="#B6B8BA" />
+                                <path  fillRule="evenodd"  clipRule="evenodd" d="M17.0743 9.47303C17.0743 9.14574 16.8973 8.93084 16.5432 8.50093C15.2479 6.9282 12.3907 4 9.07432 4C5.75792 4 2.90081 6.9282 1.60544 8.50093C1.25138 8.93084 1.07434 9.14574 1.07434 9.47303C1.07434 9.80032 1.25138 10.0152 1.60544 10.4451C2.90081 12.0179 5.75792 14.9461 9.07432 14.9461C12.3907 14.9461 15.2479 12.0179 16.5432 10.4451C16.8973 10.0152 17.0743 9.80032 17.0743 9.47303ZM9.07432 12.2095C10.5857 12.2095 11.8108 10.9844 11.8108 9.47303C11.8108 7.96165 10.5857 6.73651 9.07432 6.73651C7.56304 6.73651 6.33783 7.96165 6.33783 9.47303C6.33783 10.9844 7.56304 12.2095 9.07432 12.2095Z" fill="#B6B8BA" />
                               </svg>
 
                               :
@@ -163,6 +161,7 @@ export default function LoginUser() {
                   <button type="button"
                     disabled={isSubmitting}
                     onClick={() => {
+                      console.log("done")
                       handleSubmit()
                       //navigate('/accounts/type')
                     }}

@@ -5,11 +5,10 @@ const authSlice = createSlice({
     initialState:{
         userId:'',
         user:{
-
         },
         isLogin:false,
         token:'',
-        counter:1
+       
     },
     reducers:{
         login(state,action){
