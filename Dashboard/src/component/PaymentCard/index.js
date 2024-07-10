@@ -3,11 +3,30 @@ import { RiDeleteBin5Fill } from "react-icons/ri";
 import { BiSolidShow } from "react-icons/bi";
 import { IoAddCircleSharp } from "react-icons/io5";
 import "./style.css"
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export  function PaymentCard(){
+export  function PaymentCard({handlePaymentCardData}){
     const navigate  = useNavigate()
+    const [cardIndex,setCardIndex] = useState(0)
+    const [cards,setCards] = useState([{
+        "card_holder_name": "Holder Name",
+        "card_number": "1234567824681257",
+        "card_type": "VISA",
+        "exp_date": "02/28",
+        "cvv_no": "123",
+        "balance": 12000,
+        "payments": 12,
+        "verified": true
+    }])
+    useEffect(()=>{
+        const fetchCards =async()=>{
+          const data = await handlePaymentCardData()
+          setCards(data)
+        }
+        fetchCards()
+       
+    },[])
     return(
         <div  className="flex flex-col gap-3">
             <div className="flex justify-between ">
@@ -15,29 +34,36 @@ export  function PaymentCard(){
                     My Cards
                 </div>
                 <div 
-                onClick={()=>navigate('/dashboard/card/add-card')}
+                onClick={()=>navigate('/dashboard/card/add-card')} 
                 className="flex items-center gap-1 cursor-pointer">
                     <IoAddCircleSharp/>
                     <p className="poppins-light text-gray-600 text-sm">New Card</p>
                 </div>
             </div>
-            <FlipCard/>
+            <FlipCard index={cardIndex} cardData={cards[cardIndex]}/>
             <div className="flex gap-1 justify-center items-center">
-                <div className="h-2 w-2 rounded-full primary-linear-gr-bg"></div>
-                <div className="h-1 w-1 rounded-full bg-black"></div>
-                <div className="h-1 w-1 rounded-full bg-black"></div>
-                <div className="h-1 w-1 rounded-full bg-black"></div>
+                {
+                    cards.map((_,i)=>{
+                        return(
+                        <div
+                        key={i} 
+                        onClick={()=>setCardIndex(i)}
+                        className={`rounded-full ${cardIndex===i?"h-2 w-2 primary-linear-gr-bg":"h-1 w-1 rounded-full bg-black"}`}>
+                        </div>
+                    )})
+                }
             </div>
         
         </div>    
     )
 }
 
-export function FlipCard({cardColorbg="#232B31",isArrowShown=true,width="380px",height="240px"}){
+export function FlipCard({cardColorbg="#232B31",isArrowShown=true,width="380px",height="240px",cardData={}}){
 
     const navigate  = useNavigate()
     const [isCardClicked,setCardClicked] = useState(false)
     const [cardColor,setCardColor] = useState(cardColorbg)
+    const [isCvvShown,setCVV] = useState(false)
     return(
         <div className={`flip-card relative shadow-xl rounded-3xl h-[240px] w-[380px] `}>
             {
@@ -65,9 +91,9 @@ export function FlipCard({cardColorbg="#232B31",isArrowShown=true,width="380px",
                         <div className="flex items-center gap-0.5 text-xs">
                             <p className="poppins-thin text-xs mr-4">{"Card Name"}</p>
                             <MdVerified color="#27A963" display="flex"/>
-                            <div className="text-green-500 poppins">Verified</div>
+                            <div className="text-green-500 poppins">{cardData.verified?"Verified":"Not Verified"}</div>
                         </div>
-                        <div className="poppin-bold">Holder Name</div>
+                        <div className="poppin-bold text-sm">{cardData.card_holder_name}</div>
                         </div>
                         <div >
                             <img src="/dashboard/visa.png"
@@ -81,8 +107,8 @@ export function FlipCard({cardColorbg="#232B31",isArrowShown=true,width="380px",
                     </div>
                     <div className="flex justify-between text-xs">
                         <div>
-                            <p className="poppins-thin text-xs ">Exp. Date</p>
-                            <p>02 / 28</p>
+                            <p className="poppins-thin text-xs mb-2">Exp. Date</p>
+                            <p>{cardData.exp_date}</p>
                         </div>
                         <div>
                         <p className="poppins-thin text-xs mb-2">CVV</p>
@@ -90,7 +116,7 @@ export function FlipCard({cardColorbg="#232B31",isArrowShown=true,width="380px",
                         </div>
                         <div>
                         <p className="poppins-thin text-xs mb-2">Balance</p>
-                        <p>₹ 100,000</p>
+                        <p>₹{cardData.balance}</p>
                         </div>
                         <div 
                         onClick={()=>navigate('/dashboard/card/card-detail')}
@@ -110,7 +136,7 @@ export function FlipCard({cardColorbg="#232B31",isArrowShown=true,width="380px",
                     <div className="flex flex-row justify-between text-xs">
                         <div>
                             <p className="poppins-thin text-xs mb-2">Payments</p>
-                            <p className="poppins-bold">12</p>
+                            <p className="poppins-bold">{cardData.payments}</p>
                         </div>
                         <div>
                         <p className="poppins-thin text-xs mb-2">Status</p>
@@ -143,7 +169,11 @@ export function FlipCard({cardColorbg="#232B31",isArrowShown=true,width="380px",
                     </div>
                     <div>
                         <p className="poppins-thin text-xs mb-2">CVV</p>
-                        <p className="flex gap-2">***<span><BiSolidShow color="gray" /></span></p>
+                        <p className="flex gap-2  text-xs ">{isCvvShown?cardData.cvv_no:"***"}
+                            <span onClick={(e)=>{
+                            e.stopPropagation()
+                            setCVV(!isCvvShown)}}>
+                            <BiSolidShow color="gray" /></span></p>
                     </div> 
                 </div>
                 </div>

@@ -2,8 +2,18 @@ import ActionCards from "./ActionCards";
 import { FaCreditCard } from "react-icons/fa6";
 import { FaArrowRight } from "react-icons/fa";
 import FilterComponent from "./Filter";
-
-function LatestActions(){
+import {useState,useEffect} from "react"
+function LatestActions({handleLatestActionData}){
+    // const [latestActions,setLatestActions] = useState([])
+    // useEffect(()=>{
+        
+    //     const fetchLatestAction = async() =>{
+    //         const data = await handleLatestActionData()
+    //         setLatestActions(data)
+    //     }
+    //     fetchLatestAction()
+  
+    // },[])
     return(
         <div className="my-[2rem]">
             <div className="flex mb-4 items-center gap-6">

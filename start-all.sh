@@ -1,7 +1,7 @@
 
 
 # List of microfrontend directories
-MICROFRONTENDS=("Appshell" "Auth" "Dashboard" "Report" "Invoice")
+MICROFRONTENDS=("Appshell" "Auth" "Dashboard" "Report" "Invoice" "Admin_dashboard")
 
 start_microfrontend() {
   local microfrontend_dir=$1

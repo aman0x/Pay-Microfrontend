@@ -1,5 +1,6 @@
 import Avatar from '@mui/material/Avatar';
 import { IoAdd } from "react-icons/io5";
+import { useState ,useEffect} from "react"
 /**------------------------------DUMMY USERS-------------------------------- */
 const users = [
     {
@@ -44,16 +45,25 @@ const users = [
     }
 ];
 
-export  function QuickSend(){
+export  function QuickSend({handleQuickSendData}){
+    const [quickSend,setQuickSend] = useState(users)
+    useEffect(()=>{
+        const fetchQuickSend =async()=>{
+          const data = await handleQuickSendData()
+          setQuickSend(data)
+        }
+        fetchQuickSend()
+       
+    },[])
     return(
-        <div >
-           <div className="flex items-center justify-between my-2">
+        <div>
+           <div className="flex items-center justify-between ">
             <p className="poppins-semibold text-lg">Quick Send</p>
             <p className="poppins-extralight text-xs underline cursor-pointer">All Beneficaries</p>
            </div>
            <div className='flex gap-2'>
             {
-                users.map((user,i)=>{
+                quickSend.map((user,i)=>{
                     return(
                     <div key={i} className='flex flex-col gap-0.5 items-center' >
                     <Avatar sx={{
@@ -63,10 +73,10 @@ export  function QuickSend(){
                         height:"60px",
                         color:"black",
                         fontWeight:"bold"
-                        }} alt={user.name} src={user.dp}
+                        }} alt={user.name} src={user.dp||"#"}
                     />
                     <p className='text-sm poppins-semibold'>{user.name}</p>
-                    <p  className='text-xs poppins-extralight'>@{user.username}</p>
+                    <p  className='text-xs poppins-extralight'>{user.username}</p>
                     </div>
                 )})
             }

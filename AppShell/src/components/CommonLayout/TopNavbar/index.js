@@ -2,12 +2,13 @@ import { Avatar } from "@mui/material";
 import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
-
+import { useSelector } from "react-redux"
 function TopNavbar(){
     const location = useLocation()
     const navigate  = useNavigate()
     const [isDropMenuOpen,setDropMenu] = useState(false)
     const TopHead = getTopName(location.pathname)
+    const current_user = useSelector(state=>state.auth.user)
     return(
         <div className="flex justify-between w-full mt-[1rem]"> 
             <div>
@@ -31,14 +32,14 @@ function TopNavbar(){
                             fontWeight:"bold",
                             fontSize:"small"
                         }}
-                         alt="Aajesh Mah"/>
+                         alt={current_user.first_name+current_user.last_name}/>
                     </div>
                 <div className="flex flex-col text-sm">
                     <div>
                     Hello!
                    </div>
                    <div className="poppins-semibold">
-                    Alex P.
+                    {current_user.first_name}
                     </div>
                 </div>
                 <div className=" relative ml-[2rem]">

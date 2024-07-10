@@ -53,10 +53,14 @@ export function useUserLoginAuth(){
         //axios.post(PUBLIC_ENDPOINTS.login,login_data)
         .then((data)=>{
             console.log("login_data",data)
+
         })
         .catch((e)=>{
+            toast.error("Error in login")
+            navigate('/dashboard')
             console.log("login_error_data",e)
         })
+       
 
     }
 
@@ -74,6 +78,7 @@ export function useUserLoginAuth(){
         })
         .catch((e)=>{
             console.log("login_error_data",e)
+            toast.error(e.message)
            
         })
         
@@ -135,6 +140,7 @@ export function useUserLoginAuth(){
         })
         .catch((e)=>{
             console.log("valdate_otp",e)
+            toast(e.message)
            
         })
         navigate('/dashboard')
@@ -146,19 +152,26 @@ export function useUserLoginAuth(){
 
 export function useUserSignupAuth(){
     const navigate = useNavigate()
-    const handleUserSignup = (data) =>{
+    const handleUserSignup = (data,userId=null,cb) =>{
         console.log("hook_data",data)
       
-        AxiosCall({url:PUBLIC_ENDPOINTS.signIn,method:"POST",PRIVATE_API:false,body:data})
+        AxiosCall({url:PUBLIC_ENDPOINTS.signIn,method:userId?"PUT":"POST",PRIVATE_API:false,body:data})
         .then((data)=>{
             console.log("Success",data)
+            cb(null)
             
         })
         .catch((e)=>{
             console.log("Error In Signin",e)
+            toast(e.message)
+            cb(e)
         })
         // just for flow
-        navigate('/accounts/type')
+        if(userId){
+            navigate('/dashboard')
+            return
+        }
+        navigate('/accounts/type',{state:{userId:1}})
     }
     return {handleUserSignup}
 }

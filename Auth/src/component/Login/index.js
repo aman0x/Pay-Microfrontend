@@ -10,8 +10,8 @@ import PaymorzSider from '../../utils/PaymorzSider';
 import { useNavigate } from "react-router-dom"
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast} from 'react-toastify';
+
 export default function LoginUser() {
   const navigate = useNavigate()
   const { handleLoginWithGoogle, handleLoginWithApple, handleLoginWithFacebook, handleLoginWithPhone, handleUserLoginWithEmail } = useUserLoginAuth()
@@ -161,9 +161,8 @@ export default function LoginUser() {
                   <button type="button"
                     disabled={isSubmitting}
                     onClick={() => {
-                      console.log("done")
-                      handleSubmit()
-                      //navigate('/accounts/type')
+                      //handleSubmit()
+                    navigate('/dashboard')
                     }}
                     className={`flex primary-btn items-center w-full justify-center rounded-xl ${isSubmitting?"bg-gray-400":"bg-gray-950"} px-3 p-4 text-sm font-semibold leading-7 text-white shadow-sm `}><div> {withEmail ? "Log In" : "Send Otp"}</div>
                     <span className='py-1.5 pl-2 size-6'><FaCircleArrowRight style={{ color: 'white' }} /></span></button>

@@ -7,6 +7,7 @@ declare -A MICROFRONTENDS_PORTS=(
   ["Dashboard"]=8005
   ["Report"]=8002
   ["Invoice"]=8001
+  ["Admin_dashboard"]=8006
 )
 
 stop_microfrontend() {

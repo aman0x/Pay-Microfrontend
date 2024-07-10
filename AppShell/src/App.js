@@ -8,11 +8,13 @@ import Auth from "Auth/Auth";
 import Dashboard from "Dashboard/Dashboard";
 import Invoice from "Invoice/Invoice";
 import Report from "Report/Report";
+// import Admin from "Admin/Admin";
 import reduxStore from "./store";
 import {useLocation} from "react-router-dom"
 import {ToastContainer} from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css'; 
 import CommonLayout from "./components/CommonLayout";
+
 function App() {
   const value = useSelector((state) => state.test.value);
   const dispatch = useDispatch();
@@ -33,6 +35,7 @@ function App() {
           <Route path="/dashboard/*" element={<Dashboard  />} />
           <Route path="/invoice/*" element={<Invoice />} />
           <Route path="/report/*" element={<Report />} />
+          {/* <Route path="/admin/*" element={<Admin  />} /> */}
         </Routes>
       </CommonLayout>
       }
@@ -47,7 +50,6 @@ const root = ReactDOM.createRoot(document.getElementById("app"));
 root.render(
   <Provider store={reduxStore}>
     <BrowserRouter>
-    
     <App />
     </BrowserRouter>
   </Provider>

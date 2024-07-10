@@ -1,19 +1,35 @@
 import { IoAddCircleSharp } from "react-icons/io5";
 import { BsBank2 } from "react-icons/bs";
-const DUMMY_BANKS = [
+import  { useEffect ,useState}from "react"
+import {Link} from "react-router-dom"
+const  DUMMY_BANKS = [
     {
-        bankName:" HDFC Bank, KODAK",
-        IFSC_CODE:" HDFC000162",
-        userName:"ANANTHARAPU ARUNA THEJASWINI"
+        bank_name:" HDFC Bank",
+        bank_branch_name:"KODAK",
+        ifsc_code:" HDFC000162",
+        account_holder_name:"ANANTHARAPU ARUNA THEJASWINI"
     },
     {
-        bankName:" HDFC Bank, KODAK",
-        IFSC_CODE:" HDFC000162",
-        userName:"RAJIV MEHTA"
+        bank_name:" HDFC Bank",
+        bank_branch_name:"KODAK",
+        ifsc_code:" HDFC000162",
+        account_holder_name:"ANANTHARAPU ARUNA THEJASWINI"
     }
 ]
 
-function Templates(){
+
+function Templates({userId=null,handleTemplateData}){
+    const [templates,setTemplates] = useState(DUMMY_BANKS)
+    useEffect(() => {
+        const fetchTemplates = async() =>{
+           const data = await handleTemplateData()
+           console.log(data)
+           setTemplates(data)
+        }
+        fetchTemplates();
+      
+    }, [userId])
+    
     return(
         <div className="w-full ">
             <div className="flex justify-between mb-4">
@@ -25,25 +41,25 @@ function Templates(){
             </div>
             <div className="flex flex-col gap-3">
             {
-                DUMMY_BANKS.map((bank,i)=>{
+                templates.map((bank,i)=>{
                     return(
                         <div key={i} className="flex flex-col bg-white p-[1.2rem] rounded-xl min-h-[5.6rem] justify-between">
                             <div className="flex justify-between poppins-regular text-xs text-gray-600">
                                 <div className="flex gap-2">
                                 <BsBank2 color="gray" />
-                                {bank.bankName}
+                                <div>{bank.bank_name},{bank.bank_branch_name}</div> 
                                 </div>
                                 <div>
-                                   {bank.IFSC_CODE}
+                                   {bank.ifsc_code}
                                 </div>
                             </div>
                             <div className="flex justify-between">
                                 <div className="poppins-semibold text-sm">
-                                {bank.userName}
+                                {bank.account_holder_name}
                                 </div>
-                                <a href="#" className="underline text-gray-500 poppins-light text-sm">
+                                <Link to={'/payment/new-payment'} className="underline text-gray-500 poppins-light text-sm">
                                     Make Payment
-                                </a>
+                                </Link>
                                 
                             </div>
 

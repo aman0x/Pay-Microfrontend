@@ -4,11 +4,18 @@ import { useState } from "react";
 import { IoDocumentText } from "react-icons/io5";
 import { PiLineVertical } from "react-icons/pi";
 import { FaCreditCard,FaCircleArrowRight } from "react-icons/fa6";
-import {useNavigate } from "react-router-dom"
+import {useNavigate,useLocation } from "react-router-dom"
+import { Formik } from "formik";
+import { useUserSignupAuth } from "#hooks/auth/index.js";
 export default function AccountType(){
     const navigate  = useNavigate()
+    const{ handleUserSignup } = useUserSignupAuth();
     const [isIndividual,setAccountType] = useState(true)
-    const [isValid,setFormValidation] = useState(true)
+    const location = useLocation();
+    const userId = location.state?.userId;
+    if(!userId){
+       console.log("Not Permitted")
+    }
     return(
         <div className="grid grid-cols-2 gap-4">
             <div className="flex min-h-full flex-col py-[2rem] px-[2em] gap-2 sm:mx-auto sm:w-full sm:max-w-lg">
@@ -107,75 +114,166 @@ export default function AccountType(){
                 </div>
 
                 </>
+                }
+               </div>
+               <Formik
+                initialValues={{ pan: '', aadhar: '' ,company_pan:'',company_aadhar:'',company_name:'Test'}}
+                validate={values => {
+                const errors = {};
+                if(!values.pan && isIndividual){
+                    errors.pan = "Required"
+                }
+                else if(values.pan.length<10 && isIndividual){
+                    errors.pan = "Enter Valid PAN number"
+                }
+                if(!values.aadhar && isIndividual){
+                    errors.aadhar = "Required"
+                }
+                else if(values.aadhar.length<10 && isIndividual){
+                    errors.aadhar = "Enter Valid Aadhar number"
+                }
+                if(!values.company_pan && !isIndividual){
+                    errors.company_pan = "Required"
+                }
+                else if(values.company_pan.length<10 && !isIndividual){
+                    errors.company_pan = "Enter Valid PAN number"
+                }
+                if(!values.company_aadhar && !isIndividual){
+                    errors.company_aadhar = "Required"
+                }
+                else if(values.company_aadhar.length<10 && !isIndividual){
+                    errors.company_aadhar = "Enter Valid Aadhar number"
+                }
+                
 
+                return errors;
+                }}
+                onSubmit={(values, { setSubmitting }) => {
+                    console.log(values)
+                    handleUserSignup(values,userId,(isError)=>{
+                        if(!isError){
+                            navigate('/dashboard')
+                            setSubmitting(false)
+                            
+                        }
+                        else{
+                            console.log("Error in Signup",isError)
+                        }
+                    })
+                }}
+          >
+            {({
+              values,
+              errors,
+              touched,
+              handleChange,
+              handleBlur,
+              handleSubmit,
+              isSubmitting,
+              /* and other goodies */
+            }) => (
+                <form>
+                {
+                    
+                    isIndividual ?
+                    <div className='flex flex-col gap-3 mt-4 border-0'>
+                        <div>
+                            <div className="relative primary-linear-gr-bg  p-[2px] rounded-xl">
+                            <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none gap-2">
+                            <IoDocumentText color="grey"/>
+                            <PiLineVertical color='gray'/>
+                            </div>
+                            <input type="text"
+                            name="pan"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.pan} 
+                            className="bg-white border-0 border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:outline-none" placeholder="PAN Number"/>
+                            </div>  
+                            <div className='text-red-400 text-xs'>{errors.pan && touched.pan && errors.pan}</div>
+                        </div>
+                        <div>
+                        <div className="relative primary-linear-gr-bg  p-[2px] rounded-xl">
+                        <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none gap-2">
+                        <FaCreditCard color="gray"/>
+                        <PiLineVertical color='gray'/>
+                        </div>
+                        <input type="text"
+                        name="aadhar"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.aadhar}
+                        className="bg-white border-0 border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:outline-none" placeholder="Aadhar Card"/>
+                        </div>
+                        <div className='text-red-400 text-xs'>{errors.aadhar && touched.aadhar && errors.aadhar}</div>
+                        </div>
+                    </div>
+                :
+                    <div className='flex flex-col gap-3 mt-4'>
+                            <div>
+                            <div className="relative primary-linear-gr-bg  p-[2px] rounded-xl">
+                            <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none gap-2">
+                            <IoDocumentText color="grey"/>
+                            <PiLineVertical color='gray'/>
+                            </div>
+                            <input
+                            name="company_pan"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.company_pan} 
+                            className=" bg-white border-0 border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 p-3.5  dark:placeholder-gray-400 focus:outline-none" placeholder="Company PAN"/>
+                            </div>
+                            <div className='text-red-400 text-xs'>{errors.company_pan && touched.company_pan && errors.company_pan}</div>
+                            </div>
+                            <div className="relative ">
+                            <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none gap-2">
+                            <MdBusinessCenter color="gray"/>
+                            <PiLineVertical color='gray'/>
+                            </div>
+                            <input type="text"   
+                            name="company_name"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.company_name}
+                            disabled className="bg-gray-200 border-0 border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:outline-none" placeholder="Company Name"/>
+                            </div>
+                            <div>
+                            <div className="relative primary-linear-gr-bg  p-[2px] rounded-xl">
+                            <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none gap-2">
+                            <FaCreditCard color="gray"/>
+                            <PiLineVertical color='gray'/>
+                            </div>
+                            <input type="text" 
+                            name="company_aadhar"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.company_aadhar}
+                            className="bg-white border-0 border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:outline-none" placeholder="Aadhar Card"/>
+                            </div>
+                            <div className='text-red-400 text-xs'>{errors.company_aadhar && touched.company_aadhar && errors.company_aadhar}</div>
+                            </div>
+                    </div>
+                
 
                 }
-               
-               
-                
-               </div>
-               {
-                isIndividual ?
-                <div className='flex flex-col gap-3 mt-4 border-0'>
-
-                    <div className="relative primary-linear-gr-bg  p-[2px] rounded-xl">
-                    <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none gap-2">
-                    <IoDocumentText color="grey"/>
-                    <PiLineVertical color='gray'/>
-                    </div>
-                    <input type="text"    className="bg-white border-0 border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:outline-none" placeholder="PAN Number"/>
-                    </div>
-
-                    <div className="relative primary-linear-gr-bg  p-[2px] rounded-xl">
-                    <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none gap-2">
-                    <FaCreditCard color="gray"/>
-                    <PiLineVertical color='gray'/>
-                    </div>
-                    <input type="text"    className="bg-white border-0 border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:outline-none" placeholder="Aadhar Card"/>
-                    </div>
-              </div>
-              :
-              <div className='flex flex-col gap-3 mt-4'>
-                    <div className="relative primary-linear-gr-bg  p-[2px] rounded-xl">
-                    <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none gap-2">
-                    <IoDocumentText color="grey"/>
-                    <PiLineVertical color='gray'/>
-                    </div>
-                    <input type="text"    className=" bg-white border-0 border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 p-3.5  dark:placeholder-gray-400 focus:outline-none" placeholder="Company PAN"/>
-                    </div>
-                    <div className="relative ">
-                    <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none gap-2">
-                    <MdBusinessCenter color="gray"/>
-                    <PiLineVertical color='gray'/>
-                    </div>
-                    <input type="text"    disabled className="bg-gray-200 border-0 border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:outline-none" placeholder="Company Name"/>
-                    </div>
-                    <div className="relative primary-linear-gr-bg  p-[2px] rounded-xl">
-                    <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none gap-2">
-                    <FaCreditCard color="gray"/>
-                    <PiLineVertical color='gray'/>
-                    </div>
-                    <input type="text"    className="bg-white border-0 border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:outline-none" placeholder="Aadhar Card"/>
-                    </div>
-              </div>
-
-               }
-            <div className='mt-3'>
-              <button type="submit"
-                onClick={() => { 
-                   navigate('/dashboard')
-                } }
-                disabled={isValid ?false:true}
-                style={
-                isValid?
-                    null
-                    :
-                    {
-                        backgroundColor:"gray"
+                <div className='mt-3'>
+                <button type="button"
+                    onClick={() => { 
+                    handleSubmit()
                     }}
-                className="flex w-full primary-btn items-center justify-center rounded-xl bg-gray-950 px-3 p-4 text-sm font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                {isIndividual?"Next":"Confirm"}<span className='py-1.5 pl-2 size-6'><FaCircleArrowRight style={{color:'white'}} /></span></button>
-            </div>
+                    disabled={isSubmitting ?true:false}
+                    style={
+                    !isSubmitting?
+                        null
+                        :
+                        {
+                            backgroundColor:"gray"
+                        }}
+                    className="flex w-full primary-btn items-center justify-center rounded-xl bg-gray-950 px-3 p-4 text-sm font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                    {isIndividual?"Next":"Confirm"}<span className='py-1.5 pl-2 size-6'><FaCircleArrowRight style={{color:'white'}} /></span></button>
+                </div>
+                </form>
+                )}</Formik>
             <div 
             className='my-5 mx-2 poppins-extralight-italic text-xs px-2'>
                 <p >By clicking Continue, you agree to Paymorz's <span><a className='underline font-semibold' href='#'>Terms & Conditions & Privacy Policy.</a></span></p>

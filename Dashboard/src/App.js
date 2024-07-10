@@ -1,6 +1,7 @@
 // Dashboard.js
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import ReactDOM from "react-dom/client";
+import { Routes, Route,BrowserRouter } from "react-router-dom";
 import "./index.css";
 import DashboardMain from "./component/Main/index.js";
 import MainPayment from "./component/Payment/component/Main/index.js";
@@ -17,6 +18,7 @@ import AddNewBeneficiary from "./component/Beneficiary/AddBeneficiary/index.js";
 import CardsDetail from "./component/MyCards/CardsDetail/index.js";
 import AddCard from "./component/MyCards/AddCard/index.js";
 import MyCards from "./component/MyCards/index.js";
+import Admin from "./component/Admin/index.js";
 const Dashboard = () => {
 
   return (
@@ -36,6 +38,7 @@ const Dashboard = () => {
      <Route path="/card" element={<MyCards/>}/>
      <Route path="/card/card-detail" element={<CardsDetail/>}/>
      <Route path="/card/add-card" element={<AddCard/>}/>
+     <Route path="/admin" element ={<Admin/>}/>
   </Routes>
   );
 };
