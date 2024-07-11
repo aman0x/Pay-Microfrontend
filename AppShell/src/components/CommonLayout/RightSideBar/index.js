@@ -15,7 +15,8 @@ function RightSideBar(){
             (location.pathname)!=='/dashboard/profile'&&
             !location.pathname.startsWith('/dashboard/card')&&
             !location.pathname.startsWith('/invoice/')&&
-            !location.pathname.startsWith('/report')
+            !location.pathname.startsWith('/report')&&
+            !location.pathname.startsWith('/admin/users')
         ) ?
         <div className="p-[0.8rem] mt-5 flex flex-col gap-4 ">
         <QuickAction/>

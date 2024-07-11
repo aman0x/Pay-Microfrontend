@@ -5,14 +5,21 @@ import SecondaryTopBar from "./SecondaryTopBar";
 import RightSideStatsBar from "./RightSideStatsBar";
 import RightSideBar from "./RightSideBar";
 import MainFooter from "./Footer";
+import AdminSideBar from "./AdminSideBar";
+import AdminRightSideBar from "./AdminRightSideBar";
 
 function CommonLayout({children}){
     const location = useLocation()
     return(
         <div className="bg-slate-50  flex flex-col ">
-        <div className="flex justify-center">
-          <SideNavBar />
-          <div className="w-full ">  
+        <div className="flex">
+          {
+            location.pathname.startsWith('/admin')?
+            <AdminSideBar/>
+            :
+            <SideNavBar />
+          }
+          <div className="w-full will-change-auto">  
             {
               ( location.pathname !== '/dashboard/payment/new-payment' &&
                 !location.pathname.startsWith('/dashboard/beneficiary') &&
@@ -35,6 +42,10 @@ function CommonLayout({children}){
                 location.pathname === '/dashboard/statistic' ?
                 
                 <RightSideStatsBar/>
+                :
+                location.pathname.startsWith('/admin') &&
+                !location.pathname.startsWith('/admin/users')?
+                <AdminRightSideBar/>
                 :
                 <RightSideBar/>
               }

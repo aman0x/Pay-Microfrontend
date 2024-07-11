@@ -1,6 +1,6 @@
 // AppShell.js (Folder A)
 import React from "react";
-import ReactDOM from "react-dom/client";
+import ReactDOMClient from "react-dom/client";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./themes/index.css";
@@ -8,12 +8,13 @@ import Auth from "Auth/Auth";
 import Dashboard from "Dashboard/Dashboard";
 import Invoice from "Invoice/Invoice";
 import Report from "Report/Report";
-// import Admin from "Admin/Admin";
+import Admin from "Admin/Admin";
 import reduxStore from "./store";
 import {useLocation} from "react-router-dom"
 import {ToastContainer} from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css'; 
 import CommonLayout from "./components/CommonLayout";
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 
 function App() {
   const value = useSelector((state) => state.test.value);
@@ -21,7 +22,7 @@ function App() {
   const location = useLocation()
 
   return (
-    <div className="test mx-auto bg-primary bg-slate-50">
+    <div className="test  bg-primary bg-slate-50">
       <ToastContainer limit={1}/>
       {
         location.pathname==="/" ||
@@ -35,7 +36,7 @@ function App() {
           <Route path="/dashboard/*" element={<Dashboard  />} />
           <Route path="/invoice/*" element={<Invoice />} />
           <Route path="/report/*" element={<Report />} />
-          {/* <Route path="/admin/*" element={<Admin  />} /> */}
+         <Route path="/admin/*" element={<Admin  />} /> 
         </Routes>
       </CommonLayout>
       }
@@ -46,12 +47,16 @@ function App() {
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById("app"));
+const root = ReactDOMClient.createRoot(document.getElementById("app"));
 root.render(
   <Provider store={reduxStore}>
+   
     <BrowserRouter>
+    <ErrorBoundary>
     <App />
+    </ErrorBoundary>
     </BrowserRouter>
+    
   </Provider>
 );
 

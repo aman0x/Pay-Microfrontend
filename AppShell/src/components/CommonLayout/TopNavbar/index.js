@@ -76,6 +76,18 @@ function getTopName(pathname="/"){
     else if(pathname==="/invoice"){
         return "Invoice"
     }
+    else if(pathname==="/admin"){
+        return "Dashboard(admin)"
+    }
+    else if(pathname==="/admin/user-activity"){
+        return "User Activity"
+    }
+    else if(pathname==="/admin/user-invoice"){
+        return "All Invoices"
+    }
+    else if(pathname.startsWith('/admin/users')){
+        return "All Users"
+    }
     else{
         return "Dashboard"
     }

@@ -50,12 +50,12 @@ module.exports = (env) => {
 
     plugins: [
       new ModuleFederationPlugin({
-        name: "Admin_dashboard",
+        name: "Admin",
         filename: "remoteEntry.js",
         remotes: {
         },
         exposes: {
-          
+          "./Admin":"./src/App.js"
         },
         shared: {
           ...deps,

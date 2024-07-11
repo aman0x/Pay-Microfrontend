@@ -2,8 +2,8 @@ import CircularChart from "./CircularChart";
 
 function StatsCards(){
     return(
-        <div className="grid grid-cols-2 h-72 m-1  gap-4">
-            <div className="bg-white rounded-2xl flex  p-[1.5rem] justify-between ">
+        <div className="grid grid-cols-2 h-[19rem] gap-4">
+            <div className="bg-white rounded-2xl flex  px-[1.5rem] py-[0.6rem] justify-between items-center">
                 <div className="flex flex-col gap-8">
                     <div className="flex flex-col gap-1">
                         <p className="text-[#A3A6A9] text-sm ">All Transaction</p>

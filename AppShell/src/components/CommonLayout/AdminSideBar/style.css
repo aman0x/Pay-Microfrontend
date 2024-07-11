@@ -1,0 +1,22 @@
+.nav-close{
+        width: 95px;
+        min-width: 95px;
+        overflow: hidden;
+        font-size: 20px;
+}
+.active-bar{
+    /* border:1px solid red; */
+    width:2.5px;
+    height:40px;
+    border-top-right-radius: 100%;
+    border-bottom-right-radius: 100%;
+}
+
+.nav-element{
+   padding-inline: 24px;
+}  
+.nav-element:hover{
+    font-weight: bold;
+    color: black;
+}
+

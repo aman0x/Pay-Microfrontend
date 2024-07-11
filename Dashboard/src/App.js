@@ -18,7 +18,7 @@ import AddNewBeneficiary from "./component/Beneficiary/AddBeneficiary/index.js";
 import CardsDetail from "./component/MyCards/CardsDetail/index.js";
 import AddCard from "./component/MyCards/AddCard/index.js";
 import MyCards from "./component/MyCards/index.js";
-import Admin from "./component/Admin/index.js";
+
 const Dashboard = () => {
 
   return (
@@ -38,7 +38,6 @@ const Dashboard = () => {
      <Route path="/card" element={<MyCards/>}/>
      <Route path="/card/card-detail" element={<CardsDetail/>}/>
      <Route path="/card/add-card" element={<AddCard/>}/>
-     <Route path="/admin" element ={<Admin/>}/>
   </Routes>
   );
 };
