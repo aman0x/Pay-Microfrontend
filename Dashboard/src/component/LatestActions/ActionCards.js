@@ -1,21 +1,25 @@
 import { BsBank2 } from "react-icons/bs";
-
-function ActionCards(){
+import moment from "moment"
+function ActionCards({data}){
+    console.log("cards",data)
     return(
         <div className="flex flex-col gap-3">
-                    <div className="flex flex-col justify-between bg-white rounded-2xl p-5 gap-3">
+            {
+                data.map((card)=>{
+                    return(
+                        <div className="flex flex-col justify-between bg-white rounded-2xl p-5 gap-3">
                         <div className="flex justify-between text-gray-600 text-sm poppins-medium">
-                            <p>Type Of Payment</p>
-                            <p>12 March 2024 12:38</p>
-                            <p>TD136347383DR82</p>
+                            <p>{card.payment_type}</p>
+                            <p>{moment(card.payment_datetime).format('DD MMMM YYYY HH:mm')}</p>
+                            <p>{card.transaction_id}</p>
                         </div>
                         <div className="flex justify-between poppins-semibold">
                             <div>
-                                <p>ANANTHARAPU ARUNA THEJASWINI</p>
-                                <p className="flex items-center text-gray-600 text-sm poppins-regular gap-2"><span><BsBank2/></span>HDFC Bank, KODAD, HDFC0001642</p>
+                                <p>{card.account_holder_name}</p>
+                                <p className="flex items-center text-gray-600 text-sm poppins-regular gap-2"><span><BsBank2/></span>{card.bank_name}, {card.bank_branch_name}, {card.ifsc_code}</p>
                             </div>
                             <div>
-                            - ₹ 1,00,000.00
+                            - ₹ {card.transaction_amount}
                             </div>
                         </div>
                         <div className="flex justify-between">
@@ -25,13 +29,17 @@ function ActionCards(){
                                         <circle cx="9" cy="9" r="4" fill="#FFB442"/>
                                         </svg>
                                 </span>
-                                <p className="text-[#FFB442]" > Transaction In Progress</p>
+                                <p className="text-[#FFB442]" > Transaction {card.transaction_status}</p>
                             </div>
                             <div>
                                 <a href="#" className="underline text-gray-600 text-sm poppins-medium">Details</a>
                             </div>
                         </div>                        
-                    </div>
+                        </div>
+                    )
+                })
+            }
+                    
                     <div className="flex flex-col justify-between bg-white rounded-2xl p-5 gap-3">
                         <div className="flex justify-between text-gray-600 text-sm poppins-medium">
                             <p>Type Of Payment</p>

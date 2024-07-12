@@ -1,11 +1,33 @@
 import { useState } from "react"
 import CalenderStats from "./calendar"
-import { useNavigate } from "react-router-dom"
-
+import { useNavigate,useLocation } from "react-router-dom"
+import AdminStats from "./Stats"
 function AdminRightSideBar(){
     const [calenderIndex,setcalenderIndex] = useState(0)
+    const navigate = useNavigate()
+    const location =  useLocation()
     return(
-        <div className="p-[0.8rem] mt-5 flex flex-col gap-4 " >
+        <div className="p-[0.8rem] mt-5 flex flex-col gap-4" >
+            {
+                location.pathname === "/admin/user-activity"?
+                <button
+                onClick={()=>{navigate('/admin/users')}}
+                className="poppins-medium text-sm flex items-center bg p-[1rem] bg-black-primary rounded-xl w-72 min-h-[3.5rem] gap-4 primary-btn">
+                <div>
+                    <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.15 4C12.15 5.933 10.7397 7.5 8.99999 7.5C7.2603 7.5 5.85 5.933 5.85 4C5.85 2.067 7.2603 0.5 8.99999 0.5C10.7397 0.5 12.15 2.067 12.15 4Z" fill="#4E5459"/>
+                    <path d="M14.4 13C14.4 14.933 11.9823 16.5 8.99999 16.5C6.01766 16.5 3.6 14.933 3.6 13C3.6 11.067 6.01766 9.5 8.99999 9.5C11.9823 9.5 14.4 11.067 14.4 13Z" fill="#4E5459"/>
+                    <path d="M4.60986 1.5C4.76957 1.5 4.92549 1.51741 5.07606 1.55056C4.70925 2.27446 4.50001 3.11008 4.50001 4C4.50001 4.86825 4.69919 5.68482 5.04954 6.39636C4.90722 6.42583 4.76022 6.44126 4.60986 6.44126C3.33688 6.44126 2.30493 5.33512 2.30493 3.97063C2.30493 2.60614 3.33688 1.5 4.60986 1.5Z" fill="#4E5459"/>
+                    <path d="M3.1026 15.486C2.59148 14.8071 2.25 13.974 2.25 13C2.25 12.0558 2.57091 11.244 3.0562 10.5767C1.34199 10.7245 0 11.7662 0 13.0294C0 14.3044 1.36557 15.3538 3.1026 15.486Z" fill="#4E5459"/>
+                    <path d="M13.4999 4C13.4999 4.86825 13.3007 5.68482 12.9504 6.39636C13.0927 6.42583 13.2397 6.44126 13.3901 6.44126C14.6631 6.44126 15.695 5.33512 15.695 3.97063C15.695 2.60614 14.6631 1.5 13.3901 1.5C13.2303 1.5 13.0745 1.51741 12.9239 1.55056C13.2906 2.27446 13.4999 3.11008 13.4999 4Z" fill="#4E5459"/>
+                    <path d="M14.8973 15.486C16.6343 15.3538 17.9999 14.3044 17.9999 13.0294C17.9999 11.7662 16.6579 10.7245 14.9437 10.5767C15.429 11.244 15.7499 12.0558 15.7499 13C15.7499 13.974 15.4085 14.8071 14.8973 15.486Z" fill="#4E5459"/>
+                    </svg>
+                </div>
+                <div>Manage Users</div>
+                </button>
+                :
+                <></>
+            }
         <div>
             <div className="poppins-semibold text-base">Show Data</div>
             <div className="poppins-light text-xs">Set Option to show last:</div>
@@ -13,7 +35,7 @@ function AdminRightSideBar(){
         
         <div className="flex w-72  bg-[#F0F1F2] py-[8px] rounded-xl justify-evenly px-2 ">
             <button
-            className='px-2 py-2 rounded-xl poppins-light text-sm'
+            className='px-2 py-2 rounded-xl poppins-light text-sm min-w-fit' 
             style={{
             backgroundColor:calenderIndex===0?"#F0F1F2":null,
             width:"45%",
@@ -23,7 +45,7 @@ function AdminRightSideBar(){
             }}
             onClick={()=>setcalenderIndex(0)}
             >
-            Day
+            All Time
             </button>
             <button 
             className='px-2 py-2 rounded-xl poppins-light text-sm'
@@ -67,7 +89,35 @@ function AdminRightSideBar(){
         </div>
         <div className="text-[#B6B8BA] text-xs poppins-light">Or Set Date in Calendar:</div>
         <CalenderStats/>
-       
+        <div>
+            <div className="poppins-semibold text-base">All Time Stats</div>
+            <div className="poppins-light text-xs">Lorem issum derun isdir</div>
+        </div>
+        <div className="flex items-center justify-between w-full bg-white py-2 px-6 rounded-2xl mt-2">
+                    <div className="flex flex-col ">
+                        <p className="text-gray-600 poppins-light ">Total Incomes</p>
+                        <p className="poppins-bold">₹ 240.70</p>
+                        <p className="poppins-bold text-[#27A963]">12<span className="poppins-light"> Today</span></p>
+                    </div>
+                    <div className="flex  items-center">
+                        <div className="primary-linear-gr-bg-light p-3 rounded-[50%]">
+                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"  clipRule="evenodd" d="M21.5312 10.6526C21.5312 16.5239 16.7714 21.2837 10.9001 21.2837C5.02869 21.2837 0.268982 16.5239 0.268982 10.6526C0.268982 4.78119 5.02869 0.0214844 10.9001 0.0214844C16.7714 0.0214844 21.5312 4.78119 21.5312 10.6526ZM7.67847 7.431C7.98985 7.11962 8.49469 7.11962 8.80608 7.431L10.9001 9.52495L12.994 7.43102C13.3054 7.11964 13.8103 7.11964 14.1216 7.43102C14.433 7.74239 14.433 8.24724 14.1216 8.55859L12.0276 10.6526L14.1216 12.7465C14.433 13.0579 14.433 13.5628 14.1216 13.8741C13.8103 14.1855 13.3054 14.1855 12.994 13.8741L10.9001 11.7802L8.80608 13.8741C8.49472 14.1855 7.98987 14.1855 7.67849 13.8741C7.36712 13.5628 7.36712 13.0579 7.67849 12.7466L9.77245 10.6526L7.67847 8.55859C7.36709 8.24722 7.36709 7.74237 7.67847 7.431Z" fill="url(#paint0_linear_5_9161)"/>
+                            <defs>
+                            <linearGradient id="paint0_linear_5_9161" x1="-3.12079" y1="12.5426" x2="25.074" y2="6.09082" gradientUnits="userSpaceOnUse">
+                            <stop stopColor="#F6DEC6"/>
+                            <stop offset="0.47" stopColor="#E872D4"/>
+                            <stop offset="0.656667" stopColor="#C190D9"/>
+                            <stop offset="0.881578" stopColor="#A2DCFE"/>
+                            </linearGradient>
+                            </defs>
+                            </svg>
+                        </div>
+                    </div>
+        </div>
+        <div className="w-72">
+        <AdminStats/>
+        </div>
         <GeneralReport/>
          </div>
     )

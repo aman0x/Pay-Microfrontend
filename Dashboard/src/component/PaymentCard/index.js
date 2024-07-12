@@ -103,7 +103,7 @@ export function FlipCard({cardColorbg="#232B31",isArrowShown=true,width="380px",
                         </div>                    
                     </div>
                     <div>
-                        <p className="poppins-regular">**** **** **** **** 1001</p>
+                        <p className="poppins-regular">{maskCardNumber(cardData.card_number)}</p>
                     </div>
                     <div className="flex justify-between text-xs">
                         <div>
@@ -181,3 +181,14 @@ export function FlipCard({cardColorbg="#232B31",isArrowShown=true,width="380px",
         </div>
     )
 }
+function maskCardNumber(cardNumber) {
+    
+    if (cardNumber.length !== 16) {
+      throw new Error('Card number must be 16 digits long.');
+    }
+    const lastFourDigits = cardNumber.slice(-4);
+    const maskedSection = '*'.repeat(12); 
+    const maskedCardNumber = maskedSection + lastFourDigits;
+    const formattedCardNumber = maskedCardNumber.match(/.{1,4}/g).join(' '); 
+    return formattedCardNumber;
+  }

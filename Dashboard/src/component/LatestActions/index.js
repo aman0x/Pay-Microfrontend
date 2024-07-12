@@ -4,16 +4,16 @@ import { FaArrowRight } from "react-icons/fa";
 import FilterComponent from "./Filter";
 import {useState,useEffect} from "react"
 function LatestActions({handleLatestActionData}){
-    // const [latestActions,setLatestActions] = useState([])
-    // useEffect(()=>{
+    const [latestActions,setLatestActions] = useState([])
+    useEffect(()=>{
         
-    //     const fetchLatestAction = async() =>{
-    //         const data = await handleLatestActionData()
-    //         setLatestActions(data)
-    //     }
-    //     fetchLatestAction()
+        const fetchLatestAction = async() =>{
+            const data = await handleLatestActionData()
+            setLatestActions(data)
+        }
+        fetchLatestAction()
   
-    // },[])
+    },[])
     return(
         <div className="my-[2rem]">
             <div className="flex mb-4 items-center gap-6">
@@ -66,7 +66,7 @@ function LatestActions({handleLatestActionData}){
                    </div>
                 </div>
                 <div className=" col-span-3 w-[100%]">
-                <ActionCards/>
+                <ActionCards data={latestActions}/>
                 </div>
                
             </div>

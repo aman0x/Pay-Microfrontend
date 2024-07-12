@@ -17,11 +17,11 @@ import CommonLayout from "./components/CommonLayout";
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 
 function App() {
-  const value = useSelector((state) => state.test.value);
+  const value = useSelector((state) => state.auth.value);
   const dispatch = useDispatch();
   const location = useLocation()
-
   return (
+    <ErrorBoundary fallback={<p>Something went wromg</p>}>
     <div className="test  bg-primary bg-slate-50">
       <ToastContainer limit={1}/>
       {
@@ -40,21 +40,16 @@ function App() {
         </Routes>
       </CommonLayout>
       }
-     
-
-   
     </div>
+    </ErrorBoundary>
   );
 }
 
 const root = ReactDOMClient.createRoot(document.getElementById("app"));
 root.render(
   <Provider store={reduxStore}>
-   
     <BrowserRouter>
-    <ErrorBoundary>
     <App />
-    </ErrorBoundary>
     </BrowserRouter>
     
   </Provider>

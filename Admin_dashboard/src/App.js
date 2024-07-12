@@ -15,16 +15,16 @@ const Admin = () => (
   </Routes>
 );
 
-const container = document.getElementById('app');
-let root = container._reactRoot;
-if(root){
-  console.log("rott",root)
-}
-else{
-  console.log("no-root")
-}
+// const container = document.getElementById('app');
+// let root = container._reactRoot;
+// if(root){
+//   console.log("rott",root)
+// }
+// else{
+//   console.log("no-root")
+// }
 // // Check if root exists for the container
-// 
+
 // if (!root) {
 //   root = ReactDOMClient.createRoot(container);
 //   container._reactRoot = root;
@@ -32,7 +32,7 @@ else{
 
 // // Render the application using root.render()
 // root.render(
-//   <BrowserRouter>
+//   <BrowserRouter basename="admin">
 //     <Admin />
 //   </BrowserRouter>
 // );

@@ -74,13 +74,14 @@ export function useDashboard(){
         try{
             const arr = []
            const response = await ApiCall({url:PRIVATE_ENDPOINTS.GET_LATEST_ACTIONS,method:"GET",PRIVATE_API:true,current_user:user})
+           console.log("hellar", response)
            if(Array.isArray(response.data)){
             return response.data;
-        }
-        else{
-            arr.push(response.data)
-            return arr;
-        }
+            }
+            else{
+                arr.push(response.data)
+                return arr;
+            }
             
         }
         catch(e){

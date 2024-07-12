@@ -7,7 +7,7 @@
     padding: 1.2rem;
     width: 280px;
     font-size:x-small;
-     box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+     box-shadow: rgba(17, 12, 46, 0.15) 0px 20px 50px 0px;
   }
   .react-calendar__navigation__prev2-button {
     display: none;

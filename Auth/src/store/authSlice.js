@@ -11,7 +11,7 @@ const authSlice = createSlice({
         },
         isLogin:false,
         token:'',
-       
+        value:1
     },
     reducers:{
         login(state,action){
@@ -23,7 +23,7 @@ const authSlice = createSlice({
             
         },
         increaseCounter(state,action){
-            state.counter = state.counter+1;
+            state.value = state.value+1;
         }
 
     }

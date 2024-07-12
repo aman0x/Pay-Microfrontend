@@ -11,13 +11,13 @@ import { useNavigate } from "react-router-dom"
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { toast} from 'react-toastify';
-
+import { useDispatch} from "react-redux"
+import { authActions } from '../../store/authSlice';
 export default function LoginUser() {
   const navigate = useNavigate()
   const { handleLoginWithGoogle, handleLoginWithApple, handleLoginWithFacebook, handleLoginWithPhone, handleUserLoginWithEmail } = useUserLoginAuth()
   const [withEmail, setWithEmail] = useState(true)
   const [isPasswordShown, setPasswordShown] = useState(false)
-
   return (
     <div className="grid grid-cols-2 gap-4">
       <div className="flex min-h-full flex-col ">
@@ -35,7 +35,9 @@ export default function LoginUser() {
                 width: "45%",
                 fontWeight: withEmail ? "bold" : "normal"
               }}
-              onClick={() => setWithEmail(true)}
+              onClick={() =>
+                 setWithEmail(true)
+                }
             >
               Email / Password
             </button>
