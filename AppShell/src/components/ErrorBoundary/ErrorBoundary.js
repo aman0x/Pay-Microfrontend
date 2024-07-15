@@ -1,4 +1,5 @@
 import React from 'react';
+import NotFound from '../Error';
 
 class ErrorBoundary extends React.Component {
     constructor(props) {
@@ -11,12 +12,13 @@ class ErrorBoundary extends React.Component {
     }
 
     componentDidCatch(error, errorInfo) {
-        console.error("ErrorBoundary caught an error", error, errorInfo);
+        // Log error to error tracking system
+        console.error('Error caught by boundary:', error, errorInfo);
     }
 
     render() {
         if (this.state.hasError) {
-            return <h1>Something went wrong.</h1>;
+            return <NotFound/>;
         }
 
         return this.props.children; 

@@ -184,15 +184,30 @@ const transactions = [
   ];
   
   
-import {useState} from "react"
+import {useState,useEffect} from "react"
 import { TiTick } from "react-icons/ti";
 import "./style.css"
+import moment from "moment"
 import { useNavigate } from "react-router-dom"
-function InvoiceTable(){
-
+function InvoiceTable({handleInvoiceData}){
     const [isDateClicked,setIsDateClicked] = useState(false)
     const statusColor = '#27A963'
     const navigate = useNavigate()
+    const [invoiceData,setInvoiceData] = useState(transactions)
+
+    useEffect(()=>{
+
+      const fetchInvoiceData = async ()=>{
+
+      const data =  await handleInvoiceData()
+
+      setInvoiceData(data)
+      }
+
+      fetchInvoiceData()
+      
+    },[])
+
     return(
         <div className="w-full mt-2 ">
         <table className="w-full  rounded-2xl overflow-hidden   ">
@@ -245,10 +260,10 @@ function InvoiceTable(){
                 </td>
             </tr>
             {
-                transactions.map((transaction,i)=>{
+                invoiceData.map((transaction,i)=>{
                     return(
                         <tr key={i} className="text-xs poppins-regular"
-                        onClick={()=>navigate(`/invoice/invoice-detail`)}
+                        onClick={()=>navigate(`/invoice/invoice-detail?invoiceId=${i}`)}
                         >
                         <td>
                             <div className="flex items-center gap-3 td-element">
@@ -256,16 +271,16 @@ function InvoiceTable(){
                                     <TiTick color="white" size="12px"/>    
                                 </div>
                                 <div  className="flex flex-col gap-1">
-                                    <span>{transaction.date}</span>
-                                    <span>{transaction.time}</span>
+                                <span>{moment(transaction.date).format('DD MMMM YYYY')}</span>
+                                <span>{moment(transaction.date).format('HH:mm')}</span>
                                 </div>
                             </div>
                         </td>
                         <td><div className="td-element">{transaction.recipient}</div></td>
                         <td><div className="td-element">{transaction.type}</div></td>
                         <td><div className="td-element">{transaction.bank}</div></td>
-                        <td><div className="td-element">{transaction.paymentType}</div></td>
-                        <td><div className="td-element">{transaction.transactionID}</div></td>
+                        <td><div className="td-element">{transaction.account_type}</div></td>
+                        <td><div className="td-element">{transaction.transaction_id}</div></td>
                         <td>
                             
                             <div className="flex gap-2 items-center td-element">

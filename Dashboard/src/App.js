@@ -18,10 +18,12 @@ import AddNewBeneficiary from "./component/Beneficiary/AddBeneficiary/index.js";
 import CardsDetail from "./component/MyCards/CardsDetail/index.js";
 import AddCard from "./component/MyCards/AddCard/index.js";
 import MyCards from "./component/MyCards/index.js";
-
+import AxiosInstance from "controllers/AxiosInstance/index"
+import { ToastContainer } from "react-toastify";
 const Dashboard = () => {
-
   return (
+    <>
+    <ToastContainer/>
     <Routes>
     <Route path="/" element={<DashboardMain />} />
     <Route path="/payment" element={<MainPayment />} />
@@ -39,6 +41,7 @@ const Dashboard = () => {
      <Route path="/card/card-detail" element={<CardsDetail/>}/>
      <Route path="/card/add-card" element={<AddCard/>}/>
   </Routes>
+  </>
   );
 };
 

@@ -4,196 +4,211 @@ const transactions = [
     {
       date: "15th Jan 2023",
       time: "10:30am",
-      recipient: "Rajesh Kumar",
+      beneficiary: "Rajesh Kumar",
       type: "Vendor Payment",
       paymentType: "Credit",
       bank: "State Bank of India",
       accountType: "Savings",
-      transactionID: "TXN12345601",
+      transaction_id: "TXN12345601",
       status: "Succeeded",
       sum: 5000
     },
     {
       date: "17th Feb 2023",
       time: "02:45pm",
-      recipient: "Anita Singh",
+      beneficiary: "Anita Singh",
       type: "House Professional Payment",
       paymentType: "Debit",
       bank: "HDFC Bank",
       accountType: "Current",
-      transactionID: "TXN12345602",
+      transaction_id: "TXN12345602",
       status: "Succeeded",
       sum: 2000
     },
     {
       date: "21st Mar 2023",
       time: "11:15am",
-      recipient: "Sunil Sharma",
+      beneficiary: "Sunil Sharma",
       type: "Vendor Payment",
       paymentType: "Credit",
       bank: "ICICI Bank",
       accountType: "Savings",
-      transactionID: "TXN12345603",
+      transaction_id: "TXN12345603",
       status: "In Progress",
       sum: 7500
     },
     {
       date: "5th Apr 2023",
       time: "03:50pm",
-      recipient: "Meena Verma",
+      beneficiary: "Meena Verma",
       type: "House Professional Payment",
       paymentType: "Debit",
       bank: "Axis Bank",
       accountType: "Current",
-      transactionID: "TXN12345604",
+      transaction_id: "TXN12345604",
       status: "Succeeded",
       sum: 1000
     },
     {
       date: "10th May 2023",
       time: "09:30am",
-      recipient: "Vikram Patel",
+      beneficiary: "Vikram Patel",
       type: "Vendor Payment",
       paymentType: "Credit",
       bank: "Punjab National Bank",
       accountType: "Savings",
-      transactionID: "TXN12345605",
+      transaction_id: "TXN12345605",
       status: "Succeeded",
       sum: 3000
     },
     {
       date: "15th Jun 2023",
       time: "12:45pm",
-      recipient: "Sneha Reddy",
+      beneficiary: "Sneha Reddy",
       type: "House Professional Payment",
       paymentType: "Debit",
       bank: "Kotak Mahindra Bank",
       accountType: "Current",
-      transactionID: "TXN12345606",
+      transaction_id: "TXN12345606",
       status: "Succeeded",
       sum: 4500
     },
     {
       date: "20th Jul 2023",
       time: "04:10pm",
-      recipient: "Amitabh Desai",
+      beneficiary: "Amitabh Desai",
       type: "Vendor Payment",
       paymentType: "Credit",
       bank: "Bank of Baroda",
       accountType: "Savings",
-      transactionID: "TXN12345607",
+      transaction_id: "TXN12345607",
       status: "Succeeded",
       sum: 5200
     },
     {
       date: "25th Aug 2023",
       time: "01:20pm",
-      recipient: "Ravi Gupta",
+      beneficiary: "Ravi Gupta",
       type: "House Professional Payment",
       paymentType: "Debit",
       bank: "Canara Bank",
       accountType: "Current",
-      transactionID: "TXN12345608",
+      transaction_id: "TXN12345608",
       status: "In Progress",
       sum: 1800
     },
     {
       date: "10th Sep 2023",
       time: "10:00am",
-      recipient: "Priya Iyer",
+      beneficiary: "Priya Iyer",
       type: "Vendor Payment",
       paymentType: "Credit",
       bank: "Union Bank of India",
       accountType: "Savings",
-      transactionID: "TXN12345609",
+      transaction_id: "TXN12345609",
       status: "Succeeded",
       sum: 6200
     },
     {
       date: "5th Oct 2023",
       time: "02:35pm",
-      recipient: "Karan Kapoor",
+      beneficiary: "Karan Kapoor",
       type: "House Professional Payment",
       paymentType: "Debit",
       bank: "IDFC First Bank",
       accountType: "Current",
-      transactionID: "TXN12345610",
+      transaction_id: "TXN12345610",
       status: "Succeeded",
       sum: 2500
     },
     {
       date: "12th Nov 2023",
       time: "09:45am",
-      recipient: "Lata Joshi",
+      beneficiary: "Lata Joshi",
       type: "Vendor Payment",
       paymentType: "Credit",
       bank: "IndusInd Bank",
       accountType: "Savings",
-      transactionID: "TXN12345611",
+      transaction_id: "TXN12345611",
       status: "Succeeded",
       sum: 8000
     },
     {
       date: "17th Dec 2023",
       time: "11:30am",
-      recipient: "Nitin Agrawal",
+      beneficiary: "Nitin Agrawal",
       type: "Vendor Payment",
       paymentType: "Debit",
       bank: "Yes Bank",
       accountType: "Current",
-      transactionID: "TXN12345612",
+      transaction_id: "TXN12345612",
       status: "Succeeded",
       sum: 3200
     },
     {
       date: "22nd Jan 2024",
       time: "01:55pm",
-      recipient: "Pooja Rao",
+      beneficiary: "Pooja Rao",
       type: "Vendor Payment",
       paymentType: "Credit",
       bank: "Bank of India",
       accountType: "Savings",
-      transactionID: "TXN12345613",
+      transaction_id: "TXN12345613",
       status: "In Progress",
       sum: 5400
     },
     {
       date: "5th Feb 2024",
       time: "04:15pm",
-      recipient: "Suresh Nair",
+      beneficiary: "Suresh Nair",
       type: "Vendor Payment",
       paymentType: "Debit",
       bank: "Central Bank of India",
       accountType: "Current",
-      transactionID: "TXN12345614",
+      transaction_id: "TXN12345614",
       status: "Succeeded",
       sum: 1500
     },
     {
       date: "15th Mar 2024",
       time: "10:05am",
-      recipient: "Geeta Jain",
+      beneficiary: "Geeta Jain",
       type: "Vendor Payment",
       paymentType: "Credit",
       bank: "Indian Bank",
       accountType: "Savings",
-      transactionID: "TXN12345615",
+      transaction_id: "TXN12345615",
       status: "Succeeded",
       sum: 4000
     }
   ];
   
   
-import {useState} from "react"
+import {useEffect, useState} from "react"
 import { TiTick } from "react-icons/ti";
 import "./style.css"
 import { useNavigate } from "react-router-dom";
-function PaymentTable(){
-  const navigate = useNavigate()
+import moment from "moment";
+function PaymentTable({handlePaymentData}){
+    const navigate = useNavigate()
     const [isDateClicked,setIsDateClicked] = useState(false)
     const statusColor = '#27A963'
+    const [paymentData,setPaymentData] = useState(transactions)
+
+    useEffect(()=>{
+
+      const fetchPaymentData = async ()=>{
+      const data =  await handlePaymentData()
+      console.log("pt",paymentData)
+      setPaymentData(data)
+      }
+
+      fetchPaymentData()
+      
+    },[])
+
     return(
-        <div className="w-full mt-2 ">
+        <div className="w-full mt-2">
         <table className="w-full  rounded-2xl overflow-hidden   ">
             <tr className="poppins-light text-xs text-white bg-black-primary items-center ">
                 <td>
@@ -241,11 +256,11 @@ function PaymentTable(){
                 </td>
             </tr>
             {
-                transactions.map((transaction,i)=>{
+                paymentData.map((transaction,i)=>{
                     return(
                         <tr 
                         key={i}
-                        onClick={()=>navigate(`/dashboard/payment/payment-detail?${i}`)}
+                        onClick={()=>navigate(`/dashboard/payment/payment-detail?paymentId=${i}`)}
                         className="text-xs poppins-regular"
                         >
                         <td>
@@ -254,15 +269,15 @@ function PaymentTable(){
                                     <TiTick color="white" size="12px"/>    
                                 </div>
                                 <div  className="flex flex-col gap-1">
-                                    <span>{transaction.date}</span>
-                                    <span>{transaction.time}</span>
+                                    <span>{moment(transaction.payment_datetime).format('DD MMMM YYYY')}</span>
+                                    <span>{moment(transaction.payment_datetime).format('HH:mm')}</span>
                                 </div>
                             </div>
                         </td>
-                        <td><div className="td-element">{transaction.recipient}</div></td>
+                        <td><div className="td-element">{transaction.beneficiary}</div></td>
                         <td><div className="td-element">{transaction.type}</div></td>
                         <td><div className="td-element">{transaction.bank}</div></td>
-                        <td><div className="td-element">{transaction.transactionID}</div></td>
+                        <td><div className="td-element">{transaction.transaction_id}</div></td>
                         <td>
                             
                             <div className="flex gap-2 items-center td-element">

@@ -4,7 +4,7 @@ import ChartComp from "../../Chart/index.js"
 import {useNavigate} from "react-router-dom"
 
 const cards = ['**** **** **** 1001','**** **** **** 1001','**** **** **** 1001','**** **** **** 1001']
-function SpendData(){
+function SpendData({monthStats}){
     const navigate = useNavigate()
     const [isCardMenuOpen,setCardMenuOpen] = useState(false)
     return(
@@ -45,7 +45,7 @@ function SpendData(){
                     </div>
                     <div className="flex justify-between items-center gap-1">
                         <div>Total: </div>
-                        <div className="poppins-semibold text-black">₹ 24,000.70</div>
+                        <div className="poppins-semibold text-black">₹ {monthStats.incomes}</div>
                     </div>
                 </div>
                 <div className="flex justify-between">
@@ -55,7 +55,7 @@ function SpendData(){
                     </div>
                     <div className="flex justify-between items-center gap-1">
                         <div>Total: </div>
-                        <div className="poppins-semibold text-black">₹ 24,000.70</div>
+                        <div className="poppins-semibold text-black">₹ {monthStats.expenses}</div>
                     </div>
                 </div>
             </div>

@@ -9,7 +9,9 @@ import AccountType from "./component/AccountType/index.js";
 import { OtpScreen } from "./component/OtpScreen/index.js";
 import { ToastContainer } from "react-toastify";
 import { Provider } from "react-redux";
-import reduxStore from "./store/index.js";
+import AxiosInstance from "controllers/AxiosInstance/index"
+import ErrorBoundary from "./component/ErrorBoundary/index.js";
+console.log("work",window.root)
 const Auth = () => (
   
   <div className="bg-white">
@@ -21,8 +23,8 @@ const Auth = () => (
     <Route path="/accounts/type" element={<AccountType />} />
     <Route path="/accounts/otp-verification" element={<OtpScreen />} />
   </Routes>
-
   </div>
+
 );
 // const root = ReactDOM.createRoot(document.getElementById("app"));
 // root.render(

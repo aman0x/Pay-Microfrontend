@@ -1,5 +1,5 @@
 
-function StatsTop({reportIndex,setReportIndex}){   
+function StatsTop({reportIndex,setReportIndex,stats}){   
     return(
         <div className="flex flex-col gap-2">
             <div className="flex w-full  bg-[#FFFF] py-[8px] rounded-xl justify-evenly px-2 ">

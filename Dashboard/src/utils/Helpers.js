@@ -1,3 +1,4 @@
+import moment from "moment"
 export const GET_FROM_LOCALSTORAGE = (key) =>{
     if (!key) throw new Error("Invalid key")
         if (typeof window !== 'undefined' && localStorage && localStorage.getItem(key)) {
@@ -39,4 +40,8 @@ export function getCookie(name) {
 
 export function eraseCookie(name) {
     document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
+export function GET_DATE_FORMAT(date){
+    moment(date).format('DD MMMM YYYY HH:mm')
 }

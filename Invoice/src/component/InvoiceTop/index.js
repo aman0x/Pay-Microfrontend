@@ -1,16 +1,49 @@
-import { useState }  from "react"
+import { useState,useEffect }  from "react"
 import { CircularProgressbar,CircularProgressbarWithChildren,buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import GradientSVG from "./gradientSvg.js";
 import { FaSquare,FaSearch } from "react-icons/fa"
-function InvoiceTop(){
+function InvoiceTop({handleInvoiceStats}){
   const idCSS = "hello";
+  const [invoiceStats,setInvoiceStats] = useState(
+    {
+      "all_invoices": 600,
+      "successful": 1,
+      "in_progress": 122,
+      "failed": 123,
+      "refunded": 123,
+      "today_successful": 4,
+      "today_in_progress": 1,
+      "today_failed": 2,
+      "today_refunded": 0
+  }
+  )
+  const [percentage,setPercentage] = useState({
+    percentage1:66,
+    percentage2:64,
+    percentage3:69,
+    percentage4:72
+  })
   const [filterIndex,setFilterIndex] = useState(0)
+  useEffect(()=>{
+    const fetchStats =async()=>{
+      const data = await handleInvoiceStats()
+      setInvoiceStats(data)
+      const perc = {
+        percentage1: Math.round((data.successful / data.all_invoices) * 100),
+        percentage2: Math.round((data.in_progress / data.all_invoices) * 100),
+        percentage3: Math.round((data.failed / invoiceStats.all_invoices) * 100),
+        percentage4: Math.round((data.refunded / data.all_invoices) * 100)
+      };
+      setPercentage(perc)
+    }
+    fetchStats()
+  },[])
     const [isInvoiceSend,setIsInvoiceSend] = useState(true)
-    const percentage1 = 67;
-    const percentage2 = 10;
-    const percentage3 = 6;
-    const percentage4 = 7;
+    const percentage1 = percentage.percentage1;
+    const percentage2 = percentage.percentage2;
+    const percentage3 = percentage.percentage3;
+    const percentage4 = percentage.percentage4;
     return(
         <div className="flex flex-col gap-4">
             <div className="flex justify-between items-center">
@@ -19,7 +52,7 @@ function InvoiceTop(){
                         All Invoices
                     </div>
                     <div className="poppins-light text-gray-600">
-                        1200
+                        {invoiceStats.all_invoices}
                     </div>
                 </div>
                 <div>
@@ -53,8 +86,8 @@ function InvoiceTop(){
               <div className="flex bg-white  py-6 px-4 rounded-3xl justify-between items-center border">
                   <div className="flex flex-col gap-1">
                     <div className="poppins-light text-sm text-gray-600">Successfull</div>
-                    <div className="poppins-bold text-sm">12</div>
-                    <div className="flex items-center gap-1 text-green-600"><span className="poppins-bold">4</span><span className="poppins-light text-sm">Today</span> </div>
+                    <div className="poppins-bold text-sm">{invoiceStats.successful}</div>
+                    <div className="flex items-center gap-1 text-green-600"><span className="poppins-bold">{invoiceStats.today_successful}</span><span className="poppins-light text-sm">Today</span> </div>
                   </div>
                   <div className="w-20">
                     <GradientSVG />
@@ -78,8 +111,8 @@ function InvoiceTop(){
               <div className="flex bg-white  py-6 px-4 rounded-3xl justify-between items-center border">
                   <div className="flex flex-col gap-1">
                     <div className="poppins-light text-sm text-gray-600">In Progress</div>
-                    <div className="poppins-bold text-sm">122</div>
-                    <div className="flex items-center gap-1 text-[#FFB442]"><span className="poppins-bold">1</span><span className="poppins-light text-sm">Today</span> </div>
+                    <div className="poppins-bold text-sm">{invoiceStats.in_progress}</div>
+                    <div className="flex items-center gap-1 text-[#FFB442]"><span className="poppins-bold">{invoiceStats.today_in_progress}</span><span className="poppins-light text-sm">Today</span> </div>
                   </div>
                   <div className="w-20">
                     <GradientSVG />
@@ -104,8 +137,8 @@ function InvoiceTop(){
               <div className="flex bg-white  py-6 px-4 rounded-3xl justify-between items-center border">
                   <div className="flex flex-col gap-1">
                     <div className="poppins-light text-sm text-gray-600">Failed</div>
-                    <div className="poppins-bold text-sm">16</div>
-                    <div className="flex items-center gap-1 text-[#E45757]"><span className="poppins-bold">3</span><span className="poppins-light text-sm">Today</span> </div>
+                    <div className="poppins-bold text-sm">{invoiceStats.failed}</div>
+                    <div className="flex items-center gap-1 text-[#E45757]"><span className="poppins-bold">{invoiceStats.today_failed}</span><span className="poppins-light text-sm">Today</span> </div>
                   </div>
                   <div className="w-20">
                     <GradientSVG />
@@ -130,8 +163,8 @@ function InvoiceTop(){
               <div className="flex bg-white  py-6 px-4 rounded-3xl justify-between items-center border">
                   <div className="flex flex-col gap-1">
                     <div className="poppins-light text-sm text-gray-600">Refunded</div>
-                    <div className="poppins-bold text-sm">123</div>
-                    <div className="flex items-center gap-1 text-[#964EC2]"><span className="poppins-bold">0</span><span className="poppins-light text-sm">Today</span> </div>
+                    <div className="poppins-bold text-sm">{invoiceStats.refunded}</div>
+                    <div className="flex items-center gap-1 text-[#964EC2]"><span className="poppins-bold">{invoiceStats.today_refunded}</span><span className="poppins-light text-sm">Today</span> </div>
                   </div>
                   <div className="w-20">
                     <GradientSVG />

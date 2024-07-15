@@ -18,12 +18,18 @@ module.exports = (env) => {
     },
 
     resolve: {
+      alias: {
+        controllers: path.resolve(__dirname, '../Controllers'),
+    },
       extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
     },
 
     devServer: {
       port: 8002,
       historyApiFallback: true,
+      client: {
+        overlay: false,
+      },
     },
 
     module: {

@@ -1,8 +1,8 @@
 import axios from "axios"
 async function ApiCall({url,method,body,PRIVATE_API = false,header,current_user=null}){
+    console.log(url)
 
     try{
-       
         let axiosCall;
         let config = {
                 headers:

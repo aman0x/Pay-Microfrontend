@@ -16,8 +16,19 @@ stop_microfrontend() {
 
   echo "Stopping $microfrontend_name running on port $port..."
 
-  # Find the process ID (PID) using the port and kill it
-   local pid=$(netstat -tuln | grep ":$port" | awk '{print $7}' | cut -d'/' -f1)
+  # Determine the OS
+  local os=$(uname)
+
+  if [[ "$os" == "Linux" || "$os" == "Darwin" ]]; then
+    # macOS and Linux
+    local pid=$(lsof -t -i :$port)
+  elif [[ "$os" == "MINGW64_NT" || "$os" == "MSYS_NT" || "$os" == "CYGWIN_NT" ]]; then
+    # Windows
+    local pid=$(netstat -ano | grep ":$port" | awk '{print $5}')
+  else
+    echo "Unsupported OS: $os"
+    return
+  fi
 
   if [ -n "$pid" ]; then
     kill -9 $pid

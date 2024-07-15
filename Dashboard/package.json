@@ -54,6 +54,7 @@
     "swiper": "^11.1.4"
   },
   "imports": {
-    "#hooks/*": "./src/hooks/*"
+    "#hooks/*": "./src/hooks/*",
+    "#utils/*":"./src/utils/*"
   }
 }

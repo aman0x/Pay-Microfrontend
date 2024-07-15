@@ -1,4 +1,39 @@
+import {usePayment} from "#hooks/index.js"
+import moment from "moment"
+import { useState,useEffect } from "react"
+import { useSearchParams } from "react-router-dom"
+import { useInvoice } from "#hooks/index.js"
 function InvoiceDetail(){
+    const [invoiceDetail,setInvoiceDetail] = useState({
+        "status": "In Progress",
+        "invoice_title": "Vendor_Payment",
+        "date": "2024-06-21T10:21:17.116232Z",
+        "invoice_id": "TD1711364044252",
+        "particulars": "Vendor_Payment",
+        "quantity": 1,
+        "price_per_quantity": 24000.24,
+        "amount": 24000.24,
+        "gst": 20,
+        "subtotal": 24000.24,
+        "name": "ANANTHARAPU ARUNA THEJASWINI",
+        "phone_number": "+919573749630",
+        "email": "customer@mail.com",
+        "account_number": "50100350093919",
+        "bank": "HDFC Bank",
+        "bank_branch": "KODAD",
+        "ifsc_code": "HDFC0001642",
+        "total_amount": 24000.24
+    })
+    const {handleInvoiceDetail} = useInvoice()
+    const [searchParams] = useSearchParams()
+    const invoiceId = searchParams.get('invoiceId')
+    useEffect(()=>{
+        const fetchInvoiceDetail = async ()=>{
+            const data = await handleInvoiceDetail(paymentId)
+            setInvoiceDetail(data)
+        }
+        fetchInvoiceDetail()
+    },[invoiceId])
     return(
         <div className="mt-5 bg-primary p-[2rem] rounded-2xl flex flex-col gap-3 w-full ">
             <div className="flex justify-between">
@@ -10,7 +45,7 @@ function InvoiceDetail(){
                         </svg>
                     </div>
                     <div className="text-xs">
-                        InProgress
+                        {invoiceDetail.status}
                     </div>
                 </div>
                 <div className="flex gap-1 items-center">
@@ -33,14 +68,14 @@ function InvoiceDetail(){
                 <div className="flex flex-col gap-4 rounded-2xl bg-white p-[1.5rem] w-full">
                     <div className="flex justify-between">
                         <div className="flex flex-col gap-1">
-                            <div className="poppins-semibold">Invoice Title</div>
+                            <div className="poppins-semibold">{invoiceDetail.invoice_title}</div>
                             <div className="flex gap-2 items-center">
                                 <div className="text-sm text-[#4E5459]">Invoice ID:</div>
-                                <div className="text-xs">IN1711364044252</div>
+                                <div className="text-xs">{invoiceDetail.invoice_id}</div>
                             </div>
                             <div className="flex gap-2 items-center">
                                 <div className="text-sm text-[#4E5459]">Date:</div>
-                                <div className="text-xs">4th Apr 2024  01:41 pm</div>
+                                <div className="text-xs">{moment(invoiceDetail.date).format('DD MMMM YYYY HH:mm')}</div>
                             </div> 
                         </div>
                         <div className="rounded-xl shadow-md py-[1px] h-14 px-2 w-40 flex flex-col justify-center">
@@ -48,7 +83,7 @@ function InvoiceDetail(){
                                 Payment :
                             </div>
                             <div className="color-linear poppins-semibold">
-                                ₹ 24,000.24
+                                ₹ {invoiceDetail.amount}
                             </div>
                         </div>
                     </div>
@@ -62,30 +97,19 @@ function InvoiceDetail(){
                                 <td>GST %</td>
                                 <td>Subtotal</td>
                             </tr>
-                            <tr className="">
-                                <td>Vendor Payment</td>
-                                <td>1</td>
-                                <td>₹ 24,000.24</td>
-                                <td>₹ 24,000.24</td>
-                                <td>20 %</td>
-                                <td>₹ 24,000.24</td>
-                            </tr>
-                            <tr>
-                                <td>Vendor Payment</td>
-                                <td>1</td>
-                                <td>₹ 24,000.24</td>
-                                <td>₹ 24,000.24</td>
-                                <td>20 %</td>
-                                <td>₹ 24,000.24</td>
-                            </tr>
-                            <tr>
-                                <td>Vendor Payment</td>
-                                <td>1</td>
-                                <td>₹ 24,000.24</td>
-                                <td>₹ 24,000.24</td>
-                                <td>20 %</td>
-                                <td>₹ 24,000.24</td>
-                            </tr>
+                            {[{...Array(3)}].map((detail)=>{
+                                return(
+                                    <tr className="">
+                                        <td>{invoiceDetail.particulars}</td>
+                                        <td>{invoiceDetail.quantity}</td>
+                                        <td>₹ {invoiceDetail.price_per_quantity}</td>
+                                        <td>₹ {invoiceDetail.total_amount}</td>
+                                        <td>{invoiceDetail.gst} %</td>
+                                        <td>₹ {invoiceDetail.total_amount}</td>
+                                    </tr>
+                                )
+                            })
+                            }
                         </table>
                     </div>
                     <div className="flex justify-between gap-1">
@@ -94,7 +118,7 @@ function InvoiceDetail(){
                             <div className="poppins-lighht text-xs text-[#787D81]">(3 items):</div>
                         </div>
                         <div className="color-linear poppins-semibold">
-                            ₹ 24,000.24
+                            ₹ {invoiceDetail.total_amount}
                         </div>
                     </div>
                     <hr/>
@@ -104,17 +128,17 @@ function InvoiceDetail(){
                             <div className="flex items-center justify-between gap-1">
                                 <div className="text-[#A3A6A9] text-xs min-w-fit">Name:</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-sm min-w-fit">ANANTHARAPU ARUNA THEJASWINI</div>
+                                <div className="poppins-semibold text-sm min-w-fit">{invoiceDetail.name}</div>
                             </div>
                             <div className="flex items-center justify-between  gap-1">
                                 <div className="text-[#A3A6A9] text-xs min-w-fit">Phone:</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-sm min-w-fit">+913554546314</div>
+                                <div className="poppins-semibold text-sm min-w-fit">{invoiceDetail.phone_number}</div>
                             </div>
                             <div className="flex items-center justify-between  gap-1">
                                 <div className="text-[#A3A6A9] text-xs min-w-fit">Mail:</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-sm min-w-fit">contact@mail.com</div>
+                                <div className="poppins-semibold text-sm min-w-fit">{invoiceDetail.email}</div>
                             </div>
                             
                         </div>
@@ -123,17 +147,17 @@ function InvoiceDetail(){
                             <div className="flex items-center justify-between  gap-1">
                                 <div className="text-[#A3A6A9] text-xs min-w-fit">A/C No.</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-sm min-w-fit">50100350093919</div>
+                                <div className="poppins-semibold text-sm min-w-fit">{invoiceDetail.account_number}</div>
                             </div>
                             <div className="flex items-center justify-between  gap-1">
                                 <div className="text-[#A3A6A9] text-xs min-w-fit">Bank</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-sm min-w-fit">HDFC Bank, KODAD</div>
+                                <div className="poppins-semibold text-sm min-w-fit">{invoiceDetail.bank}, {invoiceDetail.bank_branch}</div>
                             </div>
                             <div className="flex items-center justify-between  gap-1">
                                 <div className="text-[#A3A6A9] text-xs min-w-fit">IFS Code</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-sm min-w-fit">HDFC0001642</div>
+                                <div className="poppins-semibold text-sm min-w-fit">{invoiceDetail.ifsc_code}</div>
                             </div>
                             
                         </div>

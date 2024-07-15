@@ -1,6 +1,6 @@
 import ChartComp from "../../Chart";
 const statsHead = ["Income/Expenses","Sended Invoices","Received Invoices"]
-function StatsChart({reportIndex}){
+function StatsChart({reportIndex,stats}){
     return(
         <div className="w-full h-[22rem] bg-white rounded-2xl p-[2rem]">
             <div className="flex flex-col">
@@ -20,7 +20,7 @@ function StatsChart({reportIndex}){
                         </div>
                         <div className="flex items-center gap-1">
                             <div className="text-xs poppins-light text-[#787D81] ">Total:</div>
-                            <div className="poppins-semibold text-xs">₹ 24,000.70 </div>
+                            <div className="poppins-semibold text-xs">₹ {stats.incomes} </div>
                         </div>
 
                     </div>
@@ -31,7 +31,7 @@ function StatsChart({reportIndex}){
                         </div>
                         <div className="flex items-center gap-1">
                             <div className="text-xs poppins-light text-[#787D81] ">Total:</div>
-                            <div className="poppins-semibold text-xs">₹ 24,000.70 </div>
+                            <div className="poppins-semibold text-xs">₹ {stats.expenses} </div>
                         </div>
 
                     </div>

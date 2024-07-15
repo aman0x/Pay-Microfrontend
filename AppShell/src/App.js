@@ -15,28 +15,35 @@ import {ToastContainer} from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css'; 
 import CommonLayout from "./components/CommonLayout";
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
-
+import AxiosInstance from "controllers/AxiosInstance/index"
+import NotFound from "./components/Error";
 function App() {
   const value = useSelector((state) => state.auth.value);
   const dispatch = useDispatch();
   const location = useLocation()
+  //console.log("working",AxiosInstance({url:"hello"}))
   return (
-    <ErrorBoundary fallback={<p>Something went wromg</p>}>
+    <ErrorBoundary>
     <div className="test  bg-primary bg-slate-50">
       <ToastContainer limit={1}/>
       {
         location.pathname==="/" ||
         location.pathname.startsWith('/accounts')?
+        <ErrorBoundary>
         <Routes>
           <Route path="/*" element={<Auth />} />
        </Routes>
+       </ErrorBoundary>
       :
       <CommonLayout>
-        <Routes>   
-          <Route path="/dashboard/*" element={<Dashboard  />} />
-          <Route path="/invoice/*" element={<Invoice />} />
-          <Route path="/report/*" element={<Report />} />
-         <Route path="/admin/*" element={<Admin  />} /> 
+        <Routes> 
+        
+          <Route path="/dashboard/*" element={<ErrorBoundary> <Dashboard  /></ErrorBoundary>} />
+          
+          <Route path="/invoice/*" element={<ErrorBoundary><Invoice /></ErrorBoundary>} />
+          <Route path="/report/*" element={<ErrorBoundary><Report /></ErrorBoundary>} />
+         <Route path="/admin/*" element={<ErrorBoundary><Admin  /></ErrorBoundary>}/> 
+         <Route path="*" element={<NotFound/>} />
         </Routes>
       </CommonLayout>
       }

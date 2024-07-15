@@ -187,7 +187,8 @@ import { TiTick } from "react-icons/ti";
 import "./style.css"
 import CalenderComponent from "../Calender/calender";
 import ReportDownloadButtons from "../ReportFooter";
-function ReportTable({reportIndex}){
+import moment from "moment";
+function ReportTable({reportIndex,data}){
    
     const [isDateClicked,setIsDateClicked] = useState(false)
     const statusColor = '#27A963'
@@ -259,7 +260,7 @@ function ReportTable({reportIndex}){
                         </td>
                     </tr>
                     {
-                        transactions.map((transaction)=>{
+                        data.map((transaction)=>{
                             return(
                                 <tr className="text-xs poppins-regular">
                                 <td>
@@ -268,16 +269,16 @@ function ReportTable({reportIndex}){
                                             <TiTick color="white" size="12px"/>    
                                         </div>
                                         <div  className="flex flex-col gap-1">
-                                            <span>{transaction.date}</span>
-                                            <span>{transaction.time}</span>
+                                        <span>{moment(transaction.payment_datetime).format('DD MMMM YYYY')}</span>
+                                        <span>{moment(transaction.payment_datetime).format('HH:mm')}</span>
                                         </div>
                                     </div>
                                 </td>
-                                <td><div className="td-element">{transaction.recipient}</div></td>
+                                <td><div className="td-element">{transaction.sent_from}</div></td>
                                 <td><div className="td-element">{transaction.type}</div></td>
                                 <td><div className="td-element">{transaction.bank}</div></td>
-                                <td><div className="td-element">{transaction.paymentType}</div></td>
-                                <td><div className="td-element">{transaction.transactionID}</div></td>
+                                <td><div className="td-element">{transaction.account_type}</div></td>
+                                <td><div className="td-element">{transaction.transaction_id}</div></td>
                                 <td>
                                     
                                     <div className="flex gap-2 items-center td-element">

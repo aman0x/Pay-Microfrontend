@@ -23,7 +23,9 @@
 body{
   background-color: #f8fafc;
 }
-
+iframe{
+  display: none;
+}
 .test{
   width: 100%;
  max-width: 2560px; 

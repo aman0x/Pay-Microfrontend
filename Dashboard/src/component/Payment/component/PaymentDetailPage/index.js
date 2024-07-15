@@ -1,5 +1,35 @@
+import { usePayment } from "#hooks/index";
+import { useEffect, useState } from "react";
 import { FaCreditCard } from "react-icons/fa";
+import { useSearchParams } from "react-router-dom";
+import moment from "moment";
 function PaymentDetailPage(){
+    const [paymentDetail,setPaymentDetail] = useState({
+        "status": "Failed",
+        "payment_title": "Vendor_Payment",
+        "transaction_id": "TD136347383DR82",
+        "date": "2024-06-21T10:21:17.116232Z",
+        "phone_number": "+919573749630",
+        "email": "customer@mail.com",
+        "account_number": "50100350093919",
+        "bank": "HDFC Bank",
+        "bank_branch": "KODAD",
+        "ifsc_code": "HDFC0001642",
+        "payment_amount": 21800.0,
+        "convenience_fee": 1000.0,
+        "tax": 1200.24,
+        "payment_total_amount": 24000.24
+    })
+    const {handlePaymentDetail}  = usePayment()
+    const [searchParams] = useSearchParams()
+    const paymentId = searchParams.get('paymentId')
+    useEffect(()=>{
+        const fetchPaymentDetail = async ()=>{
+            const data = await handlePaymentDetail(paymentId)
+            setPaymentDetail(data)
+        }
+        fetchPaymentDetail()
+    },[paymentId])
     return(
         <div className="mt-5 bg-primary p-[2rem] rounded-2xl flex flex-col gap-3 w-full h-[80vh] max-h-[800px] ">
             <div className="flex justify-between">
@@ -11,7 +41,7 @@ function PaymentDetailPage(){
                         </svg>
                     </div>
                     <div className="text-xs">
-                        Succeeded
+                        {paymentDetail.status}
                     </div>
                 </div>
                 <div className="flex gap-1 items-center">
@@ -34,14 +64,14 @@ function PaymentDetailPage(){
             </div>
             <div className="flex justify-between rounded-2xl bg-white p-[1rem] w-full">
                 <div className="flex flex-col gap-1">
-                    <div className="poppins-semibold">Payment Title</div>
+                    <div className="poppins-semibold">{paymentDetail.payment_title}</div>
                     <div className="flex gap-2 items-center">
                         <div className="text-sm text-[#4E5459]">Transaction ID:</div>
-                        <div className="text-xs">TD1711364044252</div>
+                        <div className="text-xs">{paymentDetail.transaction_id}</div>
                     </div>
                     <div className="flex gap-2 items-center">
                         <div className="text-sm text-[#4E5459]">Date:</div>
-                        <div className="text-xs">4th Apr 2024  01:41 pm</div>
+                        <div className="text-xs">{moment(paymentDetail.payment_datetime).format('DD MMMM YYYY HH:mm')}</div>
                     </div>
                 </div>
                 <div className="rounded-xl shadow-md py-[1px] h-14 px-2 w-40 flex flex-col justify-center">
@@ -49,7 +79,7 @@ function PaymentDetailPage(){
                         Payment :
                     </div>
                     <div className="color-linear poppins-semibold">
-                        ₹ 24,000.24
+                        ₹ {paymentDetail.payment_total_amount}
                     </div>
                 </div>
 
@@ -72,7 +102,7 @@ function PaymentDetailPage(){
                             </div>
                             <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
                             <div className="min-w-fit">
-                            +91 957 374 96 30
+                            {paymentDetail.phone_number}
                             </div>
                         </div>
                         <div className="flex text-xs justify-between gap-1">
@@ -81,7 +111,7 @@ function PaymentDetailPage(){
                             </div>
                             <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
                             <div className="min-w-fit">
-                            customer@mail.com
+                            {paymentDetail.email}
                             </div>
                         </div>
                         
@@ -94,7 +124,7 @@ function PaymentDetailPage(){
                             </div>
                             <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
                             <div className="min-w-fit">
-                            50100350093919
+                            {paymentDetail.account_number}
                             </div>
                         </div>
                         <div className="flex text-xs justify-between gap-1">
@@ -103,7 +133,7 @@ function PaymentDetailPage(){
                             </div>
                             <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
                             <div className="min-w-fit">
-                            HDFC Bank, KODAD
+                            {paymentDetail.bank}, {paymentDetail.bank_branch}
                             </div>
                         </div>
                         <div className="flex text-xs justify-between">
@@ -112,7 +142,7 @@ function PaymentDetailPage(){
                             </div>
                             <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
                             <div className="min-w-fit">
-                            HDFC0001642
+                            {paymentDetail.ifsc_code}
                             </div>
                         </div>
 
@@ -125,24 +155,24 @@ function PaymentDetailPage(){
                         <div className="flex justify-between text-xs gap-1">
                             <div className="text-[#A3A6A9] min-w-fit">Receiver will recieve</div>
                             <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                            <div className="min-w-fit">₹ 24,000.24</div>
+                            <div className="min-w-fit">₹ {paymentDetail.payment_amount}</div>
                         </div>
 
                     </div>
                     <div className="flex justify-between text-xs gap-1">
                         <div className="text-[#A3A6A9] min-w-fit">Convenience Fees 1.99%</div>
                         <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                        <div className="min-w-fit">₹ 24,000.24</div>
+                        <div className="min-w-fit">₹ {paymentDetail.convenience_fee}</div>
                     </div>
                     <div className="flex justify-between text-xs gap-1">
                         <div className="text-[#A3A6A9] min-w-fit">TAX</div>
                         <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                        <div className="min-w-fit">₹ 24,000.24</div>
+                        <div className="min-w-fit">₹ {paymentDetail.tax}</div>
                     </div>
                 </div>
                 <div className="flex justify-between text-sm ">
                     <div className="color-linear poppins-semibold">Total:</div>
-                    <div className="color-linear poppins-semibold">₹ 24,000.24</div>
+                    <div className="color-linear poppins-semibold">₹ {paymentDetail.payment_total_amount}</div>
                 </div>
                 </div>
             </div>

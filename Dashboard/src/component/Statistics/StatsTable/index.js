@@ -1,195 +1,10 @@
-// DUMMY DATA
-
-const transactions = [
-    {
-      date: "15th Jan 2023",
-      time: "10:30am",
-      recipient: "Rajesh Kumar",
-      type: "Vendor Payment",
-      paymentType: "Credit",
-      bank: "State Bank of India",
-      accountType: "Savings",
-      transactionID: "TXN12345601",
-      status: "Succeeded",
-      sum: 5000
-    },
-    {
-      date: "17th Feb 2023",
-      time: "02:45pm",
-      recipient: "Anita Singh",
-      type: "House Professional Payment",
-      paymentType: "Debit",
-      bank: "HDFC Bank",
-      accountType: "Current",
-      transactionID: "TXN12345602",
-      status: "Succeeded",
-      sum: 2000
-    },
-    {
-      date: "21st Mar 2023",
-      time: "11:15am",
-      recipient: "Sunil Sharma",
-      type: "Vendor Payment",
-      paymentType: "Credit",
-      bank: "ICICI Bank",
-      accountType: "Savings",
-      transactionID: "TXN12345603",
-      status: "In Progress",
-      sum: 7500
-    },
-    {
-      date: "5th Apr 2023",
-      time: "03:50pm",
-      recipient: "Meena Verma",
-      type: "House Professional Payment",
-      paymentType: "Debit",
-      bank: "Axis Bank",
-      accountType: "Current",
-      transactionID: "TXN12345604",
-      status: "Succeeded",
-      sum: 1000
-    },
-    {
-      date: "10th May 2023",
-      time: "09:30am",
-      recipient: "Vikram Patel",
-      type: "Vendor Payment",
-      paymentType: "Credit",
-      bank: "Punjab National Bank",
-      accountType: "Savings",
-      transactionID: "TXN12345605",
-      status: "Succeeded",
-      sum: 3000
-    },
-    {
-      date: "15th Jun 2023",
-      time: "12:45pm",
-      recipient: "Sneha Reddy",
-      type: "House Professional Payment",
-      paymentType: "Debit",
-      bank: "Kotak Mahindra Bank",
-      accountType: "Current",
-      transactionID: "TXN12345606",
-      status: "Succeeded",
-      sum: 4500
-    },
-    {
-      date: "20th Jul 2023",
-      time: "04:10pm",
-      recipient: "Amitabh Desai",
-      type: "Vendor Payment",
-      paymentType: "Credit",
-      bank: "Bank of Baroda",
-      accountType: "Savings",
-      transactionID: "TXN12345607",
-      status: "Succeeded",
-      sum: 5200
-    },
-    {
-      date: "25th Aug 2023",
-      time: "01:20pm",
-      recipient: "Ravi Gupta",
-      type: "House Professional Payment",
-      paymentType: "Debit",
-      bank: "Canara Bank",
-      accountType: "Current",
-      transactionID: "TXN12345608",
-      status: "In Progress",
-      sum: 1800
-    },
-    {
-      date: "10th Sep 2023",
-      time: "10:00am",
-      recipient: "Priya Iyer",
-      type: "Vendor Payment",
-      paymentType: "Credit",
-      bank: "Union Bank of India",
-      accountType: "Savings",
-      transactionID: "TXN12345609",
-      status: "Succeeded",
-      sum: 6200
-    },
-    {
-      date: "5th Oct 2023",
-      time: "02:35pm",
-      recipient: "Karan Kapoor",
-      type: "House Professional Payment",
-      paymentType: "Debit",
-      bank: "IDFC First Bank",
-      accountType: "Current",
-      transactionID: "TXN12345610",
-      status: "Succeeded",
-      sum: 2500
-    },
-    {
-      date: "12th Nov 2023",
-      time: "09:45am",
-      recipient: "Lata Joshi",
-      type: "Vendor Payment",
-      paymentType: "Credit",
-      bank: "IndusInd Bank",
-      accountType: "Savings",
-      transactionID: "TXN12345611",
-      status: "Succeeded",
-      sum: 8000
-    },
-    {
-      date: "17th Dec 2023",
-      time: "11:30am",
-      recipient: "Nitin Agrawal",
-      type: "Vendor Payment",
-      paymentType: "Debit",
-      bank: "Yes Bank",
-      accountType: "Current",
-      transactionID: "TXN12345612",
-      status: "Succeeded",
-      sum: 3200
-    },
-    {
-      date: "22nd Jan 2024",
-      time: "01:55pm",
-      recipient: "Pooja Rao",
-      type: "Vendor Payment",
-      paymentType: "Credit",
-      bank: "Bank of India",
-      accountType: "Savings",
-      transactionID: "TXN12345613",
-      status: "In Progress",
-      sum: 5400
-    },
-    {
-      date: "5th Feb 2024",
-      time: "04:15pm",
-      recipient: "Suresh Nair",
-      type: "Vendor Payment",
-      paymentType: "Debit",
-      bank: "Central Bank of India",
-      accountType: "Current",
-      transactionID: "TXN12345614",
-      status: "Succeeded",
-      sum: 1500
-    },
-    {
-      date: "15th Mar 2024",
-      time: "10:05am",
-      recipient: "Geeta Jain",
-      type: "Vendor Payment",
-      paymentType: "Credit",
-      bank: "Indian Bank",
-      accountType: "Savings",
-      transactionID: "TXN12345615",
-      status: "Succeeded",
-      sum: 4000
-    }
-  ];
-  
-  
 import {useState} from "react"
 import { TiTick } from "react-icons/ti";
 import "./style.css"
+import moment from "moment";
 import FilterTableStats from "./Filter.js";
-function StatsTable(){
-
+function StatsTable({transactionData,reportIndex=0}){
+  console.log(transactionData)
     const [isDateClicked,setIsDateClicked] = useState(false)
     const statusColor = '#27A963'
     return(
@@ -212,7 +27,7 @@ function StatsTable(){
                     </div>
                 </td>
                 <td>
-                    <div className="td-element1">Customer</div>
+                    <div className="td-element1">{reportIndex>0?(reportIndex>1?"Sent From":"Sent To"):"Customer"}</div>
                 </td>
                 <td>
                     <div className="td-element1">Type</div>
@@ -247,7 +62,7 @@ function StatsTable(){
                 
             </tr>
             {
-                transactions.map((transaction,i)=>{
+                transactionData.map((transaction,i)=>{
                     return(
                         <tr key={i} className="text-xs poppins-regular">
                         <td>
@@ -256,12 +71,12 @@ function StatsTable(){
                                     <TiTick color="white" size="12px"/>    
                                 </div>
                                 <div  className="flex flex-col gap-1">
-                                    <span>{transaction.date}</span>
-                                    <span>{transaction.time}</span>
+                                <span>{moment(transaction.payment_datetime).format('DD MMMM YYYY')}</span>
+                                <span>{moment(transaction.payment_datetime).format('HH:mm')}</span>
                                 </div>
                             </div>
                         </td>
-                        <td><div className="td-element">{transaction.recipient}</div></td>
+                        <td><div className="td-element">{transaction.customer}</div></td>
                         <td><div className="td-element">{transaction.type}</div></td>
                         <td><div className="td-element">{transaction.bank}</div></td>
                         <td>
@@ -285,7 +100,7 @@ function StatsTable(){
 
                         <td>
                             <div className="flex gap-6 items-center td-element">
-                            <div>{transaction.transactionID}</div>
+                            <div>{transaction.commission}</div>
                             <svg width="24" height="28" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <rect y="0.5" width="24" height="24" rx="5.74489" fill="white"/>
                                     <path d="M12.75 8.5C12.75 8.91421 12.4142 9.25 12 9.25C11.5858 9.25 11.25 8.91421 11.25 8.5C11.25 8.08579 11.5858 7.75 12 7.75C12.4142 7.75 12.75 8.08579 12.75 8.5Z" fill="#232B31"/>

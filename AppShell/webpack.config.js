@@ -15,14 +15,19 @@ module.exports = (env) => {
     output: {
       publicPath: `${envVars.APP_URL}:8003/`,
     },
-
     resolve: {
+      alias: {
+        controllers: path.resolve(__dirname, '../Controllers'),
+    },
       extensions: [".tsx", ".ts", ".jsx", ".js", ".json", ".css"],
     },
 
     devServer: {
       port: 8003,
       historyApiFallback: true,
+      client: {
+        overlay: false,
+      },
     },
 
     module: {

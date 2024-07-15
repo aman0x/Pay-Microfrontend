@@ -1,43 +1,45 @@
 import CircularChart from "./CircularChart";
 
-function StatsCards({reportIndex=0}){
+function StatsCards({reportIndex=0,stats}){
     return(
         <div className="grid grid-cols-2 h-72 m-1  gap-4">
             <div className="bg-white rounded-2xl flex  p-[1.5rem] justify-between ">
                 <div className="flex flex-col gap-8">
                     <div className="flex flex-col gap-1">
                         <p className="text-[#A3A6A9] text-sm ">All Transaction</p>
-                        <p className="poppins-bold text-sm">1200</p>
-                        <p className="text-sm text-[#27A963]">+ 4 Today</p>
+                        <p className="poppins-bold text-sm">{stats.total_transactions||stats.total_sended_invoices||stats.total_received_invoices}</p>
+                        <p className="text-sm text-[#27A963]">+ {stats.today_transactions||stats.today_sended_invoices||stats.today_received_invoices} Today</p>
                     </div>
                     <div className="flex flex-col gap-2">
                         <div className="flex items-center gap-3">
                             <div className="bg-[#ADA1E6] rounded-[50%] h-2 w-2"></div>
                             <div className="text-xs poppins-light text-[#787D81]">Succeeded</div>
-                            <div className="poppins-bold text-xs">(12)</div>
+                            <div className="poppins-bold text-xs">({stats.succeeded})</div>
                         </div>
                         <div className="flex items-center gap-2">
                             <div className="bg-[#FF7BBF] rounded-[50%] h-2 w-2"></div>
                             <div className="text-xs poppins-light text-[#787D81]">In Progress</div>
-                            <div className="poppins-bold text-xs">(12)</div>
+                            <div className="poppins-bold text-xs">({stats.in_progress})</div>
                         </div>
                         <div className="flex items-center gap-2">
                             <div className="bg-[#964EC2] rounded-[50%] h-2 w-2"></div>
-                            <div className="text-xs poppins-light text-[#787D81]">Rebounded</div>
-                            <div className="poppins-bold text-xs">(12)</div>
+                            <div className="text-xs poppins-light text-[#787D81]">Refunded</div>
+                            <div className="poppins-bold text-xs">({stats.refunded})</div>
                         </div>
                         <div className="flex items-center gap-2">
                             <div className="bg-[#D562BE] rounded-[50%] h-2 w-2"></div>
                             <div className="text-xs poppins-light text-[#787D81]">Failed</div>
-                            <div className="poppins-bold text-xs">(12)</div>
+                            <div className="poppins-bold text-xs">({stats.failed})</div>
                         </div>
 
                     </div>
                 </div>
                 <div className="h-60 relative">
-                <CircularChart/>
+                <CircularChart stats={stats}/>
                 <div className="absolute top-[45%] left-[45%]">
-                    25%
+                    {Math.round((stats.succeeded/stats.total_transactions)*100)
+                    ||Math.round((stats.succeeded/stats.total_sended_invoices)*100)
+                    ||Math.round((stats.succeeded/stats.total_received_invoices)*100)} %
                 </div>
                 </div>
                 
@@ -48,8 +50,8 @@ function StatsCards({reportIndex=0}){
                     <div className="flex items-center justify-between  bg-white py-3 px-5 rounded-2xl h-[8.5rem]">
                         <div className="flex flex-col gap-1">
                             <p className="text-gray-600 poppins-light text-sm">Total Incomes</p>
-                            <p className="poppins-bold">₹ 24,0000.70</p>
-                            <p className="poppins-bold text-[#27A963]">+1290 <span className="poppins-light">Today</span></p>
+                            <p className="poppins-bold">₹ {stats.total_incomes}</p>
+                            <p className="poppins-bold text-[#27A963]">+{stats.today_incomes} <span className="poppins-light">Today</span></p>
                         </div>
                         <div className="flex gap-4 items-center">
                             <div className="primary-linear-gr-bg-light p-3 rounded-[50%]">
@@ -86,8 +88,8 @@ function StatsCards({reportIndex=0}){
                     <div className="flex items-center justify-between  bg-white py-3 px-5 rounded-2xl h-[8.5rem]">
                         <div className="flex flex-col gap-1">
                             <p className="text-gray-600 poppins-light text-sm">Total Payments</p>
-                            <p className="poppins-bold">₹ 24,0000.70</p>
-                            <p className="poppins-bold text-[#E45757]">-12 <span className="poppins-light">Today</span></p>
+                            <p className="poppins-bold">₹ {stats.total_payments}</p>
+                            <p className="poppins-bold text-[#E45757]">-{stats.today_payments} <span className="poppins-light">Today</span></p>
                         </div>
                         <div className="flex gap-4 items-center">
                             <div className="primary-linear-gr-bg-light p-3 rounded-[50%]">
@@ -128,8 +130,8 @@ function StatsCards({reportIndex=0}){
                     <div className="flex items-center justify-between  bg-white py-5 px-5 rounded-2xl h-[6rem]">
                         <div className="flex flex-col gap-1">
                             <p className="text-gray-600 poppins-light text-sm">Total Succeeded in INR</p>
-                            <p className="poppins-bold">₹ 24,0000.70</p>
-                            <p className="poppins-bold text-[#27A963]">+1290 <span className="poppins-light">Today</span></p>
+                            <p className="poppins-bold">₹ {stats.total_succeeded}</p>
+                            <p className="poppins-bold text-[#27A963]">+{stats.today_succeeded} <span className="poppins-light">Today</span></p>
                         </div>
                         <div className="flex gap-4 items-center">
                             <div className="bg-[#27A96333] p-3 rounded-[50%]">
@@ -144,8 +146,8 @@ function StatsCards({reportIndex=0}){
                     <div className="flex items-center justify-between  bg-white py-3 px-5 rounded-2xl h-[6rem]">
                         <div className="flex flex-col gap-1">
                             <p className="text-gray-600 poppins-light text-sm">Total InProgress in INR</p>
-                            <p className="poppins-bold">₹ 240.70</p>
-                            <p className="poppins-bold text-[#27A963]">12<span className="poppins-light">Today</span></p>
+                            <p className="poppins-bold">₹ {stats.total_in_progress}</p>
+                            <p className="poppins-bold text-[#27A963]">{stats.total_in_progress}<span className="poppins-light">Today</span></p>
                         </div>
                         <div className="flex gap-4 items-center">
                             <div className="bg-[#ffb34257] p-3 rounded-[50%]">
@@ -160,8 +162,8 @@ function StatsCards({reportIndex=0}){
                     <div className="flex items-center justify-between  bg-white py-3 px-5 rounded-2xl h-[6rem]">
                         <div className="flex flex-col gap-1">
                             <p className="text-gray-600 poppins-light text-sm">Total Failed in INR</p>
-                            <p className="poppins-bold">₹ 240.70</p>
-                            <p className="poppins-bold text-[#27A963]">12<span className="poppins-light">Today</span></p>
+                            <p className="poppins-bold">₹ {stats.total_failed}</p>
+                            <p className="poppins-bold text-[#27A963]">{stats.today_failed}<span className="poppins-light">Today</span></p>
                         </div>
                         <div className="flex gap-4 items-center">
                             <div className="bg-[#e1585848] p-3 rounded-[50%]">
@@ -182,8 +184,8 @@ function StatsCards({reportIndex=0}){
                 <div className="flex items-center justify-between  bg-white py-3 px-5 rounded-2xl h-[6rem]">
                 <div className="flex flex-col gap-1">
                     <p className="text-gray-600 poppins-light text-sm">Total Paid in INR</p>
-                    <p className="poppins-bold">₹ 24,0000.70</p>
-                    <p className="poppins-bold text-[#27A963]">+1290 <span className="poppins-light">Today</span></p>
+                    <p className="poppins-bold">₹ {stats.total_paid}</p>
+                    <p className="poppins-bold text-[#27A963]">+{stats.today_paid} <span className="poppins-light">Today</span></p>
                 </div>
                 <div className="flex gap-4 items-center">
                     <div className="bg-[#e1585848] p-3 rounded-[50%]">
@@ -198,8 +200,8 @@ function StatsCards({reportIndex=0}){
                 <div className="flex items-center justify-between  bg-white py-3 px-5 rounded-2xl h-[6rem]">
                 <div className="flex flex-col gap-1">
                     <p className="text-gray-600 poppins-light text-sm">Total InProgress in INR</p>
-                    <p className="poppins-bold">₹ 240.70</p>
-                    <p className="poppins-bold text-[#27A963]">12<span className="poppins-light">Today</span></p>
+                    <p className="poppins-bold">₹ {stats.total_in_progress}</p>
+                    <p className="poppins-bold text-[#27A963]">{stats.today_in_progress}<span className="poppins-light">Today</span></p>
                 </div>
                 <div className="flex gap-4 items-center">
                             <div className="bg-[#ffb34257] p-3 rounded-[50%]">
@@ -214,8 +216,8 @@ function StatsCards({reportIndex=0}){
                 <div className="flex items-center justify-between  bg-white py-3 px-5 rounded-2xl h-[6rem]">
                 <div className="flex flex-col gap-1">
                     <p className="text-gray-600 poppins-light text-sm">Total Failed in INR</p>
-                    <p className="poppins-bold">₹ 240.70</p>
-                    <p className="poppins-bold text-[#27A963]">12<span className="poppins-light">Today</span></p>
+                    <p className="poppins-bold">₹ {stats.total_failed}</p>
+                    <p className="poppins-bold text-[#27A963]">{stats.today_failed}<span className="poppins-light">Today</span></p>
                 </div>
                 <div className="flex gap-4 items-center">
                     <div className="bg-[#e1585848] p-3 rounded-[50%]">

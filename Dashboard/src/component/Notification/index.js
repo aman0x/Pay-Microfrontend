@@ -1,5 +1,7 @@
-import { useState } from "react"
+import { useState,useEffect } from "react"
 const menu = ["General","Payment","KYC","Account","Transaction","Cards"]
+import { useNotfication } from "#hooks/index"
+import moment from "moment"
 function Notification(){
     const [notificationIndex0,setnotificationIndex0] = useState(true)
     const [notificationIndex1,setnotificationIndex1] = useState(false)
@@ -8,6 +10,26 @@ function Notification(){
     const [notificationIndex4,setnotificationIndex4] = useState(false)
     const [notificationIndex5,setnotificationIndex5] = useState(false)
     const [tophead,setTopHead] = useState(0)
+    const [notificationData,setNotificationData] = useState([{
+        "date": "2024-06-21T10:21:17.116232Z",
+        "message_title": "title2",
+        "type": "General",
+        "message": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis.  Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis."
+    }])
+    const {handleGetNotification} = useNotfication()
+
+    useEffect(()=>{
+
+      const fetchNotificationData = async ()=>{
+
+      const data =  await handleGetNotification()
+      console.log("nI",data)
+      setNotificationData(data)
+      }
+
+      fetchNotificationData()
+      
+    },[])
  
     return(
         <div className="mt-5 bg-primary p-[1rem] rounded-2xl flex flex-col gap-4 mr-2">
@@ -112,15 +134,15 @@ function Notification(){
                     <div className="poppins-semibold text-lg mb-4">{menu[tophead]}<span className="poppins-light text-gray-400 text-xs mx-1">(121)</span></div>  
                     <div className="flex flex-col gap-2 divide-y divide-slate-200 ">
                     
-                    {[...Array(6)].map((val,i)=>{
+                    {notificationData.map((val,i)=>{
                         return(
                             <div className={`flex flex-col  gap-2  py-2`}>
                             <div className="flex justify-between poppins-semibold text-base">
-                                <div>Message Title</div>
-                                <div className="text-sm">12 April 2024 11:00</div>
+                                <div>{val.message_title}</div>
+                                <div className="text-sm">{moment(val.date).format('DD MM YYYY HH:mm')}</div>
                             </div>
                             <div className="flex poppins-regular text-[#787D81] gap-2 text-[14px]">
-                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis.  Curabitur tempus urna at turpis condimentum lobortis. Curabitur tempus urna at turpis condimentum lobortis.</div>
+                                <div>{val.message}</div>
                             </div>
                             
                         </div>

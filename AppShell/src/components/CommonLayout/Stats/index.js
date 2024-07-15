@@ -1,13 +1,36 @@
 import { SlCalender } from "react-icons/sl";
 import { FaGreaterThan } from "react-icons/fa6";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CalenderComponent from "./Calender/calender";
 import SpendData from "./SpendData";
 import SliderDate from "./SliderDate";
 import {useNavigate} from "react-router-dom"
+import { useSideBar } from "#hooks/index.js";
 function Stats(){
     const [isCalenderOpen,setCalenderView] = useState(false)
+    const {handleTotalStats,handleMonthStats} = useSideBar()
+    const [totalStats,setTotalStats] =  useState({
+        "total_payments": 240000,
+        "invoice_sended": 1,
+        "invoice_received": 2
+    })
+    const [monthStats,setMonthStats] =  useState({
+        "card_number": "1234567824681257",
+        "card_type": "VISA",
+        "incomes": "10000",
+        "expenses": "00"
+    })
     const navigate = useNavigate()
+    useEffect(()=>{
+        const fetchStats=async()=>{
+            const stats=await handleTotalStats()
+            const data1 = await handleMonthStats()
+            console.log("je",stats,data1)
+            setTotalStats(stats)
+            setMonthStats(data1)
+        }
+        fetchStats()
+    },[])
     return(
         <div className="flex flex-col gap-2">
              <div className="relative">
@@ -33,7 +56,7 @@ function Stats(){
             className="flex items-center justify-between  bg-white py-3 px-5 rounded-2xl cursor-pointer">
                 <div className="flex flex-col gap-1">
                     <p className="text-gray-600 poppins-light">Total Payments</p>
-                    <p className="poppins-bold">24,0000.70</p>
+                    <p className="poppins-bold">{totalStats.total_payments}</p>
                 </div>
                 <div className="flex gap-4 items-center">
                     <div className="primary-linear-gr-bg-light p-3 rounded-[50%]">
@@ -76,7 +99,7 @@ function Stats(){
             className="flex items-center justify-between  bg-white py-3 px-5 rounded-2xl gap-1 cursor-pointer">
                 <div className="flex flex-col gap-1">
                     <p className="text-gray-600 poppins-light">Invoice Sended</p>
-                    <p className="poppins-bold">12</p>
+                    <p className="poppins-bold">{totalStats.invoice_sended}</p>
                 </div>
                 <div className="flex gap-4 items-center">
                     <div className="primary-linear-gr-bg-light p-3 rounded-[50%]">
@@ -104,7 +127,7 @@ function Stats(){
             className="flex items-center justify-between  bg-white py-3 px-5 rounded-2xl cursor-pointer">
                 <div className="flex flex-col gap-1">
                     <p className="text-gray-600 poppins-light">Invoice Received</p>
-                    <p className="poppins-bold">2</p>
+                    <p className="poppins-bold">{totalStats.invoice_received}</p>
                 </div>
                 <div className="flex gap-4 items-center">
                     <div className="primary-linear-gr-bg-light p-3 rounded-[50%]">
@@ -135,7 +158,7 @@ function Stats(){
                 </div>
             </div>
         </div>
-        <SpendData/>
+        <SpendData monthStats={monthStats}/>
     </div>
         </div>
    
