@@ -23,7 +23,7 @@ import { ToastContainer } from "react-toastify";
 const Dashboard = () => {
   return (
     <>
-    <ToastContainer/>
+    {/* <ToastContainer/> */}
     <Routes>
     <Route path="/" element={<DashboardMain />} />
     <Route path="/payment" element={<MainPayment />} />

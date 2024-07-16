@@ -44,6 +44,30 @@ export function useInvoice(){
         return [];
         }
         }
+        const handleNewInvoiceData=async()=>{
+            try {
+                const arr = []
+                const response = await ApiCall({ 
+                    url: PRIVATE_ENDPOINTS.GET_NEW_INVOICES, 
+                    method: "GET", 
+                    PRIVATE_API: true, 
+                    current_user: user 
+                });
+                if(Array.isArray(response.data)){
+                    return response.data;
+                }
+                else{
+                    arr.push(response.data)
+                    return arr;
+                }
+                    
+                
+                }
+            catch (error) {
+            toast("Error in getting Templates");
+            return [];
+            }
+            }
         const handleInvoiceDetail=async(invoiceId=1)=>{
         try {
             const response = await ApiCall({ 
@@ -58,21 +82,22 @@ export function useInvoice(){
         toast("Error in getting Templates");
         }
     }
-    const handlePaymentCreate=async(data)=>{
+    const handleInvoiceCreate=async(data)=>{
         try {
             const response = await ApiCall({ 
-                url: PRIVATE_ENDPOINTS.CREATE_PAYMENT, 
+                url: PRIVATE_ENDPOINTS.CREATE_INVOICE, 
                 method: "POST", 
                 body:data,
                 PRIVATE_API: true, 
                 current_user: user 
             });
+            toast.success("Invoice Sent Succesfully")
             return response.data;
             }
         catch (error) {
-        toast("Error in getting Templates");
+        toast("Error in Sending Invoice");
         }
     }
-    return {handleInvoiceStats,handleInvoiceData,handleInvoiceDetail}
+    return {handleInvoiceStats,handleInvoiceData,handleInvoiceDetail,handleInvoiceCreate,handleNewInvoiceData}
     
 }

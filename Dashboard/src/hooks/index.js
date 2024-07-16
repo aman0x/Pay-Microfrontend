@@ -156,14 +156,35 @@ export function usePayment(){
               PRIVATE_API: true, 
               current_user: user 
             });
+            toast.success("Payment Created!!")
             return response.data;
           }
         catch (error) {
-        toast("Error in getting Templates");
+        toast("Error creating payment");
         }
     }
-    return {handlePaymentCreate,handlePaymentDetail,handlePaymentStats,handlePaymentData}
+
+    const handleAddCard = async(data)=>{
+        try {
+            const response = await ApiCall({ 
+              url: PRIVATE_ENDPOINTS.CREATE_CARD, 
+              method: "POST", 
+              body:data,
+              PRIVATE_API: true, 
+              current_user: user 
+            });
+            toast.success("Card is Added Successfully!!")
+            return response.data;
+          }
+        catch (error) {
+            console.log("dataHok",error)
+            toast("Error in getting Templates");
+        }
+    }
+    return {handlePaymentCreate,handlePaymentDetail,handlePaymentStats,handlePaymentData,handleAddCard}
 }
+
+
 
 export function useStatistic(){
     const user = useSelector(state=>state.auth.user)
@@ -233,4 +254,101 @@ export function useNotfication(){
         }
     }
     return{handleGetNotification}
+}
+
+export function useSupport(){
+    const user = useSelector(state=>state.auth.user)
+    const handleSupport = async(data)=>{
+        try {
+            const response = await ApiCall({ 
+              url: PRIVATE_ENDPOINTS.CREATE_SUPPORT, 
+              method: "POST", 
+              body:data,
+              PRIVATE_API: true, 
+              current_user: user 
+            });
+            toast.success("Query Sended!!")
+            return response.data;
+          }
+        catch (error) {
+        toast("Error Sending Support");
+        }
+    }
+    return{handleSupport}
+}
+
+export function useAccounts(){
+    const user = useSelector(state=>state.auth.user)
+    const handleGetBankAccount = async() =>{
+        try{
+            const arr = []
+           const response = await ApiCall({url:PRIVATE_ENDPOINTS.GET_CREATE_BANK_ACCOUNT_LIST,method:"GET",PRIVATE_API:true,current_user:user})
+           console.log(response)
+           if(Array.isArray(response.data)){
+            return response.data;
+            }
+            else{
+                arr.push(response.data)
+                return arr;
+            }
+            
+        }
+        catch(e){
+            toast("Error in getting Latest Actions");
+            return [];
+        }
+    }
+    const handleAddBankAccount = async(data)=>{
+        try {
+            const response = await ApiCall({ 
+              url: PRIVATE_ENDPOINTS.GET_CREATE_BANK_ACCOUNT_LIST, 
+              method: "POST", 
+              body:data,
+              PRIVATE_API: true, 
+              current_user: user 
+            });
+            toast.success("Query Sended!!")
+            return response.data;
+          }
+        catch (error) {
+        toast("Error Sending Support");
+        }
+    }
+    const handleGetBeneficiary = async() =>{
+        try{
+            const arr = []
+           const response = await ApiCall({url:PRIVATE_ENDPOINTS.GET_CREATE_BENEFICIARY_LIST,method:"GET",PRIVATE_API:true,current_user:user})
+           console.log(response)
+           if(Array.isArray(response.data)){
+            return response.data;
+            }
+            else{
+                arr.push(response.data)
+                return arr;
+            }
+            
+        }
+        catch(e){
+            toast("Error in getting Latest Actions");
+            return [];
+        }
+    }
+    const handleAddBeneficiary= async(data)=>{
+        try {
+            const response = await ApiCall({ 
+              url: PRIVATE_ENDPOINTS.GET_CREATE_BENEFICIARY_LIST, 
+              method: "POST", 
+              body:data,
+              PRIVATE_API: true, 
+              current_user: user 
+            });
+            toast.success("Query Sended!!")
+            return response.data;
+          }
+        catch (error) {
+        toast("Error Sending Support");
+        }
+    }
+   
+    return{handleAddBankAccount,handleGetBankAccount,handleGetBeneficiary,handleAddBeneficiary}
 }

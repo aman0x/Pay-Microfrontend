@@ -1,4 +1,4 @@
-
+import { maskCardNumber } from "#utils/Helpers"
 function StatsTop({reportIndex,setReportIndex,stats}){   
     return(
         <div className="flex flex-col gap-2">
@@ -53,7 +53,7 @@ function StatsTop({reportIndex,setReportIndex,stats}){
                         </svg>
                     </div>
                     <div>
-                        **** **** **** 1001
+                       {maskCardNumber(stats.card_number)}
                     </div>
                 </div>
             </div>

@@ -1,12 +1,35 @@
+import { useInvoice } from "#hooks/index"
+import moment from "moment"
+import { useEffect, useState } from "react"
 import { FaCreditCard,FaSearch }from "react-icons/fa"
 import { useNavigate } from "react-router-dom"
 function NewInvoice(){
     const navigate = useNavigate()
+    const[invoices,setInvoices] = useState([
+        {
+            "invoice_title": "",
+            "date": "2024-06-21T10:21:17.116232Z",
+            "invoice_id": "TD1711364044252",
+            "name": "ANANTHARAPU ARUNA THEJASWINI",
+            "bank": "HDFC Bank",
+            "bank_branch": "KODAD",
+            "ifsc_code": "HDFC0001642",
+            "total_amount": 24000.24
+        }
+    ])
+    const {handleNewInvoiceData}= useInvoice()
+    useEffect(()=>{
+        const fetchInvoice = async()=>{
+            const data = await handleNewInvoiceData()
+            setInvoices(data)
+        }
+        fetchInvoice()
+    })
     return(
         <div className="mt-5 bg-primary p-[1.5rem] rounded-2xl flex flex-col gap-3 w-[1300px] ">
             <div className="flex justify-between items-center">
                 <div className="flex poppins-bold">
-                New Invoices (2)
+                New Invoices ({invoices.length})
                 </div>
                 <div className="w-80">
                     <div className="relative w-full">
@@ -18,19 +41,19 @@ function NewInvoice(){
                 </div>  
             </div>
             <div className="flex flex-col gap-4 mt-2">
-                {[...Array(2)].map((i)=>{
+                {invoices.map((invoice,i)=>{
                     return(
                         <div className="flex flex-col gap-4 rounded-2xl bg-white p-[1.5rem] w-full">
                     <div className="flex justify-between">
                         <div className="flex flex-col gap-1">
-                            <div className="poppins-semibold">Invoice Title</div>
+                            <div className="poppins-semibold">{invoice.invoice_title}</div>
                             <div className="flex gap-2 items-center">
                                 <div className="text-sm text-[#4E5459]">Invoice ID:</div>
-                                <div className="text-xs">IN1711364044252</div>
+                                <div className="text-xs">{invoice.invoice_id}</div>
                             </div>
                             <div className="flex gap-2 items-center">
                                 <div className="text-sm text-[#4E5459]">Date:</div>
-                                <div className="text-xs">4th Apr 2024  01:41 pm</div>
+                                <div className="text-xs">{moment(invoice.date).format('DD MM YYYY HH:mm') }</div>
                             </div> 
                         </div>
                         <div className="rounded-xl shadow-md py-[1px] h-14 px-2 w-40 flex flex-col justify-center">
@@ -38,14 +61,14 @@ function NewInvoice(){
                                 Payment :
                             </div>
                             <div className="color-linear poppins-semibold">
-                                ₹ 24,000.24
+                                ₹ {invoice.total_amount}
                             </div>
                         </div>
                     </div>
                     <div className="flex justify-between items-end">
                             <div className="flex flex-col gap-1 text-sm mt-2">
                                 <div className="text-[#4E5459] poppins-light">From:</div>
-                                <div className="poppins-semibold">ANANTHARAPU ARUNA THEJASWINI</div>
+                                <div className="poppins-semibold">{invoice.name}</div>
                                 <div className="flex gap-1 items-center">
                                     <div>
                                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -58,7 +81,7 @@ function NewInvoice(){
                                         </svg>
                                     </div>
                                     <div className="text-[#4E5459] poppins-light">
-                                        HDFC Bank, KODAD, HDFC0001642
+                                       {invoice.bank}, {invoice.bank_branch}, {invoice.ifsc_code}
                                     </div>
                                 
                                 </div>
@@ -70,7 +93,9 @@ function NewInvoice(){
                                     Details
                                 </div>
                                 <div>
-                                    <button className="poppins-medium text-sm flex items-center bg p-[0.8rem] bg-black-primary rounded-xl  gap-4 primary-btn ">
+                                    <button
+                                     onClick={()=>navigate('/dashboard/payment/new-payment')}
+                                    className="poppins-medium text-sm flex items-center bg p-[0.8rem] bg-black-primary rounded-xl  gap-4 primary-btn ">
                                     <FaCreditCard color="gray"/>
                                     <div>Send Payment</div>
                                     </button>

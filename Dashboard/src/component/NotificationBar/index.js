@@ -102,7 +102,7 @@ function    NoitificationBar(){
             <div className="primary-linear-gr-bg p-[2px] rounded-2xl">
             <div 
             onClick={()=>navigate('/dashboard/card')}
-            className="py-[10px] px-4  bg-white rounded-2xl poppins-semibold text-sm"> 
+            className="py-[10px] px-4 cursor-pointer bg-white rounded-2xl poppins-semibold text-sm"> 
                 Verify Now
             </div>
             </div>

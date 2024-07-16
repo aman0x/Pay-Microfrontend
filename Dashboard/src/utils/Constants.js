@@ -16,7 +16,13 @@ export const PRIVATE_ENDPOINTS = {
     GET_STATISTIC_INVOICE_RECEIVED_STATS:BASE_URL+'/api/statistic/invoice-received-dashboard/',
     GET_STATISTIC_TRANSACTION:BASE_URL+'/api/statistic/transaction-list/',
     GET_STATISTIC_INVOICE_SENT:BASE_URL+'/api/statistic/invoice-sent-list/',
-    GET_STATISTIC_INVOICE_RECEIVED:BASE_URL+'/api/statistic/invoice-received-list/'
+    GET_STATISTIC_INVOICE_RECEIVED:BASE_URL+'/api/statistic/invoice-received-list/',
+    CREATE_CARD:BASE_URL+'/api/card/data/',
+    CREATE_SUPPORT:BASE_URL+'/api/support/data/',
+
+    GET_CREATE_BANK_ACCOUNT_LIST:BASE_URL+'/api/account/bank/',
+
+    GET_CREATE_BENEFICIARY_LIST:BASE_URL+'/api/account/beneficiary/'
 }
 
 

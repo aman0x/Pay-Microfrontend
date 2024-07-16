@@ -2,7 +2,7 @@ import { useState } from "react"
 import "./style.css"
 import {FaSquare} from "react-icons/fa6"
 const cards = ['**** **** **** 1001','**** **** **** 1001','**** **** **** 1001','**** **** **** 1001']
-function PaymentStep2({setStepIndex}){
+function PaymentStep2({setStepIndex,data}){
     const [paymentIndex,setPaymentIndex] = useState(0)
     const [isConvenienceBearerMe,setWithMe] = useState(true)
     const [isCardMenuOpen,setCardMenuOpen]= useState(false)
@@ -234,17 +234,17 @@ function PaymentStep2({setStepIndex}){
                             <div className="flex gap-2 items-center  min-w-fit">
                                 <div className="text-[#A3A6A9] text-sm min-w-fit">Receiver will recieve</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-sm min-w-fit">₹ 24,000.24</div>
+                                <div className="poppins-semibold text-sm min-w-fit">₹ {data.amount}</div>
                            </div>
                            <div className="flex gap-2 items-center">
                                 <div className="text-[#A3A6A9] text-sm min-w-fit">Convenience Fees 1.99%</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-sm min-w-fit">₹ 24,000.24</div>
+                                <div className="poppins-semibold text-sm min-w-fit">₹ {data.amount*0.02}</div>
                            </div>
                            <div className="flex gap-2 items-center">
                                 <div className="text-[#A3A6A9] text-sm min-w-fit">TAX</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-sm min-w-fit">₹ 24,000.24</div>
+                                <div className="poppins-semibold text-sm min-w-fit">₹ {data.amount*0.18}</div>
                            </div>
                            
                         </div>
@@ -253,7 +253,7 @@ function PaymentStep2({setStepIndex}){
                                 Checkout Amount:
                             </div>
                             <div>
-                                ₹ 24,000.24
+                                ₹ {data.amount*0.80}
                             </div>
                         </div>
                     </div>

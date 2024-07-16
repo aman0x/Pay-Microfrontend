@@ -1,7 +1,33 @@
 import BeneficiaryTable from "./BeneficiaryTable.js";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useAccounts } from "#hooks/index.js";
 function MyBeneficiary(){
     const navigate = useNavigate()
+    const [beneficiary,setBeneficiary] = useState([
+        {
+            "id": 1,
+            "account_name": "ANANTHARAPU ARUNA THEJASWINI",
+            "account_number": "23647586473424574",
+            "bank_name": "SBI BANK",
+            "ifsc_code": "SBIN02400",
+            "bank_account_type": "CURRENT",
+            "pan_no": "GGR20493295930",
+            "gstin_no": "",
+            "created_at": "2024-07-16T12:17:35.140065Z",
+            "modified_at": "2024-07-16T12:17:35.140082Z",
+            "is_verified": true,
+            "user": 2
+        }
+    ])
+    const {handleGetBeneficiary} = useAccounts()
+    useEffect(()=>{
+        const fetchBeneficiary = async()=>{
+            const data = await handleGetBeneficiary()
+            setBeneficiary(data)
+        }
+        fetchBeneficiary()
+    },[])
     return(
         <div className="mt-5 bg-primary p-[2rem] rounded-2xl flex flex-col gap-3 w-full">
             <div className="flex justify-between">
@@ -27,7 +53,7 @@ function MyBeneficiary(){
                     </div>
                 </div>                
             </div>
-           <BeneficiaryTable/> 
+           <BeneficiaryTable beneficiary={beneficiary}/> 
            <div className="flex justify-center">
                 <div className="primary-linear-gr-bg p-[2px] rounded-xl">
                 <button 

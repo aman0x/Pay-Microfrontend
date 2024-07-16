@@ -39,97 +39,7 @@ function ActionCards({data}){
                     )
                 })
             }
-                    
-                    <div className="flex flex-col justify-between bg-white rounded-2xl p-5 gap-3">
-                        <div className="flex justify-between text-gray-600 text-sm poppins-medium">
-                            <p>Type Of Payment</p>
-                            <p>12 March 2024 12:38</p>
-                            <p>TD136347383DR82</p>
-                        </div>
-                        <div className="flex justify-between poppins-semibold">
-                            <div>
-                                <p>ANANTHARAPU ARUNA THEJASWINI</p>
-                                <p className="flex items-center text-gray-600 text-sm poppins-regular gap-2"><span><BsBank2/></span>HDFC Bank, KODAD, HDFC0001642</p>
-                            </div>
-                            <div>
-                            - ₹ 1,00,000.00
-                            </div>
-                        </div>
-                        <div className="flex justify-between">
-                            <div className="flex items-center gap-2">
-                                <span>
-                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <rect width="18" height="18" rx="9" fill="#55C861" fillOpacity="0.15"/>
-                                    <circle cx="9" cy="9" r="4" fill="#27A963"/>
-                                    </svg>
-                                </span>
-                                <p className="text-[#27A963]" > Transaction Has Been Settled</p>
-                            </div>
-                            <div>
-                                <a href="#" className="underline text-gray-600 text-sm poppins-medium">Details</a>
-                            </div>
-                        </div>                        
-                    </div>
-                    <div className="flex flex-col justify-between bg-white rounded-2xl p-5 gap-3">
-                        <div className="flex justify-between text-gray-600 text-sm poppins-medium">
-                            <p>Type Of Payment</p>
-                            <p>12 March 2024 12:38</p>
-                            <p>TD136347383DR82</p>
-                        </div>
-                        <div className="flex justify-between poppins-semibold">
-                            <div>
-                                <p>ANANTHARAPU ARUNA THEJASWINI</p>
-                                <p className="flex items-center text-gray-600 text-sm poppins-regular gap-2"><span><BsBank2/></span>HDFC Bank, KODAD, HDFC0001642</p>
-                            </div>
-                            <div>
-                            - ₹ 1,00,000.00
-                            </div>
-                        </div>
-                        <div className="flex justify-between">
-                            <div className="flex items-center gap-2">
-                                <span>
-                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <rect width="18" height="18" rx="9" fill="#55C861" fillOpacity="0.15"/>
-                                    <circle cx="9" cy="9" r="4" fill="#27A963"/>
-                                    </svg>
-                                </span>
-                                <p className="text-[#27A963]" > Transaction Has Been Settled</p>
-                            </div>
-                            <div>
-                                <a href="#" className="underline text-gray-600 text-sm poppins-medium">Details</a>
-                            </div>
-                        </div>                        
-                    </div>
-                    <div className="flex flex-col justify-between bg-white rounded-2xl p-5 gap-3">
-                        <div className="flex justify-between text-gray-600 text-sm poppins-medium">
-                            <p>Type Of Payment</p>
-                            <p>12 March 2024 12:38</p>
-                            <p>TD136347383DR82</p>
-                        </div>
-                        <div className="flex justify-between poppins-semibold">
-                            <div>
-                                <p>ANANTHARAPU ARUNA THEJASWINI</p>
-                                <p className="flex items-center text-gray-600 text-sm poppins-regular gap-2"><span><BsBank2/></span>HDFC Bank, KODAD, HDFC0001642</p>
-                            </div>
-                            <div>
-                            - ₹ 1,00,000.00
-                            </div>
-                        </div>
-                        <div className="flex justify-between">
-                            <div className="flex items-center gap-2">
-                                <span><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="18" height="18" rx="9" fill="#FF5F5F" fillOpacity="0.15"/>
-                                        <circle cx="9" cy="9" r="4" fill="#E45757"/>
-                                        </svg>
-                                </span>
-                                <p className="text-[#E45757]" >Transaction Has Rejected</p>
-                            </div>
-                            <div>
-                                <a href="#" className="underline text-gray-600 text-sm poppins-medium">Details</a>
-                            </div>
-                        </div>                        
-                    </div>
-                    <div className="flex justify-center">
+                    {data.length>3 &&<div className="flex justify-center">
                         <div className="primary-linear-gr-bg p-[2px] rounded-xl">
                         <button className="flex items-center gap-2 bg-primary rounded-xl px-3 py-1 poppins-semibold">
                             <span>
@@ -149,7 +59,7 @@ function ActionCards({data}){
                             </button>
                         </div>
                         
-                    </div>
+                    </div>}
               
                 </div>
     )

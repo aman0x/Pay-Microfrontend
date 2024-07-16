@@ -1,4 +1,6 @@
 .env.development
+AppShell/node_module
+Dashboard/node_module
 Controllers/node_modules/.package-lock.json
 Controllers/node_modules/asynckit/bench.js
 Controllers/node_modules/asynckit/index.js

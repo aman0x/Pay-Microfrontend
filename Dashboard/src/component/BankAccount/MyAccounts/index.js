@@ -1,7 +1,34 @@
+import { useAccounts } from "#hooks/index";
+import { useEffect, useState } from "react";
 import BanksTable from "./BankTable";
 import { useNavigate } from "react-router-dom";
+
 function MyAccounts(){
     const navigate = useNavigate()
+    const [banks,setBank] = useState([
+        {
+            "id": 1,
+            "account_name": "ANANTHARAPU ARUNA THEJASWINI",
+            "account_number": "23647586473424574",
+            "bank_name": "SBI BANK",
+            "ifsc_code": "SBIN02400",
+            "user_account_type": "INDIVIDUAL",
+            "bank_account_type": "SAVINGS",
+            "pan_no": "GGR20493295930",
+            "gstin_no": "",
+            "created_at": "2024-07-16T11:57:57.059382Z",
+            "modified_at": "2024-07-16T11:57:57.059398Z",
+            "user": 2
+        }
+    ])
+    const {handleGetBankAccount} = useAccounts()
+    useEffect(()=>{
+        const fetchBankAccounts = async()=>{
+            const data = await handleGetBankAccount()
+            setBank(data)
+        }
+        fetchBankAccounts()
+    },[])
     return(
         <div className="mt-5 bg-primary p-[2rem] rounded-2xl flex flex-col gap-3 w-full">
             <div className="flex justify-between">
@@ -27,7 +54,7 @@ function MyAccounts(){
                     </div>
                 </div>                
             </div>
-           <BanksTable/> 
+           <BanksTable banks={banks}/> 
            <div className="flex justify-center">
                 <div className="primary-linear-gr-bg p-[2px] rounded-xl">
                 <button 

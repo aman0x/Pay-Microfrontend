@@ -45,3 +45,15 @@ export function eraseCookie(name) {
 export function GET_DATE_FORMAT(date){
     moment(date).format('DD MMMM YYYY HH:mm')
 }
+
+export function maskCardNumber(cardNumber) {
+    
+    if (cardNumber.length !== 16) {
+      throw new Error('Card number must be 16 digits long.');
+    }
+    const lastFourDigits = cardNumber.slice(-4);
+    const maskedSection = '*'.repeat(12); 
+    const maskedCardNumber = maskedSection + lastFourDigits;
+    const formattedCardNumber = maskedCardNumber.match(/.{1,4}/g).join(' '); 
+    return formattedCardNumber;
+  }

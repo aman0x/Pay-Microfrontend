@@ -57,7 +57,7 @@ function Templates({userId=null,handleTemplateData}){
                                 <div className="poppins-semibold text-sm">
                                 {bank.account_holder_name}
                                 </div>
-                                <Link to={'/payment/new-payment'} className="underline text-gray-500 poppins-light text-sm">
+                                <Link to={'/dashboard/payment/new-payment'} className="underline text-gray-500 poppins-light text-sm">
                                     Make Payment
                                 </Link>
                                 

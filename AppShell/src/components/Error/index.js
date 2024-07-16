@@ -14,23 +14,24 @@ const NotFound = () => {
         <button
         className="border-2 py-2 px-4 rounded-2xl bg-black-primary primary-btn"
         onClick={()=>
-            navigate('/dashboard')
+          window.location.href="/dashboard"
         } 
         >Dashboard</button>
         <button
         className="border-2 py-2 px-4 rounded-2xl bg-black-primary primary-btn"
         onClick={()=>
-            navigate('/invoice')
+          window.location.href="/invoice"
+            
         }>Invoice</button>
         <button
         className="border-2 py-2 px-4 rounded-2xl bg-black-primary primary-btn"
         onClick={()=>
-            navigate('/admin')
+            window.location.href="/admin"
         }>Admin</button>
         <button
         className="border-2 py-2 px-4 rounded-2xl bg-black-primary primary-btn"
          onClick={()=>
-            navigate('/report')
+            window.location.href="/report"
          }
         >
         Report</button>

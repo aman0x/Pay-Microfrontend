@@ -7,6 +7,15 @@ import AddBeneficiaryStep2 from "./AddBeneficiarytStep2"
 function AddNewBeneficiary({isRepeatPayment=false}){
 
     const [stepIndex,setStepIndex] = useState(0)
+    const [isValid,setIsValid] = useState({
+        accountName:true,
+        accountNumber:true,
+        ifscCode:true,
+        allValid:false
+    })
+    const [accountName,setAccountName] = useState('')
+    const [accountNumber,setAccountNumber] = useState('')
+    const [ifscCode,setIfscCode] = useState('')
 
     return(
         <div className="mt-5 bg-primary p-[2rem] rounded-2xl flex flex-col gap-3 w-full ">
@@ -77,29 +86,42 @@ function AddNewBeneficiary({isRepeatPayment=false}){
                 <div className="text-center poppins-semibold">Enter Data</div>
                 <div className="flex flex-col gap-2">
                     <div className="relative">
-                        <input type="text"   className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full ps-14 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Account Name"/>
-                        <div className="absolute inset-y-0 end-1 flex items-center pe-3">
+                        <input type="text" value={accountName} onChange={(e)=>setAccountName(e.target.value)}  className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full ps-14 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Account Name"/>
+                        {
+                           !isValid.accountName? 
+                            <div className="absolute inset-y-0 end-1 flex items-center pe-3">
                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fillRule="evenodd" clipRule="evenodd" d="M11.8332 6.00008C11.8332 9.22171 9.22147 11.8334 5.99984 11.8334C2.77817 11.8334 0.166504 9.22171 0.166504 6.00008C0.166504 2.77842 2.77817 0.166748 5.99984 0.166748C9.22147 0.166748 11.8332 2.77842 11.8332 6.00008ZM5.99984 9.35425C6.24145 9.35425 6.43734 9.15837 6.43734 8.91675V5.41675C6.43734 5.17513 6.24145 4.97925 5.99984 4.97925C5.75822 4.97925 5.56234 5.17513 5.56234 5.41675V8.91675C5.56234 9.15837 5.75822 9.35425 5.99984 9.35425ZM5.99984 3.08342C6.32201 3.08342 6.58317 3.34458 6.58317 3.66675C6.58317 3.98891 6.32201 4.25008 5.99984 4.25008C5.67766 4.25008 5.4165 3.98891 5.4165 3.66675C5.4165 3.34458 5.67766 3.08342 5.99984 3.08342Z" fill="#E45757"/>
                             </svg>
-                        </div>
+                            </div>
+                            :null
+                        }
                     </div>
                     <div className="relative">
-                        <input type="text"   className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full ps-14 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Account Number"/>
-                        <div className="absolute inset-y-0 end-1 flex items-center pe-3">
+                        <input type="number" value={accountNumber} onChange={(e)=>setAccountNumber(e.target.value)}   className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full ps-14 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Account Number"/>
+                        {
+                           !isValid.accountNumber? 
+                            <div className="absolute inset-y-0 end-1 flex items-center pe-3">
                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fillRule="evenodd" clipRule="evenodd" d="M11.8332 6.00008C11.8332 9.22171 9.22147 11.8334 5.99984 11.8334C2.77817 11.8334 0.166504 9.22171 0.166504 6.00008C0.166504 2.77842 2.77817 0.166748 5.99984 0.166748C9.22147 0.166748 11.8332 2.77842 11.8332 6.00008ZM5.99984 9.35425C6.24145 9.35425 6.43734 9.15837 6.43734 8.91675V5.41675C6.43734 5.17513 6.24145 4.97925 5.99984 4.97925C5.75822 4.97925 5.56234 5.17513 5.56234 5.41675V8.91675C5.56234 9.15837 5.75822 9.35425 5.99984 9.35425ZM5.99984 3.08342C6.32201 3.08342 6.58317 3.34458 6.58317 3.66675C6.58317 3.98891 6.32201 4.25008 5.99984 4.25008C5.67766 4.25008 5.4165 3.98891 5.4165 3.66675C5.4165 3.34458 5.67766 3.08342 5.99984 3.08342Z" fill="#E45757"/>
                             </svg>
-                        </div>
+                            </div>
+                            :null
+                        }
                     </div>
                     <div className="relative">
-                        <input type="text"   className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full ps-14 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="IFSC Code"/>
-                        <div className="absolute inset-y-0 end-1 flex items-center pe-3">
+                        <input type="text" value={ifscCode} onChange={(e)=>setIfscCode(e.target.value)}   className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full ps-14 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="IFSC Code"/>
+                        {
+                           !isValid.ifscCode? 
+                            <div className="absolute inset-y-0 end-1 flex items-center pe-3">
                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fillRule="evenodd" clipRule="evenodd" d="M11.8332 6.00008C11.8332 9.22171 9.22147 11.8334 5.99984 11.8334C2.77817 11.8334 0.166504 9.22171 0.166504 6.00008C0.166504 2.77842 2.77817 0.166748 5.99984 0.166748C9.22147 0.166748 11.8332 2.77842 11.8332 6.00008ZM5.99984 9.35425C6.24145 9.35425 6.43734 9.15837 6.43734 8.91675V5.41675C6.43734 5.17513 6.24145 4.97925 5.99984 4.97925C5.75822 4.97925 5.56234 5.17513 5.56234 5.41675V8.91675C5.56234 9.15837 5.75822 9.35425 5.99984 9.35425ZM5.99984 3.08342C6.32201 3.08342 6.58317 3.34458 6.58317 3.66675C6.58317 3.98891 6.32201 4.25008 5.99984 4.25008C5.67766 4.25008 5.4165 3.98891 5.4165 3.66675C5.4165 3.34458 5.67766 3.08342 5.99984 3.08342Z" fill="#E45757"/>
                             </svg>
-                        </div>
+                            </div>
+                            :null
+                        }
                     </div>
+                    { !isValid.allValid &&
                     <div className="flex gap-3 justify-center">
                         <div>
                             <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -107,15 +129,36 @@ function AddNewBeneficiary({isRepeatPayment=false}){
                             </svg>
                         </div>
                         <div className="text-xs text-[#E45757]">Mandatory for Filling</div> 
-                    </div>
+                    </div>}
                 </div>
-                
                 <div className=''>
                     <button type="submit"
                         onClick={() => {
-                            setStepIndex(1)
-                        //navigate('/accounts/type')
-                        // withEmail ? handleUserLoginWithEmail():handleLoginWithPhone()
+                            if(accountName.length<4){
+                                setIsValid({
+                                    ...isValid,
+                                    accountName:false
+                                })
+                            }
+                            else if(accountNumber.length<11){
+                                setIsValid({
+                                    ...isValid,
+                                    accountNumber:false
+                                })
+                            }
+                            else if(ifscCode.length<4){
+                                setIsValid({
+                                    ...isValid,
+                                    ifscCode:false
+                                })
+                            }
+                            else{
+                                setIsValid({
+                                    ...isValid,
+                                   allValid:true
+                                })
+                                setStepIndex(1)
+                            }
                         }}
                         className="flex primary-btn items-center w-full justify-center rounded-xl bg-gray-950 px-3 p-4 text-sm font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"><div>{"Next Step"}</div>
                     <span className='py-1.5 pl-2 size-6'><FaCircleArrowRight style={{color:'white'}} /></span></button>
@@ -126,7 +169,12 @@ function AddNewBeneficiary({isRepeatPayment=false}){
 
             {
                 stepIndex===1 &&
-                <AddBeneficiaryStep2/> 
+                <AddBeneficiaryStep2 data={{
+                    account_name:accountName,
+                    account_number:accountNumber,
+                    ifsc_code:ifscCode,
+                    user:2
+                }}/> 
             }
                 
            

@@ -66,7 +66,8 @@ import {useState} from "react"
 import { TiTick } from "react-icons/ti";
 import "./style.css"
 import { useNavigate } from "react-router-dom";
-function BanksTable(){
+import moment from "moment";
+function BanksTable({banks}){
   const navigate = useNavigate()
     const [isDateClicked,setIsDateClicked] = useState(false)
     return(
@@ -118,10 +119,10 @@ function BanksTable(){
                 <div className="td-element1">Actions</div>     
                 </td>
             </tr>
-            {
-                transactions.map((transaction,i)=>{
+            {banks.map((transaction,i)=>{
                     return(
                         <tr 
+                        key={transaction.id}
                         onClick={()=>
                             console.log("clicked")
                             //navigate(`/dashboard/payment/payment-detail?${i}`)
@@ -134,19 +135,19 @@ function BanksTable(){
                                     <TiTick color="white" size="12px"/>    
                                 </div>
                                 <div  className="flex flex-col gap-1">
-                                    <span>{transaction.date}</span>
-                                    <span>{transaction.time}</span>
+                                <span>{moment(transaction.created_at).format('DD MMMM YYYY')}</span>
+                                <span>{moment(transaction.created_at).format('HH:mm')}</span>
                                 </div>
                             </div>
                         </td>
-                        <td><div className="td-element">{transaction.recipient}</div></td>
-                        <td><div className="td-element">{transaction.accountNumber}</div></td>
-                        <td><div className="td-element">{transaction.bank}</div></td>
-                        <td><div className="td-element">{transaction.IFSC}</div></td>
+                        <td><div className="td-element">{transaction.account_name}</div></td>
+                        <td><div className="td-element">{transaction.account_number}</div></td>
+                        <td><div className="td-element">{transaction.bank_name}</div></td>
+                        <td><div className="td-element">{transaction.ifsc_code}</div></td>
                         <td>
                             
                             <div className="td-element">
-                                {transaction.transaction}
+                                {2}
                             </div>
                             
                         </td>

@@ -1,72 +1,12 @@
-// DUMMY DATA
 
-const transactions = [
-    {
-        date: "15th Jan 2023",
-        time: "10:30am",
-        recipient: "Rajesh Kumar",
-        accountNumber:"31425346875657890796",
-        bank: "State Bank of India",
-        IFSC: "SBIN023125215",
-        transaction:2
-      },{
-        date: "15th Jan 2023",
-        time: "10:30am",
-        recipient: "Rajesh Kumar",
-        accountNumber:"31425346875657890796",
-        bank: "State Bank of India",
-        IFSC: "SBIN023125215",
-        transaction:2
-      },{
-        date: "15th Jan 2023",
-        time: "10:30am",
-        recipient: "Rajesh Kumar",
-        accountNumber:"31425346875657890796",
-        bank: "State Bank of India",
-        IFSC: "SBIN023125215",
-        transaction:2
-      },{
-        date: "15th Jan 2023",
-        time: "10:30am",
-        recipient: "Rajesh Kumar",
-        accountNumber:"31425346875657890796",
-        bank: "State Bank of India",
-        IFSC: "SBIN023125215",
-        transaction:2
-      },{
-        date: "15th Jan 2023",
-        time: "10:30am",
-        recipient: "Rajesh Kumar",
-        accountNumber:"31425346875657890796",
-        bank: "State Bank of India",
-        IFSC: "SBIN023125215",
-        transaction:2
-      },{
-        date: "15th Jan 2023",
-        time: "10:30am",
-        recipient: "Rajesh Kumar",
-        accountNumber:"31425346875657890796",
-        bank: "State Bank of India",
-        IFSC: "SBIN023125215",
-        transaction:2
-      },
-      {
-        date: "15th Jan 2023",
-        time: "10:30am",
-        recipient: "Rajesh Kumar",
-        accountNumber:"31425346875657890796",
-        bank: "State Bank of India",
-        IFSC: "SBIN023125215",
-        transaction:2
-      },
-  ];
   
   
 import {useState} from "react"
 import { TiTick } from "react-icons/ti";
 import "./style.css"
 import { useNavigate } from "react-router-dom";
-function BeneficiaryTable(){
+import moment from "moment";
+function BeneficiaryTable({beneficiary}){
   const navigate = useNavigate()
     const [isDateClicked,setIsDateClicked] = useState(false)
     return(
@@ -116,7 +56,7 @@ function BeneficiaryTable(){
                 </td>
             </tr>
             {
-                transactions.map((transaction,i)=>{
+                beneficiary.map((transaction,i)=>{
                     return(
                         <tr 
                         onClick={()=>
@@ -131,26 +71,33 @@ function BeneficiaryTable(){
                                     <TiTick color="white" size="12px"/>    
                                 </div>
                                 <div  className="flex flex-col gap-1">
-                                    <span>{transaction.date}</span>
-                                    <span>{transaction.time}</span>
+                                <span>{moment(transaction.created_at).format('DD MMMM YYYY')}</span>
+                                <span>{moment(transaction.created_at).format('HH:mm') }</span>
                                 </div>
                             </div>
                         </td>
-                        <td><div className="td-element">{transaction.accountNumber}</div></td>
-                        <td><div className="td-element">{transaction.bank}</div></td>
+                        <td><div className="td-element">{transaction.account_number}</div></td>
+                        <td><div className="td-element">{transaction.bank_name}</div></td>
                         <td>
                             
                             <div className="td-element">
-                                {transaction.transaction}
+                                {2}
                             </div>
                             
                         </td>
                         <td>
-                            <div className="td-element">
+                            {
+                                transaction.is_verified?
+                                <div className="td-element">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fillRule="evenodd" clipRule="evenodd" d="M16 8C16 12.4182 12.4182 16 8 16C3.58172 16 0 12.4182 0 8C0 3.58172 3.58172 0 8 0C12.4182 0 16 3.58172 16 8ZM11.2242 5.57574C11.4586 5.81005 11.4586 6.18995 11.2242 6.42424L7.22424 10.4242C6.98992 10.6586 6.61008 10.6586 6.37574 10.4242L4.77574 8.82424C4.54142 8.58992 4.54142 8.21008 4.77574 7.97576C5.01005 7.74144 5.38995 7.74144 5.62426 7.97576L6.8 9.15144L8.58784 7.3636L10.3758 5.57574C10.6101 5.34142 10.9899 5.34142 11.2242 5.57574Z" fill="#27A963"/>
                                 </svg>
-                            </div></td>
+                                </div>
+                                :
+                                null
+                            }
+                            
+                        </td>
                         <td>
                             <div className="flex gap-6 items-center td-element">
                             <div>

@@ -1,8 +1,19 @@
 import { useNavigate } from "react-router-dom"
 import { FlipCard, PaymentCard } from "../PaymentCard"
+import { useState } from "react"
 
 function MyCards(){
     const navigate  = useNavigate()
+    const [cards,setCards] = useState({
+        "card_holder_name": "Holder Name",
+        "card_number": "1234567824681257",
+        "card_type": "VISA",
+        "exp_date": "02/28",
+        "cvv_no": "123",
+        "balance": 12000,
+        "payments": 12,
+        "verified": true
+    })
     return(
         <div className="mt-5 bg-primary p-[2rem] rounded-2xl flex flex-col gap-3 w-full">
             <div className="flex justify-between">
@@ -29,10 +40,10 @@ function MyCards(){
                 </div>                
             </div>
            <div className="grid grid-cols-3 gap-4">
-            <FlipCard isArrowShown={false} />
-            <FlipCard isArrowShown={false} cardColorbg="#E872D4"/>
-            <FlipCard isArrowShown={false} cardColorbg="#964EC2"/>
-            <FlipCard isArrowShown={false} cardColorbg="#232B31"/>
+            <FlipCard isArrowShown={false} cardData={cards} />
+            <FlipCard isArrowShown={false}  cardData={cards}  cardColorbg="#E872D4"/>
+            <FlipCard isArrowShown={false}  cardData={cards}  cardColorbg="#964EC2"/>
+            <FlipCard isArrowShown={false}  cardData={cards}  cardColorbg="#232B31"/>
             <div className="primary-linear-gr-bg p-[2px] flex justify-center rounded-3xl">
                 <div 
                     onClick={()=>navigate('/dashboard/card/add-card')}

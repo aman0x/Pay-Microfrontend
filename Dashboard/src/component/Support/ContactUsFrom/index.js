@@ -1,7 +1,12 @@
 import {useState} from "react"
 import FAQ from "./FAQ";
+import { useSupport } from "#hooks/index";
 function ContactForm(){
     const [wordsCount,setWordsCount] = useState(0)
+    const {handleSupport} = useSupport()
+    const [name,setName]=useState()
+    const [email,setEmail]=useState()
+    const[message,setMessage]=useState()
     return(
         <div className="mt-5 bg-primary p-[2rem] rounded-2xl flex flex-col gap-4 mr-2">
             <div>
@@ -10,13 +15,16 @@ function ContactForm(){
             </div>
             <div className="flex flex-col gap-2">
                 <div className="flex gap-2">
-                <input type="text"  className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-xl w-full ps-14 p-[1rem] placeholder:text-[#787D81]" placeholder="Your Name"/>
-                <input type="text" className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-xl w-full ps-14 p-[1rem] placeholder:text-[#787D81]" placeholder="Yout Email"/>
+                <input type="text" value={name} onChange={(e)=>setName(e.target.value)}  className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-xl w-full ps-14 p-[1rem] placeholder:text-[#787D81]" placeholder="Your Name"/>
+                <input type="text" value={email} onChange={(e)=>setEmail(e.target.value)} className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-xl w-full ps-14 p-[1rem] placeholder:text-[#787D81]" placeholder="Yout Email"/>
                 </div>
                 <div className="relative">
                     <div className="absolute bottom-2 right-2 italic text-xs text-gray-600">{wordsCount}/600</div>
                     <textarea
-                    onChange={e => setWordsCount(e.target.value.length)}
+                    value={message} 
+                    onChange={(e)=>{
+                        setMessage(e.target.value)
+                        setWordsCount(e.target.value.length)}}
                     className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-xl w-full ps-14 p-3.5 resize-none placeholder:text-[#787D81] h-36"  
                     placeholder="Message" />     
                 </div>

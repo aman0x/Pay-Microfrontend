@@ -4,6 +4,9 @@
         "paths": {
             "controllers/*": [
                 "../controllers/*"
+            ],
+            "#hooks/*":[
+                "./src/hooks/*"
             ]
         }
     }

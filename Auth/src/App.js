@@ -15,7 +15,7 @@ console.log("work",window.root)
 const Auth = () => (
   
   <div className="bg-white">
-    <ToastContainer/>
+    {/* <ToastContainer/> */}
   <Routes>
     <Route path="/" element={<LoginUser />} />
     <Route path="/accounts/login" element={<LoginUser />} />

@@ -1,5 +1,7 @@
 import {FaCreditCard} from "react-icons/fa6"
-function NewInvoiceStep2({setStepIndex}){
+import { useInvoice } from "#hooks/index.js";
+function NewInvoiceStep2({setStepIndex,data}){
+    const {handleInvoiceCreate} = useInvoice()
     return(
         <div className="flex flex-col gap-2">
              <div className="flex flex-col gap-4 rounded-2xl bg-white p-[1.5rem] w-full">
@@ -213,7 +215,11 @@ function NewInvoiceStep2({setStepIndex}){
             
             </div>
             <div>
-                <button className="poppins-medium text-sm flex items-center bg p-[1rem] bg-black-primary rounded-xl min-w-56 gap-4 primary-btn ">
+                <button className="poppins-medium text-sm flex items-center bg p-[1rem] bg-black-primary rounded-xl min-w-56 gap-4 primary-btn "
+                onClick={()=>{
+                    handleInvoiceCreate(data)
+                }}
+                >
                 <FaCreditCard color="gray"/>
                 <div>Send Invoice</div>
                 </button>
