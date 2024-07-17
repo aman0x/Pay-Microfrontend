@@ -66,10 +66,14 @@ export default function SignUpUser(){
             }}
             onSubmit={(values, { setSubmitting }) => {
                 setSubmitting(false)
-                console.log(values)
+                const newVal={
+                  ...values,
+                  phone:'+91'+values.phone
+                }
+                console.log(newVal)
                 pageIndex===1?
                 setPageIndex(2)
-                :handleUserSignup(values)
+                :handleUserSignup(newVal)
               }
             
           }
@@ -258,7 +262,7 @@ export default function SignUpUser(){
                 <span ><FcGoogle className='size-8'/></span>
                 <span> Google</span>
               </button>
-              <button
+              {/* <button
                 onClick={handleLoginWithFacebook}
                 className="bg-white flex flex-col items-center  border rounded-xl border-gray-300 shadow-md px-8 py-2 text-sm font-medium text-gray-800 "
                 >
@@ -273,7 +277,7 @@ export default function SignUpUser(){
                   <span><IoLogoFacebook className='size-8'/></span>
                 <span>Facebook</span>
   
-              </button>
+              </button> */}
               
               <div id="recaptcha-container">
   

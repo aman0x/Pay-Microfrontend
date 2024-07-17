@@ -2,9 +2,10 @@ import ApiCall from "controllers/AxiosInstance/index.js"
 import {useSelector} from "react-redux"
 import { PRIVATE_ENDPOINTS } from "../utils/Constants.js"
 import {toast} from "react-toastify"
+import { useNavigate } from "react-router-dom"
 export function useDashboard(){
+    const user_id = useSelector(state=>state.auth.user_id)
     const user = useSelector(state=>state.auth.user)
-
    const handleTemplateData=async()=>{
     try {
         const arr = []
@@ -44,7 +45,8 @@ export function useDashboard(){
         
     }
     catch(e){
-        toast("Error in getting Payment Cards");
+        console.log("error",e)
+        toast("Error in getting Payment Cards1");
         return [];
     }
        
@@ -93,7 +95,9 @@ export function useDashboard(){
 
 export function usePayment(){
     const user = useSelector(state=>state.auth.user)
-
+    const user_id = useSelector(state=>state.auth.user_id)
+    console.log("user",user)
+    const navigate = useNavigate()
     const handlePaymentStats=async()=>{
         try {
             const response = await ApiCall({ 
@@ -148,15 +152,20 @@ export function usePayment(){
         }
     }
     const handlePaymentCreate=async(data)=>{
+        const user_data = {
+            ...data,
+            user:user_id
+        }
         try {
             const response = await ApiCall({ 
               url: PRIVATE_ENDPOINTS.CREATE_PAYMENT, 
               method: "POST", 
-              body:data,
+              body:user_data,
               PRIVATE_API: true, 
               current_user: user 
             });
             toast.success("Payment Created!!")
+            navigate(-1)
             return response.data;
           }
         catch (error) {
@@ -165,16 +174,21 @@ export function usePayment(){
     }
 
     const handleAddCard = async(data)=>{
+        const user_data = {...data,
+            user:user_id
+        }
         try {
             const response = await ApiCall({ 
               url: PRIVATE_ENDPOINTS.CREATE_CARD, 
               method: "POST", 
-              body:data,
+              body:user_data,
               PRIVATE_API: true, 
               current_user: user 
             });
             toast.success("Card is Added Successfully!!")
+            navigate(-1)
             return response.data;
+           
           }
         catch (error) {
             console.log("dataHok",error)
@@ -190,7 +204,6 @@ export function useStatistic(){
     const user = useSelector(state=>state.auth.user)
 
     const handleStatisticStats=async(index)=>{
-        (index)
         try {
             const response = await ApiCall({ 
               url: index>0?(index===1?PRIVATE_ENDPOINTS.GET_STATISTIC_INVOICE_SENT_STATS:PRIVATE_ENDPOINTS.GET_STATISTIC_INVOICE_RECEIVED_STATS):PRIVATE_ENDPOINTS.GET_STATISTIC_STATS, 

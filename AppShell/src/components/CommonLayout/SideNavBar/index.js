@@ -7,11 +7,14 @@ import { FaCreditCard,FaGreaterThan,FaLessThan } from "react-icons/fa6";
 import {useState} from "react"
 import  { useNavigate } from "react-router-dom"
 import "./style.css"
+import { useDispatch } from "react-redux";
+import {authActions} from "Auth/authReducer"
 export  function SideNavBar(){
     const navigate = useNavigate()
     const [isNavOpen,setNavOpen] = useState(true)
     const [navIndex,setNavIndex] = useState(0)
-    
+    const [notificationIndex,setnotificationIndex] = useState(0)
+    const dispatch  = useDispatch()
     return(
         <div className={`bg-primary cursor-pointer ${isNavOpen?'min-w-[13.5rem]':"nav-close"} flex flex-col h-[85vh] max-h-[800px]  text-sm justify-between border-gray-400  py-[1.5rem] pr-[1rem] rounded-3xl mx-[0.5rem] my-[0.5rem]  transition-all duration-150 shadow-2xl overflow-y-hidden`}
         >
@@ -48,9 +51,15 @@ export  function SideNavBar(){
                 }
                     <span className={`${isNavOpen?"":"nav-element"}`}><MdDashboard /></span>
                     <p className="hover:text-black hover:font-semibold">Dashboard</p>
-                    <div className="relative primary-linear-gr-bg  p-[1.5px] rounded-2xl">
-                    <div className="bg-black-primary rounded-xl py-0.5 px-2 text-xs">1 New</div>
-                    </div>
+                    {
+                        notificationIndex === 1?
+                        <div className="relative primary-linear-gr-bg  p-[1.5px] rounded-2xl">
+                        <div className="bg-black-primary rounded-xl py-0.5 px-2 text-xs">1 New</div>
+                        </div>
+                        :
+                        null
+                    }
+                    
                 </button>
                 <button className="flex gap-4 items-center" style={{
                 color:"grey"}}
@@ -65,9 +74,15 @@ export  function SideNavBar(){
                 }
                 <span className={`${isNavOpen?"":"nav-element"}`}><FaCreditCard /></span>
                     <p className="hover:text-black hover:font-semibold mr-2">Payments</p>
-                    <div className="relative primary-linear-gr-bg  p-[1.5px] rounded-2xl">
-                    <div className="bg-black-primary rounded-xl py-0.5 px-2 text-xs">1 New</div>
-                    </div>
+                    {
+                         notificationIndex === 2?
+                        <div className="relative primary-linear-gr-bg  p-[1.5px] rounded-2xl">
+                        <div className="bg-black-primary rounded-xl py-0.5 px-2 text-xs">1 New</div>
+                        </div>
+                        :
+                        null
+                    }
+                   
                 </button>
                 <button className="flex gap-4 items-center" style={{
                 color:"grey"
@@ -86,9 +101,14 @@ export  function SideNavBar(){
                 }
                 <span className={`${isNavOpen?"":"nav-element"}`}><CgNotes  /></span>
                     <p className=" hover:text-black hover:font-semibold mr-5">Invoices</p>
-                    <div className="relative primary-linear-gr-bg  p-[1.5px] rounded-2xl">
-                    <div className="bg-black-primary rounded-xl py-0.5 px-2 text-xs">1 New</div>
-                    </div>
+                    {
+                         notificationIndex === 3?
+                        <div className="relative primary-linear-gr-bg  p-[1.5px] rounded-2xl">
+                        <div className="bg-black-primary rounded-xl py-0.5 px-2 text-xs">1 New</div>
+                        </div>
+                        :
+                        null
+                    }
                 </button>
                 <button className="flex gap-4 items-center" style={{
                 color:"grey"
@@ -104,9 +124,14 @@ export  function SideNavBar(){
                 }
                 <span className={`${isNavOpen?"":"nav-element"}`} ><RiPieChart2Fill  /></span>
                     <p className=" hover:text-black hover:font-semibold mr-[1.40rem]" >Statistic</p>
-                    <div className="relative primary-linear-gr-bg  p-[1.5px] rounded-2xl">
-                    <div className="bg-black-primary rounded-xl py-0.5 px-2 text-xs">1 New</div>
-                    </div>
+                    {
+                         notificationIndex === 4?
+                        <div className="relative primary-linear-gr-bg  p-[1.5px] rounded-2xl">
+                        <div className="bg-black-primary rounded-xl py-0.5 px-2 text-xs">1 New</div>
+                        </div>
+                        :
+                        null
+                    }
                 </button>
                
                 <button className="flex gap-4 items-center" style={{
@@ -123,9 +148,14 @@ export  function SideNavBar(){
                 }
                 <span className={`${isNavOpen?"":"nav-element"}`}><RiNotification4Fill /></span>
                     <p className="hover:text-black hover:font-semibold">Notification</p>
-                    <div className="relative primary-linear-gr-bg  p-[1.5px] rounded-2xl">
-                    <div className="bg-black-primary rounded-xl py-0.5 px-2 text-xs">1 New</div>
-                    </div>
+                    {
+                         notificationIndex === 5?
+                        <div className="relative primary-linear-gr-bg  p-[1.5px] rounded-2xl">
+                        <div className="bg-black-primary rounded-xl py-0.5 px-2 text-xs">1 New</div>
+                        </div>
+                        :
+                        null
+                    }
                 </button>
                 <button className="flex gap-4 items-center" style={{
                 color:"grey"
@@ -141,13 +171,23 @@ export  function SideNavBar(){
                 }
                 <span className={`${isNavOpen?"":"nav-element"}`}><MdOutlineHelp /></span>
                     <p className="hover:text-black hover:font-semibold mr-6">Support</p>
-                    <div className="relative primary-linear-gr-bg  p-[1.5px] rounded-2xl">
-                    <div className="bg-black-primary rounded-xl py-0.5 px-2 text-xs">1 New</div>
-                    </div>
+                    {
+                         notificationIndex === 6?
+                        <div className="relative primary-linear-gr-bg  p-[1.5px] rounded-2xl">
+                        <div className="bg-black-primary rounded-xl py-0.5 px-2 text-xs">1 New</div>
+                        </div>
+                        :
+                        null
+                    }
+                    
                 </button>
             </div>
             <button className="flex gap-4 items-center pl-4"
-            onClick={()=>navigate('/')}
+            onClick={()=>{
+                dispatch(authActions.logout())
+                localStorage.clear()
+                navigate('/')
+            }}
              style={{
                 color:"grey"
             }}>

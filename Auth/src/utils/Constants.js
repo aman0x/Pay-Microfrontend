@@ -1,8 +1,8 @@
 
 const BASE_URL = process.env.BASE_URL;
-console.log(BASE_URL)
+ 
 export const PRIVATE_ENDPOINTS = {
-    
+    GET_USER_DETAIL:'/api/user/register/'
 }
 
 export const PUBLIC_ENDPOINTS  = {

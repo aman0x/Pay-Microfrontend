@@ -12,7 +12,7 @@ export default function AccountType(){
     const{ handleUserSignup } = useUserSignupAuth();
     const [isIndividual,setAccountType] = useState(true)
     const location = useLocation();
-    const userId = location.state?.userId;
+    const userId = location.state?.userId || sessionStorage.getItem('user_id');
     if(!userId){
        console.log("Not Permitted")
     }
@@ -117,35 +117,33 @@ export default function AccountType(){
                 }
                </div>
                <Formik
-                initialValues={{ pan: '', aadhar: '' ,company_pan:'',company_aadhar:'',company_name:'Test'}}
+                initialValues={{ pan_no: '', adhaar_no: '' ,company_pan_no:'',company_adhaar_no:'',company_name:''}}
                 validate={values => {
                 const errors = {};
-                if(!values.pan && isIndividual){
+                if(!values.pan_no && isIndividual){
                     errors.pan = "Required"
                 }
-                else if(values.pan.length<10 && isIndividual){
+                else if(values.pan_no.length<10 && isIndividual){
                     errors.pan = "Enter Valid PAN number"
                 }
-                if(!values.aadhar && isIndividual){
-                    errors.aadhar = "Required"
+                if(!values.adhaar_no && isIndividual){
+                    errors.adhaar = "Required"
                 }
-                else if(values.aadhar.length<10 && isIndividual){
-                    errors.aadhar = "Enter Valid Aadhar number"
+                else if(values.adhaar_no.length<10 && isIndividual){
+                    errors.adhaar = "Enter Valid adhaar number"
                 }
-                if(!values.company_pan && !isIndividual){
-                    errors.company_pan = "Required"
+                if(!values.company_pan_no && !isIndividual){
+                    errors.company_pan_no = "Required"
                 }
-                else if(values.company_pan.length<10 && !isIndividual){
-                    errors.company_pan = "Enter Valid PAN number"
+                else if(values.company_pan_no.length<10 && !isIndividual){
+                    errors.company_pan_no = "Enter Valid PAN number"
                 }
-                if(!values.company_aadhar && !isIndividual){
-                    errors.company_aadhar = "Required"
+                if(!values.company_adhaar_no && !isIndividual){
+                    errors.company_adhaar_no = "Required"
                 }
-                else if(values.company_aadhar.length<10 && !isIndividual){
-                    errors.company_aadhar = "Enter Valid Aadhar number"
+                else if(values.company_adhaar_no.length<10 && !isIndividual){
+                    errors.company_adhaar_no = "Enter Valid adhaar number"
                 }
-                
-
                 return errors;
                 }}
                 onSubmit={(values, { setSubmitting }) => {
@@ -184,13 +182,13 @@ export default function AccountType(){
                             <PiLineVertical color='gray'/>
                             </div>
                             <input type="text"
-                            name="pan"
+                            name="pan_no"
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            value={values.pan} 
+                            value={values.pan_no} 
                             className="bg-white border-0 border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:outline-none" placeholder="PAN Number"/>
                             </div>  
-                            <div className='text-red-400 text-xs'>{errors.pan && touched.pan && errors.pan}</div>
+                            <div className='text-red-400 text-xs'>{errors.pan_no && touched.pan_no && errors.pan_no}</div>
                         </div>
                         <div>
                         <div className="relative primary-linear-gr-bg  p-[2px] rounded-xl">
@@ -199,13 +197,13 @@ export default function AccountType(){
                         <PiLineVertical color='gray'/>
                         </div>
                         <input type="text"
-                        name="aadhar"
+                        name="adhaar_no"
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        value={values.aadhar}
-                        className="bg-white border-0 border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:outline-none" placeholder="Aadhar Card"/>
+                        value={values.adhaar_no}
+                        className="bg-white border-0 border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:outline-none" placeholder="adhaar Card"/>
                         </div>
-                        <div className='text-red-400 text-xs'>{errors.aadhar && touched.aadhar && errors.aadhar}</div>
+                        <div className='text-red-400 text-xs'>{errors.adhaar_no && touched.adhaar_no && errors.adhaar_no}</div>
                         </div>
                     </div>
                 :
@@ -217,13 +215,13 @@ export default function AccountType(){
                             <PiLineVertical color='gray'/>
                             </div>
                             <input
-                            name="company_pan"
+                            name="company_pan_no"
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            value={values.company_pan} 
+                            value={values.company_pan_no} 
                             className=" bg-white border-0 border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 p-3.5  dark:placeholder-gray-400 focus:outline-none" placeholder="Company PAN"/>
                             </div>
-                            <div className='text-red-400 text-xs'>{errors.company_pan && touched.company_pan && errors.company_pan}</div>
+                            <div className='text-red-400 text-xs'>{errors.company_pan_no && touched.company_pan_no && errors.company_pan_no}</div>
                             </div>
                             <div className="relative ">
                             <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none gap-2">
@@ -244,13 +242,13 @@ export default function AccountType(){
                             <PiLineVertical color='gray'/>
                             </div>
                             <input type="text" 
-                            name="company_aadhar"
+                            name="company_adhaar_no"
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            value={values.company_aadhar}
-                            className="bg-white border-0 border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:outline-none" placeholder="Aadhar Card"/>
+                            value={values.company_adhaar_no   }
+                            className="bg-white border-0 border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:outline-none" placeholder="adhaar Card"/>
                             </div>
-                            <div className='text-red-400 text-xs'>{errors.company_aadhar && touched.company_aadhar && errors.company_aadhar}</div>
+                            <div className='text-red-400 text-xs'>{errors.company_adhaar_no && touched.company_adhaar_no && errors.company_adhaar_no}</div>
                             </div>
                     </div>
                 

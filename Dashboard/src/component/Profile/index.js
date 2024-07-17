@@ -1,7 +1,10 @@
 import { useState } from "react";
-
+import { useSelector } from "react-redux";
+import { Formik } from "formik";
 function Profile() {
     const [isProfile,setProfileIndex] = useState(true)
+    const user = useSelector(state=>state.auth.user)
+    
     return (
         <div className="mt-5 bg-primary p-[2rem] rounded-2xl flex  gap-4 mr-2 w-full h-full">
             <div className="flex flex-col gap-2 mt-2 p-[1rem] border-r-2">
@@ -42,6 +45,33 @@ function Profile() {
             </div>
             {
                 isProfile ?
+                <Formik
+                initialValues={{ 
+                    first_name: user.first_name, middle_name: user.middle_name,last_name:user.last_name,
+                    nick_name:user.nick_name,account_type:user.account_type,
+                    phone:user.phone,email:user.email,password:user.password
+                }}
+                validate={values => {
+                const errors = {};
+                
+                return errors;
+                }}
+                onSubmit={(values, { setSubmitting }) => {
+                    console.log(values)
+                    
+                }}
+          >
+            {({
+              values,
+              errors,
+              touched,
+              handleChange,
+              handleBlur,
+              handleSubmit,
+              isSubmitting,
+              /* and other goodies */
+            }) => (
+                <form>
                 <div className="flex flex-col gap-8 w-full">
                 <div className="flex gap-4 items-center">
                     <div className="primary-linear-gr-bg p-[2px] rounded-full">
@@ -62,13 +92,13 @@ function Profile() {
                             </div>
                         </div>
                         <div className="poppins-semibold text-sm">
-                            Customer Name
+                           {user.first_name} {user.middle_name} {user.last_name}
                         </div>
                         <div className="text-[#787D81] text-sm">
-                            ID: 101010101
+                            ID: {user.id}
                         </div>
                         <div className="text-xs text-[#787D81]">
-                            @customer
+                            @{user.first_name}
                         </div>
 
                     </div>
@@ -78,7 +108,7 @@ function Profile() {
                         <div className="flex flex-col">
                             <label className="text-[#A3A6A9] poppins-regular text-xs">First Name</label>
                             <div className="relative">
-                                <input type="text" placeholder="Name" className="bg-transparent border-b-2 w-full focus:outline-none py-1 " />
+                                <input type="text" name="first_name" value={values.first_name} onChange={handleChange} onBlur={handleBlur} placeholder="Name" className="bg-transparent border-b-2 w-full focus:outline-none py-1 " />
                                 <div className="absolute bottom-1 right-0">
                                     <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M13.5 13.6667V16.8C13.9705 16.6387 14.3987 16.3734 14.7527 16.024L16.5233 14.252C16.8732 13.8985 17.1387 13.4705 17.3 13H14.1667C13.9899 13 13.8203 13.0702 13.6953 13.1953C13.5702 13.3203 13.5 13.4899 13.5 13.6667Z" fill="#CDCED1" />
@@ -91,7 +121,7 @@ function Profile() {
                         <div className="flex flex-col">
                             <label className="text-[#A3A6A9] poppins-regular text-xs">Middle Name</label>
                             <div className="relative">
-                                <input type="text" placeholder="Name" className="bg-transparent border-b-2 w-full py-1 focus:outline-none " />
+                                <input type="text" name="middle_name" value={values.middle_name} onChange={handleChange} onBlur={handleBlur} placeholder="Name" className="bg-transparent border-b-2 w-full py-1 focus:outline-none " />
                                 <div className="absolute bottom-1 right-0">
                                     <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M13.5 13.6667V16.8C13.9705 16.6387 14.3987 16.3734 14.7527 16.024L16.5233 14.252C16.8732 13.8985 17.1387 13.4705 17.3 13H14.1667C13.9899 13 13.8203 13.0702 13.6953 13.1953C13.5702 13.3203 13.5 13.4899 13.5 13.6667Z" fill="#CDCED1" />
@@ -104,7 +134,7 @@ function Profile() {
                         <div className="flex flex-col">
                             <label className="text-[#A3A6A9] poppins-regular text-xs">Last Name</label>
                             <div className="relative">
-                                <input type="text" placeholder="Name" className="bg-transparent border-b-2 w-full py-1 focus:outline-none " />
+                                <input type="text" name="last_name" value={values.last_name} onChange={handleChange} onBlur={handleBlur} placeholder="Name" className="bg-transparent border-b-2 w-full py-1 focus:outline-none " />
                                 <div className="absolute bottom-1 right-0">
                                     <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M13.5 13.6667V16.8C13.9705 16.6387 14.3987 16.3734 14.7527 16.024L16.5233 14.252C16.8732 13.8985 17.1387 13.4705 17.3 13H14.1667C13.9899 13 13.8203 13.0702 13.6953 13.1953C13.5702 13.3203 13.5 13.4899 13.5 13.6667Z" fill="#CDCED1" />
@@ -117,7 +147,7 @@ function Profile() {
                         <div className="flex flex-col">
                             <label className="text-[#A3A6A9] poppins-regular text-xs">Nick Name</label>
                             <div className="relative">
-                                <input type="text" placeholder="Name" className="bg-transparent border-b-2 w-full py-1 focus:outline-none " />
+                                <input type="text" name="nick_name" value={values.nick_name} onChange={handleChange} onBlur={handleBlur} placeholder="Name" className="bg-transparent border-b-2 w-full py-1 focus:outline-none " />
                                 <div className="absolute bottom-1 right-0">
                                     <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M13.5 13.6667V16.8C13.9705 16.6387 14.3987 16.3734 14.7527 16.024L16.5233 14.252C16.8732 13.8985 17.1387 13.4705 17.3 13H14.1667C13.9899 13 13.8203 13.0702 13.6953 13.1953C13.5702 13.3203 13.5 13.4899 13.5 13.6667Z" fill="#CDCED1" />
@@ -133,7 +163,7 @@ function Profile() {
                         <div className="flex flex-col">
                             <label className="text-[#A3A6A9] poppins-regular text-xs">Account Type</label>
                             <div className="relative">
-                                <input type="text" placeholder="Individual" className="bg-transparent border-b-2 w-full py-1 focus:outline-none " />
+                                <input type="text" name="account_type" value={values.account_type} onChange={handleChange} onBlur={handleBlur} placeholder="Individual" className="bg-transparent border-b-2 w-full py-1 focus:outline-none " />
                                 <div className="absolute bottom-1 right-0">
                                     <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M13.5 13.6667V16.8C13.9705 16.6387 14.3987 16.3734 14.7527 16.024L16.5233 14.252C16.8732 13.8985 17.1387 13.4705 17.3 13H14.1667C13.9899 13 13.8203 13.0702 13.6953 13.1953C13.5702 13.3203 13.5 13.4899 13.5 13.6667Z" fill="#CDCED1" />
@@ -146,7 +176,7 @@ function Profile() {
                         <div className="flex flex-col">
                             <label className="text-[#A3A6A9] poppins-regular text-xs">Phone</label>
                             <div className="relative">
-                                <input type="text" placeholder="+914367902029" className="bg-transparent border-b-2 w-full py-1 focus:outline-none " />
+                                <input type="text" name="phone" value={values.phone} onChange={handleChange} onBlur={handleBlur} placeholder="+914367902029" className="bg-transparent border-b-2 w-full py-1 focus:outline-none " />
                                 <div className="absolute bottom-1 right-0">
                                     <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M13.5 13.6667V16.8C13.9705 16.6387 14.3987 16.3734 14.7527 16.024L16.5233 14.252C16.8732 13.8985 17.1387 13.4705 17.3 13H14.1667C13.9899 13 13.8203 13.0702 13.6953 13.1953C13.5702 13.3203 13.5 13.4899 13.5 13.6667Z" fill="#CDCED1" />
@@ -159,7 +189,7 @@ function Profile() {
                         <div className="flex flex-col">
                             <label className="text-[#A3A6A9] poppins-regular text-xs">Email</label>
                             <div className="relative">
-                                <input type="text" placeholder="customer@email.com" className="bg-transparent border-b-2 w-full py-1 focus:outline-none " />
+                                <input type="text" name="email" value={values.email} onChange={handleChange} onBlur={handleBlur} placeholder="customer@email.com" className="bg-transparent border-b-2 w-full py-1 focus:outline-none " />
                                 <div className="absolute bottom-1 right-0">
                                     <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M13.5 13.6667V16.8C13.9705 16.6387 14.3987 16.3734 14.7527 16.024L16.5233 14.252C16.8732 13.8985 17.1387 13.4705 17.3 13H14.1667C13.9899 13 13.8203 13.0702 13.6953 13.1953C13.5702 13.3203 13.5 13.4899 13.5 13.6667Z" fill="#CDCED1" />
@@ -178,7 +208,7 @@ function Profile() {
                                     </svg>
 
                                 </div>
-                                <input type="password" placeholder="**********" className="bg-transparent border-b-2 w-full px-7 py-1 focus:outline-none " />
+                                <input type="password" name="password" value={values.password} onChange={handleChange} onBlur={handleBlur} placeholder="**********" className="bg-transparent border-b-2 w-full px-7 py-1 focus:outline-none " />
                                 <div className="absolute bottom-1 right-0">
                                     <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M13.5 13.6667V16.8C13.9705 16.6387 14.3987 16.3734 14.7527 16.024L16.5233 14.252C16.8732 13.8985 17.1387 13.4705 17.3 13H14.1667C13.9899 13 13.8203 13.0702 13.6953 13.1953C13.5702 13.3203 13.5 13.4899 13.5 13.6667Z" fill="#CDCED1" />
@@ -192,7 +222,7 @@ function Profile() {
                     </div>
                     <div>
                     <div className="primary-linear-gr-bg p-[1.5px] rounded-xl shadow-red-200 shadow-2xl max-w-fit">
-                        <button className="flex justify-between items-center bg-primary rounded-xl py-[6px] px-3 poppins-medium text-sm  gap-2" onClick={() => { }}>
+                        <button type="button" className="flex justify-between items-center bg-primary rounded-xl py-[6px] px-3 poppins-medium text-sm  gap-2" onClick={() => { }}>
                         <span>
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fillRule="evenodd" clipRule="evenodd" d="M13.6569 13.6568C10.5327 16.781 5.46731 16.781 2.34315 13.6568C-0.78105 10.5326 -0.781022 5.4673 2.34315 2.34313C5.46734 -0.781062 10.5327 -0.781062 13.6569 2.34313C16.781 5.4673 16.781 10.5326 13.6569 13.6568ZM7.99999 4.57153C8.33136 4.57153 8.59998 4.84015 8.59999 5.17153L8.60002 7.39996L10.8284 7.39995C11.1598 7.39995 11.4284 7.6686 11.4284 7.99997C11.4284 8.33134 11.1598 8.59998 10.8284 8.59995H8.59997L8.60002 10.8284C8.60002 11.1597 8.33138 11.4284 8 11.4284C7.66862 11.4284 7.39998 11.1597 7.39998 10.8284V8.60001L5.17157 8.59995C4.84021 8.59996 4.57157 8.33133 4.57158 7.99996C4.57158 7.66859 4.84023 7.39994 5.17154 7.39999L7.39998 7.39996L7.39999 5.17152C7.39998 4.84015 7.66862 4.57152 7.99999 4.57153Z" fill="#232B31"/>
@@ -206,6 +236,9 @@ function Profile() {
                     </div>
                 </div>
                 </div>
+                </form>
+                 )}
+                </Formik>
                 :
                 <div className="flex flex-col gap-8 w-full">
                     <div className="flex flex-col gap-2">

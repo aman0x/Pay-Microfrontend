@@ -11,6 +11,7 @@ import { ToastContainer } from "react-toastify";
 import { Provider } from "react-redux";
 import AxiosInstance from "controllers/AxiosInstance/index"
 import ErrorBoundary from "./component/ErrorBoundary/index.js";
+import NotFound from "./component/Error";
 console.log("work",window.root)
 const Auth = () => (
   
@@ -22,6 +23,7 @@ const Auth = () => (
     <Route path="/accounts/signup" element={<SignUpUser />} />
     <Route path="/accounts/type" element={<AccountType />} />
     <Route path="/accounts/otp-verification" element={<OtpScreen />} />
+    <Route path="*" element={<NotFound/>}/>
   </Routes>
   </div>
 

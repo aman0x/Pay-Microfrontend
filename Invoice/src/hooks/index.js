@@ -2,9 +2,11 @@ import ApiCall from "controllers/AxiosInstance/index.js"
 import {useSelector} from "react-redux"
 import { PRIVATE_ENDPOINTS } from "../utils/Constants.js"
 import {toast} from "react-toastify"
+import { useNavigate } from "react-router-dom"
 export function useInvoice(){
-
+    const navigate  = useNavigate()
     const user = useSelector(state=>state.auth.user)
+    const user_id = useSelector(state=>state.auth.user_id)
     const handleInvoiceStats=async(isSent=true)=>{
         try {
             const response = await ApiCall({ 
@@ -83,15 +85,20 @@ export function useInvoice(){
         }
     }
     const handleInvoiceCreate=async(data)=>{
+        const user_data = {
+            ...data,
+            user:user_id
+        }
         try {
             const response = await ApiCall({ 
                 url: PRIVATE_ENDPOINTS.CREATE_INVOICE, 
                 method: "POST", 
-                body:data,
+                body:user_data,
                 PRIVATE_API: true, 
                 current_user: user 
             });
             toast.success("Invoice Sent Succesfully")
+            navigate(-1)
             return response.data;
             }
         catch (error) {

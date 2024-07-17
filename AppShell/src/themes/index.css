@@ -167,3 +167,6 @@ iframe{
   
 }
 
+.Toastify__toast {
+  border-radius: 50px; /* Adjust the radius as needed */
+}

@@ -1,4 +1,5 @@
 import { useLocation } from "react-router-dom"
+import { useEffect, useState } from "react";
 import { SideNavBar } from "./SideNavBar";
 import TopNavbar from "./TopNavbar";
 import SecondaryTopBar from "./SecondaryTopBar";
@@ -7,9 +8,18 @@ import RightSideBar from "./RightSideBar";
 import MainFooter from "./Footer";
 import AdminSideBar from "./AdminSideBar";
 import AdminRightSideBar from "./AdminRightSideBar";
-
+import { useUserCommon } from "#hooks/index.js";
 function CommonLayout({children}){
     const location = useLocation()
+    const {handleGetUserDetail} = useUserCommon()
+    const user_id = localStorage.getItem('user_id')
+    useEffect(()=>{
+      const fetchUser=async()=>{
+          const data = await  handleGetUserDetail(user_id)
+          console.log("user",data)
+      }
+      fetchUser()
+  },[])
     return(
         <div className="bg-slate-50  flex flex-col ">
         <div className="flex">

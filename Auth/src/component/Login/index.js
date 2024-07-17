@@ -163,8 +163,7 @@ export default function LoginUser() {
                   <button type="button"
                     disabled={isSubmitting}
                     onClick={() => {
-                      //handleSubmit()
-                    navigate('/dashboard')
+                      handleSubmit()
                     }}
                     className={`flex primary-btn items-center w-full justify-center rounded-xl ${isSubmitting?"bg-gray-400":"bg-gray-950"} px-3 p-4 text-sm font-semibold leading-7 text-white shadow-sm `}><div> {withEmail ? "Log In" : "Send Otp"}</div>
                     <span className='py-1.5 pl-2 size-6'><FaCircleArrowRight style={{ color: 'white' }} /></span></button>
@@ -189,7 +188,7 @@ export default function LoginUser() {
               <span ><FcGoogle className='size-8' /></span>
               <span> Google</span>
             </button>
-            <button
+            {/* <button
               onClick={handleLoginWithFacebook}
               className="bg-white flex flex-col items-center  border rounded-xl border-gray-300 shadow-md px-8 py-2 text-sm font-medium text-gray-800 "
             >
@@ -204,7 +203,7 @@ export default function LoginUser() {
               <span><IoLogoFacebook className='size-8' /></span>
               <span>Facebook</span>
 
-            </button>
+            </button> */}
 
             <div id="recaptcha-container">
 

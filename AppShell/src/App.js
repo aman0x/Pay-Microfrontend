@@ -11,24 +11,30 @@ import Report from "Report/Report";
 import Admin from "Admin/Admin";
 import reduxStore from "./store";
 import {useLocation} from "react-router-dom"
-import {ToastContainer} from "react-toastify"
+import {Slide, ToastContainer} from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css'; 
 import CommonLayout from "./components/CommonLayout";
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 import AxiosInstance from "controllers/AxiosInstance/index"
 import NotFound from "./components/Error";
 function App() {
-  const value = useSelector((state) => state.auth.value);
-  const dispatch = useDispatch();
+  const isLogin = useSelector((state) => state.auth.isLogin);
   const location = useLocation()
-  //console.log("working",AxiosInstance({url:"hello"}))
   return (
     <ErrorBoundary>
     <div className="test  bg-primary bg-slate-50">
-      <ToastContainer limit={1}/>
+      <ToastContainer
+      toastStyle={{
+        borderRadius:"10px"
+      }}
+      autoClose={2000}
+      transition={Slide}
+      pauseOnHover={false}
+      limit={1}/>
       {
-        location.pathname==="/" ||
-        location.pathname.startsWith('/accounts')?
+      //  (location.pathname==="/" ||
+      //   location.pathname.startsWith('/accounts')) 
+      !isLogin ?
         <ErrorBoundary>
         <Routes>
           <Route path="/*" element={<Auth />} />

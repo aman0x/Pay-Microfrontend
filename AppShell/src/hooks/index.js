@@ -1,6 +1,7 @@
 import ApiCall from "controllers/AxiosInstance/index.js"
 import { PRIVATE_ENDPOINTS } from "../utils/Constants.js"
-import { useSelector } from "react-redux"
+import { useSelector,useDispatch } from "react-redux"
+import {authActions} from "Auth/authReducer"
 export function useSideBar(){
     const user = useSelector(state=>state.auth.user)
     const handleTotalStats=async()=>{
@@ -36,3 +37,24 @@ export function useSideBar(){
     return{handleMonthStats,handleTotalStats}
 }
 
+export function useUserCommon(){
+  const dispatch  = useDispatch()
+
+  const handleGetUserDetail = async(id) =>{
+      try {
+          const response = await ApiCall({ 
+            url: PRIVATE_ENDPOINTS.GET_USER_DETAIL+id, 
+            method: "GET", 
+            PRIVATE_API: true, 
+          });
+          dispatch(authActions.setUser({user:response.data}))
+          return response.data;
+          
+        }
+      catch (error) {
+        console.log(error)
+      //toast("Error Sending Support");
+      }
+  }
+  return {handleGetUserDetail}
+}

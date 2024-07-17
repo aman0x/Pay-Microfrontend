@@ -1,14 +1,18 @@
 import { Avatar } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux"
+
 function TopNavbar(){
     const location = useLocation()
-    const navigate  = useNavigate()
+    const navigate  = useNavigate() 
     const [isDropMenuOpen,setDropMenu] = useState(false)
     const TopHead = getTopName(location.pathname)
     const current_user = useSelector(state=>state.auth.user)
+   
+   
+
     return(
         <div className="flex justify-between w-full mt-[1rem]"> 
             <div>

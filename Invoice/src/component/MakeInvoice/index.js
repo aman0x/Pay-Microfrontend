@@ -7,7 +7,7 @@ import "./style.css"
 import NewInvoiceStep2 from "./NewInvoiceStep2"
 import { toast } from "react-toastify"
 const receivers = ['Devin','Raton','Ravish','Allla']
-const cards = ['Vendor Payment','Vendor Payment','Vendor Payment','Payment Type']
+const cards = ['Vendor Payment','INDIVIDUAL','Vendor Payment','Payment Type']
 function MakeInvoice({isRepeatPayment=false}){
     const [isPaymentTypeMenu,setPaymentMenuView] = useState(false)
     const [isReceiverMenu,setReceiversMenuView] = useState(false)
@@ -152,8 +152,8 @@ function MakeInvoice({isRepeatPayment=false}){
                 <NewInvoiceStep2 setStepIndex={setStepIndex} 
                 data={{
                     amount:amount,
-                    payment_type:cards[typeIndex],
-                    receiver:receivers[receiverIndex]
+                    payment_type:cards[1],
+                    receiver:2
                 }}
                 />
                 

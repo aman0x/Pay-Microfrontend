@@ -181,7 +181,9 @@ function NewPayment({isRepeatPayment=false}){
                     amount:amount,
                     payment_type:types[typeIndex],
                     receiver:receivers[receiverIndex]
+                   
                 }}
+                 // receiver:receivers[receiverIndex]
                 />
                 
             }
@@ -190,8 +192,9 @@ function NewPayment({isRepeatPayment=false}){
                 stepIndex===2 &&
                 <PaymentStep3 setStepIndex={setStepIndex} data={{
                     amount:amount,
-                    payment_type:types[typeIndex],
-                    receiver:receivers[receiverIndex]
+                    payment_type:'INDIVIDUAL',
+                    receiver:2
+                   
                 }}/>
             }
             
@@ -218,7 +221,7 @@ function PaymentTypeMenu({cardIndex,setCardIndex}){
                 <div>Select the Payment Type from the list (only one)</div>
             </div>
             <div className="flex flex-col gap-2 mt-4">
-            {cards.map((card,i)=>{
+            {types.map((card,i)=>{
                 return(
                         <div className="flex gap-4 justify-between items-center " key={i}>
                             <div className={`${cardIndex===i?"poppins-bold":""} flex gap-1 items-center`} >
@@ -256,7 +259,7 @@ function ReceiversMenu({cardIndex,setCardIndex}){
                 <div>Select the Receiver from the list (only one)</div>
             </div>
             <div className="flex flex-col gap-2 mt-4">
-            {cards.map((card,i)=>{
+            {receivers.map((card,i)=>{
                 return(
                         <div className="flex gap-4 justify-between items-center " key={i}>
                             <div className={`${cardIndex===i?"poppins-bold":""} flex gap-1 items-center`} >

@@ -1,6 +1,6 @@
 
 const BASE_URL = process.env.BASE_URL;
-console.log(BASE_URL)
+ 
 export const PRIVATE_ENDPOINTS = {
     GET_TEMPLATE:BASE_URL+'/api/dashboard/my-template/',
     GET_CARDS:BASE_URL+'/api/dashboard/my-card/',
@@ -19,9 +19,7 @@ export const PRIVATE_ENDPOINTS = {
     GET_STATISTIC_INVOICE_RECEIVED:BASE_URL+'/api/statistic/invoice-received-list/',
     CREATE_CARD:BASE_URL+'/api/card/data/',
     CREATE_SUPPORT:BASE_URL+'/api/support/data/',
-
     GET_CREATE_BANK_ACCOUNT_LIST:BASE_URL+'/api/account/bank/',
-
     GET_CREATE_BENEFICIARY_LIST:BASE_URL+'/api/account/beneficiary/'
 }
 

@@ -1,46 +1,60 @@
-// import { GoogleAuthProvider,signInWithPopup,FacebookAuthProvider,signInWithEmailAndPassword, signInWithPhoneNumber ,createUserWithEmailAndPassword,RecaptchaVerifier} from "firebase/auth";
-// import { firebaseAuth } from "../../firebase/firebaseConfig";
-// import { authActions } from "../../store/authSlice";
+import { GoogleAuthProvider,signInWithPopup,FacebookAuthProvider,signInWithEmailAndPassword, signInWithPhoneNumber ,createUserWithEmailAndPassword,RecaptchaVerifier} from "firebase/auth";
+import { firebaseAuth } from "../../firebase/firebaseConfig";
+import { authActions } from "../../store/authSlice";
 import AxiosCall from "../../utils/ApiCall.js"
 import { useDispatch } from "react-redux"
-import { PUBLIC_ENDPOINTS } from "../../utils/Constants.js"
+import { PUBLIC_ENDPOINTS ,PRIVATE_ENDPOINTS} from "../../utils/Constants.js"
 import { toast } from "react-toastify"
 import { useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
+import { STORE_IN_LOCAL_STORAGE } from "../../utils/Helpers.js";
 export function useUserLoginAuth(){
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const current_user = useSelector(state => state.auth.user)
-    console.log(current_user)
     const handleLoginWithGoogle = () =>{
         console.log("login with google")
-    // const provider = new GoogleAuthProvider();
-
-    //     signInWithPopup(firebaseAuth, provider)
-    //         .then(async (result) => {
-    //             // This gives you a Google Access Token. You can use it to access the Google API.
-    //             const credential = GoogleAuthProvider.credentialFromResult(result);
-    //             console.log("google-login",credential)
-    //             console.log("google-login",result)
-    //             console.log("google-login",result.user)
-    //             const token = credential.accessToken;
-    //             dispatch(authActions.login({
-    //                 user:result.user
-    //             }))
-    //             // The signed-in user info.
-    //             const user = result.user;
+    const provider = new GoogleAuthProvider();
+        signInWithPopup(firebaseAuth, provider)
+            .then(async (result) => {
+                const userData = result.user
+                console.log("google-login",result)
+                const token = result.user.accessToken;
+                const login_data = {
+                    firebase_id_token:token,
+                    is_social_login:true
+                }
+                AxiosCall({url:PUBLIC_ENDPOINTS.login,method:"POST",body:login_data})
+                .then((data)=>{
+                    STORE_IN_LOCAL_STORAGE("access_token",data.data.access_token)
+                    STORE_IN_LOCAL_STORAGE("user_id",data.data.user_id)
+                    toast.success("Login Successfull")
+                    dispatch(authActions.login({token:data.data.access_token,user_id:data.data.user_id}))
+                    navigate('/dashboard')
+                })
+                .catch((e)=>{
+                    if(e?.response?.data?.message){
+                        toast.error(e.response.data.message)
+                    }
+                    else{
+                        toast.error("Error in Login")
+                        console.log("login_error_data",e)
+                    }
+                
+                
+                })
     
-    //         }).catch((error) => {
-    //             console.log("Google-login-error",error)
-    //             // Handle Errors here.
-    //             const errorCode = error.code;
-    //             const errorMessage = error.message;
-    //             // The email of the user's account used.
-    //             const email = error.customData.email;
-    //             // The AuthCredential type that was used.
-    //             const credential = GoogleAuthProvider.credentialFromError(error);
-    //             // ...
-    //         });
+            }).catch((error) => {
+                console.log("Google-login-error",error)
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // The email of the user's account used.
+                const email = error.customData.email;
+                // The AuthCredential type that was used.
+                const credential = GoogleAuthProvider.credentialFromError(error);
+                // ...
+            });
     }
     const handleUserLoginWithEmail = (data) =>{
         console.log("login with email")
@@ -50,15 +64,23 @@ export function useUserLoginAuth(){
             is_social_login:false
         }
         AxiosCall({url:PUBLIC_ENDPOINTS.login,method:"POST",body:login_data})
-        //axios.post(PUBLIC_ENDPOINTS.login,login_data)
         .then((data)=>{
-            console.log("login_data",data)
-
+            STORE_IN_LOCAL_STORAGE("access_token",data.data.access_token)
+            STORE_IN_LOCAL_STORAGE("user_id",data.data.user_id)
+            toast.success("Login Successfull")
+            dispatch(authActions.login({token:data.data.access_token,user_id:data.data.user_id}))
+            navigate('/dashboard')
         })
         .catch((e)=>{
-            toast.error("Error in login")
-            navigate('/dashboard')
-            console.log("login_error_data",e)
+            if(e?.response?.data?.message){
+                toast.error(e.response.data.message)
+            }
+            else{
+                toast.error("Error in Login")
+                console.log("login_error_data",e)
+            }
+           
+           
         })
        
 
@@ -151,27 +173,38 @@ export function useUserLoginAuth(){
 }
 
 export function useUserSignupAuth(){
+    const dispatch  = useDispatch()
     const navigate = useNavigate()
     const handleUserSignup = (data,userId=null,cb) =>{
         console.log("hook_data",data)
       
-        AxiosCall({url:PUBLIC_ENDPOINTS.signIn,method:userId?"PUT":"POST",PRIVATE_API:false,body:data})
-        .then((data)=>{
-            console.log("Success",data)
-            cb(null)
-            
+        AxiosCall({
+            url:userId?PUBLIC_ENDPOINTS.signIn+`${userId}/`:PUBLIC_ENDPOINTS.signIn,
+            method:userId?"PUT":"POST",
+            PRIVATE_API:false,
+            body:data
+        })
+        .then((response)=>{
+            console.log("signup",response.data)
+            if(!userId){
+                sessionStorage.setItem("user_id",response.data.id)
+                navigate('/accounts/type',{ state:{userId:response.data.id}})
+            }
+            else{
+                toast.success('Account Created Succesfully')
+                navigate('/')
+            }
         })
         .catch((e)=>{
-            console.log("Error In Signin",e)
-            toast(e.message)
-            cb(e)
+            if(e?.response?.data?.message){
+                toast.error(e.response.data.message)
+            }
+            else{
+                toast.error("Error in Signup")
+                console.error("error",e)
+            }
         })
-        // just for flow
-        if(userId){
-            navigate('/dashboard')
-            return
-        }
-        navigate('/accounts/type',{state:{userId:1}})
     }
     return {handleUserSignup}
 }
+
