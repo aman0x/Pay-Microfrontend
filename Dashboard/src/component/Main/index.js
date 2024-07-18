@@ -9,9 +9,9 @@ function DashboardMain(){
   const userId = useSelector(state=>state.auth.userId)
   const {handleLatestActionData,handlePaymentCardData,handleQuickSendData,handleTemplateData} = useDashboard()
     return(
-      <div className="mt-5 bg-primary p-[2rem] rounded-2xl w-full flex flex-col gap-6">
+      <div className="mt-5 bg-primary  p-[1rem] sm:p-[2rem] rounded-2xl w-full flex flex-col gap-6">
         <NoitificationBar userId={userId}/>
-            <div className="flex gap-4">
+            <div className="sm:flex gap-4">
             <PaymentCard userId={userId} handlePaymentCardData={handlePaymentCardData}/>
             <Templates userId={userId} handleTemplateData={handleTemplateData}/>
             </div>

@@ -29,7 +29,7 @@ export  function PaymentCard({handlePaymentCardData}){
     },[])
     return(
         <div  className="flex flex-col gap-3">
-            <div className="flex justify-between ">
+            <div className="flex justify-between ">    
                 <div className="poppins-semibold">
                     My Cards
                 </div>
@@ -65,7 +65,7 @@ export function FlipCard({cardColorbg="#232B31",isArrowShown=true,width="380px",
     const [cardColor,setCardColor] = useState(cardColorbg)
     const [isCvvShown,setCVV] = useState(false)
     return(
-        <div className={`flip-card relative shadow-xl rounded-3xl h-[240px] w-[380px] `}>
+        <div className={`flip-card relative shadow-xl rounded-3xl h-[180px] w-[280px] sm:h-[220px] sm:w-[380px] `}>
             {
                 isArrowShown ?
                 <div 

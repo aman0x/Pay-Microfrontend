@@ -23,8 +23,8 @@ export default function SignUpUser(){
     
   
     return(
-        <div className="grid grid-cols-2 gap-4">
-        <div className="flex min-h-full flex-col ">
+        <div className="grid  lg:grid-cols-2">
+        <div className="flex min-h-full flex-col p-2 sm:p-[0px] ">
           <HeaderNavbar isLogin={true}/>
           <div className="sm:mx-auto sm:w-full mt-20">
             <div className="flex justify-center text-sm text-gray-900">
@@ -286,7 +286,9 @@ export default function SignUpUser(){
             </div>
           </div>
         </div>
+        <div className='hidden lg:block'>
         <PaymorzSider/>
+        </div>
       </div>
     )
 }

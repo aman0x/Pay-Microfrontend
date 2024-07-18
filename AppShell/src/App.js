@@ -3,7 +3,7 @@ import React from "react";
 import ReactDOMClient from "react-dom/client";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./themes/index.css";
+import "./index.css";
 import Auth from "Auth/Auth";
 import Dashboard from "Dashboard/Dashboard";
 import Invoice from "Invoice/Invoice";
@@ -43,7 +43,6 @@ function App() {
       :
       <CommonLayout>
         <Routes> 
-        
           <Route path="/dashboard/*" element={<ErrorBoundary> <Dashboard  /></ErrorBoundary>} />
           
           <Route path="/invoice/*" element={<ErrorBoundary><Invoice /></ErrorBoundary>} />

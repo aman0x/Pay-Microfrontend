@@ -2,7 +2,7 @@ import {useNavigate} from "react-router-dom"
 function    NoitificationBar(){
     const navigate = useNavigate()
     return(
-        <div className="h-28  w-full primary-linear-gr-bg flex justify-between items-center px-[1rem] py-[1.5rem] rounded-2xl ">
+        <div className="hidden sm:flex  h-28  w-full primary-linear-gr-bg justify-between items-center px-[1rem] py-[1.5rem] rounded-2xl ">
             <div>
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="18" height="18" rx="9" transform="matrix(-1 0 0 1 18 0)" fill="white"/>

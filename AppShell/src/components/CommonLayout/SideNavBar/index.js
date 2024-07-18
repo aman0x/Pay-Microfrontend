@@ -16,7 +16,7 @@ export  function SideNavBar(){
     const [notificationIndex,setnotificationIndex] = useState(0)
     const dispatch  = useDispatch()
     return(
-        <div className={`bg-primary cursor-pointer ${isNavOpen?'min-w-[13.5rem]':"nav-close"} flex flex-col h-[85vh] max-h-[800px]  text-sm justify-between border-gray-400  py-[1.5rem] pr-[1rem] rounded-3xl mx-[0.5rem] my-[0.5rem]  transition-all duration-150 shadow-2xl overflow-y-hidden`}
+        <div className={` hidden bg-primary cursor-pointer ${isNavOpen?'min-w-[13.5rem]':"nav-close"} sm:flex flex-col h-[85vh] max-h-[800px]  text-sm justify-between border-gray-400  py-[1.5rem] pr-[1rem] rounded-3xl mx-[0.5rem] my-[0.5rem]  transition-all duration-150 shadow-2xl overflow-y-hidden`}
         >
             <div className="flex gap-1 items-center pl-4" onClick={()=>setNavOpen(!isNavOpen)}>
             <img
@@ -34,7 +34,7 @@ export  function SideNavBar(){
             className="pl-1 text-xl font-extrabold size-8 color-linear">.</span></p>
             <span className="ml-9 cursor-pointer"><FaLessThan color="gray" fontSize="10px"/></span>
             </div>
-            <div className="flex flex-col gap-1 ">
+            <div className="flex flex-col gap-1  ">
                 <button className="flex gap-4 items-center " 
                 onClick={()=>{
                     setNavIndex(0)
@@ -49,7 +49,7 @@ export  function SideNavBar(){
                 :
                 <div className="h-[40px] w-[2.5px]"></div>
                 }
-                    <span className={`${isNavOpen?"":"nav-element"}`}><MdDashboard /></span>
+                    <span className={`${isNavOpen?"":"nav-element"}`}><MdDashboard color="black" /></span>
                     <p className="hover:text-black hover:font-semibold">Dashboard</p>
                     {
                         notificationIndex === 1?

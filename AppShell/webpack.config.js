@@ -19,7 +19,7 @@ module.exports = (env) => {
       alias: {
         controllers: path.resolve(__dirname, '../Controllers'),
     },
-      extensions: [".tsx", ".ts", ".jsx", ".js", ".json", ".css"],
+      extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
     },
 
     devServer: {

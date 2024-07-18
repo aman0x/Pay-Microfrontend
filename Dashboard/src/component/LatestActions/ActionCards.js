@@ -8,7 +8,7 @@ function ActionCards({data}){
                 data.map((card,i)=>{
                     return(
                         <div key={i} className="flex flex-col justify-between bg-white rounded-2xl p-5 gap-3">
-                        <div className="flex justify-between text-gray-600 text-sm poppins-medium">
+                        <div className=" justify-between sm:flex text-gray-600 text-sm poppins-medium">
                             <p>{card.payment_type}</p>
                             <p>{moment(card.payment_datetime).format('DD MMMM YYYY HH:mm')}</p>
                             <p>{card.transaction_id}</p>

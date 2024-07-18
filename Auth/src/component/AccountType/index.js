@@ -17,7 +17,7 @@ export default function AccountType(){
        console.log("Not Permitted")
     }
     return(
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid  lg:grid-cols-2 gap-4">
             <div className="flex min-h-full flex-col py-[2rem] px-[2em] gap-2 sm:mx-auto sm:w-full sm:max-w-lg">
                 <div className="text-center mt-[2rem] mb-4">
                     <h2 className="poppins-bold">Enter following details to complete your KYC <br></br>verification!</h2>
@@ -277,7 +277,7 @@ export default function AccountType(){
                 <p >By clicking Continue, you agree to Paymorz's <span><a className='underline font-semibold' href='#'>Terms & Conditions & Privacy Policy.</a></span></p>
             </div>
             </div>
-            <div>
+            <div className="hidden sm:block">
                 <PaymorzSider/>
             </div>
         </div>

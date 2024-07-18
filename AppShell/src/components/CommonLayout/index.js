@@ -23,13 +23,17 @@ function CommonLayout({children}){
     return(
         <div className="bg-slate-50  flex flex-col ">
         <div className="flex">
+          <div>
           {
             location.pathname.startsWith('/admin')?
             <AdminSideBar/>
             :
-            <SideNavBar />
+            <div className="block">
+              <SideNavBar />
+            </div>
           }
-          <div className="w-full will-change-auto">  
+          </div>
+          <div className="flex flex-col w-full">  
             {
               ( location.pathname !== '/dashboard/payment/new-payment' &&
                 !location.pathname.startsWith('/dashboard/beneficiary') &&
@@ -45,9 +49,11 @@ function CommonLayout({children}){
               
               
             }  
-            <div className="flex ml-1">
-                {children}
-              
+            <div className="ml-1 flex">
+                
+                {children}   
+               
+                <div className="hide">
               {
                 location.pathname === '/dashboard/statistic' ?
                 
@@ -59,6 +65,7 @@ function CommonLayout({children}){
                 :
                 <RightSideBar/>
               }
+              </div>      
             </div>
           </div>
         </div>

@@ -19,7 +19,7 @@ function RightSideBar(){
             !location.pathname.startsWith('/report')&&
             !location.pathname.startsWith('/admin/users')
         ) ?
-        <div className="p-[0.8rem] mt-5 flex flex-col gap-4 ">
+        <div className="flex flex-col p-[0.8rem]  gap-4">
         <QuickAction/>
         <Stats/>
         </div>

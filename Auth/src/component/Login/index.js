@@ -19,8 +19,8 @@ export default function LoginUser() {
   const [withEmail, setWithEmail] = useState(true)
   const [isPasswordShown, setPasswordShown] = useState(false)
   return (
-    <div className="grid grid-cols-2 gap-4">
-      <div className="flex min-h-full flex-col ">
+    <div className="grid  lg:grid-cols-2 gap-4">
+      <div className="flex min-h-full flex-col p-2 sm:p-[0px] ">
         <HeaderNavbar />
         <div className="sm:mx-auto sm:w-full  mt-12">
           <h2 className="mt-10 text-center text-sm  text-gray-900">Log in With:</h2>
@@ -212,7 +212,9 @@ export default function LoginUser() {
           </div>
         </div>
       </div>
+      <div className='hidden lg:block'>
       <PaymorzSider />
+      </div>
     </div>
 
   )

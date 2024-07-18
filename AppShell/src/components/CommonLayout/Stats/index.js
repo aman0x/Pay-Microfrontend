@@ -46,9 +46,7 @@ function Stats(){
         <div className="w-72 my-2">
         <SliderDate/>
         </div>
-        <div className="flex justify-center poppins-light text-xs text-gray-600">
-                27 March 2024 
-        </div>
+        
         {isCalenderOpen && <CalenderComponent/>}
         <div className="flex flex-col mt-2 gap-2">
             <div 

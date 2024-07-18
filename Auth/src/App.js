@@ -12,6 +12,7 @@ import { Provider } from "react-redux";
 import AxiosInstance from "controllers/AxiosInstance/index"
 import ErrorBoundary from "./component/ErrorBoundary/index.js";
 import NotFound from "./component/Error";
+import reduxStore from "./store";
 console.log("work",window.root)
 const Auth = () => (
   
