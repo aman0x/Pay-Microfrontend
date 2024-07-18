@@ -277,7 +277,7 @@ export default function AccountType(){
                 <p >By clicking Continue, you agree to Paymorz's <span><a className='underline font-semibold' href='#'>Terms & Conditions & Privacy Policy.</a></span></p>
             </div>
             </div>
-            <div className="hidden sm:block">
+            <div className="hidden sm:flex">
                 <PaymorzSider/>
             </div>
         </div>

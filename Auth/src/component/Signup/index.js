@@ -286,7 +286,7 @@ export default function SignUpUser(){
             </div>
           </div>
         </div>
-        <div className='hidden lg:block'>
+        <div className='hidden sm:flex'>
         <PaymorzSider/>
         </div>
       </div>
