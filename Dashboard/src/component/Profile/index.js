@@ -1,10 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Formik } from "formik";
+import { useAccounts } from "#hooks/index";
 function Profile() {
     const [isProfile,setProfileIndex] = useState(true)
+    const [isDataShown,setDataShown] = useState(false)
+    const {handleGetCreateUserKyc} = useAccounts()
     const user = useSelector(state=>state.auth.user)
-    
+    const [kycDetail,setKycDetail] = useState()
+    useEffect(()=>{
+        const fectchUserKyc = async()=>{
+            const data = await handleGetCreateUserKyc()
+            setKycDetail(data)
+        }
+        fectchUserKyc()
+    },[])
     return (
         <div className="mt-5 bg-primary p-[2rem] rounded-2xl flex  gap-4 mr-2 w-full h-full">
             <div className="flex flex-col gap-2 mt-2 p-[1rem] border-r-2">
@@ -246,12 +256,12 @@ function Profile() {
                         <div className="flex gap-2 items-center poppins-light text-[#A3A6A9] max-w-96">
                             <div>Name</div>
                             <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1] "/>
-                            <div >***********</div>
+                            <div >{isDataShown?kycDetail.name:'***********'}</div>
                         </div>
                         <div className="flex gap-2 items-center poppins-light text-[#A3A6A9] max-w-96">
                             <div>Region</div>
                             <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                            <div>***********</div>
+                            <div>{isDataShown?kycDetail.region:'***********'}</div>
                         </div>
                     </div>
 
@@ -260,35 +270,44 @@ function Profile() {
                         <div className="flex gap-2 items-center poppins-light text-[#A3A6A9] max-w-96">
                             <div>Name</div>
                             <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                            <div>***********</div>
+                            <div>{isDataShown?kycDetail.document_name:'***********'}</div>
                         </div>
                         <div className="flex gap-2 poppins-light items-center text-[#A3A6A9] max-w-96">
                             <div className="min-w-fit">Document ID</div>
                             <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                            <div>***********</div>
+                            <div>{isDataShown?kycDetail.document_id:'***********'}</div>
                         </div>
                     </div>
                     <div className="flex flex-col gap-2">
                         <div className="poppins-semibold">Document Scan / Photo</div>
-                        <div className="bg-[#232B31] opacity-20 w-[306px] h-[195px] flex items-center justify-center border-4 border-gray-500 rounded-2xl">
-                            <div>
-                                <svg width="63" height="59" viewBox="0 0 63 59" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M3.75788 4.76234L57.6376 58.6421L62.4 53.8797L52.9465 44.4263C54.6823 42.6912 56.1466 41.0263 57.2844 39.6447C58.5913 38.0581 59.2453 37.2641 59.2453 36.056C59.2453 34.8479 58.5918 34.0546 57.2849 32.4679C52.5031 26.6619 41.9546 15.8511 29.7114 15.8511C28.0779 15.8511 26.4746 16.0435 24.9111 16.3909L8.52022 0L3.75788 4.76234Z" fill="white"/>
-                                <path d="M19.609 36.056C19.609 34.2359 20.0904 32.5282 20.9327 31.0533L12.3973 22.5178C7.97046 25.8353 4.40618 29.714 2.13842 32.4673C0.831667 34.0539 0.177734 34.8479 0.177734 36.056C0.177734 37.2641 0.831111 38.0574 2.13786 39.6441C6.91999 45.4503 17.4682 56.2609 29.7114 56.2609C34.2673 56.2609 38.5881 54.7641 42.4648 52.5853L34.7142 44.8347C33.2392 45.6772 31.5316 46.1585 29.7114 46.1585C24.1322 46.1585 19.609 41.6356 19.609 36.056Z" fill="white"/>
-                                </svg>
+                        {
+                            !isDataShown?
+                            <div className="bg-[#232B31] opacity-20 w-[306px] h-[195px] flex items-center justify-center border-4 border-gray-500 rounded-2xl">
+                                <div>
+                                    <svg width="63" height="59" viewBox="0 0 63 59" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3.75788 4.76234L57.6376 58.6421L62.4 53.8797L52.9465 44.4263C54.6823 42.6912 56.1466 41.0263 57.2844 39.6447C58.5913 38.0581 59.2453 37.2641 59.2453 36.056C59.2453 34.8479 58.5918 34.0546 57.2849 32.4679C52.5031 26.6619 41.9546 15.8511 29.7114 15.8511C28.0779 15.8511 26.4746 16.0435 24.9111 16.3909L8.52022 0L3.75788 4.76234Z" fill="white"/>
+                                    <path d="M19.609 36.056C19.609 34.2359 20.0904 32.5282 20.9327 31.0533L12.3973 22.5178C7.97046 25.8353 4.40618 29.714 2.13842 32.4673C0.831667 34.0539 0.177734 34.8479 0.177734 36.056C0.177734 37.2641 0.831111 38.0574 2.13786 39.6441C6.91999 45.4503 17.4682 56.2609 29.7114 56.2609C34.2673 56.2609 38.5881 54.7641 42.4648 52.5853L34.7142 44.8347C33.2392 45.6772 31.5316 46.1585 29.7114 46.1585C24.1322 46.1585 19.609 41.6356 19.609 36.056Z" fill="white"/>
+                                    </svg>
+                                </div>
                             </div>
-                        </div>
+                            :
+                            <div className="w-[306px] h-[195px] flex items-center justify-center  rounded-2xl">
+                               <img src="/dashboard/paymentCard.png" alt="documet_image" className="max-h-full w-auto"/>
+                            </div>
+
+                        }
+                        
                     </div>
                     <div>
                         <div className="primary-linear-gr-bg p-[1.5px] rounded-xl shadow-red-200 shadow-2xl max-w-fit">
-                            <button className="flex justify-between items-center bg-primary rounded-xl py-[6px] px-3 poppins-medium text-sm  gap-2" onClick={() => { }}>
+                            <button className="flex justify-between items-center bg-primary rounded-xl py-[6px] px-3 poppins-medium text-sm  gap-2" onClick={() =>setDataShown(!isDataShown) }>
                                 <span>
                                     <svg width="17" height="11" viewBox="0 0 17 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path fillRule="evenodd" clipRule="evenodd" d="M16.0742 5.47303C16.0742 5.14574 15.8972 4.93084 15.5431 4.50093C14.2478 2.9282 11.3906 0 8.0742 0C4.7578 0 1.90069 2.9282 0.605322 4.50093C0.251253 4.93084 0.0742188 5.14574 0.0742188 5.47303C0.0742188 5.80032 0.251253 6.01522 0.605322 6.44513C1.90069 8.0179 4.7578 10.9461 8.0742 10.9461C11.3906 10.9461 14.2478 8.0179 15.5431 6.44513C15.8972 6.01522 16.0742 5.80032 16.0742 5.47303ZM8.0742 8.20954C9.58558 8.20954 10.8107 6.98441 10.8107 5.47303C10.8107 3.96165 9.58558 2.73651 8.0742 2.73651C6.56291 2.73651 5.3377 3.96165 5.3377 5.47303C5.3377 6.98441 6.56291 8.20954 8.0742 8.20954Z" fill="#232B31"/>
                                     </svg>
                                 </span>
                                 <span className="poppins-semibold">
-                                 Show Data
+                                 {isDataShown?"Hide":"Show"} Data
                                 </span> 
                             </button>
                         </div>

@@ -15,13 +15,13 @@ function LatestActions({handleLatestActionData}){
   
     },[])
     return(
-        <div className="my-[2rem]">
+        <div className="mb-[2rem]">
             <div className="flex mb-4 items-center gap-6">
                 <div className="poppins-semibold text-lg">Latest Actions</div>
                 <hr className="w-[44rem] poppins-bold text-gray-950"/>
             </div>
-            <div className="grid grid-cols-4 gap-4">
-                <div className="pr-[1rem] flex flex-col">
+            <div className="sm:grid grid-cols-4 gap-4">
+                <div className="sm:pr-[1rem] flex flex-col">
                     <div className="poppins-semibold text-gray-600 mb-2 text-sm">Show Actions :</div>
                     <div className="primary-linear-gr-bg-up p-[1.5px] rounded-xl shadow-2xl">
                     <div className="flex justify-between items-center bg-black-primary rounded-xl py-2 px-3">
@@ -65,7 +65,7 @@ function LatestActions({handleLatestActionData}){
                         </div>
                    </div>
                 </div>
-                <div className=" col-span-3 w-[100%]">
+                <div className="mt-2 sm:mt-0 col-span-3 ">
                 <ActionCards data={latestActions}/>
                 </div>
                

@@ -13,7 +13,7 @@ function MainFooter(){
                     className="pl-1 text-xl font-extrabold size-8 color-linear">.</span></p>
                 </div>
             </div>
-            <div className="flex gap-2">
+            <div className="sm:flex sm:gap-2">
                 <div className="underline text-xs text-[#CDCED1]">Terms and Conditions</div>
                 <div className="underline text-xs text-[#CDCED1]">About Paymorz</div>
                 <div className="underline text-xs text-[#CDCED1]">F.A.Q</div>
@@ -22,12 +22,12 @@ function MainFooter(){
                 <div className="underline text-xs text-[#CDCED1]">API</div>
             </div>
             <div className="flex justify-between">
-                <div className="flex gap-2  text-sm">
+                <div className="flex gap-2 text-sm">
                     <div className="text-[#CDCED1]">© 2024.</div>
                     <div className="poppins-semibold">Paymorz</div>
                     <div className="text-[#CDCED1]">All Rights Reserved.</div>
                 </div>
-                <div className="flex gap-4">
+                <div className="hidden sm:flex gap-4">
                     <div>
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14 7.04277C14 3.15316 10.866 0 7 0C3.134 0 0 3.15316 0 7.04277C0 10.558 2.55979 13.4716 5.90625 14V9.07858H4.12891V7.04277H5.90625L5.90625 5.49116C5.90625 3.72607 6.95135 2.75108 8.55022 2.75108C9.31616 2.75108 10.1172 2.88864 10.1172 2.88864V4.62183H9.23454C8.365 4.62183 8.09375 5.16475 8.09375 5.72173V7.04277H10.0351L9.72482 9.07858H8.09375L8.09375 14C11.4402 13.4716 14 10.5581 14 7.04277Z" fill="white"/>

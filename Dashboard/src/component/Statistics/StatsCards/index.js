@@ -7,8 +7,8 @@ function StatsCards({reportIndex=0,stats}){
                 <div className="flex flex-col gap-8">
                     <div className="flex flex-col gap-1">
                         <p className="text-[#A3A6A9] text-sm ">All Transaction</p>
-                        <p className="poppins-bold text-sm">{stats.total_transactions||stats.total_sended_invoices||stats.total_received_invoices}</p>
-                        <p className="text-sm text-[#27A963]">+ {stats.today_transactions||stats.today_sended_invoices||stats.today_received_invoices} Today</p>
+                        <p className="poppins-bold text-sm">{stats.total_transactions||stats.total_sent_invoices||stats.total_received_invoices}</p>
+                        <p className="text-sm text-[#27A963]">+ {stats.today_transactions||stats.today_sent_invoices||stats.today_received_invoices} Today</p>
                     </div>
                     <div className="flex flex-col gap-2">
                         <div className="flex items-center gap-3">
@@ -38,7 +38,7 @@ function StatsCards({reportIndex=0,stats}){
                 <CircularChart stats={stats}/>
                 <div className="absolute top-[45%] left-[45%]">
                     {Math.round((stats.succeeded/stats.total_transactions)*100)
-                    ||Math.round((stats.succeeded/stats.total_sended_invoices)*100)
+                    ||Math.round((stats.succeeded/stats.total_sent_invoices)*100)
                     ||Math.round((stats.succeeded/stats.total_received_invoices)*100)} %
                 </div>
                 </div>

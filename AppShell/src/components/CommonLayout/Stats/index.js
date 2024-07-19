@@ -11,7 +11,7 @@ function Stats(){
     const {handleTotalStats,handleMonthStats} = useSideBar()
     const [totalStats,setTotalStats] =  useState({
         "total_payments": 240000,
-        "invoice_sended": 1,
+        "invoice_sent": 1,
         "invoice_received": 2
     })
     const [monthStats,setMonthStats] =  useState({
@@ -97,7 +97,7 @@ function Stats(){
             className="flex items-center justify-between  bg-white py-3 px-5 rounded-2xl gap-1 cursor-pointer">
                 <div className="flex flex-col gap-1">
                     <p className="text-gray-600 poppins-light">Invoice Sended</p>
-                    <p className="poppins-bold">{totalStats.invoice_sended}</p>
+                    <p className="poppins-bold">{totalStats.invoice_sent}</p>
                 </div>
                 <div className="flex gap-4 items-center">
                     <div className="primary-linear-gr-bg-light p-3 rounded-[50%]">

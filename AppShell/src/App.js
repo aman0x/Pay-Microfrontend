@@ -2,7 +2,7 @@
 import React from "react";
 import ReactDOMClient from "react-dom/client";
 import { Provider, useDispatch, useSelector } from "react-redux";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route,Navigate } from "react-router-dom";
 import "./index.css";
 import Auth from "Auth/Auth";
 import Dashboard from "Dashboard/Dashboard";
@@ -44,11 +44,10 @@ function App() {
       <CommonLayout>
         <Routes> 
           <Route path="/dashboard/*" element={<ErrorBoundary> <Dashboard  /></ErrorBoundary>} />
-          
           <Route path="/invoice/*" element={<ErrorBoundary><Invoice /></ErrorBoundary>} />
           <Route path="/report/*" element={<ErrorBoundary><Report /></ErrorBoundary>} />
          <Route path="/admin/*" element={<ErrorBoundary><Admin  /></ErrorBoundary>}/> 
-         <Route path="*" element={<NotFound/>} />
+         <Route path="*" element={<Navigate to="/dashboard" replace />} />
         </Routes>
       </CommonLayout>
       }

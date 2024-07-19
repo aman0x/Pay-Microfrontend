@@ -66,15 +66,17 @@ export  function QuickSend({handleQuickSendData}){
                 quickSend.map((user,i)=>{
                     return(
                     <div key={i} className='flex flex-col gap-0.5 items-center' >
+                    <div className='size-14'>
                     <Avatar sx={{
                         bgcolor:"#F4F4F6",
                         border:"2px solid white",
-                        width:"60px",
-                        height:"60px",
                         color:"black",
-                        fontWeight:"bold"
+                        width:"100%",
+                        height:"100%",
+                        fontWeight:"bold",
                         }} alt={user.name} src={user.dp||"#"}
                     />
+                    </div>
                     <p className='text-sm poppins-semibold'>{user.name}</p>
                     <p  className='text-xs poppins-extralight'>{user.username}</p>
                     </div>

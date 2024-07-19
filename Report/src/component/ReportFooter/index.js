@@ -16,7 +16,7 @@ function ReportDownloadButtons({vertical=false}){
                         </defs>
                         </svg>
                     </div>
-                    <div>Download PDF</div>
+                    <div ><a href="#" download="report.txt">Download PDF</a></div>
                 </button>
                 <button className="poppins-medium text-sm flex items-center bg p-[1rem] bg-black-primary rounded-xl min-h-[3.0rem] gap-4 primary-btn">
                     <div>

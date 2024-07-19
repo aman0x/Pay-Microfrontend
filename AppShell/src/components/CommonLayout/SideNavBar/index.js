@@ -50,7 +50,7 @@ export  function SideNavBar(){
                 <div className="h-[40px] w-[2.5px]"></div>
                 }
                     <span className={`${isNavOpen?"":"nav-element"}`}><MdDashboard color="black" /></span>
-                    <p className="hover:text-black hover:font-semibold">Dashboard</p>
+                    <p className="hover:text-black hover:font-semibold text-sm">Dashboard</p>
                     {
                         notificationIndex === 1?
                         <div className="relative primary-linear-gr-bg  p-[1.5px] rounded-2xl">

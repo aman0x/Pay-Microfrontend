@@ -21,10 +21,21 @@ ChartJS.register(
   Legend,
   Filler
 )
+const dataDemo = {
+  "Apr":400,
+  'May':300, 
+  'Jun':200,
+  'Jul':400,
+  'Aug':700,
+  'Sep':900,
+  'Oct':300,
+  'Nov':250,
+  'Dec':400
+}
 
- function ChartComp({index=0}) {
-  const labels = ['Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct','Nov','Dec'];
-  const amounts1 = [0,200,300,400,600,800,1000,400,200]
+ function ChartComp({index=0,data1=dataDemo,data2={}}) {
+  const labels = Object.keys(data1||data2);
+  const amounts1 = Object.values(data1)||[0,200,300,400,600,800,1000,400,200]
   const amounts2 = [80,500,400,300,700,900,400,200,100]
    const data = {
     labels:labels,

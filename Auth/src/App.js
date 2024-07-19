@@ -1,7 +1,7 @@
 // Auth.js
 import React from "react";
 import ReactDOM from "react-dom/client"
-import { Routes, Route ,BrowserRouter} from "react-router-dom";
+import { Routes, Route ,BrowserRouter,Navigate} from "react-router-dom";
 import "./index.css";
 import LoginUser from "./component/Login/index.js";
 import SignUpUser from "./component/Signup/index.js";
@@ -24,7 +24,7 @@ const Auth = () => (
     <Route path="/accounts/signup" element={<SignUpUser />} />
     <Route path="/accounts/type" element={<AccountType />} />
     <Route path="/accounts/otp-verification" element={<OtpScreen />} />
-    <Route path="*" element={<NotFound/>}/>
+    <Route path="*" element={<Navigate to="/" replace />} />
   </Routes>
   </div>
 

@@ -8,7 +8,7 @@ function StatsChart({reportIndex,stats}){
                 <span className="text-xs poppins-light text-gray-400">per day</span>
             </div>
             <div className="h-48 my-4">
-            <ChartComp index={reportIndex}/>
+            <ChartComp index={reportIndex} data1={stats.monthly_income||stats.monthly_invoice_sent} data2={stats.monthly_expenses||stats.monthly_invoice_received}/>
             </div>
                 {
                   reportIndex===0 && 

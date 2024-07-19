@@ -209,8 +209,8 @@ function InvoiceTable({handleInvoiceData}){
     },[])
 
     return(
-        <div className="w-full mt-2 ">
-        <table className="w-full  rounded-2xl overflow-hidden   ">
+        <div className="w-full mt-2 overflow-x-auto">
+        <table className="w-full  rounded-2xl overflow-hidden">
             <tr className="poppins-light text-xs text-white bg-black-primary items-center ">
                 <td>
                     <div className="flex items-center gap-2 td-element1 ml-2 ">

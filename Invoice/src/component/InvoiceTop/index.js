@@ -46,7 +46,7 @@ function InvoiceTop({handleInvoiceStats}){
     const percentage4 = percentage.percentage4;
     return(
         <div className="flex flex-col gap-4">
-            <div className="flex justify-between items-center">
+            <div className="sm:flex justify-between items-center">
                 <div>
                     <div className="poppins-semibold text-lg">
                         All Invoices
@@ -56,9 +56,9 @@ function InvoiceTop({handleInvoiceStats}){
                     </div>
                 </div>
                 <div>
-                <div className="flex w-96 mt-4 bg-[#E6E8EA] py-[6px] rounded-xl justify-evenly ">
+                <div className="flex w-[22rem] sm:w-96 mt-4 bg-[#E6E8EA] py-[6px] rounded-xl justify-evenly ">
                 <button
-                className='px-9 py-1 rounded-lg poppins-light text-sm'
+                className='px-2 py-1 rounded-lg poppins-light text-sm'
                 style={{
                   backgroundColor:isInvoiceSend?"#FFFFFF":null,
                   width:"45%",
@@ -82,7 +82,7 @@ function InvoiceTop({handleInvoiceStats}){
               </div>
                 </div>
             </div>
-            <div className="grid grid-cols-4 gap-4 mt-2">
+            <div className="grid grid-rows-4 sm:grid-rows-1 sm:grid-cols-4 gap-4 mt-2">
               <div className="flex bg-white  py-6 px-4 rounded-3xl justify-between items-center border">
                   <div className="flex flex-col gap-1">
                     <div className="poppins-light text-sm text-gray-600">Successfull</div>
@@ -100,7 +100,7 @@ function InvoiceTop({handleInvoiceStats}){
                     value={percentage1}>
 
 
-                    <div className="primary-linear-gr-bg-light rounded-[50%]  h-11 w-11  flex justify-center items-center  absolute top-[29.2px]  ">
+                    <div className="primary-linear-gr-bg-light rounded-[50%]  h-11 w-11  flex justify-center items-center  absolute top-[23px] sm:top-[29.2px]">
                       <div className="color-linear poppins-semibold text-sm" >{percentage1}%</div>
                     </div>
 
@@ -125,7 +125,7 @@ function InvoiceTop({handleInvoiceStats}){
                     value={percentage2}>
 
 
-                    <div className="primary-linear-gr-bg-light rounded-[50%]  h-11 w-11  flex justify-center items-center  absolute top-[29.2px]  ">
+                    <div className="primary-linear-gr-bg-light rounded-[50%]  h-11 w-11  flex justify-center items-center  absolute top-[23px] sm:top-[29.2px]">
                       <div className="color-linear poppins-semibold text-sm" >{percentage2}%</div>
                     </div>
 
@@ -151,7 +151,7 @@ function InvoiceTop({handleInvoiceStats}){
                     value={percentage3}>
 
 
-                    <div className="primary-linear-gr-bg-light rounded-[50%]  h-11 w-11  flex justify-center items-center  absolute top-[29.2px]  ">
+                    <div className="primary-linear-gr-bg-light rounded-[50%]  h-11 w-11  flex justify-center items-center  absolute top-[23px] sm:top-[29.2px]">
                       <div className="color-linear poppins-semibold text-sm" >{percentage3}%</div>
                     </div>
 
@@ -177,7 +177,7 @@ function InvoiceTop({handleInvoiceStats}){
                     value={percentage4}>
 
 
-                    <div className="primary-linear-gr-bg-light rounded-[50%]  h-11 w-11  flex justify-center items-center  absolute top-[29.2px]  ">
+                    <div className="primary-linear-gr-bg-light rounded-[50%]  h-11 w-11  flex justify-center items-center  absolute top-[23px] sm:top-[29.2px]">
                       <div className="color-linear poppins-semibold text-sm" >{percentage4}%</div>
                     </div>
 
@@ -186,7 +186,7 @@ function InvoiceTop({handleInvoiceStats}){
                   </div>
               </div>
             </div>
-             <div className="flex gap-3 poppins-light text-[14px] items-center mt-2">
+             <div className="sm:flex gap-3 poppins-light text-[14px] sm:items-center mt-2">
                 <div className="text-sm text-gray-600">
                   Show:
                 </div>
@@ -214,6 +214,7 @@ function InvoiceTop({handleInvoiceStats}){
                     </div>
                     <div className={`${filterIndex===3?"poppins-bold":""}`}>Refunded</div>
                 </div>
+                <div className="flex">
                 <div className="w-80 mx-4">
                   <div className="relative w-full">
                       <input type="text" id="voice-search" className="bg-[#DFE0E2] border border-gray-300 text-gray-900 text-sm rounded-2xl block w-full  p-2" placeholder="Search for invoices..." required />
@@ -235,6 +236,7 @@ function InvoiceTop({handleInvoiceStats}){
                     <path d="M2.36779 7.88455C2.52489 7.88455 2.65224 8.01191 2.65224 8.169C2.65224 8.71341 2.65285 9.0931 2.69136 9.3796C2.72878 9.65792 2.79722 9.80526 2.90219 9.91024C3.00716 10.0152 3.15453 10.0836 3.43283 10.1211C3.71932 10.1596 4.09901 10.1602 4.64343 10.1602H6.91906C7.46347 10.1602 7.84316 10.1596 8.12967 10.1211C8.40798 10.0836 8.55532 10.0152 8.66031 9.91024C8.76529 9.80526 8.83371 9.65792 8.87114 9.3796C8.90964 9.0931 8.91025 8.71341 8.91025 8.169C8.91025 8.01191 9.03761 7.88455 9.1947 7.88455C9.3518 7.88455 9.47916 8.01191 9.47916 8.169V8.18983C9.47916 8.70852 9.47916 9.12659 9.43497 9.45542C9.38908 9.79681 9.29088 10.0842 9.0626 10.3125C8.83428 10.5408 8.54687 10.639 8.20548 10.6849C7.87665 10.7291 7.45858 10.7291 6.93989 10.7291H4.62262C4.10393 10.7291 3.68585 10.7291 3.35703 10.6849C3.01564 10.639 2.7282 10.5408 2.49991 10.3125C2.27162 10.0842 2.17343 9.79681 2.12753 9.45542C2.08332 9.1266 2.08333 8.70855 2.08333 8.18988V8.169C2.08333 8.01191 2.21069 7.88455 2.36779 7.88455Z" fill="#232B31"/>
                 </svg>
 
+                </div>
                 </div>
             </div> 
             

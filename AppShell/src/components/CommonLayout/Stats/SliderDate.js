@@ -51,8 +51,8 @@ export default function SliderDate() {
             dates.map((date,i)=>{
                 return(
                     <SwiperSlide>
-                    <div className={`flex justify-center w-fit rounded-2xl p-[1.5px] ${i===2?'primary-linear-gr-bg ':''}`}>
-                        <div className={`flex flex-col gap-1 items-center w-fit  rounded-2xl ${i===2?'bg-black-primary':'bg-white'} p-[0.6rem]`}>
+                    <div className={`flex justify-center w-fit rounded-2xl p-[1.5px] ${i===2?'primary-linear-gr-bg':''}`}>
+                        <div className={`flex flex-col gap-1 items-center rounded-2xl ${i===2?'bg-black-primary':'bg-white'} p-[0.6rem]`}>
                         <div className='poppins-bold'>{date.day}</div>
                         <div className={`poppins-bold ${i===2?'':'text-gray-600'}`}>{date.dayName}</div>
                         </div>

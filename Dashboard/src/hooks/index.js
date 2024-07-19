@@ -292,6 +292,7 @@ export function useSupport(){
 
 export function useAccounts(){
     const user = useSelector(state=>state.auth.user)
+    const user_id = useSelector(state=>state.auth.user_id)
     const handleGetBankAccount = async() =>{
         try{
             const arr = []
@@ -362,6 +363,22 @@ export function useAccounts(){
         toast("Error Sending Support");
         }
     }
+    const handleGetCreateUserKyc = async(data)=>{
+        try{
+            const response = await ApiCall({ 
+                url: PRIVATE_ENDPOINTS.GET_CREATE_USER_KYC+'1/',
+                //`${user_id}/`, 
+                method: data?"PUT":"GET", 
+                body:data,
+                PRIVATE_API: true, 
+                current_user: user 
+              });
+              return response.data;
+        }
+        catch(e){
+            toast("Error in KYC");
+        }
+    }
    
-    return{handleAddBankAccount,handleGetBankAccount,handleGetBeneficiary,handleAddBeneficiary}
+    return{handleAddBankAccount,handleGetBankAccount,handleGetBeneficiary,handleAddBeneficiary,handleGetCreateUserKyc}
 }
