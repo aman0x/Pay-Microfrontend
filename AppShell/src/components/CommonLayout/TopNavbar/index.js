@@ -17,7 +17,7 @@ function TopNavbar() {
         <div className=" hidden sm:flex  justify-between w-full mt-[1rem] ">
             <div>
                 <div className="poppins-medium">{TopHead}</div>
-                <p className="poppins-light text-sm text-gray-600">🤨 Get more out of Paymorz everyday!</p>
+                <p className="poppins-light text-sm text-gray-600">🤨 Get more out ofsdzfv sdfv ds</p>
             </div>
             <div className="w-96">
                 <div className="relative w-full">
