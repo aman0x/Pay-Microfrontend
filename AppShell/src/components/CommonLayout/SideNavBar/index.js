@@ -22,17 +22,25 @@ export  function SideNavBar(){
             <img
                 src="/dashboard/paymorz-logo.png"
                 alt="paymorz-logo"
-                width={isNavOpen?"25px":"40px"}
+                width={isNavOpen?"25px":"34px"}
                 style={{
                     marginInline:isNavOpen?'0px':"14px"
                 }}
             />
-            <span className="cursor-pointer" style={{display:isNavOpen?"none":"flex"}} >
-                <FaGreaterThan color="gray" fontSize="14px"/>
-            </span>
-            <p className="italic pl-1 font-extrabold from-neutral-900 text-base">Paymorz<span 
+            <span
+            className="cursor-pointer"
+            style={{ display: isNavOpen ? "none" : "flex" }}
+        >
+         <svg width="7" height="12" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 1.49951L6 6.49951L1 11.4995" stroke="#B6B8BA" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
+
+        </span>
+            <p className="italic pl-2 font-extrabold from-neutral-900 text-base">Paymorz<span 
             className="pl-1 text-xl font-extrabold size-8 color-linear">.</span></p>
-            <span className="ml-9 cursor-pointer"><FaLessThan color="gray" fontSize="10px"/></span>
+            <span className="ml-9 cursor-pointer">   <svg width="7" height="12" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 1.49951L6 6.49951L1 11.4995" stroke="#B6B8BA" stroke-width="1.5" stroke-linecap="round"/>
+</svg></span>
             </div>
             <div className="flex flex-col gap-1  ">
                 <button className="flex gap-4 items-center " 
