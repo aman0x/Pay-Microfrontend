@@ -37,7 +37,7 @@ function SecondaryTopBar({btn1="",btn2=""}){
 }
 function getTopName(pathname="/payment"){
     if(pathname.startsWith('/invoice/')){
-        return "Invoice"
+        return "Invoices"
     }
     else if(pathname.startsWith('/dashboard/profile')){
         return "Account Settings"

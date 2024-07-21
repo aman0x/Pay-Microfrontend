@@ -17,7 +17,7 @@ function TopNavbar() {
         <div className=" hidden sm:flex  justify-between w-full mt-[1rem] ">
             <div>
                 <div className="poppins-medium">{TopHead}</div>
-                <p className="poppins-light text-sm text-gray-600">🤨 Get more out ofsdzfv sdfv ds</p>
+                <p className="poppins-light text-sm text-gray-600">🤨 Get more out of Paymorz everyday</p>
             </div>
             <div className="w-96">
                 <div className="relative w-full">
@@ -81,7 +81,7 @@ function getTopName(pathname = "/") {
         return "Statistics"
     }
     else if (pathname === "/invoice") {
-        return "Invoice"
+        return "Invoices"
     }
     else if (pathname === "/admin") {
         return "Dashboard(admin)"

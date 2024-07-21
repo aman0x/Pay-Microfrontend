@@ -19,7 +19,7 @@ export function SideNavBar() {
     <div
       className={` hidden bg-primary cursor-pointer ${
         isNavOpen ? "min-w-[13.5rem]" : "nav-close"
-      } sm:flex flex-col h-[85vh] max-h-[800px]  text-sm justify-between border-gray-400  py-[1.5rem] pr-[1rem] rounded-3xl mx-[0.5rem] my-[0.5rem]  transition-all duration-150 shadow-2xl overflow-y-hidden`}
+      } sm:flex flex-col h-[85vh] max-h-[800px]  text-sm justify-between border-gray-400  py-[1.5rem] pr-[1rem] rounded-3xl mx-[0.5rem] my-[0.5rem]  transition-all duration-300 shadow-2xl overflow-y-hidden`}
     >
       <div
         className="flex gap-1 items-center pl-4"
@@ -28,7 +28,7 @@ export function SideNavBar() {
         <img
           src="/dashboard/paymorz-logo.png"
           alt="paymorz-logo"
-          width={isNavOpen ? "25px" : "34px"}
+          width={isNavOpen ? "34px" : "34px"}
           style={{
             marginInline: isNavOpen ? "0px" : "14px",
           }}
@@ -90,10 +90,26 @@ export function SideNavBar() {
           ) : (
             <div className="h-[40px] w-[2.5px]"></div>
           )}
-          <span className={isNavOpen ? "" : "nav-element"}>
-            <MdDashboard color="black" />
+          <span>
+            {navIndex === 0 ? (
+              <img
+                src="/images/union_selected.svg"
+                className={`${isNavOpen ? "" : "mobile-nav"}`}
+                alt="Dashboard logo"
+              />
+            ) : (
+              <img
+                src="/images/union.svg"
+                className={`${isNavOpen ? "" : "mobile-nav"}`}
+                alt="Dashboard logo"
+              />
+            )}
           </span>
-          <p className="hover:text-black hover:font-semibold text-sm">
+          <p
+            className={`${
+              navIndex === 0 ? "font-semibold text-black" : ""
+            } hover:text-black hover:font-semibold text-sm`}
+          >
             Dashboard
           </p>
           {notificationIndex === 1 && (
@@ -118,10 +134,30 @@ export function SideNavBar() {
           ) : (
             <div className="h-[40px] w-[2.5px]"></div>
           )}
-          <span className={isNavOpen ? "" : "nav-element"}>
-            <FaCreditCard />
+          <span>
+            <span className={`${isNavOpen ? "" : "nav-element"}`}>
+              {navIndex === 1 ? (
+                <img
+                  src="/images/credit_selected.svg"
+                  className={`${isNavOpen ? "" : "mobile-nav"}`}
+                  alt="Credit logo"
+                />
+              ) : (
+                <img
+                  src="/images/credit.svg"
+                  className={`${isNavOpen ? "" : "mobile-nav"}`}
+                  alt="Credit logo"
+                />
+              )}
+            </span>
           </span>
-          <p className="hover:text-black hover:font-semibold mr-2">Payments</p>
+          <p
+            className={`${
+              navIndex === 1 ? "font-semibold text-black" : ""
+            } hover:text-black hover:font-semibold mr-2`}
+          >
+            Payments
+          </p>
           {notificationIndex === 2 && (
             <div className="relative primary-linear-gr-bg p-[1.5px] rounded-2xl">
               <div className="bg-black-primary rounded-xl py-0.5 px-2 text-xs">
@@ -144,10 +180,28 @@ export function SideNavBar() {
           ) : (
             <div className="h-[40px] w-[2.5px]"></div>
           )}
-          <span className={isNavOpen ? "" : "nav-element"}>
-            <CgNotes />
+          <span>
+            {navIndex === 2 ? (
+              <img
+                src="/images/invoice_selected.svg"
+                className={`${isNavOpen ? "" : "mobile-nav"}`}
+                alt="Invoice logo"
+              />
+            ) : (
+              <img
+                src="/images/invoice.svg"
+                className={`${isNavOpen ? "" : "mobile-nav"}`}
+                alt="Invoice logo"
+              />
+            )}
           </span>
-          <p className="hover:text-black hover:font-semibold mr-5">Invoices</p>
+          <p
+            className={`${
+              navIndex === 2 ? "font-semibold text-black" : ""
+            }  hover:text-black hover:font-semibold mr-5`}
+          >
+            Invoices
+          </p>
           {notificationIndex === 3 && (
             <div className="relative primary-linear-gr-bg p-[1.5px] rounded-2xl">
               <div className="bg-black-primary rounded-xl py-0.5 px-2 text-xs">
@@ -170,10 +224,26 @@ export function SideNavBar() {
           ) : (
             <div className="h-[40px] w-[2.5px]"></div>
           )}
-          <span className={isNavOpen ? "" : "nav-element"}>
-            <RiPieChart2Fill />
+          <span>
+            {navIndex === 3 ? (
+              <img
+                src="/images/statistics_selected.png"
+                className={`${isNavOpen ? "" : "mobile-nav"}`}
+                alt="Statistics logo"
+              />
+            ) : (
+              <img
+                src="/images/statistics.svg"
+                className={`${isNavOpen ? "" : "mobile-nav"}`}
+                alt="Statistics logo"
+              />
+            )}
           </span>
-          <p className="hover:text-black hover:font-semibold mr-[1.40rem]">
+          <p
+            className={`${
+              navIndex === 3 ? "font-semibold text-black" : ""
+            }  hover:text-black hover:font-semibold mr-[1.40rem]`}
+          >
             Statistic
           </p>
           {notificationIndex === 4 && (
@@ -198,10 +268,28 @@ export function SideNavBar() {
           ) : (
             <div className="h-[40px] w-[2.5px]"></div>
           )}
-          <span className={isNavOpen ? "" : "nav-element"}>
-            <RiNotification4Fill />
+          <span>
+            {navIndex === 4 ? (
+              <img
+                src="/images/notification_selected.svg"
+                className={`${isNavOpen ? "" : "mobile-nav"}`}
+                alt="Notification logo"
+              />
+            ) : (
+              <img
+                src="/images/notification.svg"
+                className={`${isNavOpen ? "" : "mobile-nav"}`}
+                alt="Notification logo"
+              />
+            )}
           </span>
-          <p className="hover:text-black hover:font-semibold">Notification</p>
+          <p
+            className={`${
+              navIndex === 4 ? "font-semibold text-black" : ""
+            } hover:text-black hover:font-semibold`}
+          >
+            Notification
+          </p>
           {notificationIndex === 5 && (
             <div className="relative primary-linear-gr-bg p-[1.5px] rounded-2xl">
               <div className="bg-black-primary rounded-xl py-0.5 px-2 text-xs">
@@ -224,10 +312,28 @@ export function SideNavBar() {
           ) : (
             <div className="h-[40px] w-[2.5px]"></div>
           )}
-          <span className={isNavOpen ? "" : "nav-element"}>
-            <MdOutlineHelp />
+          <span>
+            {navIndex === 5 ? (
+              <img
+                src="/images/support_selected.svg"
+                className={`${isNavOpen ? "" : "mobile-nav"}`}
+                alt="Support logo"
+              />
+            ) : (
+              <img
+                src="/images/support.svg"
+                className={`${isNavOpen ? "" : "mobile-nav"}`}
+                alt="Support logo"
+              />
+            )}
           </span>
-          <p className="hover:text-black hover:font-semibold mr-6">Support</p>
+          <p
+            className={`${
+              navIndex === 5 ? "font-semibold text-black" : ""
+            } hover:text-black hover:font-semibold mr-6`}
+          >
+            Support
+          </p>
           {notificationIndex === 6 && (
             <div className="relative primary-linear-gr-bg p-[1.5px] rounded-2xl">
               <div className="bg-black-primary rounded-xl py-0.5 px-2 text-xs">
@@ -249,10 +355,18 @@ export function SideNavBar() {
           color: "grey",
         }}
       >
-        <span className={`${isNavOpen ? "" : "nav-element"}`}>
+        {/* <span className={`${isNavOpen ? "" : "nav-element"}`}>
           <CiLogout />
         </span>
-        <p className="hover:text-black hover:font-semibold">Logout</p>
+        <p className="hover:text-black hover:font-semibold">Logout</p> */}
+        <span>
+          <img
+            src="/images/logout_icon.svg"
+            className={`${isNavOpen ? "ml-2" : "mobile-nav"}`}
+            alt="Logout logo"
+          />
+        </span>
+        <p className={`hover:text-black hover:font-semibold`}>Logout</p>
       </button>
     </div>
   );
