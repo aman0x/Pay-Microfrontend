@@ -103,7 +103,7 @@ function getTopName(pathname = "/") {
 function DropMenu({ setDropMenu, navigate }) {
 
     return (
-        <div className="absolute end-0 top-0 bg-white rounded-2xl p-[1rem] w-[295px] z-50 cursor-pointer">
+        <div className="absolute end-0 top-0 bg-white rounded-2xl p-[1rem] w-[295px] z-50 cursor-pointer shadow-md">
             <div className="flex justify-end" onClick={() => setDropMenu(false)}>
                 <svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9 1L1 10" stroke="#232B31" strokeLinecap="round" />
