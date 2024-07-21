@@ -11,7 +11,7 @@ function DashboardMain(){
     return(
       <div className="mt-5 mb-5 bg-primary  p-[16.1px] sm:p-[2rem] rounded-2xl w-full flex flex-col gap-6">
         <NoitificationBar userId={userId}/>
-            <div className="sm:flex gap-4">
+            <div className="sm:flex gap-10">
             <PaymentCard userId={userId} handlePaymentCardData={handlePaymentCardData}/>
             <Templates userId={userId} handleTemplateData={handleTemplateData}/>
             </div>
