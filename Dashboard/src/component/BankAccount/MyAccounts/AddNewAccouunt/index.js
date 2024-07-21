@@ -82,7 +82,7 @@ function AddNewAccount({isRepeatPayment=false}){
                 <div className="mx-auto w-[50%] flex flex-col gap-8 mt-4">
                 <div className="text-center poppins-semibold">Enter Data</div>
                 <Formik
-            initialValues={{ account_name: '', account_number: '' ,ifsc_code:'',bank_account_type:'',user_account_type:'',pan_no:'',gstin_no:''}}
+            initialValues={{ account_name: '', account_number: '' ,ifsc_code:'',bank_account_type:'',user_account_type:'',pan_no:'',gstin_no:'',bank_name:''}}
             validate={values => {
               const errors = {};
                 if(values.account_name<3){
@@ -202,7 +202,7 @@ function AddNewAccount({isRepeatPayment=false}){
                         <div className="text-xs text-[#E45757]">Mandatory for Filling</div> 
                     </div> */}
                 </div>
-                <div className='mt-2'>
+                <div className='mt-8'>
                     <button type="button"
                         onClick={() => {
                             handleSubmit()

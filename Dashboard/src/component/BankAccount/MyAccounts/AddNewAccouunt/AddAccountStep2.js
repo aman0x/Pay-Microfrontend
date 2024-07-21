@@ -16,7 +16,7 @@ function AddNewAccountStep2({data}){
             <div className="flex gap-2 items-center">
                     <div className="text-[#A3A6A9] text-sm">Type</div>
                     <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                    <div className="poppins-semibold text-sm">{data.user_account_type}</div>
+                    <div className="poppins-semibold text-sm">{data.account_type}</div>
             </div>
             </div>
             <div className="text-[#4E5459] text-sm poppins-semibold">Bank Details:</div>
@@ -29,7 +29,7 @@ function AddNewAccountStep2({data}){
             <div className="flex gap-2 items-center">
                     <div className="text-[#A3A6A9] text-sm">Bank</div>
                     <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                    <div className="poppins-semibold text-sm">HDFC&nbsp;BANK,KODAK</div>
+                    <div className="poppins-semibold text-sm min-w-fit">{data.bank_name}</div>
             </div>
             <div className="flex gap-2 items-center">
                     <div className="text-[#A3A6A9] text-sm min-w-fit">IFS Code</div>
@@ -39,7 +39,7 @@ function AddNewAccountStep2({data}){
             <div className="flex gap-2 items-center">
                     <div className="text-[#A3A6A9] text-sm min-w-fit">Bank Account Type</div>
                     <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                    <div className="poppins-semibold text-sm">{data.bank_account_type}</div>
+                    <div className="poppins-semibold text-sm">{data.account_type_2}</div>
             </div>
             <div className="flex gap-2 items-center">
                     <div className="text-[#A3A6A9] text-sm min-w-fit">PAN</div>
@@ -55,7 +55,7 @@ function AddNewAccountStep2({data}){
             </div>
        
             </div>
-            <div className='w-[50%] mx-auto'>
+            <div className='w-[50%] mx-auto '>
                     <button type="submit"
                         onClick={() => {
                            handleAddBankAccount(data)

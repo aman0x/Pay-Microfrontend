@@ -32,7 +32,7 @@ function Notification(){
     },[])
  
     return(
-        <div className="mt-5 bg-primary p-[1rem] rounded-3xl flex flex-col gap-4 mr-2 min-h-[80vh] mb-4">
+        <div className="mt-5 bg-primary p-[1rem] rounded-3xl flex flex-col gap-4 mr-2 min-h-[80vh] mb-4 w-full">
             <div className="flex mt-4 h-full">
                 <div className="flex flex-col gap-1 border-r-2 border-r-[#DFE0E2] pt-10  pr-6 h-full">
                     {
@@ -130,19 +130,19 @@ function Notification(){
 
                     }
                 </div>  
-                <div className=" px-[2rem]">
-                    <div className="poppins-semibold text-lg mb-4">{menu[tophead]}<span className="poppins-light text-gray-400 text-xs mx-1">(121)</span></div>  
+                <div className=" px-[2rem] w-full">
+                    <div className="poppins-semibold text-lg mb-4">{menu[tophead]}<span className="poppins-light text-gray-400 text-xs mx-1">(1)</span></div>  
                     <div className="flex flex-col gap-2 divide-y divide-slate-200 ">
                     
                     {notificationData.map((val,i)=>{
                         return(
                             <div className={`flex flex-col  gap-2  py-2`}>
                             <div className="flex justify-between poppins-semibold text-base">
-                                <div>{val.message_title}</div>
-                                <div className="text-sm">{moment(val.date).format('DD MM YYYY HH:mm')}</div>
+                                <div>{val.title}</div>
+                                <div className="text-sm">{moment(val.created_at).format('DD MM YYYY HH:mm')}</div>
                             </div>
                             <div className="flex poppins-regular text-[#787D81] gap-2 text-[14px]">
-                                <div>{val.message}</div>
+                                <div>{val.description}</div>
                             </div>
                             
                         </div>

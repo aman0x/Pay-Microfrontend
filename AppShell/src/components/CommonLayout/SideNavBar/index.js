@@ -397,7 +397,7 @@ export function SideNavBar() {
     <div
       className={`hidden bg-primary cursor-pointer ${
         isNavOpen ? "min-w-[13.5rem]" : "nav-close"
-      } sm:flex flex-col h-[85vh] max-h-[800px] text-sm justify-between border-gray-400 py-[1.5rem] pr-[1rem] rounded-3xl mx-[0.5rem] my-[0.5rem] transition-all duration-300 shadow-2xl overflow-y-hidden`}
+      } sm:flex flex-col h-[85vh] max-h-[600px]  text-sm justify-between border-gray-400  py-[1.5rem] pr-[1rem] rounded-3xl mx-[0.5rem] my-[0.5rem]  transition-all duration-300 shadow-2xl overflow-y-hidden`}
     >
       <div
         className="flex gap-1 items-center pl-4"

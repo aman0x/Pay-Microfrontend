@@ -27,7 +27,7 @@ function AddBeneficiaryStep2({data}){
             <div className="flex gap-2 items-center">
                     <div className="text-[#A3A6A9] text-sm">No</div>
                     <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                    <div className="poppins-semibold text-sm">979498218493</div>
+                    <div className="poppins-semibold text-sm">{data.phone_number}</div>
             </div>
             </div>
             <div className="text-[#4E5459] text-sm poppins-semibold">Bank Details:</div>
@@ -40,7 +40,7 @@ function AddBeneficiaryStep2({data}){
             <div className="flex gap-2 items-center">
                     <div className="text-[#A3A6A9] text-sm">Bank</div>
                     <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                    <div className="poppins-semibold text-sm">HDFC&nbsp;BANK,KODAK</div>
+                    <div className="poppins-semibold text-sm">{data.bank_name}</div>
             </div>
             <div className="flex gap-2 items-center">
                     <div className="text-[#A3A6A9] text-sm min-w-fit">IFS Code</div>
@@ -50,17 +50,17 @@ function AddBeneficiaryStep2({data}){
             <div className="flex gap-2 items-center">
                     <div className="text-[#A3A6A9] text-sm min-w-fit">Bank Account Type</div>
                     <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                    <div className="poppins-semibold text-sm">HDFC0003242</div>
+                    <div className="poppins-semibold text-sm">{data.account_type_2}</div>
             </div>
             <div className="flex gap-2 items-center">
                     <div className="text-[#A3A6A9] text-sm min-w-fit">PAN</div>
                     <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                    <div className="poppins-semibold text-sm">HDFC0003242</div>
+                    <div className="poppins-semibold text-sm">{data.pan_no}</div>
             </div>
             <div className="flex gap-2 items-center">
                     <div className="text-[#A3A6A9] text-sm min-w-fit">GSTIN</div>
                     <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                    <div className="poppins-semibold text-sm">HDFC0003242</div>
+                    <div className="poppins-semibold text-sm">{data.gstin_no}</div>
             </div>
             
             </div>
