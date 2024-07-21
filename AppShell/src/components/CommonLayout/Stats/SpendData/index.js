@@ -66,7 +66,7 @@ function SpendData({ monthStats }) {
                 <div className="primary-linear-gr-bg-up p-[2px] rounded-2xl">
                     <button
                         onClick={() => navigate('/dashboard/statistic')}
-                        className="bg-primary  text-xs rounded-xl px-4 py-2 poppins-semibold">
+                        className="bg-primary  text-xs rounded-xl px-4 py-3 poppins-semibold">
                         View All Statistic
                     </button>
                 </div>
@@ -80,13 +80,13 @@ function SpendData({ monthStats }) {
 function CardsMenu({ cardIndex, setCardIndex, setCardMenuOpen }) {
 
     return (
-        <div className="absolute w-[100%] bg-white rounded-2xl shadow-lg   py-[1rem] px-[1.2rem] gap-4"
+        <div className="absolute w-[100%] bg-white rounded-2xl shadow-lg   py-[2rem] px-[2rem] gap-4"
             onClick={() =>
                 setTimeout(() => {
                     setCardMenuOpen(false)
                 }, 100)
             }>
-            <div className="text-sm poppins-semibold my-2 flex gap-1 items-center">
+            <div className="text-sm poppins-semibold my-1 flex gap-1 items-center">
                 <span>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clipPath="url(#clip0_380_21893)">
@@ -101,7 +101,7 @@ function CardsMenu({ cardIndex, setCardIndex, setCardMenuOpen }) {
                 </span>
                 <div className="text-[10px] text-[#A3A6A9] poppins-regular ">Select the card from the list (only one)</div>
             </div>
-            <div className="flex flex-col gap-2 mt-4">
+            <div className="flex flex-col gap-4 mt-4">
                 {cards.map((card, i) => {
                     return (
                         <div className="flex gap-4 justify-between items-center " key={i}>
