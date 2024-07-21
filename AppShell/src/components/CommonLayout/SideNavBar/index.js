@@ -629,6 +629,49 @@ export function SideNavBar() {
             </div>
           )}
         </button>
+        <button
+          className={`flex gap-4 items-center ${
+            navIndex === 5 ? "font-semibold text-black" : ""
+          }`}
+          onClick={() => handleNavigation(5, "/dashboard/support")}
+          style={{ color: "grey" }}
+
+        >
+          {navIndex === 5 ? (
+            <div className="primary-linear-gr-bg-up h-6 active-bar"></div>
+          ) : (
+            <div className="h-[40px] w-[2.5px]"></div>
+          )}
+          <span>
+            {navIndex === 5 ? (
+              <img
+                src="/images/support_selected.svg"
+                className={`${isNavOpen ? "" : "mobile-nav"}`}
+                alt="Support logo"
+              />
+            ) : (
+              <img
+                src="/images/support.svg"
+                className={`${isNavOpen ? "" : "mobile-nav"}`}
+                alt="Support logo"
+              />
+            )}
+          </span>
+          <p
+            className={`${
+              navIndex === 5 ? "font-semibold text-black" : ""
+            } hover:text-black hover:font-semibold mr-6`}
+          >
+            Support
+          </p>
+          {notificationIndex === 6 && (
+            <div className="relative primary-linear-gr-bg p-[1.5px] rounded-2xl">
+              <div className="bg-black-primary rounded-xl py-0.5 px-2 text-xs">
+                1 New
+              </div>
+            </div>
+          )}
+        </button>
       </div>
 
       <button
