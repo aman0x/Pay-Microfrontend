@@ -1,8 +1,9 @@
 import ApiCall from "controllers/AxiosInstance/index.js"
-import {useSelector} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 import { PRIVATE_ENDPOINTS } from "../utils/Constants.js"
 import {toast} from "react-toastify"
 import { useNavigate } from "react-router-dom"
+import {authActions} from "Auth/authReducer"
 export function useDashboard(){
     const user_id = useSelector(state=>state.auth.user_id)
     const user = useSelector(state=>state.auth.user)
@@ -52,6 +53,20 @@ export function useDashboard(){
        
     }
 
+    const handlePaymentCardDetail=async(id=1)=>{
+        try{
+
+           const response = await ApiCall({url:PRIVATE_ENDPOINTS.GET_CARDS+`${id}/`,method:"GET",PRIVATE_API:true,current_user:user})
+            return response.data;
+     
+        }
+        catch(e){
+            console.log("error",e)
+            toast("Error in getting Payment Cards1")
+        }
+           
+        }
+
     const handleQuickSendData=async()=>{
         try{
             const arr = []
@@ -90,7 +105,7 @@ export function useDashboard(){
             return [];
         }
    }
-   return{handleLatestActionData,handleTemplateData,handleQuickSendData,handlePaymentCardData}
+   return{handleLatestActionData,handleTemplateData,handleQuickSendData,handlePaymentCardData,handlePaymentCardDetail}
 }
 
 export function usePayment(){
@@ -291,8 +306,10 @@ export function useSupport(){
 }
 
 export function useAccounts(){
+    const dispatch  = useDispatch()
     const user = useSelector(state=>state.auth.user)
     const user_id = useSelector(state=>state.auth.user_id)
+    const navigate = useNavigate()
     const handleGetBankAccount = async() =>{
         try{
             const arr = []
@@ -312,16 +329,17 @@ export function useAccounts(){
             return [];
         }
     }
-    const handleAddBankAccount = async(data)=>{
+    const handleAddBankAccount = async(data,id)=>{
         try {
             const response = await ApiCall({ 
-              url: PRIVATE_ENDPOINTS.GET_CREATE_BANK_ACCOUNT_LIST, 
+              url: PRIVATE_ENDPOINTS.GET_CREATE_BANK_ACCOUNT_LIST+'add/', 
               method: "POST", 
               body:data,
               PRIVATE_API: true, 
               current_user: user 
             });
-            toast.success("Query Sended!!")
+            navigate(-1)
+            toast.success("Account Added!!")
             return response.data;
           }
         catch (error) {
@@ -356,6 +374,7 @@ export function useAccounts(){
               PRIVATE_API: true, 
               current_user: user 
             });
+            navigate(-1)
             toast.success("Query Sended!!")
             return response.data;
           }
@@ -379,6 +398,39 @@ export function useAccounts(){
             toast("Error in KYC");
         }
     }
+    const handleUserProfile = async(data)=>{
+        try{
+            const response = await ApiCall({ 
+                url: PRIVATE_ENDPOINTS.UPDATE_USER_PROFILE,
+                method: "PUT",
+                body:data,
+                PRIVATE_API: true, 
+                current_user: user 
+              });
+              dispatch(authActions.setUser({user:response.data}))
+              toast.success("Profile Updated")
+              return response.data;
+             
+        }
+        catch(e){
+            toast("Error in User Profile");
+        }
+    }
+    const handleDeleteBank = async()=>{
+        try{
+            const response = await ApiCall({ 
+                url: PRIVATE_ENDPOINTS.GET_CREATE_USER_KYC+'1/',
+                method: data?"PUT":"GET", 
+                body:data,
+                PRIVATE_API: true, 
+                current_user: user 
+              });
+              return response.data;
+        }
+        catch(e){
+            toast("Error in KYC");
+        }
+    }
    
-    return{handleAddBankAccount,handleGetBankAccount,handleGetBeneficiary,handleAddBeneficiary,handleGetCreateUserKyc}
+    return{handleAddBankAccount,handleGetBankAccount,handleGetBeneficiary,handleAddBeneficiary,handleGetCreateUserKyc,handleUserProfile}
 }

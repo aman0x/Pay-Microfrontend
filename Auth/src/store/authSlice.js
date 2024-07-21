@@ -16,7 +16,6 @@ const authSlice = createSlice({
         login(state,action){
             state.isLogin = true;
             state.token = action.payload.token
-            state.user_id = action.payload.user_id
         },
         logout(state,action){
             state.isLogin=false
@@ -24,8 +23,6 @@ const authSlice = createSlice({
         },
         setUser(state,action){
             state.user = action.payload.user
-            state.user_id = action.payload.user.id
-            state.isLogin = true
         }
         
 

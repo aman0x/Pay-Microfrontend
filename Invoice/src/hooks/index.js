@@ -66,7 +66,7 @@ export function useInvoice(){
                 
                 }
             catch (error) {
-            toast("Error in getting Templates");
+            toast("Error in getting Invoices");
             return [];
             }
             }

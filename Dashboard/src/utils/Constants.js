@@ -3,7 +3,7 @@ const BASE_URL = process.env.BASE_URL;
  
 export const PRIVATE_ENDPOINTS = {
     GET_TEMPLATE:BASE_URL+'/api/dashboard/my-template/',
-    GET_CARDS:BASE_URL+'/api/dashboard/my-card/',
+    GET_CARDS:BASE_URL+'/api/card/cards/',
     GET_QUICK_SEND:BASE_URL+'/api/dashboard/quick-send/',
     GET_LATEST_ACTIONS:BASE_URL+'/api/dashboard/latest-actions/',
     GET_PAYMENT_STATS:BASE_URL+"/api/payment/dashboard/",
@@ -17,11 +17,12 @@ export const PRIVATE_ENDPOINTS = {
     GET_STATISTIC_TRANSACTION:BASE_URL+'/api/statistic/transaction-list/',
     GET_STATISTIC_INVOICE_SENT:BASE_URL+'/api/statistic/invoice-sent-list/',
     GET_STATISTIC_INVOICE_RECEIVED:BASE_URL+'/api/statistic/invoice-received-list/',
-    CREATE_CARD:BASE_URL+'/api/card/data/',
+    CREATE_CARD:BASE_URL+'/api/card/cards/',
     CREATE_SUPPORT:BASE_URL+'/api/support/data/',
-    GET_CREATE_BANK_ACCOUNT_LIST:BASE_URL+'/api/account/bank/',
+    GET_CREATE_BANK_ACCOUNT_LIST:BASE_URL+'/api/user/bank-accounts/',
     GET_CREATE_BENEFICIARY_LIST:BASE_URL+'/api/account/beneficiary/',
-    GET_CREATE_USER_KYC:BASE_URL+'/api/user/kyc/'
+    GET_CREATE_USER_KYC:BASE_URL+'/api/user/kyc/',
+    UPDATE_USER_PROFILE:BASE_URL+'/api/user/profile/'
 }
 
 

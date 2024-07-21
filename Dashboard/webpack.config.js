@@ -59,7 +59,9 @@ module.exports = (env) => {
       new ModuleFederationPlugin({
         name: "Dashboard",
         filename: "remoteEntry.js",
-        remotes: {},
+        remotes: {
+          Auth: `Auth@${envVars.APP_URL}:8004/remoteEntry.js`,
+        },
         exposes: {
           "./Dashboard": "./src/App.js",
         },

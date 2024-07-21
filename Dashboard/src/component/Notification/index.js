@@ -32,9 +32,9 @@ function Notification(){
     },[])
  
     return(
-        <div className="mt-5 bg-primary p-[1rem] rounded-2xl flex flex-col gap-4 mr-2">
-            <div className="flex mt-4">
-                <div className="flex flex-col gap-1 border-r-2 border-r-[#DFE0E2] pt-10  pr-6">
+        <div className="mt-5 bg-primary p-[1rem] rounded-3xl flex flex-col gap-4 mr-2 min-h-[80vh] mb-4">
+            <div className="flex mt-4 h-full">
+                <div className="flex flex-col gap-1 border-r-2 border-r-[#DFE0E2] pt-10  pr-6 h-full">
                     {
                         notificationIndex0 ?
                         <div className="primary-linear-gr-bg-up p-[1.5px] rounded-xl shadow-red-200 shadow-2xl">

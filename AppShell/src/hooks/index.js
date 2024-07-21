@@ -43,7 +43,7 @@ export function useUserCommon(){
   const handleGetUserDetail = async(id) =>{
       try {
           const response = await ApiCall({ 
-            url: PRIVATE_ENDPOINTS.GET_USER_DETAIL+id, 
+            url: PRIVATE_ENDPOINTS.GET_USER_DETAIL, 
             method: "GET", 
             PRIVATE_API: true, 
           });

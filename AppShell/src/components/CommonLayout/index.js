@@ -12,10 +12,9 @@ import { useUserCommon } from "#hooks/index.js";
 function CommonLayout({children}){
     const location = useLocation()
     const {handleGetUserDetail} = useUserCommon()
-    const user_id = localStorage.getItem('user_id')
     useEffect(()=>{
       const fetchUser=async()=>{
-          const data = await  handleGetUserDetail(user_id)
+          const data = await  handleGetUserDetail()
           console.log("user",data)
       }
       fetchUser()
@@ -49,7 +48,7 @@ function CommonLayout({children}){
               
               
             }  
-            <div className="ml-1 flex">
+            <div className="ml-2 flex">
                 
                 {children}   
                

@@ -65,10 +65,9 @@ export function useUserLoginAuth(){
         }
         AxiosCall({url:PUBLIC_ENDPOINTS.login,method:"POST",body:login_data})
         .then((data)=>{
-            STORE_IN_LOCAL_STORAGE("access_token",data.data.access_token)
-            STORE_IN_LOCAL_STORAGE("user_id",data.data.user_id)
+            STORE_IN_LOCAL_STORAGE("access_token",data.data.access)
             toast.success("Login Successfull")
-            dispatch(authActions.login({token:data.data.access_token,user_id:data.data.user_id}))
+            dispatch(authActions.login({token:data.data.access}))
             navigate('/dashboard')
         })
         .catch((e)=>{
@@ -79,8 +78,6 @@ export function useUserLoginAuth(){
                 toast.error("Error in Login")
                 console.log("login_error_data",e)
             }
-           
-           
         })
        
 

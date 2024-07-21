@@ -142,7 +142,7 @@ function BanksTable({banks}){
                         </td>
                         <td><div className="td-element">{transaction.account_name}</div></td>
                         <td><div className="td-element">{transaction.account_number}</div></td>
-                        <td><div className="td-element">{transaction.bank_name}</div></td>
+                        <td><div className="td-element">{transaction.bank_name||transaction.account_type_2}</div></td>
                         <td><div className="td-element">{transaction.ifsc_code}</div></td>
                         <td>
                             

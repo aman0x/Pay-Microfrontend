@@ -1,13 +1,23 @@
 import axios from "axios"
 async function ApiCall({url,method,body,PRIVATE_API = false,header,current_user=null}){
     console.log(url)
-
+    console.log("user",current_user)
+    let token =""
+    if (PRIVATE_API) {
+        const accessToken = localStorage.getItem("access_token");
+        if (accessToken) {
+            const cleanedToken = accessToken.replace(/^"(.*)"$/, '$1');
+            token = `Bearer ${cleanedToken}`;
+        } else {
+            console.error("Access token not found in localStorage");
+        }
+    }
     try{
         let axiosCall;
         let config = {
                 headers:
                 {
-                    "Authorization": (current_user && PRIVATE_API && current_user?.accessToken) || null,
+                    "Authorization": token || null,
                     ...header
                 }
             }

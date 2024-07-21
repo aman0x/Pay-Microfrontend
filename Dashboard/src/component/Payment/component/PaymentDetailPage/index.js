@@ -25,7 +25,7 @@ function PaymentDetailPage(){
     const paymentId = searchParams.get('paymentId')
     useEffect(()=>{
         const fetchPaymentDetail = async ()=>{
-            const data = await handlePaymentDetail(paymentId)
+            const data = await handlePaymentCardDetail(paymentId)
             setPaymentDetail(data)
         }
         fetchPaymentDetail()

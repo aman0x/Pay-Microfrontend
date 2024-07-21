@@ -11,7 +11,7 @@ export  function PaymentCard({handlePaymentCardData}){
     const [cardIndex,setCardIndex] = useState(0)
     const [cards,setCards] = useState([{
         "card_holder_name": "Holder Name",
-        "card_number": "1234567824681257",
+        "card_no": "1234567824681257",
         "card_type": "VISA",
         "exp_date": "02/28",
         "cvv_no": "123",
@@ -23,6 +23,7 @@ export  function PaymentCard({handlePaymentCardData}){
         const fetchCards =async()=>{
           const data = await handlePaymentCardData()
           setCards(data)
+          console.log("cards",data)
         }
         fetchCards()
        
@@ -103,12 +104,12 @@ export function FlipCard({cardColorbg="#232B31",isArrowShown=true,width="380px",
                         </div>                    
                     </div>
                     <div>
-                        <p className="poppins-regular">{maskCardNumber(cardData.card_number)}</p>
+                        <p className="poppins-regular">{maskCardNumber(cardData.card_no)}</p>
                     </div>
                     <div className="flex justify-between text-xs">
                         <div>
                             <p className="poppins-thin text-xs mb-2">Exp. Date</p>
-                            <p>{cardData.exp_date}</p>
+                            <p>{cardData.expiry_date}</p>
                         </div>
                         <div>
                         <p className="poppins-thin text-xs mb-2">CVV</p>
@@ -116,10 +117,10 @@ export function FlipCard({cardColorbg="#232B31",isArrowShown=true,width="380px",
                         </div>
                         <div>
                         <p className="poppins-thin text-xs mb-2">Balance</p>
-                        <p>₹{cardData.balance}</p>
+                        <p>₹{cardData.balance||0}</p>
                         </div>
                         <div 
-                        onClick={()=>navigate('/dashboard/card/card-detail')}
+                        onClick={()=>navigate(`/dashboard/card/card-detail?id=${cardData.id}`)}
                         className="mt-6 underline poppins-thin text-xs hover:text-rose-300 ">
                         <a href="#" className="" >Details</a>
                         </div>
@@ -136,7 +137,7 @@ export function FlipCard({cardColorbg="#232B31",isArrowShown=true,width="380px",
                     <div className="flex flex-row justify-between text-xs">
                         <div>
                             <p className="poppins-thin text-xs mb-2">Payments</p>
-                            <p className="poppins-bold">{cardData.payments}</p>
+                            <p className="poppins-bold">{cardData.payments||0}</p>
                         </div>
                         <div>
                         <p className="poppins-thin text-xs mb-2">Status</p>
@@ -183,9 +184,9 @@ export function FlipCard({cardColorbg="#232B31",isArrowShown=true,width="380px",
 }
 function maskCardNumber(cardNumber) {
     
-    if (cardNumber.length !== 16) {
-      throw new Error('Card number must be 16 digits long.');
-    }
+    // if (cardNumber.length !== 16) {
+    //   throw new Error('Card number must be 16 digits long.');
+    // }
     const lastFourDigits = cardNumber.slice(-4);
     const maskedSection = '*'.repeat(12); 
     const maskedCardNumber = maskedSection + lastFourDigits;

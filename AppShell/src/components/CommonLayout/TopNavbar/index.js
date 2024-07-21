@@ -100,7 +100,7 @@ function getTopName(pathname = "/") {
     }
 }
 
-function DropMenu({ setDropMenu, navigate }) {
+export function DropMenu({setDropMenu,navigate}){
 
     return (
         <div className="absolute end-0 top-0 bg-white rounded-2xl p-[1rem] w-[295px] z-50 cursor-pointer shadow-md">

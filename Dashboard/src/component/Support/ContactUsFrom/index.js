@@ -29,7 +29,7 @@ function ContactForm(){
                     placeholder="Message" />     
                 </div>
             </div>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 mb-4">
                 <div className="text-sm poppins-light text-[#A3A6A9] text-center">
                     or Use : 
                 </div>
