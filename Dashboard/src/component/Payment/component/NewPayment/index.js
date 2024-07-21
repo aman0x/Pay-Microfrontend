@@ -42,7 +42,7 @@ function NewPayment({isRepeatPayment=false}){
                         </div>
 
                     }
-                    <div className="poppins-regular text-xs flex gap-1">
+                    <div className="poppins-light text-[10px] flex gap-1">
                         Step <div>1</div>
                     </div>
                 </div>
@@ -71,7 +71,7 @@ function NewPayment({isRepeatPayment=false}){
                         </div>
 
                     }
-                    <div className="poppins-regular text-xs  flex gap-1">
+                    <div className="poppins-light text-[10px]  flex gap-1">
                         Step <div>2</div>
                     </div>
                 </div>
@@ -100,7 +100,7 @@ function NewPayment({isRepeatPayment=false}){
                             </div>
 
                         }
-                    <div className="poppins-regular text-xs flex gap-1">
+                    <div className="poppins-light text-[10px] flex gap-1">
                         Step <div>3</div>
                     </div>
                 </div>

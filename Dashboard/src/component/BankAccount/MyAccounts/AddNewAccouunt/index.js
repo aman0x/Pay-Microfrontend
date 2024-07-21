@@ -9,8 +9,8 @@ const bank_type = ['SAVINGS','CURRENT']
 function AddNewAccount({isRepeatPayment=false}){
     const [isPaymentTypeMenu,setPaymentMenuView] = useState(false)
     const [isReceiverMenu,setReceiversMenuView] = useState(false)
-    const [bankTypeIndex,setBankTypeIndex] = useState(0)
-    const [accountTypeIndex,setAccountTypeIndex] = useState(0)
+    const [bankTypeIndex,setBankTypeIndex] = useState(null)
+    const [accountTypeIndex,setAccountTypeIndex] = useState(null)
     const [stepIndex,setStepIndex] = useState(0)
     const [accountData,setAccountData] = useState({})
     const {handleAddBankAccount} = useAccounts()
@@ -42,7 +42,7 @@ function AddNewAccount({isRepeatPayment=false}){
                         </div>
 
                     }
-                    <div className="poppins-regular text-xs flex gap-1">
+                    <div className="poppins-light text-[10px] flex gap-1">
                         Step <div>1</div>
                     </div>
                 </div>
@@ -71,7 +71,7 @@ function AddNewAccount({isRepeatPayment=false}){
                         </div>
 
                     }
-                    <div className="poppins-regular text-xs  flex gap-1">
+                    <div className="poppins-light text-[10px]  flex gap-1">
                         Step <div>2</div>
                     </div>
                 </div>
@@ -123,7 +123,7 @@ function AddNewAccount({isRepeatPayment=false}){
                 <form>
                 <div className="flex flex-col gap-2">
                     <div className="relative">
-                        <input type="text" name="account_name" value={values.account_name} onChange={handleChange}  onBlur={handleBlur}  className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full ps-14 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Account Name"/>
+                        <input type="text" name="account_name" value={values.account_name} onChange={handleChange}  onBlur={handleBlur}  className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-xs  p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Account Name"/>
                         {/* <div className="absolute inset-y-0 end-1 flex items-center pe-3">
                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fillRule="evenodd" clipRule="evenodd" d="M11.8332 6.00008C11.8332 9.22171 9.22147 11.8334 5.99984 11.8334C2.77817 11.8334 0.166504 9.22171 0.166504 6.00008C0.166504 2.77842 2.77817 0.166748 5.99984 0.166748C9.22147 0.166748 11.8332 2.77842 11.8332 6.00008ZM5.99984 9.35425C6.24145 9.35425 6.43734 9.15837 6.43734 8.91675V5.41675C6.43734 5.17513 6.24145 4.97925 5.99984 4.97925C5.75822 4.97925 5.56234 5.17513 5.56234 5.41675V8.91675C5.56234 9.15837 5.75822 9.35425 5.99984 9.35425ZM5.99984 3.08342C6.32201 3.08342 6.58317 3.34458 6.58317 3.66675C6.58317 3.98891 6.32201 4.25008 5.99984 4.25008C5.67766 4.25008 5.4165 3.98891 5.4165 3.66675C5.4165 3.34458 5.67766 3.08342 5.99984 3.08342Z" fill="#E45757"/>
@@ -131,7 +131,7 @@ function AddNewAccount({isRepeatPayment=false}){
                         </div> */}
                     </div>
                     <div className="relative">
-                        <input type="text" name="account_number" value={values.account_number} onChange={handleChange}  onBlur={handleBlur}   className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full ps-14 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Account Number"/>
+                        <input type="text" name="account_number" value={values.account_number} onChange={handleChange}  onBlur={handleBlur}   className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-xs  p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Account Number"/>
                         {/* <div className="absolute inset-y-0 end-1 flex items-center pe-3">
                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fillRule="evenodd" clipRule="evenodd" d="M11.8332 6.00008C11.8332 9.22171 9.22147 11.8334 5.99984 11.8334C2.77817 11.8334 0.166504 9.22171 0.166504 6.00008C0.166504 2.77842 2.77817 0.166748 5.99984 0.166748C9.22147 0.166748 11.8332 2.77842 11.8332 6.00008ZM5.99984 9.35425C6.24145 9.35425 6.43734 9.15837 6.43734 8.91675V5.41675C6.43734 5.17513 6.24145 4.97925 5.99984 4.97925C5.75822 4.97925 5.56234 5.17513 5.56234 5.41675V8.91675C5.56234 9.15837 5.75822 9.35425 5.99984 9.35425ZM5.99984 3.08342C6.32201 3.08342 6.58317 3.34458 6.58317 3.66675C6.58317 3.98891 6.32201 4.25008 5.99984 4.25008C5.67766 4.25008 5.4165 3.98891 5.4165 3.66675C5.4165 3.34458 5.67766 3.08342 5.99984 3.08342Z" fill="#E45757"/>
@@ -139,7 +139,7 @@ function AddNewAccount({isRepeatPayment=false}){
                         </div> */}
                     </div>
                     <div className="relative">
-                        <input type="text" name="bank_name" value={values.bank_name} onChange={handleChange}  onBlur={handleBlur}   className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full ps-14 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Bank Name"/>
+                        <input type="text" name="bank_name" value={values.bank_name} onChange={handleChange}  onBlur={handleBlur}   className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-xs  p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Bank Name"/>
                         {/* <div className="absolute inset-y-0 end-1 flex items-center pe-3">
                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fillRule="evenodd" clipRule="evenodd" d="M11.8332 6.00008C11.8332 9.22171 9.22147 11.8334 5.99984 11.8334C2.77817 11.8334 0.166504 9.22171 0.166504 6.00008C0.166504 2.77842 2.77817 0.166748 5.99984 0.166748C9.22147 0.166748 11.8332 2.77842 11.8332 6.00008ZM5.99984 9.35425C6.24145 9.35425 6.43734 9.15837 6.43734 8.91675V5.41675C6.43734 5.17513 6.24145 4.97925 5.99984 4.97925C5.75822 4.97925 5.56234 5.17513 5.56234 5.41675V8.91675C5.56234 9.15837 5.75822 9.35425 5.99984 9.35425ZM5.99984 3.08342C6.32201 3.08342 6.58317 3.34458 6.58317 3.66675C6.58317 3.98891 6.32201 4.25008 5.99984 4.25008C5.67766 4.25008 5.4165 3.98891 5.4165 3.66675C5.4165 3.34458 5.67766 3.08342 5.99984 3.08342Z" fill="#E45757"/>
@@ -147,7 +147,7 @@ function AddNewAccount({isRepeatPayment=false}){
                         </div> */}
                     </div>
                     <div className="relative">
-                        <input type="text" name="ifsc_code" value={values.ifsc_code} onChange={handleChange}  onBlur={handleBlur}  className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full ps-14 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="IFSC Code"/>
+                        <input type="text" name="ifsc_code" value={values.ifsc_code} onChange={handleChange}  onBlur={handleBlur}  className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-xs  p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="IFSC Code"/>
                         {/* <div className="absolute inset-y-0 end-1 flex items-center pe-3">
                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fillRule="evenodd" clipRule="evenodd" d="M11.8332 6.00008C11.8332 9.22171 9.22147 11.8334 5.99984 11.8334C2.77817 11.8334 0.166504 9.22171 0.166504 6.00008C0.166504 2.77842 2.77817 0.166748 5.99984 0.166748C9.22147 0.166748 11.8332 2.77842 11.8332 6.00008ZM5.99984 9.35425C6.24145 9.35425 6.43734 9.15837 6.43734 8.91675V5.41675C6.43734 5.17513 6.24145 4.97925 5.99984 4.97925C5.75822 4.97925 5.56234 5.17513 5.56234 5.41675V8.91675C5.56234 9.15837 5.75822 9.35425 5.99984 9.35425ZM5.99984 3.08342C6.32201 3.08342 6.58317 3.34458 6.58317 3.66675C6.58317 3.98891 6.32201 4.25008 5.99984 4.25008C5.67766 4.25008 5.4165 3.98891 5.4165 3.66675C5.4165 3.34458 5.67766 3.08342 5.99984 3.08342Z" fill="#E45757"/>
@@ -156,7 +156,7 @@ function AddNewAccount({isRepeatPayment=false}){
                     </div>
                     <div className="relative">
                         <div className="relative">
-                            <input type="text" name="user_account_type" value={user_type[accountTypeIndex]} onChange={handleChange}  onBlur={handleBlur} className="bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full ps-14 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Set Account Type"  />
+                            <input type="text" name="user_account_type" value={accountTypeIndex !== null ? user_type[accountTypeIndex] : ''} onChange={handleChange}  onBlur={handleBlur} className="bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-xs  p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Set Account Type"  />
                             <button type="button" className="absolute inset-y-0 end-0 flex items-center pe-3" onClick={()=>setReceiversMenuView(!isReceiverMenu)}>
                                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="18" width="18" height="18" rx="8" transform="rotate(90 18 0)" fill="#DFE0E2"/>
@@ -170,7 +170,7 @@ function AddNewAccount({isRepeatPayment=false}){
 
                     <div className="relative">
                         <div className="relative">
-                        <input type="text" name="bank_account_type" value={bank_type[bankTypeIndex]} onChange={handleChange}  onBlur={handleBlur} className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full ps-14 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Set Account Type" required />
+                        <input type="text" name="bank_account_type"  value={bankTypeIndex !== null ? bank_type[bankTypeIndex] : ''} onChange={handleChange}  onBlur={handleBlur} className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-xs  p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Set Account Type" required />
                         <button type="button" className="absolute inset-y-0 end-0 flex items-center pe-3" onClick={()=>setPaymentMenuView(!isPaymentTypeMenu)}>
                             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect x="18" width="18" height="18" rx="8" transform="rotate(90 18 0)" fill="#DFE0E2"/>
@@ -183,7 +183,7 @@ function AddNewAccount({isRepeatPayment=false}){
                     {isPaymentTypeMenu && <PaymentTypeMenu cardIndex={bankTypeIndex} setCardIndex={setBankTypeIndex}/>}
                     </div>
                     <div className="relative">
-                        <input type="text"  name="pan_no" value={values.pan_no} onChange={handleChange}  onBlur={handleBlur} className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full ps-14 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="PAN"/>
+                        <input type="text"  name="pan_no" value={values.pan_no} onChange={handleChange}  onBlur={handleBlur} className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-xs  p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="PAN"/>
                         {/* <div className="absolute inset-y-0 end-1 flex items-center pe-3">
                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fillRule="evenodd" clipRule="evenodd" d="M11.8332 6.00008C11.8332 9.22171 9.22147 11.8334 5.99984 11.8334C2.77817 11.8334 0.166504 9.22171 0.166504 6.00008C0.166504 2.77842 2.77817 0.166748 5.99984 0.166748C9.22147 0.166748 11.8332 2.77842 11.8332 6.00008ZM5.99984 9.35425C6.24145 9.35425 6.43734 9.15837 6.43734 8.91675V5.41675C6.43734 5.17513 6.24145 4.97925 5.99984 4.97925C5.75822 4.97925 5.56234 5.17513 5.56234 5.41675V8.91675C5.56234 9.15837 5.75822 9.35425 5.99984 9.35425ZM5.99984 3.08342C6.32201 3.08342 6.58317 3.34458 6.58317 3.66675C6.58317 3.98891 6.32201 4.25008 5.99984 4.25008C5.67766 4.25008 5.4165 3.98891 5.4165 3.66675C5.4165 3.34458 5.67766 3.08342 5.99984 3.08342Z" fill="#E45757"/>
@@ -191,7 +191,7 @@ function AddNewAccount({isRepeatPayment=false}){
                         </div> */}
                     </div>
                     <div className="relative">
-                        <input type="text" name="gstin_no" value={values.gstin_no} onChange={handleChange}  onBlur={handleBlur} className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full ps-14 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="GSTIN"/>
+                        <input type="text" name="gstin_no" value={values.gstin_no} onChange={handleChange}  onBlur={handleBlur} className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-xs  p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="GSTIN"/>
                     </div>
                     {/* <div className="flex gap-3 justify-center">
                         <div>
@@ -230,7 +230,7 @@ function PaymentTypeMenu({cardIndex,setCardIndex}){
 
     return(
         <div className=" w-[100%] mt-2 bg-white rounded-2xl  py-[1rem] px-[1.2rem] gap-4 absolute z-50">
-            <div className="text-sm poppins-semibold my-2 flex gap-1 items-start">
+            <div className="text-sm poppins-semibold my-2 flex items-center gap-1">
                 <span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clipPath="url(#clip0_380_21893)">
@@ -243,13 +243,13 @@ function PaymentTypeMenu({cardIndex,setCardIndex}){
                 </defs>
                 </svg>
                 </span>
-                <div>Select the Payment Type from the list (only one)</div>
+                <div className="text-xs poppins-regular text-[#787D81]">Select the Payment Type from the list (only one)</div>
             </div>
             <div className="flex flex-col gap-2 mt-4">
             {bank_type.map((card,i)=>{
                 return(
                         <div className="flex gap-4 justify-between items-center " key={i}>
-                            <div className={`${cardIndex===i?"poppins-bold":""} flex gap-1 items-center`} >
+                            <div className={`${cardIndex===i?"poppins-bold":"text-[#A3A6A9]"} flex gap-1 items-center text-sm`} >
                                 {card}
                             </div>
                             <div className={`max-w-[15px]  max-h-[15px] rounded-sm   ${cardIndex===i?"primary-linear-gr-bg":"bg-gray-300"}`}>
@@ -267,7 +267,7 @@ function ReceiversMenu({cardIndex,setCardIndex}){
    
     return(
         <div className="w-[100%] bg-white rounded-2xl mt-2  py-[1rem] px-[1.2rem] gap-4 absolute z-50">
-            <div className="text-sm poppins-semibold my-2 flex gap-1 items-start">
+            <div className="text-sm poppins-semibold my-2 flex items-center gap-1 ">
                 <span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clipPath="url(#clip0_380_21893)">
@@ -280,13 +280,13 @@ function ReceiversMenu({cardIndex,setCardIndex}){
                 </defs>
                 </svg>
                 </span>
-                <div>Select the Receiver from the list (only one)</div>
+                <div className="text-xs poppins-regular text-[#787D81]">Select the Receiver from the list (only one)</div>
             </div>
             <div className="flex flex-col gap-2 mt-4">
             {user_type.map((card,i)=>{
                 return(
                         <div className="flex gap-4 justify-between items-center " key={i}>
-                            <div className={`${cardIndex===i?"poppins-bold":""} flex gap-1 items-center`} >
+                            <div className={`${cardIndex===i?"poppins-bold":"text-[#A3A6A9]"} flex gap-1 items-center text-sm`} >
                                 {card}
                             </div>
                             <div className={`max-w-[15px]  max-h-[15px] rounded-sm   ${cardIndex===i?"primary-linear-gr-bg":"bg-gray-300"}`}>
