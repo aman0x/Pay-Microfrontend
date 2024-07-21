@@ -220,14 +220,15 @@ function InvoiceTable({ handleInvoiceData }) {
 
   return (
     <div className="w-full mt-2 overflow-x-auto">
-      <div className="flex gap-3 poppins-light text-[14px] sm:items-center mt-4 mb-7 w-full justify-evenly">
+      <div className="flex gap-3 poppins-light text-[14px] sm:items-center mt-3 mb-6 w-full justify-evenly">
+        <div className="text-xs font-medium text-[#787D81]">Show:</div>
         <div className="flex gap-2 items-center">
           <div
-            className={`max-w-[18px] rounded-[0.225rem] p-[1px]  ${
+            className={`max-w-[16px] max-h-[16px] rounded-[0.225rem] p-[1px]  ${
               filterState.succeeded ? "primary-linear-gr-bg" : "bg-gray-300"
             }`}
           >
-            <div className="cursor-pointer bg-white m-[0.5px] rounded-[0.223rem]">
+            <div className="cursor-pointer bg-white rounded-[0.225rem]">
               <FaSquare
                 color={filterState.succeeded ? "black" : "white"}
                 className="rounded-[0.235rem] p-[1px]"
@@ -236,7 +237,7 @@ function InvoiceTable({ handleInvoiceData }) {
             </div>
           </div>
           <div
-            className={`cursor-default ${
+            className={`cursor-default text-xs ${
               filterState.succeeded ? "text-[#232B31]" : "text-[#A3A6A9]"
             }`}
           >
@@ -245,11 +246,11 @@ function InvoiceTable({ handleInvoiceData }) {
         </div>
         <div className="flex gap-2 items-center">
           <div
-            className={`max-w-[18px] rounded-[0.225rem] p-[1px]  ${
+            className={`max-w-[16px] max-h-[16px] rounded-[0.225rem] p-[1px]  ${
               filterState.inProgress ? "primary-linear-gr-bg" : "bg-gray-300"
             }`}
           >
-            <div className="cursor-pointer bg-white m-[0.5px] rounded-[0.223rem]">
+            <div className="cursor-pointer bg-white rounded-[0.225rem]">
               <FaSquare
                 color={filterState.inProgress ? "black" : "white"}
                 className="rounded-[0.235rem] p-[1px]"
@@ -258,7 +259,7 @@ function InvoiceTable({ handleInvoiceData }) {
             </div>
           </div>
           <div
-            className={`cursor-default ${
+            className={`cursor-default text-xs ${
               filterState.inProgress ? "text-[#232B31]" : "text-[#A3A6A9]"
             }`}
           >
@@ -267,11 +268,11 @@ function InvoiceTable({ handleInvoiceData }) {
         </div>
         <div className="flex gap-2 items-center">
           <div
-            className={`max-w-[18px] rounded-[0.225rem] p-[1px]  ${
+            className={`max-w-[16px] max-h-[16px] rounded-[0.225rem] p-[1px]  ${
               filterState.failed ? "primary-linear-gr-bg" : "bg-gray-300"
             }`}
           >
-            <div className="cursor-pointer bg-white m-[0.5px] rounded-[0.223rem]">
+            <div className="cursor-pointer bg-white rounded-[0.225rem]">
               <FaSquare
                 color={filterState.failed ? "black" : "white"}
                 className="rounded-[0.235rem] p-[1px]"
@@ -280,7 +281,7 @@ function InvoiceTable({ handleInvoiceData }) {
             </div>
           </div>
           <div
-            className={`cursor-default ${
+            className={`cursor-default text-xs ${
               filterState.failed ? "text-[#232B31]" : "text-[#A3A6A9]"
             }`}
           >
@@ -289,11 +290,11 @@ function InvoiceTable({ handleInvoiceData }) {
         </div>
         <div className="flex gap-2 items-center">
           <div
-            className={`max-w-[18px] rounded-[0.225rem] p-[1px]  ${
+            className={`max-w-[16px] max-h-[16px] rounded-[0.225rem] p-[1px]  ${
               filterState.refunded ? "primary-linear-gr-bg" : "bg-gray-300"
             }`}
           >
-            <div className="cursor-pointer bg-white m-[0.5px] rounded-[0.223rem]">
+            <div className="cursor-pointer bg-white rounded-[0.225rem]">
               <FaSquare
                 color={filterState.refunded ? "black" : "white"}
                 className="rounded-[0.235rem] p-[1px]"
@@ -302,7 +303,7 @@ function InvoiceTable({ handleInvoiceData }) {
             </div>
           </div>
           <div
-            className={`cursor-default ${
+            className={`cursor-default text-xs ${
               filterState.refunded ? "text-[#232B31]" : "text-[#A3A6A9]"
             }`}
           >
@@ -314,7 +315,7 @@ function InvoiceTable({ handleInvoiceData }) {
           <input
             type="text"
             id="voice-search"
-            className="bg-[#e6e8ea] py-2 px-5 focus:outline-none focus:ring-1 focus:ring-gray-300  focus:border-2 border border-gray-300 text-gray-900 text-sm rounded-2xl block w-full italic"
+            className="bg-[#e6e8ea] py-2 px-5 focus:outline-none focus:ring-1 focus:ring-gray-300  focus:border-2 border border-gray-300 text-gray-900 text-xs rounded-2xl block w-full italic"
             placeholder="Search for Invoices..."
             required
           />
@@ -374,194 +375,111 @@ function InvoiceTable({ handleInvoiceData }) {
         </div>
       </div>
 
-      <table className="w-full  rounded-2xl overflow-hidden">
-        <tr className="poppins-light text-xs text-white bg-black-primary items-center ">
-          <td>
-            <div className="flex items-center gap-2 td-element1 ml-2 ">
-              <div
-                className={`w-[13px]  h-[13px] rounded-[4px] ${
-                  isDateClicked ? "primary-linear-gr-bg" : "bg-white"
-                }`}
-                onClick={() => {
-                  setIsDateClicked(!isDateClicked);
-                }}
-              >
-                <TiTick color="white" size="13px" />
+      <div className="w-full mt-2  overflow-x-auto ">
+        <table className="w-full  rounded-2xl overflow-hidden ">
+          <tr className="poppins-light text-xs text-white bg-[#232B31] items-center">
+            <td>
+              <div className="flex items-center gap-2 td-element1 text-[10px] ml-2 ">
+                <div className={`w-[13px]  h-[13px] rounded-[4px] ${isDateClicked ? 'primary-linear-gr-bg' : 'bg-white'}`} onClick={() => { setIsDateClicked(!isDateClicked) }}>
+                  <TiTick color="white" size="13px" />
+                </div>
+                <div>Date</div>
+                <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 4L4 1L7 4" stroke="#B6B8BA" strokeLinecap="round" />
+                  <path d="M1 9L4 12L7 9" stroke="#B6B8BA" strokeLinecap="round" />
+                </svg>
               </div>
-              <div>Date</div>
-              <svg
-                width="8"
-                height="13"
-                viewBox="0 0 8 13"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M1 4L4 1L7 4" stroke="#B6B8BA" strokeLinecap="round" />
-                <path
-                  d="M1 9L4 12L7 9"
-                  stroke="#B6B8BA"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </div>
-          </td>
-          <td>
-            <div className="td-element1">Recepient</div>
-          </td>
-          <td>
-            <div className="td-element1">Type</div>
-          </td>
-          <td>
-            <div className="td-element1"> Bank</div>
-          </td>
-          <td>
-            <div className="td-element1">Account Type</div>
-          </td>
-          <td>
-            <div className="td-element1">Transaction ID</div>
-          </td>
-          <td>
-            <div className="flex items-center gap-1 td-element1">
-              <div>Status</div>
-              <svg
-                width="8"
-                height="13"
-                viewBox="0 0 8 13"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M1 4L4 1L7 4" stroke="#B6B8BA" strokeLinecap="round" />
-                <path
-                  d="M1 9L4 12L7 9"
-                  stroke="#B6B8BA"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </div>
-          </td>
-          <td>
-            <div className="flex items-center gap-1 td-element1">
-              <div>Sum</div>
-              <svg
-                width="8"
-                height="13"
-                viewBox="0 0 8 13"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M1 4L4 1L7 4" stroke="#B6B8BA" strokeLinecap="round" />
-                <path
-                  d="M1 9L4 12L7 9"
-                  stroke="#B6B8BA"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </div>
-          </td>
-        </tr>
-        {invoiceData.map((transaction, i) => {
-          return (
-            <tr
-              key={i}
-              className="text-xs poppins-regular"
-              onClick={() => navigate(`/invoice/invoice-detail?invoiceId=${i}`)}
-            >
-              <td>
-                <div className="flex items-center gap-3 td-element">
-                  <div
-                    className={`w-[12px]  h-[12px] rounded-[4px] ${
-                      isDateClicked ? "primary-linear-gr-bg" : "bg-white"
-                    }`}
-                    onClick={() => {
-                      setIsDateClicked(!isDateClicked);
-                    }}
-                  >
-                    <TiTick color="white" size="12px" />
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    <span>
-                      {moment(transaction.date).format("DD MMMM YYYY")}
-                    </span>
-                    <span>{moment(transaction.date).format("HH:mm")}</span>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div className="td-element">{transaction.recipient}</div>
-              </td>
-              <td>
-                <div className="td-element">{transaction.type}</div>
-              </td>
-              <td>
-                <div className="td-element">{transaction.bank}</div>
-              </td>
-              <td>
-                <div className="td-element">{transaction.account_type}</div>
-              </td>
-              <td>
-                <div className="td-element">{transaction.transaction_id}</div>
-              </td>
-              <td>
-                <div className="flex gap-2 items-center td-element">
-                  <div>
-                    <svg
-                      width="9"
-                      height="9"
-                      viewBox="0 0 9 9"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <circle
-                        cx="4.5"
-                        cy="4.5"
-                        r="4.5"
-                        fill={`${
-                          transaction.status === "Succeeded"
-                            ? "#27A963"
-                            : "#FFB442"
-                        }`}
-                      />
-                    </svg>
-                  </div>
-                  <div>{transaction.status}</div>
-                </div>
-              </td>
-              <td>
-                <div className="flex gap-6 items-center td-element">
-                  <div>{transaction.sum}</div>
-                  <svg
-                    width="24"
-                    height="28"
-                    viewBox="0 0 24 25"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      y="0.5"
-                      width="24"
-                      height="24"
-                      rx="5.74489"
-                      fill="white"
-                    />
-                    <path
-                      d="M12.75 8.5C12.75 8.91421 12.4142 9.25 12 9.25C11.5858 9.25 11.25 8.91421 11.25 8.5C11.25 8.08579 11.5858 7.75 12 7.75C12.4142 7.75 12.75 8.08579 12.75 8.5Z"
-                      fill="#232B31"
-                    />
-                    <path
-                      d="M12.75 12.5C12.75 12.9142 12.4142 13.25 12 13.25C11.5858 13.25 11.25 12.9142 11.25 12.5C11.25 12.0858 11.5858 11.75 12 11.75C12.4142 11.75 12.75 12.0858 12.75 12.5Z"
-                      fill="#232B31"
-                    />
-                    <path
-                      d="M12 17.25C12.4142 17.25 12.75 16.9142 12.75 16.5C12.75 16.0858 12.4142 15.75 12 15.75C11.5858 15.75 11.25 16.0858 11.25 16.5C11.25 16.9142 11.5858 17.25 12 17.25Z"
-                      fill="#232B31"
-                    />
-                  </svg>
-                </div>
-              </td>
-            </tr>
-          );
-        })}
-      </table>
+            </td>
+            <td>
+              <div className="td-element1 text-[10px]">Recepient</div>
+            </td>
+            <td>
+              <div className="td-element1 text-[10px]">Type</div>
+            </td>
+            <td>
+              <div className="td-element1 text-[10px]"> Bank</div>
+            </td>
+            <td>
+              <div className="td-element1 text-[10px]"> Account Type</div>
+            </td>
+            <td>
+              <div className="td-element1 text-[10px]">Transaction ID</div>
+            </td>
+            <td>
+              <div className="flex items-center gap-1 td-element1 text-[10px]">
+                <div>Status</div>
+                <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 4L4 1L7 4" stroke="#B6B8BA" strokeLinecap="round" />
+                  <path d="M1 9L4 12L7 9" stroke="#B6B8BA" strokeLinecap="round" />
+                </svg>
+              </div>
+            </td>
+            <td>
+              <div className="flex items-center gap-1 td-element1 text-[10px]">
+                <div>Sum</div>
+                <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 4L4 1L7 4" stroke="#B6B8BA" strokeLinecap="round" />
+                  <path d="M1 9L4 12L7 9" stroke="#B6B8BA" strokeLinecap="round" />
+                </svg>
+              </div>
+
+            </td>
+          </tr>
+          {/* {
+            paymentData.map((transaction, i) => {
+              return (
+                <tr
+                  key={i}
+                  onClick={() => navigate(`/dashboard/payment/payment-detail?paymentId=${i}`)}
+                  className="text-xs poppins-regular"
+                >
+                  <td>
+                    <div className="flex items-center gap-3 td-element text-[10px]">
+                      <div className={`w-[12px]  h-[12px] rounded-[4px] ${isDateClicked ? 'primary-linear-gr-bg' : 'bg-white'}`} onClick={() => { setIsDateClicked(!isDateClicked) }}>
+                        <TiTick color="white" size="12px" />
+                      </div>
+                      <div className="flex flex-col gap-1">
+                        <span>{moment(transaction.payment_datetime).format('DD MMMM YYYY')}</span>
+                        <span>{moment(transaction.payment_datetime).format('HH:mm')}</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td><div className="td-element text-[10px]">{transaction.beneficiary}</div></td>
+                  <td><div className="td-element text-[10px]">{transaction.type}</div></td>
+                  <td><div className="td-element text-[10px]">{transaction.bank}</div></td>
+                  <td><div className="td-element text-[10px]">{transaction.transaction_id}</div></td>
+                  <td>
+
+                    <div className="flex gap-2 items-center td-element text-[10px]">
+                      <div>
+                        <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <circle cx="4.5" cy="4.5" r="4.5" fill={`${transaction.status === 'Succeeded' ? '#27A963' : '#FFB442'}`} />
+                        </svg>
+                      </div>
+                      <div>{transaction.status}</div>
+                    </div>
+
+                  </td>
+                  <td>
+                    <div className="flex gap-6 items-center td-element text-[10px]">
+                      <div>{transaction.sum}</div>
+                      <svg width="24" height="28" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect y="0.5" width="24" height="24" rx="5.74489" fill="white" />
+                        <path d="M12.75 8.5C12.75 8.91421 12.4142 9.25 12 9.25C11.5858 9.25 11.25 8.91421 11.25 8.5C11.25 8.08579 11.5858 7.75 12 7.75C12.4142 7.75 12.75 8.08579 12.75 8.5Z" fill="#232B31" />
+                        <path d="M12.75 12.5C12.75 12.9142 12.4142 13.25 12 13.25C11.5858 13.25 11.25 12.9142 11.25 12.5C11.25 12.0858 11.5858 11.75 12 11.75C12.4142 11.75 12.75 12.0858 12.75 12.5Z" fill="#232B31" />
+                        <path d="M12 17.25C12.4142 17.25 12.75 16.9142 12.75 16.5C12.75 16.0858 12.4142 15.75 12 15.75C11.5858 15.75 11.25 16.0858 11.25 16.5C11.25 16.9142 11.5858 17.25 12 17.25Z" fill="#232B31" />
+                      </svg>
+
+                    </div></td>
+                </tr>
+              )
+
+            })
+          } */}
+
+        </table>
+
+      </div>
     </div>
   );
 }

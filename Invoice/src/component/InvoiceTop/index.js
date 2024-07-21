@@ -52,13 +52,13 @@ function InvoiceTop({ handleInvoiceStats }) {
       <div className="sm:flex justify-between items-center mt-4">
         <div>
           <div className="poppins-semibold text-lg">All Invoices</div>
-          <div className="poppins-light text-sm text-[#A3A6A9]">
+          <div className="poppins-light text-xs text-[#A3A6A9]">
             {invoiceStats.all_invoices}
           </div>
         </div>
         <div className="flex w-[22rem] sm:w-96 bg-[#E6E8EA] py-[6px] rounded-xl justify-evenly ">
           <button
-            className="px-2 py-1 rounded-lg poppins-light text-sm"
+            className="px-2 py-[0.4rem] rounded-lg poppins-light text-xs"
             style={{
               backgroundColor: isInvoiceSend ? "#FFFFFF" : null,
               width: "45%",
@@ -70,7 +70,7 @@ function InvoiceTop({ handleInvoiceStats }) {
             Invoices Sent
           </button>
           <button
-            className="px-2 py-1 rounded-lg poppins-light text-sm"
+            className="px-2 py-[0.4rem] rounded-lg poppins-light text-xs"
             style={{
               backgroundColor: !isInvoiceSend ? "#FFFFFF" : null,
               width: "45%",
@@ -86,17 +86,17 @@ function InvoiceTop({ handleInvoiceStats }) {
       <div className="grid grid-rows-4 sm:grid-rows-1 sm:grid-cols-4 gap-4 mt-2">
         <div className="flex bg-white  py-6 px-4 rounded-3xl justify-between items-center border">
           <div className="flex flex-col gap-1">
-            <div className="poppins-light text-sm text-[#A3A6A9]">
+            <div className="poppins-regular text-xs text-[#A3A6A9]">
               Successfull
             </div>
-            <div className="poppins font-medium text-lg">
+            <div className="poppins-semibold text-lg text-[#27272E]">
               {invoiceStats.successful}
             </div>
-            <div className="flex items-center gap-1 text-[#27A963]">
-              <span className="poppins-medium text-sm">
+            <div className="flex items-center gap-1 text-green-600 text-xs">
+              <span className="poppins-bold ">
                 {invoiceStats.today_successful}
               </span>
-              <span className="poppins-light text-sm">Today</span>{" "}
+              <span className="poppins-light ">Today</span>{" "}
             </div>
           </div>
           <div className="w-20">
@@ -109,8 +109,8 @@ function InvoiceTop({ handleInvoiceStats }) {
               className="h-14  relative"
               value={percentage1}
             >
-              <div className="primary-linear-gr-bg-light rounded-[50%]  h-11 w-11  flex justify-center items-center  absolute top-[23px] sm:top-[29.2px]">
-                <div className="color-linear poppins-semibold text-sm">
+              <div className="primary-linear-gr-bg-light rounded-[50%]  h-11 w-11  flex justify-center items-center  absolute top-[23px] sm:top-[29.2px] ">
+                <div className="color-linear poppins-semibold text-xs">
                   {percentage1}%
                 </div>
               </div>
@@ -119,17 +119,17 @@ function InvoiceTop({ handleInvoiceStats }) {
         </div>
         <div className="flex bg-white  py-6 px-4 rounded-3xl justify-between items-center border">
           <div className="flex flex-col gap-1">
-            <div className="poppins-light text-sm text-[#A3A6A9]">
+            <div className="poppins-regular text-xs text-[#A3A6A9]">
               In Progress
             </div>
-            <div className="poppins font-medium text-lg">
+            <div className="poppins-semibold text-lg text-[#27272E]">
               {invoiceStats.in_progress}
             </div>
-            <div className="flex items-center gap-1 text-[#FFB442]">
-              <span className="poppins-medium text-sm">
+            <div className="flex items-center gap-1 text-[#FFB442] text-xs">
+              <span className="poppins-bold">
                 {invoiceStats.today_in_progress}
               </span>
-              <span className="poppins-light text-sm">Today</span>{" "}
+              <span className="poppins-light ">Today</span>{" "}
             </div>
           </div>
           <div className="w-20">
@@ -139,11 +139,11 @@ function InvoiceTop({ handleInvoiceStats }) {
               styles={{
                 path: { stroke: `url(#${idCSS})` },
               }}
-              className="h-14  relative"
+              className="h-14 relative"
               value={percentage2}
             >
               <div className="primary-linear-gr-bg-light rounded-[50%]  h-11 w-11  flex justify-center items-center  absolute top-[23px] sm:top-[29.2px]">
-                <div className="color-linear poppins-semibold text-sm">
+                <div className="color-linear poppins-semibold text-xs">
                   {percentage2}%
                 </div>
               </div>
@@ -152,11 +152,13 @@ function InvoiceTop({ handleInvoiceStats }) {
         </div>
         <div className="flex bg-white  py-6 px-4 rounded-3xl justify-between items-center border">
           <div className="flex flex-col gap-1">
-            <div className="poppins-light text-sm text-gray-600">Failed</div>
-            <div className="poppins-bold text-sm">{invoiceStats.failed}</div>
-            <div className="flex items-center gap-1 text-[#E45757]">
+            <div className="poppins-regular text-xs text-[#A3A6A9]">Failed</div>
+            <div className="poppins-semibold text-lg text-[#27272E]">
+              {invoiceStats.failed}
+            </div>
+            <div className="flex items-center gap-1 text-[#E45757] text-xs">
               <span className="poppins-bold">{invoiceStats.today_failed}</span>
-              <span className="poppins-light text-sm">Today</span>{" "}
+              <span className="poppins-light ">Today</span>{" "}
             </div>
           </div>
           <div className="w-20">
@@ -169,8 +171,8 @@ function InvoiceTop({ handleInvoiceStats }) {
               className="h-14  relative"
               value={percentage3}
             >
-              <div className="primary-linear-gr-bg-light rounded-[50%]  h-11 w-11  flex justify-center items-center  absolute top-[23px] sm:top-[29.2px]">
-                <div className="color-linear poppins-semibold text-sm">
+              <div className="primary-linear-gr-bg-light rounded-[50%]  h-11 w-11  flex justify-center items-center  absolute top-[23px] sm:top-[29.2px]  ">
+                <div className="color-linear poppins-semibold text-xs">
                   {percentage3}%
                 </div>
               </div>
@@ -179,13 +181,17 @@ function InvoiceTop({ handleInvoiceStats }) {
         </div>
         <div className="flex bg-white  py-6 px-4 rounded-3xl justify-between items-center border">
           <div className="flex flex-col gap-1">
-            <div className="poppins-light text-sm text-gray-600">Refunded</div>
-            <div className="poppins-bold text-sm">{invoiceStats.refunded}</div>
-            <div className="flex items-center gap-1 text-[#964EC2]">
+            <div className="poppins-regular text-xs text-[#A3A6A9]">
+              Refunded
+            </div>
+            <div className="poppins-semibold text-lg text-[#27272E]">
+              {invoiceStats.refunded}
+            </div>
+            <div className="flex items-center gap-1 text-[#964EC2] text-xs">
               <span className="poppins-bold">
                 {invoiceStats.today_refunded}
               </span>
-              <span className="poppins-light text-sm">Today</span>{" "}
+              <span className="poppins-light">Today</span>{" "}
             </div>
           </div>
           <div className="w-20">
@@ -198,8 +204,8 @@ function InvoiceTop({ handleInvoiceStats }) {
               className="h-14  relative"
               value={percentage4}
             >
-              <div className="primary-linear-gr-bg-light rounded-[50%]  h-11 w-11  flex justify-center items-center  absolute top-[23px] sm:top-[29.2px]">
-                <div className="color-linear poppins-semibold text-sm">
+              <div className="primary-linear-gr-bg-light rounded-[50%]  h-11 w-11  flex justify-center items-center  absolute top-[23px] sm:top-[29.2px] ">
+                <div className="color-linear poppins-semibold text-xs">
                   {percentage4}%
                 </div>
               </div>

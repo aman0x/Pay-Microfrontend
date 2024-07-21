@@ -5,7 +5,7 @@ import { useSearchParams } from "react-router-dom";
 import moment from "moment";
 function PaymentDetailPage(){
     const [paymentDetail,setPaymentDetail] = useState({
-        "status": "Failed",
+        "status": "Successful",
         "payment_title": "Vendor_Payment",
         "transaction_id": "TD136347383DR82",
         "date": "2024-06-21T10:21:17.116232Z",
