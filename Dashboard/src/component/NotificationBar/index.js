@@ -90,8 +90,8 @@ function    NoitificationBar(){
             </g>
             </svg>
             <div className="h-full  relative  ">
-                <div className="text-white poppins-regular flex items-center gap-1">Hi! <span className="poppins-bold"> Alex </span>You Have <span  className="poppins-bold">1</span> UnverIfied  Card</div>
-                <div className="text-white poppins-extralight text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                <div className="text-white poppins-regular text-base flex items-center gap-1">Hi! <span className="poppins-bold"> Alex </span>You Have <span  className="poppins-bold">1</span> UnverIfied  Card</div>
+                <div className="text-white poppins-extralight text-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
                 <div className="flex items-center gap-1 absolute bottom-0 left-[40%]">
                     <button className={`rounded-[50%] bg-white size-[6px]`}></button>
                     <button className={`rounded-[50%] bg-white opacity-[0.8] size-1`}></button>
@@ -102,7 +102,7 @@ function    NoitificationBar(){
             <div className="primary-linear-gr-bg p-[2px] rounded-2xl">
             <div 
             onClick={()=>navigate('/dashboard/card')}
-            className="py-[10px] px-4 cursor-pointer bg-white rounded-2xl poppins-semibold text-sm"> 
+            className="py-[10px] px-4 cursor-pointer bg-white rounded-2xl poppins-semibold text-xs text-[#232B31]"> 
                 Verify Now
             </div>
             </div>

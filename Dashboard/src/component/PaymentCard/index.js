@@ -30,14 +30,14 @@ export  function PaymentCard({handlePaymentCardData}){
     return(
         <div  className="flex flex-col gap-3">
             <div className="flex justify-between ">    
-                <div className="poppins-semibold">
+                <div className="poppins-semibold text-[#232B31] text-base">
                     My Cards
                 </div>
                 <div 
                 onClick={()=>navigate('/dashboard/card/add-card')} 
                 className="flex items-center gap-1 cursor-pointer">
-                    <IoAddCircleSharp/>
-                    <p className="poppins-light text-gray-600 text-sm">New Card</p>
+                    <IoAddCircleSharp size={18}/>
+                    <p className="poppins-regular text-[#787D81] text-xs">New Card</p>
                 </div>
             </div>
             <FlipCard index={cardIndex} cardData={cards[cardIndex]}/>

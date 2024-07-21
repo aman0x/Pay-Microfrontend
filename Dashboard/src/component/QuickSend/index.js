@@ -58,8 +58,8 @@ export  function QuickSend({handleQuickSendData}){
     return(
         <div>
            <div className="flex items-center justify-between ">
-            <p className="poppins-semibold text-lg">Quick Send</p>
-            <p className="poppins-extralight text-xs underline cursor-pointer">All Beneficaries</p>
+            <p className="poppins-semibold text-base text-[#232B31] mb-4">Quick Send</p>
+            <p className="poppins-regular text-[#787D81] text-xs underline cursor-pointer">All Beneficaries</p>
            </div>
            <div className='flex gap-2'>
             {
@@ -77,16 +77,16 @@ export  function QuickSend({handleQuickSendData}){
                         }} alt={user.name} src={user.dp||"#"}
                     />
                     </div>
-                    <p className='text-sm poppins-semibold'>{user.name}</p>
-                    <p  className='text-xs poppins-extralight'>{user.username}</p>
+                    <p className='text-xs poppins-semibold text-[#232B31]'>{user.name}</p>
+                    <p  className='text-[10px] poppins-regular text-[#B6B8BA]'>{user.username}</p>
                     </div>
                 )})
             }
-            <div className='flex flex-col gap-2' >
-            <button className='rounded-[50%] border-2 p-[1.3rem]'>
-            <IoAdd color='black'/>
+            <div className='flex flex-col gap-0.5' >
+            <button className='rounded-[50%] size-14 border-2 p-[1.3rem] flex items-center justify-center'>
+            <IoAdd color='#B6B8BA'/>
             </button>
-            <p className='text-xs poppins-extralight'>Add New</p>
+            <p className='text-xs poppins-regular text-[#B6B8BA]'>Add New</p>
             </div>
            
            

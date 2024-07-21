@@ -8,22 +8,32 @@ function ActionCards({data}){
                 data.map((card,i)=>{
                     return(
                         <div key={i} className="flex flex-col justify-between bg-white rounded-2xl p-5 gap-3">
-                        <div className="justify-between sm:flex text-gray-600 text-sm poppins-medium">
+                        <div className="justify-between sm:flex text-[#A3A6A9] text-sm poppins-regular">
                             <p>{card.payment_type}</p>
                             <p>{moment(card.payment_datetime).format('DD MMMM YYYY HH:mm')}</p>
                             <p>{card.transaction_id}</p>
                         </div>
-                        <div className="flex justify-between poppins-semibold">
+                        <div className="flex justify-between poppins-semibold text-[#232B31]">
                             <div>
                                 <p>{card.account_holder_name}</p>
-                                <p className="flex items-center text-gray-600 text-sm poppins-regular gap-2"><span><BsBank2/></span>{card.bank_name}, {card.bank_branch_name}, {card.ifsc_code}</p>
+                                <p className="flex items-center text-[#4E5459] text-sm poppins-regular gap-2"><span>
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5 7H3V14H5V7Z" fill="#B6B8BA"/>
+<path d="M8.3335 7H6.3335V14H8.3335V7Z" fill="#B6B8BA"/>
+<path d="M11.6665 7H9.6665V14H11.6665V7Z" fill="#B6B8BA"/>
+<path d="M15 7H13V14H15V7Z" fill="#B6B8BA"/>
+<path d="M17.4255 16H0.574468C0.260426 16 0 15.5467 0 15C0 14.4533 0.260426 14 0.574468 14H17.4255C17.7396 14 18 14.4533 18 15C18 15.5467 17.7396 16 17.4255 16Z" fill="#B6B8BA"/>
+<path d="M16.0275 3.31238L9.2775 0.612383C9.1275 0.552383 8.8725 0.552383 8.7225 0.612383L1.9725 3.31238C1.71 3.41738 1.5 3.72488 1.5 4.00988V6.49988C1.5 6.91235 1.8375 7.24985 2.25 7.24985H15.75C16.1625 7.24985 16.5 6.91235 16.5 6.49988V4.00988C16.5 3.72488 16.29 3.41738 16.0275 3.31238ZM9 5.37488C8.3775 5.37488 7.875 4.87238 7.875 4.24988C7.875 3.62738 8.3775 3.12488 9 3.12488C9.6225 3.12488 10.125 3.62738 10.125 4.24988C10.125 4.87238 9.6225 5.37488 9 5.37488Z" fill="#B6B8BA"/>
+</svg>
+
+                                    </span>{card.bank_name}, {card.bank_branch_name}, {card.ifsc_code}</p>
                             </div>
                             <div>
                             - ₹ {card.transaction_amount}
                             </div>
                         </div>
                         <div className="flex justify-between">
-                            <div className="flex items-center gap-2">
+                            <div className="flex items-center poppins-regular text-sm  gap-2">
                                 <span><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <rect width="18" height="18" rx="9" fill="#FFAC2F" fillOpacity="0.15"/>
                                         <circle cx="9" cy="9" r="4" fill="#FFB442"/>
@@ -32,7 +42,7 @@ function ActionCards({data}){
                                 <p className="text-[#FFB442]" > Transaction {card.transaction_status}</p>
                             </div>
                             <div>
-                                <a href="#" className="underline text-gray-600 text-sm poppins-medium">Details</a>
+                                <a href="#" className="underline text-[#787D81] text-sm poppins-medium">Details</a>
                             </div>
                         </div>                        
                         </div>

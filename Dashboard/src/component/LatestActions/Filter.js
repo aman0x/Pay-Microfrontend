@@ -6,9 +6,9 @@ function FilterComponent(){
     const [filterIndex,setFilterIndex] = useState(0)
     return(
         <div className='flex flex-col gap-2 mt-2'>
-        <p className="poppins-medium text-gray-600 text-sm">Filter Status:</p>
-        <div className='flex flex-col gap-2 poppins-light text-gray-600 text-sm'>
-            <div className="flex justify-between items-center">
+        <p className="poppins-regular text-[#B6B8BA] text-[10px]">Filter Status:</p>
+        <div className='flex flex-col gap-2 poppins-regular text-[#B6B8BA] text-[12px]'>
+            <div className="flex justify-between text-[#4E5459] items-center">
                 <div className={`${filterIndex===0?"poppins-bold":""}`}>
                     All
                 </div>

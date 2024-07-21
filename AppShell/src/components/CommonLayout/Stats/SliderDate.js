@@ -71,7 +71,7 @@ export default function SliderDate() {
         </Swiper>
 
       </div>
-      <div className="flex justify-center poppins-light text-xs text-gray-600 mt-2">
+      <div className="flex justify-center poppins-regular text-[10px] text-gray-600 mt-2">
         {moment(new Date()).format('D MMMM YYYY')}
       </div>
 
