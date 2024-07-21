@@ -1,0 +1,15 @@
+
+.contains{
+    max-width: 750px !important;
+}
+
+.clicked-contains{
+    max-width: 850px !important;
+}
+
+@media (min-width: 768px) {
+    canvas {
+        height: auto;
+        width: auto;
+     }
+}

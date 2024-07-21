@@ -220,7 +220,7 @@ function Statistic(){
         fetchStats()
     },[reportIndex])
     return(
-        <div className="w-full mt-5 bg-primary py-[3rem] px-[2rem] rounded-2xl flex flex-col gap-4">
+        <div className="w-full my-5 bg-primary py-[3rem] px-[2rem] rounded-2xl flex flex-col gap-4">
             <StatsTop reportIndex={reportIndex} setReportIndex={setReportIndex} stats={stats}/>
             <StatsChart reportIndex={reportIndex} stats={stats}/>
             <StatsCards reportIndex={reportIndex} stats={stats}/>

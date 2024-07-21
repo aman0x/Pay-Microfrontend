@@ -14,7 +14,7 @@ function PaymentStep2({setStepIndex,data}){
                 <div className="bg-[#FFFFFF] p-6 rounded-3xl flex flex-col gap-2">
                     <div className="poppins-semibold text-base">Payment Option</div>
                     <div className="flex flex-col gap-2">
-                        <div className="poppins-sembold text-xs">
+                        <div className="poppins-sembold text-[10px] text-[#A3A6A9]">
                             Select Card:
                         </div>
                         <div className="flex justify-between border-2 border-[#DFE0E2] p-2 rounded-xl">

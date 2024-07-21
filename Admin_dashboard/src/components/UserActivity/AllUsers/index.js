@@ -207,7 +207,7 @@ function AllUsers(){
                     </div>
                 </div>  
                 <div className="flex gap-3 poppins-light text-[14px] items-center">
-                    <div className="text-sm text-gray-600">
+                    <div className="text-sm text-[#787D81]">
                     Show:
                     </div>
                     <div className="flex gap-2 items-center">

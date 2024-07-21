@@ -34,7 +34,7 @@ export function QuickAction(){
     const navigate = useNavigate()
     return(
     <div>
-        <div className="poppins-semibold text-[#232B31] text-base">Quick Actions</div>
+        <div className="poppins-semibold text-[#232B31] text-base my-2">Quick Actions</div>
         <div className="flex flex-col gap-2 p-1 mt-2">
             <button
              onClick={()=> navigate('/dashboard/payment/new-payment')}
