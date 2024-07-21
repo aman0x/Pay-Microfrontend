@@ -4,8 +4,8 @@ import { RiPieChart2Fill } from "react-icons/ri";
 import { CiLogout } from "react-icons/ci";
 import { RiNotification4Fill } from "react-icons/ri";
 import { FaCreditCard, FaGreaterThan, FaLessThan } from "react-icons/fa6";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./style.css";
 import { useDispatch } from "react-redux";
 import { authActions } from "Auth/authReducer";
@@ -15,6 +15,14 @@ export function SideNavBar() {
   const [navIndex, setNavIndex] = useState(0);
   const [notificationIndex, setnotificationIndex] = useState(0);
   const dispatch = useDispatch();
+  const {pathname} = useLocation();
+  const [pathName, setPathName] = useState(pathname)
+
+  useEffect(() => {
+    setPathName(pathname);
+  }, [pathname]);
+  
+
   return (
     <div
       className={` hidden bg-primary cursor-pointer ${
@@ -85,13 +93,13 @@ export function SideNavBar() {
           }}
           style={{ color: "grey" }}
         >
-          {navIndex === 0 ? (
+          {(pathName.startsWith('/dashboard') && pathName !== '/dashboard/support' && pathName !== '/dashboard/notification' && pathName !== '/dashboard/statistic' && pathName !== '/dashboard/payment') ? (
             <div className="primary-linear-gr-bg-up h-6 active-bar"></div>
           ) : (
             <div className="h-[40px] w-[2.5px]"></div>
           )}
           <span>
-            {navIndex === 0 ? (
+            {(pathName.startsWith('/dashboard') && pathName !== '/dashboard/support' && pathName !== '/dashboard/notification' && pathName !== '/dashboard/statistic' && pathName !== '/dashboard/payment') ? (
               <img
                 src="/images/union_selected.svg"
                 className={`${isNavOpen ? "" : "mobile-nav"}`}
@@ -107,7 +115,7 @@ export function SideNavBar() {
           </span>
           <p
             className={`${
-              navIndex === 0 ? "font-semibold text-black" : ""
+              (pathName.startsWith('/dashboard') && pathName !== '/dashboard/support' && pathName !== '/dashboard/notification' && pathName !== '/dashboard/statistic' && pathName !== '/dashboard/payment') ? "font-semibold text-black" : ""
             } hover:text-black hover:font-semibold text-sm`}
           >
             Dashboard
@@ -129,14 +137,14 @@ export function SideNavBar() {
           }}
           style={{ color: "grey" }}
         >
-          {navIndex === 1 ? (
+          {pathName.startsWith('/dashboard/payment') ? (
             <div className="primary-linear-gr-bg-up h-6 active-bar"></div>
           ) : (
             <div className="h-[40px] w-[2.5px]"></div>
           )}
           <span>
             <span className={`${isNavOpen ? "" : "nav-element"}`}>
-              {navIndex === 1 ? (
+              {pathName.startsWith('/dashboard/payment') ? (
                 <img
                   src="/images/credit_selected.svg"
                   className={`${isNavOpen ? "" : "mobile-nav"}`}
@@ -153,7 +161,7 @@ export function SideNavBar() {
           </span>
           <p
             className={`${
-              navIndex === 1 ? "font-semibold text-black" : ""
+              pathName.startsWith('/dashboard/payment') ? "font-semibold text-black" : ""
             } hover:text-black hover:font-semibold mr-2`}
           >
             Payments
@@ -175,13 +183,13 @@ export function SideNavBar() {
           }}
           style={{ color: "grey" }}
         >
-          {navIndex === 2 ? (
+          {pathName.startsWith('/invoice') ? (
             <div className="primary-linear-gr-bg-up h-6 active-bar"></div>
           ) : (
             <div className="h-[40px] w-[2.5px]"></div>
           )}
           <span>
-            {navIndex === 2 ? (
+            {pathName.startsWith('/invoice') ? (
               <img
                 src="/images/invoice_selected.svg"
                 className={`${isNavOpen ? "" : "mobile-nav"}`}
@@ -197,7 +205,7 @@ export function SideNavBar() {
           </span>
           <p
             className={`${
-              navIndex === 2 ? "font-semibold text-black" : ""
+              pathName.startsWith('/invoice') ? "font-semibold text-black" : ""
             }  hover:text-black hover:font-semibold mr-5`}
           >
             Invoices
@@ -219,13 +227,13 @@ export function SideNavBar() {
           }}
           style={{ color: "grey" }}
         >
-          {navIndex === 3 ? (
+          {pathName.startsWith('/dashboard/statistic') ? (
             <div className="primary-linear-gr-bg-up h-6 active-bar"></div>
           ) : (
             <div className="h-[40px] w-[2.5px]"></div>
           )}
           <span>
-            {navIndex === 3 ? (
+            {pathName.startsWith('/dashboard/statistic') ? (
               <img
                 src="/images/statistics_selected.png"
                 className={`${isNavOpen ? "" : "mobile-nav"}`}
@@ -241,7 +249,7 @@ export function SideNavBar() {
           </span>
           <p
             className={`${
-              navIndex === 3 ? "font-semibold text-black" : ""
+              pathName.startsWith('/dashboard/statistic') ? "font-semibold text-black" : ""
             }  hover:text-black hover:font-semibold mr-[1.40rem]`}
           >
             Statistic
@@ -263,13 +271,13 @@ export function SideNavBar() {
           }}
           style={{ color: "grey" }}
         >
-          {navIndex === 4 ? (
+          {pathName.startsWith('/dashboard/notification') ? (
             <div className="primary-linear-gr-bg-up h-6 active-bar"></div>
           ) : (
             <div className="h-[40px] w-[2.5px]"></div>
           )}
           <span>
-            {navIndex === 4 ? (
+            {pathName.startsWith('/dashboard/notification') ? (
               <img
                 src="/images/notification_selected.svg"
                 className={`${isNavOpen ? "" : "mobile-nav"}`}
@@ -285,7 +293,7 @@ export function SideNavBar() {
           </span>
           <p
             className={`${
-              navIndex === 4 ? "font-semibold text-black" : ""
+              pathName.startsWith('/dashboard/notification') ? "font-semibold text-black" : ""
             } hover:text-black hover:font-semibold`}
           >
             Notification
@@ -307,13 +315,13 @@ export function SideNavBar() {
           }}
           style={{ color: "grey" }}
         >
-          {navIndex === 5 ? (
+          {pathName.startsWith('/dashboard/support') ? (
             <div className="primary-linear-gr-bg-up h-6 active-bar"></div>
           ) : (
             <div className="h-[40px] w-[2.5px]"></div>
           )}
           <span>
-            {navIndex === 5 ? (
+            {pathName.startsWith('/dashboard/support') ? (
               <img
                 src="/images/support_selected.svg"
                 className={`${isNavOpen ? "" : "mobile-nav"}`}
@@ -329,7 +337,7 @@ export function SideNavBar() {
           </span>
           <p
             className={`${
-              navIndex === 5 ? "font-semibold text-black" : ""
+              pathName.startsWith('/dashboard/support') ? "font-semibold text-black" : ""
             } hover:text-black hover:font-semibold mr-6`}
           >
             Support
