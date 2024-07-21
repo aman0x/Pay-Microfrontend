@@ -33,7 +33,7 @@ function NewInvoice(){
                 </div>
                 <div className="w-80">
                     <div className="relative w-full">
-                        <input type="text" id="voice-search" className="bg-[#DFE0E2] border border-gray-300 text-gray-900 text-sm rounded-2xl block w-full  p-2.5" placeholder="Search..." required />
+                        <input type="text" id="voice-search" className="bg-[#DFE0E2] focus:outline-none focus:ring-1 focus:ring-gray-300 border border-gray-300 text-gray-900 text-sm rounded-2xl block w-full  py-[0.7rem] px-5" placeholder="Search..." required />
                         <button type="button" className="absolute inset-y-0 end-0 flex items-center pe-3">
                         <FaSearch color="gray"/>
                         </button>

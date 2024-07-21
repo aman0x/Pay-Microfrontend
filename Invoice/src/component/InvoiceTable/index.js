@@ -194,7 +194,19 @@ function InvoiceTable({ handleInvoiceData }) {
   const statusColor = "#27A963";
   const navigate = useNavigate();
   const [invoiceData, setInvoiceData] = useState(transactions);
-  const [filterIndex, setFilterIndex] = useState(0);
+  const [filterState, setFilterState] = useState({
+    succeeded: false,
+    inProgress: false,
+    failed: false,
+    refunded: false,
+  });
+
+  const toggleFilter = (filter) => {
+    setFilterState((prev) => ({
+      ...prev,
+      [filter]: !prev[filter],
+    }));
+  };
 
   useEffect(() => {
     const fetchInvoiceData = async () => {
@@ -209,68 +221,91 @@ function InvoiceTable({ handleInvoiceData }) {
   return (
     <div className="w-full mt-2 overflow-x-auto">
       <div className="flex gap-3 poppins-light text-[14px] sm:items-center mt-4 mb-7 w-full justify-evenly">
-        <div className="text-sm font-semibold text-[#787D81]">Show:</div>
         <div className="flex gap-2 items-center">
           <div
-            className={`max-w-[16px]  max-h-[16px] rounded-sm   ${
-              filterIndex === 0 ? "primary-linear-gr-bg" : "bg-gray-300"
+            className={`max-w-[18px] rounded-[0.225rem] p-[1px]  ${
+              filterState.succeeded ? "primary-linear-gr-bg" : "bg-gray-300"
             }`}
           >
-            <FaSquare
-              color={`${filterIndex === 0 ? "black" : "white"}`}
-              className="rounded-sm p-[1px]"
-              onClick={() => setFilterIndex(0)}
-            />
+            <div className="cursor-pointer bg-white m-[0.5px] rounded-[0.223rem]">
+              <FaSquare
+                color={filterState.succeeded ? "black" : "white"}
+                className="rounded-[0.235rem] p-[1px]"
+                onClick={() => toggleFilter("succeeded")}
+              />
+            </div>
           </div>
-          <div className={`${filterIndex === 0 ? "poppins-bold" : ""}`}>
+          <div
+            className={`cursor-default ${
+              filterState.succeeded ? "text-[#232B31]" : "text-[#A3A6A9]"
+            }`}
+          >
             Succeeded
           </div>
         </div>
         <div className="flex gap-2 items-center">
           <div
-            className={`max-w-[16px]  max-h-[16px] rounded-sm   ${
-              filterIndex === 1 ? "primary-linear-gr-bg" : "bg-gray-300"
+            className={`max-w-[18px] rounded-[0.225rem] p-[1px]  ${
+              filterState.inProgress ? "primary-linear-gr-bg" : "bg-gray-300"
             }`}
           >
-            <FaSquare
-              color={`${filterIndex === 1 ? "black" : "white"}`}
-              className="rounded-sm p-[1px]"
-              onClick={() => setFilterIndex(1)}
-            />
+            <div className="cursor-pointer bg-white m-[0.5px] rounded-[0.223rem]">
+              <FaSquare
+                color={filterState.inProgress ? "black" : "white"}
+                className="rounded-[0.235rem] p-[1px]"
+                onClick={() => toggleFilter("inProgress")}
+              />
+            </div>
           </div>
-          <div className={`${filterIndex === 1 ? "poppins-bold" : ""}`}>
-            InProgress
+          <div
+            className={`cursor-default ${
+              filterState.inProgress ? "text-[#232B31]" : "text-[#A3A6A9]"
+            }`}
+          >
+            In Progress
           </div>
         </div>
         <div className="flex gap-2 items-center">
           <div
-            className={`max-w-[16px]  max-h-[16px] rounded-sm   ${
-              filterIndex === 2 ? "primary-linear-gr-bg" : "bg-gray-300"
+            className={`max-w-[18px] rounded-[0.225rem] p-[1px]  ${
+              filterState.failed ? "primary-linear-gr-bg" : "bg-gray-300"
             }`}
           >
-            <FaSquare
-              color={`${filterIndex === 2 ? "black" : "white"}`}
-              className="rounded-sm p-[1px]"
-              onClick={() => setFilterIndex(2)}
-            />
+            <div className="cursor-pointer bg-white m-[0.5px] rounded-[0.223rem]">
+              <FaSquare
+                color={filterState.failed ? "black" : "white"}
+                className="rounded-[0.235rem] p-[1px]"
+                onClick={() => toggleFilter("failed")}
+              />
+            </div>
           </div>
-          <div className={`${filterIndex === 2 ? "poppins-bold" : ""}`}>
+          <div
+            className={`cursor-default ${
+              filterState.failed ? "text-[#232B31]" : "text-[#A3A6A9]"
+            }`}
+          >
             Failed
           </div>
         </div>
         <div className="flex gap-2 items-center">
           <div
-            className={`max-w-[16px]  max-h-[16px] rounded-sm   ${
-              filterIndex === 3 ? "primary-linear-gr-bg" : "bg-gray-300"
+            className={`max-w-[18px] rounded-[0.225rem] p-[1px]  ${
+              filterState.refunded ? "primary-linear-gr-bg" : "bg-gray-300"
             }`}
           >
-            <FaSquare
-              color={`${filterIndex === 3 ? "black" : "white"}`}
-              className="rounded-sm p-[1px]"
-              onClick={() => setFilterIndex(3)}
-            />
+            <div className="cursor-pointer bg-white m-[0.5px] rounded-[0.223rem]">
+              <FaSquare
+                color={filterState.refunded ? "black" : "white"}
+                className="rounded-[0.235rem] p-[1px]"
+                onClick={() => toggleFilter("refunded")}
+              />
+            </div>
           </div>
-          <div className={`${filterIndex === 3 ? "poppins-bold" : ""}`}>
+          <div
+            className={`cursor-default ${
+              filterState.refunded ? "text-[#232B31]" : "text-[#A3A6A9]"
+            }`}
+          >
             Refunded
           </div>
         </div>
@@ -279,8 +314,8 @@ function InvoiceTable({ handleInvoiceData }) {
           <input
             type="text"
             id="voice-search"
-            className="bg-[#DFE0E2] border border-gray-300 text-gray-900 text-sm rounded-2xl block w-full  p-2"
-            placeholder="Search for invoices..."
+            className="bg-[#e6e8ea] py-2 px-5 focus:outline-none focus:ring-1 focus:ring-gray-300  focus:border-2 border border-gray-300 text-gray-900 text-sm rounded-2xl block w-full italic"
+            placeholder="Search for Invoices..."
             required
           />
           <button

@@ -10,7 +10,7 @@ export const PRIVATE_ENDPOINTS = {
     GET_ALL_PAYMENT:BASE_URL+'/api/payment/all-payments/',
     GET_PAYMENT_DETAIL:BASE_URL+'/api/payment/payment-details/',
     CREATE_PAYMENT:BASE_URL+'/api/payment/data/',
-    GET_NOTIFICATION:BASE_URL+'/api/notification/data/',
+    GET_NOTIFICATION:BASE_URL+'/api/notification/notifications/',
     GET_STATISTIC_STATS:BASE_URL+'/api/statistic/transaction-dashboard/',
     GET_STATISTIC_INVOICE_SENT_STATS:BASE_URL+'/api/statistic/invoice-sent-dashboard/',
     GET_STATISTIC_INVOICE_RECEIVED_STATS:BASE_URL+'/api/statistic/invoice-received-dashboard/',
