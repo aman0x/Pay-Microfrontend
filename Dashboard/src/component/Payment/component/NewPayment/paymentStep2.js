@@ -166,7 +166,7 @@ function PaymentStep2({setStepIndex,data,bankDetail}){
                            {bankDetail.account_name}
                         </div>
                         <div className="text-[#4E5459] text-sm poppins-semibold">Contact Details:</div>
-                        <div>
+                          <div>
                            <div className="flex gap-2 items-center">
                                 <div className="text-[#A3A6A9] text-xs">Phone</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>

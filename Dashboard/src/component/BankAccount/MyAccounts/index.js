@@ -30,7 +30,7 @@ function MyAccounts(){
         fetchBankAccounts()
     },[])
     return(
-        <div className="mt-5 bg-primary p-[2rem] rounded-2xl flex flex-col gap-3 w-full">
+        <div className="mt-5 mb-5 bg-primary p-[2rem] rounded-2xl flex flex-col gap-3 w-full">
             <div className="flex justify-between">
                 <div className="flex gap-1 items-center">
                     <div className="poppins-semibold">

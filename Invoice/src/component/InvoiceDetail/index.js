@@ -36,7 +36,7 @@ function InvoiceDetail(){
         fetchInvoiceDetail()
     },[invoiceId])
     return(
-        <div className="mt-5 bg-primary p-[2rem] rounded-2xl flex flex-col gap-3 w-full ">
+        <div className="mt-5 mb-5 bg-primary p-[2rem] rounded-2xl flex flex-col gap-3 w-full ">
             <div className="flex justify-between">
                 <div className="flex gap-1 items-center">
                     <div>
@@ -69,28 +69,28 @@ function InvoiceDetail(){
                 <div className="flex flex-col gap-4 rounded-2xl bg-white p-[1.5rem] w-full">
                     <div className="flex justify-between">
                         <div className="flex flex-col gap-1">
-                            <div className="poppins-semibold">{invoiceDetail.invoice_title}</div>
+                            <div className="poppins-semibold text-base text-[#232B31]">{invoiceDetail.invoice_title}</div>
                             <div className="flex gap-2 items-center">
-                                <div className="text-sm text-[#4E5459]">Invoice ID:</div>
-                                <div className="text-xs">{invoiceDetail.invoice_number}</div>
+                                <div className="text-xs poppins-regular text-[#A3A6A9]">Invoice ID:</div>
+                                <div className="text-xs poppins-semibold text-[#4E5459]">{invoiceDetail.invoice_number}</div>
                             </div>
                             <div className="flex gap-2 items-center">
-                                <div className="text-sm text-[#4E5459]">Date:</div>
-                                <div className="text-xs">{moment(invoiceDetail.date).format('DD MMMM YYYY HH:mm')}</div>
+                                <div className="text-xs text-[#A3A6A9] ">Date:</div>
+                                <div className="text-xs text-[#4E5459]">{moment(invoiceDetail.date).format('DD MMMM YYYY HH:mm')}</div>
                             </div> 
                         </div>
                         <div className="rounded-xl shadow-md py-[1px] h-14 px-2 w-40 flex flex-col justify-center">
-                            <div className="poppins-semibold text-sm">
+                            <div className="poppins-semibold text-xs text-[#232B31]">
                                 Payment :
                             </div>
-                            <div className="color-linear poppins-semibold">
+                            <div className="color-linear poppins-semibold text-base">
                                 ₹ {invoiceDetail.amount}
                             </div>
                         </div>
                     </div>
                     <div className="w-full">
                         <table className="w-full  rounded-2xl overflow-hidden text-sm poppins-regular">
-                            <tr className="poppins-light text-xs text-white bg-black-primary items-center">
+                            <tr className="poppins-regular text-[10px] text-white bg-black-primary items-center">
                                 <td>Particular</td>
                                 <td>Quantity</td>
                                 <td>Price Per Quantity</td>
@@ -100,7 +100,7 @@ function InvoiceDetail(){
                             </tr>
                             {invoiceDetail.services.map((detail)=>{
                                 return(
-                                    <tr className="">
+                                    <tr className="poppins-regular text-[10px]">
                                         <td>{detail.name}</td>
                                         <td>{detail.quantity||1}</td>
                                         <td>₹ {detail.price}</td>
@@ -115,50 +115,50 @@ function InvoiceDetail(){
                     </div>
                     <div className="flex justify-between gap-1">
                         <div className="flex items-center">
-                            <div className="color-linear text-base  poppins-semibold">TOTAL</div>
+                            <div className="color-linear text-sm  poppins-semibold">TOTAL</div>
                             <div className="poppins-lighht text-xs text-[#787D81]">({invoiceDetail.services.length} items):</div>
                         </div>
-                        <div className="color-linear poppins-semibold">
+                        <div className="color-linear text-sm poppins-semibold">
                             ₹ {invoiceDetail.amount}
                         </div>
                     </div>
                     <hr/>
                     <div className="grid grid-cols-2 gap-4">
                         <div className="bg-primary p-[1rem] rounded-xl gap-4">
-                            <div className="text-[#4E5459] poppins-semibold text-sm mb-2">Sent To:</div>
+                            <div className="text-[#4E5459] poppins-semibold text-xs mb-2">Sent To:</div>
                             <div className="flex items-center justify-between gap-1">
                                 <div className="text-[#A3A6A9] text-xs min-w-fit">Name:</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-sm min-w-fit">{invoiceDetail.name||"test"}</div>
+                                <div className="poppins-semibold text-xs text-[#232B31] min-w-fit">{invoiceDetail.name||"test"}</div>
                             </div>
                             <div className="flex items-center justify-between  gap-1">
                                 <div className="text-[#A3A6A9] text-xs min-w-fit">Phone:</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-sm min-w-fit">{invoiceDetail.phone_number||"+918788741323"}</div>
+                                <div className="poppins-semibold text-xs text-[#232B31] min-w-fit">{invoiceDetail.phone_number||"+918788741323"}</div>
                             </div>
                             <div className="flex items-center justify-between  gap-1">
                                 <div className="text-[#A3A6A9] text-xs min-w-fit">Mail:</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-sm min-w-fit">{invoiceDetail.email||"test@gmail.com"}</div>
+                                <div className="poppins-semibold text-xs text-[#232B31] min-w-fit">{invoiceDetail.email||"test@gmail.com"}</div>
                             </div>
                             
                         </div>
                         <div className="bg-primary p-[1rem] rounded-xl gap-4">
-                            <div className="text-[#4E5459] poppins-semibold text-sm mb-2">Bank Details:</div>
+                            <div className="text-[#4E5459] poppins-semibold text-xs mb-2">Bank Details:</div>
                             <div className="flex items-center justify-between  gap-1">
                                 <div className="text-[#A3A6A9] text-xs min-w-fit">A/C No.</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-sm min-w-fit">{invoiceDetail.account_number||"5768933787686894"}</div>
+                                <div className="poppins-semibold text-xs text-[#232B31] min-w-fit">{invoiceDetail.account_number||"5768933787686894"}</div>
                             </div>
                             <div className="flex items-center justify-between  gap-1">
                                 <div className="text-[#A3A6A9] text-xs min-w-fit">Bank</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-sm min-w-fit">{invoiceDetail.bank||"HDFC Bank"}</div>
+                                <div className="poppins-semibold text-xs text-[#232B31] min-w-fit">{invoiceDetail.bank||"HDFC Bank"}</div>
                             </div>
                             <div className="flex items-center justify-between  gap-1">
                                 <div className="text-[#A3A6A9] text-xs min-w-fit">IFS Code</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-sm min-w-fit">{invoiceDetail.ifsc_code||"HDFC0932"}</div>
+                                <div className="poppins-semibold text-xs text-[#232B31] min-w-fit">{invoiceDetail.ifsc_code||"HDFC0932"}</div>
                             </div>
                             
                         </div>
@@ -247,9 +247,9 @@ function InvoiceDetail(){
                     <path d="M3.3034 77.4082L3.47546 78.4806C3.5787 79.1241 4.02426 79.6288 4.66362 79.8252L5.72861 80.1569L4.55857 80.4885C3.85582 80.6868 3.24906 81.1915 2.93935 81.8349L2.42315 82.9074L2.25109 81.8349C2.14785 81.1915 1.7041 80.6868 1.06475 80.4885L-0.000244141 80.1569L1.1698 79.8252C1.87255 79.6288 2.47749 79.1241 2.78721 78.4806L3.3034 77.4082Z" fill="#EA92BC"/>
                     </g>
                     </svg>
-                    <div className="flex gap-1">
-                        <div className="poppins-bold text-white">Note!:</div>
-                        <div className="poppins-extralight text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    <div className="flex items-center gap-1">
+                        <div className="poppins-medium text-base text-white">Note!:</div>
+                        <div className="poppins-regular text-xs text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         </div>
                     </div>
                 
