@@ -2,7 +2,7 @@ import { useState } from "react"
 import "./style.css"
 import {FaSquare} from "react-icons/fa6"
 const cards = ['**** **** **** 1001','**** **** **** 1001','**** **** **** 1001','**** **** **** 1001']
-function PaymentStep2({setStepIndex,data}){
+function PaymentStep2({setStepIndex,data,bankDetail}){
     const [paymentIndex,setPaymentIndex] = useState(0)
     const [isConvenienceBearerMe,setWithMe] = useState(true)
     const [isCardMenuOpen,setCardMenuOpen]= useState(false)
@@ -163,7 +163,7 @@ function PaymentStep2({setStepIndex,data}){
                            Name:
                         </div>
                         <div className="poppins-semibold text-xs text-[#232B31]">
-                           ANANTHARAPU
+                           {bankDetail.account_name}
                         </div>
                         <div className="text-[#4E5459] text-sm poppins-semibold">Contact Details:</div>
                         <div>
@@ -183,12 +183,12 @@ function PaymentStep2({setStepIndex,data}){
                             <div className="flex gap-2 items-center">
                                 <div className="text-[#A3A6A9] text-xs min-w-fit">A/C No</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-xs">59321881239525092591</div>
+                                <div className="poppins-semibold text-xs">{bankDetail.account_number}</div>
                            </div>
                            <div className="flex gap-2 items-center">
                                 <div className="text-[#A3A6A9] text-xs">Bank</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-xs">HDFC&nbsp;BANK,KODAK</div>
+                                <div className="poppins-semibold text-xs min-w-fit">{bankDetail.bank_name}</div>
                            </div>
                            <div className="flex gap-2 items-center">
                                 <div className="text-[#A3A6A9] text-xs min-w-fit">IFS Code</div>

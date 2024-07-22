@@ -1,6 +1,6 @@
 import { usePayment } from "#hooks/index";
 
-function PaymentStep3({data,setStepIndex}){
+function PaymentStep3({data,setStepIndex,bankDetail}){
     const {handlePaymentCreate} = usePayment()
     return(
         <div className="flex flex-col gap-4">
@@ -13,7 +13,7 @@ function PaymentStep3({data,setStepIndex}){
                             <div className="flex gap-2 items-center ">
                                 <div className="text-[#A3A6A9] text-sm ">Name</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-sm min-w-fit">ANANTHARAPU ARUNA THEJASWINI</div>
+                                <div className="poppins-semibold text-sm min-w-fit">{bankDetail.account_name}</div>
                             </div>
                             <div className="flex gap-2 items-center">
                                         <div className="text-[#A3A6A9] text-sm">Phone</div>
@@ -23,7 +23,7 @@ function PaymentStep3({data,setStepIndex}){
                             <div className="flex gap-2 items-center">
                                 <div className="text-[#A3A6A9] text-sm">Mail</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-sm min-w-fit">contact@mail.com</div>
+                                <div className="poppins-semibold text-sm min-w-fit">rajiv@mail.com</div>
                             </div>
                         </div>     
                     </div>
@@ -33,12 +33,12 @@ function PaymentStep3({data,setStepIndex}){
                                     <div className="flex gap-2 items-center">
                                         <div className="text-[#A3A6A9] text-sm min-w-fit">A/C No</div>
                                         <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                        <div className="poppins-semibold text-sm min-w-fit">59321881239525092591</div>
+                                        <div className="poppins-semibold text-sm min-w-fit">{bankDetail.account_number}</div>
                                 </div>
                                 <div className="flex gap-2 items-center">
                                         <div className="text-[#A3A6A9] text-sm">Bank</div>
                                         <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                        <div className="poppins-semibold text-sm min-w-fit">HDFC BANK,KODAK</div>
+                                        <div className="poppins-semibold text-sm min-w-fit">{bankDetail.bank_name}</div>
                                 </div>
                                 <div className="flex gap-2 items-center">
                                         <div className="text-[#A3A6A9] text-sm min-w-fit">IFS Code</div>

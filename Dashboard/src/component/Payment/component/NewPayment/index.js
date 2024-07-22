@@ -1,10 +1,12 @@
 import { PiLineVertical } from "react-icons/pi"
 import { FaCircleArrowRight,FaSquare } from "react-icons/fa6"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import PaymentStep2 from "./paymentStep2"
 import PaymentStep3 from "./paymentStep3"
 import "./style.css"
 import { toast } from "react-toastify"
+import { useSearchParams } from "react-router-dom"
+import { useAccounts } from "#hooks/index"
 const receivers = ['Devin','Raton','Ravish','Allla']
 const types = ['Vendor Payment','Vendor Payment','Vendor Payment','Payment Type']
 function NewPayment({isRepeatPayment=false}){
@@ -15,6 +17,31 @@ function NewPayment({isRepeatPayment=false}){
     const [receiverIndex,setReceiverIndex] = useState(0)
     const [typeIndex,setTypeIndex] = useState(0)
     const [amount,setAmount] = useState('')
+    const [searchParams] = useSearchParams()
+    const bankId = searchParams.get('bankId')
+    const [bankDetail,setBankDetail] = useState({
+        "id": 10,
+        "user": 1,
+        "account_name": "RAJIV",
+        "account_number": "23647586473424574",
+        "ifsc_code": "sfsdg",
+        "account_type": "INDIVIDUAL",
+        "account_type_2": "SAVINGS",
+        "gstin": null,
+        "pan": null,
+        "bank_name": "SBI BANK"
+      })
+    const {handleGetBankById} = useAccounts()
+    useEffect(()=>{
+        const fetchBankDetails = async(bankId)=>{
+            const data = await handleGetBankById(bankId)
+            setBankDetail(data)
+        }
+        if(bankId){
+            fetchBankDetails(bankId)
+        }
+        
+    },[bankId])
     return(
         <div className="mt-5 bg-primary p-[2rem] rounded-2xl flex flex-col gap-3 w-full ">
             <div className="flex justify-evenly gap-2">
@@ -183,6 +210,7 @@ function NewPayment({isRepeatPayment=false}){
                     receiver:receivers[receiverIndex]
                    
                 }}
+                bankDetail={bankDetail}
                  // receiver:receivers[receiverIndex]
                 />
                 
@@ -195,7 +223,9 @@ function NewPayment({isRepeatPayment=false}){
                     payment_type:'INDIVIDUAL',
                     receiver:2
                    
-                }}/>
+                }}
+                bankDetail={bankDetail}
+                />
             }
             
         </div>

@@ -11,7 +11,7 @@ export function useDashboard(){
     try {
         const arr = []
         const response = await ApiCall({ 
-          url: PRIVATE_ENDPOINTS.GET_TEMPLATE, 
+          url: PRIVATE_ENDPOINTS.GET_CREATE_BANK_ACCOUNT_LIST, 
           method: "GET", 
           PRIVATE_API: true, 
           current_user: user 
@@ -187,6 +187,7 @@ export function usePayment(){
         toast("Error creating payment");
         }
     }
+
 
     const handleAddCard = async(data)=>{
         const user_data = {...data,
@@ -482,6 +483,21 @@ export function useAccounts(){
             toast("Error in KYC");
         }
     }
+    const handleGetBankById = async(id=1)=>{
+        try{
+            const response = await ApiCall({ 
+                url: PRIVATE_ENDPOINTS.GET_CREATE_BANK_ACCOUNT_LIST+id+'/',
+                method:"GET", 
+                PRIVATE_API: true, 
+                current_user: user 
+              });
+              return response.data;
+        }
+        catch(e){
+            console.log("err",e)
+            toast("Error In Bank");
+        }
+    }
    
-    return{handleAddBankAccount,handleGetBankAccount,handleGetBeneficiary,handleAddBeneficiary,handleAddBeneficiaryBank,handleGetCreateUserKyc,handleUserProfile}
+    return{handleAddBankAccount,handleGetBankAccount,handleGetBeneficiary,handleAddBeneficiary,handleAddBeneficiaryBank,handleGetCreateUserKyc,handleUserProfile,handleGetBankById}
 }

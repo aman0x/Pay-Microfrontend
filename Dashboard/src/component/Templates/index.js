@@ -37,6 +37,9 @@ function Templates({ userId = null, handleTemplateData }) {
             <div className="flex justify-between mb-4">
                 <p className="poppins-semibold text-[#232B31] text-base">My Templates</p>
                 <div 
+                onClick={()=>{
+                    navigate('/dashboard/accounts/add-new')
+                }}
                 className="flex text-xs gap-1 items-center cursor-pointer">
                     <IoAddCircleSharp size="18px" />
                     <p className="poppins-regular text-[#787D81] text-xs">Create</p>
@@ -44,7 +47,7 @@ function Templates({ userId = null, handleTemplateData }) {
             </div>
             <div className="flex flex-col gap-3">
                 {
-                    templates.map((bank, i) => {
+                    templates.slice(templates.length-2,templates.length).map((bank, i) => {
                         return (
                             <div key={i} className="flex flex-col bg-white p-[1.2rem] rounded-2xl min-h-[5.6rem] justify-between">
                                 <div className="flex justify-between leading-[20px] poppins-regular text-[10px] text-[#4E5459]">
@@ -58,7 +61,7 @@ function Templates({ userId = null, handleTemplateData }) {
                                             <path d="M16.0275 3.31238L9.2775 0.612383C9.1275 0.552383 8.8725 0.552383 8.7225 0.612383L1.9725 3.31238C1.71 3.41738 1.5 3.72488 1.5 4.00988V6.49988C1.5 6.91235 1.8375 7.24985 2.25 7.24985H15.75C16.1625 7.24985 16.5 6.91235 16.5 6.49988V4.00988C16.5 3.72488 16.29 3.41738 16.0275 3.31238ZM9 5.37488C8.3775 5.37488 7.875 4.87238 7.875 4.24988C7.875 3.62738 8.3775 3.12488 9 3.12488C9.6225 3.12488 10.125 3.62738 10.125 4.24988C10.125 4.87238 9.6225 5.37488 9 5.37488Z" fill="#B6B8BA" />
                                         </svg>
 
-                                        <div>{bank.bank_name},{bank.bank_branch_name}</div>
+                                        <div>{bank.bank_name||"HDFC Bank"}</div>
                                     </div>
                                     <div>
                                         {bank.ifsc_code}
@@ -66,9 +69,9 @@ function Templates({ userId = null, handleTemplateData }) {
                                 </div>
                                 <div className="flex justify-between">
                                     <div className="poppins-semibold text-[10px] text-[#232B31]">
-                                        {bank.account_holder_name}
+                                        {bank.account_name}
                                     </div>
-                                    <Link to={'/dashboard/payment/new-payment'} className="underline text-[#787D81] poppins-light text-xs">
+                                    <Link to={`/dashboard/payment/new-payment?bankId=${bank.id}`} className="underline text-[#787D81] poppins-light text-xs">
                                         Make Payment
                                     </Link>
 
@@ -79,7 +82,11 @@ function Templates({ userId = null, handleTemplateData }) {
                     })
                 }
             </div>
-            <div className="text-right mt-2 cursor-pointer">
+            <div 
+            onClick={()=>{
+                navigate('/dashboard/accounts')
+            }}
+            className="text-right mt-2 cursor-pointer">
                 <p className="poppins-regular text-[#787D81] text-xs underline">All Templates</p>
             </div>
 

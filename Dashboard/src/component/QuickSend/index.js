@@ -82,7 +82,7 @@ export function QuickSend({ handleQuickSendData }) {
                                     />
                                 </div>
                                 <p className='text-xs poppins-semibold text-[#232B31]'>{user.name}</p>
-                                <p className='text-[10px] poppins-regular text-[#B6B8BA]'>{user.username}</p>
+                                <p className='text-[10px] poppins-regular text-[#B6B8BA]'>@{user.name}</p>
                             </div>
                         )
                     })

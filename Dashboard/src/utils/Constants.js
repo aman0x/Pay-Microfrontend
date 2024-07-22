@@ -4,10 +4,10 @@ const BASE_URL = process.env.BASE_URL;
 export const PRIVATE_ENDPOINTS = {
     GET_TEMPLATE:BASE_URL+'/api/dashboard/my-template/',
     GET_CARDS:BASE_URL+'/api/card/cards/',
-    GET_QUICK_SEND:BASE_URL+'/api/dashboard/quick-send/',
-    GET_LATEST_ACTIONS:BASE_URL+'/api/dashboard/latest-actions/',
+    GET_QUICK_SEND:BASE_URL+'/api/user/beneficiaries/list',
+    GET_LATEST_ACTIONS:BASE_URL+'/api/payment/data/',
     GET_PAYMENT_STATS:BASE_URL+"/api/payment/dashboard/",
-    GET_ALL_PAYMENT:BASE_URL+'/api/payment/all-payments/',
+    GET_ALL_PAYMENT:BASE_URL+'/api/payment/data/',
     GET_PAYMENT_DETAIL:BASE_URL+'/api/payment/payment-details/',
     CREATE_PAYMENT:BASE_URL+'/api/payment/data/',
     GET_NOTIFICATION:BASE_URL+'/api/notification/notifications',
