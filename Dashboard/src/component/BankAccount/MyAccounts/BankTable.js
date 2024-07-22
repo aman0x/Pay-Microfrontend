@@ -73,9 +73,9 @@ function BanksTable({banks}){
     return(
         <div className="w-full mt-2 ">
         <table className="w-full  rounded-2xl overflow-hidden   ">
-            <tr className="poppins-light text-xs text-white bg-black-primary items-center ">
+            <tr className="poppins-light text-xs text-white bg-[#232B31] items-center ">
                 <td>
-                    <div className="flex items-center gap-2 td-element1 ml-2 ">
+                    <div className="flex items-center gap-2 td-element1 text-[10px] ml-2 ">
                     <div className={`w-[13px]  h-[13px] rounded-[4px] ${isDateClicked?'primary-linear-gr-bg':'bg-white'}`} onClick={()=>{setIsDateClicked(!isDateClicked)}}>
                      <TiTick color="white" size="13px"/>    
                     </div>
@@ -87,19 +87,19 @@ function BanksTable({banks}){
                     </div>
                 </td>
                 <td>
-                    <div className="td-element1">Account Name</div>
+                    <div className="td-element1 text-[10px]">Account Name</div>
                 </td>
                 <td>
-                    <div className="td-element1">Account Number</div>
+                    <div className="td-element1 text-[10px]">Account Number</div>
                 </td>
                 <td>
-                    <div className="td-element1"> Bank</div> 
+                    <div className="td-element1 text-[10px]"> Bank</div> 
                 </td>
                 <td>
-                    <div className="td-element1">IFSC Code</div>
+                    <div className="td-element1 text-[10px]">IFSC Code</div>
                 </td>
                 <td>
-                    <div className="flex items-center gap-1 td-element1">
+                    <div className="flex items-center gap-1 td-element1 text-[10px]">
                         <div>Transactions</div>
                        <div className="flex flex-col items-center gap-1">
                             <div>
@@ -116,7 +116,7 @@ function BanksTable({banks}){
                     </div>
                 </td>
                 <td> 
-                <div className="td-element1">Actions</div>     
+                <div className="td-element1 text-[10px]">Actions</div>     
                 </td>
             </tr>
             {banks.map((transaction,i)=>{
@@ -127,7 +127,7 @@ function BanksTable({banks}){
                             console.log("clicked")
                             //navigate(`/dashboard/payment/payment-detail?${i}`)
                         }
-                        className="text-xs poppins-regular"
+                        className="text-[10px] text-[#232B31] poppins-regular"
                         >
                         <td>
                             <div className="flex items-center gap-3 td-element">

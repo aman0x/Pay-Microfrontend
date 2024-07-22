@@ -59,7 +59,7 @@ function MyAccounts(){
                 <div className="primary-linear-gr-bg p-[2px] rounded-xl">
                 <button 
                 onClick={()=>navigate('/dashboard/accounts/add-new')}
-                className="flex items-center gap-2 bg-primary rounded-xl px-3 py-2 poppins-semibold text-sm"
+                className="flex items-center gap-2 bg-primary text-[#232B31] rounded-xl px-3 py-2 poppins-semibold text-sm"
                 >
                     <span>
                         <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">

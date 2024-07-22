@@ -9,12 +9,12 @@ function PaymentStep2({setStepIndex,data}){
     return(
         <div className="bg-primary mt-1 rounded-2xl flex flex-col gap-3 w-full ">
         <div className="flex flex-col gap-4">
-            <div className="text-center poppins-semibold">Payment Details</div>
+            <div className="text-center poppins-semibold text-sm text-[#232B31]">Payment Details</div>
             <div className="grid grid-cols-2 gap-3">
                 <div className="bg-[#FFFFFF] p-6 rounded-3xl flex flex-col gap-2">
-                    <div className="poppins-semibold text-base">Payment Option</div>
+                    <div className="poppins-semibold text-base text-[#232B31] ">Payment Option</div>
                     <div className="flex flex-col gap-2">
-                        <div className="poppins-sembold text-[10px] text-[#A3A6A9]">
+                        <div className="poppins-semibold text-[10px] text-[#4E5459]">
                             Select Card:
                         </div>
                         <div className="flex justify-between border-2 border-[#DFE0E2] p-2 rounded-xl">
@@ -156,57 +156,57 @@ function PaymentStep2({setStepIndex,data}){
                 </div>
                 <div className="flex flex-col gap-2">
                     <div className="flex flex-col gap-2 bg-white rounded-2xl p-6 ">
-                        <div className="poppins-semibold">
+                        <div className="poppins-semibold text-base text-[#232B31]">
                             Receiver
                         </div>
-                        <div className="text-[#4E5459] text-sm poppins-semibold">
+                        <div className="text-[#4E5459] text-xs poppins-semibold">
                            Name:
                         </div>
-                        <div className="poppins-semibold">
+                        <div className="poppins-semibold text-xs text-[#232B31]">
                            ANANTHARAPU
                         </div>
                         <div className="text-[#4E5459] text-sm poppins-semibold">Contact Details:</div>
                         <div>
                            <div className="flex gap-2 items-center">
-                                <div className="text-[#A3A6A9] text-sm">Phone</div>
+                                <div className="text-[#A3A6A9] text-xs">Phone</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold">+919573749630</div>
+                                <div className="poppins-semibold text-xs">+919573749630</div>
                            </div>
                            <div className="flex gap-2 items-center">
-                                <div className="text-[#A3A6A9] text-sm">Mail</div>
+                                <div className="text-[#A3A6A9] text-xs">Mail</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold">contact@mail.com</div>
+                                <div className="poppins-semibold text-xs">contact@mail.com</div>
                            </div>
                         </div>
                         <div className="text-[#4E5459] text-sm poppins-semibold">Bank Details:</div>
                         <div>
                             <div className="flex gap-2 items-center">
-                                <div className="text-[#A3A6A9] text-sm min-w-fit">A/C No</div>
+                                <div className="text-[#A3A6A9] text-xs min-w-fit">A/C No</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold">59321881239525092591</div>
+                                <div className="poppins-semibold text-xs">59321881239525092591</div>
                            </div>
                            <div className="flex gap-2 items-center">
-                                <div className="text-[#A3A6A9] text-sm">Bank</div>
+                                <div className="text-[#A3A6A9] text-xs">Bank</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold">HDFC&nbsp;BANK,KODAK</div>
+                                <div className="poppins-semibold text-xs">HDFC&nbsp;BANK,KODAK</div>
                            </div>
                            <div className="flex gap-2 items-center">
-                                <div className="text-[#A3A6A9] text-sm min-w-fit">IFS Code</div>
+                                <div className="text-[#A3A6A9] text-xs min-w-fit">IFS Code</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold">HDFC0003242</div>
+                                <div className="poppins-semibold text-xs">HDFC0003242</div>
                            </div>
                            
                         </div>
                        
                     </div>
                     <div  className="flex flex-col gap-3 bg-white rounded-2xl p-6 ">
-                        <div className="poppins-semibold">
+                        <div className="poppins-semibold text-base">
                             Supplier Payment
                         </div>
-                        <div className="text-[#4E5459] text-sm poppins-semibold">
+                        <div className="text-[#4E5459] text-xs poppins-semibold">
                             Who is bearing the Convenience Fee?
                         </div>
-                        <div className="flex w-full bg-gray-100 py-1 px-2 rounded-2xl justify-between">
+                        <div className="flex w-full bg-gray-100 text-xs py-1 px-2 rounded-2xl justify-between">
                             <button
                             className='py-1 px-9 text-sm rounded-xl'
                             style={{
@@ -232,23 +232,23 @@ function PaymentStep2({setStepIndex,data}){
                         </div>
                         <div className="flex flex-col gap-1">
                             <div className="flex gap-2 items-center  min-w-fit">
-                                <div className="text-[#A3A6A9] text-sm min-w-fit">Receiver will recieve</div>
+                                <div className="text-[#A3A6A9] text-xs min-w-fit">Receiver will recieve</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-sm min-w-fit">₹ {data.amount}</div>
+                                <div className="poppins-semibold text-xs min-w-fit">₹ {data.amount}</div>
                            </div>
                            <div className="flex gap-2 items-center">
-                                <div className="text-[#A3A6A9] text-sm min-w-fit">Convenience Fees 1.99%</div>
+                                <div className="text-[#A3A6A9] text-xs min-w-fit">Convenience Fees 1.99%</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-sm min-w-fit">₹ {data.amount*0.02}</div>
+                                <div className="poppins-semibold text-xs min-w-fit">₹ {data.amount*0.02}</div>
                            </div>
                            <div className="flex gap-2 items-center">
-                                <div className="text-[#A3A6A9] text-sm min-w-fit">TAX</div>
+                                <div className="text-[#A3A6A9] text-xs min-w-fit">TAX</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-sm min-w-fit">₹ {data.amount*0.18}</div>
+                                <div className="poppins-semibold text-xs min-w-fit">₹ {data.amount*0.18}</div>
                            </div>
                            
                         </div>
-                        <div className="flex justify-between color-linear poppins-semibold text-base">
+                        <div className="flex justify-between color-linear poppins-semibold text-sm">
                             <div>
                                 Checkout Amount:
                             </div>
@@ -302,8 +302,8 @@ function PaymentStep2({setStepIndex,data}){
 function CardsMenu(){
     const [cardIndex,setCardIndex] = useState(0)
     return(
-        <div className="absolute w-[100%] bg-white rounded-2xl  py-[1rem] px-[1.2rem] gap-4">
-            <div className="text-sm poppins-semibold my-2 flex gap-1 items-start">
+        <div className="absolute w-[100%] bg-white rounded-2xl shadow-lg  py-[1rem] px-[1.2rem] gap-4">
+            <div className="text-sm poppins-semibold my-2 flex gap-1 items-center">
                 <span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clipPath="url(#clip0_380_21893)">
@@ -316,24 +316,24 @@ function CardsMenu(){
                 </defs>
                 </svg>
                 </span>
-                <div>Select the card from the list (only one)</div>
+                <div className="text-[10px] text-[#A3A6A9] poppins-regular ">Select the card from the list (only one)</div>
             </div>
             <div className="flex flex-col gap-2 mt-4 ">
             {cards.map((card,i)=>{
                 return(
-                        <div className="flex gap-4 justify-between items-center " key={i}>
-                            <div className={`${cardIndex===i?"poppins-bold":""} flex gap-1 items-center`} >
-                            <div className="">
-                                <svg width="33" height="10" viewBox="0 0 33 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M23.9869 0.408642C23.4558 0.212983 22.6225 0 21.5913 0C18.9544 0 17.0909 1.31662 17.0796 3.20086C17.0579 4.58575 18.4006 5.36635 19.4153 5.83308C20.4579 6.31102 20.8065 6.60858 20.8013 7.03251C20.7962 7.68572 19.9681 7.97717 19.206 7.97717C18.1469 7.97717 17.5725 7.83451 16.6867 7.46765L16.3577 7.31377L15.9823 9.49047C16.6268 9.75033 17.7818 9.9786 18.974 10C21.7831 10 23.6146 8.69459 23.6352 6.68195C23.6569 5.57831 22.9381 4.74065 21.4067 4.04973C20.4827 3.6044 19.9042 3.30072 19.9042 2.84419C19.9042 2.44064 20.3981 2.01671 21.4294 2.01671C22.3152 2.00041 22.9391 2.19199 23.4269 2.38255L23.6796 2.49363L24.0498 0.397432L23.9869 0.408642ZM30.8416 0.180373H28.7791C28.1346 0.180373 27.6561 0.350555 27.3714 0.98237L23.4073 9.86141H26.2113L26.7764 8.40722L30.1971 8.41231C30.2827 8.75166 30.524 9.86039 30.524 9.86039H33L30.8416 0.180373ZM13.2825 0.100887H15.9524L14.2818 9.786H11.6119L13.2825 0.0957912V0.100887ZM6.49378 5.43463L6.76706 6.78284L9.38231 0.180373H12.2131L8.00147 9.8451H5.18306L2.87306 1.66106C2.82459 1.51839 2.76581 1.42158 2.62041 1.33802C1.84181 0.934474 0.966281 0.605319 0 0.377051L0.0319688 0.174259H4.3395C4.92009 0.195659 5.39241 0.377051 5.55328 0.992561L6.49378 5.43972V5.43463ZM27.5375 6.42719L28.6069 3.71548C28.5904 3.74096 28.8265 3.15806 28.9606 2.7912L29.1431 3.62376L29.7619 6.42108H27.5375V6.42719Z" fill="#B6B8BA"/>
-                                </svg>
-                            </div>
-                                {card}
-                            </div>
-                            <div className={`max-w-[15px]  max-h-[15px] rounded-sm   ${cardIndex===i?"primary-linear-gr-bg":"bg-gray-300"}`}>
-                            <FaSquare  color={`${cardIndex===i?"black":"white"}`} className="rounded-sm p-[1px]"  onClick={()=>setCardIndex(i)}/>
-                            </div> 
+                    <div className="flex gap-4 justify-between items-center " key={i}>
+                    <div className={`${cardIndex === i ? "poppins-bold text-[#232B31]" : "text-[#787D81]"} flex gap-1 items-center poppins-semibold text-xs `} >
+                        <div className="">
+                            <svg width="33" height="10" viewBox="0 0 33 10" fill={cardIndex === i ? "#232B31" : "#787D81"}  xmlns="http://www.w3.org/2000/svg">
+                                <path d="M23.9869 0.408642C23.4558 0.212983 22.6225 0 21.5913 0C18.9544 0 17.0909 1.31662 17.0796 3.20086C17.0579 4.58575 18.4006 5.36635 19.4153 5.83308C20.4579 6.31102 20.8065 6.60858 20.8013 7.03251C20.7962 7.68572 19.9681 7.97717 19.206 7.97717C18.1469 7.97717 17.5725 7.83451 16.6867 7.46765L16.3577 7.31377L15.9823 9.49047C16.6268 9.75033 17.7818 9.9786 18.974 10C21.7831 10 23.6146 8.69459 23.6352 6.68195C23.6569 5.57831 22.9381 4.74065 21.4067 4.04973C20.4827 3.6044 19.9042 3.30072 19.9042 2.84419C19.9042 2.44064 20.3981 2.01671 21.4294 2.01671C22.3152 2.00041 22.9391 2.19199 23.4269 2.38255L23.6796 2.49363L24.0498 0.397432L23.9869 0.408642ZM30.8416 0.180373H28.7791C28.1346 0.180373 27.6561 0.350555 27.3714 0.98237L23.4073 9.86141H26.2113L26.7764 8.40722L30.1971 8.41231C30.2827 8.75166 30.524 9.86039 30.524 9.86039H33L30.8416 0.180373ZM13.2825 0.100887H15.9524L14.2818 9.786H11.6119L13.2825 0.0957912V0.100887ZM6.49378 5.43463L6.76706 6.78284L9.38231 0.180373H12.2131L8.00147 9.8451H5.18306L2.87306 1.66106C2.82459 1.51839 2.76581 1.42158 2.62041 1.33802C1.84181 0.934474 0.966281 0.605319 0 0.377051L0.0319688 0.174259H4.3395C4.92009 0.195659 5.39241 0.377051 5.55328 0.992561L6.49378 5.43972V5.43463ZM27.5375 6.42719L28.6069 3.71548C28.5904 3.74096 28.8265 3.15806 28.9606 2.7912L29.1431 3.62376L29.7619 6.42108H27.5375V6.42719Z"  />
+                            </svg>
                         </div>
+                        {card}
+                    </div>
+                    <div className={`max-w-[15px]  max-h-[15px] rounded-sm   ${cardIndex === i ? "primary-linear-gr-bg" : "bg-gray-300"}`}>
+                        <FaSquare color={`${cardIndex === i ? "black" : "white"}`} className="rounded-sm p-[1px]" onClick={() => setCardIndex(i)} />
+                    </div>
+                </div>
                 )
             })}
         </div>
