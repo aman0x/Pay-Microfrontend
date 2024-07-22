@@ -1,7 +1,7 @@
 import { useAccounts } from "#hooks/index"
 import { FaCircleArrowRight } from "react-icons/fa6"
 function AddBeneficiaryStep2({data}){
-        const {handleAddBeneficiary} = useAccounts()
+        const {handleAddBeneficiaryBank} = useAccounts()
 
     return(
         <div className="flx flex-col">
@@ -69,7 +69,7 @@ function AddBeneficiaryStep2({data}){
             <div className='w-[50%] mx-auto'>
                     <button type="submit"
                         onClick={() => {
-                            handleAddBeneficiary(data)
+                            handleAddBeneficiaryBank(data,data.id)
                         }}
                         className="flex primary-btn items-center w-full justify-center rounded-xl bg-gray-950 px-3 p-4 text-sm font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"><div>{"Confirm And Add"}</div>
                     <span className='py-1.5 pl-2 size-6'><FaCircleArrowRight style={{color:'white'}} /></span></button>

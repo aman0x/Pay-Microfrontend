@@ -40,7 +40,7 @@ function InvoiceTop({ handleInvoiceStats }) {
       };
       setPercentage(perc);
     };
-    fetchStats();
+    //fetchStats();
   }, []);
   const [isInvoiceSend, setIsInvoiceSend] = useState(true);
   const percentage1 = percentage.percentage1;

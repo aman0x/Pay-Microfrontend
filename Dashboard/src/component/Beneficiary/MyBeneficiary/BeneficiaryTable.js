@@ -76,8 +76,8 @@ function BeneficiaryTable({beneficiary}){
                                 </div>
                             </div>
                         </td>
-                        <td><div className="td-element">{transaction.account_number}</div></td>
-                        <td><div className="td-element">{transaction.bank_name}</div></td>
+                        <td><div className="td-element">{transaction.phone_number}</div></td>
+                        <td><div className="td-element">{transaction.bank_account}</div></td>
                         <td>
                             
                             <div className="td-element">

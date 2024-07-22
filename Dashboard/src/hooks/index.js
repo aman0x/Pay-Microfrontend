@@ -349,7 +349,7 @@ export function useAccounts(){
     const handleGetBeneficiary = async() =>{
         try{
             const arr = []
-           const response = await ApiCall({url:PRIVATE_ENDPOINTS.GET_CREATE_BENEFICIARY_LIST,method:"GET",PRIVATE_API:true,current_user:user})
+           const response = await ApiCall({url:PRIVATE_ENDPOINTS.GET_BENEFICIARY_LIST,method:"GET",PRIVATE_API:true,current_user:user})
            console.log(response)
            if(Array.isArray(response.data)){
             return response.data;
@@ -368,18 +368,33 @@ export function useAccounts(){
     const handleAddBeneficiary= async(data)=>{
         try {
             const response = await ApiCall({ 
-              url: PRIVATE_ENDPOINTS.GET_CREATE_BENEFICIARY_LIST, 
+              url: PRIVATE_ENDPOINTS.CREATE_BENEFICIARY_STEP_1, 
               method: "POST", 
               body:data,
               PRIVATE_API: true, 
               current_user: user 
             });
-            navigate(-1)
-            toast.success("Query Sended!!")
             return response.data;
           }
         catch (error) {
-        toast("Error Sending Support");
+        toast("Error  Adding Beneficiaries");
+        }
+    }
+    const handleAddBeneficiaryBank= async(data,id)=>{
+        try {
+            const response = await ApiCall({ 
+              url: PRIVATE_ENDPOINTS.CREATE_BENEFICIARY_STEP_2+id+'/update-bank/', 
+              method: "POST", 
+              body:data,
+              PRIVATE_API: true, 
+              current_user: user 
+            });
+            toast("Beneficiary Added")
+            navigate(-1)
+            return response.data; 
+          }
+        catch (error) {
+        toast("Error  Adding Beneficiaries");
         }
     }
     const handleGetCreateUserKyc = async(data)=>{
@@ -432,5 +447,5 @@ export function useAccounts(){
         }
     }
    
-    return{handleAddBankAccount,handleGetBankAccount,handleGetBeneficiary,handleAddBeneficiary,handleGetCreateUserKyc,handleUserProfile}
+    return{handleAddBankAccount,handleGetBankAccount,handleGetBeneficiary,handleAddBeneficiary,handleAddBeneficiaryBank,handleGetCreateUserKyc,handleUserProfile}
 }

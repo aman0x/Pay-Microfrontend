@@ -3,10 +3,11 @@ import { useState } from "react"
 import "./style.css"
 import AddBeneficiaryStep2 from "./AddBeneficiarytStep2"
 import AddBenficiaryBank from "./AddBankAccount"
-
+import { useAccounts } from "#hooks/index"
 
 function AddNewBeneficiary({isRepeatPayment=false}){
     const [finalData,setFinalData] = useState({})
+    const {handleAddBeneficiary} = useAccounts()
     const [stepIndex,setStepIndex] = useState(0)
     const [isValid,setIsValid] = useState({
         accountName:true,
@@ -20,9 +21,7 @@ function AddNewBeneficiary({isRepeatPayment=false}){
     const handleBankData =(data)=>{
         const allData = {
             ...data,
-            name:accountName,
-            phone_number:accountNumber
-            
+            ...finalData 
         }
         setFinalData(allData)
         setStepIndex(2)
@@ -159,7 +158,7 @@ function AddNewBeneficiary({isRepeatPayment=false}){
                 </div>
                 <div className=''>
                     <button type="submit"
-                        onClick={() => {
+                        onClick={async() => {
                             if(accountName.length<4){
                                 setIsValid({
                                     ...isValid,
@@ -177,6 +176,12 @@ function AddNewBeneficiary({isRepeatPayment=false}){
                                     ...isValid,
                                    allValid:true
                                 })
+                            const data =  await handleAddBeneficiary({
+                                    name:accountName,
+                                    phone_number:accountNumber
+                                })
+                                setFinalData(data)
+                                console.log("beneficiary-data",data)
                                 setStepIndex(1)
                             }
                         }}

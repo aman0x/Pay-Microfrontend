@@ -5,7 +5,7 @@ import { IoAddCircleSharp } from "react-icons/io5";
 import "./style.css"
 import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+import moment from "moment";
 export  function PaymentCard({handlePaymentCardData}){
     const navigate  = useNavigate()
     const [cardIndex,setCardIndex] = useState(0)
@@ -92,7 +92,7 @@ export function FlipCard({cardColorbg="#232B31",isArrowShown=true,width="380px",
                         <div className="flex items-center gap-0.5 text-xs">
                             <p className="poppins-thin text-xs mr-4">{"Card Name"}</p>
                             <MdVerified color="#27A963" display="flex"/>
-                            <div className="text-green-500 poppins">{cardData.verified?"Verified":"Not Verified"}</div>
+                            <div className="text-green-500 poppins">{cardData.verified_at?"Verified":"Not Verified"}</div>
                         </div>
                         <div className="poppin-bold text-sm">{cardData.card_holder_name}</div>
                         </div>
@@ -143,7 +143,7 @@ export function FlipCard({cardColorbg="#232B31",isArrowShown=true,width="380px",
                         <p className="poppins-thin text-xs mb-2">Status</p>
                         <div className="flex items-center gap-0.5 text-xs">
                             <MdVerified color="#27A963" display="flex"/>
-                            <div className="text-green-500 poppins">Verified 12 April 2024</div>
+                            <div className="text-green-500 poppins">Verified {moment(cardData.verified_at).format('DD MMMM YYYY')}</div>
                         </div>
                         </div>
                         <div className="mt-6 ">
