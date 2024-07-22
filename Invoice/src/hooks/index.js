@@ -73,7 +73,7 @@ export function useInvoice(){
         const handleInvoiceDetail=async(invoiceId=1)=>{
         try {
             const response = await ApiCall({ 
-                url: PRIVATE_ENDPOINTS.GET_INVOICE_DETAIL+ `?${invoiceId}`, 
+                url: PRIVATE_ENDPOINTS.GET_ALL_INVOICE+ `${invoiceId}/`, 
                 method: "GET", 
                 PRIVATE_API: true, 
                 current_user: user 
@@ -85,15 +85,12 @@ export function useInvoice(){
         }
     }
     const handleInvoiceCreate=async(data)=>{
-        const user_data = {
-            ...data,
-            user:user_id
-        }
+        
         try {
             const response = await ApiCall({ 
                 url: PRIVATE_ENDPOINTS.CREATE_INVOICE, 
                 method: "POST", 
-                body:user_data,
+                body:data,
                 PRIVATE_API: true, 
                 current_user: user 
             });

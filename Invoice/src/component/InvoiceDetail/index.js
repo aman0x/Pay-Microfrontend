@@ -6,7 +6,7 @@ import { useInvoice } from "#hooks/index.js"
 function InvoiceDetail(){
     const [invoiceDetail,setInvoiceDetail] = useState({
         "status": "In Progress",
-        "invoice_title": "Vendor_Payment",
+        "invoice_title": "Vendor Payment",
         "date": "2024-06-21T10:21:17.116232Z",
         "invoice_id": "TD1711364044252",
         "particulars": "Vendor_Payment",
@@ -22,14 +22,15 @@ function InvoiceDetail(){
         "bank": "HDFC Bank",
         "bank_branch": "KODAD",
         "ifsc_code": "HDFC0001642",
-        "total_amount": 24000.24
+        "total_amount": 24000.24,
+        services:[]
     })
     const {handleInvoiceDetail} = useInvoice()
     const [searchParams] = useSearchParams()
     const invoiceId = searchParams.get('invoiceId')
     useEffect(()=>{
         const fetchInvoiceDetail = async ()=>{
-            const data = await handleInvoiceDetail(paymentId)
+            const data = await handleInvoiceDetail(invoiceId)
             setInvoiceDetail(data)
         }
         fetchInvoiceDetail()
@@ -40,8 +41,8 @@ function InvoiceDetail(){
                 <div className="flex gap-1 items-center">
                     <div>
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="18" height="18" rx="9" fill="#FFAC2F" fillOpacity="0.15"/>
-                        <circle cx="9" cy="9" r="4" fill="#FFB442"/>
+                        <rect width="18" height="18" rx="9" fill="#55C861" fill-opacity="0.15"/>
+                        <circle cx="9" cy="9" r="4" fill="#27A963"/>
                         </svg>
                     </div>
                     <div className="text-xs">
@@ -71,7 +72,7 @@ function InvoiceDetail(){
                             <div className="poppins-semibold">{invoiceDetail.invoice_title}</div>
                             <div className="flex gap-2 items-center">
                                 <div className="text-sm text-[#4E5459]">Invoice ID:</div>
-                                <div className="text-xs">{invoiceDetail.invoice_id}</div>
+                                <div className="text-xs">{invoiceDetail.invoice_number}</div>
                             </div>
                             <div className="flex gap-2 items-center">
                                 <div className="text-sm text-[#4E5459]">Date:</div>
@@ -97,15 +98,15 @@ function InvoiceDetail(){
                                 <td>GST %</td>
                                 <td>Subtotal</td>
                             </tr>
-                            {[{...Array(3)}].map((detail)=>{
+                            {invoiceDetail.services.map((detail)=>{
                                 return(
                                     <tr className="">
-                                        <td>{invoiceDetail.particulars}</td>
-                                        <td>{invoiceDetail.quantity}</td>
-                                        <td>₹ {invoiceDetail.price_per_quantity}</td>
-                                        <td>₹ {invoiceDetail.total_amount}</td>
-                                        <td>{invoiceDetail.gst} %</td>
-                                        <td>₹ {invoiceDetail.total_amount}</td>
+                                        <td>{detail.name}</td>
+                                        <td>{detail.quantity||1}</td>
+                                        <td>₹ {detail.price}</td>
+                                        <td>₹ {detail.price}</td>
+                                        <td>{detail.gst||18} %</td>
+                                        <td>₹ {detail.price}</td>
                                     </tr>
                                 )
                             })
@@ -115,10 +116,10 @@ function InvoiceDetail(){
                     <div className="flex justify-between gap-1">
                         <div className="flex items-center">
                             <div className="color-linear text-base  poppins-semibold">TOTAL</div>
-                            <div className="poppins-lighht text-xs text-[#787D81]">(3 items):</div>
+                            <div className="poppins-lighht text-xs text-[#787D81]">({invoiceDetail.services.length} items):</div>
                         </div>
                         <div className="color-linear poppins-semibold">
-                            ₹ {invoiceDetail.total_amount}
+                            ₹ {invoiceDetail.amount}
                         </div>
                     </div>
                     <hr/>
@@ -128,17 +129,17 @@ function InvoiceDetail(){
                             <div className="flex items-center justify-between gap-1">
                                 <div className="text-[#A3A6A9] text-xs min-w-fit">Name:</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-sm min-w-fit">{invoiceDetail.name}</div>
+                                <div className="poppins-semibold text-sm min-w-fit">{invoiceDetail.name||"test"}</div>
                             </div>
                             <div className="flex items-center justify-between  gap-1">
                                 <div className="text-[#A3A6A9] text-xs min-w-fit">Phone:</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-sm min-w-fit">{invoiceDetail.phone_number}</div>
+                                <div className="poppins-semibold text-sm min-w-fit">{invoiceDetail.phone_number||"+918788741323"}</div>
                             </div>
                             <div className="flex items-center justify-between  gap-1">
                                 <div className="text-[#A3A6A9] text-xs min-w-fit">Mail:</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-sm min-w-fit">{invoiceDetail.email}</div>
+                                <div className="poppins-semibold text-sm min-w-fit">{invoiceDetail.email||"test@gmail.com"}</div>
                             </div>
                             
                         </div>
@@ -147,17 +148,17 @@ function InvoiceDetail(){
                             <div className="flex items-center justify-between  gap-1">
                                 <div className="text-[#A3A6A9] text-xs min-w-fit">A/C No.</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-sm min-w-fit">{invoiceDetail.account_number}</div>
+                                <div className="poppins-semibold text-sm min-w-fit">{invoiceDetail.account_number||"5768933787686894"}</div>
                             </div>
                             <div className="flex items-center justify-between  gap-1">
                                 <div className="text-[#A3A6A9] text-xs min-w-fit">Bank</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-sm min-w-fit">{invoiceDetail.bank}, {invoiceDetail.bank_branch}</div>
+                                <div className="poppins-semibold text-sm min-w-fit">{invoiceDetail.bank||"HDFC Bank"}</div>
                             </div>
                             <div className="flex items-center justify-between  gap-1">
                                 <div className="text-[#A3A6A9] text-xs min-w-fit">IFS Code</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-sm min-w-fit">{invoiceDetail.ifsc_code}</div>
+                                <div className="poppins-semibold text-sm min-w-fit">{invoiceDetail.ifsc_code||"HDFC0932"}</div>
                             </div>
                             
                         </div>

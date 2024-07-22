@@ -6,8 +6,8 @@ import { useState } from "react"
 import "./style.css"
 import NewInvoiceStep2 from "./NewInvoiceStep2"
 import { toast } from "react-toastify"
-const receivers = ['Devin','Raton','Ravish','Allla']
-const cards = ['Vendor Payment','INDIVIDUAL','Vendor Payment','Payment Type']
+const receivers = ['test']
+const cards = ['Vendor Payment']
 function MakeInvoice({isRepeatPayment=false}){
     const [isPaymentTypeMenu,setPaymentMenuView] = useState(false)
     const [isReceiverMenu,setReceiversMenuView] = useState(false)

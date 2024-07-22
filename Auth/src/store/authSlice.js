@@ -11,6 +11,7 @@ const authSlice = createSlice({
         },
         isLogin:isLogin,
         token:'',
+        cards:[]
     },
     reducers:{
         login(state,action){
@@ -23,6 +24,9 @@ const authSlice = createSlice({
         },
         setUser(state,action){
             state.user = action.payload.user
+        },
+        setCards(state,action){
+            state.cards = action.payload.cards
         }
         
 

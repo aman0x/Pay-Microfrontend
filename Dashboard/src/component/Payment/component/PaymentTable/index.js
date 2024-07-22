@@ -587,7 +587,7 @@ function PaymentTable({ handlePaymentData }) {
               return (
                 <tr
                   key={i}
-                  onClick={() => navigate(`/dashboard/payment/payment-detail?paymentId=${i}`)}
+                  onClick={() => navigate(`/dashboard/payment/payment-detail?paymentId=${transaction.id}`)}
                   className="text-xs poppins-regular"
                 >
                   <td>

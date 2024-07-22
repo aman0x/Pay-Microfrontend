@@ -133,7 +133,7 @@ function Profile() {
                             {user.id}
                         </div>
                         <div className="text-xs text-[#787D81]">
-                            @customer
+                            @ 
                             {user.first_name}
                         </div>
 

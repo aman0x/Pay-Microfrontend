@@ -21,7 +21,7 @@ function ContactForm(){
         
       },[])
     return(
-        <div className="mt-5 bg-primary p-[2rem] rounded-2xl flex flex-col gap-4 mr-2">
+        <div className="mt-5 bg-primary p-[2rem] rounded-2xl flex flex-col gap-4 mb-4 mr-2">
             <div>
                 <div className="poppins-semibold">Contacts</div>
                 <div className="text-xs poppins-light text-[#A3A6A9]">Use The Form Below to Sent Message to Our Support Center</div>

@@ -5,9 +5,12 @@ import { IoAddCircleSharp } from "react-icons/io5";
 import "./style.css"
 import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {authActions} from "Auth/authReducer"
 import moment from "moment";
 export  function PaymentCard({handlePaymentCardData}){
     const navigate  = useNavigate()
+    const dispatch = useDispatch()
     const [cardIndex,setCardIndex] = useState(0)
     const [cards,setCards] = useState([{
         "card_holder_name": "Holder Name",
@@ -24,9 +27,9 @@ export  function PaymentCard({handlePaymentCardData}){
           const data = await handlePaymentCardData()
           setCards(data)
           console.log("cards",data)
+          dispatch(authActions.setCards({cards:data}))
         }
         fetchCards()
-       
     },[])
     return(
         <div  className="flex flex-col gap-3">

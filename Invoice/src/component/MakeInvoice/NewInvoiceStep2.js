@@ -1,5 +1,6 @@
 import {FaCreditCard} from "react-icons/fa6"
 import { useInvoice } from "#hooks/index.js";
+import moment from "moment";
 function NewInvoiceStep2({setStepIndex,data}){
     const {handleInvoiceCreate} = useInvoice()
     return(
@@ -25,7 +26,7 @@ function NewInvoiceStep2({setStepIndex,data}){
                             </div>
                             <div className="flex gap-2 items-center">
                                 <div className="text-sm text-[#4E5459]">Date:</div>
-                                <div className="text-xs">4th Apr 2024  01:41 pm</div>
+                                <div className="text-xs">{moment(new Date()).format('D MMMM YYYY HH:mm')}</div>
                             </div> 
                         </div>
                         <div className="rounded-xl shadow-md py-[1px] h-14 px-2 w-40 flex flex-col justify-center">
@@ -33,7 +34,7 @@ function NewInvoiceStep2({setStepIndex,data}){
                                 Payment :
                             </div>
                             <div className="color-linear poppins-semibold">
-                                ₹ 24,000.24
+                                ₹ {data.amount}
                             </div>
                         </div>
                     </div>
@@ -47,7 +48,7 @@ function NewInvoiceStep2({setStepIndex,data}){
                                 <td>GST %</td>
                                 <td>Subtotal</td>
                             </tr>
-                            <tr className="">
+                            {/* <tr className="">
                                 <td>Vendor Payment</td>
                                 <td>1</td>
                                 <td>₹ 24,000.24</td>
@@ -70,16 +71,16 @@ function NewInvoiceStep2({setStepIndex,data}){
                                 <td>₹ 24,000.24</td>
                                 <td>20 %</td>
                                 <td>₹ 24,000.24</td>
-                            </tr>
+                            </tr> */}
                         </table>
                     </div>
                     <div className="flex justify-between gap-1">
                         <div className="flex items-center">
                             <div className="color-linear text-base  poppins-semibold">TOTAL</div>
-                            <div className="poppins-lighht text-xs text-[#787D81]">(3 items):</div>
+                            <div className="poppins-lighht text-xs text-[#787D81]">(1 items):</div>
                         </div>
                         <div className="color-linear poppins-semibold">
-                            ₹ 24,000.24
+                            ₹ {data.amount}
                         </div>
                     </div>
                     <hr/>
@@ -89,7 +90,7 @@ function NewInvoiceStep2({setStepIndex,data}){
                             <div className="flex items-center justify-between gap-1">
                                 <div className="text-[#A3A6A9] text-xs min-w-fit">Name:</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-sm min-w-fit">ANANTHARAPU ARUNA THEJASWINI</div>
+                                <div className="poppins-semibold text-sm min-w-fit">test</div>
                             </div>
                             <div className="flex items-center justify-between gap-1">
                                 <div className="text-[#A3A6A9] text-xs min-w-fit">Phone:</div>
@@ -99,7 +100,7 @@ function NewInvoiceStep2({setStepIndex,data}){
                             <div className="flex items-center justify-between gap-1">
                                 <div className="text-[#A3A6A9] text-xs min-w-fit">Mail:</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-sm min-w-fit">contact@mail.com</div>
+                                <div className="poppins-semibold text-sm min-w-fit">test@mail.com</div>
                             </div>
                             
                         </div>
@@ -113,7 +114,7 @@ function NewInvoiceStep2({setStepIndex,data}){
                             <div className="flex items-center justify-between gap-1">
                                 <div className="text-[#A3A6A9] text-xs min-w-fit">Bank</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-sm min-w-fit">HDFC Bank, KODAD</div>
+                                <div className="poppins-semibold text-sm min-w-fit">HDFC Bank</div>
                             </div>
                             <div className="flex items-center justify-between gap-1">
                                 <div className="text-[#A3A6A9] text-xs min-w-fit">IFS Code</div>

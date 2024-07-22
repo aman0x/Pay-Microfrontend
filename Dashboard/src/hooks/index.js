@@ -155,7 +155,7 @@ export function usePayment(){
        const handlePaymentDetail=async(paymentId=1)=>{
         try {
             const response = await ApiCall({ 
-              url: PRIVATE_ENDPOINTS.GET_PAYMENT_DETAIL+ `?${paymentId}`, 
+              url: PRIVATE_ENDPOINTS.GET_ALL_PAYMENT+ `${paymentId}/`, 
               method: "GET", 
               PRIVATE_API: true, 
               current_user: user 
@@ -255,7 +255,7 @@ export function useStatistic(){
             
         }
         catch(e){
-            toast("Error in getting Latest Actions");
+            // toast("Error in getting Latest Actions");
             return [];
         }
     }
@@ -322,7 +322,7 @@ export function useSupport(){
     const handleGetFaq = async(topic="general")=>{
         try{
             const arr = []
-           const response = await ApiCall({url:PRIVATE_ENDPOINTS.GET_FAQS
+           const response = await ApiCall({url:PRIVATE_ENDPOINTS.GET_FAQS+`?topic=${topic}`
             ,method:"GET",PRIVATE_API:true,current_user:user})
            console.log(response)
            if(Array.isArray(response.data)){

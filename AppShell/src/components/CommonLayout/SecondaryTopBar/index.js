@@ -26,7 +26,8 @@ function SecondaryTopBar({btn1="",btn2=""}){
             {
                 (location.pathname === "/dashboard/profile") ||
                 (location.pathname === "/dashboard/card/card-detail") ||
-                (location.pathname.startsWith('/dashboard/beneficiary'))
+                (location.pathname.startsWith('/dashboard/beneficiary'))||
+                (location.pathname.startsWith('/dashboard/payment/payment-detail'))
                 ?             
                  <div className="flex gap-3 text-sm  mr-[1.25rem] items-center">
                     <div className="primary-linear-gr-bg-up p-1 rounded-[50%] shadow-2xl shadow-black" 
@@ -96,6 +97,9 @@ function getTopName(pathname="/payment"){
     }
     else if(pathname === "/dashboard/beneficiary"){
         return "My Beneficiary"
+    }
+    else if(pathname.startsWith("/dashboard/payment/new-payment")){
+        return "New Payment"
     }
     else{
         return "Payment"

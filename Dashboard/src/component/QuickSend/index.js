@@ -87,7 +87,11 @@ export function QuickSend({ handleQuickSendData }) {
                         )
                     })
                 }
-                <div className='flex flex-col gap-0.5' >
+                <div className='flex flex-col gap-0.5' 
+                onClick={()=>{
+                    navigate('/dashboard/beneficiary/add-new')
+                }}
+                >
                     <button className='rounded-[50%] mb-1 size-14 border-2 p-[1.3rem] flex items-center justify-center'>
                         <IoAdd color='#B6B8BA' />
                     </button>

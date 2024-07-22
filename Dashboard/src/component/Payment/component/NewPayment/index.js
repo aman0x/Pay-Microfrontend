@@ -7,8 +7,8 @@ import "./style.css"
 import { toast } from "react-toastify"
 import { useSearchParams } from "react-router-dom"
 import { useAccounts } from "#hooks/index"
-const receivers = ['Devin','Raton','Ravish','Allla']
-const types = ['Vendor Payment','Vendor Payment','Vendor Payment','Payment Type']
+const receivers = ['test']
+const types = ['Vendor Payment']
 function NewPayment({isRepeatPayment=false}){
     const [isPaymentTypeMenu,setPaymentMenuView] = useState(false)
     const [isValid,setIsValid] = useState(true)
@@ -22,7 +22,7 @@ function NewPayment({isRepeatPayment=false}){
     const [bankDetail,setBankDetail] = useState({
         "id": 10,
         "user": 1,
-        "account_name": "RAJIV",
+        "account_name": "test",
         "account_number": "23647586473424574",
         "ifsc_code": "sfsdg",
         "account_type": "INDIVIDUAL",
@@ -43,7 +43,7 @@ function NewPayment({isRepeatPayment=false}){
         
     },[bankId])
     return(
-        <div className="mt-5 bg-primary p-[2rem] rounded-2xl flex flex-col gap-3 w-full ">
+        <div className="mt-5 bg-primary p-[2rem] rounded-2xl flex flex-col gap-3 w-full min-h-[600px] mb-4 ">
             <div className="flex justify-evenly gap-2">
                 <div  className="flex flex-col items-center gap-1">
                     {
@@ -207,8 +207,8 @@ function NewPayment({isRepeatPayment=false}){
                 data={{
                     amount:amount,
                     payment_type:types[typeIndex],
-                    receiver:receivers[receiverIndex]
-                   
+                    receiver:2
+                    /// temp id
                 }}
                 bankDetail={bankDetail}
                  // receiver:receivers[receiverIndex]
@@ -222,7 +222,7 @@ function NewPayment({isRepeatPayment=false}){
                     amount:amount,
                     payment_type:'INDIVIDUAL',
                     receiver:2
-                   
+                   /// temp id
                 }}
                 bankDetail={bankDetail}
                 />

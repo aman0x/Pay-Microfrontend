@@ -424,12 +424,12 @@ function InvoiceTable({ handleInvoiceData }) {
 
             </td>
           </tr>
-          {/* {
-            paymentData.map((transaction, i) => {
+          {
+            invoiceData.map((transaction, i) => {
               return (
                 <tr
                   key={i}
-                  onClick={() => navigate(`/dashboard/payment/payment-detail?paymentId=${i}`)}
+                  onClick={() => navigate(`/invoice/invoice-detail?invoiceId=${transaction.id}`)}
                   className="text-xs poppins-regular"
                 >
                   <td>
@@ -446,13 +446,14 @@ function InvoiceTable({ handleInvoiceData }) {
                   <td><div className="td-element text-[10px]">{transaction.beneficiary}</div></td>
                   <td><div className="td-element text-[10px]">{transaction.type}</div></td>
                   <td><div className="td-element text-[10px]">{transaction.bank}</div></td>
-                  <td><div className="td-element text-[10px]">{transaction.transaction_id}</div></td>
+                  <td><div className="td-element text-[10px]">{transaction.account_type}</div></td>
+                  <td><div className="td-element text-[10px]">{transaction.invoice_number}</div></td>
                   <td>
 
                     <div className="flex gap-2 items-center td-element text-[10px]">
                       <div>
                         <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <circle cx="4.5" cy="4.5" r="4.5" fill={`${transaction.status === 'Succeeded' ? '#27A963' : '#FFB442'}`} />
+                          <circle cx="4.5" cy="4.5" r="4.5" fill={`${transaction.status === 'paid' ? '#27A963' : '#FFB442'}`} />
                         </svg>
                       </div>
                       <div>{transaction.status}</div>
@@ -461,7 +462,7 @@ function InvoiceTable({ handleInvoiceData }) {
                   </td>
                   <td>
                     <div className="flex gap-6 items-center td-element text-[10px]">
-                      <div>{transaction.sum}</div>
+                      <div>{transaction.amount}</div>
                       <svg width="24" height="28" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect y="0.5" width="24" height="24" rx="5.74489" fill="white" />
                         <path d="M12.75 8.5C12.75 8.91421 12.4142 9.25 12 9.25C11.5858 9.25 11.25 8.91421 11.25 8.5C11.25 8.08579 11.5858 7.75 12 7.75C12.4142 7.75 12.75 8.08579 12.75 8.5Z" fill="#232B31" />
@@ -474,7 +475,7 @@ function InvoiceTable({ handleInvoiceData }) {
               )
 
             })
-          } */}
+          }
 
         </table>
 

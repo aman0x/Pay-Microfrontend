@@ -44,11 +44,11 @@ function ActionCards({data}){
                                 </span>
                                 <p className="text-[#FFB442]" > Transaction {card.transaction_status}</p>
                             </div>
-                            <div>
-                                <a onClick={()=>navigate(`/payment/payment-detail?paymentId=${card.id}`)} className="underline text-[#787D81] text-sm poppins-medium">Details</a>
+                            
+                                <div onClick={()=>navigate(`/dashboard/payment/payment-detail?paymentId=${card.id}`)} className="underline text-[#787D81] text-sm poppins-medium cursor-pointer">Details</div>
                             </div>
                         </div>                        
-                        </div>
+            
                     )
                 })
             }

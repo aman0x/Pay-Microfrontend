@@ -2,8 +2,10 @@ import { FaSearch } from "react-icons/fa";
 import { useState ,useEffect} from "react"
 import { useSupport } from "#hooks/index";
 import "./style.css"
+const faq=["general","payment","kyc","account","transaction","cards"]
 function FAQ(){
     const {handleGetFaq} = useSupport()
+    const [faqIndex,setFaqIndex] = useState(0)
     const [faqIndex0,setFaqIndex0] = useState(true)
     const [faqIndex1,setFaqIndex1] = useState(false)
     const [faqIndex2,setFaqIndex2] = useState(false)
@@ -11,18 +13,19 @@ function FAQ(){
     const [faqIndex4,setFaqIndex4] = useState(false)
     const [faqIndex5,setFaqIndex5] = useState(false)
     const [faqQuesIndex,setfaqQuesIndex] = useState(-1)
+    const [faqs,setFaqs] =useState([])
     useEffect(()=>{
 
         const fetchFaqs = async ()=>{
   
-        const data =  await handleGetFaq()
+        const data =  await handleGetFaq(faq[faqIndex])
         console.log("nI",data)
-       
+        setFaqs(data)
         }
   
         fetchFaqs()
         
-      },[])
+      },[faqIndex])
     return(
         <div className="flex flex-col gap-2 mt-5">
             <div className="poppins-bold">
@@ -46,86 +49,86 @@ function FAQ(){
             <div className="flex mt-4">
                 <div className="flex flex-col gap-1 border-r-2 border-r-[#DFE0E2]  pr-6">
                     {
-                        faqIndex0 ?
+                        faqIndex === 0 ?
                         <div className="primary-linear-gr-bg-up p-[1.5px] rounded-xl shadow-red-200 shadow-2xl">
                             <button className="flex justify-between items-center bg-black-primary rounded-xl py-[6px] px-3 poppins-medium text-sm w-36" onClick={()=>setFaqIndex0(false)}>
                                General
                             </button>
                         </div>
                         :
-                        <button className="text-[#B6B8BA] text-sm py-[6px] px-3 text-start" onClick={()=>setFaqIndex0(true)}>
+                        <button className="text-[#B6B8BA] text-sm py-[6px] px-3 text-start" onClick={()=>setFaqIndex(0)}>
                             General
                         </button>
 
                     }
                     {
-                        faqIndex1 ?
+                        faqIndex ===1 ?
                         <div className="primary-linear-gr-bg-up p-[1.5px] rounded-xl shadow-2xl">
                             <button className="flex justify-between items-center bg-black-primary rounded-xl py-[6px] px-3 poppins-medium text-sm w-36" onClick={()=>setFaqIndex1(false)}>
                                 Payment
                             </button>
                         </div>
                         :
-                        <button className="text-[#B6B8BA] text-sm py-[6px] px-3 text-start" onClick={()=>setFaqIndex1(true)}>
+                        <button className="text-[#B6B8BA] text-sm py-[6px] px-3 text-start" onClick={()=>setFaqIndex(1)}>
                             Payment
                         </button>
 
                     }
                     {
-                        faqIndex2 ?
+                        faqIndex ===2 ?
                         <div className="primary-linear-gr-bg-up p-[1.5px] rounded-xl shadow-2xl">
                             <button className="flex justify-between items-center bg-black-primary rounded-xl py-[6px] w-36 px-3 poppins-medium text-sm" onClick={()=>setFaqIndex2(false)}>
                                 KYC
                             </button>
                         </div>
                         :
-                        <button className="text-[#B6B8BA] text-sm py-[6px] px-3 text-start" onClick={()=>setFaqIndex2(true)}>
+                        <button className="text-[#B6B8BA] text-sm py-[6px] px-3 text-start" onClick={()=>setFaqIndex(2)}>
                             KYC
                         </button>
 
                     }
                     {
-                        faqIndex3 ?
+                        faqIndex ===3 ?
                         <div className="primary-linear-gr-bg-up p-[1.5px] rounded-xl shadow-2xl">
                             <button className="flex justify-between items-center bg-black-primary rounded-xl py-[6px] w-36 px-3 poppins-medium text-sm" onClick={()=>setFaqIndex3(false)}>
                                 Account
                             </button>
                         </div>
                         :
-                        <button className="text-[#B6B8BA] text-sm py-[6px] px-3 text-start" onClick={()=>setFaqIndex3(true)}>
+                        <button className="text-[#B6B8BA] text-sm py-[6px] px-3 text-start" onClick={()=>setFaqIndex(3)}>
                            Account
                         </button>
 
                     }
                     {
-                        faqIndex4 ?
+                        faqIndex ===4 ?
                         <div className="primary-linear-gr-bg-up p-[1.5px] rounded-xl shadow-2xl">
                             <button className="flex justify-between items-center bg-black-primary rounded-xl py-[6px] w-36 px-3 poppins-medium text-sm" onClick={()=>setFaqIndex4(false)}>
                                 Transaction
                             </button>
                         </div>
                         :
-                        <button className="text-[#B6B8BA] text-sm py-[6px] px-3 text-start" onClick={()=>setFaqIndex4(true)}>
+                        <button className="text-[#B6B8BA] text-sm py-[6px] px-3 text-start" onClick={()=>setFaqIndex(4)}>
                             Transaction
                         </button>
 
                     }
                     {
-                        faqIndex5 ?
+                       faqIndex ===5 ?
                         <div className="primary-linear-gr-bg-up p-[1.5px] rounded-xl shadow-2xl">
                             <button className="flex justify-between items-center bg-black-primary rounded-xl py-[6px] w-36 px-3 poppins-medium text-sm" onClick={()=>setFaqIndex5(false)}>
                                 Cards
                             </button>
                         </div>
                         :
-                        <button className="text-[#B6B8BA] text-sm py-[6px] px-3 text-start" onClick={()=>setFaqIndex5(true)}>
+                        <button className="text-[#B6B8BA] text-sm py-[6px] px-3 text-start" onClick={()=>setFaqIndex(5)}>
                             Cards
                         </button>
 
                     }
                 </div>     
                 <div className="flex flex-col gap-2 divide-y divide-slate-200 mx-2">
-                   {[...Array(6)].map((val,i)=>{
+                   {faqs.map((val,i)=>{
                     return(
                         <div className={`grid grid-cols-2 px-[2rem] gap-20 overflow-hidden faq  transition-all ease-in-out duration-1000 py-8  ${faqQuesIndex === i ? "":"h-20"}`}>
                         <div className="flex gap-8 poppins-semibold">
