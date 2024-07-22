@@ -1,7 +1,9 @@
 import { FaSearch } from "react-icons/fa";
-import { useState } from "react"
+import { useState ,useEffect} from "react"
+import { useSupport } from "#hooks/index";
 import "./style.css"
 function FAQ(){
+    const {handleGetFaq} = useSupport()
     const [faqIndex0,setFaqIndex0] = useState(true)
     const [faqIndex1,setFaqIndex1] = useState(false)
     const [faqIndex2,setFaqIndex2] = useState(false)
@@ -9,7 +11,18 @@ function FAQ(){
     const [faqIndex4,setFaqIndex4] = useState(false)
     const [faqIndex5,setFaqIndex5] = useState(false)
     const [faqQuesIndex,setfaqQuesIndex] = useState(-1)
+    useEffect(()=>{
 
+        const fetchFaqs = async ()=>{
+  
+        const data =  await handleGetFaq()
+        console.log("nI",data)
+       
+        }
+  
+        fetchFaqs()
+        
+      },[])
     return(
         <div className="flex flex-col gap-2 mt-5">
             <div className="poppins-bold">

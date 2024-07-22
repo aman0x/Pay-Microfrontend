@@ -1,12 +1,25 @@
-import {useState} from "react"
+import {useState,useEffect} from "react"
 import FAQ from "./FAQ";
 import { useSupport } from "#hooks/index";
 function ContactForm(){
     const [wordsCount,setWordsCount] = useState(0)
-    const {handleSupport} = useSupport()
+    const [supportInfo,setSupportInfo] = useState({})
+    const {handleSupport,handleSupportInfo} = useSupport()
     const [name,setName]=useState()
     const [email,setEmail]=useState()
     const[message,setMessage]=useState()
+    useEffect(()=>{
+
+        const fetchSupportInfo = async ()=>{
+  
+        const data =  await handleSupportInfo()
+        setSupportInfo(data)
+       
+        }
+  
+        fetchSupportInfo()
+        
+      },[])
     return(
         <div className="mt-5 bg-primary p-[2rem] rounded-2xl flex flex-col gap-4 mr-2">
             <div>
@@ -27,7 +40,21 @@ function ContactForm(){
                         setWordsCount(e.target.value.length)}}
                     className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-xl w-full ps-14 p-3.5 resize-none placeholder:text-[#787D81] h-36"  
                     placeholder="Message" />     
-                </div>
+                </div>  
+            </div>
+            <div className="">
+                <button 
+                onClick={async()=>{
+                    await handleSupport({
+                        name:name,
+                        email:email,
+                        message:message
+                    })
+                    setName('')
+                    setEmail('')
+                    setMessage('') 
+                }}
+                className="flex  w-72 primary-btn items-center justify-center rounded-xl bg-gray-950 px-3 p-4 text-sm font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Send</button>
             </div>
             <div className="flex flex-col gap-4 mb-4">
                 <div className="text-sm poppins-light text-[#A3A6A9] text-center">
@@ -56,8 +83,8 @@ function ContactForm(){
                             </svg>
                         </div>
                         <div className="flex flex-col">
-                            <div  className="poppins-semibold">(000) 000 00  00</div>
-                            <div className="poppins-regular text-xs">Mon- Fri, 09:00 - 18:00</div>
+                            <div  className="poppins-semibold">{supportInfo.number}</div>
+                            <div className="poppins-regular text-xs">{supportInfo.operante}, {supportInfo.time_we_operate}</div>
                         </div>
                     </div>
                     <div className="flex justify-center items-center  bg-white rounded-2xl py-[0.8rem] gap-4">
@@ -89,7 +116,7 @@ function ContactForm(){
                             </svg>
                         </div>
                         <div className="flex flex-col">
-                            <div className="poppins-semibold">company@mail.com</div>
+                            <div className="poppins-semibold">{supportInfo.time_we_operate}</div>
                             <div className="poppins-regular text-xs ">We respond within 24 hrs.</div>
                         </div>
                     </div>

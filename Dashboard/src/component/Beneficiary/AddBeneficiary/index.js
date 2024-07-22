@@ -33,7 +33,7 @@ function AddNewBeneficiary({isRepeatPayment=false}){
                 <div  className="flex flex-col items-center gap-1">
                     {
                         stepIndex<=0?
-                        <div className="p-2">
+                        <div className="">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fillRule="evenodd" clipRule="evenodd" d="M16 8C16 12.4182 12.4182 16 8 16C3.58172 16 0 12.4182 0 8C0 3.58172 3.58172 0 8 0C12.4182 0 16 3.58172 16 8ZM11.2242 5.57574C11.4586 5.81005 11.4586 6.18995 11.2242 6.42424L7.22424 10.4242C6.98992 10.6586 6.61008 10.6586 6.37574 10.4242L4.77574 8.82424C4.54142 8.58992 4.54142 8.21008 4.77574 7.97576C5.01005 7.74144 5.38995 7.74144 5.62426 7.97576L6.8 9.15144L8.58784 7.3636L10.3758 5.57574C10.6101 5.34142 10.9899 5.34142 11.2242 5.57574Z" fill={stepIndex===0?"#232B31":"#B6B8BA"} />
                             </svg>
@@ -54,7 +54,7 @@ function AddNewBeneficiary({isRepeatPayment=false}){
                         </div>
 
                     }
-                    <div className="poppins-regular text-xs flex gap-1">
+                    <div className="poppins-light text-[10px] flex gap-1">
                         Step <div>1</div>
                     </div>
                 </div>
@@ -62,9 +62,9 @@ function AddNewBeneficiary({isRepeatPayment=false}){
                 <div className="flex flex-col items-center gap-1">
                     {
                         stepIndex<=1?
-                        <div className="p-2">
+                        <div className="">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fillRule="evenodd" clipRule="evenodd" d="M16 8C16 12.4182 12.4182 16 8 16C3.58172 16 0 12.4182 0 8C0 3.58172 3.58172 0 8 0C12.4182 0 16 3.58172 16 8ZM11.2242 5.57574C11.4586 5.81005 11.4586 6.18995 11.2242 6.42424L7.22424 10.4242C6.98992 10.6586 6.61008 10.6586 6.37574 10.4242L4.77574 8.82424C4.54142 8.58992 4.54142 8.21008 4.77574 7.97576C5.01005 7.74144 5.38995 7.74144 5.62426 7.97576L6.8 9.15144L8.58784 7.3636L10.3758 5.57574C10.6101 5.34142 10.9899 5.34142 11.2242 5.57574Z" fill={stepIndex===0?"#232B31":"#B6B8BA"} />
+                            <path fillRule="evenodd" clipRule="evenodd" d="M16 8C16 12.4182 12.4182 16 8 16C3.58172 16 0 12.4182 0 8C0 3.58172 3.58172 0 8 0C12.4182 0 16 3.58172 16 8ZM11.2242 5.57574C11.4586 5.81005 11.4586 6.18995 11.2242 6.42424L7.22424 10.4242C6.98992 10.6586 6.61008 10.6586 6.37574 10.4242L4.77574 8.82424C4.54142 8.58992 4.54142 8.21008 4.77574 7.97576C5.01005 7.74144 5.38995 7.74144 5.62426 7.97576L6.8 9.15144L8.58784 7.3636L10.3758 5.57574C10.6101 5.34142 10.9899 5.34142 11.2242 5.57574Z" fill={stepIndex===1?"#232B31":"#B6B8BA"} />
                             </svg>
                         </div>
                         :
@@ -83,7 +83,7 @@ function AddNewBeneficiary({isRepeatPayment=false}){
                         </div>
 
                     }
-                    <div className="poppins-regular text-xs  flex gap-1">
+                    <div className="poppins-light text-[10px]  flex gap-1">
                         Step <div>2</div>
                     </div>
                 </div>
@@ -91,9 +91,9 @@ function AddNewBeneficiary({isRepeatPayment=false}){
                 <div className="flex flex-col items-center gap-1">
                     {
                             stepIndex<=2?
-                            <div className="p-2">
+                            <div className="">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fillRule="evenodd" clipRule="evenodd" d="M16 8C16 12.4182 12.4182 16 8 16C3.58172 16 0 12.4182 0 8C0 3.58172 3.58172 0 8 0C12.4182 0 16 3.58172 16 8ZM11.2242 5.57574C11.4586 5.81005 11.4586 6.18995 11.2242 6.42424L7.22424 10.4242C6.98992 10.6586 6.61008 10.6586 6.37574 10.4242L4.77574 8.82424C4.54142 8.58992 4.54142 8.21008 4.77574 7.97576C5.01005 7.74144 5.38995 7.74144 5.62426 7.97576L6.8 9.15144L8.58784 7.3636L10.3758 5.57574C10.6101 5.34142 10.9899 5.34142 11.2242 5.57574Z" fill={stepIndex===0?"#232B31":"#B6B8BA"} />
+                                <path fillRule="evenodd" clipRule="evenodd" d="M16 8C16 12.4182 12.4182 16 8 16C3.58172 16 0 12.4182 0 8C0 3.58172 3.58172 0 8 0C12.4182 0 16 3.58172 16 8ZM11.2242 5.57574C11.4586 5.81005 11.4586 6.18995 11.2242 6.42424L7.22424 10.4242C6.98992 10.6586 6.61008 10.6586 6.37574 10.4242L4.77574 8.82424C4.54142 8.58992 4.54142 8.21008 4.77574 7.97576C5.01005 7.74144 5.38995 7.74144 5.62426 7.97576L6.8 9.15144L8.58784 7.3636L10.3758 5.57574C10.6101 5.34142 10.9899 5.34142 11.2242 5.57574Z" fill={stepIndex===2?"#232B31":"#B6B8BA"} />
                                 </svg>
                             </div>
                             :
@@ -112,18 +112,18 @@ function AddNewBeneficiary({isRepeatPayment=false}){
                             </div>
 
                         }
-                    <div className="poppins-regular text-xs flex gap-1">
+                    <div className="poppins-light text-[10px] flex gap-1">
                         Step <div>3</div>
                     </div>
                 </div>
             </div>
             {
                 stepIndex===0 &&
-                <div className="mx-auto w-[50%] flex flex-col gap-8 mt-4">
+                <div className="mx-auto w-[40%] flex flex-col gap-8 mt-4">
                 <div className="text-center poppins-semibold">Enter Data</div>
                 <div className="flex flex-col gap-2">
                     <div className="relative">
-                        <input type="text" value={accountName} onChange={(e)=>setAccountName(e.target.value)}  className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full ps-14 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Beneficiary Name"/>
+                        <input type="text" value={accountName} onChange={(e)=>setAccountName(e.target.value)}  className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-xs  p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Beneficiary Name"/>
                         {
                            !isValid.accountName? 
                             <div className="absolute inset-y-0 end-1 flex items-center pe-3">
@@ -135,7 +135,7 @@ function AddNewBeneficiary({isRepeatPayment=false}){
                         }
                     </div>
                     <div className="relative">
-                        <input type="number" value={accountNumber} onChange={(e)=>setAccountNumber(e.target.value)}   className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full ps-14 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Beneficiary Phone Number"/>
+                        <input type="number" value={accountNumber} onChange={(e)=>setAccountNumber(e.target.value)}   className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-xs  p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Beneficiary Phone Number"/>
                         {
                            !isValid.accountNumber? 
                             <div className="absolute inset-y-0 end-1 flex items-center pe-3">
@@ -146,7 +146,7 @@ function AddNewBeneficiary({isRepeatPayment=false}){
                             :null
                         }
                     </div>
-                    { !isValid.allValid &&
+                    {/* { !isValid.allValid &&
                     <div className="flex gap-3 justify-center">
                         <div>
                             <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -154,7 +154,7 @@ function AddNewBeneficiary({isRepeatPayment=false}){
                             </svg>
                         </div>
                         <div className="text-xs text-[#E45757]">Mandatory for Filling</div> 
-                    </div>}
+                    </div>} */}
                 </div>
                 <div className=''>
                     <button type="submit"

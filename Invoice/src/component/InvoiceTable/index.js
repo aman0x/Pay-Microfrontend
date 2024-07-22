@@ -211,12 +211,11 @@ function InvoiceTable({ handleInvoiceData }) {
   useEffect(() => {
     const fetchInvoiceData = async () => {
       const data = await handleInvoiceData();
-
       setInvoiceData(data);
     };
 
     fetchInvoiceData();
-  }, []);
+  }, [filterState]);
 
   return (
     <div className="w-full mt-2 overflow-x-auto">

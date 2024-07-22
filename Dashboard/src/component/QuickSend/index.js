@@ -1,6 +1,7 @@
 import Avatar from '@mui/material/Avatar';
 import { IoAdd } from "react-icons/io5";
 import { useState, useEffect } from "react"
+import { useNavigate } from 'react-router-dom';
 /**------------------------------DUMMY USERS-------------------------------- */
 const users = [
     {
@@ -47,6 +48,7 @@ const users = [
 
 export function QuickSend({ handleQuickSendData }) {
     const [quickSend, setQuickSend] = useState(users)
+    const navigate = useNavigate()
     useEffect(() => {
         const fetchQuickSend = async () => {
             const data = await handleQuickSendData()
@@ -59,7 +61,9 @@ export function QuickSend({ handleQuickSendData }) {
         <div>
             <div className="flex items-center justify-between ">
                 <p className="poppins-semibold text-base text-[#232B31] mb-4">Quick Send</p>
-                <p className="poppins-regular text-[#787D81] text-xs underline cursor-pointer">All Beneficaries</p>
+                <p 
+                onClick={()=>navigate('/dashboard/beneficiary')}
+                className="poppins-regular text-[#787D81] text-xs underline cursor-pointer">All Beneficaries</p>
             </div>
             <div className='flex gap-2'>
                 {

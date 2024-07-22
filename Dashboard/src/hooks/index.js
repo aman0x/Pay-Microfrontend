@@ -262,10 +262,11 @@ export function useStatistic(){
 }
 export function useNotfication(){
     const user = useSelector(state=>state.auth.user)
-    const handleGetNotification = async()=>{
+    const handleGetNotification = async(topic)=>{
         try{
             const arr = []
-           const response = await ApiCall({url:PRIVATE_ENDPOINTS.GET_NOTIFICATION,method:"GET",PRIVATE_API:true,current_user:user})
+           const response = await ApiCall({url:PRIVATE_ENDPOINTS.GET_NOTIFICATION+'?topic='+topic
+            ,method:"GET",PRIVATE_API:true,current_user:user})
            console.log(response)
            if(Array.isArray(response.data)){
             return response.data;
@@ -302,7 +303,42 @@ export function useSupport(){
         toast("Error Sending Support");
         }
     }
-    return{handleSupport}
+    const handleSupportInfo = async(data)=>{
+        try {
+            const response = await ApiCall({ 
+              url: PRIVATE_ENDPOINTS.GET_SUPPORT_INFO, 
+              method: "GET", 
+              body:data,
+              PRIVATE_API: true, 
+              current_user: user 
+            });
+            return response.data;
+          }
+        catch (error) {
+        toast("Error Getting Support Info");
+        }
+    }
+    const handleGetFaq = async(topic="general")=>{
+        try{
+            const arr = []
+           const response = await ApiCall({url:PRIVATE_ENDPOINTS.GET_FAQS
+            ,method:"GET",PRIVATE_API:true,current_user:user})
+           console.log(response)
+           if(Array.isArray(response.data)){
+            return response.data;
+            }
+            else{
+                arr.push(response.data)
+                return arr;
+            }
+            
+        }
+        catch(e){
+            //toast("Error in getting Faqs");
+            return [];
+        }
+    }
+    return{handleSupport,handleGetFaq,handleSupportInfo}
 }
 
 export function useAccounts(){

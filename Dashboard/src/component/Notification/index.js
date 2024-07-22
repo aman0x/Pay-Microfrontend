@@ -21,22 +21,22 @@ function Notification(){
     useEffect(()=>{
 
       const fetchNotificationData = async ()=>{
-
-      const data =  await handleGetNotification()
+        const topic = menu[tophead].toLowerCase()
+      const data =  await handleGetNotification(topic)
       console.log("nI",data)
       setNotificationData(data)
       }
 
       fetchNotificationData()
       
-    },[])
+    },[tophead])
  
     return(
         <div className="mt-5 bg-primary p-[1rem] rounded-3xl flex flex-col gap-4 mr-2 min-h-[80vh] mb-4 w-full">
             <div className="flex mt-4 h-full">
                 <div className="flex flex-col gap-1 border-r-2 border-r-[#DFE0E2] pt-10  pr-6 h-full">
                     {
-                        notificationIndex0 ?
+                        tophead===0?
                         <div className="primary-linear-gr-bg-up p-[1.5px] rounded-xl shadow-red-200 shadow-2xl">
                             <button className="flex justify-between items-center bg-black-primary rounded-xl py-[6px] px-3 poppins-medium text-xs w-44" onClick={()=>setnotificationIndex0(false)}>
                                General
@@ -52,7 +52,7 @@ function Notification(){
 
                     }
                     {
-                        notificationIndex1 ?
+                        tophead===1 ?
                         <div className="primary-linear-gr-bg-up p-[1.5px] rounded-xl shadow-2xl">
                             <button className="flex justify-between items-center bg-black-primary rounded-xl py-[6px] px-3 poppins-medium text-xs w-44" onClick={()=>{
                                 setnotificationIndex1(false)
@@ -69,7 +69,7 @@ function Notification(){
 
                     }
                     {
-                        notificationIndex2 ?
+                        tophead===2 ?
                         <div className="primary-linear-gr-bg-up p-[1.5px] rounded-xl shadow-2xl">
                             <button className="flex justify-between items-center bg-black-primary rounded-xl py-[6px] w-44 px-3 poppins-medium text-xs" onClick={()=>{setnotificationIndex2(false)
                             }}>
@@ -85,7 +85,7 @@ function Notification(){
 
                     }
                     {
-                        notificationIndex3 ?
+                        tophead===3 ?
                         <div className="primary-linear-gr-bg-up p-[1.5px] rounded-xl shadow-2xl">
                             <button className="flex justify-between items-center bg-black-primary rounded-xl py-[6px] w-44 px-3 poppins-medium text-xs" onClick={()=>setnotificationIndex3(false)}>
                                 Account
@@ -100,7 +100,7 @@ function Notification(){
 
                     }
                     {
-                        notificationIndex4 ?
+                        tophead===4 ?
                         <div className="primary-linear-gr-bg-up p-[1.5px] rounded-xl shadow-2xl">
                             <button className="flex justify-between items-center bg-black-primary rounded-xl py-[6px] w-44 px-3 poppins-medium text-xs" onClick={()=>setnotificationIndex4(false)}>
                                 Transaction
@@ -115,7 +115,7 @@ function Notification(){
 
                     }
                     {
-                        notificationIndex5 ?
+                        tophead===5 ?
                         <div className="primary-linear-gr-bg-up p-[1.5px] rounded-xl shadow-2xl">
                             <button className="flex justify-between items-center bg-black-primary rounded-xl py-[6px] w-44 px-3 poppins-medium text-sm" onClick={()=>setnotificationIndex5(false)}>
                                 Cards

@@ -2,6 +2,7 @@ import { IoAddCircleSharp } from "react-icons/io5";
 import { BsBank2 } from "react-icons/bs";
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import { useNavigate } from 'react-router-dom';
 const DUMMY_BANKS = [
     {
         bank_name: " HDFC Bank",
@@ -20,6 +21,7 @@ const DUMMY_BANKS = [
 
 function Templates({ userId = null, handleTemplateData }) {
     const [templates, setTemplates] = useState(DUMMY_BANKS)
+    const navigate = useNavigate()
     useEffect(() => {
         const fetchTemplates = async () => {
             const data = await handleTemplateData()
@@ -34,7 +36,8 @@ function Templates({ userId = null, handleTemplateData }) {
         <div className="w-full ">
             <div className="flex justify-between mb-4">
                 <p className="poppins-semibold text-[#232B31] text-base">My Templates</p>
-                <div className="flex text-xs gap-1 items-center">
+                <div 
+                className="flex text-xs gap-1 items-center cursor-pointer">
                     <IoAddCircleSharp size="18px" />
                     <p className="poppins-regular text-[#787D81] text-xs">Create</p>
                 </div>
