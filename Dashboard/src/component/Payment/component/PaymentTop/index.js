@@ -56,7 +56,7 @@ function PaymentTop({ handlePaymentStats }) {
           </div>
         </div>
       </div>
-      <div className="grid grid-rows-4 sm:grid-rows-1 sm:grid-cols-4 gap-4 mt-2">
+      <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-4 mt-2">
         <div className="flex bg-white  py-6 px-4 rounded-3xl justify-between items-center border">
           <div className="flex flex-col gap-1">
             <div className="poppins-regular text-xs text-[#A3A6A9]">
