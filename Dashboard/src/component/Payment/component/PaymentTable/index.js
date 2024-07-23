@@ -221,7 +221,6 @@ function PaymentTable({ handlePaymentData }) {
   return (
     <>
       <div className="xl:flex gap-3 poppins-light text-[14px] items-center mt-4 w-full ">
-
         <div className="flex gap-3 mb-4 items-center w-full">
           <div className="text-xs font-medium text-[#787D81]">Show:</div>
           <div className="flex gap-2 items-center">
@@ -313,7 +312,7 @@ function PaymentTable({ handlePaymentData }) {
             </div>
           </div>
         </div>
-        
+
         <div className="flex gap-3 mb-4 w-full">
           <div className="relative w-72 xl:w-full">
             <input
@@ -377,11 +376,10 @@ function PaymentTable({ handlePaymentData }) {
             </svg>
           </div>
         </div>
-
       </div>
 
-      <div className="w-full overflow-x-auto ">
-        <table className="w-full  rounded-2xl overflow-hidden ">
+      <div className="w-[29rem] lg:w-[28rem] xl:w-full  mt-2  overflow-x-auto">
+        <table className="w-full rounded-2xl overflow-x-auto">
           <tr className="poppins-light text-xs text-white bg-[#232B31] items-center">
             <td>
               <div className="flex items-center gap-2 td-element1 text-[10px] ml-2 ">

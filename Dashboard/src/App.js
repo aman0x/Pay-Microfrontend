@@ -1,7 +1,7 @@
 // Dashboard.js
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { Routes, Route,BrowserRouter } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import "./index.css";
 import DashboardMain from "./component/Main/index.js";
 import MainPayment from "./component/Payment/component/Main/index.js";
@@ -18,30 +18,30 @@ import AddNewBeneficiary from "./component/Beneficiary/AddBeneficiary/index.js";
 import CardsDetail from "./component/MyCards/CardsDetail/index.js";
 import AddCard from "./component/MyCards/AddCard/index.js";
 import MyCards from "./component/MyCards/index.js";
-import AxiosInstance from "controllers/AxiosInstance/index"
+import AxiosInstance from "controllers/AxiosInstance/index";
 import { ToastContainer } from "react-toastify";
 const Dashboard = () => {
   return (
     <>
-    {/* <ToastContainer/> */}
-    <Routes>
-    <Route path="/" element={<DashboardMain />} />
-    <Route path="/payment" element={<MainPayment />} />
-    <Route path="/support" element={<ContactForm />} />
-    <Route path="/notification" element={<Notification/>}/>
-     <Route path="/statistic" element={<Statistic/>}/>
-     <Route path="/payment/payment-detail" element={<PaymentDetailPage/>}/>
-     <Route path ="/payment/new-payment" element={<NewPayment/>}/>
-     <Route path="/profile" element={<Profile/>}/>
-     <Route path="/accounts" element={<MyAccounts/>}/>
-     <Route path="/accounts/add-new" element={<AddNewAccount/>}/>
-     <Route path="/beneficiary" element={<MyBeneficiary/>}/>
-     <Route path="/beneficiary/add-new" element={<AddNewBeneficiary/>}/>
-     <Route path="/card" element={<MyCards/>}/>
-     <Route path="/card/card-detail" element={<CardsDetail/>}/>
-     <Route path="/card/add-card" element={<AddCard/>}/>
-  </Routes>
-  </>
+      {/* <ToastContainer/> */}
+      <Routes>
+        <Route path="/" element={<DashboardMain />} />
+        <Route path="/payment" element={<MainPayment />} />
+        <Route path="/support" element={<ContactForm />} />
+        <Route path="/notification" element={<Notification />} />
+        <Route path="/statistic" element={<Statistic />} />
+        <Route path="/payment/payment-detail" element={<PaymentDetailPage />} />
+        <Route path="/payment/new-payment" element={<NewPayment />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/accounts" element={<MyAccounts />} />
+        <Route path="/accounts/add-new" element={<AddNewAccount />} />
+        <Route path="/beneficiary" element={<MyBeneficiary />} />
+        <Route path="/beneficiary/add-new" element={<AddNewBeneficiary />} />
+        <Route path="/card" element={<MyCards />} />
+        <Route path="/card/card-detail" element={<CardsDetail />} />
+        <Route path="/card/add-card" element={<AddCard />} />
+      </Routes>
+    </>
   );
 };
 

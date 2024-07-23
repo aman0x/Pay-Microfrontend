@@ -49,14 +49,14 @@ function InvoiceTop({ handleInvoiceStats }) {
   const percentage4 = percentage.percentage4;
   return (
     <div className="flex flex-col gap-4">
-      <div className="sm:flex justify-between items-center mt-4">
+      <div className="flex justify-between items-center mt-4">
         <div>
           <div className="poppins-semibold text-lg">All Invoices</div>
           <div className="poppins-light text-xs text-[#A3A6A9]">
             {invoiceStats.all_invoices}
           </div>
         </div>
-        <div className="flex w-[22rem] sm:w-96 bg-[#E6E8EA] py-[6px] rounded-xl justify-evenly ">
+        <div className="flex w-72 xl:w-96 bg-[#E6E8EA] py-[6px] rounded-xl justify-evenly ">
           <button
             className="px-2 py-[0.4rem] rounded-lg poppins-light text-xs"
             style={{
@@ -83,7 +83,8 @@ function InvoiceTop({ handleInvoiceStats }) {
           </button>
         </div>
       </div>
-      <div className="grid grid-rows-4 sm:grid-rows-1 sm:grid-cols-4 gap-4 mt-2">
+
+      <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-4 mt-2">
         <div className="flex bg-white  py-6 px-4 rounded-3xl justify-between items-center border">
           <div className="flex flex-col gap-1">
             <div className="poppins-regular text-xs text-[#A3A6A9]">
