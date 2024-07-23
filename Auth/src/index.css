@@ -7,6 +7,10 @@
   --primary:#F0F1F2
 }
 
+.hide{
+  display: none;
+}
+
 @layer utilities {
   .basic-btn {
     @apply flex w-full justify-center rounded-xl bg-gray-950 px-3 p-4 text-sm font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600

@@ -1,13 +1,11 @@
-export default function PaymorzSider(){
-    return(
-    <div className="w-full">
+export default function PaymorzSider() {
+  return (
+    <div className="w-full h-full">
         <img
-        className='hero-img'
-        src='/images/login-welcome.png'
-        alt='login-welcome'
-        height="100px"
+          className="hero-img object-fill xl:object-contain object-top"
+          src="/images/login-welcome.png"
+          alt="login-welcome"
         />
-      </div> 
-
-    )
+    </div>
+  );
 }
