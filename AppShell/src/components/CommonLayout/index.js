@@ -52,7 +52,7 @@ function CommonLayout({children}){
                 
                 {children}   
                
-                <div className="hide">
+                <div className="hide lg:block">
               {
                 location.pathname === '/dashboard/statistic' ?
                 
