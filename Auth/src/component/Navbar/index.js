@@ -61,7 +61,7 @@ export function HeaderNavbar({ isLogin = false }) {
           </>
         )}
       </div>
-      <div className="hide lg:flex justify-between sm:pt-8 sm:px-12">
+      <div className="hide md:flex justify-between sm:pt-8 sm:px-12">
         <div className="flex">
           <img src="/images/paymorz-logo.png" alt="paymorz-logo" />
           <div className="italic pl-1 font-extrabold from-neutral-900 text-xl">

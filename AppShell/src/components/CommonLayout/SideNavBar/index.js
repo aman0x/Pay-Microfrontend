@@ -23,7 +23,7 @@ export function SideNavBar() {
   };
 
   return (
-    <div className="hide lg:block">
+    <div className="hide md:block">
       <div
         className={`hidden bg-primary cursor-pointer ${
           isNavOpen ? "min-w-[13.5rem]" : "nav-close"

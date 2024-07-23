@@ -394,7 +394,7 @@ export default function SignUpUser() {
           </div>
         </div>
       </div>
-      <div className="hide lg:flex">
+      <div className="hide md:flex">
         <PaymorzSider />
       </div>
     </div>

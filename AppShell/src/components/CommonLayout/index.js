@@ -43,7 +43,7 @@ function CommonLayout({ children }) {
           ) : (
             <SecondaryTopBar />
           )}
-          <div className="hide lg:flex justify-between w-full px-4 gap-4">
+          <div className="hide md:flex justify-between w-full px-4 gap-4">
             {children}
             <div className="hide lg:block">
               {location.pathname === "/dashboard/statistic" ? (
@@ -58,7 +58,7 @@ function CommonLayout({ children }) {
           </div>
         </div>
       </div>
-      <div className="footer-bottom hide lg:block">
+      <div className="footer-bottom hide md:block">
         <MainFooter />
       </div>
     </div>

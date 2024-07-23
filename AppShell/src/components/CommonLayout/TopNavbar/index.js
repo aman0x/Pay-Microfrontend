@@ -14,12 +14,12 @@ function TopNavbar() {
 
 
     return (
-        <div className="hide lg:flex items-center justify-between w-full mt-[1rem] gap-2">
+        <div className="hide md:flex items-center justify-between w-full mt-[1rem] gap-2">
             <div className="ml-4">
                 <div className="poppins-medium text-base text-[#4E5459]">{TopHead}</div>
-                <p className="poppins-light text-xs text-[#A3A6A9]">🤨 Get more out of Paymorz everyday!</p>
+                <p className="poppins-light text-xs text-[#A3A6A9]">🤨 Get more out of <span className="lg:hidden"><br /></span>Paymorz everyday!</p>
             </div>
-            <div className="w-96">
+            <div className="lg:w-96">
                 <div className="relative w-full">
                     <input type="text" id="voice-search" className="bg-[#F0F1F2] focus:outline-none focus:ring-1 focus:ring-gray-300 border border-gray-300 text-gray-900 text-sm rounded-2xl block w-full py-[0.7rem] px-5 poppins-light-italic" placeholder="Search..." required />
                     <button type="button" className="absolute inset-y-0 end-0 flex items-center pe-3">
