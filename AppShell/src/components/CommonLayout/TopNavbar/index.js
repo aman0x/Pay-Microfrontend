@@ -14,7 +14,7 @@ function TopNavbar() {
 
 
     return (
-        <div className=" hidden sm:flex  justify-between w-full mt-[1rem] ">
+        <div className="hide lg:flex items-center justify-between w-full mt-[1rem] gap-2">
             <div className="ml-4">
                 <div className="poppins-medium text-base text-[#4E5459]">{TopHead}</div>
                 <p className="poppins-light text-xs text-[#A3A6A9]">🤨 Get more out of Paymorz everyday!</p>
@@ -39,7 +39,7 @@ function TopNavbar() {
                             fontWeight: "bold",
                             fontSize: "small"
                         }}
-                        alt={current_user.first_name + current_user.last_name} />
+                        alt={current_user.first_name} />
                 </div>
                 <div className="flex flex-col text-sm">
                     <div>

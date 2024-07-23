@@ -62,7 +62,7 @@ function SpendData({ monthStats }) {
             </div>
 
 
-            <div className="flex justify-center mt-4">
+            <div className="flex justify-center my-4">
                 <div className="primary-linear-gr-bg-up p-[2px] rounded-2xl">
                     <button
                         onClick={() => navigate('/dashboard/statistic')}

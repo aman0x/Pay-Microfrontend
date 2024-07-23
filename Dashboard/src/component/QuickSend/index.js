@@ -60,12 +60,12 @@ export function QuickSend({ handleQuickSendData }) {
     return (
         <div>
             <div className="flex items-center justify-between ">
-                <p className="poppins-semibold text-base text-[#232B31] mb-4">Quick Send</p>
+                <p className="poppins-semibold text-base text-[#232B31] mb-5">Quick Send</p>
                 <p 
                 onClick={()=>navigate('/dashboard/beneficiary')}
                 className="poppins-regular text-[#787D81] text-xs underline cursor-pointer">All Beneficaries</p>
             </div>
-            <div className='flex gap-2'>
+            <div className='flex gap-5'>
                 {
                     quickSend.map((user, i) => {
                         return (

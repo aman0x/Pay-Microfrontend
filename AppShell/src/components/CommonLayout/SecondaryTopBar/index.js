@@ -11,7 +11,7 @@ function SecondaryTopBar({btn1="",btn2=""}){
     const TopHead = getTopName(location.pathname)
     const current_user = useSelector(state=>state.auth.user)
     return(
-        <div className="flex justify-between w-full pt-4 px-2 my-1"> 
+        <div className="flex items-center justify-between w-full pt-4 px-2 my-1 gap-2"> 
             <div className="flex gap-2 items-center">
                 <div 
                 onClick={()=>navigate(-1)}
@@ -38,7 +38,7 @@ function SecondaryTopBar({btn1="",btn2=""}){
                             fontWeight:"bold",
                             fontSize:"small"
                         }}
-                         alt={current_user.first_name+current_user.last_name}/>
+                         alt={current_user.first_name}/>
                     </div>
                 <div className="flex flex-col text-sm">
                     <div>
