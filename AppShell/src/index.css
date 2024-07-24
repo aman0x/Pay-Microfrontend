@@ -227,3 +227,14 @@ body {
 .footer-bottom {
   bottom: 0;
 }
+
+.add-btn {
+  background: rgb(246, 222, 198);
+  background: linear-gradient(
+    35deg,
+    rgba(246, 222, 198, 1) 0%,
+    rgba(232, 114, 212, 1) 38%,
+    rgba(193, 144, 217, 1) 70%,
+    rgba(162, 220, 254, 1) 93%
+  );
+}
