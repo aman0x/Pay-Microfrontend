@@ -30,7 +30,7 @@ function CardsDetail(){
         fetchCardDetail()
     },[cardId])
     return(
-        <div className="mt-5 bg-primary p-[2rem] rounded-2xl flex flex-col gap-3 w-full">
+        <div className="mt-5 mb-5 bg-primary p-[2rem] rounded-2xl flex flex-col gap-3 w-full">
                 <div className="flex flex-col gap-4 rounded-2xl bg-white p-[1.5rem] w-full">
                     <div className="flex justify-between">
                         <div className="flex flex-col gap-1">
