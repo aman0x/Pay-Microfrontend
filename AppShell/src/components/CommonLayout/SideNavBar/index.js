@@ -1,21 +1,35 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./style.css";
 import { useDispatch } from "react-redux";
 import { authActions } from "Auth/authReducer";
 
 export function SideNavBar() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const dispatch = useDispatch();
+
   const [isNavOpen, setNavOpen] = useState(true);
   const [navIndex, setNavIndex] = useState(() => {
     return parseInt(localStorage.getItem("navIndex")) || 0;
   });
   const [notificationIndex, setNotificationIndex] = useState(0);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     localStorage.setItem("navIndex", navIndex);
   }, [navIndex]);
+
+  useEffect(() => {
+    const pathToIndex = {
+      "/dashboard": 0,
+      "/dashboard/payment": 1,
+      "/invoice": 2,
+      "/dashboard/statistic": 3,
+      "/dashboard/notification": 4,
+      "/dashboard/support": 5,
+    };
+    setNavIndex(pathToIndex[location.pathname] ?? 0);
+  }, [location.pathname]);
 
   const handleNavigation = (index, path) => {
     setNavIndex(index);
@@ -27,7 +41,7 @@ export function SideNavBar() {
       <div
         className={`hidden bg-primary cursor-pointer ${
           isNavOpen ? "min-w-[13.5rem]" : "nav-close"
-        } sm:flex flex-col h-[85vh] max-h-[600px]  text-sm justify-between border-gray-400  py-[1.5rem] pr-[1rem] rounded-3xl mx-[0.5rem] my-[0.5rem]  transition-all duration-300 shadow-2xl overflow-y-hidden`}
+        } sm:flex flex-col h-[85vh] max-h-[600px] text-sm justify-between border-gray-400 py-[1.5rem] pr-[1rem] rounded-3xl mx-[0.5rem] my-[0.5rem] transition-all duration-300 shadow-2xl overflow-y-hidden`}
       >
         <div
           className="flex gap-1 items-center pl-4"
@@ -108,7 +122,7 @@ export function SideNavBar() {
                 alt="Dashboard logo"
               />
             </span>
-            <p className={`${navIndex == 0 ? "text-black" : ""} text-sm`}>
+            <p className={`${navIndex === 0 ? "text-black" : ""} text-sm`}>
               Dashboard
             </p>
             {notificationIndex === 1 && (
@@ -143,7 +157,7 @@ export function SideNavBar() {
                 alt="Credit logo"
               />
             </span>
-            <p className={`${navIndex == 1 ? "text-black" : ""} text-sm`}>
+            <p className={`${navIndex === 1 ? "text-black" : ""} text-sm`}>
               Payments
             </p>
             {notificationIndex === 2 && (
@@ -178,7 +192,7 @@ export function SideNavBar() {
                 alt="Invoice logo"
               />
             </span>
-            <p className={`${navIndex == 2 ? "text-black" : ""} text-sm`}>
+            <p className={`${navIndex === 2 ? "text-black" : ""} text-sm`}>
               Invoices
             </p>
             {notificationIndex === 3 && (
@@ -213,7 +227,7 @@ export function SideNavBar() {
                 alt="Statistics logo"
               />
             </span>
-            <p className={`${navIndex == 3 ? "text-black" : ""} text-sm`}>
+            <p className={`${navIndex === 3 ? "text-black" : ""} text-sm`}>
               Statistic
             </p>
             {notificationIndex === 4 && (
@@ -248,7 +262,7 @@ export function SideNavBar() {
                 alt="Notification logo"
               />
             </span>
-            <p className={`${navIndex == 4 ? "text-black" : ""} text-sm`}>
+            <p className={`${navIndex === 4 ? "text-black" : ""} text-sm`}>
               Notifications
             </p>
             {notificationIndex === 5 && (
@@ -259,6 +273,7 @@ export function SideNavBar() {
               </div>
             )}
           </button>
+
           <button
             className={`flex gap-4 items-center ${
               navIndex === 5 ? "font-semibold text-black" : ""
@@ -272,25 +287,17 @@ export function SideNavBar() {
               <div className="h-[40px] w-[2.5px]"></div>
             )}
             <span>
-              {navIndex === 5 ? (
-                <img
-                  src="/images/support_selected.svg"
-                  className={`${isNavOpen ? "" : "mobile-nav"}`}
-                  alt="Support logo"
-                />
-              ) : (
-                <img
-                  src="/images/support.svg"
-                  className={`${isNavOpen ? "" : "mobile-nav"}`}
-                  alt="Support logo"
-                />
-              )}
+              <img
+                src={
+                  navIndex === 5
+                    ? "/images/support_selected.svg"
+                    : "/images/support.svg"
+                }
+                className={`${isNavOpen ? "" : "mobile-nav"}`}
+                alt="Support logo"
+              />
             </span>
-            <p
-              className={`${
-                navIndex === 5 ? "font-semibold text-black" : ""
-              } hover:text-black hover:font-semibold mr-6`}
-            >
+            <p className={`${navIndex === 5 ? "text-black" : ""} text-sm`}>
               Support
             </p>
             {notificationIndex === 6 && (
@@ -302,24 +309,15 @@ export function SideNavBar() {
             )}
           </button>
         </div>
-
-        <button
-          onClick={() => {
-            dispatch(authActions.logout());
-            localStorage.clear();
-            navigate("/");
-          }}
-          className="cursor-pointer flex gap-4 items-center pl-6"
-        >
-          <span>
-            <img
-              src="/images/logout_icon.svg"
-              className={`${isNavOpen ? "" : "mobile-nav"}`}
-              alt="Logout logo"
-            />
-          </span>
-          <p className="hover:text-black hover:font-semibold">Logout</p>
-        </button>
+        <div className="px-2 flex flex-col gap-4">
+          <button
+            className="flex gap-4 items-center"
+            onClick={() => dispatch(authActions.logout())}
+          >
+            <img src="/images/logout.svg" alt="Logout logo" />
+            <p>Logout</p>
+          </button>
+        </div>
       </div>
     </div>
   );
