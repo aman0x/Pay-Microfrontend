@@ -309,15 +309,23 @@ export function SideNavBar() {
             )}
           </button>
         </div>
-        <div className="px-2 flex flex-col gap-4">
-          <button
-            className="flex gap-4 items-center"
-            onClick={() => dispatch(authActions.logout())}
-          >
-            <img src="/images/logout.svg" alt="Logout logo" />
-            <p>Logout</p>
-          </button>
-        </div>
+        <button
+          onClick={() => {
+            dispatch(authActions.logout());
+            localStorage.clear();
+            navigate("/");
+          }}
+          className="cursor-pointer flex gap-4 items-center pl-6"
+        >
+          <span>
+            <img
+              src="/images/logout.svg"
+              className={`${isNavOpen ? "" : "mobile-nav"}`}
+              alt="Logout logo"
+            />
+          </span>
+          <p className="hover:text-black hover:font-semibold">Logout</p>
+        </button>
       </div>
     </div>
   );
