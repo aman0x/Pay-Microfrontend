@@ -43,9 +43,9 @@ function CommonLayout({ children }) {
           ) : (
             <SecondaryTopBar />
           )}
-          <div className="hide md:flex justify-between w-full px-4 gap-4">
+          <div className="flex justify-between w-full px-4 gap-4">
             {children}
-            <div className="hide lg:block">
+            <div className="hide-show">
               {location.pathname === "/dashboard/statistic" ? (
                 <RightSideStatsBar />
               ) : location.pathname.startsWith("/admin") &&
