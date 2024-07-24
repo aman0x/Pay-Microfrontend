@@ -8,6 +8,7 @@ export const PRIVATE_ENDPOINTS = {
     GET_LATEST_ACTIONS:BASE_URL+'/api/payment/data/',
     GET_PAYMENT_STATS:BASE_URL+"/api/payment/dashboard/",
     GET_ALL_PAYMENT:BASE_URL+'/api/payment/data/',
+    GET_ALL_TRANSACTIONS:BASE_URL+'/api/transaction/transactions/',
     GET_PAYMENT_DETAIL:BASE_URL+'/api/payment/data',
     CREATE_PAYMENT:BASE_URL+'/api/payment/data/',
     GET_NOTIFICATION:BASE_URL+'/api/notification/notifications',

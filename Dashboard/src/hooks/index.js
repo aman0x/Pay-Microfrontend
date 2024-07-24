@@ -132,7 +132,7 @@ export function usePayment(){
         try {
             const arr = []
             const response = await ApiCall({ 
-              url: PRIVATE_ENDPOINTS.GET_ALL_PAYMENT, 
+              url: PRIVATE_ENDPOINTS.GET_ALL_TRANSACTIONS, 
               method: "GET", 
               PRIVATE_API: true, 
               current_user: user 

@@ -153,7 +153,7 @@ function MakeInvoice({isRepeatPayment=false}){
                 data={{
                     amount:amount,
                     payment_type:cards[1],
-                    receiver:2
+                    beneficiary:2
                 }}
                 />
                 

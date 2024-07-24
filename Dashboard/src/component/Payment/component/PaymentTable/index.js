@@ -510,12 +510,12 @@ function PaymentTable({ handlePaymentData }) {
                 </td>
                 <td>
                   <div className="td-element text-[10px]">
-                    {transaction.beneficiary}
+                    {transaction.beneficiary_name}
                   </div>
                 </td>
                 <td>
                   <div className="td-element text-[10px]">
-                    {transaction.type}
+                    {transaction.transaction_type}
                   </div>
                 </td>
                 <td>
@@ -555,7 +555,7 @@ function PaymentTable({ handlePaymentData }) {
                 </td>
                 <td>
                   <div className="flex gap-6 items-center td-element text-[10px]">
-                    <div>{transaction.sum}</div>
+                    <div>{transaction.transaction_amount}</div>
                     <svg
                       width="24"
                       height="28"
