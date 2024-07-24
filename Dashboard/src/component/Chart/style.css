@@ -1,15 +1,25 @@
-
-.contains{
-    max-width: 750px !important;
+.contains {
+  width: 25rem !important;
 }
 
-.clicked-contains{
-    max-width: 850px !important;
+@media (min-width: 1024px) {
+  .contains {
+    width: 27rem !important;
+  }
+}
+@media (min-width: 1440px) {
+  .contains {
+    width: 47rem !important;
+  }
+}
+
+.clicked-contains {
+  max-width: 850px !important;
 }
 
 @media (min-width: 768px) {
-    canvas {
-        height: auto;
-        width: auto;
-     }
+  canvas {
+    height: auto;
+    width: auto;
+  }
 }
