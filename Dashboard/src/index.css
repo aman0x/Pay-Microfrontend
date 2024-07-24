@@ -145,4 +145,10 @@ input[type=text]:focus {
 }
 
 
+@media (min-width: 1280px) and (max-width: 1385px) {
+  .catch{
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  }
+}
+
  

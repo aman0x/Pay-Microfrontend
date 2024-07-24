@@ -16,7 +16,9 @@ function DashboardMain() {
   return (
     <>
       <div className="md:hidden">
-        <p>Mobile Content of Dashboard</p>
+        {/* <div className="flex justify-between">
+          <TopNavbar />
+        </div> */}
       </div>
       <div className="hidden mt-5 mb-5 bg-primary  p-5 rounded-2xl w-full md:flex md:flex-col gap-6">
         <NoitificationBar userId={userId} />

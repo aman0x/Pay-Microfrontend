@@ -2,7 +2,7 @@ import CircularChart from "./CircularChart";
 
 function StatsCards({ reportIndex = 0, stats }) {
   return (
-    <div className="grid xl:grid-cols-2 m-1  gap-4">
+    <div className="grid xl:grid-cols-2 m-1 catch gap-4">
       <div className="bg-white rounded-2xl flex  p-[1.5rem] justify-between ">
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-1">
