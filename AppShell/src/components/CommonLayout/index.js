@@ -9,6 +9,7 @@ import MainFooter from "./Footer";
 import AdminSideBar from "./AdminSideBar";
 import AdminRightSideBar from "./AdminRightSideBar";
 import { useUserCommon } from "#hooks/index.js";
+import { MobileNavBar } from "./MobileNavBar";
 function CommonLayout({ children }) {
   const location = useLocation();
   const { handleGetUserDetail } = useUserCommon();
@@ -26,9 +27,14 @@ function CommonLayout({ children }) {
           {location.pathname.startsWith("/admin") ? (
             <AdminSideBar />
           ) : (
-            <div className="block">
-              <SideNavBar />
-            </div>
+            <>
+              <div className="md:block">
+                <SideNavBar />
+              </div>
+              <div className="md:hidden fixed bottom-0">
+                <MobileNavBar />
+              </div>
+            </>
           )}
         </div>
         <div className="flex flex-col w-full">

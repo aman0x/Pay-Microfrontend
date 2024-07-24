@@ -4,10 +4,15 @@ import { usePayment } from "#hooks/index";
 function MainPayment() {
   const { handlePaymentData, handlePaymentStats } = usePayment();
   return (
-    <div className="w-full my-5 bg-primary p-5 rounded-2xl flex flex-col gap-2">
-      <PaymentTop handlePaymentStats={handlePaymentStats} />
-      <PaymentTable handlePaymentData={handlePaymentData} />
-    </div>
+    <>
+      <div className="md:hidden">
+        <p>Mobile Content of Transactions</p>
+      </div>
+      <div className="hidden w-full my-5 bg-primary p-5 rounded-2xl md:flex md:flex-col gap-2">
+        <PaymentTop handlePaymentStats={handlePaymentStats} />
+        <PaymentTable handlePaymentData={handlePaymentData} />
+      </div>
+    </>
   );
 }
 

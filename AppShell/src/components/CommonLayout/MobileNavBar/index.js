@@ -3,17 +3,32 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "./style.css";
 import { useDispatch } from "react-redux";
 import { authActions } from "Auth/authReducer";
+import { FaBell, FaCog, FaHome, FaInfo, FaUser } from "react-icons/fa";
 
-export function SideNavBar() {
+export function MobileNavBar() {
   const navigate = useNavigate();
   const location = useLocation();
-  const dispatch = useDispatch();
 
-  const [isNavOpen, setNavOpen] = useState(true);
+  const tabs = [
+    { name: "home", icon: <FaHome />, label: "Home", path: "/dashboard" },
+    {
+      name: "transactions",
+      icon: <FaUser />,
+      label: "Transactions",
+      path: "/dashboard/payment",
+    },
+    { name: "invoice", icon: <FaBell />, label: "Invoice", path: "/invoice" },
+    {
+      name: "statistic",
+      icon: <FaCog />,
+      label: "Statistic",
+      path: "/dashboard/statistic",
+    },
+  ];
+
   const [navIndex, setNavIndex] = useState(() => {
     return parseInt(localStorage.getItem("navIndex")) || 0;
   });
-  const [notificationIndex, setNotificationIndex] = useState(0);
 
   useEffect(() => {
     localStorage.setItem("navIndex", navIndex);
@@ -38,7 +53,7 @@ export function SideNavBar() {
 
   return (
     <>
-      <div className="hide md:block">
+      {/* <div className="hide md:block">
         <div
           className={`hidden bg-primary cursor-pointer ${
             isNavOpen ? "min-w-[13.5rem]" : "nav-close"
@@ -327,6 +342,38 @@ export function SideNavBar() {
             </span>
             <p className="hover:text-black hover:font-semibold">Logout</p>
           </button>
+        </div>
+      </div> */}
+
+      <div className="bg-green-200 w-[100vw] px-2 flex h-20">
+        {tabs.map((tab, index) => (
+          <div
+            key={tab.name}
+            className={`flex flex-1 w-full h-full justify-center items-center ${
+              navIndex === index ? "flex-row" : "flex-col"
+            }`}
+            onClick={() => handleNavigation(index, tab.path)}
+          >
+            <div
+              className={`${
+                navIndex === index ? "text-black" : "text-gray-500"
+              }`}
+            >
+              {tab.icon}
+            </div>
+            {navIndex === index && (
+              <p
+                className={`ml-2 ${
+                  navIndex === index ? "text-black" : "text-gray-500"
+                }`}
+              >
+                {tab.label}
+              </p>
+            )}
+          </div>
+        ))}
+        <div className="flex">
+          <div className="w-14 h-14 bg-red-400 rounded-full -mt-4 mr-2"></div>
         </div>
       </div>
     </>

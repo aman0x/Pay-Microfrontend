@@ -220,17 +220,25 @@ function Statistic() {
     fetchStats();
   }, [reportIndex]);
   return (
-    <div className="w-full my-5 bg-primary p-5 rounded-2xl flex flex-col gap-4">
-      <StatsTop
-        reportIndex={reportIndex}
-        setReportIndex={setReportIndex}
-        stats={stats}
-      />
-      <StatsChart reportIndex={reportIndex} stats={stats} />
-      <StatsCards reportIndex={reportIndex} stats={stats} />
-      <StatsTotalBar stats={stats} reportIndex={reportIndex} />
-      <StatsTable transactionData={transactionData} reportIndex={reportIndex} />
-    </div>
+    <>
+      <div className="md:hidden">
+        <p>Mobile Content of Statistics</p>
+      </div>
+      <div className="hidden w-full my-5 bg-primary p-5 rounded-2xl md:flex md:flex-col gap-4">
+        <StatsTop
+          reportIndex={reportIndex}
+          setReportIndex={setReportIndex}
+          stats={stats}
+        />
+        <StatsChart reportIndex={reportIndex} stats={stats} />
+        <StatsCards reportIndex={reportIndex} stats={stats} />
+        <StatsTotalBar stats={stats} reportIndex={reportIndex} />
+        <StatsTable
+          transactionData={transactionData}
+          reportIndex={reportIndex}
+        />
+      </div>
+    </>
   );
 }
 
