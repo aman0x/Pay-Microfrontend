@@ -51,7 +51,7 @@ function LatestActions({ handleLatestActionData }) {
             </a>
           </div>
           <div className="flex flex-col gap-2 text-[#B6B8BA]">
-            <div className="flex items-center bg-white rounded-xl py-[8px] px-[12px] gap-2  text-xs cursor-pointer">
+            <div className="flex items-center bg-white rounded-xl p-3 gap-2  text-xs cursor-pointer">
               <span>
                 <svg
                   width="16"
@@ -89,7 +89,7 @@ function LatestActions({ handleLatestActionData }) {
                 Invoices Send
               </p>
             </div>
-            <div className="flex items-center bg-white rounded-xl py-[8px] px-[12px] gap-2  text-xs font-normal cursor-default">
+            <div className="flex items-center bg-white rounded-xl p-3 gap-2  text-xs font-normal cursor-default">
               <span>
                 <svg
                   width="16"
