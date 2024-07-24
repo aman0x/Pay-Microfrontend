@@ -17,13 +17,13 @@ function MakeInvoice({isRepeatPayment=false}){
     const [amount,setAmount] = useState('')
     const [isValid,setIsValid] = useState(true)
     return(
-        <div className="mt-5 bg-primary p-[2rem] rounded-2xl flex flex-col gap-3 w-full ">
+        <div className="mt-5 mb-5 bg-primary p-[2rem] rounded-2xl flex flex-col gap-3 w-full ">
             <div className="flex justify-around gap-2">
                 <hr className={`my-2 max-w-[20%] ${stepIndex>0? "hr-gradient":"w-full border-t-2 border-gray-200"}`}/>
                 <div  className="flex flex-col items-center gap-1"> 
                     {
                         stepIndex<=0?
-                        <div className="p-2">
+                        <div className="">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fillRule="evenodd" clipRule="evenodd" d="M16 8C16 12.4182 12.4182 16 8 16C3.58172 16 0 12.4182 0 8C0 3.58172 3.58172 0 8 0C12.4182 0 16 3.58172 16 8ZM11.2242 5.57574C11.4586 5.81005 11.4586 6.18995 11.2242 6.42424L7.22424 10.4242C6.98992 10.6586 6.61008 10.6586 6.37574 10.4242L4.77574 8.82424C4.54142 8.58992 4.54142 8.21008 4.77574 7.97576C5.01005 7.74144 5.38995 7.74144 5.62426 7.97576L6.8 9.15144L8.58784 7.3636L10.3758 5.57574C10.6101 5.34142 10.9899 5.34142 11.2242 5.57574Z" fill={stepIndex===0?"#232B31":"#B6B8BA"} />
                             </svg>
@@ -44,7 +44,7 @@ function MakeInvoice({isRepeatPayment=false}){
                         </div>
 
                     }
-                    <div className="poppins-regular text-xs flex gap-1">
+                    <div className="poppins-light text-[10px]  flex gap-1">
                         Step <div>1</div>
                     </div>
                 </div>
@@ -52,9 +52,9 @@ function MakeInvoice({isRepeatPayment=false}){
                 <div className="flex flex-col items-center gap-1">
                     {
                         stepIndex<=1?
-                        <div className="p-2">
+                        <div className="">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fillRule="evenodd" clipRule="evenodd" d="M16 8C16 12.4182 12.4182 16 8 16C3.58172 16 0 12.4182 0 8C0 3.58172 3.58172 0 8 0C12.4182 0 16 3.58172 16 8ZM11.2242 5.57574C11.4586 5.81005 11.4586 6.18995 11.2242 6.42424L7.22424 10.4242C6.98992 10.6586 6.61008 10.6586 6.37574 10.4242L4.77574 8.82424C4.54142 8.58992 4.54142 8.21008 4.77574 7.97576C5.01005 7.74144 5.38995 7.74144 5.62426 7.97576L6.8 9.15144L8.58784 7.3636L10.3758 5.57574C10.6101 5.34142 10.9899 5.34142 11.2242 5.57574Z" fill={stepIndex===0?"#232B31":"#B6B8BA"} />
+                            <path fillRule="evenodd" clipRule="evenodd" d="M16 8C16 12.4182 12.4182 16 8 16C3.58172 16 0 12.4182 0 8C0 3.58172 3.58172 0 8 0C12.4182 0 16 3.58172 16 8ZM11.2242 5.57574C11.4586 5.81005 11.4586 6.18995 11.2242 6.42424L7.22424 10.4242C6.98992 10.6586 6.61008 10.6586 6.37574 10.4242L4.77574 8.82424C4.54142 8.58992 4.54142 8.21008 4.77574 7.97576C5.01005 7.74144 5.38995 7.74144 5.62426 7.97576L6.8 9.15144L8.58784 7.3636L10.3758 5.57574C10.6101 5.34142 10.9899 5.34142 11.2242 5.57574Z" fill={stepIndex===1?"#232B31":"#B6B8BA"} />
                             </svg>
                         </div>
                         :
@@ -73,7 +73,7 @@ function MakeInvoice({isRepeatPayment=false}){
                         </div>
 
                     }
-                    <div className="poppins-regular text-xs  flex gap-1">
+                    <div className="poppins-light text-[10px]   flex gap-1">
                         Step <div>2</div>
                     </div>
                 </div>
@@ -81,16 +81,16 @@ function MakeInvoice({isRepeatPayment=false}){
             </div>
             {
                 stepIndex===0 &&
-                <div className="mx-auto w-[45%] flex flex-col gap-8 mt-8">
+                <div className="mx-auto w-[35%] flex flex-col gap-8 mt-4">
                 <div className="text-center poppins-semibold">Enter Data</div>
                 <div className="flex flex-col gap-4">
                     <div>
                     <div className="relative">
-                        <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                    <div className="absolute inset-y-0 start-0 flex gap-2 items-center ps-5 pointer-events-none text-gray-400 text-xs poppins-semibold italic">
                         ₹
                         <PiLineVertical color='gray'/>
                         </div>
-                        <input type="number" value={amount} onChange={(e)=>setAmount(e.target.value)} className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full ps-14 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Amount."/>
+                        <input type="text" value={amount} onChange={(e)=>setAmount(e.target.value)}  className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-16 placeholder:italic placeholder:text-xs p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Amount."/>
                     </div>
                         {!isValid && <div className='text-red-400 text-xs'>Amount Should be greater than 10.</div>}
                     </div>    
@@ -98,7 +98,7 @@ function MakeInvoice({isRepeatPayment=false}){
                         !isRepeatPayment?
                         <div className="relative">
                             <div className="relative">                          
-                                <input type="text" value={receivers[receiverIndex]} className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full ps-14 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Receiver"  />
+                                <input type="text" value={receivers[receiverIndex]} className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Receiver"  />
                                 <button type="button" className="absolute inset-y-0 end-0 flex items-center pe-3" onClick={()=>setReceiversMenuView(!isReceiverMenu)}>
                                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <rect x="18" width="18" height="18" rx="8" transform="rotate(90 18 0)" fill="#DFE0E2"/>
@@ -115,7 +115,7 @@ function MakeInvoice({isRepeatPayment=false}){
                         
                     <div className="relative">
                         <div className="relative">       
-                        <input type="text" value={cards[typeIndex]} className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full ps-14 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Vendor Payment, Vendor Payment" required />
+                        <input type="text" value={cards[typeIndex]} className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Vendor Payment, Vendor Payment" required />
                         <button type="button" className="absolute inset-y-0 end-0 flex items-center pe-3" onClick={()=>setPaymentMenuView(!isPaymentTypeMenu)}>
                             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect x="18" width="18" height="18" rx="8" transform="rotate(90 18 0)" fill="#DFE0E2"/>
@@ -165,7 +165,7 @@ function MakeInvoice({isRepeatPayment=false}){
 function PaymentTypeMenu({cardIndex,setCardIndex}){
    
     return(
-        <div className="absolute w-[100%] top-10 bg-white rounded-2xl  py-[1rem] px-[1.2rem] gap-4 z-50">
+        <div className="absolute w-[100%] top-10 bg-white rounded-2xl shadow-lg  py-[1rem] px-[1.2rem] gap-4 z-50">
             <div className="text-sm poppins-semibold my-2 flex gap-1 items-start">
                 <span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -179,13 +179,13 @@ function PaymentTypeMenu({cardIndex,setCardIndex}){
                 </defs>
                 </svg>
                 </span>
-                <div>Select the Payment Type from the list (only one)</div>
+                <div className="text-xs poppins-regular text-[#787D81]">Select the Payment Type from the list (only one)</div>
             </div>
             <div className="flex flex-col gap-2 mt-4">
             {cards.map((card,i)=>{
                 return(
                         <div className="flex gap-4 justify-between items-center " key={i}>
-                            <div className={`${cardIndex===i?"poppins-bold":""} flex gap-1 items-center`} >
+                             <div className={`${cardIndex === i ? "poppins-bold" : "text-[#A3A6A9]"} flex gap-1 items-center text-sm`}>
                                 {card}
                             </div>
                             <div className={`max-w-[15px]  max-h-[15px] rounded-sm   ${cardIndex===i?"primary-linear-gr-bg":"bg-gray-300"}`}>
@@ -201,7 +201,7 @@ function PaymentTypeMenu({cardIndex,setCardIndex}){
 }
 function ReceiversMenu({cardIndex,setCardIndex}){
     return(
-        <div className="absolute w-[100%] bg-white rounded-2xl top-10  py-[1rem] px-[1.2rem] gap-4 z-50">
+        <div className="absolute w-[100%] bg-white rounded-2xl shadow-lg top-10  py-[1rem] px-[1.2rem] gap-4 z-50">
             <div className="text-sm poppins-semibold my-2 flex gap-1 items-start">
                 <span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -215,13 +215,13 @@ function ReceiversMenu({cardIndex,setCardIndex}){
                 </defs>
                 </svg>
                 </span>
-                <div>Select the Receiver from the list (only one)</div>
+                <div className="text-xs poppins-regular text-[#787D81]">Select the Receiver from the list (only one)</div>
             </div>
             <div className="flex flex-col gap-2 mt-4">
             {receivers.map((card,i)=>{
                 return(
                         <div className="flex gap-4 justify-between items-center " key={i}>
-                            <div className={`${cardIndex===i?"poppins-bold":""} flex gap-1 items-center`} >
+                            <div className={`${cardIndex === i ? "poppins-bold" : "text-[#A3A6A9]"} flex gap-1 items-center text-sm`}>
                                 {card}
                             </div>
                             <div className={`max-w-[15px]  max-h-[15px] rounded-sm   ${cardIndex===i?"primary-linear-gr-bg":"bg-gray-300"}`}>

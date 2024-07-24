@@ -230,7 +230,7 @@ function AddNewAccount({ isRepeatPayment = false }) {
 function PaymentTypeMenu({ cardIndex, setCardIndex }) {
 
     return (
-        <div className=" w-[100%] mt-2 bg-white rounded-2xl  py-[1rem] px-[1.2rem] gap-4 absolute z-50">
+        <div className=" w-[100%] mt-2 bg-white rounded-2xl shadow-lg py-[1rem] px-[1.2rem] gap-4 absolute z-50">
             <div className="text-sm poppins-semibold my-2 flex items-center gap-1">
                 <span>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -267,7 +267,7 @@ function PaymentTypeMenu({ cardIndex, setCardIndex }) {
 function ReceiversMenu({ cardIndex, setCardIndex }) {
 
     return (
-        <div className="w-[100%] bg-white rounded-2xl mt-2  py-[1rem] px-[1.2rem] gap-4 absolute z-50">
+        <div className="w-[100%] bg-white rounded-2xl shadow-lg mt-2  py-[1rem] px-[1.2rem] gap-4 absolute z-50">
             <div className="text-sm poppins-semibold my-2 flex items-center gap-1 ">
                 <span>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

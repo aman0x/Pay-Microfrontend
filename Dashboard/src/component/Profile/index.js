@@ -27,7 +27,7 @@ function Profile() {
     //     fectchUserKyc()
     // },[])
     return (
-        <div className="mt-5 bg-primary py-[2rem] pr-[2rem] rounded-3xl flex  gap-4 mr-2 w-full h-[80vh] max-h-[800px] my-4">
+        <div className="mt-5 bg-primary py-[2rem] pr-[2rem] rounded-3xl flex  gap-4 mr-2 w-full   my-4">
             <div className="flex flex-col gap-2 mt-2 p-[2rem] pr-[2rem] border-r-2">
                 {
                     isProfile?
