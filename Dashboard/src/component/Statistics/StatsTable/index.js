@@ -267,9 +267,9 @@ function StatsTable({ transactionData, reportIndex = 0 }) {
                 </div>
               </td>
               <td>
-                <div className="flex items-center gap-1 td-element1 text-[10px]">
-                  <div>Commission</div>
-                  <svg
+                <div className=" text-[10px]">
+                  {/* <div>Commission</div> */}
+                  {/* <svg
                     width="8"
                     height="13"
                     viewBox="0 0 8 13"
@@ -286,7 +286,7 @@ function StatsTable({ transactionData, reportIndex = 0 }) {
                       stroke="#B6B8BA"
                       strokeLinecap="round"
                     />
-                  </svg>
+                  </svg> */}
                 </div>
               </td>
             </tr>
