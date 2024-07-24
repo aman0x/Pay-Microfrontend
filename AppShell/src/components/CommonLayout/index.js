@@ -28,9 +28,7 @@ function CommonLayout({ children }) {
             <AdminSideBar />
           ) : (
             <>
-              <div className="md:block">
-                <SideNavBar />
-              </div>
+              <SideNavBar />
               <div className="md:hidden fixed bottom-0">
                 <MobileNavBar />
               </div>
