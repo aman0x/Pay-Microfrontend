@@ -143,231 +143,250 @@ function MainInvoice() {
           </div>
         </div>
 
-        <div className="bg-white rounded-3xl w-96 shadow-md p-5 mb-4">
-          <div className="flex justify-between items-center w-full pb-4 gap-4">
-            <div className="rounded-full w-12 h-12 shadow-inner bg-white flex justify-center items-center">
-              <img src="/images/red-vendor.svg" alt="transaction" />
+        <div className="flex flex-col w-full items-center my-2">
+          <div className="bg-white rounded-3xl w-96 shadow-md p-5 mb-4">
+            <div className="flex justify-between items-center w-full pb-4 gap-4">
+              <div className="rounded-full w-12 h-12 shadow-inner bg-white flex justify-center items-center">
+                <img src="/images/red-vendor.svg" alt="transaction" />
+              </div>
+              <div className="flex-1 poppins-semibold justify-center items-center">
+                <p>Vendor Payment</p>
+              </div>
+              <div className="poppins-semibold">
+                <p className="text-right text-[#232B31]">₹ 10,000.00</p>
+              </div>
             </div>
-            <div className="flex-1 poppins-semibold justify-center items-center">
-              <p>Vendor Payment</p>
-            </div>
-            <div className="poppins-semibold">
-              <p className="text-right text-[#232B31]">₹ 10,000.00</p>
-            </div>
-          </div>
-          <div className="flex justify-between items-center w-full pb-4 gap-4">
-            <p className="text-[#A3A6A9] text-left poppins-light">Date</p>
-            <div className="flex-1 text-xs poppins-semibold">
-              <hr className="my-2 border-t-2 border-dashed border-[#CDCED1]" />
-            </div>
-            <p className="text-[#787D81] text-right poppins-semibold">
-              12 April 2024 11:20
-            </p>
-          </div>
-          <div className="flex justify-between items-center w-full pb-4 gap-4">
-            <p className="text-[#A3A6A9] text-left poppins-light">Recepient</p>
-            <div className="flex-1 text-xs poppins-semibold">
-              <hr className="my-2 border-t-2 border-dashed border-[#CDCED1]" />
-            </div>
-            <p className="text-[#787D81] text-right poppins-semibold">
-              ANANTHARAPU A. T.
-            </p>
-          </div>
-          <div className="flex justify-between items-center w-full gap-4">
-            <p className="text-[#A3A6A9] text-left poppins-light">Status</p>
-            <div className="flex-1 text-xs poppins-semibold">
-              <hr className="my-2 border-t-2 border-dashed border-[#CDCED1]" />
-            </div>
-            <div className="flex gap-2">
-              <img src="/images/yellow-status.svg" alt="In Progress" />
+            <div className="flex justify-between items-center w-full pb-4 gap-4">
+              <p className="text-[#A3A6A9] text-left poppins-light">Date</p>
+              <div className="flex-1 text-xs poppins-semibold">
+                <hr className="my-2 border-t-2 border-dashed border-[#CDCED1]" />
+              </div>
               <p className="text-[#787D81] text-right poppins-semibold">
-                In Progress
+                12 April 2024 11:20
               </p>
+            </div>
+            <div className="flex justify-between items-center w-full pb-4 gap-4">
+              <p className="text-[#A3A6A9] text-left poppins-light">
+                Recepient
+              </p>
+              <div className="flex-1 text-xs poppins-semibold">
+                <hr className="my-2 border-t-2 border-dashed border-[#CDCED1]" />
+              </div>
+              <p className="text-[#787D81] text-right poppins-semibold">
+                ANANTHARAPU A. T.
+              </p>
+            </div>
+            <div className="flex justify-between items-center w-full gap-4">
+              <p className="text-[#A3A6A9] text-left poppins-light">Status</p>
+              <div className="flex-1 text-xs poppins-semibold">
+                <hr className="my-2 border-t-2 border-dashed border-[#CDCED1]" />
+              </div>
+              <div className="flex gap-2">
+                <img src="/images/yellow-status.svg" alt="In Progress" />
+                <p className="text-[#787D81] text-right poppins-semibold">
+                  In Progress
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-3xl w-96 shadow-md p-5 mb-4">
+            <div className="flex justify-between items-center w-full pb-4 gap-4">
+              <div className="rounded-full w-12 h-12 shadow-inner bg-white flex justify-center items-center">
+                <img src="/images/failed-vendor.svg" alt="transaction" />
+              </div>
+              <div className="flex-1 poppins-semibold justify-center items-center text-[#E45757]">
+                <p>Vendor Payment</p>
+              </div>
+              <div className="poppins-semibold">
+                <p className="text-right text-[#E45757]">₹ 10,000.00</p>
+              </div>
+            </div>
+            <div className="flex justify-between items-center w-full pb-4 gap-4">
+              <p className="text-[#A3A6A9] text-left poppins-light">Date</p>
+              <div className="flex-1 text-xs poppins-semibold">
+                <hr className="my-2 border-t-2 border-dashed border-[#CDCED1]" />
+              </div>
+              <p className="text-[#787D81] text-right poppins-semibold">
+                12 April 2024 11:20
+              </p>
+            </div>
+            <div className="flex justify-between items-center w-full pb-4 gap-4">
+              <p className="text-[#A3A6A9] text-left poppins-light">
+                Recepient
+              </p>
+              <div className="flex-1 text-xs poppins-semibold">
+                <hr className="my-2 border-t-2 border-dashed border-[#CDCED1]" />
+              </div>
+              <p className="text-[#787D81] text-right poppins-semibold">
+                ANANTHARAPU A. T.
+              </p>
+            </div>
+            <div className="flex justify-between items-center w-full gap-4">
+              <p className="text-[#A3A6A9] text-left poppins-light">Status</p>
+              <div className="flex-1 text-xs poppins-semibold">
+                <hr className="my-2 border-t-2 border-dashed border-[#CDCED1]" />
+              </div>
+              <div className="flex gap-2">
+                <img src="/images/red-status.svg" alt="In Progress" />
+                <p className="text-[#787D81] text-right poppins-semibold">
+                  Failed
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-3xl w-96 shadow-md p-5 mb-4">
+            <div className="flex justify-between items-center w-full pb-4 gap-4">
+              <div className="rounded-full w-12 h-12 shadow-inner bg-white flex justify-center items-center">
+                <img src="/images/green-vendor.svg" alt="transaction" />
+              </div>
+              <div className="flex-1 poppins-semibold justify-center items-center text-[#232B31]">
+                <p>Vendor Payment</p>
+              </div>
+              <div className="poppins-semibold">
+                <p className="text-right text-[#27A963]">₹ 10,000.00</p>
+              </div>
+            </div>
+            <div className="flex justify-between items-center w-full pb-4 gap-4">
+              <p className="text-[#A3A6A9] text-left poppins-light">Date</p>
+              <div className="flex-1 text-xs poppins-semibold">
+                <hr className="my-2 border-t-2 border-dashed border-[#CDCED1]" />
+              </div>
+              <p className="text-[#787D81] text-right poppins-semibold">
+                12 April 2024 11:20
+              </p>
+            </div>
+            <div className="flex justify-between items-center w-full pb-4 gap-4">
+              <p className="text-[#A3A6A9] text-left poppins-light">
+                Recepient
+              </p>
+              <div className="flex-1 text-xs poppins-semibold">
+                <hr className="my-2 border-t-2 border-dashed border-[#CDCED1]" />
+              </div>
+              <p className="text-[#787D81] text-right poppins-semibold">
+                ANANTHARAPU A. T.
+              </p>
+            </div>
+            <div className="flex justify-between items-center w-full gap-4">
+              <p className="text-[#A3A6A9] text-left poppins-light">Status</p>
+              <div className="flex-1 text-xs poppins-semibold">
+                <hr className="my-2 border-t-2 border-dashed border-[#CDCED1]" />
+              </div>
+              <div className="flex gap-2">
+                <img src="/images/green-status.svg" alt="In Progress" />
+                <p className="text-[#787D81] text-right poppins-semibold">
+                  Succussed
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-3xl w-96 shadow-md p-5 mb-4">
+            <div className="flex justify-between items-center w-full pb-4 gap-4">
+              <div className="rounded-full w-12 h-12 shadow-inner bg-white flex justify-center items-center">
+                <img src="/images/green-vendor.svg" alt="transaction" />
+              </div>
+              <div className="flex-1 poppins-semibold justify-center items-center">
+                <p>Vendor Payment</p>
+              </div>
+              <div className="poppins-semibold">
+                <p className="text-right text-[#FFB442]">₹ 10,000.00</p>
+              </div>
+            </div>
+            <div className="flex justify-between items-center w-full pb-4 gap-4">
+              <p className="text-[#A3A6A9] text-left poppins-light">Date</p>
+              <div className="flex-1 text-xs poppins-semibold">
+                <hr className="my-2 border-t-2 border-dashed border-[#CDCED1]" />
+              </div>
+              <p className="text-[#787D81] text-right poppins-semibold">
+                12 April 2024 11:20
+              </p>
+            </div>
+            <div className="flex justify-between items-center w-full pb-4 gap-4">
+              <p className="text-[#A3A6A9] text-left poppins-light">
+                Recepient
+              </p>
+              <div className="flex-1 text-xs poppins-semibold">
+                <hr className="my-2 border-t-2 border-dashed border-[#CDCED1]" />
+              </div>
+              <p className="text-[#787D81] text-right poppins-semibold">
+                ANANTHARAPU A. T.
+              </p>
+            </div>
+            <div className="flex justify-between items-center w-full gap-4">
+              <p className="text-[#A3A6A9] text-left poppins-light">Status</p>
+              <div className="flex-1 text-xs poppins-semibold">
+                <hr className="my-2 border-t-2 border-dashed border-[#CDCED1]" />
+              </div>
+              <div className="flex gap-2">
+                <img src="/images/yellow-status.svg" alt="In Progress" />
+                <p className="text-[#787D81] text-right poppins-semibold">
+                  In Progress
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-3xl w-96 shadow-md p-5 mb-4">
+            <div className="flex justify-between items-center w-full pb-4 gap-4">
+              <div className="rounded-full w-12 h-12 shadow-inner bg-white flex justify-center items-center">
+                <img src="/images/green-vendor.svg" alt="transaction" />
+              </div>
+              <div className="flex-1 poppins-semibold justify-center items-center text-[#232B31]">
+                <p>Vendor Payment</p>
+              </div>
+              <div className="poppins-semibold">
+                <p className="text-right text-[#27A963]">₹ 10,000.00</p>
+              </div>
+            </div>
+            <div className="flex justify-between items-center w-full pb-4 gap-4">
+              <p className="text-[#A3A6A9] text-left poppins-light">Date</p>
+              <div className="flex-1 text-xs poppins-semibold">
+                <hr className="my-2 border-t-2 border-dashed border-[#CDCED1]" />
+              </div>
+              <p className="text-[#787D81] text-right poppins-semibold">
+                12 April 2024 11:20
+              </p>
+            </div>
+            <div className="flex justify-between items-center w-full pb-4 gap-4">
+              <p className="text-[#A3A6A9] text-left poppins-light">
+                Recepient
+              </p>
+              <div className="flex-1 text-xs poppins-semibold">
+                <hr className="my-2 border-t-2 border-dashed border-[#CDCED1]" />
+              </div>
+              <p className="text-[#787D81] text-right poppins-semibold">
+                ANANTHARAPU A. T.
+              </p>
+            </div>
+            <div className="flex justify-between items-center w-full gap-4">
+              <p className="text-[#A3A6A9] text-left poppins-light">Status</p>
+              <div className="flex-1 text-xs poppins-semibold">
+                <hr className="my-2 border-t-2 border-dashed border-[#CDCED1]" />
+              </div>
+              <div className="flex gap-2">
+                <img src="/images/green-status.svg" alt="In Progress" />
+                <p className="text-[#787D81] text-right poppins-semibold">
+                  Succussed
+                </p>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-3xl w-96 shadow-md p-5 mb-4">
-          <div className="flex justify-between items-center w-full pb-4 gap-4">
-            <div className="rounded-full w-12 h-12 shadow-inner bg-white flex justify-center items-center">
-              <img src="/images/failed-vendor.svg" alt="transaction" />
-            </div>
-            <div className="flex-1 poppins-semibold justify-center items-center text-[#E45757]">
-              <p>Vendor Payment</p>
-            </div>
-            <div className="poppins-semibold">
-              <p className="text-right text-[#E45757]">₹ 10,000.00</p>
-            </div>
-          </div>
-          <div className="flex justify-between items-center w-full pb-4 gap-4">
-            <p className="text-[#A3A6A9] text-left poppins-light">Date</p>
-            <div className="flex-1 text-xs poppins-semibold">
-              <hr className="my-2 border-t-2 border-dashed border-[#CDCED1]" />
-            </div>
-            <p className="text-[#787D81] text-right poppins-semibold">
-              12 April 2024 11:20
-            </p>
-          </div>
-          <div className="flex justify-between items-center w-full pb-4 gap-4">
-            <p className="text-[#A3A6A9] text-left poppins-light">Recepient</p>
-            <div className="flex-1 text-xs poppins-semibold">
-              <hr className="my-2 border-t-2 border-dashed border-[#CDCED1]" />
-            </div>
-            <p className="text-[#787D81] text-right poppins-semibold">
-              ANANTHARAPU A. T.
-            </p>
-          </div>
-          <div className="flex justify-between items-center w-full gap-4">
-            <p className="text-[#A3A6A9] text-left poppins-light">Status</p>
-            <div className="flex-1 text-xs poppins-semibold">
-              <hr className="my-2 border-t-2 border-dashed border-[#CDCED1]" />
-            </div>
-            <div className="flex gap-2">
-              <img src="/images/red-status.svg" alt="In Progress" />
-              <p className="text-[#787D81] text-right poppins-semibold">
-                Failed
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-white rounded-3xl w-96 shadow-md p-5 mb-4">
-          <div className="flex justify-between items-center w-full pb-4 gap-4">
-            <div className="rounded-full w-12 h-12 shadow-inner bg-white flex justify-center items-center">
-              <img src="/images/green-vendor.svg" alt="transaction" />
-            </div>
-            <div className="flex-1 poppins-semibold justify-center items-center text-[#232B31]">
-              <p>Vendor Payment</p>
-            </div>
-            <div className="poppins-semibold">
-              <p className="text-right text-[#27A963]">₹ 10,000.00</p>
-            </div>
-          </div>
-          <div className="flex justify-between items-center w-full pb-4 gap-4">
-            <p className="text-[#A3A6A9] text-left poppins-light">Date</p>
-            <div className="flex-1 text-xs poppins-semibold">
-              <hr className="my-2 border-t-2 border-dashed border-[#CDCED1]" />
-            </div>
-            <p className="text-[#787D81] text-right poppins-semibold">
-              12 April 2024 11:20
-            </p>
-          </div>
-          <div className="flex justify-between items-center w-full pb-4 gap-4">
-            <p className="text-[#A3A6A9] text-left poppins-light">Recepient</p>
-            <div className="flex-1 text-xs poppins-semibold">
-              <hr className="my-2 border-t-2 border-dashed border-[#CDCED1]" />
-            </div>
-            <p className="text-[#787D81] text-right poppins-semibold">
-              ANANTHARAPU A. T.
-            </p>
-          </div>
-          <div className="flex justify-between items-center w-full gap-4">
-            <p className="text-[#A3A6A9] text-left poppins-light">Status</p>
-            <div className="flex-1 text-xs poppins-semibold">
-              <hr className="my-2 border-t-2 border-dashed border-[#CDCED1]" />
-            </div>
-            <div className="flex gap-2">
-              <img src="/images/green-status.svg" alt="In Progress" />
-              <p className="text-[#787D81] text-right poppins-semibold">
-                Succussed
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-white rounded-3xl w-96 shadow-md p-5 mb-4">
-          <div className="flex justify-between items-center w-full pb-4 gap-4">
-            <div className="rounded-full w-12 h-12 shadow-inner bg-white flex justify-center items-center">
-              <img src="/images/green-vendor.svg" alt="transaction" />
-            </div>
-            <div className="flex-1 poppins-semibold justify-center items-center">
-              <p>Vendor Payment</p>
-            </div>
-            <div className="poppins-semibold">
-              <p className="text-right text-[#FFB442]">₹ 10,000.00</p>
-            </div>
-          </div>
-          <div className="flex justify-between items-center w-full pb-4 gap-4">
-            <p className="text-[#A3A6A9] text-left poppins-light">Date</p>
-            <div className="flex-1 text-xs poppins-semibold">
-              <hr className="my-2 border-t-2 border-dashed border-[#CDCED1]" />
-            </div>
-            <p className="text-[#787D81] text-right poppins-semibold">
-              12 April 2024 11:20
-            </p>
-          </div>
-          <div className="flex justify-between items-center w-full pb-4 gap-4">
-            <p className="text-[#A3A6A9] text-left poppins-light">Recepient</p>
-            <div className="flex-1 text-xs poppins-semibold">
-              <hr className="my-2 border-t-2 border-dashed border-[#CDCED1]" />
-            </div>
-            <p className="text-[#787D81] text-right poppins-semibold">
-              ANANTHARAPU A. T.
-            </p>
-          </div>
-          <div className="flex justify-between items-center w-full gap-4">
-            <p className="text-[#A3A6A9] text-left poppins-light">Status</p>
-            <div className="flex-1 text-xs poppins-semibold">
-              <hr className="my-2 border-t-2 border-dashed border-[#CDCED1]" />
-            </div>
-            <div className="flex gap-2">
-              <img src="/images/yellow-status.svg" alt="In Progress" />
-              <p className="text-[#787D81] text-right poppins-semibold">
-                In Progress
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-white rounded-3xl w-96 shadow-md p-5 mb-4">
-          <div className="flex justify-between items-center w-full pb-4 gap-4">
-            <div className="rounded-full w-12 h-12 shadow-inner bg-white flex justify-center items-center">
-              <img src="/images/green-vendor.svg" alt="transaction" />
-            </div>
-            <div className="flex-1 poppins-semibold justify-center items-center text-[#232B31]">
-              <p>Vendor Payment</p>
-            </div>
-            <div className="poppins-semibold">
-              <p className="text-right text-[#27A963]">₹ 10,000.00</p>
-            </div>
-          </div>
-          <div className="flex justify-between items-center w-full pb-4 gap-4">
-            <p className="text-[#A3A6A9] text-left poppins-light">Date</p>
-            <div className="flex-1 text-xs poppins-semibold">
-              <hr className="my-2 border-t-2 border-dashed border-[#CDCED1]" />
-            </div>
-            <p className="text-[#787D81] text-right poppins-semibold">
-              12 April 2024 11:20
-            </p>
-          </div>
-          <div className="flex justify-between items-center w-full pb-4 gap-4">
-            <p className="text-[#A3A6A9] text-left poppins-light">Recepient</p>
-            <div className="flex-1 text-xs poppins-semibold">
-              <hr className="my-2 border-t-2 border-dashed border-[#CDCED1]" />
-            </div>
-            <p className="text-[#787D81] text-right poppins-semibold">
-              ANANTHARAPU A. T.
-            </p>
-          </div>
-          <div className="flex justify-between items-center w-full gap-4">
-            <p className="text-[#A3A6A9] text-left poppins-light">Status</p>
-            <div className="flex-1 text-xs poppins-semibold">
-              <hr className="my-2 border-t-2 border-dashed border-[#CDCED1]" />
-            </div>
-            <div className="flex gap-2">
-              <img src="/images/green-status.svg" alt="In Progress" />
-              <p className="text-[#787D81] text-right poppins-semibold">
-                Succussed
-              </p>
-            </div>
-          </div>
-        </div>
-        
       </div>
       <div className="hidden my-5 w-full bg-primary p-5 rounded-2xl  md:flex md:flex-col gap-2">
         <NoitificationBar />
-        <InvoiceTop handleInvoiceStats={handleInvoiceStats} isInvoiceSend={isInvoiceSend} setIsInvoiceSend={setIsInvoiceSend} />
-        <InvoiceTable handleInvoiceData={handleInvoiceData} isInvoiceSend={isInvoiceSend} />
+        <InvoiceTop
+          handleInvoiceStats={handleInvoiceStats}
+          isInvoiceSend={isInvoiceSend}
+          setIsInvoiceSend={setIsInvoiceSend}
+        />
+        <InvoiceTable
+          handleInvoiceData={handleInvoiceData}
+          isInvoiceSend={isInvoiceSend}
+        />
       </div>
     </>
   );
