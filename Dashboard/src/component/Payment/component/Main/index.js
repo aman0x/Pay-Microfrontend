@@ -48,6 +48,9 @@ function MainPayment() {
                 />
               </svg>
             </button>
+            {isDropMenuOpen && (
+              <DropMenu setDropMenu={setDropMenu} navigate={navigate} />
+            )}
           </div>
           <div
             className="rounded-2xl bg-white h-14 w-16 shadow-sm flex justify-center items-center"
@@ -62,9 +65,6 @@ function MainPayment() {
             <span className="poppins-light text-[#787D81]">(121)</span>{" "}
           </h1>
         </div>
-        {isDropMenuOpen && (
-          <DropMenu setDropMenu={setDropMenu} navigate={navigate} />
-        )}
         <div className="p-4">
           {paymentData.map((card)=>{
             return(
@@ -119,7 +119,7 @@ export function DropMenu({ setDropMenu, navigate }) {
   return (
     <div
       ref={menuRef}
-      className="absolute end-4 top-36 bg-white rounded-[20px] p-[1rem] w-[295px] z-50 cursor-pointer shadow-md"
+      className="absolute -end-[4.4rem] top-0 bg-white rounded-[20px] p-[1rem] w-[295px] z-50 cursor-pointer shadow-md"
     >
       <div className="flex justify-end" onClick={() => setDropMenu(false)}>
         <svg
