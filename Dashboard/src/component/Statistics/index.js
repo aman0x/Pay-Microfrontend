@@ -189,7 +189,7 @@ import { useEffect, useState } from "react";
 import { useStatistic } from "#hooks/index";
 function Statistic() {
   const [reportIndex, setReportIndex] = useState(0);
-  const { handleStatisticData, handleStatisticStats } = useStatistic();
+  const {  handleStatisticStats } = useStatistic();
   const [stats, setStats] = useState({
     card_number: "1234567824681257",
     incomes: 124000.7,
@@ -208,14 +208,11 @@ function Statistic() {
     total_recieved_amount: 124000.24,
     total_paid_tax: 140.24,
   });
-  const [transactionData, setTransactionData] = useState(transactions);
   useEffect(() => {
     const fetchStats = async () => {
       const stats = await handleStatisticStats(reportIndex);
-      const data = await handleStatisticData(reportIndex);
+     
       setStats(stats);
-      setTransactionData(data);
-      console.log(transactionData);
     };
     fetchStats();
   }, [reportIndex]);
@@ -234,7 +231,7 @@ function Statistic() {
         <StatsCards reportIndex={reportIndex} stats={stats} />
         <StatsTotalBar stats={stats} reportIndex={reportIndex} />
         <StatsTable
-          transactionData={transactionData}
+          transactionDatas={transactions}
           reportIndex={reportIndex}
         />
       </div>

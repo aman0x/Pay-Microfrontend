@@ -7,7 +7,10 @@ import "./style.css"
 import { toast } from "react-toastify"
 import { useSearchParams } from "react-router-dom"
 import { useAccounts } from "#hooks/index"
-const receivers = ['test']
+const receivers = [{
+    name:'test',
+    id:1
+}]
 const types = ['Vendor Payment']
 function NewPayment({isRepeatPayment=false}){
     const [isPaymentTypeMenu,setPaymentMenuView] = useState(false)
@@ -15,10 +18,12 @@ function NewPayment({isRepeatPayment=false}){
     const [isReceiverMenu,setReceiversMenuView] = useState(false)
     const [stepIndex,setStepIndex] = useState(0)
     const [receiverIndex,setReceiverIndex] = useState(0)
+    const [paymentDetail,setPaymentDetail] = useState({})
     const [typeIndex,setTypeIndex] = useState(0)
     const [amount,setAmount] = useState('')
     const [searchParams] = useSearchParams()
     const bankId = searchParams.get('bankId')
+    const [beneficiaries,setBeneficiaries] = useState(receivers)
     const [bankDetail,setBankDetail] = useState({
         "id": 10,
         "user": 1,
@@ -31,15 +36,20 @@ function NewPayment({isRepeatPayment=false}){
         "pan": null,
         "bank_name": "SBI BANK"
       })
-    const {handleGetBankById} = useAccounts()
+    const {handleGetBankById,handleGetBeneficiary} = useAccounts()
     useEffect(()=>{
         const fetchBankDetails = async(bankId)=>{
             const data = await handleGetBankById(bankId)
             setBankDetail(data)
         }
+        const fetchBeneficiary =async()=>{
+            const beneficiaries = await handleGetBeneficiary()
+            setBeneficiaries(beneficiaries)
+        }
         if(bankId){
             fetchBankDetails(bankId)
         }
+        fetchBeneficiary()
         
     },[bankId])
     return(
@@ -152,7 +162,7 @@ function NewPayment({isRepeatPayment=false}){
                         <div className="relative">
                             <div className="relative">
                                 
-                                <input type="text" value={receivers[receiverIndex]} className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-xs p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Receiver"  />
+                                <input type="text" value={beneficiaries[receiverIndex].name} className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-xs p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Receiver"  />
                                 <button type="button" className="absolute inset-y-0 end-0 flex items-center pe-3" onClick={()=>setReceiversMenuView(!isReceiverMenu)}>
                                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <rect x="18" width="18" height="18" rx="8" transform="rotate(90 18 0)" fill="#DFE0E2"/>
@@ -161,7 +171,7 @@ function NewPayment({isRepeatPayment=false}){
                                 </button>
                                 
                             </div>
-                            {isReceiverMenu && <ReceiversMenu cardIndex={receiverIndex} setCardIndex={setReceiverIndex}/>}
+                            {isReceiverMenu && <ReceiversMenu cardIndex={receiverIndex} setCardIndex={setReceiverIndex} beneficiaries={beneficiaries}/>}
                         </div>
                         :
                         null
@@ -207,23 +217,24 @@ function NewPayment({isRepeatPayment=false}){
                 data={{
                     amount:amount,
                     payment_type:types[typeIndex],
-                    receiver:2
-                    /// temp id
+                    receiver:beneficiaries[receiverIndex]
+                
                 }}
                 bankDetail={bankDetail}
-                 // receiver:receivers[receiverIndex]
+                setPaymentDetail={setPaymentDetail}
                 />
                 
             }
                 
             {
                 stepIndex===2 &&
-                <PaymentStep3 setStepIndex={setStepIndex} data={{
+                <PaymentStep3 setStepIndex={setStepIndex} 
+                data={{
                     amount:amount,
                     payment_type:'INDIVIDUAL',
-                    receiver:2
-                   /// temp id
+                    receiver:beneficiaries[receiverIndex]
                 }}
+                paymentDetail={paymentDetail}
                 bankDetail={bankDetail}
                 />
             }
@@ -269,7 +280,7 @@ function PaymentTypeMenu({cardIndex,setCardIndex}){
         </div>
     )
 }
-function ReceiversMenu({cardIndex,setCardIndex}){
+function ReceiversMenu({cardIndex,setCardIndex,beneficiaries}){
    
     return(
         <div className="absolute w-[100%] bg-white rounded-2xl shadow-lg top-10  py-[1rem] px-[1.2rem] gap-4 z-50">
@@ -289,12 +300,11 @@ function ReceiversMenu({cardIndex,setCardIndex}){
                 <div className="text-xs poppins-regular text-[#787D81]">Select the Receiver from the list (only one)</div>
             </div>
             <div className="flex flex-col gap-2 mt-4">
-            {receivers.map((card,i)=>{
+            {beneficiaries.map((card,i)=>{
                 return(
                         <div className="flex gap-4 justify-between items-center " key={i}>
                             <div className={`${cardIndex === i ? "poppins-bold" : "text-[#A3A6A9]"} flex gap-1 items-center text-sm`}>
-                            
-                                {card}
+                                {card.name}
                             </div>
                             <div className={`max-w-[15px]  max-h-[15px] rounded-sm   ${cardIndex===i?"primary-linear-gr-bg":"bg-gray-300"}`}>
                             <FaSquare  color={`${cardIndex===i?"black":"white"}`} className="rounded-sm p-[1px]"  onClick={()=>setCardIndex(i)}/>

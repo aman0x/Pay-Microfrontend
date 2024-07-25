@@ -25,13 +25,45 @@ function PaymentDetailPage() {
   const paymentId = searchParams.get("paymentId");
   useEffect(() => {
     const fetchPaymentDetail = async () => {
-      const data = await handlePaymentCardDetail(paymentId);
+      const data = await handlePaymentDetail(paymentId);
       setPaymentDetail(data);
     };
     fetchPaymentDetail();
   }, [paymentId]);
   return (
-    <div className="my-5 bg-primary p-[1.25rem] rounded-2xl flex flex-col gap-5 w-full mr-5 ">
+    <>
+    <div className="md:hidden w-full">
+        <div className="flex flex-col p-4">
+            <div className="flex flex-col ">
+                <div className="poppins-bold text-[12px] text-[#232B31]">Transaction:</div>
+                <div className="flex gap-1 items-center">
+                    <div className="bg-[#F0F1F2] p-3 shadow-xl rounded-[50%]">
+                        <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14.376 0H12.024C11.008 0 10.4 0.564456 10.4 1.50769V3.69125C10.4 4.63448 11.008 5.19894 12.024 5.19894H14.376C15.392 5.19894 16 4.63448 16 3.69125V1.50769C16 0.564456 15.392 0 14.376 0ZM14.552 2.45836C14.456 2.54748 14.328 2.59204 14.2 2.59204C14.072 2.59204 13.944 2.54748 13.848 2.45836L13.704 2.32467V3.98833C13.704 4.24828 13.48 4.45623 13.2 4.45623C12.92 4.45623 12.696 4.24828 12.696 3.98833V2.32467L12.552 2.45836C12.36 2.63661 12.04 2.63661 11.848 2.45836C11.656 2.28011 11.656 1.98302 11.848 1.80477L12.848 0.876393C12.888 0.839257 12.944 0.809549 13 0.787268C13.016 0.779841 13.032 0.779841 13.048 0.772414C13.088 0.75756 13.128 0.750133 13.176 0.750133C13.192 0.750133 13.208 0.750133 13.224 0.750133C13.28 0.750133 13.328 0.75756 13.384 0.779841C13.392 0.779841 13.392 0.779841 13.4 0.779841C13.456 0.802122 13.504 0.83183 13.544 0.868966C13.552 0.876393 13.552 0.876393 13.56 0.876393L14.56 1.80477C14.752 1.98302 14.752 2.28011 14.552 2.45836Z" fill="#CDCED1"/>
+                        <path d="M0 7.21167V10.9252C0 12.626 1.48 14 3.312 14H12.68C14.512 14 16 12.6186 16 10.9178V7.21167C16 6.71406 15.568 6.313 15.032 6.313H0.968C0.432 6.313 0 6.71406 0 7.21167ZM4.8 11.5119H3.2C2.872 11.5119 2.6 11.2594 2.6 10.9549C2.6 10.6504 2.872 10.3979 3.2 10.3979H4.8C5.128 10.3979 5.4 10.6504 5.4 10.9549C5.4 11.2594 5.128 11.5119 4.8 11.5119ZM10 11.5119H6.8C6.472 11.5119 6.2 11.2594 6.2 10.9549C6.2 10.6504 6.472 10.3979 6.8 10.3979H10C10.328 10.3979 10.6 10.6504 10.6 10.9549C10.6 11.2594 10.328 11.5119 10 11.5119Z" fill="#CDCED1"/>
+                        <path d="M9.2 2.12298V4.29911C9.2 4.79672 8.768 5.19778 8.232 5.19778H0.968C0.424 5.19778 0 4.78187 0 4.28425C0.008 3.445 0.368 2.68001 0.968 2.12298C1.568 1.56595 2.4 1.22431 3.312 1.22431H8.232C8.768 1.22431 9.2 1.62537 9.2 2.12298Z" fill="#CDCED1"/>
+                        </svg>
+                    </div>
+                    <div className="text-[#787D81] poppins-bold text-[12px]">
+                        {paymentDetail.payment_type||"Vendor Payment"}
+                    </div>  
+                </div>
+                <div >
+                    <div className="flex gap-1  w-full">
+                        <div className="poppins-regular text-[#A3A6A9]">Transaction ID:</div>
+                        {/* <hr style={{
+                                    border: '1px dashed #A3A6A9',
+                                    borderWidth: '1px 0 0 0',
+                                    height: '0'
+                                    }} /> */}
+                        <div>{paymentDetail.transaction_id||54653747}</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div className="hidden md:my-5 bg-primary p-[1.25rem] rounded-2xl md:flex flex-col gap-5 w-full mr-5 ">
       <div className="flex justify-between">
         <div className="flex gap-1 items-center mb-2">
           <div>
@@ -124,7 +156,7 @@ function PaymentDetailPage() {
         <div className="rounded-xl shadow-md min-h-16 min-w-52 pl-4 flex flex-col justify-center items-start">
           <div className="poppins-semibold text-xs mb-2">Payment :</div>
           <div className="color-linear poppins-semibold">
-            ₹ {paymentDetail.payment_total_amount}
+            ₹ {paymentDetail.transaction_amount}
           </div>
         </div>
       </div>
@@ -132,7 +164,7 @@ function PaymentDetailPage() {
         <div className="flex flex-col bg-white p-[1rem] rounded-2xl gap-4">
           <div className="flex flex-col gap-4">
             <div className="poppins-semibold">Beneficiary Details</div>
-            <div className="poppins-semibold">ANANTHARAPU ARUNA THEJASWINI</div>
+            <div className="poppins-semibold">{paymentDetail.benficiary_name}</div>
           </div>
           <div className="flex flex-col gap-1">
             <div className="text-[#4E5459] text-xs poppins-semibold">
@@ -162,7 +194,7 @@ function PaymentDetailPage() {
               <div className="text-[#A3A6A9] min-w-fit">Bank</div>
               <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]" />
               <div className="min-w-fit">
-                {paymentDetail.bank}, {paymentDetail.bank_branch}
+                {paymentDetail.bank_account?.split("-")[1]   }
               </div>
             </div>
             <div className="flex text-xs justify-between">
@@ -202,7 +234,7 @@ function PaymentDetailPage() {
           <div className="flex justify-between text-sm ">
             <div className="color-linear poppins-semibold">Total:</div>
             <div className="color-linear poppins-semibold">
-              ₹ {paymentDetail.payment_total_amount}
+              ₹ {paymentDetail.transaction_amount}
             </div>
           </div>
         </div>
@@ -530,6 +562,7 @@ function PaymentDetailPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 export default PaymentDetailPage;

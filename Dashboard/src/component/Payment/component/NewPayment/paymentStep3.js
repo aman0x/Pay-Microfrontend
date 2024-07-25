@@ -1,6 +1,6 @@
 import { usePayment } from "#hooks/index";
 
-function PaymentStep3({data,setStepIndex,bankDetail}){
+function PaymentStep3({data,setStepIndex,bankDetail,paymentDetail}){
     const {handlePaymentCreate} = usePayment()
     return(
         <div className="flex flex-col gap-4">
@@ -13,17 +13,17 @@ function PaymentStep3({data,setStepIndex,bankDetail}){
                             <div className="flex gap-2 items-center ">
                                 <div className="text-[#A3A6A9] text-sm ">Name</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-sm min-w-fit">{bankDetail.account_name}</div>
+                                <div className="poppins-semibold text-sm min-w-fit">{data.receiver.name}</div>
                             </div>
                             <div className="flex gap-2 items-center">
                                         <div className="text-[#A3A6A9] text-sm">Phone</div>
                                         <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                        <div className="poppins-semibold text-sm min-w-fit">+919573749630</div>
+                                        <div className="poppins-semibold text-sm min-w-fit">{data.receiver.phone_number}</div>
                             </div>
                             <div className="flex gap-2 items-center">
                                 <div className="text-[#A3A6A9] text-sm">Mail</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-sm min-w-fit">rajiv@mail.com</div>
+                                <div className="poppins-semibold text-sm min-w-fit">{data.receiver.email}</div>
                             </div>
                         </div>     
                     </div>
@@ -53,7 +53,7 @@ function PaymentStep3({data,setStepIndex,bankDetail}){
                                     <div className="flex gap-2 items-center">
                                         <div className="text-[#A3A6A9] text-sm min-w-fit">Card</div>
                                         <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                        <div className="poppins-semibold text-sm min-w-fit">59321881239525092591</div>
+                                        <div className="poppins-semibold text-sm min-w-fit">{paymentDetail.card_no}</div>
                                 </div>
                                 <div className="flex gap-2 items-center">
                                         <div className="text-[#A3A6A9] text-sm min-w-fit">GST Method</div>
@@ -89,7 +89,11 @@ function PaymentStep3({data,setStepIndex,bankDetail}){
                 </button>
                 <button type="submit"
                     onClick={() => {
-                    handlePaymentCreate(data)
+                        const newData= {
+                            ...data,
+                            receiver:data.receiver.id
+                        } 
+                    handlePaymentCreate(newData)
                     }}
                     className="flex primary-btn items-center w-full gap-1 justify-center rounded-xl bg-gray-950 px-3 p-4 text-sm font-semibold leading-7 text-white shadow-sm ">
                         <span>

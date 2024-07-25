@@ -48,8 +48,11 @@ export function GET_DATE_FORMAT(date){
 
 export function maskCardNumber(cardNumber) {
     
-    if (cardNumber.length !== 16) {
-      throw new Error('Card number must be 16 digits long.');
+    // if (cardNumber.length !== 16) {
+    //   throw new Error('Card number must be 16 digits long.');
+    // }
+    if(!cardNumber || cardNumber.length<4){
+        return cardNumber
     }
     const lastFourDigits = cardNumber.slice(-4);
     const maskedSection = '*'.repeat(12); 

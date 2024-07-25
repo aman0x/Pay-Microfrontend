@@ -1,10 +1,10 @@
 import { configureStore ,combineReducers} from "@reduxjs/toolkit"
-import testReducer from "./testSlice.js"
+import shellReducer from "./shellSlice.js"
 import authReducer from "Auth/authReducer"
 const reduxStore = configureStore({
     reducer:{
       auth:authReducer,
-      test:testReducer
+      shell:shellReducer
     }
 })
 export default reduxStore;

@@ -11,7 +11,7 @@ export const PRIVATE_ENDPOINTS = {
     GET_ALL_TRANSACTIONS:BASE_URL+'/api/transaction/transactions/',
     GET_PAYMENT_DETAIL:BASE_URL+'/api/payment/data',
     CREATE_PAYMENT:BASE_URL+'/api/payment/data/',
-    GET_NOTIFICATION:BASE_URL+'/api/notification/notifications',
+    GET_NOTIFICATION:BASE_URL+'/api/notification/notifications/',
     GET_STATISTIC_STATS:BASE_URL+'/api/statistic/transaction-dashboard/',
     GET_STATISTIC_INVOICE_SENT_STATS:BASE_URL+'/api/statistic/invoice-sent-dashboard/',
     GET_STATISTIC_INVOICE_RECEIVED_STATS:BASE_URL+'/api/statistic/invoice-received-dashboard/',
@@ -27,7 +27,8 @@ export const PRIVATE_ENDPOINTS = {
     GET_CREATE_USER_KYC:BASE_URL+'/api/user/kyc/',
     UPDATE_USER_PROFILE:BASE_URL+'/api/user/profile/',
     GET_FAQS:BASE_URL+'/api/support/faqs/',
-    GET_SUPPORT_INFO:BASE_URL+'/api/support/support-info/'
+    GET_SUPPORT_INFO:BASE_URL+'/api/support/support-info/',
+    GET_ALL_INVOICE:BASE_URL+'/api/invoice/invoices/',
 }
 
 

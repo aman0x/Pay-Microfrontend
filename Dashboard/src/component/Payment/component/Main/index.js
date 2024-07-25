@@ -3,10 +3,21 @@ import PaymentTop from "../PaymentTop";
 import { usePayment } from "#hooks/index";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import moment from "moment";
 function MainPayment() {
   const { handlePaymentData, handlePaymentStats } = usePayment();
   const [isDropMenuOpen, setDropMenu] = useState(false);
+  const [paymentData, setPaymentData] = useState([]);
   const navigate = useNavigate();
+  useEffect(() => {
+    const fetchPaymentData = async () => {
+      // const query = queryCheck(filterState,searchValue,orderingState)
+      const data = await handlePaymentData( );
+      setPaymentData(data);
+    }
+    fetchPaymentData()
+    
+  }, []);
   return (
     <>
       {/* Mobile Content */}
@@ -55,116 +66,28 @@ function MainPayment() {
           <DropMenu setDropMenu={setDropMenu} navigate={navigate} />
         )}
         <div className="p-4">
-          <div className="grid grid-cols-6 gap-4 mt-4">
+          {paymentData.map((card)=>{
+            return(
+              <div className="grid grid-cols-6 gap-4 mt-4">
             <div className="flex justify-startitems-center">
               <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
                 <img src="/images/red-transaction.svg" alt="transaction" />
               </div>
             </div>
             <div className="flex flex-col col-span-3">
-              <p className="text-[#4E5459] text-sm">Transaction Title</p>
-              <p className="text-[#787D81] text-xs">12 April 2024 11:20</p>
+              <p className="text-[#4E5459] text-sm">{card.payment_type||"Vendor Payment"}</p>
+              <p className="text-[#787D81] text-xs">{moment(card.payment_datetime).format("DD MMMM YYYY HH:mm")}</p>
             </div>
             <div className="flex flex-col col-span-2 items-end">
-              <p className="text-[#E45757] text-sm">- ₹ 10,000.00</p>
+              <p className="text-[#E45757] text-sm">- ₹ {card.transaction_amount}</p>
               <div className="flex gap-2">
                 <img src="/images/green-status.svg" alt="Status" />
-                <p className="text-[#787D81] text-xs">Succussed</p>
+                <p className="text-[#787D81] text-xs">In Progress</p>
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-6 gap-4 mt-4">
-            <div className="flex justify-start items-center">
-              <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
-                <img src="/images/green-transaction.svg" alt="transaction" />
-              </div>
-            </div>
-            <div className="flex flex-col col-span-3">
-              <p className="text-[#4E5459] text-sm">Transaction Title</p>
-              <p className="text-[#787D81] text-xs">12 April 2024 11:20</p>
-            </div>
-            <div className="flex flex-col col-span-2 items-end">
-              <p className="text-[#27A963] text-sm">+ ₹ 10,000.00</p>
-              <div className="flex gap-2">
-                <img src="/images/yellow-status.svg" alt="Status" />
-                <p className="text-[#787D81] text-xs">Succussed</p>
-              </div>
-            </div>
-          </div>
-          <div className="grid grid-cols-6 gap-4 mt-4">
-            <div className="flex justify-start items-center">
-              <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
-                <img src="/images/green-transaction.svg" alt="transaction" />
-              </div>
-            </div>
-            <div className="flex flex-col col-span-3">
-              <p className="text-[#4E5459] text-sm">Transaction Title</p>
-              <p className="text-[#787D81] text-xs">12 April 2024 11:20</p>
-            </div>
-            <div className="flex flex-col col-span-2 items-end">
-              <p className="text-[#E45757] text-sm">- ₹ 10,000.00</p>
-              <div className="flex gap-2">
-                <img src="/images/yellow-status.svg" alt="Status" />
-                <p className="text-[#787D81] text-xs">Succussed</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-6 gap-4 mt-4">
-            <div className="flex justify-start items-center">
-              <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
-                <img src="/images/red-transaction.svg" alt="transaction" />
-              </div>
-            </div>
-            <div className="flex flex-col col-span-3">
-              <p className="text-[#4E5459] text-sm">Transaction Title</p>
-              <p className="text-[#787D81] text-xs">12 April 2024 11:20</p>
-            </div>
-            <div className="flex flex-col col-span-2 items-end">
-              <p className="text-[#E45757] text-sm">- ₹ 10,000.00</p>
-              <div className="flex gap-2">
-                <img src="/images/green-status.svg" alt="Status" />
-                <p className="text-[#787D81] text-xs">Succussed</p>
-              </div>
-            </div>
-          </div>
-          <div className="grid grid-cols-6 gap-4 mt-4">
-            <div className="flex justify-start items-center">
-              <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
-                <img src="/images/green-transaction.svg" alt="transaction" />
-              </div>
-            </div>
-            <div className="flex flex-col col-span-3">
-              <p className="text-[#4E5459] text-sm">Transaction Title</p>
-              <p className="text-[#787D81] text-xs">12 April 2024 11:20</p>
-            </div>
-            <div className="flex flex-col col-span-2 items-end">
-              <p className="text-[#27A963] text-sm">+ ₹ 10,000.00</p>
-              <div className="flex gap-2">
-                <img src="/images/yellow-status.svg" alt="Status" />
-                <p className="text-[#787D81] text-xs">Succussed</p>
-              </div>
-            </div>
-          </div>
-          <div className="grid grid-cols-6 gap-4 mt-4">
-            <div className="flex justify-start items-center">
-              <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
-                <img src="/images/green-transaction.svg" alt="transaction" />
-              </div>
-            </div>
-            <div className="flex flex-col col-span-3">
-              <p className="text-[#4E5459] text-sm">Transaction Title</p>
-              <p className="text-[#787D81] text-xs">12 April 2024 11:20</p>
-            </div>
-            <div className="flex flex-col col-span-2 items-end">
-              <p className="text-[#E45757] text-sm">- ₹ 10,000.00</p>
-              <div className="flex gap-2">
-                <img src="/images/yellow-status.svg" alt="Status" />
-                <p className="text-[#787D81] text-xs">Succussed</p>
-              </div>
-            </div>
-          </div>
-
+            )
+          })}
           <div className="h-20"></div>
         </div>
       </div>

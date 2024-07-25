@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-const testSlice = createSlice({
+const shellSlice = createSlice({
     name:'test',
     initialState:{
         value:1
@@ -11,5 +11,5 @@ const testSlice = createSlice({
     }
 })
 
-export const testActions =  testSlice.actions;
-export default testSlice.reducer
+export const testActions =  shellSlice.actions;
+export default shellSlice.reducer

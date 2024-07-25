@@ -4,17 +4,31 @@ import Templates from "../Templates/index.js";
 import LatestActions from "../LatestActions/index.js";
 import NoitificationBar from "../NotificationBar/index.js";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { useDashboard } from "#hooks/index.js";
 import MobileTopNavbar from "../MobileTopNavbar/index.js";
 import { MobilePaymentCard } from "../MobilePaymentCard/index.js";
+import { useEffect, useState } from "react";
+import moment from "moment";
 function DashboardMain() {
   const userId = useSelector((state) => state.auth.userId);
+  const [latestActions, setLatestActions] = useState([]);
+  const navigate = useNavigate();
   const {
     handleLatestActionData,
     handlePaymentCardData,
     handleQuickSendData,
     handleTemplateData,
   } = useDashboard();
+
+
+  useEffect(() => {
+    const fetchLatestAction = async () => {
+      const data = await handleLatestActionData();
+      setLatestActions(data);
+    };
+    fetchLatestAction();
+  }, []);
   return (
     <>
       {/* Mobile Content */}
@@ -50,117 +64,32 @@ function DashboardMain() {
             <p className="text-sm poppins-semibold">Latest Transactions</p>
             <p className="text-[#4E5459] text-xs">View All</p>
           </div>
-          <div className="grid grid-cols-6 gap-4 mt-4">
-            <div className="flex justify-start items-center">
-              <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
-                <img src="/images/red-transaction.svg" alt="transaction" />
+
+          {latestActions.map((card) => {
+            return (
+              <div
+                onClick={() => navigate(`/dashboard/payment/payment-detail?paymentId=${card.id}`)}
+                className="grid grid-cols-6 gap-4 mt-4">
+                <div className="flex justify-start items-center">
+                  <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
+                    <img src="/images/red-transaction.svg" alt="transaction" />
+                  </div>
+                </div>
+                <div className="flex flex-col col-span-3">
+                  <p className="text-[#4E5459] text-sm">{card.payment_type || "Vendor Payment"}</p>
+                  <p className="text-[#787D81] text-xs">{moment(card.payment_datetime).format("DD MMMM YYYY HH:mm")}</p>
+                </div>
+                <div className="flex flex-col col-span-2 items-end">
+                  <p className="text-[#E45757] text-sm">- ₹ {card.transaction_amount}</p>
+                  <div className="flex gap-2">
+                    <img src="/images/green-status.svg" alt="Status" />
+                    <p className="text-[#787D81] text-xs">In Progress</p>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className="flex flex-col col-span-3">
-              <p className="text-[#4E5459] text-sm">Transaction Title</p>
-              <p className="text-[#787D81] text-xs">12 April 2024 11:20</p>
-            </div>
-            <div className="flex flex-col col-span-2 items-end">
-              <p className="text-[#E45757] text-sm">- ₹ 10,000.00</p>
-              <div className="flex gap-2">
-                <img src="/images/green-status.svg" alt="Status" />
-                <p className="text-[#787D81] text-xs">Succussed</p>
-              </div>
-            </div>
-          </div>
-          <div className="grid grid-cols-6 gap-4 mt-4">
-            <div className="flex justify-start items-center">
-              <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
-                <img src="/images/green-transaction.svg" alt="transaction" />
-              </div>
-            </div>
-            <div className="flex flex-col col-span-3">
-              <p className="text-[#4E5459] text-sm">Transaction Title</p>
-              <p className="text-[#787D81] text-xs">12 April 2024 11:20</p>
-            </div>
-            <div className="flex flex-col col-span-2 items-end">
-              <p className="text-[#27A963] text-sm">+ ₹ 10,000.00</p>
-              <div className="flex gap-2">
-                <img src="/images/yellow-status.svg" alt="Status" />
-                <p className="text-[#787D81] text-xs">Succussed</p>
-              </div>
-            </div>
-          </div>
-          <div className="grid grid-cols-6 gap-4 mt-4">
-            <div className="flex justify-start items-center">
-              <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
-                <img src="/images/green-transaction.svg" alt="transaction" />
-              </div>
-            </div>
-            <div className="flex flex-col col-span-3">
-              <p className="text-[#4E5459] text-sm">Transaction Title</p>
-              <p className="text-[#787D81] text-xs">12 April 2024 11:20</p>
-            </div>
-            <div className="flex flex-col col-span-2 items-end">
-              <p className="text-[#E45757] text-sm">- ₹ 10,000.00</p>
-              <div className="flex gap-2">
-                <img src="/images/yellow-status.svg" alt="Status" />
-                <p className="text-[#787D81] text-xs">Succussed</p>
-              </div>
-            </div>
-          </div>
-          
-          
-          
-          <div className="grid grid-cols-6 gap-4 mt-4">
-            <div className="flex justify-start items-center">
-              <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
-                <img src="/images/red-transaction.svg" alt="transaction" />
-              </div>
-            </div>
-            <div className="flex flex-col col-span-3">
-              <p className="text-[#4E5459] text-sm">Transaction Title</p>
-              <p className="text-[#787D81] text-xs">12 April 2024 11:20</p>
-            </div>
-            <div className="flex flex-col col-span-2 items-end">
-              <p className="text-[#E45757] text-sm">- ₹ 10,000.00</p>
-              <div className="flex gap-2">
-                <img src="/images/green-status.svg" alt="Status" />
-                <p className="text-[#787D81] text-xs">Succussed</p>
-              </div>
-            </div>
-          </div>
-          <div className="grid grid-cols-6 gap-4 mt-4">
-            <div className="flex justify-start items-center">
-              <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
-                <img src="/images/green-transaction.svg" alt="transaction" />
-              </div>
-            </div>
-            <div className="flex flex-col col-span-3">
-              <p className="text-[#4E5459] text-sm">Transaction Title</p>
-              <p className="text-[#787D81] text-xs">12 April 2024 11:20</p>
-            </div>
-            <div className="flex flex-col col-span-2 items-end">
-              <p className="text-[#27A963] text-sm">+ ₹ 10,000.00</p>
-              <div className="flex gap-2">
-                <img src="/images/yellow-status.svg" alt="Status" />
-                <p className="text-[#787D81] text-xs">Succussed</p>
-              </div>
-            </div>
-          </div>
-          <div className="grid grid-cols-6 gap-4 mt-4">
-            <div className="flex justify-start items-center">
-              <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
-                <img src="/images/green-transaction.svg" alt="transaction" />
-              </div>
-            </div>
-            <div className="flex flex-col col-span-3">
-              <p className="text-[#4E5459] text-sm">Transaction Title</p>
-              <p className="text-[#787D81] text-xs">12 April 2024 11:20</p>
-            </div>
-            <div className="flex flex-col col-span-2 items-end">
-              <p className="text-[#E45757] text-sm">- ₹ 10,000.00</p>
-              <div className="flex gap-2">
-                <img src="/images/yellow-status.svg" alt="Status" />
-                <p className="text-[#787D81] text-xs">Succussed</p>
-              </div>
-            </div>
-          </div>
+            )
+          })
+          }
 
 
 

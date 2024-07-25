@@ -1,21 +1,38 @@
 import { PiLineVertical } from "react-icons/pi"
 import { FaCircleArrowRight,FaSquare } from "react-icons/fa6"
-import { useState } from "react"
+import { useState ,useEffect} from "react"
 // import PaymentStep2 from "./paymentStep2"
 // import PaymentStep3 from "./paymentStep3"
 import "./style.css"
 import NewInvoiceStep2 from "./NewInvoiceStep2"
 import { toast } from "react-toastify"
-const receivers = ['test']
+import { useCommon } from "#hooks/index"
+
+const receivers = [{
+    name:'test',
+    id:1
+}]
 const cards = ['Vendor Payment']
 function MakeInvoice({isRepeatPayment=false}){
+    const { handleGetBeneficiary}  = useCommon()
     const [isPaymentTypeMenu,setPaymentMenuView] = useState(false)
     const [isReceiverMenu,setReceiversMenuView] = useState(false)
+    const [beneficiaries,setBeneficiaries] = useState(receivers)
     const [stepIndex,setStepIndex] = useState(0)
     const [receiverIndex,setReceiverIndex] = useState(0)
     const [typeIndex,setTypeIndex] = useState(0)
     const [amount,setAmount] = useState('')
     const [isValid,setIsValid] = useState(true)
+    useEffect(()=>{
+        
+        const fetchBeneficiary =async()=>{
+            const beneficiaries = await handleGetBeneficiary()
+            setBeneficiaries(beneficiaries)
+        }
+       
+        fetchBeneficiary()
+        
+    },[])
     return(
         <div className="mt-5 mb-5 bg-primary p-[2rem] rounded-2xl flex flex-col gap-3 w-full ">
             <div className="flex justify-around gap-2">
@@ -98,7 +115,7 @@ function MakeInvoice({isRepeatPayment=false}){
                         !isRepeatPayment?
                         <div className="relative">
                             <div className="relative">                          
-                                <input type="text" value={receivers[receiverIndex]} className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Receiver"  />
+                                <input type="text" value={beneficiaries[receiverIndex].name} className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Receiver"  />
                                 <button type="button" className="absolute inset-y-0 end-0 flex items-center pe-3" onClick={()=>setReceiversMenuView(!isReceiverMenu)}>
                                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <rect x="18" width="18" height="18" rx="8" transform="rotate(90 18 0)" fill="#DFE0E2"/>
@@ -107,7 +124,7 @@ function MakeInvoice({isRepeatPayment=false}){
                                 </button>
                                 
                             </div>
-                            {isReceiverMenu && <ReceiversMenu cardIndex={receiverIndex} setCardIndex={setReceiverIndex}/>}
+                            {isReceiverMenu && <ReceiversMenu cardIndex={receiverIndex} setCardIndex={setReceiverIndex} beneficiaries={beneficiaries} setReceiversMenuView={setReceiversMenuView}/>}
                         </div>
                         :
                         null
@@ -125,7 +142,7 @@ function MakeInvoice({isRepeatPayment=false}){
                         
                         </div>
                    
-                    {isPaymentTypeMenu && <PaymentTypeMenu setCardIndex={setTypeIndex} cardIndex={typeIndex}/>}
+                    {isPaymentTypeMenu && <PaymentTypeMenu setCardIndex={setTypeIndex} cardIndex={typeIndex} setPaymentMenuView={setPaymentMenuView}/>}
                     </div>
                 </div>
                 
@@ -134,7 +151,7 @@ function MakeInvoice({isRepeatPayment=false}){
                         onClick={() => {
                             if(amount.length>1){
                                 setStepIndex(1)
-                                console.log(cards[typeIndex])
+                               
                             }
                             else{
                                setIsValid(false)
@@ -153,7 +170,7 @@ function MakeInvoice({isRepeatPayment=false}){
                 data={{
                     amount:amount,
                     payment_type:cards[1],
-                    beneficiary:2
+                    beneficiary:beneficiaries[receiverIndex]
                 }}
                 />
                 
@@ -162,7 +179,7 @@ function MakeInvoice({isRepeatPayment=false}){
         </div>
     )
 }
-function PaymentTypeMenu({cardIndex,setCardIndex}){
+function PaymentTypeMenu({cardIndex,setCardIndex,setPaymentMenuView}){
    
     return(
         <div className="absolute w-[100%] top-10 bg-white rounded-2xl shadow-lg  py-[1rem] px-[1.2rem] gap-4 z-50">
@@ -189,7 +206,9 @@ function PaymentTypeMenu({cardIndex,setCardIndex}){
                                 {card}
                             </div>
                             <div className={`max-w-[15px]  max-h-[15px] rounded-sm   ${cardIndex===i?"primary-linear-gr-bg":"bg-gray-300"}`}>
-                            <FaSquare  color={`${cardIndex===i?"black":"white"}`} className="rounded-sm p-[1px]"  onClick={()=>setCardIndex(i)}/>
+                            <FaSquare  color={`${cardIndex===i?"black":"white"}`} className="rounded-sm p-[1px]"  onClick={()=>{
+                                setPaymentMenuView(false)
+                                setCardIndex(i)}}/>
                             </div> 
                         </div>
                 )
@@ -199,7 +218,7 @@ function PaymentTypeMenu({cardIndex,setCardIndex}){
         </div>
     )
 }
-function ReceiversMenu({cardIndex,setCardIndex}){
+function ReceiversMenu({cardIndex,setCardIndex,beneficiaries,setReceiversMenuView}){
     return(
         <div className="absolute w-[100%] bg-white rounded-2xl shadow-lg top-10  py-[1rem] px-[1.2rem] gap-4 z-50">
             <div className="text-sm poppins-semibold my-2 flex gap-1 items-start">
@@ -218,14 +237,18 @@ function ReceiversMenu({cardIndex,setCardIndex}){
                 <div className="text-xs poppins-regular text-[#787D81]">Select the Receiver from the list (only one)</div>
             </div>
             <div className="flex flex-col gap-2 mt-4">
-            {receivers.map((card,i)=>{
+            {beneficiaries.map((card,i)=>{
                 return(
                         <div className="flex gap-4 justify-between items-center " key={i}>
                             <div className={`${cardIndex === i ? "poppins-bold" : "text-[#A3A6A9]"} flex gap-1 items-center text-sm`}>
-                                {card}
+                                {card.name}
                             </div>
                             <div className={`max-w-[15px]  max-h-[15px] rounded-sm   ${cardIndex===i?"primary-linear-gr-bg":"bg-gray-300"}`}>
-                            <FaSquare  color={`${cardIndex===i?"black":"white"}`} className="rounded-sm p-[1px]"  onClick={()=>setCardIndex(i)}/>
+                            <FaSquare  color={`${cardIndex===i?"black":"white"}`} className="rounded-sm p-[1px]"  onClick={()=>{
+                                setTimeout(()=>{
+                                    setReceiversMenuView(false)
+                                },100)
+                                setCardIndex(i)}}/>
                             </div> 
                         </div>
                 )

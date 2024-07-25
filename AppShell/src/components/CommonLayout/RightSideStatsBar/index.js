@@ -1,18 +1,29 @@
 import { FaSquare } from "react-icons/fa";
 import { QuickAction } from "./../RightSideBar";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import CalenderStats from "./calendar";
 import { useNavigate } from "react-router-dom";
-const cards = [
-  "**** **** **** 1001",
-  "**** **** **** 1001",
-  "**** **** **** 1001",
-  "**** **** **** 1001",
-];
+import { useDispatch ,useSelector} from "react-redux";
+import { authActions } from "Auth/authReducer";
+import { useUserCommon } from "#hooks/index.js";
+import { maskCardNumber } from "../../../utils/Helpers.js";
 function RightSideStatsBar() {
-  const [isCardMenuOpen, setCardMenuOpen] = useState(false);
   const [calenderIndex, setcalenderIndex] = useState(0);
-
+  const {handlePaymentCardData} = useUserCommon()
+  const navigate = useNavigate()
+  const [isCardMenuOpen, setCardMenuOpen] = useState(false)
+  const [cardIndex, setCardIndex] = useState(0)
+  const dispatch = useDispatch()
+  const card = useSelector((state)=>state.auth.cards)
+  useEffect(() => {
+      const fetchCards = async () => {
+        const data = await handlePaymentCardData();
+        dispatch(authActions.setCards({ cards: data }));
+      };
+      if(card.length<1){
+          fetchCards();
+      }
+    }, [card]);
   return (
     <div className="flex flex-col gap-4 mt-2">
       <div className="mt-2">
@@ -40,7 +51,7 @@ function RightSideStatsBar() {
               </svg>
             </div>
             <div className="poppins-semibold text-xs text-[#787D81]">
-              **** **** **** 1001
+             {maskCardNumber(card[cardIndex]?.card_no)}
             </div>
           </div>
           <div
@@ -73,7 +84,7 @@ function RightSideStatsBar() {
           </div>
         </div>
         <hr className="w-[100%]" />
-        <div className="">{isCardMenuOpen && <CardsMenu />}</div>
+        <div className="relative">{isCardMenuOpen && <CardsMenu cardIndex={cardIndex} setCardIndex={setCardIndex} cards={card} setCardMenuOpen={setCardMenuOpen}/>}</div>
       </div>
       <div className="flex xl:w-72  bg-[#F0F1F2] py-[8px] rounded-xl justify-evenly px-2 ">
         <button
@@ -151,10 +162,9 @@ function RightSideStatsBar() {
   );
 }
 
-function CardsMenu() {
-  const [cardIndex, setCardIndex] = useState(0);
+function CardsMenu({cards,cardIndex,setCardIndex,setCardMenuOpen}) {
   return (
-    <div className="w-[100%] bg-white rounded-2xl shadow-lg  p-4 gap-4">
+    <div className="w-[100%] bg-white rounded-2xl shadow-lg  p-4 gap-4 absolute z-50">
       <div className="text-sm poppins-semibold my-2 flex gap-1 items-center">
         <span>
           <svg
@@ -203,7 +213,7 @@ function CardsMenu() {
                     <path d="M23.9869 0.408642C23.4558 0.212983 22.6225 0 21.5913 0C18.9544 0 17.0909 1.31662 17.0796 3.20086C17.0579 4.58575 18.4006 5.36635 19.4153 5.83308C20.4579 6.31102 20.8065 6.60858 20.8013 7.03251C20.7962 7.68572 19.9681 7.97717 19.206 7.97717C18.1469 7.97717 17.5725 7.83451 16.6867 7.46765L16.3577 7.31377L15.9823 9.49047C16.6268 9.75033 17.7818 9.9786 18.974 10C21.7831 10 23.6146 8.69459 23.6352 6.68195C23.6569 5.57831 22.9381 4.74065 21.4067 4.04973C20.4827 3.6044 19.9042 3.30072 19.9042 2.84419C19.9042 2.44064 20.3981 2.01671 21.4294 2.01671C22.3152 2.00041 22.9391 2.19199 23.4269 2.38255L23.6796 2.49363L24.0498 0.397432L23.9869 0.408642ZM30.8416 0.180373H28.7791C28.1346 0.180373 27.6561 0.350555 27.3714 0.98237L23.4073 9.86141H26.2113L26.7764 8.40722L30.1971 8.41231C30.2827 8.75166 30.524 9.86039 30.524 9.86039H33L30.8416 0.180373ZM13.2825 0.100887H15.9524L14.2818 9.786H11.6119L13.2825 0.0957912V0.100887ZM6.49378 5.43463L6.76706 6.78284L9.38231 0.180373H12.2131L8.00147 9.8451H5.18306L2.87306 1.66106C2.82459 1.51839 2.76581 1.42158 2.62041 1.33802C1.84181 0.934474 0.966281 0.605319 0 0.377051L0.0319688 0.174259H4.3395C4.92009 0.195659 5.39241 0.377051 5.55328 0.992561L6.49378 5.43972V5.43463ZM27.5375 6.42719L28.6069 3.71548C28.5904 3.74096 28.8265 3.15806 28.9606 2.7912L29.1431 3.62376L29.7619 6.42108H27.5375V6.42719Z" />
                   </svg>
                 </div>
-                {card}
+                {maskCardNumber(card.card_no)}
               </div>
               <div
                 className={`max-w-[15px]  max-h-[15px] rounded-sm   ${
@@ -213,7 +223,9 @@ function CardsMenu() {
                 <FaSquare
                   color={`${cardIndex === i ? "black" : "white"}`}
                   className="rounded-sm p-[1px]"
-                  onClick={() => setCardIndex(i)}
+                  onClick={() => {
+                    setCardMenuOpen(false)
+                    setCardIndex(i)}}
                 />
               </div>
             </div>

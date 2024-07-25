@@ -86,10 +86,10 @@ export function useDashboard(){
         }
     }
     
-    const handleLatestActionData=async()=>{
+    const handleLatestActionData=async(query)=>{
         try{
             const arr = []
-           const response = await ApiCall({url:PRIVATE_ENDPOINTS.GET_LATEST_ACTIONS,method:"GET",PRIVATE_API:true,current_user:user})
+           const response = await ApiCall({url:query?PRIVATE_ENDPOINTS.GET_ALL_TRANSACTIONS+query:PRIVATE_ENDPOINTS.GET_ALL_TRANSACTIONS,method:"GET",PRIVATE_API:true,current_user:user})
            
            if(Array.isArray(response.data)){
             return response.data;
@@ -128,11 +128,11 @@ export function usePayment(){
         toast("Error in getting Templates");
         }
     }
-    const handlePaymentData=async()=>{
+    const handlePaymentData=async(query='')=>{
         try {
             const arr = []
             const response = await ApiCall({ 
-              url: PRIVATE_ENDPOINTS.GET_ALL_TRANSACTIONS, 
+              url: PRIVATE_ENDPOINTS.GET_ALL_TRANSACTIONS+query, 
               method: "GET", 
               PRIVATE_API: true, 
               current_user: user 
@@ -155,7 +155,7 @@ export function usePayment(){
        const handlePaymentDetail=async(paymentId=1)=>{
         try {
             const response = await ApiCall({ 
-              url: PRIVATE_ENDPOINTS.GET_ALL_PAYMENT+ `${paymentId}/`, 
+              url: PRIVATE_ENDPOINTS.GET_ALL_TRANSACTIONS+ `${paymentId}/`, 
               method: "GET", 
               PRIVATE_API: true, 
               current_user: user 
@@ -234,12 +234,12 @@ export function useStatistic(){
         toast("Error in getting Templates");
         }
     }
-    const handleStatisticData =async(index)=>{
+    const handleStatisticData =async(index,query)=>{
 
         try{
             const arr = []
            const response = await ApiCall({
-            url: index>0?(index===1?PRIVATE_ENDPOINTS.GET_STATISTIC_INVOICE_SENT:PRIVATE_ENDPOINTS.GET_STATISTIC_INVOICE_RECEIVED):PRIVATE_ENDPOINTS.GET_STATISTIC_TRANSACTION, 
+            url: index>0?PRIVATE_ENDPOINTS.GET_ALL_INVOICE+query:PRIVATE_ENDPOINTS.GET_STATISTIC_TRANSACTION+query, 
             method:"GET",
             PRIVATE_API:true,
             current_user:user
@@ -319,10 +319,10 @@ export function useSupport(){
         toast("Error Getting Support Info");
         }
     }
-    const handleGetFaq = async(topic="general")=>{
+    const handleGetFaq = async(topic="general",query=null)=>{
         try{
             const arr = []
-           const response = await ApiCall({url:PRIVATE_ENDPOINTS.GET_FAQS+`?topic=${topic}`
+           const response = await ApiCall({url:query?PRIVATE_ENDPOINTS.GET_FAQS+`?topic=${topic}`+query:PRIVATE_ENDPOINTS.GET_FAQS+`?topic=${topic}`
             ,method:"GET",PRIVATE_API:true,current_user:user})
            console.log(response)
            if(Array.isArray(response.data)){

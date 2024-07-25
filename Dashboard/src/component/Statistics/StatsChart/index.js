@@ -2,12 +2,12 @@ import ChartComp from "../../Chart";
 const statsHead = ["Income/Expenses", "Sended Invoices", "Received Invoices"];
 function StatsChart({ reportIndex, stats }) {
   return (
-    <div className="w-full h-[22rem] bg-white rounded-2xl p-[2rem]">
+    <div className="w-full h-[22rem] bg-white rounded-2xl p-[2rem] flex flex-col">
       <div className="flex flex-col">
         <span className="poppins-semibold">{statsHead[reportIndex]}</span>
         <span className="text-xs poppins-light text-gray-400">per day</span>
       </div>
-      <div className="h-48 my-4">
+      <div className="h-48 my-4 w-full">
         <ChartComp
           index={reportIndex}
           data1={stats.monthly_income || stats.monthly_invoice_sent}

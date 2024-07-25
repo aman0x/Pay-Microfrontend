@@ -274,8 +274,8 @@ function ReportTable({reportIndex,data}){
                                         </div>
                                     </div>
                                 </td>
-                                <td><div className="td-element">{transaction.sent_from}</div></td>
-                                <td><div className="td-element">{transaction.type}</div></td>
+                                <td><div className="td-element">{transaction.beneficiary_name}</div></td>
+                                <td><div className="td-element">{transaction.transaction_type}</div></td>
                                 <td><div className="td-element">{transaction.bank}</div></td>
                                 <td><div className="td-element">{transaction.account_type}</div></td>
                                 <td><div className="td-element">{transaction.transaction_id}</div></td>

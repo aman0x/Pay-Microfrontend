@@ -55,6 +55,7 @@
   },
   "proxy": "http://localhost:8003",
   "imports": {
-    "#hooks/*": "./src/hooks/*"
+    "#hooks/*": "./src/hooks/*",
+    "#utils/*":"./src/utils/*"
   }
 }

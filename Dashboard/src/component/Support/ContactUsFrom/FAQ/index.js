@@ -13,16 +13,20 @@ function FAQ() {
   const [faqIndex4, setFaqIndex4] = useState(false);
   const [faqIndex5, setFaqIndex5] = useState(false);
   const [faqQuesIndex, setfaqQuesIndex] = useState(-1);
+  const [searchValue,setSearchValue] = useState('')
   const [faqs, setFaqs] = useState([]);
   useEffect(() => {
-    const fetchFaqs = async () => {
-      const data = await handleGetFaq(faq[faqIndex]);
-      console.log("nI", data);
+    const fetchFaqs = setTimeout(async () => {
+      const query = searchValue.trim()?`&search=${searchValue}`:null
+      const data = await handleGetFaq(faq[faqIndex],query);
       setFaqs(data);
-    };
+    },500);
 
-    fetchFaqs();
-  }, [faqIndex]);
+    return () => {
+      clearTimeout(fetchFaqs);
+    };
+  }, [faqIndex,searchValue]);
+
   return (
     <div className="flex flex-col gap-2 my-5">
       <div className="poppins-bold text-lg">F.A.Q.</div>
@@ -36,6 +40,8 @@ function FAQ() {
             <input
               type="text"
               id="voice-search"
+              value={searchValue}
+              onChange={(e)=>setSearchValue(e.target.value)}
               className="bg-[#DFE0E2] italic border border-gray-300 text-[#787D81] text-xs rounded-2xl block w-full  p-2.5"
               placeholder="Have Any Questions ?"
               required
@@ -165,18 +171,12 @@ function FAQ() {
                 <div className="flex gap-6 lg:gap-8 poppins-semibold">
                   <div className="color-linear">0{i + 1}</div>
                   <div className="poppins-semibold text-sm mr-2">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit ?
+                    {val.heading} 
                   </div>
                 </div>
                 <div className="flex poppins-regular text-[#787D81] gap-2 text-xs">
                   <div>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nunc vulputate libero et velit interdum, ac aliquet odio
-                    mattis. Class aptent taciti sociosqu ad litora torquent per
-                    conubia nostra, per inceptos himenaeos. Curabitur tempus
-                    urna at turpis condimentum lobortis. Curabitur tempus urna
-                    at turpis condimentum lobortis. Curabitur tempus urna at
-                    turpis condimentum lobortis.
+                   {val.subtext}
                   </div>
                   <div>
                     {faqQuesIndex === i ? (

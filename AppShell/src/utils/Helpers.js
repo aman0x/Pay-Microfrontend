@@ -40,3 +40,17 @@ export function getCookie(name) {
 export function eraseCookie(name) {
     document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
+export function maskCardNumber(cardNumber) {
+    
+    // if (cardNumber.length !== 16) {
+    //   throw new Error('Card number must be 16 digits long.');
+    // }
+    if(!cardNumber || cardNumber.length<4){
+        return cardNumber
+    }
+    const lastFourDigits = cardNumber.slice(-4);
+    const maskedSection = '*'.repeat(12); 
+    const maskedCardNumber = maskedSection + lastFourDigits;
+    const formattedCardNumber = maskedCardNumber.match(/.{1,4}/g).join(' '); 
+    return formattedCardNumber;
+  }

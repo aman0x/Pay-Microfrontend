@@ -7,7 +7,7 @@ import {
 import "react-circular-progressbar/dist/styles.css";
 import GradientSVG from "./gradientSvg.js";
 import { FaSquare, FaSearch } from "react-icons/fa";
-function InvoiceTop({ handleInvoiceStats }) {
+function InvoiceTop({ handleInvoiceStats,isInvoiceSend,setIsInvoiceSend }) {
   const idCSS = "hello";
   const [invoiceStats, setInvoiceStats] = useState({
     all_invoices: 600,
@@ -42,7 +42,7 @@ function InvoiceTop({ handleInvoiceStats }) {
     };
     //fetchStats();
   }, []);
-  const [isInvoiceSend, setIsInvoiceSend] = useState(true);
+  
   const percentage1 = percentage.percentage1;
   const percentage2 = percentage.percentage2;
   const percentage3 = percentage.percentage3;

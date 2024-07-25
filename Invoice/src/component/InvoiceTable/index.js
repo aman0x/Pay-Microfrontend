@@ -189,18 +189,18 @@ import { TiTick } from "react-icons/ti";
 import "./style.css";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
-function InvoiceTable({ handleInvoiceData }) {
+function InvoiceTable({ handleInvoiceData,isInvoiceSend }) {
   const [isDateClicked, setIsDateClicked] = useState(false);
-  const statusColor = "#27A963";
   const navigate = useNavigate();
   const [invoiceData, setInvoiceData] = useState(transactions);
+  const [searchValue,setSearchValue] = useState('')
   const [filterState, setFilterState] = useState({
     succeeded: false,
     inProgress: false,
     failed: false,
     refunded: false,
   });
-
+  const [orderingState, setOrderingState] = useState('date')
   const toggleFilter = (filter) => {
     setFilterState((prev) => ({
       ...prev,
@@ -209,13 +209,17 @@ function InvoiceTable({ handleInvoiceData }) {
   };
 
   useEffect(() => {
-    const fetchInvoiceData = async () => {
-      const data = await handleInvoiceData();
-      setInvoiceData(data);
-    };
 
-    fetchInvoiceData();
-  }, [filterState]);
+    const fetchInvoiceData = setTimeout(async () => {
+     const query =  queryCheck(isInvoiceSend,filterState,searchValue,orderingState)
+      const data = await handleInvoiceData(query);
+      setInvoiceData(data);
+    },500);
+    // fetchInvoiceData()
+    return () => {
+      clearTimeout(fetchInvoiceData);
+    };
+  }, [filterState,isInvoiceSend,searchValue,orderingState]);
 
   return (
     <>
@@ -317,6 +321,8 @@ function InvoiceTable({ handleInvoiceData }) {
             <input
               type="text"
               id="voice-search"
+              value={searchValue}
+              onChange={(e)=>setSearchValue(e.target.value)}
               className="bg-[#e6e8ea] py-2 px-5 focus:outline-none focus:ring-1 focus:ring-gray-300  focus:border-2 border border-gray-300 text-gray-900 text-xs rounded-2xl block w-full italic"
               placeholder="Search for Invoices..."
               required
@@ -399,6 +405,7 @@ function InvoiceTable({ handleInvoiceData }) {
                   viewBox="0 0 8 13"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  onClick={()=>setOrderingState('date')}
                 >
                   <path
                     d="M1 4L4 1L7 4"
@@ -437,6 +444,7 @@ function InvoiceTable({ handleInvoiceData }) {
                   viewBox="0 0 8 13"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  onClick={()=>setOrderingState('status')}
                 >
                   <path
                     d="M1 4L4 1L7 4"
@@ -460,6 +468,7 @@ function InvoiceTable({ handleInvoiceData }) {
                   viewBox="0 0 8 13"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  onClick={()=>setOrderingState('sum')}
                 >
                   <path
                     d="M1 4L4 1L7 4"
@@ -599,5 +608,34 @@ function InvoiceTable({ handleInvoiceData }) {
       </div>
     </>
   );
+}
+
+function queryCheck(isInvoiceSend,filterState,searchValue,orderingState){
+  let query = null
+    if(searchValue.trim()){
+      query =`?search=${searchValue}`
+    }
+    else if(filterState.succeeded){
+      query = `?status=paid`
+    }
+    else if(filterState.inProgress){
+      query = `?status=draft`
+    }
+    else if(filterState.failed){
+      query = `?status=cancelled`
+    }
+    else if(filterState.refunded){
+      query = `?status=refunded`
+    }
+    else if(isInvoiceSend){
+    query = `?status=sent`
+    }
+    else{
+    query = `?status=paid`
+    }
+
+    query =query+`&ordering=${orderingState}`
+
+  return query;
 }
 export default InvoiceTable;

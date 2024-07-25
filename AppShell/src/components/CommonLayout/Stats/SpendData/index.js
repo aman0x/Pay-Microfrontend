@@ -2,12 +2,27 @@ import { useState } from "react"
 import { FaSquare } from "react-icons/fa6"
 import ChartComp from "../../Chart/index.js"
 import { useNavigate } from "react-router-dom"
-
-const cards = ['**** **** **** 1001', '**** **** **** 1007', '**** **** **** 1001', '**** **** **** 1001']
+import { useDispatch,useSelector } from "react-redux";
+import { authActions } from "Auth/authReducer";
+import { useEffect } from "react";
+import { useUserCommon } from "#hooks/index.js";
+import { maskCardNumber } from "../../../../utils/Helpers.js"; /// have to change
 function SpendData({ monthStats }) {
+    const {handlePaymentCardData} = useUserCommon()
     const navigate = useNavigate()
     const [isCardMenuOpen, setCardMenuOpen] = useState(false)
     const [cardIndex, setCardIndex] = useState(0)
+    const dispatch = useDispatch()
+    const card = useSelector((state)=>state.auth.cards)
+    useEffect(() => {
+        const fetchCards = async () => {
+          const data = await handlePaymentCardData();
+          dispatch(authActions.setCards({ cards: data }));
+        };
+        if(card.length<1){
+            fetchCards();
+        }
+      }, [card]);
     return (
 
         <div className="flex flex-col mt-4 gap-2 poppins-light text-sm text-gray-600 ">
@@ -20,7 +35,7 @@ function SpendData({ monthStats }) {
                             <path d="M23.9869 0.408642C23.4558 0.212983 22.6225 0 21.5913 0C18.9544 0 17.0909 1.31662 17.0796 3.20086C17.0579 4.58575 18.4006 5.36635 19.4153 5.83308C20.4579 6.31102 20.8065 6.60858 20.8013 7.03251C20.7962 7.68572 19.9681 7.97717 19.206 7.97717C18.1469 7.97717 17.5725 7.83451 16.6867 7.46765L16.3577 7.31377L15.9823 9.49047C16.6268 9.75033 17.7818 9.9786 18.974 10C21.7831 10 23.6146 8.69459 23.6352 6.68195C23.6569 5.57831 22.9381 4.74065 21.4067 4.04973C20.4827 3.6044 19.9042 3.30072 19.9042 2.84419C19.9042 2.44064 20.3981 2.01671 21.4294 2.01671C22.3152 2.00041 22.9391 2.19199 23.4269 2.38255L23.6796 2.49363L24.0498 0.397432L23.9869 0.408642ZM30.8416 0.180373H28.7791C28.1346 0.180373 27.6561 0.350555 27.3714 0.98237L23.4073 9.86141H26.2113L26.7764 8.40722L30.1971 8.41231C30.2827 8.75166 30.524 9.86039 30.524 9.86039H33L30.8416 0.180373ZM13.2825 0.100887H15.9524L14.2818 9.786H11.6119L13.2825 0.0957912V0.100887ZM6.49378 5.43463L6.76706 6.78284L9.38231 0.180373H12.2131L8.00147 9.8451H5.18306L2.87306 1.66106C2.82459 1.51839 2.76581 1.42158 2.62041 1.33802C1.84181 0.934474 0.966281 0.605319 0 0.377051L0.0319688 0.174259H4.3395C4.92009 0.195659 5.39241 0.377051 5.55328 0.992561L6.49378 5.43972V5.43463ZM27.5375 6.42719L28.6069 3.71548C28.5904 3.74096 28.8265 3.15806 28.9606 2.7912L29.1431 3.62376L29.7619 6.42108H27.5375V6.42719Z" fill="#B6B8BA" />
                         </svg>
                     </div>
-                    <div className="poppins-semibold text-xs text-[#787D81]">{cards[cardIndex]}</div>
+                    <div className="poppins-semibold text-xs text-[#787D81]">{maskCardNumber(card[cardIndex]?.card_no)}</div>
                 </div>
                 <button onClick={() => setCardMenuOpen(!isCardMenuOpen)}>
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -32,7 +47,7 @@ function SpendData({ monthStats }) {
             </div>
             <hr className="w-[100%]" />
             <div className="relative">
-                {isCardMenuOpen && <CardsMenu setCardMenuOpen={setCardMenuOpen} cardIndex={cardIndex} setCardIndex={setCardIndex} />}
+                {isCardMenuOpen && <CardsMenu setCardMenuOpen={setCardMenuOpen} cardIndex={cardIndex} setCardIndex={setCardIndex} card={card}/>}
             </div>
 
             <div className="h-[12rem]">
@@ -77,7 +92,7 @@ function SpendData({ monthStats }) {
     )
 }
 
-function CardsMenu({ cardIndex, setCardIndex, setCardMenuOpen }) {
+function CardsMenu({ cardIndex, setCardIndex, setCardMenuOpen,card }) {
 
     return (
         <div className="absolute w-[100%] bg-white rounded-2xl shadow-lg   py-[2rem] px-[2rem] gap-4"
@@ -102,7 +117,7 @@ function CardsMenu({ cardIndex, setCardIndex, setCardMenuOpen }) {
                 <div className="text-[10px] text-[#A3A6A9] poppins-regular ">Select the card from the list (only one)</div>
             </div>
             <div className="flex flex-col gap-4 mt-4">
-                {cards.map((card, i) => {
+                {card.map((card, i) => {
                     return (
                         <div className="flex gap-4 justify-between items-center " key={i}>
                             <div className={`${cardIndex === i ? "poppins-bold text-[#232B31]" : "text-[#787D81]"} flex gap-1 items-center poppins-semibold text-xs `} >
@@ -111,7 +126,7 @@ function CardsMenu({ cardIndex, setCardIndex, setCardMenuOpen }) {
                                         <path d="M23.9869 0.408642C23.4558 0.212983 22.6225 0 21.5913 0C18.9544 0 17.0909 1.31662 17.0796 3.20086C17.0579 4.58575 18.4006 5.36635 19.4153 5.83308C20.4579 6.31102 20.8065 6.60858 20.8013 7.03251C20.7962 7.68572 19.9681 7.97717 19.206 7.97717C18.1469 7.97717 17.5725 7.83451 16.6867 7.46765L16.3577 7.31377L15.9823 9.49047C16.6268 9.75033 17.7818 9.9786 18.974 10C21.7831 10 23.6146 8.69459 23.6352 6.68195C23.6569 5.57831 22.9381 4.74065 21.4067 4.04973C20.4827 3.6044 19.9042 3.30072 19.9042 2.84419C19.9042 2.44064 20.3981 2.01671 21.4294 2.01671C22.3152 2.00041 22.9391 2.19199 23.4269 2.38255L23.6796 2.49363L24.0498 0.397432L23.9869 0.408642ZM30.8416 0.180373H28.7791C28.1346 0.180373 27.6561 0.350555 27.3714 0.98237L23.4073 9.86141H26.2113L26.7764 8.40722L30.1971 8.41231C30.2827 8.75166 30.524 9.86039 30.524 9.86039H33L30.8416 0.180373ZM13.2825 0.100887H15.9524L14.2818 9.786H11.6119L13.2825 0.0957912V0.100887ZM6.49378 5.43463L6.76706 6.78284L9.38231 0.180373H12.2131L8.00147 9.8451H5.18306L2.87306 1.66106C2.82459 1.51839 2.76581 1.42158 2.62041 1.33802C1.84181 0.934474 0.966281 0.605319 0 0.377051L0.0319688 0.174259H4.3395C4.92009 0.195659 5.39241 0.377051 5.55328 0.992561L6.49378 5.43972V5.43463ZM27.5375 6.42719L28.6069 3.71548C28.5904 3.74096 28.8265 3.15806 28.9606 2.7912L29.1431 3.62376L29.7619 6.42108H27.5375V6.42719Z"  />
                                     </svg>
                                 </div>
-                                {card}
+                                {maskCardNumber(card.card_no)}
                             </div>
                             <div className={`max-w-[15px]  max-h-[15px] rounded-sm   ${cardIndex === i ? "primary-linear-gr-bg" : "bg-gray-300"}`}>
                                 <FaSquare color={`${cardIndex === i ? "black" : "white"}`} className="rounded-sm p-[1px]" onClick={() => setCardIndex(i)} />

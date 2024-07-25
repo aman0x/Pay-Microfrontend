@@ -3,10 +3,14 @@ import { TiTick } from "react-icons/ti";
 import { FaSquare, FaSearch } from "react-icons/fa";
 import "./style.css";
 import moment from "moment";
-import FilterTableStats from "./Filter.js";
-function StatsTable({ transactionData, reportIndex = 0 }) {
-  console.log(transactionData);
+import { useEffect } from "react";
+import { useStatistic } from "#hooks/index";
+function StatsTable({ transactionDatas, reportIndex = 0 }) {
   const [isDateClicked, setIsDateClicked] = useState(false);
+  const [searchValue,setSearchValue] = useState('')
+  const { handleStatisticData } = useStatistic();
+  const [transactionData, setTransactionData] = useState(transactionDatas);
+  const [orderingState, setOrderingState] = useState('date')
   const [filterState, setFilterState] = useState({
     succeeded: false,
     inProgress: false,
@@ -20,7 +24,14 @@ function StatsTable({ transactionData, reportIndex = 0 }) {
       [filter]: !prev[filter],
     }));
   };
-  const statusColor = "#27A963";
+  useEffect(() => {
+    const fetchStats = async () => {
+      const query = queryCheck(filterState,searchValue,orderingState)
+      const data = await handleStatisticData(reportIndex,query);
+      setTransactionData(data);
+    };
+    fetchStats();
+  }, [reportIndex,searchValue,orderingState,filterState]);
   return (
     <>
       <div className="mt-2">
@@ -134,7 +145,8 @@ function StatsTable({ transactionData, reportIndex = 0 }) {
             <div className="relative w-72 xl:w-full">
               <input
                 type="text"
-                id="voice-search"
+                value={searchValue}
+                onChange={(e)=>setSearchValue(e.target.value)}
                 className="bg-[#e6e8ea] py-2 px-5 focus:outline-none focus:ring-1 focus:ring-gray-300  focus:border-2 border border-gray-300 text-gray-900 text-xs rounded-2xl block w-full italic"
                 placeholder="Search for Invoices..."
                 required
@@ -217,6 +229,7 @@ function StatsTable({ transactionData, reportIndex = 0 }) {
                     viewBox="0 0 8 13"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
+                    onClick={(e)=>setOrderingState('date')}
                   >
                     <path
                       d="M1 4L4 1L7 4"
@@ -241,7 +254,28 @@ function StatsTable({ transactionData, reportIndex = 0 }) {
                 <div className="td-element1 text-[10px]"> Bank</div>
               </td>
               <td>
-                <div className="td-element1 text-[10px]"> Status</div>
+              <div className="flex items-center gap-1 td-element1 text-[10px]">
+                  <div>Status</div>
+                  <svg
+                    width="8"
+                    height="13"
+                    viewBox="0 0 8 13"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    onClick={(e)=>setOrderingState('status')}
+                  >
+                    <path
+                      d="M1 4L4 1L7 4"
+                      stroke="#B6B8BA"
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M1 9L4 12L7 9"
+                      stroke="#B6B8BA"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </div>
               </td>
               <td>
                 <div className="flex items-center gap-1 td-element1 text-[10px]">
@@ -252,6 +286,7 @@ function StatsTable({ transactionData, reportIndex = 0 }) {
                     viewBox="0 0 8 13"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
+                    onClick={(e)=>setOrderingState('sum')}
                   >
                     <path
                       d="M1 4L4 1L7 4"
@@ -347,5 +382,31 @@ function StatsTable({ transactionData, reportIndex = 0 }) {
       </>
     </>
   );
+}
+
+function queryCheck(filterState,searchValue,orderingState){
+  let query = null
+    if(searchValue.trim()){
+      query =`?search=${searchValue}`
+    }
+    else if(filterState.succeeded){
+      query = `?status=paid`
+    }
+    else if(filterState.inProgress){
+      query = `?status=draft`
+    }
+    else if(filterState.failed){
+      query = `?status=cancelled`
+    }
+    else if(filterState.refunded){
+      query = `?status=refunded`
+    }
+    else{
+      query = null
+    }
+
+    query=query?query+`&ordering=${orderingState}`:`?ordering=${orderingState}`
+
+  return query;
 }
 export default StatsTable;

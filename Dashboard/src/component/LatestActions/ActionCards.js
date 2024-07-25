@@ -13,7 +13,7 @@ function ActionCards({ data }) {
             className="flex flex-col justify-between bg-white rounded-2xl p-5 gap-3"
           >
             <div className="justify-between sm:flex text-[#A3A6A9] text-sm poppins-regular">
-              <p className="text-xs text-[#A3A6A9]">{card.payment_type}</p>
+              <p className="text-xs text-[#A3A6A9]">{card.payment_type||"Vendor Payment"}</p>
               <p className="text-xs text-[#A3A6A9]">
                 {moment(card.payment_datetime).format("DD MMMM YYYY HH:mm")}
               </p>
@@ -21,7 +21,7 @@ function ActionCards({ data }) {
             </div>
             <div className="flex justify-between poppins-semibold text-[#232B31]">
               <div>
-                <p className="text-sm poppins-semi-bold pb-1">Name{card.account_holder_name}</p>
+                <p className="text-sm poppins-semi-bold pb-1">{card.beneficiary_name}</p>
                 <p className="flex items-center text-[#4E5459] text-xs poppins-regular gap-2">
                   <span>
                     <svg
@@ -48,7 +48,7 @@ function ActionCards({ data }) {
                       />
                     </svg>
                   </span>
-                  {card.bank_name}, {card.bank_branch_name}, {card.ifsc_code}
+                  {card.bank_account}
                 </p>
               </div>
               <div>- ₹ {card.transaction_amount}</div>

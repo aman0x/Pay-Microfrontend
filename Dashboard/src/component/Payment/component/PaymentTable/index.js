@@ -192,8 +192,9 @@ import moment from "moment";
 function PaymentTable({ handlePaymentData }) {
   const navigate = useNavigate();
   const [isDateClicked, setIsDateClicked] = useState(false);
-  const statusColor = "#27A963";
+  const [searchValue,setSearchValue] = useState('')
   const [paymentData, setPaymentData] = useState(transactions);
+  const [orderingState, setOrderingState] = useState('date')
   const [filterState, setFilterState] = useState({
     succeeded: false,
     inProgress: false,
@@ -209,14 +210,16 @@ function PaymentTable({ handlePaymentData }) {
   };
 
   useEffect(() => {
-    const fetchPaymentData = async () => {
-      const data = await handlePaymentData();
-      console.log("pt", paymentData);
+    const fetchPaymentData = setTimeout(async () => {
+      const query = queryCheck(filterState,searchValue,orderingState)
+      const data = await handlePaymentData(query);
       setPaymentData(data);
+    },500);
+    return () => {
+      clearTimeout(fetchPaymentData);
     };
-
-    fetchPaymentData();
-  }, []);
+    
+  }, [filterState,orderingState]);
 
   return (
     <>
@@ -317,7 +320,8 @@ function PaymentTable({ handlePaymentData }) {
           <div className="relative w-72 xl:w-full">
             <input
               type="text"
-              id="voice-search"
+              value={searchValue}
+              onChange={(e)=>setSearchValue(e.target.value)}
               className="bg-[#e6e8ea] py-2 px-5 focus:outline-none focus:ring-1 focus:ring-gray-300  focus:border-2 border border-gray-300 text-gray-900 text-xs rounded-2xl block w-full italic"
               placeholder="Search for Invoices..."
               required
@@ -400,6 +404,7 @@ function PaymentTable({ handlePaymentData }) {
                   viewBox="0 0 8 13"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  onClick={(e)=>setOrderingState('date')}
                 >
                   <path
                     d="M1 4L4 1L7 4"
@@ -435,6 +440,7 @@ function PaymentTable({ handlePaymentData }) {
                   viewBox="0 0 8 13"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  onClick={()=>setOrderingState('status')}
                 >
                   <path
                     d="M1 4L4 1L7 4"
@@ -458,6 +464,7 @@ function PaymentTable({ handlePaymentData }) {
                   viewBox="0 0 8 13"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  onClick={()=>setOrderingState('sum')}
                 >
                   <path
                     d="M1 4L4 1L7 4"
@@ -592,5 +599,31 @@ function PaymentTable({ handlePaymentData }) {
       </div>
     </>
   );
+}
+
+function queryCheck(filterState,searchValue,orderingState){
+  let query = null
+    if(searchValue.trim()){
+      query =`?search=${searchValue}`
+    }
+    else if(filterState.succeeded){
+      query = `?status=paid`
+    }
+    else if(filterState.inProgress){
+      query = `?status=draft`
+    }
+    else if(filterState.failed){
+      query = `?status=cancelled`
+    }
+    else if(filterState.refunded){
+      query = `?status=refunded`
+    }
+    else{
+      query = null
+    }
+
+    query=query?query+`&ordering=${orderingState}`:`?ordering=${orderingState}`
+
+  return query;
 }
 export default PaymentTable;

@@ -22,11 +22,11 @@ export function useInvoice(){
         toast("Error in getting Templates");
         }
     }
-    const handleInvoiceData=async()=>{
+    const handleInvoiceData=async(query)=>{
         try {
             const arr = []
             const response = await ApiCall({ 
-                url: PRIVATE_ENDPOINTS.GET_ALL_INVOICE, 
+                url: PRIVATE_ENDPOINTS.GET_ALL_INVOICE+query, 
                 method: "GET", 
                 PRIVATE_API: true, 
                 current_user: user 
@@ -42,7 +42,7 @@ export function useInvoice(){
             
             }
         catch (error) {
-        toast("Error in getting Templates");
+        toast("Invoice Error");
         return [];
         }
         }
@@ -104,4 +104,30 @@ export function useInvoice(){
     }
     return {handleInvoiceStats,handleInvoiceData,handleInvoiceDetail,handleInvoiceCreate,handleNewInvoiceData}
     
+}
+
+export function useCommon(){
+    const navigate  = useNavigate()
+    const user = useSelector(state=>state.auth.user)
+    const handleGetBeneficiary = async() =>{
+        try{
+            const arr = []
+           const response = await ApiCall({url:PRIVATE_ENDPOINTS.GET_BENEFICIARY_LIST,method:"GET",PRIVATE_API:true,current_user:user})
+           console.log(response)
+           if(Array.isArray(response.data)){
+            return response.data;
+            }
+            else{
+                arr.push(response.data)
+                return arr;
+            }
+            
+        }
+        catch(e){
+            toast("Error in getting Beneficiaries");
+            return [];
+        }
+    }
+
+    return {handleGetBeneficiary}
 }
