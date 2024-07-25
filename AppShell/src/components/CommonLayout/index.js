@@ -10,6 +10,7 @@ import AdminSideBar from "./AdminSideBar";
 import AdminRightSideBar from "./AdminRightSideBar";
 import { useUserCommon } from "#hooks/index.js";
 import { MobileNavBar } from "./MobileNavBar";
+import MobileTopNavbar from "./MobileTopNavbar";
 function CommonLayout({ children }) {
   const location = useLocation();
   const { handleGetUserDetail } = useUserCommon();
@@ -36,16 +37,24 @@ function CommonLayout({ children }) {
           )}
         </div>
         <div className="flex flex-col w-full">
-          {location.pathname !== "/dashboard/payment/new-payment" &&
-          !location.pathname.startsWith("/dashboard/beneficiary") &&
-          !location.pathname.startsWith("/dashboard/accounts") &&
-          !location.pathname.startsWith("/dashboard/payment/") &&
-          !location.pathname.startsWith("/dashboard/profile") &&
-          !location.pathname.startsWith("/dashboard/card") &&
-          !location.pathname.startsWith("/invoice/") ? (
-            <TopNavbar />
-          ) : (
+          {location.pathname === "/dashboard/payment/new-payment" &&
+          location.pathname.startsWith("/dashboard/beneficiary") &&
+          location.pathname.startsWith("/dashboard/accounts") &&
+          location.pathname.startsWith("/dashboard/payment/") &&
+          location.pathname.startsWith("/dashboard/profile") &&
+          location.pathname.startsWith("/dashboard/card") &&
+          location.pathname.startsWith("/invoice/") ? (
             <SecondaryTopBar />
+          ) : (
+            <>
+              <TopNavbar />
+              {location.pathname !== "/dashboard/" &&
+              location.pathname !== "/dashboard" ? (
+                <div className="md:hidden">
+                  <MobileTopNavbar />
+                </div>
+              ) : null}
+            </>
           )}
           <div className="flex justify-between w-full h-full md:px-4 gap-4">
             {children}

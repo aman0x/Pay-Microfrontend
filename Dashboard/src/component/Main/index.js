@@ -17,6 +17,7 @@ function DashboardMain() {
   } = useDashboard();
   return (
     <>
+      {/* Mobile Content */}
       <div className="md:hidden ">
         <MobileTopNavbar />
         <div className="p-4 bg-[#f5f5f5]">
@@ -50,7 +51,7 @@ function DashboardMain() {
             <p className="text-[#4E5459] text-xs">View All</p>
           </div>
           <div className="grid grid-cols-6 gap-4 mt-4">
-            <div className="flex justify-center items-center">
+            <div className="flex justify-start items-center">
               <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
                 <img src="/images/red-transaction.svg" alt="transaction" />
               </div>
@@ -68,7 +69,7 @@ function DashboardMain() {
             </div>
           </div>
           <div className="grid grid-cols-6 gap-4 mt-4">
-            <div className="flex justify-center items-center">
+            <div className="flex justify-start items-center">
               <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
                 <img src="/images/green-transaction.svg" alt="transaction" />
               </div>
@@ -86,7 +87,7 @@ function DashboardMain() {
             </div>
           </div>
           <div className="grid grid-cols-6 gap-4 mt-4">
-            <div className="flex justify-center items-center">
+            <div className="flex justify-start items-center">
               <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
                 <img src="/images/green-transaction.svg" alt="transaction" />
               </div>
@@ -107,7 +108,7 @@ function DashboardMain() {
           
           
           <div className="grid grid-cols-6 gap-4 mt-4">
-            <div className="flex justify-center items-center">
+            <div className="flex justify-start items-center">
               <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
                 <img src="/images/red-transaction.svg" alt="transaction" />
               </div>
@@ -125,7 +126,7 @@ function DashboardMain() {
             </div>
           </div>
           <div className="grid grid-cols-6 gap-4 mt-4">
-            <div className="flex justify-center items-center">
+            <div className="flex justify-start items-center">
               <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
                 <img src="/images/green-transaction.svg" alt="transaction" />
               </div>
@@ -143,7 +144,7 @@ function DashboardMain() {
             </div>
           </div>
           <div className="grid grid-cols-6 gap-4 mt-4">
-            <div className="flex justify-center items-center">
+            <div className="flex justify-start items-center">
               <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
                 <img src="/images/green-transaction.svg" alt="transaction" />
               </div>

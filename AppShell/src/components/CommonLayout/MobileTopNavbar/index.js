@@ -1,178 +1,58 @@
-import PaymentTable from "../PaymentTable";
-import PaymentTop from "../PaymentTop";
-import { usePayment } from "#hooks/index";
-import { useEffect, useRef, useState } from "react";
+import { Avatar } from "@mui/material";
+import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-function MainPayment() {
-  const { handlePaymentData, handlePaymentStats } = usePayment();
-  const [isDropMenuOpen, setDropMenu] = useState(false);
+import { useSelector } from "react-redux";
+
+function MobileTopNavbar() {
   const navigate = useNavigate();
+  const [isDropMenuOpen, setDropMenu] = useState(false);
+  const current_user = useSelector((state) => state.auth.user);
+
   return (
-    <>
-      {/* Mobile Content */}
-      <div className="md:hidden w-full">
-        <div className="flex gap-4 px-5 py-6">
-          <div className="relative w-full">
-            <input
-              type="text"
-              id="voice-search"
-              className="bg-[#F0F1F2] h-14 w-full focus:outline-none focus:ring-1 focus:ring-gray-300 border border-gray-300 text-gray-900 text-sm rounded-2xl block py-[0.7rem] px-5 poppins-light-italic"
-              placeholder="Search for Transactions..."
-              required
-            />
-            <button
-              type="button"
-              className="absolute inset-y-0 end-0 flex items-center pe-3"
+    <div className="flex items-center justify-between w-[100vw] px-4 pt-10 pb-6 shadow-md">
+      <div>
+        <img src="/images/logo-name.png" alt="Dashboard" />
+      </div>
+      <div className="flex gap-4 text-sm items-center">
+        <div>
+          <img src="/images/notifications.svg" alt="Notification"/>
+        </div>
+        <div
+          className="primary-linear-gr-bg-up p-1 rounded-[50%] shadow-2xl shadow-black"
+          onClick={() => navigate("/dashboard/profile")}
+        >
+          <Avatar
+            src="#"
+            sx={{
+              fontWeight: "bold",
+              fontSize: "small",
+            }}
+            alt={current_user.first_name}
+          />
+        </div>
+        <div className="relative">
+          <button onClick={() => setDropMenu(true)}>
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 18 18"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M17.7896 16.73L13.3166 12.2569C14.5355 10.7661 15.1349 8.86379 14.9906 6.94347C14.8463 5.02315 13.9694 3.23175 12.5414 1.9398C11.1133 0.647857 9.24335 -0.0457868 7.31822 0.00234752C5.39309 0.0504818 3.56011 0.836711 2.19841 2.19841C0.836711 3.56011 0.0504818 5.39309 0.00234752 7.31822C-0.0457868 9.24335 0.647857 11.1133 1.9398 12.5414C3.23175 13.9694 5.02315 14.8463 6.94347 14.9906C8.86379 15.1349 10.7661 14.5355 12.2569 13.3166L16.73 17.7896C16.8713 17.9261 17.0606 18.0017 17.2571 18C17.4536 17.9983 17.6416 17.9195 17.7805 17.7805C17.9195 17.6416 17.9983 17.4536 18 17.2571C18.0017 17.0606 17.9261 16.8713 17.7896 16.73ZM7.51783 13.5129C6.33212 13.5129 5.17303 13.1613 4.18714 12.5026C3.20126 11.8438 2.43286 10.9075 1.9791 9.81204C1.52535 8.71659 1.40663 7.51118 1.63795 6.34825C1.86927 5.18532 2.44025 4.1171 3.27867 3.27867C4.1171 2.44025 5.18532 1.86927 6.34825 1.63795C7.51118 1.40663 8.71659 1.52535 9.81204 1.9791C10.9075 2.43286 11.8438 3.20126 12.5026 4.18714C13.1613 5.17303 13.5129 6.33212 13.5129 7.51783C13.5111 9.10727 12.8789 10.6311 11.755 11.755C10.6311 12.8789 9.10727 13.5111 7.51783 13.5129Z"
-                  fill="#232B31"
-                />
-              </svg>
-            </button>
-          </div>
-          <div
-            className="rounded-2xl bg-white h-14 w-16 shadow-sm flex justify-center items-center"
-            onClick={() => setDropMenu(true)}
-          >
-            <img src="/images/filter.svg" alt="Filter icon" />
-          </div>
-        </div>
-        <div className="px-4 text-sm">
-          <h1 className="poppins-semibold text-[#232B31]">
-            All Transactions{" "}
-            <span className="poppins-light text-[#787D81]">(121)</span>{" "}
-          </h1>
-        </div>
-        {isDropMenuOpen && (
-          <DropMenu setDropMenu={setDropMenu} navigate={navigate} />
-        )}
-        <div className="p-4">
-          <div className="grid grid-cols-6 gap-4 mt-4">
-            <div className="flex justify-startitems-center">
-              <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
-                <img src="/images/red-transaction.svg" alt="transaction" />
-              </div>
-            </div>
-            <div className="flex flex-col col-span-3">
-              <p className="text-[#4E5459] text-sm">Transaction Title</p>
-              <p className="text-[#787D81] text-xs">12 April 2024 11:20</p>
-            </div>
-            <div className="flex flex-col col-span-2 items-end">
-              <p className="text-[#E45757] text-sm">- ₹ 10,000.00</p>
-              <div className="flex gap-2">
-                <img src="/images/green-status.svg" alt="Status" />
-                <p className="text-[#787D81] text-xs">Succussed</p>
-              </div>
-            </div>
-          </div>
-          <div className="grid grid-cols-6 gap-4 mt-4">
-            <div className="flex justify-start items-center">
-              <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
-                <img src="/images/green-transaction.svg" alt="transaction" />
-              </div>
-            </div>
-            <div className="flex flex-col col-span-3">
-              <p className="text-[#4E5459] text-sm">Transaction Title</p>
-              <p className="text-[#787D81] text-xs">12 April 2024 11:20</p>
-            </div>
-            <div className="flex flex-col col-span-2 items-end">
-              <p className="text-[#27A963] text-sm">+ ₹ 10,000.00</p>
-              <div className="flex gap-2">
-                <img src="/images/yellow-status.svg" alt="Status" />
-                <p className="text-[#787D81] text-xs">Succussed</p>
-              </div>
-            </div>
-          </div>
-          <div className="grid grid-cols-6 gap-4 mt-4">
-            <div className="flex justify-start items-center">
-              <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
-                <img src="/images/green-transaction.svg" alt="transaction" />
-              </div>
-            </div>
-            <div className="flex flex-col col-span-3">
-              <p className="text-[#4E5459] text-sm">Transaction Title</p>
-              <p className="text-[#787D81] text-xs">12 April 2024 11:20</p>
-            </div>
-            <div className="flex flex-col col-span-2 items-end">
-              <p className="text-[#E45757] text-sm">- ₹ 10,000.00</p>
-              <div className="flex gap-2">
-                <img src="/images/yellow-status.svg" alt="Status" />
-                <p className="text-[#787D81] text-xs">Succussed</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-6 gap-4 mt-4">
-            <div className="flex justify-start items-center">
-              <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
-                <img src="/images/red-transaction.svg" alt="transaction" />
-              </div>
-            </div>
-            <div className="flex flex-col col-span-3">
-              <p className="text-[#4E5459] text-sm">Transaction Title</p>
-              <p className="text-[#787D81] text-xs">12 April 2024 11:20</p>
-            </div>
-            <div className="flex flex-col col-span-2 items-end">
-              <p className="text-[#E45757] text-sm">- ₹ 10,000.00</p>
-              <div className="flex gap-2">
-                <img src="/images/green-status.svg" alt="Status" />
-                <p className="text-[#787D81] text-xs">Succussed</p>
-              </div>
-            </div>
-          </div>
-          <div className="grid grid-cols-6 gap-4 mt-4">
-            <div className="flex justify-start items-center">
-              <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
-                <img src="/images/green-transaction.svg" alt="transaction" />
-              </div>
-            </div>
-            <div className="flex flex-col col-span-3">
-              <p className="text-[#4E5459] text-sm">Transaction Title</p>
-              <p className="text-[#787D81] text-xs">12 April 2024 11:20</p>
-            </div>
-            <div className="flex flex-col col-span-2 items-end">
-              <p className="text-[#27A963] text-sm">+ ₹ 10,000.00</p>
-              <div className="flex gap-2">
-                <img src="/images/yellow-status.svg" alt="Status" />
-                <p className="text-[#787D81] text-xs">Succussed</p>
-              </div>
-            </div>
-          </div>
-          <div className="grid grid-cols-6 gap-4 mt-4">
-            <div className="flex justify-start items-center">
-              <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
-                <img src="/images/green-transaction.svg" alt="transaction" />
-              </div>
-            </div>
-            <div className="flex flex-col col-span-3">
-              <p className="text-[#4E5459] text-sm">Transaction Title</p>
-              <p className="text-[#787D81] text-xs">12 April 2024 11:20</p>
-            </div>
-            <div className="flex flex-col col-span-2 items-end">
-              <p className="text-[#E45757] text-sm">- ₹ 10,000.00</p>
-              <div className="flex gap-2">
-                <img src="/images/yellow-status.svg" alt="Status" />
-                <p className="text-[#787D81] text-xs">Succussed</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="h-20"></div>
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M0 1.5C0 0.671573 0.671573 0 1.5 0H3C3.82843 0 4.5 0.671573 4.5 1.5V3C4.5 3.82843 3.82843 4.5 3 4.5H1.5C0.671573 4.5 0 3.82843 0 3V1.5ZM0 8.25C0 7.42157 0.671573 6.75 1.5 6.75H3C3.82843 6.75 4.5 7.42157 4.5 8.25V9.75C4.5 10.5784 3.82843 11.25 3 11.25H1.5C0.671573 11.25 0 10.5784 0 9.75V8.25ZM0 15C0 14.1716 0.671573 13.5 1.5 13.5H3C3.82843 13.5 4.5 14.1716 4.5 15V16.5C4.5 17.3284 3.82843 18 3 18H1.5C0.671573 18 0 17.3284 0 16.5V15ZM6.75 1.5C6.75 0.671573 7.42157 0 8.25 0H9.75C10.5784 0 11.25 0.671573 11.25 1.5V3C11.25 3.82843 10.5784 4.5 9.75 4.5H8.25C7.42157 4.5 6.75 3.82843 6.75 3V1.5ZM6.75 8.25C6.75 7.42157 7.42157 6.75 8.25 6.75H9.75C10.5784 6.75 11.25 7.42157 11.25 8.25V9.75C11.25 10.5784 10.5784 11.25 9.75 11.25H8.25C7.42157 11.25 6.75 10.5784 6.75 9.75V8.25ZM6.75 15C6.75 14.1716 7.42157 13.5 8.25 13.5H9.75C10.5784 13.5 11.25 14.1716 11.25 15V16.5C11.25 17.3284 10.5784 18 9.75 18H8.25C7.42157 18 6.75 17.3284 6.75 16.5V15ZM13.5 1.5C13.5 0.671573 14.1716 0 15 0H16.5C17.3284 0 18 0.671573 18 1.5V3C18 3.82843 17.3284 4.5 16.5 4.5H15C14.1716 4.5 13.5 3.82843 13.5 3V1.5ZM13.5 8.25C13.5 7.42157 14.1716 6.75 15 6.75H16.5C17.3284 6.75 18 7.42157 18 8.25V9.75C18 10.5784 17.3284 11.25 16.5 11.25H15C14.1716 11.25 13.5 10.5784 13.5 9.75V8.25ZM13.5 15C13.5 14.1716 14.1716 13.5 15 13.5H16.5C17.3284 13.5 18 14.1716 18 15V16.5C18 17.3284 17.3284 18 16.5 18H15C14.1716 18 13.5 17.3284 13.5 16.5V15Z"
+                fill="#232B31"
+              />
+            </svg>
+          </button>
+          {isDropMenuOpen && (
+            <DropMenu setDropMenu={setDropMenu} navigate={navigate} />
+          )}
         </div>
       </div>
-      <div className="hidden w-full my-5 bg-primary p-5 rounded-2xl md:flex md:flex-col gap-2">
-        <PaymentTop handlePaymentStats={handlePaymentStats} />
-        <PaymentTable handlePaymentData={handlePaymentData} />
-      </div>
-    </>
+    </div>
   );
 }
 
@@ -196,7 +76,7 @@ export function DropMenu({ setDropMenu, navigate }) {
   return (
     <div
       ref={menuRef}
-      className="absolute end-4 top-36 bg-white rounded-[20px] p-[1rem] w-[295px] z-50 cursor-pointer shadow-md"
+      className="absolute end-0 top-0 bg-white rounded-[20px] p-[1rem] w-[295px] z-50 cursor-pointer shadow-md"
     >
       <div className="flex justify-end" onClick={() => setDropMenu(false)}>
         <svg
@@ -403,4 +283,4 @@ export function DropMenu({ setDropMenu, navigate }) {
   );
 }
 
-export default MainPayment;
+export default MobileTopNavbar;
