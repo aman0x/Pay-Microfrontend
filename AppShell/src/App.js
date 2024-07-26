@@ -22,7 +22,7 @@ function App() {
   const location = useLocation();
   return (
     <ErrorBoundary>
-      <div className="2xl:container mx-auto  bg-primary bg-slate-50">
+      <div className="2xl:container mx-auto  bg-primary">
         <ToastContainer
           toastStyle={{
             borderRadius: "10px",

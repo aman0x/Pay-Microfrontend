@@ -39,7 +39,7 @@ function DashboardMain() {
             <p className="text-sm poppins-semibold">Active cards</p>
             <p className="text-xs ">All Cards</p>
           </div>
-          <MobilePaymentCard />
+          <MobilePaymentCard handlePaymentCardData={handlePaymentCardData} />
           <div className="flex justify-evenly mt-8">
             <div className="flex flex-col items-center justify-center gap-2">
               <img src="/images/addCard.svg" alt="Add Card" />

@@ -6,6 +6,7 @@ import {useDashboard} from "#hooks/index.js"
 function MyCards(){
     const navigate  = useNavigate()
     const {handlePaymentCardData} = useDashboard()
+    const [CardIndex,setCardIndex]= useState(0)
     const [cards,setCards] = useState([{
         "card_holder_name": "Holder Name",
         "card_no": "1234567824681257",
@@ -31,6 +32,58 @@ const getRandomColor = () => {
 };
     return(
         <div className="mt-5 bg-primary p-[2rem] rounded-3xl flex flex-col gap-3   w-full my-4">
+            <div className="md:hidden">
+                <div className="flex  bg-[#F0F1F2] py-[8px] rounded-xl justify-evenly px-2 shadow-sm ">
+                <button
+                className="px-2 py-4 rounded-xl poppins-light text-xs"
+                style={{
+                    backgroundColor: CardIndex === 0 ? "#FFFFFF" : null,
+                    width: "45%",
+                    color: CardIndex === 0 ? "black" : "gray",
+                    fontWeight: CardIndex === 0 ? "500" : "normal",
+                    boxShadow:
+                    CardIndex === 0
+                        ? "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
+                        : null,
+                }}
+                onClick={() => setCardIndex(0)}
+                >
+                All
+                </button>
+                <button
+                className="px-2 py-4 rounded-xl poppins-light text-xs"
+                style={{
+                    backgroundColor: CardIndex === 1 ? "#FFFFFF" : null,
+                    color: CardIndex === 1 ? "black" : "gray",
+                    width: "45%",
+                    fontWeight: CardIndex === 1 ? "500" : "normal",
+                    boxShadow:
+                    CardIndex === 1
+                        ? "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
+                        : null,
+                }}
+                onClick={() => setCardIndex(1)}
+                >
+                Verified
+                </button>
+                <button
+                className="px-2 py-4 rounded-xl poppins-light text-xs"
+                style={{
+                    backgroundColor: CardIndex === 2 ? "#FFFFFF" : null,
+                    width: "45%",
+                    color: CardIndex === 2 ? "black" : "gray",
+                    fontWeight: CardIndex === 2 ? "500" : "normal",
+                    boxShadow:
+                    CardIndex === 2
+                        ? "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
+                        : null,
+                }}
+                onClick={() => setCardIndex(2)}
+                >
+                No Verified
+                </button>
+            </div>
+          </div>
             <div className="flex justify-between">
                 <div className="flex gap-1 items-center">
                     <div className="poppins-semibold">
@@ -54,7 +107,7 @@ const getRandomColor = () => {
                     </div>
                 </div>                
             </div>
-           <div className="grid grid-cols-3 gap-4">
+           <div className="grid md:grid-cols-3 gap-4">
             {
                 cards.map((card)=>{
                     return(
@@ -67,7 +120,7 @@ const getRandomColor = () => {
             <FlipCard isArrowShown={false}  cardData={cards}  cardColorbg="#E872D4"/>
             <FlipCard isArrowShown={false}  cardData={cards}  cardColorbg="#964EC2"/>
             <FlipCard isArrowShown={false}  cardData={cards}  cardColorbg="#232B31"/> */}
-            <div className="primary-linear-gr-bg p-[2px] flex justify-center rounded-3xl max-w-[400px] h-[240px]">
+            <div className="primary-linear-gr-bg p-[2px] flex justify-center rounded-3xl max-w-[400px] h-60">
                 <div 
                     onClick={()=>navigate('/dashboard/card/add-card')}
                     className="flex gap-1 items-center bg-primary w-full justify-center rounded-3xl"
@@ -83,7 +136,7 @@ const getRandomColor = () => {
                 </div> 
             </div>
            </div>
-
+           <div className="h-20"></div>
         </div>
     )
 }

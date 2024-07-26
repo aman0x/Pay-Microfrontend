@@ -68,7 +68,9 @@ function MainPayment() {
         <div className="p-4">
           {paymentData.map((card)=>{
             return(
-              <div className="grid grid-cols-6 gap-4 mt-4">
+              <div 
+              onClick={() => navigate(`/dashboard/payment/payment-detail?paymentId=${card.id}`)}
+              className="grid grid-cols-6 gap-4 mt-4">
             <div className="flex justify-startitems-center">
               <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
                 <img src="/images/red-transaction.svg" alt="transaction" />

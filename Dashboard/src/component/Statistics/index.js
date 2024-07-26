@@ -191,13 +191,15 @@ import { useStatistic } from "#hooks/index";
 import { useSelector } from "react-redux";
 import { maskCardNumber } from "#utils/Helpers";
 import CircularChart from "./StatsCards/CircularChart";
+import moment from "moment";
 function Statistic() {
   const [reportIndex, setReportIndex] = useState(0);
   const [isCardMenuOpen, setCardMenuOpen] = useState(false);
   const [cardIndex, setCardIndex] = useState(0);
+  const [statsData,setStatsData] = useState([])
   const [calenderIndex, setcalenderIndex] = useState(0);
   const card = useSelector((state) => state.auth.cards);
-  const { handleStatisticStats } = useStatistic();
+  const { handleStatisticStats,handleStatisticData } = useStatistic();
   const [stats, setStats] = useState({
     card_number: "1234567824681257",
     incomes: 124000.7,
@@ -219,9 +221,11 @@ function Statistic() {
 
   useEffect(() => {
     const fetchStats = async () => {
+      // const query = `?`
       const stats = await handleStatisticStats(reportIndex);
-
+      const data = await handleStatisticData(reportIndex);
       setStats(stats);
+      setStatsData(data)
     };
     fetchStats();
   }, [reportIndex]);
@@ -428,9 +432,9 @@ function Statistic() {
               <div className="flex items-center justify-between  bg-white py-4 px-5 rounded-2xl">
                 <div className="flex flex-col gap-1">
                   <p className="text-[#A3A6A9] text-[12px]">All Transactions</p>
-                  <p className="poppins-semibold text-[18px]">₹ 24,000.24</p>
+                  <p className="poppins-semibold text-[18px]">₹ {stats.total_transactions}</p>
                   <p className="text-[#27A963] text-[12px]">
-                    + <span className="poppins-semibold">1290</span>
+                    + <span className="poppins-semibold">{stats.today_transactions}</span>
                     <span className=""> Today</span>
                   </p>
                 </div>
@@ -444,9 +448,9 @@ function Statistic() {
               <div className="flex items-center justify-between  bg-white py-4 px-5 rounded-2xl">
                 <div className="flex flex-col gap-1">
                   <p className="text-[#A3A6A9] text-[12px]">Total Incomes</p>
-                  <p className="poppins-semibold text-[18px]">₹ 24,000.24</p>
+                  <p className="poppins-semibold text-[18px]">₹ {stats.total_incomes}</p>
                   <p className="text-[#27A963] text-[12px]">
-                    <span className="poppins-semibold">+ 1290 </span>
+                    <span className="poppins-semibold">+ {stats.today_incomes}</span>
                     <span className=""> Today</span>
                   </p>
                 </div>
@@ -457,9 +461,9 @@ function Statistic() {
               <div className="flex items-center justify-between  bg-white py-4 px-5 rounded-2xl">
                 <div className="flex flex-col gap-1">
                   <p className="text-[#A3A6A9] text-[12px]">Payments</p>
-                  <p className="poppins-semibold text-[18px]">- ₹ 240.70</p>
+                  <p className="poppins-semibold text-[18px]">- ₹ {stats.total_payments}</p>
                   <p className="text-[#E45757] text-[12px]">
-                    - <span className="poppins-semibold">12 </span>
+                    - <span className="poppins-semibold">{stats.today_payments}</span>
                     <span className=""> Today</span>
                   </p>
                 </div>
@@ -493,14 +497,14 @@ function Statistic() {
                     <div className="text-xs poppins-light text-[#787D81]">
                       Succeeded
                     </div>
-                    <div className="poppins-bold text-xs">(12)</div>
+                    <div className="poppins-bold text-xs">({stats.succeeded})</div>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="bg-[#964EC2] rounded-[50%] h-2 w-2"></div>
                     <div className="text-xs poppins-light text-[#787D81]">
-                      Rebounded
+                      Refunded
                     </div>
-                    <div className="poppins-bold text-xs">(12)</div>
+                    <div className="poppins-bold text-xs">({stats.refunded})</div>
                   </div>
                 </div>
                 <div className="flex flex-col gap-3">
@@ -509,14 +513,14 @@ function Statistic() {
                     <div className="text-xs poppins-light text-[#787D81]">
                       In Progress
                     </div>
-                    <div className="poppins-bold text-xs">(12)</div>
+                    <div className="poppins-bold text-xs">({stats.in_progress})</div>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="bg-[#D562BE] rounded-[50%] h-2 w-2"></div>
                     <div className="text-xs poppins-light text-[#787D81]">
                       Failed
                     </div>
-                    <div className="poppins-bold text-xs">(12)</div>
+                    <div className="poppins-bold text-xs">({stats.failed})</div>
                   </div>
                 </div>
               </div>
@@ -525,11 +529,35 @@ function Statistic() {
             <div className="text-[14px] mt-6">
               <h1 className="poppins-semibold text-[#232B31]">
                 Transactions{" "}
-                <span className="poppins-light text-[#787D81]">(121)</span>{" "}
+                <span className="poppins-light text-[#787D81]">({statsData.length})</span>{" "}
               </h1>
             </div>
 
-            <div className="grid grid-cols-6 gap-4 mt-4">
+            {
+              statsData.map((data)=>{
+                return(
+                  <div className="grid grid-cols-6 gap-4 mt-4">
+                <div className="flex justify-startitems-center">
+                  <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
+                    <img src="/images/red-transaction.svg" alt="transaction" />
+                  </div>
+                </div>
+                <div className="flex flex-col col-span-3">
+                  <p className="text-[#4E5459] text-sm">{data.payment_type||"Vendor Payment"}</p>
+                  <p className="text-[#787D81] text-xs">{moment(data.created_at).format('DD MM YYYY HH:mm')}</p>
+                </div>
+              <div className="flex flex-col col-span-2 items-end">
+                <p className="text-[#E45757] text-sm">- ₹ {data.transaction_amount}</p>
+                <div className="flex gap-2">
+                  <img src="/images/green-status.svg" alt="Status" />
+                  <p className="text-[#787D81] text-xs">{data.status||"In progress"}</p>
+                </div>
+              </div>
+            </div>
+                )
+              })
+            }
+            {/* <div className="grid grid-cols-6 gap-4 mt-4">
               <div className="flex justify-startitems-center">
                 <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
                   <img src="/images/red-transaction.svg" alt="transaction" />
@@ -558,24 +586,6 @@ function Statistic() {
                 <p className="text-[#787D81] text-xs">12 April 2024 11:20</p>
               </div>
               <div className="flex flex-col col-span-2 items-end">
-                <p className="text-[#27A963] text-sm">+ ₹ 10,000.00</p>
-                <div className="flex gap-2">
-                  <img src="/images/yellow-status.svg" alt="Status" />
-                  <p className="text-[#787D81] text-xs">Succeeded</p>
-                </div>
-              </div>
-            </div>
-            <div className="grid grid-cols-6 gap-4 mt-4">
-              <div className="flex justify-start items-center">
-                <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
-                  <img src="/images/green-transaction.svg" alt="transaction" />
-                </div>
-              </div>
-              <div className="flex flex-col col-span-3">
-                <p className="text-[#4E5459] text-sm">Transaction Title</p>
-                <p className="text-[#787D81] text-xs">12 April 2024 11:20</p>
-              </div>
-              <div className="flex flex-col col-span-2 items-end">
                 <p className="text-[#E45757] text-sm">- ₹ 10,000.00</p>
                 <div className="flex gap-2">
                   <img src="/images/yellow-status.svg" alt="Status" />
@@ -583,7 +593,6 @@ function Statistic() {
                 </div>
               </div>
             </div>
-
             <div className="grid grid-cols-6 gap-4 mt-4">
               <div className="flex justify-start items-center">
                 <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
@@ -637,7 +646,7 @@ function Statistic() {
                   <p className="text-[#787D81] text-xs">Succeeded</p>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <div className="h-20"></div>
           </>
@@ -649,9 +658,9 @@ function Statistic() {
               <div className="flex items-center justify-between  bg-white py-4 px-5 rounded-2xl">
                 <div className="flex flex-col gap-1">
                   <p className="text-[#A3A6A9] text-[12px]">All Invoices</p>
-                  <p className="poppins-semibold text-[18px]">₹ 24,000.24</p>
+                  <p className="poppins-semibold text-[18px]">₹ {stats.total_sent_invoices}</p>
                   <p className="text-[#27A963] text-[12px]">
-                    + <span className="poppins-semibold">1290</span>
+                    + <span className="poppins-semibold">{stats.today_sent_invoices}</span>
                     <span className=""> Today</span>
                   </p>
                 </div>
@@ -748,119 +757,34 @@ function Statistic() {
             <div className="text-[14px] mt-6">
               <h1 className="poppins-semibold text-[#232B31]">
                 Invoices{" "}
-                <span className="poppins-light text-[#787D81]">(121)</span>{" "}
+                <span className="poppins-light text-[#787D81]">({statsData.length})</span>{" "}
               </h1>
             </div>
-
-            <div className="grid grid-cols-6 gap-4 mt-4">
-              <div className="flex justify-startitems-center">
-                <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
-                  <img src="/images/red-transaction.svg" alt="transaction" />
-                </div>
-              </div>
-              <div className="flex flex-col col-span-3">
-                <p className="text-[#4E5459] text-sm">Invoice Title</p>
-                <p className="text-[#787D81] text-xs">12 April 2024 11:20</p>
-              </div>
-              <div className="flex flex-col col-span-2 items-end">
-                <p className="text-[#E45757] text-sm">- ₹ 10,000.00</p>
-                <div className="flex gap-2">
-                  <img src="/images/green-status.svg" alt="Status" />
-                  <p className="text-[#787D81] text-xs">Succeeded</p>
-                </div>
-              </div>
-            </div>
-            <div className="grid grid-cols-6 gap-4 mt-4">
-              <div className="flex justify-start items-center">
-                <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
-                  <img src="/images/green-transaction.svg" alt="transaction" />
-                </div>
-              </div>
-              <div className="flex flex-col col-span-3">
-                <p className="text-[#4E5459] text-sm">Invoice Title</p>
-                <p className="text-[#787D81] text-xs">12 April 2024 11:20</p>
-              </div>
-              <div className="flex flex-col col-span-2 items-end">
-                <p className="text-[#27A963] text-sm">+ ₹ 10,000.00</p>
-                <div className="flex gap-2">
-                  <img src="/images/yellow-status.svg" alt="Status" />
-                  <p className="text-[#787D81] text-xs">Succeeded</p>
-                </div>
-              </div>
-            </div>
-            <div className="grid grid-cols-6 gap-4 mt-4">
-              <div className="flex justify-start items-center">
-                <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
-                  <img src="/images/green-transaction.svg" alt="transaction" />
-                </div>
-              </div>
-              <div className="flex flex-col col-span-3">
-                <p className="text-[#4E5459] text-sm">Invoice Title</p>
-                <p className="text-[#787D81] text-xs">12 April 2024 11:20</p>
-              </div>
-              <div className="flex flex-col col-span-2 items-end">
-                <p className="text-[#E45757] text-sm">- ₹ 10,000.00</p>
-                <div className="flex gap-2">
-                  <img src="/images/yellow-status.svg" alt="Status" />
-                  <p className="text-[#787D81] text-xs">Succeeded</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-6 gap-4 mt-4">
-              <div className="flex justify-start items-center">
-                <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
-                  <img src="/images/red-transaction.svg" alt="transaction" />
-                </div>
-              </div>
-              <div className="flex flex-col col-span-3">
-                <p className="text-[#4E5459] text-sm">Invoice Title</p>
-                <p className="text-[#787D81] text-xs">12 April 2024 11:20</p>
-              </div>
-              <div className="flex flex-col col-span-2 items-end">
-                <p className="text-[#E45757] text-sm">- ₹ 10,000.00</p>
-                <div className="flex gap-2">
-                  <img src="/images/green-status.svg" alt="Status" />
-                  <p className="text-[#787D81] text-xs">Succeeded</p>
-                </div>
-              </div>
-            </div>
-            <div className="grid grid-cols-6 gap-4 mt-4">
-              <div className="flex justify-start items-center">
-                <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
-                  <img src="/images/green-transaction.svg" alt="transaction" />
-                </div>
-              </div>
-              <div className="flex flex-col col-span-3">
-                <p className="text-[#4E5459] text-sm">Invoice Title</p>
-                <p className="text-[#787D81] text-xs">12 April 2024 11:20</p>
-              </div>
-              <div className="flex flex-col col-span-2 items-end">
-                <p className="text-[#27A963] text-sm">+ ₹ 10,000.00</p>
-                <div className="flex gap-2">
-                  <img src="/images/yellow-status.svg" alt="Status" />
-                  <p className="text-[#787D81] text-xs">Succeeded</p>
-                </div>
-              </div>
-            </div>
-            <div className="grid grid-cols-6 gap-4 mt-4">
-              <div className="flex justify-start items-center">
-                <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
-                  <img src="/images/green-transaction.svg" alt="transaction" />
-                </div>
-              </div>
-              <div className="flex flex-col col-span-3">
-                <p className="text-[#4E5459] text-sm">Invoice Title</p>
-                <p className="text-[#787D81] text-xs">12 April 2024 11:20</p>
-              </div>
-              <div className="flex flex-col col-span-2 items-end">
-                <p className="text-[#E45757] text-sm">- ₹ 10,000.00</p>
-                <div className="flex gap-2">
-                  <img src="/images/yellow-status.svg" alt="Status" />
-                  <p className="text-[#787D81] text-xs">Succeeded</p>
-                </div>
-              </div>
-            </div>
+            {
+              statsData.map((data)=>{
+                return(
+                  <div className="grid grid-cols-6 gap-4 mt-4">
+                    <div className="flex justify-start items-center">
+                      <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
+                        <img src="/images/green-transaction.svg" alt="transaction" />
+                      </div>
+                    </div>
+                    <div className="flex flex-col col-span-3">
+                      <p className="text-[#4E5459] text-sm">{data.beneficiary_name}</p>
+                      <p className="text-[#787D81] text-xs">{moment(data.created_at).format('DD MM YYYY HH:mm')}</p>
+                    </div>
+                    <div className="flex flex-col col-span-2 items-end">
+                      <p className="text-[#27A963] text-sm">+ ₹ {data.amount}</p>
+                      <div className="flex gap-2">
+                        <img src="/images/yellow-status.svg" alt="Status" />
+                        <p className="text-[#787D81] text-xs">{data.status}</p>
+                      </div>
+                    </div>
+                  </div>
+                )
+              })
+            }
+           
 
             <div className="h-20"></div>
 

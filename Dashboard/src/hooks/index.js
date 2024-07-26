@@ -234,7 +234,7 @@ export function useStatistic(){
         toast("Error in getting Templates");
         }
     }
-    const handleStatisticData =async(index,query)=>{
+    const handleStatisticData =async(index,query="")=>{
 
         try{
             const arr = []

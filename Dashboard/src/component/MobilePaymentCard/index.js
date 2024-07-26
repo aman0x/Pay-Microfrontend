@@ -28,7 +28,7 @@ export function MobilePaymentCard({ handlePaymentCardData }) {
     const fetchCards = async () => {
       const data = await handlePaymentCardData();
       setCards(data);
-      console.log("cards", data);
+      console.log("payMentcards", data);
       dispatch(authActions.setCards({ cards: data }));
     };
     fetchCards();
