@@ -9,7 +9,6 @@ import ContactForm from "./component/Support/ContactUsFrom/index.js";
 import Notification from "./component/Notification/index.js";
 import Statistic from "./component/Statistics/index.js";
 import PaymentDetailPage from "./component/Payment/component/PaymentDetailPage/index.js";
-import Profile from "./component/Profile/index.js";
 import NewPayment from "./component/Payment/component/NewPayment/index.js";
 import MyAccounts from "./component/BankAccount/MyAccounts/index.js";
 import AddNewAccount from "./component/BankAccount/MyAccounts/AddNewAccouunt/index.js";
@@ -20,6 +19,7 @@ import AddCard from "./component/MyCards/AddCard/index.js";
 import MyCards from "./component/MyCards/index.js";
 import AxiosInstance from "controllers/AxiosInstance/index";
 import { ToastContainer } from "react-toastify";
+import ProfileOrKyc from "./component/ProfileOrKyc";
 const Dashboard = () => {
   return (
     <>
@@ -32,7 +32,8 @@ const Dashboard = () => {
         <Route path="/statistic" element={<Statistic />} />
         <Route path="/payment/payment-detail" element={<PaymentDetailPage />} />
         <Route path="/payment/new-payment" element={<NewPayment />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<ProfileOrKyc />} />
+        <Route path="/kyc" element={<ProfileOrKyc />} />
         <Route path="/accounts" element={<MyAccounts />} />
         <Route path="/accounts/add-new" element={<AddNewAccount />} />
         <Route path="/beneficiary" element={<MyBeneficiary />} />

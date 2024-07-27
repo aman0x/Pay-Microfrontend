@@ -119,7 +119,7 @@ function AddNewBeneficiary({isRepeatPayment=false}){
             </div>
             {
                 stepIndex===0 &&
-                <div className="mx-auto w-[40%] flex flex-col gap-8 mt-4">
+                <div className="mx-auto form-width flex flex-col gap-8 mt-4">
                 <div className="text-center poppins-semibold">Enter Data</div>
                 <div className="flex flex-col gap-2">
                     <div className="relative">

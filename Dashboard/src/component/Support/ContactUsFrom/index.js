@@ -77,7 +77,7 @@ function ContactForm() {
         <div className="text-sm poppins-light text-[#A3A6A9] text-center">
           or Use :
         </div>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid md:grid-cols-2 gap-4">
           <div className="flex justify-center items-center bg-white rounded-2xl py-[0.8rem] px-4 gap-4">
             <div>
               <svg

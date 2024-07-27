@@ -3,10 +3,10 @@ import { usePayment } from "#hooks/index";
 function PaymentStep3({data,setStepIndex,bankDetail,paymentDetail}){
     const {handlePaymentCreate} = usePayment()
     return(
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 mb-20 md:mb-0">
             <div className="text-center poppins-semibold">Payment Details</div>
              <div className="bg-[#FFFFFF] p-6 rounded-3xl flex flex-col gap-4">
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid md:grid-cols-3 gap-4">
                     <div className="bg-primary p-4 rounded-xl flex flex-col gap-2">
                         <div className="text-[#4E5459] text-sm poppins-semibold">Beneficiary:</div>
                         <div>

@@ -30,7 +30,7 @@ function CommonLayout({ children }) {
           ) : (
             <>
               <SideNavBar />
-              <div className="md:hidden fixed bottom-0">
+              <div className="md:hidden fixed bottom-0 z-50">
                 <MobileNavBar />
               </div>
             </>

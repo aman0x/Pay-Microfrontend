@@ -21,7 +21,6 @@ function DashboardMain() {
     handleTemplateData,
   } = useDashboard();
 
-
   useEffect(() => {
     const fetchLatestAction = async () => {
       const data = await handleLatestActionData();
@@ -37,24 +36,38 @@ function DashboardMain() {
         <div className="p-4 bg-[#f5f5f5]">
           <div className="flex justify-between my-4">
             <p className="text-sm poppins-semibold">Active cards</p>
-            <p className="text-xs ">All Cards</p>
+            <p onClick={()=> navigate("/dashboard/card")} className="text-xs ">All Cards</p>
           </div>
           <MobilePaymentCard handlePaymentCardData={handlePaymentCardData} />
           <div className="flex justify-evenly mt-8">
             <div className="flex flex-col items-center justify-center gap-2">
-              <img src="/images/addCard.svg" alt="Add Card" />
+              <img
+                onClick={() => navigate("/dashboard/card/add-card")}
+                src="/images/addCard.svg"
+                className="w-20 h-auto"
+                alt="Add Card"
+              />
               <p className="text-[#B6B8BA] uppercase text-xs poppins-light">
                 Add Card
               </p>
             </div>
             <div className="flex flex-col items-center justify-center gap-2">
-              <img src="/images/sentInvoice.svg" alt="Sent Invoice" />
+              <img
+                onClick={() => navigate("/invoice/send-invoice")}
+                className="w-20 h-auto"
+                src="/images/sentInvoice.svg"
+                alt="Sent Invoice"
+              />
               <p className="text-[#B6B8BA] uppercase text-xs poppins-light">
                 Sent Invoice
               </p>
             </div>
             <div className="flex flex-col items-center justify-center gap-2">
-              <img src="/images/makePayment.svg" alt="Make a Payment" />
+              <img
+                className="w-20 h-auto"
+                src="/images/makePayment.svg"
+                alt="Make a Payment"
+              />
               <p className="text-[#B6B8BA] uppercase text-xs poppins-light">
                 Make a Payment
               </p>
@@ -62,36 +75,44 @@ function DashboardMain() {
           </div>
           <div className="flex justify-between my-8">
             <p className="text-sm poppins-semibold">Latest Transactions</p>
-            <p className="text-[#4E5459] text-xs">View All</p>
+            <p onClick={() => navigate("/dashboard/payment")} className="text-[#4E5459] text-xs">View All</p>
           </div>
 
           {latestActions.map((card) => {
             return (
               <div
-                onClick={() => navigate(`/dashboard/payment/payment-detail?paymentId=${card.id}`)}
-                className="grid grid-cols-6 gap-4 mt-4">
+                onClick={() =>
+                  navigate(
+                    `/dashboard/payment/payment-detail?paymentId=${card.id}`
+                  )
+                }
+                className="grid grid-cols-6 gap-4 mt-4"
+              >
                 <div className="flex justify-start items-center">
                   <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
                     <img src="/images/red-transaction.svg" alt="transaction" />
                   </div>
                 </div>
                 <div className="flex flex-col col-span-3">
-                  <p className="text-[#4E5459] text-sm">{card.payment_type || "Vendor Payment"}</p>
-                  <p className="text-[#787D81] text-xs">{moment(card.payment_datetime).format("DD MMMM YYYY HH:mm")}</p>
+                  <p className="text-[#4E5459] text-sm">
+                    {card.payment_type || "Vendor Payment"}
+                  </p>
+                  <p className="text-[#787D81] text-xs">
+                    {moment(card.payment_datetime).format("DD MMMM YYYY HH:mm")}
+                  </p>
                 </div>
                 <div className="flex flex-col col-span-2 items-end">
-                  <p className="text-[#E45757] text-sm">- ₹ {card.transaction_amount}</p>
+                  <p className="text-[#E45757] text-sm">
+                    - ₹ {card.transaction_amount}
+                  </p>
                   <div className="flex gap-2">
                     <img src="/images/green-status.svg" alt="Status" />
                     <p className="text-[#787D81] text-xs">In Progress</p>
                   </div>
                 </div>
               </div>
-            )
-          })
-          }
-
-
+            );
+          })}
 
           <div className="h-20"></div>
         </div>

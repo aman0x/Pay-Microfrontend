@@ -54,7 +54,7 @@ function MyBeneficiary(){
                 </div>                
             </div>
            <BeneficiaryTable beneficiary={beneficiary}/> 
-           <div className="flex justify-center">
+           <div className="flex justify-center mt-4 mb-20 md:mb-0">
                 <div className="primary-linear-gr-bg p-[2px] rounded-xl">
                 <button 
                 onClick={()=>navigate('/dashboard/beneficiary/add-new')}

@@ -13,19 +13,19 @@ function FAQ() {
   const [faqIndex4, setFaqIndex4] = useState(false);
   const [faqIndex5, setFaqIndex5] = useState(false);
   const [faqQuesIndex, setfaqQuesIndex] = useState(-1);
-  const [searchValue,setSearchValue] = useState('')
+  const [searchValue, setSearchValue] = useState("");
   const [faqs, setFaqs] = useState([]);
   useEffect(() => {
     const fetchFaqs = setTimeout(async () => {
-      const query = searchValue.trim()?`&search=${searchValue}`:null
-      const data = await handleGetFaq(faq[faqIndex],query);
+      const query = searchValue.trim() ? `&search=${searchValue}` : null;
+      const data = await handleGetFaq(faq[faqIndex], query);
       setFaqs(data);
-    },500);
+    }, 500);
 
     return () => {
       clearTimeout(fetchFaqs);
     };
-  }, [faqIndex,searchValue]);
+  }, [faqIndex, searchValue]);
 
   return (
     <div className="flex flex-col gap-2 my-5">
@@ -41,7 +41,7 @@ function FAQ() {
               type="text"
               id="voice-search"
               value={searchValue}
-              onChange={(e)=>setSearchValue(e.target.value)}
+              onChange={(e) => setSearchValue(e.target.value)}
               className="bg-[#DFE0E2] italic border border-gray-300 text-[#787D81] text-xs rounded-2xl block w-full  p-2.5"
               placeholder="Have Any Questions ?"
               required
@@ -56,11 +56,11 @@ function FAQ() {
         </div>
       </div>
       <div className="flex mt-4">
-        <div className="flex flex-col pt-6 gap-1 border-r-2 border-r-[#DFE0E2]  pr-6">
+        <div className="flex flex-col pt-6 gap-1 border-r-2 border-r-[#DFE0E2] pr-2 md:pr-4 lg:pr-6 xl:pr-12">
           {faqIndex === 0 ? (
             <div className="primary-linear-gr-bg-up p-[1.5px] rounded-xl shadow-red-200 shadow-2xl">
               <button
-                className="flex justify-between items-center bg-black-primary rounded-xl px-3 py-2 poppins-medium text-xs w-36"
+                className="flex justify-between items-center bg-black-primary rounded-xl px-3 py-2 poppins-medium text-xs w-28 md:w-32 lg:w-36"
                 onClick={() => setFaqIndex0(false)}
               >
                 General
@@ -77,7 +77,7 @@ function FAQ() {
           {faqIndex === 1 ? (
             <div className="primary-linear-gr-bg-up p-[1.5px] rounded-xl shadow-2xl">
               <button
-                className="flex justify-between items-center bg-black-primary rounded-xl px-3 py-2 poppins-medium text-xs w-36"
+                className="flex justify-between items-center bg-black-primary rounded-xl px-3 py-2 poppins-medium text-xs w-28 md:w-32 lg:w-36"
                 onClick={() => setFaqIndex1(false)}
               >
                 Payment
@@ -94,7 +94,7 @@ function FAQ() {
           {faqIndex === 2 ? (
             <div className="primary-linear-gr-bg-up p-[1.5px] rounded-xl shadow-2xl">
               <button
-                className="flex justify-between items-center bg-black-primary rounded-xl py-[6px] w-36 px-3 poppins-medium text-sm"
+                className="flex justify-between items-center bg-black-primary rounded-xl py-[6px] w-28 md:w-32 lg:w-36 px-3 poppins-medium text-sm"
                 onClick={() => setFaqIndex2(false)}
               >
                 KYC
@@ -111,7 +111,7 @@ function FAQ() {
           {faqIndex === 3 ? (
             <div className="primary-linear-gr-bg-up p-[1.5px] rounded-xl shadow-2xl">
               <button
-                className="flex justify-between items-center bg-black-primary rounded-xl py-[6px] w-36 px-3 poppins-medium text-sm"
+                className="flex justify-between items-center bg-black-primary rounded-xl py-[6px] w-28 md:w-32 lg:w-36 px-3 poppins-medium text-sm"
                 onClick={() => setFaqIndex3(false)}
               >
                 Account
@@ -128,7 +128,7 @@ function FAQ() {
           {faqIndex === 4 ? (
             <div className="primary-linear-gr-bg-up p-[1.5px] rounded-xl shadow-2xl">
               <button
-                className="flex justify-between items-center bg-black-primary rounded-xl py-[6px] w-36 px-3 poppins-medium text-sm"
+                className="flex justify-between items-center bg-black-primary rounded-xl py-[6px] w-28 md:w-32 lg:w-36 px-3 poppins-medium text-sm"
                 onClick={() => setFaqIndex4(false)}
               >
                 Transaction
@@ -145,7 +145,7 @@ function FAQ() {
           {faqIndex === 5 ? (
             <div className="primary-linear-gr-bg-up p-[1.5px] rounded-xl shadow-2xl">
               <button
-                className="flex justify-between items-center bg-black-primary rounded-xl py-[6px] w-36 px-3 poppins-medium text-sm"
+                className="flex justify-between items-center bg-black-primary rounded-xl py-[6px] w-28 md:w-32 lg:w-36 px-3 poppins-medium text-sm"
                 onClick={() => setFaqIndex5(false)}
               >
                 Cards
@@ -164,20 +164,18 @@ function FAQ() {
           {faqs.map((val, i) => {
             return (
               <div
-                className={`grid grid-cols-2 px-[2rem] gap-20 overflow-hidden faq  transition-all ease-in-out duration-1000 py-8  ${
-                  faqQuesIndex === i ? "" : "h-28"
+                className={`grid lg:grid-cols-2 px-[2rem] overflow-hidden faq  transition-all ease-in-out duration-1000 py-8  ${
+                  faqQuesIndex === i ? "" : "h-[6.5rem] lg:h-24"
                 }`}
               >
                 <div className="flex gap-6 lg:gap-8 poppins-semibold">
                   <div className="color-linear">0{i + 1}</div>
                   <div className="poppins-semibold text-sm mr-2">
-                    {val.heading} 
+                    {val.heading}
                   </div>
                 </div>
                 <div className="flex poppins-regular text-[#787D81] gap-2 text-xs">
-                  <div>
-                   {val.subtext}
-                  </div>
+                  <div>{val.subtext}</div>
                   <div>
                     {faqQuesIndex === i ? (
                       <button onClick={() => setfaqQuesIndex(-1)}>

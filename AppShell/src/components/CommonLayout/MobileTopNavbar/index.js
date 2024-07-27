@@ -11,18 +11,28 @@ function MobileTopNavbar() {
   return (
     <div className="flex items-center justify-between w-[100vw] px-4 pt-10 pb-6 shadow-md">
       <div>
-        <img src="/images/logo-name.png" alt="Dashboard" />
+        <img
+          onClick={() => navigate("/")}
+          src="/images/logo-name.png"
+          alt="Dashboard"
+        />
       </div>
       <div className="flex gap-4 text-sm items-center">
         <div>
-          <img src="/images/notifications.svg" alt="Notification"/>
+          <img
+            onClick={() => navigate("/dashboard/notification")}
+            src="/images/notifications.svg"
+            alt="Notification"
+          />
         </div>
         <div
           className="primary-linear-gr-bg-up p-1 rounded-[50%] shadow-2xl shadow-black"
+          style={{ width: "38px", height: "38px" }}
           onClick={() => navigate("/dashboard/profile")}
         >
           <Avatar
             src="#"
+            style={{ width: "32px", height: "32px" }}
             sx={{
               fontWeight: "bold",
               fontSize: "small",
@@ -117,7 +127,7 @@ export function DropMenu({ setDropMenu, navigate }) {
         <div
           onClick={() => {
             setDropMenu(false);
-            navigate("/dashboard/profile");
+            navigate("/dashboard/kyc");
           }}
           className="flex items-center gap-4 text-[#A3A6A9] text-sm poppins-light hover:text-[black] hover:font-bold group"
         >

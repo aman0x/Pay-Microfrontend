@@ -15,7 +15,7 @@ function AddNewAccount({ isRepeatPayment = false }) {
     const [accountData, setAccountData] = useState({})
     const { handleAddBankAccount } = useAccounts()
     return (
-        <div className="mt-5 mb-5 bg-primary p-[2rem] rounded-2xl flex flex-col gap-3 w-full ">
+        <div className="mt-5 mb-20 lg:mb-5 md:mb-0 bg-primary p-[2rem] rounded-2xl flex flex-col gap-3 w-full ">
             <div className="flex justify-around gap-2">
                 <hr className={`my-2 max-w-[20%] ${stepIndex > 0 ? "hr-gradient" : "w-full border-t-2 border-gray-200"}`} />
                 <div className="flex flex-col items-center gap-1">
@@ -79,7 +79,7 @@ function AddNewAccount({ isRepeatPayment = false }) {
             </div>
             {
                 stepIndex === 0 &&
-                <div className="mx-auto w-[35%] flex flex-col gap-8 mt-4 mb-4">
+                <div className="mx-auto form-width flex flex-col gap-8 mt-4 mb-4">
                     <div className="text-center poppins-semibold">Enter Data</div>
                     <Formik
                         initialValues={{ account_name: '', account_number: '', ifsc_code: '', bank_account_type: '', user_account_type: '', pan_no: '', gstin_no: '', bank_name: '' }}
