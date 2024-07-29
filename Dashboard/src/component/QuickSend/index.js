@@ -65,7 +65,7 @@ export function QuickSend({ handleQuickSendData }) {
                 onClick={()=>navigate('/dashboard/beneficiary')}
                 className="poppins-regular text-[#787D81] text-xs underline cursor-pointer">All Beneficaries</p>
             </div>
-            <div className='flex gap-5'>
+            <div className='flex flex-wrap gap-5'>
                 {
                     quickSend.map((user, i) => {
                         return (

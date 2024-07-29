@@ -153,3 +153,8 @@ Controllers/node_modules/proxy-from-env/package.json
 Controllers/node_modules/proxy-from-env/README.md
 Controllers/node_modules/proxy-from-env/test.js
 .env.development
+.env.production
+.env*
+.vscode
+start-all.sh
+stop-all.sh
