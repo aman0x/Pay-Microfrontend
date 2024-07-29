@@ -64,6 +64,7 @@ function DashboardMain() {
             </div>
             <div className="flex flex-col items-center justify-center gap-2">
               <img
+                  onClick={() => navigate("/dashboard/payment/new-payment")}
                 className="w-20 h-auto"
                 src="/images/makePayment.svg"
                 alt="Make a Payment"

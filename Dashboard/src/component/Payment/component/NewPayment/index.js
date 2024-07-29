@@ -7,6 +7,7 @@ import "./style.css";
 import { toast } from "react-toastify";
 import { useSearchParams } from "react-router-dom";
 import { useAccounts } from "#hooks/index";
+import { MobilePaymentStep2 } from "./mobilePaymentStep2";
 const receivers = [
   {
     name: "test",
@@ -38,6 +39,8 @@ function NewPayment({ isRepeatPayment = false }) {
     pan: null,
     bank_name: "SBI BANK",
   });
+  const [total, setTotal] = useState(0);
+  const isTyping = amount.length > 0;
   const { handleGetBankById, handleGetBeneficiary } = useAccounts();
   useEffect(() => {
     const fetchBankDetails = async (bankId) => {
@@ -53,222 +56,480 @@ function NewPayment({ isRepeatPayment = false }) {
     }
     fetchBeneficiary();
   }, [bankId]);
+
+
+  useEffect(() => {
+    const numericAmount = parseFloat(amount);
+    if (!isNaN(numericAmount) && numericAmount > 10) {
+      const tax = numericAmount * 0.12;
+      setTotal(numericAmount - tax);
+    } else {
+      setTotal(0);
+    }
+  }, [amount]);
+
+
   return (
-    <div className="mt-5 bg-primary p-[2rem] rounded-2xl flex flex-col gap-3 w-full min-h-[600px] mb-4 ">
-      <div className="flex justify-evenly gap-2">
-        <div className="flex flex-col items-center gap-1">
-          {stepIndex <= 0 ? (
-            <div className="">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M16 8C16 12.4182 12.4182 16 8 16C3.58172 16 0 12.4182 0 8C0 3.58172 3.58172 0 8 0C12.4182 0 16 3.58172 16 8ZM11.2242 5.57574C11.4586 5.81005 11.4586 6.18995 11.2242 6.42424L7.22424 10.4242C6.98992 10.6586 6.61008 10.6586 6.37574 10.4242L4.77574 8.82424C4.54142 8.58992 4.54142 8.21008 4.77574 7.97576C5.01005 7.74144 5.38995 7.74144 5.62426 7.97576L6.8 9.15144L8.58784 7.3636L10.3758 5.57574C10.6101 5.34142 10.9899 5.34142 11.2242 5.57574Z"
-                  fill={stepIndex === 0 ? "#232B31" : "#B6B8BA"}
-                />
-              </svg>
+
+    <>
+
+      <div className="md:hidden m-auto full">
+        {stepIndex === 0 && (
+          <div className="mx-auto w-3/4 form-width flex flex-col gap-8 mt-4">
+           <div className="flex flex-col items-center justify-center">
+           <div className="text-center poppins-semibold">Enter Data</div>
+            <div className="text-[10px]">
+              {`0${stepIndex}/03`}
             </div>
-          ) : (
-            <div>
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 18 18"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M17 9C17 13.4182 13.4182 17 9 17C4.58172 17 1 13.4182 1 9C1 4.58172 4.58172 1 9 1C13.4182 1 17 4.58172 17 9ZM12.2242 6.57574C12.4586 6.81005 12.4586 7.18995 12.2242 7.42424L8.22424 11.4242C7.98992 11.6586 7.61008 11.6586 7.37574 11.4242L5.77574 9.82424C5.54142 9.58992 5.54142 9.21008 5.77574 8.97576C6.01005 8.74144 6.38995 8.74144 6.62426 8.97576L7.8 10.1514L9.58784 8.3636L11.3758 6.57574C11.6101 6.34142 11.9899 6.34142 12.2242 6.57574Z"
-                  fill="url(#paint0_linear_1298_2821)"
-                />
-                <defs>
-                  <linearGradient
-                    id="paint0_linear_1298_2821"
-                    x1="-1.55083"
-                    y1="10.4222"
-                    x2="19.666"
-                    y2="5.56723"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop stopColor="#F6DEC6" />
-                    <stop offset="0.47" stopColor="#E872D4" />
-                    <stop offset="0.656667" stopColor="#C190D9" />
-                    <stop offset="0.881578" stopColor="#A2DCFE" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
-          )}
-          <div className="poppins-light text-[10px] flex gap-1">
-            Step <div>1</div>
-          </div>
-        </div>
-        <hr
-          className={`my-2 ${
-            stepIndex > 0 ? "hr-gradient" : "w-full border-t-2 border-gray-200"
-          }`}
-        />
-        <div className="flex flex-col items-center gap-1">
-          {stepIndex <= 1 ? (
-            <div className="">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M16 8C16 12.4182 12.4182 16 8 16C3.58172 16 0 12.4182 0 8C0 3.58172 3.58172 0 8 0C12.4182 0 16 3.58172 16 8ZM11.2242 5.57574C11.4586 5.81005 11.4586 6.18995 11.2242 6.42424L7.22424 10.4242C6.98992 10.6586 6.61008 10.6586 6.37574 10.4242L4.77574 8.82424C4.54142 8.58992 4.54142 8.21008 4.77574 7.97576C5.01005 7.74144 5.38995 7.74144 5.62426 7.97576L6.8 9.15144L8.58784 7.3636L10.3758 5.57574C10.6101 5.34142 10.9899 5.34142 11.2242 5.57574Z"
-                  fill={stepIndex === 1 ? "#232B31" : "#B6B8BA"}
-                />
-              </svg>
-            </div>
-          ) : (
-            <div>
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 18 18"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M17 9C17 13.4182 13.4182 17 9 17C4.58172 17 1 13.4182 1 9C1 4.58172 4.58172 1 9 1C13.4182 1 17 4.58172 17 9ZM12.2242 6.57574C12.4586 6.81005 12.4586 7.18995 12.2242 7.42424L8.22424 11.4242C7.98992 11.6586 7.61008 11.6586 7.37574 11.4242L5.77574 9.82424C5.54142 9.58992 5.54142 9.21008 5.77574 8.97576C6.01005 8.74144 6.38995 8.74144 6.62426 8.97576L7.8 10.1514L9.58784 8.3636L11.3758 6.57574C11.6101 6.34142 11.9899 6.34142 12.2242 6.57574Z"
-                  fill="url(#paint0_linear_1298_2821)"
-                />
-                <defs>
-                  <linearGradient
-                    id="paint0_linear_1298_2821"
-                    x1="-1.55083"
-                    y1="10.4222"
-                    x2="19.666"
-                    y2="5.56723"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop stopColor="#F6DEC6" />
-                    <stop offset="0.47" stopColor="#E872D4" />
-                    <stop offset="0.656667" stopColor="#C190D9" />
-                    <stop offset="0.881578" stopColor="#A2DCFE" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
-          )}
-          <div className="poppins-light text-[10px]  flex gap-1">
-            Step <div>2</div>
-          </div>
-        </div>
-        <hr
-          className={`my-2 ${
-            stepIndex > 1 ? "hr-gradient" : "w-full border-t-2 border-gray-200"
-          }`}
-        />
-        <div className="flex flex-col items-center gap-1">
-          {stepIndex <= 2 ? (
-            <div className="">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M16 8C16 12.4182 12.4182 16 8 16C3.58172 16 0 12.4182 0 8C0 3.58172 3.58172 0 8 0C12.4182 0 16 3.58172 16 8ZM11.2242 5.57574C11.4586 5.81005 11.4586 6.18995 11.2242 6.42424L7.22424 10.4242C6.98992 10.6586 6.61008 10.6586 6.37574 10.4242L4.77574 8.82424C4.54142 8.58992 4.54142 8.21008 4.77574 7.97576C5.01005 7.74144 5.38995 7.74144 5.62426 7.97576L6.8 9.15144L8.58784 7.3636L10.3758 5.57574C10.6101 5.34142 10.9899 5.34142 11.2242 5.57574Z"
-                  fill={stepIndex === 2 ? "#232B31" : "#B6B8BA"}
-                />
-              </svg>
-            </div>
-          ) : (
-            <div>
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 18 18"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M17 9C17 13.4182 13.4182 17 9 17C4.58172 17 1 13.4182 1 9C1 4.58172 4.58172 1 9 1C13.4182 1 17 4.58172 17 9ZM12.2242 6.57574C12.4586 6.81005 12.4586 7.18995 12.2242 7.42424L8.22424 11.4242C7.98992 11.6586 7.61008 11.6586 7.37574 11.4242L5.77574 9.82424C5.54142 9.58992 5.54142 9.21008 5.77574 8.97576C6.01005 8.74144 6.38995 8.74144 6.62426 8.97576L7.8 10.1514L9.58784 8.3636L11.3758 6.57574C11.6101 6.34142 11.9899 6.34142 12.2242 6.57574Z"
-                  fill="url(#paint0_linear_1298_2821)"
-                />
-                <defs>
-                  <linearGradient
-                    id="paint0_linear_1298_2821"
-                    x1="-1.55083"
-                    y1="10.4222"
-                    x2="19.666"
-                    y2="5.56723"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop stopColor="#F6DEC6" />
-                    <stop offset="0.47" stopColor="#E872D4" />
-                    <stop offset="0.656667" stopColor="#C190D9" />
-                    <stop offset="0.881578" stopColor="#A2DCFE" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
-          )}
-          <div className="poppins-light text-[10px] flex gap-1">
-            Step <div>3</div>
-          </div>
-        </div>
-      </div>
-      {stepIndex === 0 && (
-        <div className="mx-auto form-width flex flex-col gap-8 mt-4">
-          <div className="text-center poppins-semibold">Enter Data</div>
-          <div className="flex flex-col gap-4">
-            <div>
-              <div className="relative w-full">
-                <div className="absolute inset-y-0 start-0 flex gap-2 items-center ps-5 pointer-events-none text-gray-400 text-xs poppins-semibold italic">
-                  ₹
-                  <PiLineVertical color="gray" />
+           </div>
+            <div className="flex flex-col gap-24">
+
+              <div className="flex flex-col gap-8">
+             
+
+                <div className="relative">
+                  <div className="relative">
+                    <input
+                      type="text"
+                      value={types[typeIndex]}
+                      className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-xs p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-none"
+                      placeholder="Vendor Payment, Vendor Payment"
+                      required
+                    />
+                    <button
+                      type="button"
+                      className="absolute inset-y-0 end-0 flex items-center pe-3"
+                      onClick={() => setPaymentMenuView(!isPaymentTypeMenu)}
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 18 18"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <rect
+                          x="18"
+                          width="18"
+                          height="18"
+                          rx="8"
+                          transform="rotate(90 18 0)"
+                          fill="#DFE0E2"
+                        />
+                        <path
+                          d="M11 8L9 10L7 8"
+                          stroke="#4E5459"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+
+                  {isPaymentTypeMenu && (
+                    <PaymentTypeMenu
+                      setCardIndex={setTypeIndex}
+                      cardIndex={typeIndex}
+                    />
+                  )}
                 </div>
-                <input
-                  type="text"
-                  value={amount}
-                  onChange={(e) => setAmount(e.target.value)}
-                  className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-16 placeholder:italic placeholder:text-xs p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Enter Amount."
-                />
+
+                {!isRepeatPayment ? (
+                  <div className="relative">
+                    <div className="relative">
+                      <input
+                        type="text"
+                        value={beneficiaries[receiverIndex].name}
+                        className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-xs p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-none"
+                        placeholder="Receiver"
+                      />
+                      <button
+                        type="button"
+                        className="absolute inset-y-0 end-0 flex items-center pe-3"
+                        onClick={() => setReceiversMenuView(!isReceiverMenu)}
+                      >
+                        <svg
+                          width="18"
+                          height="18"
+                          viewBox="0 0 18 18"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <rect
+                            x="18"
+                            width="18"
+                            height="18"
+                            rx="8"
+                            transform="rotate(90 18 0)"
+                            fill="#DFE0E2"
+                          />
+                          <path
+                            d="M11 8L9 10L7 8"
+                            stroke="#4E5459"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                    {isReceiverMenu && (
+                      <ReceiversMenu
+                        cardIndex={receiverIndex}
+                        setCardIndex={setReceiverIndex}
+                        beneficiaries={beneficiaries}
+                      />
+                    )}
+                  </div>
+                ) : null}
+
               </div>
-              {!isValid && (
-                <div className="text-red-400 text-xs">
-                  Amount Should be greater than 10.
+              <div className="w-full flex flex-col justify-center items-center">
+                <div className="relative w-4/5 border-b-[1px] border-gray-300">
+                  <div className={`absolute inset-y-0 left-0 flex gap-2 items-center pl-5 pointer-events-none text-3xl poppins-semibold italic ${isTyping ? 'gradient-text' : 'text-gray-400'}`}>
+                    <span className={`currency-symbol ${isTyping ? 'gradient-text' : ''}`}>₹</span>
+
+                  </div>
+                  <input
+                    type="text"
+                    value={amount}
+                    onChange={(e) => setAmount(e.target.value)}
+                    className="bg-white border-none text-3xl rounded-2xl w-full pl-16 placeholder:italic placeholder:text-xl py-3.5 focus:outline-none focus:ring-0 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white gradient-text"
+                    placeholder="Enter Amount."
+                  />
                 </div>
-              )}
+                {isTyping ? <div className="w-4/5 mt-4">
+                  <div className="flex justify-between">
+                    <p className="text-[10px]">Tax</p>
+                    <p className="text-[10px]">12%</p>
+                  </div>
+                  <div className="flex justify-between mt-2 gradient-text">
+                    <p className="text-xs">Total</p>
+                    <p className="text-xs">₹{total.toFixed(2)}</p>
+                  </div>
+                </div> : null}
+                {!isValid && (
+                  <div className="text-red-400 text-xs mt-1">
+                    Amount should be greater than 10.
+                  </div>
+                )}
+              </div>
+
             </div>
-            {!isRepeatPayment ? (
+
+            <div className="mt-28 ">
+              <button
+                type="submit"
+                onClick={() => {
+                  if (amount.length > 1) {
+                    setStepIndex(1);
+                  } else {
+                    setIsValid(false);
+                    toast.error("Set Valid Amount!!");
+                  }
+                }}
+                className="flex primary-btn items-center w-full justify-center rounded-xl bg-gray-950 px-3 p-4 text-sm font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                <div>{"Next Step"}</div>
+                <span className="py-1.5 pl-2 size-6">
+                  <FaCircleArrowRight style={{ color: "white" }} />
+                </span>
+              </button>
+            </div>
+          </div>
+        )}
+        {stepIndex === 1 && (
+          <MobilePaymentStep2
+          stepIndex={stepIndex}
+          setStepIndex={setStepIndex}
+          />
+          // <PaymentStep2
+          //   setStepIndex={setStepIndex}
+          //   data={{
+          //     amount: amount,
+          //     payment_type: types[typeIndex],
+          //     receiver: beneficiaries[receiverIndex],
+          //   }}
+          //   bankDetail={bankDetail}
+          //   setPaymentDetail={setPaymentDetail}
+          // />
+        )}
+
+        {stepIndex === 2 && (
+          <PaymentStep3
+            setStepIndex={setStepIndex}
+            data={{
+              amount: amount,
+              payment_type: "INDIVIDUAL",
+              receiver: beneficiaries[receiverIndex],
+            }}
+            paymentDetail={paymentDetail}
+            bankDetail={bankDetail}
+          />
+        )}
+
+      </div>
+
+      <div className="hidden mt-5 bg-primary p-[2rem] rounded-2xl md:flex md:flex-col gap-3 w-full min-h-[600px] mb-4 ">
+        <div className="flex justify-evenly gap-2">
+          <div className="flex flex-col items-center gap-1">
+            {stepIndex <= 0 ? (
+              <div className="">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M16 8C16 12.4182 12.4182 16 8 16C3.58172 16 0 12.4182 0 8C0 3.58172 3.58172 0 8 0C12.4182 0 16 3.58172 16 8ZM11.2242 5.57574C11.4586 5.81005 11.4586 6.18995 11.2242 6.42424L7.22424 10.4242C6.98992 10.6586 6.61008 10.6586 6.37574 10.4242L4.77574 8.82424C4.54142 8.58992 4.54142 8.21008 4.77574 7.97576C5.01005 7.74144 5.38995 7.74144 5.62426 7.97576L6.8 9.15144L8.58784 7.3636L10.3758 5.57574C10.6101 5.34142 10.9899 5.34142 11.2242 5.57574Z"
+                    fill={stepIndex === 0 ? "#232B31" : "#B6B8BA"}
+                  />
+                </svg>
+              </div>
+            ) : (
+              <div>
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 18 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M17 9C17 13.4182 13.4182 17 9 17C4.58172 17 1 13.4182 1 9C1 4.58172 4.58172 1 9 1C13.4182 1 17 4.58172 17 9ZM12.2242 6.57574C12.4586 6.81005 12.4586 7.18995 12.2242 7.42424L8.22424 11.4242C7.98992 11.6586 7.61008 11.6586 7.37574 11.4242L5.77574 9.82424C5.54142 9.58992 5.54142 9.21008 5.77574 8.97576C6.01005 8.74144 6.38995 8.74144 6.62426 8.97576L7.8 10.1514L9.58784 8.3636L11.3758 6.57574C11.6101 6.34142 11.9899 6.34142 12.2242 6.57574Z"
+                    fill="url(#paint0_linear_1298_2821)"
+                  />
+                  <defs>
+                    <linearGradient
+                      id="paint0_linear_1298_2821"
+                      x1="-1.55083"
+                      y1="10.4222"
+                      x2="19.666"
+                      y2="5.56723"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop stopColor="#F6DEC6" />
+                      <stop offset="0.47" stopColor="#E872D4" />
+                      <stop offset="0.656667" stopColor="#C190D9" />
+                      <stop offset="0.881578" stopColor="#A2DCFE" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+            )}
+            <div className="poppins-light text-[10px] flex gap-1">
+              Step <div>1</div>
+            </div>
+          </div>
+          <hr
+            className={`my-2 ${stepIndex > 0 ? "hr-gradient" : "w-full border-t-2 border-gray-200"
+              }`}
+          />
+          <div className="flex flex-col items-center gap-1">
+            {stepIndex <= 1 ? (
+              <div className="">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M16 8C16 12.4182 12.4182 16 8 16C3.58172 16 0 12.4182 0 8C0 3.58172 3.58172 0 8 0C12.4182 0 16 3.58172 16 8ZM11.2242 5.57574C11.4586 5.81005 11.4586 6.18995 11.2242 6.42424L7.22424 10.4242C6.98992 10.6586 6.61008 10.6586 6.37574 10.4242L4.77574 8.82424C4.54142 8.58992 4.54142 8.21008 4.77574 7.97576C5.01005 7.74144 5.38995 7.74144 5.62426 7.97576L6.8 9.15144L8.58784 7.3636L10.3758 5.57574C10.6101 5.34142 10.9899 5.34142 11.2242 5.57574Z"
+                    fill={stepIndex === 1 ? "#232B31" : "#B6B8BA"}
+                  />
+                </svg>
+              </div>
+            ) : (
+              <div>
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 18 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M17 9C17 13.4182 13.4182 17 9 17C4.58172 17 1 13.4182 1 9C1 4.58172 4.58172 1 9 1C13.4182 1 17 4.58172 17 9ZM12.2242 6.57574C12.4586 6.81005 12.4586 7.18995 12.2242 7.42424L8.22424 11.4242C7.98992 11.6586 7.61008 11.6586 7.37574 11.4242L5.77574 9.82424C5.54142 9.58992 5.54142 9.21008 5.77574 8.97576C6.01005 8.74144 6.38995 8.74144 6.62426 8.97576L7.8 10.1514L9.58784 8.3636L11.3758 6.57574C11.6101 6.34142 11.9899 6.34142 12.2242 6.57574Z"
+                    fill="url(#paint0_linear_1298_2821)"
+                  />
+                  <defs>
+                    <linearGradient
+                      id="paint0_linear_1298_2821"
+                      x1="-1.55083"
+                      y1="10.4222"
+                      x2="19.666"
+                      y2="5.56723"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop stopColor="#F6DEC6" />
+                      <stop offset="0.47" stopColor="#E872D4" />
+                      <stop offset="0.656667" stopColor="#C190D9" />
+                      <stop offset="0.881578" stopColor="#A2DCFE" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+            )}
+            <div className="poppins-light text-[10px]  flex gap-1">
+              Step <div>2</div>
+            </div>
+          </div>
+          <hr
+            className={`my-2 ${stepIndex > 1 ? "hr-gradient" : "w-full border-t-2 border-gray-200"
+              }`}
+          />
+          <div className="flex flex-col items-center gap-1">
+            {stepIndex <= 2 ? (
+              <div className="">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M16 8C16 12.4182 12.4182 16 8 16C3.58172 16 0 12.4182 0 8C0 3.58172 3.58172 0 8 0C12.4182 0 16 3.58172 16 8ZM11.2242 5.57574C11.4586 5.81005 11.4586 6.18995 11.2242 6.42424L7.22424 10.4242C6.98992 10.6586 6.61008 10.6586 6.37574 10.4242L4.77574 8.82424C4.54142 8.58992 4.54142 8.21008 4.77574 7.97576C5.01005 7.74144 5.38995 7.74144 5.62426 7.97576L6.8 9.15144L8.58784 7.3636L10.3758 5.57574C10.6101 5.34142 10.9899 5.34142 11.2242 5.57574Z"
+                    fill={stepIndex === 2 ? "#232B31" : "#B6B8BA"}
+                  />
+                </svg>
+              </div>
+            ) : (
+              <div>
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 18 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M17 9C17 13.4182 13.4182 17 9 17C4.58172 17 1 13.4182 1 9C1 4.58172 4.58172 1 9 1C13.4182 1 17 4.58172 17 9ZM12.2242 6.57574C12.4586 6.81005 12.4586 7.18995 12.2242 7.42424L8.22424 11.4242C7.98992 11.6586 7.61008 11.6586 7.37574 11.4242L5.77574 9.82424C5.54142 9.58992 5.54142 9.21008 5.77574 8.97576C6.01005 8.74144 6.38995 8.74144 6.62426 8.97576L7.8 10.1514L9.58784 8.3636L11.3758 6.57574C11.6101 6.34142 11.9899 6.34142 12.2242 6.57574Z"
+                    fill="url(#paint0_linear_1298_2821)"
+                  />
+                  <defs>
+                    <linearGradient
+                      id="paint0_linear_1298_2821"
+                      x1="-1.55083"
+                      y1="10.4222"
+                      x2="19.666"
+                      y2="5.56723"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop stopColor="#F6DEC6" />
+                      <stop offset="0.47" stopColor="#E872D4" />
+                      <stop offset="0.656667" stopColor="#C190D9" />
+                      <stop offset="0.881578" stopColor="#A2DCFE" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+            )}
+            <div className="poppins-light text-[10px] flex gap-1">
+              Step <div>3</div>
+            </div>
+          </div>
+        </div>
+        {stepIndex === 0 && (
+          <div className="mx-auto form-width flex flex-col gap-8 mt-4">
+            <div className="text-center poppins-semibold">Enter Data</div>
+            <div className="flex flex-col gap-4">
+              <div>
+                <div className="relative w-full">
+                  <div className="absolute inset-y-0 start-0 flex gap-2 items-center ps-5 pointer-events-none text-gray-400 text-xs poppins-semibold italic">
+                    ₹
+                    <PiLineVertical color="gray" />
+                  </div>
+                  <input
+                    type="text"
+                    value={amount}
+                    onChange={(e) => setAmount(e.target.value)}
+                    className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-16 placeholder:italic placeholder:text-xs p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Enter Amount."
+                  />
+                </div>
+                {!isValid && (
+                  <div className="text-red-400 text-xs">
+                    Amount Should be greater than 10.
+                  </div>
+                )}
+              </div>
+              {!isRepeatPayment ? (
+                <div className="relative">
+                  <div className="relative">
+                    <input
+                      type="text"
+                      value={beneficiaries[receiverIndex].name}
+                      className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-xs p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Receiver"
+                    />
+                    <button
+                      type="button"
+                      className="absolute inset-y-0 end-0 flex items-center pe-3"
+                      onClick={() => setReceiversMenuView(!isReceiverMenu)}
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 18 18"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <rect
+                          x="18"
+                          width="18"
+                          height="18"
+                          rx="8"
+                          transform="rotate(90 18 0)"
+                          fill="#DFE0E2"
+                        />
+                        <path
+                          d="M11 8L9 10L7 8"
+                          stroke="#4E5459"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                  {isReceiverMenu && (
+                    <ReceiversMenu
+                      cardIndex={receiverIndex}
+                      setCardIndex={setReceiverIndex}
+                      beneficiaries={beneficiaries}
+                    />
+                  )}
+                </div>
+              ) : null}
+
               <div className="relative">
                 <div className="relative">
                   <input
                     type="text"
-                    value={beneficiaries[receiverIndex].name}
+                    value={types[typeIndex]}
                     className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-xs p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Receiver"
+                    placeholder="Vendor Payment, Vendor Payment"
+                    required
                   />
                   <button
                     type="button"
                     className="absolute inset-y-0 end-0 flex items-center pe-3"
-                    onClick={() => setReceiversMenuView(!isReceiverMenu)}
+                    onClick={() => setPaymentMenuView(!isPaymentTypeMenu)}
                   >
                     <svg
                       width="18"
@@ -294,111 +555,66 @@ function NewPayment({ isRepeatPayment = false }) {
                     </svg>
                   </button>
                 </div>
-                {isReceiverMenu && (
-                  <ReceiversMenu
-                    cardIndex={receiverIndex}
-                    setCardIndex={setReceiverIndex}
-                    beneficiaries={beneficiaries}
+
+                {isPaymentTypeMenu && (
+                  <PaymentTypeMenu
+                    setCardIndex={setTypeIndex}
+                    cardIndex={typeIndex}
                   />
                 )}
               </div>
-            ) : null}
+            </div>
 
-            <div className="relative">
-              <div className="relative">
-                <input
-                  type="text"
-                  value={types[typeIndex]}
-                  className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-xs p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Vendor Payment, Vendor Payment"
-                  required
-                />
-                <button
-                  type="button"
-                  className="absolute inset-y-0 end-0 flex items-center pe-3"
-                  onClick={() => setPaymentMenuView(!isPaymentTypeMenu)}
-                >
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 18 18"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      x="18"
-                      width="18"
-                      height="18"
-                      rx="8"
-                      transform="rotate(90 18 0)"
-                      fill="#DFE0E2"
-                    />
-                    <path
-                      d="M11 8L9 10L7 8"
-                      stroke="#4E5459"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                </button>
-              </div>
-
-              {isPaymentTypeMenu && (
-                <PaymentTypeMenu
-                  setCardIndex={setTypeIndex}
-                  cardIndex={typeIndex}
-                />
-              )}
+            <div className="">
+              <button
+                type="submit"
+                onClick={() => {
+                  if (amount.length > 1) {
+                    setStepIndex(1);
+                  } else {
+                    setIsValid(false);
+                    toast.error("Set Valid Amount!!");
+                  }
+                }}
+                className="flex primary-btn items-center w-full justify-center rounded-xl bg-gray-950 px-3 p-4 text-sm font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                <div>{"Next Step"}</div>
+                <span className="py-1.5 pl-2 size-6">
+                  <FaCircleArrowRight style={{ color: "white" }} />
+                </span>
+              </button>
             </div>
           </div>
+        )}
+        {stepIndex === 1 && (
+          <PaymentStep2
+            setStepIndex={setStepIndex}
+            data={{
+              amount: amount,
+              payment_type: types[typeIndex],
+              receiver: beneficiaries[receiverIndex],
+            }}
+            bankDetail={bankDetail}
+            setPaymentDetail={setPaymentDetail}
+          />
+        )}
 
-          <div className="">
-            <button
-              type="submit"
-              onClick={() => {
-                if (amount.length > 1) {
-                  setStepIndex(1);
-                } else {
-                  setIsValid(false);
-                  toast.error("Set Valid Amount!!");
-                }
-              }}
-              className="flex primary-btn items-center w-full justify-center rounded-xl bg-gray-950 px-3 p-4 text-sm font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            >
-              <div>{"Next Step"}</div>
-              <span className="py-1.5 pl-2 size-6">
-                <FaCircleArrowRight style={{ color: "white" }} />
-              </span>
-            </button>
-          </div>
-        </div>
-      )}
-      {stepIndex === 1 && (
-        <PaymentStep2
-          setStepIndex={setStepIndex}
-          data={{
-            amount: amount,
-            payment_type: types[typeIndex],
-            receiver: beneficiaries[receiverIndex],
-          }}
-          bankDetail={bankDetail}
-          setPaymentDetail={setPaymentDetail}
-        />
-      )}
+        {stepIndex === 2 && (
+          <PaymentStep3
+            setStepIndex={setStepIndex}
+            data={{
+              amount: amount,
+              payment_type: "INDIVIDUAL",
+              receiver: beneficiaries[receiverIndex],
+            }}
+            paymentDetail={paymentDetail}
+            bankDetail={bankDetail}
+          />
+        )}
+      </div>
 
-      {stepIndex === 2 && (
-        <PaymentStep3
-          setStepIndex={setStepIndex}
-          data={{
-            amount: amount,
-            payment_type: "INDIVIDUAL",
-            receiver: beneficiaries[receiverIndex],
-          }}
-          paymentDetail={paymentDetail}
-          bankDetail={bankDetail}
-        />
-      )}
-    </div>
+    </>
+
   );
 }
 function PaymentTypeMenu({ cardIndex, setCardIndex }) {
@@ -435,16 +651,14 @@ function PaymentTypeMenu({ cardIndex, setCardIndex }) {
           return (
             <div className="flex gap-4 justify-between items-center " key={i}>
               <div
-                className={`${
-                  cardIndex === i ? "poppins-bold" : "text-[#A3A6A9]"
-                } flex gap-1 items-center text-sm`}
+                className={`${cardIndex === i ? "poppins-bold" : "text-[#A3A6A9]"
+                  } flex gap-1 items-center text-sm`}
               >
                 {card}
               </div>
               <div
-                className={`max-w-[15px]  max-h-[15px] rounded-sm   ${
-                  cardIndex === i ? "primary-linear-gr-bg" : "bg-gray-300"
-                }`}
+                className={`max-w-[15px]  max-h-[15px] rounded-sm   ${cardIndex === i ? "primary-linear-gr-bg" : "bg-gray-300"
+                  }`}
               >
                 <FaSquare
                   color={`${cardIndex === i ? "black" : "white"}`}
@@ -493,16 +707,14 @@ function ReceiversMenu({ cardIndex, setCardIndex, beneficiaries }) {
           return (
             <div className="flex gap-4 justify-between items-center " key={i}>
               <div
-                className={`${
-                  cardIndex === i ? "poppins-bold" : "text-[#A3A6A9]"
-                } flex gap-1 items-center text-sm`}
+                className={`${cardIndex === i ? "poppins-bold" : "text-[#A3A6A9]"
+                  } flex gap-1 items-center text-sm`}
               >
                 {card.name}
               </div>
               <div
-                className={`max-w-[15px]  max-h-[15px] rounded-sm   ${
-                  cardIndex === i ? "primary-linear-gr-bg" : "bg-gray-300"
-                }`}
+                className={`max-w-[15px]  max-h-[15px] rounded-sm   ${cardIndex === i ? "primary-linear-gr-bg" : "bg-gray-300"
+                  }`}
               >
                 <FaSquare
                   color={`${cardIndex === i ? "black" : "white"}`}
