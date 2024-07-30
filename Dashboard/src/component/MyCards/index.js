@@ -32,7 +32,7 @@ function MyCards() {
     return colors[Math.floor(Math.random() * colors.length)];
   };
   return (
-    <div className="mt-5 bg-primary p-[2rem] rounded-3xl flex flex-col gap-3   w-full my-4">
+    <div className="mt-2 md:mt-5 md:bg-primary p-[2rem] md:rounded-3xl flex flex-col gap-3   w-full my-4">
       <div className="md:hidden">
         <div className="flex  bg-[#F0F1F2] py-[8px] rounded-xl justify-evenly px-2 shadow-sm ">
           <button

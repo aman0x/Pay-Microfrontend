@@ -238,3 +238,44 @@ body {
     rgba(162, 220, 254, 1) 93%
   );
 }
+
+.dashboard-background {
+  background: rgb(246, 222, 198);
+  background: linear-gradient(
+    45deg,
+    rgba(246, 222, 198, 1) 0%,
+    rgba(232, 114, 212, 1) 38%,
+    rgba(193, 144, 217, 1) 72%,
+    rgba(162, 220, 254, 1) 100%
+  );
+}
+
+.dashboard-body {
+  background: hsla(0, 0%, 100%, 1);
+
+  background: linear-gradient(
+    180deg,
+    hsla(0, 0%, 100%, 1) 0%,
+    hsla(180, 20%, 95%, 1) 25%,
+    hsla(210, 7%, 95%, 1) 75%,
+    hsla(0, 0%, 100%, 1) 100%
+  );
+
+  background: -moz-linear-gradient(
+    180deg,
+    hsla(0, 0%, 100%, 1) 0%,
+    hsla(180, 20%, 95%, 1) 25%,
+    hsla(210, 7%, 95%, 1) 75%,
+    hsla(0, 0%, 100%, 1) 100%
+  );
+
+  background: -webkit-linear-gradient(
+    180deg,
+    hsla(0, 0%, 100%, 1) 0%,
+    hsla(180, 20%, 95%, 1) 25%,
+    hsla(210, 7%, 95%, 1) 75%,
+    hsla(0, 0%, 100%, 1) 100%
+  );
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FFFFFF", endColorstr="#F0F5F5", GradientType=1 );
+}

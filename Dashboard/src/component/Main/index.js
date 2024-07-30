@@ -31,14 +31,24 @@ function DashboardMain() {
   return (
     <>
       {/* Mobile Content */}
-      <div className="md:hidden ">
-        <MobileTopNavbar />
-        <div className="p-4 bg-[#f5f5f5]">
-          <div className="flex justify-between my-4">
-            <p className="text-sm poppins-semibold">Active cards</p>
-            <p onClick={()=> navigate("/dashboard/card")} className="text-xs ">All Cards</p>
+      <div className="md:hidden relative">
+        <div className="dashboard-background rounded-b-[3rem] h-[22rem] w-full top-0 left-0 -z-0">
+          <MobileTopNavbar />
+          <div className="flex justify-between my-4 px-4 w-full">
+            <p className="text-[14px] text-white poppins-semibold">
+              Active cards
+            </p>
+            <div
+              onClick={() => navigate("/dashboard/card")}
+              className="flex gap-4 items-center "
+            >
+              <p className="text-[10px] text-[#F0F1F2]">All Cards</p>
+              <img src="/images/all-cards-arrow.svg" alt="Arrow icon" />
+            </div>
           </div>
           <MobilePaymentCard handlePaymentCardData={handlePaymentCardData} />
+        </div>
+        <div className="p-4 mt-24 dashboard-body">
           <div className="flex justify-evenly mt-8">
             <div className="flex flex-col items-center justify-center gap-2">
               <img
@@ -64,7 +74,7 @@ function DashboardMain() {
             </div>
             <div className="flex flex-col items-center justify-center gap-2">
               <img
-                  onClick={() => navigate("/dashboard/payment/new-payment")}
+                onClick={() => navigate("/dashboard/payment/new-payment")}
                 className="w-20 h-auto"
                 src="/images/makePayment.svg"
                 alt="Make a Payment"
@@ -76,7 +86,12 @@ function DashboardMain() {
           </div>
           <div className="flex justify-between my-8">
             <p className="text-sm poppins-semibold">Latest Transactions</p>
-            <p onClick={() => navigate("/dashboard/payment")} className="text-[#4E5459] text-xs">View All</p>
+            <p
+              onClick={() => navigate("/dashboard/payment")}
+              className="text-[#4E5459] text-xs"
+            >
+              View All
+            </p>
           </div>
 
           {latestActions.map((card) => {

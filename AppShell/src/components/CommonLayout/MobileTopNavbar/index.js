@@ -219,7 +219,7 @@ export function DropMenu({ setDropMenu, navigate }) {
         <div
           onClick={() => {
             setDropMenu(false);
-            navigate("/dashboard/beneficiary");
+            navigate("/dashboard/my-contacts");
           }}
           className="flex items-center gap-4 text-[#A3A6A9] text-sm poppins-light hover:text-[black] hover:font-bold group"
         >
@@ -240,7 +240,7 @@ export function DropMenu({ setDropMenu, navigate }) {
               <path d="M14.8973 14.986C16.6343 14.8538 17.9999 13.8044 17.9999 12.5294C17.9999 11.2662 16.6579 10.2245 14.9437 10.0767C15.429 10.744 15.7499 11.5558 15.7499 12.5C15.7499 13.474 15.4085 14.3071 14.8973 14.986Z" />
             </svg>
           </div>
-          <div className="min-w-fit">My Beneficiaries</div>
+          <div className="min-w-fit">My Contacts</div>
         </div>
         <div
           onClick={() => {

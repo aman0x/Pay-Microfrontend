@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Formik } from "formik";
 import { useAccounts } from "#hooks/index";
 import { useLocation, useNavigate } from "react-router-dom";
+import { authActions } from "Auth/authReducer";
 function ProfileOrKyc() {
   const location = useLocation();
   const [pathName, setPathName] = useState(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (location) {
@@ -302,6 +304,26 @@ function ProfileOrKyc() {
                           </div>
                         </div>
                       </div>
+                      <div className="flex w-full justify-center items-center mt-5">
+                        <button
+                          onClick={() => {
+                            dispatch(authActions.logout());
+                            localStorage.clear();
+                            navigate("/");
+                          }}
+                          className="cursor-pointer flex gap-4 items-center"
+                        >
+                          <span>
+                            <img
+                              src="/images/logout-red.svg"
+                              alt="Logout logo"
+                            />
+                          </span>
+                          <p className="text-[#E45757] hover:font-semibold">
+                            Logout
+                          </p>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </form>
@@ -309,12 +331,10 @@ function ProfileOrKyc() {
             </Formik>
           ) : (
             <div className="flex flex-col justify-between w-full h-full overflow-y-scroll">
-                <div className="flex items-center justify-center py-5">
-                    <img src="/images/verified-icon.svg" alt="Verified" />
-                    <p className="poppins-semibold text-sm">
-                        Verified
-                    </p>
-                </div>
+              <div className="flex items-center justify-center py-5">
+                <img src="/images/verified-icon.svg" alt="Verified" />
+                <p className="poppins-semibold text-sm">Verified</p>
+              </div>
               <div className="flex flex-col gap-2">
                 <div className="poppins-semibold mb-2">Personal Info:</div>
                 <div className="flex gap-2 items-center poppins-light text-[#A3A6A9] ">

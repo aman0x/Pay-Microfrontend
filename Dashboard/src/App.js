@@ -20,6 +20,8 @@ import MyCards from "./component/MyCards/index.js";
 import AxiosInstance from "controllers/AxiosInstance/index";
 import { ToastContainer } from "react-toastify";
 import ProfileOrKyc from "./component/ProfileOrKyc";
+import MyContacts from "./component/MyContacts";
+import BankDetails from "./component/BankDetails";
 const Dashboard = () => {
   return (
     <>
@@ -32,8 +34,10 @@ const Dashboard = () => {
         <Route path="/statistic" element={<Statistic />} />
         <Route path="/payment/payment-detail" element={<PaymentDetailPage />} />
         <Route path="/payment/new-payment" element={<NewPayment />} />
+        <Route path="/my-contacts" element={<MyContacts />} />
         <Route path="/profile" element={<ProfileOrKyc />} />
         <Route path="/kyc" element={<ProfileOrKyc />} />
+        <Route path="/bankdetails" element={<BankDetails />} />
         <Route path="/accounts" element={<MyAccounts />} />
         <Route path="/accounts/add-new" element={<AddNewAccount />} />
         <Route path="/beneficiary" element={<MyBeneficiary />} />
