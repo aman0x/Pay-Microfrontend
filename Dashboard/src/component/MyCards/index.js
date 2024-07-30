@@ -113,7 +113,7 @@ function MyCards() {
           </div>
         </div>
       </div>
-      <div className="grid md:grid-cols-3 gap-4">
+      <div className="grid md:grid-cols-2 divide-three gap-4">
         {cards.map((card) => {
           return (
             <FlipCard

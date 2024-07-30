@@ -160,6 +160,7 @@ export function usePayment(){
               PRIVATE_API: true, 
               current_user: user 
             });
+            console.log('handlePaymentDetail',response.data)
             return response.data;
           }
         catch (error) {

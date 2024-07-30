@@ -192,3 +192,9 @@ input[type="text"]:focus {
     width: 40%;
   }
 }
+
+@media (min-width : 1440px) {
+  .divide-three{
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}

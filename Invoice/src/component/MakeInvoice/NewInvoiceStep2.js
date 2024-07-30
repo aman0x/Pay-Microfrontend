@@ -31,7 +31,7 @@ function NewInvoiceStep2({ setStepIndex, data }) {
                   />
                 </svg>
               </div>
-              <div className="text-[#E45757]  poppins-light-italic">
+              <div className="text-[#E45757]  poppins-light-italic text-[16px]">
                 New Invoice Title
               </div>
             </div>
