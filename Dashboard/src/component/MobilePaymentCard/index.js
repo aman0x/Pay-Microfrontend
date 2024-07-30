@@ -6,8 +6,13 @@ import "./style.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { authActions } from "Auth/authReducer";
 import moment from "moment";
+import { authActions } from "Auth/authReducer";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 export function MobilePaymentCard({ handlePaymentCardData }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -35,6 +40,9 @@ export function MobilePaymentCard({ handlePaymentCardData }) {
   }, []);
   return (
     <div className="flex flex-col gap-2 w-full justify-center">
+      <Swiper>
+        
+      </Swiper>
       <div className="card-size">
         <FlipCard index={cardIndex} cardData={cards[cardIndex]} />
       </div>

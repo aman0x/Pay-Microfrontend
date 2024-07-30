@@ -130,6 +130,7 @@ function NewPayment({ isRepeatPayment = false }) {
                     <PaymentTypeMenu
                       setCardIndex={setTypeIndex}
                       cardIndex={typeIndex}
+                      setPaymentMenuView={setPaymentMenuView}
                     />
                   )}
                 </div>
@@ -177,6 +178,7 @@ function NewPayment({ isRepeatPayment = false }) {
                         cardIndex={receiverIndex}
                         setCardIndex={setReceiverIndex}
                         beneficiaries={beneficiaries}
+                        setReceiversMenuView={setReceiversMenuView}
                       />
                     )}
                   </div>
@@ -512,6 +514,7 @@ function NewPayment({ isRepeatPayment = false }) {
                       cardIndex={receiverIndex}
                       setCardIndex={setReceiverIndex}
                       beneficiaries={beneficiaries}
+                      setReceiversMenuView={setReceiversMenuView}
                     />
                   )}
                 </div>
@@ -560,6 +563,7 @@ function NewPayment({ isRepeatPayment = false }) {
                   <PaymentTypeMenu
                     setCardIndex={setTypeIndex}
                     cardIndex={typeIndex}
+                    setPaymentMenuView={setPaymentMenuView}
                   />
                 )}
               </div>
@@ -617,9 +621,15 @@ function NewPayment({ isRepeatPayment = false }) {
 
   );
 }
-function PaymentTypeMenu({ cardIndex, setCardIndex }) {
+function PaymentTypeMenu({ cardIndex, setCardIndex ,setPaymentMenuView}) {
   return (
-    <div className="absolute w-[100%] top-10 bg-white rounded-2xl shadow-lg py-[1rem] px-[1.2rem] gap-4 z-50">
+    <div className="absolute w-[100%] top-10 bg-white rounded-2xl shadow-lg py-[1rem] px-[1.2rem] gap-4 z-50"
+      onClick={()=>{
+        setTimeout(()=>{
+          setPaymentMenuView(false)
+        },100)
+      }}
+    >
       <div className="text-sm poppins-semibold my-2 flex gap-1 items-start">
         <span>
           <svg
@@ -649,7 +659,7 @@ function PaymentTypeMenu({ cardIndex, setCardIndex }) {
       <div className="flex flex-col gap-2 mt-4">
         {types.map((card, i) => {
           return (
-            <div className="flex gap-4 justify-between items-center " key={i}>
+            <div className="flex gap-4 justify-between items-center" key={i} >
               <div
                 className={`${cardIndex === i ? "poppins-bold" : "text-[#A3A6A9]"
                   } flex gap-1 items-center text-sm`}
@@ -673,9 +683,14 @@ function PaymentTypeMenu({ cardIndex, setCardIndex }) {
     </div>
   );
 }
-function ReceiversMenu({ cardIndex, setCardIndex, beneficiaries }) {
+function ReceiversMenu({ cardIndex, setCardIndex, beneficiaries,setReceiversMenuView }) {
   return (
-    <div className="absolute w-[100%] bg-white rounded-2xl shadow-lg top-10  py-[1rem] px-[1.2rem] gap-4 z-50">
+    <div className="absolute w-[100%] bg-white rounded-2xl shadow-lg top-10  py-[1rem] px-[1.2rem] gap-4 z-50" 
+    onClick={()=>
+      setTimeout(()=>{
+        setReceiversMenuView(false)
+      },100)
+    }>
       <div className="text-sm poppins-semibold my-2 flex gap-1 items-start">
         <span>
           <svg

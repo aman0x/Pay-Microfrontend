@@ -28,9 +28,11 @@ function AddBenficiaryBank({ handleSubmitBank }) {
             errors.account_name = "Name Should be atleast 4 Characters";
           } else if (values.account_number < 11) {
             errors.account_number = "Enter Valid Account Number";
-          } else if (values.ifsc_code < 4) {
+          }
+           else if (values.ifsc_code < 4) {
             errors.ifsc_code = "Enter Valid IFSC CODE";
-          } else if (values.pan_no < 10) {
+          } 
+          else if (values.pan_no < 10) {
             errors.pan_no = "Enter Valid Pan No.";
           }
           return errors;
@@ -78,6 +80,7 @@ function AddBenficiaryBank({ handleSubmitBank }) {
                   type="text"
                   name="account_number"
                   value={values.account_number}
+                  maxLength={16}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-xs  p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -111,6 +114,7 @@ function AddBenficiaryBank({ handleSubmitBank }) {
                   name="ifsc_code"
                   value={values.ifsc_code}
                   onChange={handleChange}
+                  maxLength={11}
                   onBlur={handleBlur}
                   className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-xs  p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="IFSC Code"
@@ -169,6 +173,7 @@ function AddBenficiaryBank({ handleSubmitBank }) {
                   <ReceiversMenu
                     cardIndex={accountTypeIndex}
                     setCardIndex={setAccountTypeIndex}
+                    setReceiversMenuView={setReceiversMenuView}
                   />
                 )}
               </div>
@@ -221,6 +226,7 @@ function AddBenficiaryBank({ handleSubmitBank }) {
                   <PaymentTypeMenu
                     cardIndex={bankTypeIndex}
                     setCardIndex={setBankTypeIndex}
+                    setPaymentMenuView={setPaymentMenuView}
                   />
                 )}
               </div>
@@ -231,6 +237,7 @@ function AddBenficiaryBank({ handleSubmitBank }) {
                   value={values.pan_no}
                   onChange={handleChange}
                   onBlur={handleBlur}
+                  maxLength={19}
                   className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-xs  p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="PAN"
                 />
@@ -245,6 +252,7 @@ function AddBenficiaryBank({ handleSubmitBank }) {
                   type="text"
                   name="gstin_no"
                   value={values.gstin_no}
+                  maxLength={15}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-xs  p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -281,9 +289,12 @@ function AddBenficiaryBank({ handleSubmitBank }) {
   );
 }
 
-function PaymentTypeMenu({ cardIndex, setCardIndex }) {
+function PaymentTypeMenu({ cardIndex, setCardIndex,setPaymentMenuView }) {
   return (
-    <div className=" w-[100%] mt-2 bg-white rounded-2xl  py-[1rem] px-[1.2rem] gap-4 absolute z-50">
+    <div className=" w-[100%] mt-2 bg-white rounded-2xl  py-[1rem] px-[1.2rem] gap-4 absolute z-50" 
+    onClick={()=>{
+      setPaymentMenuView(false)
+    }}>
       <div className="text-sm poppins-semibold my-2 flex items-center gap-1">
         <span>
           <svg
@@ -339,9 +350,12 @@ function PaymentTypeMenu({ cardIndex, setCardIndex }) {
     </div>
   );
 }
-function ReceiversMenu({ cardIndex, setCardIndex }) {
+function ReceiversMenu({ cardIndex, setCardIndex ,setReceiversMenuView}) {
   return (
-    <div className="w-[100%] bg-white rounded-2xl mt-2  py-[1rem] px-[1.2rem] gap-4 absolute z-50">
+    <div className="w-[100%] bg-white rounded-2xl mt-2  py-[1rem] px-[1.2rem] gap-4 absolute z-50"
+    onClick={()=>{
+      setReceiversMenuView(false)
+    }}>
       <div className="text-sm poppins-semibold my-2 flex items-center gap-1 ">
         <span>
           <svg

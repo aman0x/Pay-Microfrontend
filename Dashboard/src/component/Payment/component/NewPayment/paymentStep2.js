@@ -105,6 +105,9 @@ function PaymentStep2({ setStepIndex, data, bankDetail, setPaymentDetail }) {
                   className={`flex justify-between ${
                     paymentIndex === 0 ? "isactive" : "bg-[#F0F1F2]"
                   } rounded-2xl w-full items-center p-4`}
+                  onClick={()=>{
+                    setPaymentIndex(0)
+                  }}
                 >
                   <div className="flex flex-col">
                     <div className="color-linear text-sm poppins-bold">
@@ -184,6 +187,9 @@ function PaymentStep2({ setStepIndex, data, bankDetail, setPaymentDetail }) {
                     ? "p-[2px] rounded-2xl primary-linear-gr-bg shadow-lg shadow-red-200"
                     : ""
                 } `}
+                onClick={()=>{
+                  setPaymentIndex(1)
+                }}
               >
                 <div
                   className={`flex justify-between ${
@@ -268,6 +274,9 @@ function PaymentStep2({ setStepIndex, data, bankDetail, setPaymentDetail }) {
                     ? "p-[2px] rounded-2xl primary-linear-gr-bg shadow-lg shadow-red-200"
                     : ""
                 } `}
+                onClick={()=>{
+                  setPaymentIndex(2)
+                }}
               >
                 <div
                   className={`flex justify-between ${

@@ -75,6 +75,9 @@ input[type="text"]:focus {
 .primary-color {
   color: var(--primary);
 }
+ .shadow-large {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+ }
 .primary-btn:hover {
   background-image: linear-gradient(
     to right,

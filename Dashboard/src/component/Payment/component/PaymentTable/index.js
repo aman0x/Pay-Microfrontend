@@ -1,225 +1,44 @@
-// DUMMY DATA
-
-const transactions = [
-  {
-    date: "15th Jan 2023",
-    time: "10:30am",
-    beneficiary: "Rajesh Kumar",
-    type: "Vendor Payment",
-    paymentType: "Credit",
-    bank: "State Bank of India",
-    accountType: "Savings",
-    transaction_id: "TXN12345601",
-    status: "Succeeded",
-    sum: 5000,
-  },
-  {
-    date: "17th Feb 2023",
-    time: "02:45pm",
-    beneficiary: "Anita Singh",
-    type: "House Professional Payment",
-    paymentType: "Debit",
-    bank: "HDFC Bank",
-    accountType: "Current",
-    transaction_id: "TXN12345602",
-    status: "Succeeded",
-    sum: 2000,
-  },
-  {
-    date: "21st Mar 2023",
-    time: "11:15am",
-    beneficiary: "Sunil Sharma",
-    type: "Vendor Payment",
-    paymentType: "Credit",
-    bank: "ICICI Bank",
-    accountType: "Savings",
-    transaction_id: "TXN12345603",
-    status: "In Progress",
-    sum: 7500,
-  },
-  {
-    date: "5th Apr 2023",
-    time: "03:50pm",
-    beneficiary: "Meena Verma",
-    type: "House Professional Payment",
-    paymentType: "Debit",
-    bank: "Axis Bank",
-    accountType: "Current",
-    transaction_id: "TXN12345604",
-    status: "Succeeded",
-    sum: 1000,
-  },
-  {
-    date: "10th May 2023",
-    time: "09:30am",
-    beneficiary: "Vikram Patel",
-    type: "Vendor Payment",
-    paymentType: "Credit",
-    bank: "Punjab National Bank",
-    accountType: "Savings",
-    transaction_id: "TXN12345605",
-    status: "Succeeded",
-    sum: 3000,
-  },
-  {
-    date: "15th Jun 2023",
-    time: "12:45pm",
-    beneficiary: "Sneha Reddy",
-    type: "House Professional Payment",
-    paymentType: "Debit",
-    bank: "Kotak Mahindra Bank",
-    accountType: "Current",
-    transaction_id: "TXN12345606",
-    status: "Succeeded",
-    sum: 4500,
-  },
-  {
-    date: "20th Jul 2023",
-    time: "04:10pm",
-    beneficiary: "Amitabh Desai",
-    type: "Vendor Payment",
-    paymentType: "Credit",
-    bank: "Bank of Baroda",
-    accountType: "Savings",
-    transaction_id: "TXN12345607",
-    status: "Succeeded",
-    sum: 5200,
-  },
-  {
-    date: "25th Aug 2023",
-    time: "01:20pm",
-    beneficiary: "Ravi Gupta",
-    type: "House Professional Payment",
-    paymentType: "Debit",
-    bank: "Canara Bank",
-    accountType: "Current",
-    transaction_id: "TXN12345608",
-    status: "In Progress",
-    sum: 1800,
-  },
-  {
-    date: "10th Sep 2023",
-    time: "10:00am",
-    beneficiary: "Priya Iyer",
-    type: "Vendor Payment",
-    paymentType: "Credit",
-    bank: "Union Bank of India",
-    accountType: "Savings",
-    transaction_id: "TXN12345609",
-    status: "Succeeded",
-    sum: 6200,
-  },
-  {
-    date: "5th Oct 2023",
-    time: "02:35pm",
-    beneficiary: "Karan Kapoor",
-    type: "House Professional Payment",
-    paymentType: "Debit",
-    bank: "IDFC First Bank",
-    accountType: "Current",
-    transaction_id: "TXN12345610",
-    status: "Succeeded",
-    sum: 2500,
-  },
-  {
-    date: "12th Nov 2023",
-    time: "09:45am",
-    beneficiary: "Lata Joshi",
-    type: "Vendor Payment",
-    paymentType: "Credit",
-    bank: "IndusInd Bank",
-    accountType: "Savings",
-    transaction_id: "TXN12345611",
-    status: "Succeeded",
-    sum: 8000,
-  },
-  {
-    date: "17th Dec 2023",
-    time: "11:30am",
-    beneficiary: "Nitin Agrawal",
-    type: "Vendor Payment",
-    paymentType: "Debit",
-    bank: "Yes Bank",
-    accountType: "Current",
-    transaction_id: "TXN12345612",
-    status: "Succeeded",
-    sum: 3200,
-  },
-  {
-    date: "22nd Jan 2024",
-    time: "01:55pm",
-    beneficiary: "Pooja Rao",
-    type: "Vendor Payment",
-    paymentType: "Credit",
-    bank: "Bank of India",
-    accountType: "Savings",
-    transaction_id: "TXN12345613",
-    status: "In Progress",
-    sum: 5400,
-  },
-  {
-    date: "5th Feb 2024",
-    time: "04:15pm",
-    beneficiary: "Suresh Nair",
-    type: "Vendor Payment",
-    paymentType: "Debit",
-    bank: "Central Bank of India",
-    accountType: "Current",
-    transaction_id: "TXN12345614",
-    status: "Succeeded",
-    sum: 1500,
-  },
-  {
-    date: "15th Mar 2024",
-    time: "10:05am",
-    beneficiary: "Geeta Jain",
-    type: "Vendor Payment",
-    paymentType: "Credit",
-    bank: "Indian Bank",
-    accountType: "Savings",
-    transaction_id: "TXN12345615",
-    status: "Succeeded",
-    sum: 4000,
-  },
-];
-
+import { PuffLoader } from "react-spinners"
 import { FaSquare, FaSearch } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { TiTick } from "react-icons/ti";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
-function PaymentTable({ handlePaymentData }) {
+
+function PaymentTable({ handlePaymentData,toggleFilter,filterState }) {
+  const [isLoading,setIsLoading] = useState(true)
   const navigate = useNavigate();
+  const [dateIndex,setDateIndex] = useState([])
   const [isDateClicked, setIsDateClicked] = useState(false);
   const [searchValue,setSearchValue] = useState('')
-  const [paymentData, setPaymentData] = useState(transactions);
+  const [paymentData, setPaymentData] = useState([]);
   const [orderingState, setOrderingState] = useState('date')
-  const [filterState, setFilterState] = useState({
-    succeeded: false,
-    inProgress: false,
-    failed: false,
-    refunded: false,
-  });
-
-  const toggleFilter = (filter) => {
-    setFilterState((prev) => ({
-      ...prev,
-      [filter]: !prev[filter],
-    }));
+ 
+  const handleRowClick = (index) => {
+    setDateIndex((prevIndices) => {
+      if (prevIndices.includes(index)) {
+        return prevIndices.filter((i) => i !== index);
+      } else {
+        return [...prevIndices, index];
+      }
+    });
   };
+  const isRowSelected = (index) => dateIndex.includes(index);
 
   useEffect(() => {
     const fetchPaymentData = setTimeout(async () => {
+      setIsLoading(true)
       const query = queryCheck(filterState,searchValue,orderingState)
       const data = await handlePaymentData(query);
       setPaymentData(data);
+      setIsLoading(false)
     },500);
     return () => {
       clearTimeout(fetchPaymentData);
     };
     
-  }, [filterState,orderingState]);
+  }, [filterState,orderingState,searchValue]);
 
   return (
     <>
@@ -315,7 +134,6 @@ function PaymentTable({ handlePaymentData }) {
             </div>
           </div>
         </div>
-
         <div className="flex gap-3 mb-4 w-full">
           <div className="relative w-72 xl:w-full">
             <input
@@ -323,7 +141,7 @@ function PaymentTable({ handlePaymentData }) {
               value={searchValue}
               onChange={(e)=>setSearchValue(e.target.value)}
               className="bg-[#e6e8ea] py-2 px-5 focus:outline-none focus:ring-1 focus:ring-gray-300  focus:border-2 border border-gray-300 text-gray-900 text-xs rounded-2xl block w-full italic"
-              placeholder="Search for Invoices..."
+              placeholder="Search for Payments..."
               required
             />
             <button
@@ -480,7 +298,9 @@ function PaymentTable({ handlePaymentData }) {
               </div>
             </td>
           </tr>
-          {paymentData.map((transaction, i) => {
+          {
+            !isLoading?
+          paymentData.map((transaction, i) => {
             return (
               <tr
                 key={i}
@@ -495,22 +315,23 @@ function PaymentTable({ handlePaymentData }) {
                   <div className="flex items-center gap-3 td-element text-[10px]">
                     <div
                       className={`w-[12px]  h-[12px] rounded-[4px] ${
-                        isDateClicked ? "primary-linear-gr-bg" : "bg-white"
+                        isDateClicked||isRowSelected(i) ? "primary-linear-gr-bg" : "bg-white"
                       }`}
-                      onClick={() => {
-                        setIsDateClicked(!isDateClicked);
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        handleRowClick(i)
                       }}
                     >
                       <TiTick color="white" size="12px" />
                     </div>
                     <div className="flex flex-col gap-1">
                       <span>
-                        {moment(transaction.payment_datetime).format(
+                        {moment(transaction.created_at).format(
                           "DD MMMM YYYY"
                         )}
                       </span>
                       <span>
-                        {moment(transaction.payment_datetime).format("HH:mm")}
+                        {moment(transaction.created_at).format("HH:mm")}
                       </span>
                     </div>
                   </div>
@@ -594,7 +415,16 @@ function PaymentTable({ handlePaymentData }) {
                 </td>
               </tr>
             );
-          })}
+          })
+          :
+          <tr>
+              <td colSpan="7">
+                <div className="flex justify-center items-center w-full h-full py-5">
+                <PuffLoader color="#ff0b0b" />
+                </div>
+              </td>
+          </tr>
+        }
         </table>
       </div>
     </>

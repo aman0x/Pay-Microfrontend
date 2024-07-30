@@ -1,67 +1,3 @@
-// DUMMY DATA
-
-const transactions = [
-    {
-        date: "15th Jan 2023",
-        time: "10:30am",
-        recipient: "Rajesh Kumar",
-        accountNumber:"31425346875657890796",
-        bank: "State Bank of India",
-        IFSC: "SBIN023125215",
-        transaction:2
-      },{
-        date: "15th Jan 2023",
-        time: "10:30am",
-        recipient: "Rajesh Kumar",
-        accountNumber:"31425346875657890796",
-        bank: "State Bank of India",
-        IFSC: "SBIN023125215",
-        transaction:2
-      },{
-        date: "15th Jan 2023",
-        time: "10:30am",
-        recipient: "Rajesh Kumar",
-        accountNumber:"31425346875657890796",
-        bank: "State Bank of India",
-        IFSC: "SBIN023125215",
-        transaction:2
-      },{
-        date: "15th Jan 2023",
-        time: "10:30am",
-        recipient: "Rajesh Kumar",
-        accountNumber:"31425346875657890796",
-        bank: "State Bank of India",
-        IFSC: "SBIN023125215",
-        transaction:2
-      },{
-        date: "15th Jan 2023",
-        time: "10:30am",
-        recipient: "Rajesh Kumar",
-        accountNumber:"31425346875657890796",
-        bank: "State Bank of India",
-        IFSC: "SBIN023125215",
-        transaction:2
-      },{
-        date: "15th Jan 2023",
-        time: "10:30am",
-        recipient: "Rajesh Kumar",
-        accountNumber:"31425346875657890796",
-        bank: "State Bank of India",
-        IFSC: "SBIN023125215",
-        transaction:2
-      },
-      {
-        date: "15th Jan 2023",
-        time: "10:30am",
-        recipient: "Rajesh Kumar",
-        accountNumber:"31425346875657890796",
-        bank: "State Bank of India",
-        IFSC: "SBIN023125215",
-        transaction:2
-      },
-  ];
-  
-  
 import {useState} from "react"
 import { TiTick } from "react-icons/ti";
 import "./style.css"
@@ -70,6 +6,17 @@ import moment from "moment";
 function BanksTable({banks}){
   const navigate = useNavigate()
     const [isDateClicked,setIsDateClicked] = useState(false)
+    const [dateIndex,setDateIndex] = useState([])
+    const handleRowClick = (index) => {
+        setDateIndex((prevIndices) => {
+          if (prevIndices.includes(index)) {
+            return prevIndices.filter((i) => i !== index);
+          } else {
+            return [...prevIndices, index];
+          }
+        });
+      };
+      const isRowSelected = (index) => dateIndex.includes(index);
     return(
         <div className="w-full mt-2 ">
         <table className="w-full  rounded-2xl overflow-hidden   ">
@@ -131,7 +78,9 @@ function BanksTable({banks}){
                         >
                         <td>
                             <div className="flex items-center gap-3 td-element">
-                                <div className={`w-[12px]  h-[12px] rounded-[4px] ${isDateClicked?'primary-linear-gr-bg':'bg-white'}`} onClick={()=>{setIsDateClicked(!isDateClicked)}}>
+                                <div className={`w-[12px]  h-[12px] rounded-[4px] ${isDateClicked||isRowSelected(i)?'primary-linear-gr-bg':'bg-white'}`} onClick={()=>{
+                                    handleRowClick(i)
+                                    }}>
                                     <TiTick color="white" size="12px"/>    
                                 </div>
                                 <div  className="flex flex-col gap-1">

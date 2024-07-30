@@ -6,6 +6,18 @@ import moment from "moment";
 function BeneficiaryTable({ beneficiary }) {
   const navigate = useNavigate();
   const [isDateClicked, setIsDateClicked] = useState(false);
+  const [dateIndex,setDateIndex] = useState([])
+
+  const handleRowClick = (index) => {
+    setDateIndex((prevIndices) => {
+      if (prevIndices.includes(index)) {
+        return prevIndices.filter((i) => i !== index);
+      } else {
+        return [...prevIndices, index];
+      }
+    });
+  };
+  const isRowSelected = (index) => dateIndex.includes(index);
   return (
     <>
       <div className="overflow-x-scroll lg:w-full">
@@ -98,20 +110,21 @@ function BeneficiaryTable({ beneficiary }) {
             {beneficiary.map((transaction, i) => {
               return (
                 <tr
-                  onClick={
-                    () => console.log("clicked")
-                    //navigate(`/dashboard/payment/payment-detail?${i}`)
-                  }
+                  // onClick={
+                  //   () => console.log("clicked")
+                  //   //navigate(`/dashboard/payment/payment-detail?${i}`)
+                  // }
                   className="text-xs poppins-regular"
                 >
                   <td>
                     <div className="flex items-center gap-3 td-element">
                       <div
                         className={`w-[12px]  h-[12px] rounded-[4px] ${
-                          isDateClicked ? "primary-linear-gr-bg" : "bg-white"
+                          isDateClicked||isRowSelected(i)? "primary-linear-gr-bg" : "bg-white"
                         }`}
-                        onClick={() => {
-                          setIsDateClicked(!isDateClicked);
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleRowClick(i);
                         }}
                       >
                         <TiTick color="white" size="12px" />

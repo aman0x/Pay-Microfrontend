@@ -89,7 +89,7 @@ function LatestActions({ handleLatestActionData }) {
                 Invoices Send
               </p>
             </div>
-            <div className="flex items-center bg-white rounded-xl p-3 gap-2  text-xs font-normal cursor-default">
+            <div className="flex items-center bg-white rounded-xl p-3 gap-2  text-xs font-normal cursor-pointer">
               <span>
                 <svg
                   width="16"

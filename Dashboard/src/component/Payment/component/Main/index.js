@@ -3,12 +3,27 @@ import PaymentTop from "../PaymentTop";
 import { usePayment } from "#hooks/index";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {FaSquare} from "react-icons/fa"
 import moment from "moment";
 function MainPayment() {
   const { handlePaymentData, handlePaymentStats } = usePayment();
   const [isDropMenuOpen, setDropMenu] = useState(false);
   const [paymentData, setPaymentData] = useState([]);
   const navigate = useNavigate();
+  const [filterState, setFilterState] = useState({
+    succeeded: false,
+    inProgress: false,
+    failed: false,
+    refunded: false,
+  });
+
+  const toggleFilter = (filter) => {
+    setFilterState((prev) => ({
+      ...prev,
+      [filter]: !prev[filter],
+    }));
+  };
+
   useEffect(() => {
     const fetchPaymentData = async () => {
       // const query = queryCheck(filterState,searchValue,orderingState)
@@ -49,7 +64,7 @@ function MainPayment() {
               </svg>
             </button>
             {isDropMenuOpen && (
-              <DropMenu setDropMenu={setDropMenu} navigate={navigate} />
+              <MobileFilter setDropMenu={setDropMenu} navigate={navigate} toggleFilter={toggleFilter} filterState={filterState} />
             )}
           </div>
           <div
@@ -94,8 +109,8 @@ function MainPayment() {
         </div>
       </div>
       <div className="hidden w-full my-5 bg-primary p-5 rounded-2xl md:flex md:flex-col gap-2">
-        <PaymentTop handlePaymentStats={handlePaymentStats} />
-        <PaymentTable handlePaymentData={handlePaymentData} />
+        <PaymentTop handlePaymentStats={handlePaymentStats}  />
+        <PaymentTable handlePaymentData={handlePaymentData} toggleFilter={toggleFilter} filterState={filterState} />
       </div>
     </>
   );
@@ -328,4 +343,114 @@ export function DropMenu({ setDropMenu, navigate }) {
   );
 }
 
+function MobileFilter({filterState,toggleFilter,setDropMenu}){
+  return(
+    <div className="flex flex-col gap-4 absolute -end-[4.4rem] top-0 bg-white rounded-[20px] p-[1rem] w-[240px] z-50 cursor-pointer shadow-md">
+      <div className="w-full flex justify-end">
+        <div
+          className="rounded-2xl bg-white h-14 w-14 opacity-[0.4] shadow-large flex justify-center items-center"
+          onClick={() => setDropMenu(false)}
+        >
+          <img src="/images/filter.svg" alt="Filter icon" />
+        </div>
+      </div>
+      <div className="text-sm font-medium poppins-semibold text-[#787D81]">Show:</div>
+      <div className="flex gap-2 items-center">
+        <div
+          className={`max-w-[16px] max-h-[16px] rounded-[0.225rem] p-[1px]  ${filterState.succeeded ? "primary-linear-gr-bg" : "bg-gray-300"
+            }`}
+        >
+          <div className="cursor-pointer bg-white rounded-[0.225rem]">
+            <FaSquare
+              color={filterState.succeeded ? "black" : "white"}
+              className="rounded-[0.235rem] p-[1px]"
+              onClick={() => toggleFilter("succeeded")}
+            />
+          </div>
+        </div>
+        <div
+          className={`cursor-default text-xs ${filterState.succeeded ? "text-[#232B31]" : "text-[#A3A6A9]"
+            }`}
+        >
+          Succeeded
+        </div>
+      </div>
+      <div className="flex gap-2 items-center">
+        <div
+          className={`max-w-[16px] max-h-[16px] rounded-[0.225rem] p-[1px]  ${filterState.inProgress ? "primary-linear-gr-bg" : "bg-gray-300"
+            }`}
+        >
+          <div className="cursor-pointer bg-white rounded-[0.225rem]">
+            <FaSquare
+              color={filterState.inProgress ? "black" : "white"}
+              className="rounded-[0.235rem] p-[1px]"
+              onClick={() => toggleFilter("inProgress")}
+            />
+          </div>
+        </div>
+        <div
+          className={`cursor-default text-xs ${filterState.inProgress ? "text-[#232B31]" : "text-[#A3A6A9]"
+            }`}
+        >
+          In Progress
+        </div>
+      </div>
+      <div className="flex gap-2 items-center">
+        <div
+          className={`max-w-[16px] max-h-[16px] rounded-[0.225rem] p-[1px]  ${filterState.failed ? "primary-linear-gr-bg" : "bg-gray-300"
+            }`}
+        >
+          <div className="cursor-pointer bg-white rounded-[0.225rem]">
+            <FaSquare
+              color={filterState.failed ? "black" : "white"}
+              className="rounded-[0.235rem] p-[1px]"
+              onClick={() => toggleFilter("failed")}
+            />
+          </div>
+        </div>
+        <div
+          className={`cursor-default text-xs ${filterState.failed ? "text-[#232B31]" : "text-[#A3A6A9]"
+            }`}
+        >
+          Failed
+        </div>
+      </div>
+      <div className="flex gap-2 items-center">
+        <div
+          className={`max-w-[16px] max-h-[16px] rounded-[0.225rem] p-[1px]  ${filterState.refunded ? "primary-linear-gr-bg" : "bg-gray-300"
+            }`}
+        >
+          <div className="cursor-pointer bg-white rounded-[0.225rem]">
+            <FaSquare
+              color={filterState.refunded ? "black" : "white"}
+              className="rounded-[0.235rem] p-[1px]"
+              onClick={() => toggleFilter("refunded")}
+            />
+          </div>
+        </div>
+        <div
+          className={`cursor-default text-xs ${filterState.refunded ? "text-[#232B31]" : "text-[#A3A6A9]"
+            }`}
+        >
+          Refunded
+        </div>
+      </div>
+      <div className="mx-4 mt-4 mb-8">
+      <div className="flex-1 primary-linear-gr-bg p-[1.8px] rounded-2xl ">
+                <button
+                  type="button"
+                  className="flex justify-center w-full items-center bg-[#F0F1F2] rounded-2xl py-[8px] px-2 poppins-medium text-xs  gap-2"
+                  onClick={() => { 
+                    setDropMenu(false)
+                  }}
+                >
+                  <span className="poppins-regular uppercase text-[10px]">
+                    SHOW
+                  </span>
+                </button>
+          </div>
+      </div>
+    </div>
+  )
+}
 export default MainPayment;
