@@ -42,7 +42,9 @@ export default function SignUpUser() {
             >
               <CiCircleChevLeft color="gray" fontSize="large" />
             </button>
-            <span className="hide md:block text-[#4E5459] ">Sign Up: &nbsp;&nbsp;</span>
+            <span className="hide md:block text-[#4E5459] ">
+              Sign Up: &nbsp;&nbsp;
+            </span>
             <span className="color-linear font-medium ">{`0${pageIndex} / 02`}</span>
           </div>
         </div>
@@ -124,7 +126,7 @@ export default function SignUpUser() {
                           onChange={handleChange}
                           onBlur={handleBlur}
                           required
-                          className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 py-3.5 pr-3.5 pl-10   dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                           placeholder="First Name..."
                         />
                       </div>
@@ -145,7 +147,7 @@ export default function SignUpUser() {
                         value={values.middle_name}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 py-3.5 pr-3.5 pl-10  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Middle Name..."
                       />
                     </div>
@@ -160,7 +162,7 @@ export default function SignUpUser() {
                         value={values.last_name}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 py-3.5 pr-3.5 pl-10  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Last Name..."
                       />
                     </div>
@@ -175,7 +177,7 @@ export default function SignUpUser() {
                         </div>
                         <input
                           type="number"
-                          className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 py-3.5 pr-3.5 pl-10   dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                           name="phone"
                           value={values.phone}
                           onChange={handleChange}
@@ -200,7 +202,7 @@ export default function SignUpUser() {
                           value={values.email}
                           onChange={handleChange}
                           onBlur={handleBlur}
-                          className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 py-3.5 pr-3.5 pl-10   dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                           placeholder="Enter Your Mail..."
                         />
                       </div>
@@ -220,7 +222,7 @@ export default function SignUpUser() {
                           value={values.password}
                           onChange={handleChange}
                           onBlur={handleBlur}
-                          className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 p-3.5 "
+                          className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 py-3.5 pr-3.5 pl-10  "
                           placeholder="Enter Password..."
                         />
                         <div
@@ -278,7 +280,7 @@ export default function SignUpUser() {
                           value={values.password2}
                           onChange={handleChange}
                           onBlur={handleBlur}
-                          className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 p-3.5 "
+                          className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-14 py-3.5 pr-3.5 pl-10  "
                           placeholder="Confirm Password..."
                         />
                         <div
