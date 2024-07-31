@@ -11,6 +11,7 @@ function RightSideBar() {
     location.pathname !== "/dashboard/payment/payment-detail" &&
     location.pathname !== "/dashboard/payment/new-payment" &&
     location.pathname !== "/dashboard/profile" &&
+    location.pathname !== "/dashboard/kyc" &&
     !location.pathname.startsWith("/dashboard/card") &&
     !location.pathname.startsWith("/invoice/") &&
     !location.pathname.startsWith("/report") &&

@@ -5,14 +5,10 @@ import "./style.css";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
 import {PuffLoader} from "react-spinners"
-function InvoiceTable({ handleInvoiceData,isInvoiceSend,filterState,toggleFilter }) {
+function InvoiceTable({ invoiceData,filterState,toggleFilter,searchValue,setSearchValue,setOrderingState,isLoading }) {
   const [isDateClicked, setIsDateClicked] = useState(false);
   const [dateIndex,setDateIndex] = useState([])
   const navigate = useNavigate();
-  const [invoiceData, setInvoiceData] = useState([]);
-  const [searchValue,setSearchValue] = useState('')
-  const [isLoading,setIsLoading] = useState(true)
-  const [orderingState, setOrderingState] = useState('date')
   const handleRowClick = (index) => {
     setDateIndex((prevIndices) => {
       if (prevIndices.includes(index)) {
@@ -24,20 +20,20 @@ function InvoiceTable({ handleInvoiceData,isInvoiceSend,filterState,toggleFilter
   };
   const isRowSelected = (index) => dateIndex.includes(index);
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    const fetchInvoiceData = setTimeout(async () => {
-      setIsLoading(true)
-     const query =  queryCheck(isInvoiceSend,filterState,searchValue,orderingState)
-      const data = await handleInvoiceData(query);
-      setInvoiceData(data);
-      setIsLoading(false)
-    },500);
-    // fetchInvoiceData()
-    return () => {
-      clearTimeout(fetchInvoiceData);
-    };
-  }, [filterState,isInvoiceSend,searchValue,orderingState]);
+  //   const fetchInvoiceData = setTimeout(async () => {
+  //     setIsLoading(true)
+  //    const query =  queryCheck(isInvoiceSend,filterState,searchValue,orderingState)
+  //     const data = await handleInvoiceData(query);
+  //     setInvoiceData(data);
+  //     setIsLoading(false)
+  //   },500);
+  //   // fetchInvoiceData()
+  //   return () => {
+  //     clearTimeout(fetchInvoiceData);
+  //   };
+  // }, [filterState,isInvoiceSend,searchValue,orderingState]);
 
   return (
     <>
@@ -330,12 +326,12 @@ function InvoiceTable({ handleInvoiceData,isInvoiceSend,filterState,toggleFilter
                     </div>
                     <div className="flex flex-col gap-1">
                       <span>
-                        {moment(transaction.payment_datetime).format(
+                        {moment(transaction.created_at).format(
                           "DD MMMM YYYY"
                         )}
                       </span>
                       <span>
-                        {moment(transaction.payment_datetime).format("HH:mm")}
+                        {moment(transaction.created_at).format("HH:mm")}
                       </span>
                     </div>
                   </div>

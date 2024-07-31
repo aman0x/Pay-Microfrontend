@@ -954,7 +954,7 @@ function ProfileOrKyc() {
               )}
             </Formik>
           ) : (
-            <div className="flex flex-col justify-between w-full h-full">
+            <div className="flex flex-col gap-4 w-full h-full">
               <div className="flex flex-col gap-2">
                 <div className="poppins-semibold mb-2">Personal Info:</div>
                 <div className="flex gap-2 items-center poppins-light text-[#A3A6A9] ">
@@ -1031,7 +1031,7 @@ function ProfileOrKyc() {
                 <div className="primary-linear-gr-bg p-[1.5px] rounded-xl shadow-red-200 shadow-2xl max-w-fit">
                   <button
                     className="flex justify-between items-center bg-primary rounded-xl py-[10px] px-5 poppins-medium text-xs  gap-2"
-                    // onClick={() =>setDataShown(!isDataShown) }
+                    //  onClick={() =>setDataShown(!isDataShown) }
                   >
                     <span>
                       <svg

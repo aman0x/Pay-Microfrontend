@@ -7,8 +7,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = (env) => {
-  const isProduction = env.NODE_ENV === 'production';
-  const envFile = isProduction ? '../.env.production' : '../.env.development';
+  const envFile =  '../.env'; 
   const envPath = path.resolve(__dirname, envFile);
   const envVars = require('dotenv').config({ path: envPath }).parsed || {};
 
@@ -87,7 +86,7 @@ module.exports = (env) => {
         patterns: [
           {
             from: "public",
-            to: "public",
+            to: ".",
           },
         ],
       }),

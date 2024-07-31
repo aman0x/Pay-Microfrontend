@@ -27,9 +27,11 @@ const authSlice = createSlice({
         },
         setCards(state,action){
             state.cards = action.payload.cards
+        },
+        deleteCard(state, action) {
+            state.cards = state.cards.filter(card => card.id !== action.payload.cardId);
+            console.log("cards",state.cards)
         }
-        
-
     }
 })
 export const authActions = authSlice.actions

@@ -10,14 +10,14 @@ import { FaSquare, FaSearch } from "react-icons/fa";
 function InvoiceTop({ handleInvoiceStats,isInvoiceSend,setIsInvoiceSend }) {
   const idCSS = "hello";
   const [invoiceStats, setInvoiceStats] = useState({
-    all_invoices: 600,
+    all_invoices: 6,
     successful: 1,
-    in_progress: 122,
-    failed: 123,
-    refunded: 123,
-    today_successful: 4,
-    today_in_progress: 1,
-    today_failed: 2,
+    in_progress: 4,
+    failed: 1,
+    refunded: 0,
+    today_successful: 0,
+    today_in_progress: 0,
+    today_failed: 0,
     today_refunded: 0,
   });
   const [percentage, setPercentage] = useState({
@@ -40,7 +40,7 @@ function InvoiceTop({ handleInvoiceStats,isInvoiceSend,setIsInvoiceSend }) {
       };
       setPercentage(perc);
     };
-    //fetchStats();
+    // fetchStats();
   }, []);
   
   const percentage1 = percentage.percentage1;

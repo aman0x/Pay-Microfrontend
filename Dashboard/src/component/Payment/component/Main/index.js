@@ -77,7 +77,7 @@ function MainPayment() {
         <div className="px-4 text-sm">
           <h1 className="poppins-semibold text-[#232B31]">
             All Transactions{" "}
-            <span className="poppins-light text-[#787D81]">(121)</span>{" "}
+            <span className="poppins-light text-[#787D81]">({paymentData.length})</span>{" "}
           </h1>
         </div>
         <div className="p-4">

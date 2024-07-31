@@ -1,4 +1,4 @@
-.env.development
+.env
 AppShell/node_module
 Dashboard/node_module
 Controllers/node_modules/.package-lock.json

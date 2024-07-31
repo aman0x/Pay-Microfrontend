@@ -77,7 +77,7 @@ export function FlipCard({
   const [cardColor, setCardColor] = useState(cardColorbg);
   const [isCvvShown, setCVV] = useState(false);
   return (
-    <div className={`flip-card relative shadow-xl rounded-3xl h-60 w-full`}>
+    <div className={`flip-card relative shadow-xl rounded-3xl h-60 w-full max-w-[400px]`}>
       {isArrowShown ? (
         <div
           onClick={() => setCardClicked(!isCardClicked)}

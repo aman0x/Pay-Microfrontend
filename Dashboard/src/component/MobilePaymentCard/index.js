@@ -3,19 +3,22 @@ import { RiDeleteBin5Fill } from "react-icons/ri";
 import { BiSolidShow } from "react-icons/bi";
 import { IoAddCircleSharp } from "react-icons/io5";
 import "./style.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import moment from "moment";
 import { authActions } from "Auth/authReducer";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-
+import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper/modules";
+import {useDashboard} from "#hooks/index.js"
 export function MobilePaymentCard({ handlePaymentCardData }) {
   const navigate = useNavigate();
+  const swiperRef = useRef(null);
   const dispatch = useDispatch();
+  const cardData = useSelector(state=>state.auth.cards)
   const [cardIndex, setCardIndex] = useState(0);
   const [cards, setCards] = useState([
     {
@@ -29,6 +32,14 @@ export function MobilePaymentCard({ handlePaymentCardData }) {
       verified: true,
     },
   ]);
+  const handleSlideChange = (swiper) => {
+    setCardIndex(swiper.activeIndex);
+  };
+  const goToSlide = (index) => {
+    if (swiperRef.current) {
+      swiperRef.current.slideTo(index);
+    }
+  };
   useEffect(() => {
     const fetchCards = async () => {
       const data = await handlePaymentCardData();
@@ -39,19 +50,45 @@ export function MobilePaymentCard({ handlePaymentCardData }) {
     fetchCards();
   }, []);
   return (
-    <div className="flex flex-col gap-2 w-full justify-center">
-      <Swiper>
-        
-      </Swiper>
-      <div className="card-size">
-        <FlipCard index={cardIndex} cardData={cards[cardIndex]} />
+    <div className="flex flex-col gap-2 w-full justify-center"> 
+      <div className="flex justify-center w-svw">
+      <Swiper
+        onSwiper={(swiper) => {
+          swiperRef.current = swiper;
+        }}
+        slidesPerView={1}
+        cssMode={true}
+        navigation={false}
+        pagination={false}
+        mousewheel={true}
+        keyboard={false}
+        onSlideChange={handleSlideChange}
+        defaultValue={0}
+        modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+        className="mySwiper h-[17rem]"
+      >
+        {
+          cardData.map((card,i) => {
+            return (
+              <SwiperSlide key={i}>
+                <div className="card-size flex justify-center">
+                  <FlipCard index={cardIndex} cardData={card} isArrowShown={false} />
+                </div>
+              </SwiperSlide>
+            )
+          })
+        }
+      </Swiper> 
       </div>
       <div className="flex gap-1 justify-center items-center">
         {cards.map((_, i) => {
           return (
             <div
               key={i}
-              onClick={() => setCardIndex(i)}
+              onClick={() => {
+                goToSlide(i)
+                setCardIndex(i)
+              }}
               className={`rounded-full cursor-pointer ${
                 cardIndex === i
                   ? "h-2 w-2 primary-linear-gr-bg"
@@ -70,6 +107,7 @@ export function FlipCard({
   isArrowShown = true,
   cardData = {},
 }) {
+  const {handlePaymentCardDelete} = useDashboard()
   const navigate = useNavigate();
   const [isCardClicked, setCardClicked] = useState(false);
   const [cardColor, setCardColor] = useState(cardColorbg);
@@ -198,7 +236,9 @@ export function FlipCard({
                 </div>
               </div>
               <div className="mt-6 ">
-                <a href="#">
+                <a href="#" onClick={()=>{
+                  handlePaymentCardDelete(cardData.id)
+                }}>
                   <RiDeleteBin5Fill color="red" size="16px" />
                 </a>
               </div>

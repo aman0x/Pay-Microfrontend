@@ -7,6 +7,7 @@ import {authActions} from "Auth/authReducer"
 export function useDashboard(){
     const user_id = useSelector(state=>state.auth.user_id)
     const user = useSelector(state=>state.auth.user)
+    const dispatch = useDispatch()
    const handleTemplateData=async()=>{
     try {
         const arr = []
@@ -65,7 +66,22 @@ export function useDashboard(){
             toast("Error in getting Payment Cards1")
         }
            
+    }
+    const handlePaymentCardDelete=async(id=1)=>{
+        try{
+
+           const response = await ApiCall({url:PRIVATE_ENDPOINTS.GET_CARDS+`${id}/`,method:"DELETE",PRIVATE_API:true,current_user:user})
+            toast.success("Card Deleted")
+            dispatch(authActions.deleteCard({cardId:id}))
+            return response.data;
+            
         }
+        catch(e){
+            console.log("error",e)
+            toast("Error in Deleting Card")
+        }
+           
+    }
 
     const handleQuickSendData=async()=>{
         try{
@@ -105,7 +121,7 @@ export function useDashboard(){
             return [];
         }
    }
-   return{handleLatestActionData,handleTemplateData,handleQuickSendData,handlePaymentCardData,handlePaymentCardDetail}
+   return{handleLatestActionData,handleTemplateData,handleQuickSendData,handlePaymentCardData,handlePaymentCardDetail,handlePaymentCardDelete}
 }
 
 export function usePayment(){
@@ -165,6 +181,7 @@ export function usePayment(){
           }
         catch (error) {
         toast("Error in getting Templates");
+        return{}
         }
     }
     const handlePaymentCreate=async(data)=>{

@@ -1,9 +1,24 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 function NoitificationBar() {
   const navigate = useNavigate();
+  const [notificationIndex,setNotificationIndex] = useState(0)
+  const maxIndex =3
+  const handleWheel = (e) => {
+    if (e.deltaX > 0) {
+      setNotificationIndex((prevIndex) => Math.min(prevIndex + 1, maxIndex));
+    } else {
+      setNotificationIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+    }
+  };
   return (
-    <div className="flex relative min-h-28 gap-2 w-full primary-linear-gr-bg justify-evenly items-center px-[1rem] py-[1.5rem] rounded-2xl ">
-      <div>
+    <div className="flex relative min-h-28 gap-2 w-full primary-linear-gr-bg justify-evenly items-center px-[1rem] py-[1.5rem] rounded-2xl "
+    onWheel={handleWheel}
+    >
+      <div onClick={()=>{
+        if(notificationIndex>0)
+        setNotificationIndex(notificationIndex-1)
+      }}>
         <svg
           width="18"
           height="18"
@@ -333,37 +348,64 @@ function NoitificationBar() {
         </g>
       </svg>
       <div className="h-full">
-        <div className="text-white">
-          <h1 className="text-base">
-            <span className="poppins-semibold">Hi Alex</span>! You Have{" "}
-            <span className="poppins-semibold">1</span> Unverified Card
-          </h1>
-          <p className="text-xs poppins-extralight">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </p>
-        </div>
+        {
+          notificationIndex ===0?
+          <div className="text-white" >
+            <h1 className="text-base"><span className="poppins-semibold" >Hi Aman</span>! You Have <span className="poppins-semibold">1</span> Unverified Card</h1>
+            <p className="text-xs poppins-extralight">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+          :
+          <div className="text-white">
+            <h1 className="text-base">Notification Test {notificationIndex}</h1>
+            <p className="text-xs poppins-extralight">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+        }
+        
         <div className="flex items-center gap-1 absolute bottom-4 left-[50%]">
-          <button className={`rounded-[50%] bg-white size-[6px]`}></button>
+          <button 
+          onClick={()=>setNotificationIndex(0)}
+          className={`rounded-[50%] bg-white ${notificationIndex===0?"size-[6px]":"size-1 opacity-[0.8]"}`}></button>
           <button
-            className={`rounded-[50%] bg-white opacity-[0.8] size-1`}
+           onClick={()=>setNotificationIndex(1)}
+            className={`rounded-[50%] bg-white  ${notificationIndex===1?"size-[6px]":"size-1 opacity-[0.8]"}`}
           ></button>
           <button
-            className={`rounded-[50%] bg-white opacity-[0.8] size-1`}
+           onClick={()=>setNotificationIndex(2)}
+            className={`rounded-[50%] bg-white ${notificationIndex===2?"size-[6px]":"size-1 opacity-[0.8]"}`}
           ></button>
           <button
-            className={`rounded-[50%] bg-white opacity-[0.8] size-1`}
+           onClick={()=>setNotificationIndex(3)}
+            className={`rounded-[50%] bg-white  ${notificationIndex===3?"size-[6px]":"size-1 opacity-[0.8]"}`}
           ></button>
         </div>
       </div>
-      <div className="primary-linear-gr-bg p-[2px] rounded-2xl flex justify-center items-center">
-        <div
-          onClick={() => navigate("/dashboard/card")}
-          className="px-3 py-2  cursor-pointer bg-white rounded-2xl poppins-semibold text-xs text-[#232B31]"
-        >
-          Verify Now
+      {
+        notificationIndex === 0?
+          <div className="primary-linear-gr-bg p-[2px] rounded-2xl flex justify-center items-center">
+          <div
+            onClick={() => navigate("/dashboard/card")}
+            className="px-3 py-2  cursor-pointer bg-white rounded-2xl poppins-semibold text-xs text-[#232B31]"
+          >
+            Verify Now
+          </div>
         </div>
-      </div>
-      <div>
+        :
+        <div className="primary-linear-gr-bg p-[2px] rounded-2xl flex justify-center items-center">
+          <div
+            onClick={() => navigate("/dashboard/notification")}
+            className="px-2 py-2  cursor-pointer bg-white rounded-2xl poppins-semibold text-xs text-[#232B31]"
+          >
+            View Notification
+          </div>
+        </div>
+      } 
+      <div
+      onClick={()=>{
+        if(notificationIndex<3){
+          setNotificationIndex(notificationIndex+1)
+        }   
+      }}
+      >
         <svg
           width="18"
           height="18"

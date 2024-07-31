@@ -21,6 +21,9 @@ function MainInvoice() {
   const [cardIndex, setCardIndex] = useState(0)
   const [invoices, setInvoices] = useState([])
   const swiperRef = useRef(null);
+  const [searchValue,setSearchValue] = useState('')
+  const [isLoading,setIsLoading] = useState(true)
+  const [orderingState, setOrderingState] = useState('date')
   const [filterState, setFilterState] = useState({
     succeeded: false,
     inProgress: false,
@@ -46,14 +49,19 @@ function MainInvoice() {
 
   useEffect(() => {
 
-    const fetchInvoiceData = async () => {
-
-      const data = await handleInvoiceData('');
-      setInvoices(data)
+    const fetchInvoiceData = setTimeout(async () => {
+      setIsLoading(true)
+     const query =  queryCheck(isInvoiceSend,filterState,searchValue,orderingState)
+      const data = await handleInvoiceData(query);
+      setInvoices(data);
+      setIsLoading(false)
+    },500);
+    
+    return () => {
+      clearTimeout(fetchInvoiceData);
     };
-    fetchInvoiceData()
 
-  }, []);
+  }, [filterState,isInvoiceSend,searchValue,orderingState]);
   return (
     <>
       {/* Mobile Content */}
@@ -189,9 +197,11 @@ function MainInvoice() {
           <div className="relative w-full">
             <input
               type="text"
+              value={searchValue}
+              onChange={(e)=>setSearchValue(e.target.value)}
               id="voice-search"
               className="bg-[#F0F1F2] h-14 w-full focus:outline-none focus:ring-1 focus:ring-gray-300 border border-gray-300 text-gray-900 text-sm rounded-2xl block py-[0.7rem] px-5 poppins-light-italic"
-              placeholder="Search for Transactions..."
+              placeholder="Search for Invoice..."
               required
             />
             <button
@@ -389,10 +399,13 @@ function MainInvoice() {
           setIsInvoiceSend={setIsInvoiceSend}
         />
         <InvoiceTable
-          handleInvoiceData={handleInvoiceData}
+         invoiceData={invoices}
           filterState={filterState}
           toggleFilter={toggleFilter}
-          isInvoiceSend={isInvoiceSend}
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+          setOrderingState={setOrderingState}
+          isLoading={isLoading}
         />
       </div>
     </>
@@ -738,3 +751,32 @@ function MobileFilter({filterState,toggleFilter,setDropMenu}){
 }
 
 export default MainInvoice;
+
+function queryCheck(isInvoiceSend,filterState,searchValue,orderingState){
+  let query = null
+    if(searchValue.trim()){
+      query =`?search=${searchValue}`
+    }
+    else if(filterState.succeeded){
+      query = `?status=paid`
+    }
+    else if(filterState.inProgress){
+      query = `?status=draft`
+    }
+    else if(filterState.failed){
+      query = `?status=cancelled`
+    }
+    else if(filterState.refunded){
+      query = `?status=refunded`
+    }
+    else if(isInvoiceSend){
+    query = ``
+    }
+    else{
+    query = `?status=paid`
+    }
+
+    query =query+query?`${query}&ordering=${orderingState}`:`?ordering=${orderingState}`
+
+  return query;
+}

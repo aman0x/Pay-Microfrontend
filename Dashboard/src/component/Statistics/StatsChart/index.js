@@ -56,7 +56,7 @@ function StatsChart({ reportIndex, stats }) {
           </div>
           <div className="flex items-center gap-1">
             <div className="text-xs poppins-light text-[#787D81] ">Total:</div>
-            <div className="font-medium text-xs">₹ 24,000.70 </div>
+            <div className="font-medium text-xs">₹ {stats.incomes}</div>
           </div>
         </div>
       )}
@@ -68,7 +68,7 @@ function StatsChart({ reportIndex, stats }) {
           </div>
           <div className="flex items-center gap-1">
             <div className="text-xs poppins-light text-[#787D81] ">Total:</div>
-            <div className="font-medium text-xs">₹ 24,000.70 </div>
+            <div className="font-medium text-xs">₹ {stats.incomes} </div>
           </div>
         </div>
       )}

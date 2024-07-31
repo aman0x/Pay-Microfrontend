@@ -127,7 +127,7 @@ function InvoiceDetail() {
             <div className="flex gap-2 items-center">
               <div className="text-xs text-[#A3A6A9] ">Date:</div>
               <div className="text-xs text-[#4E5459]">
-                {moment(invoiceDetail.date).format("DD MMMM YYYY HH:mm")}
+                {moment(invoiceDetail.created_at).format("DD MMMM YYYY HH:mm")}
               </div>
             </div>
           </div>
@@ -185,7 +185,7 @@ function InvoiceDetail() {
               <div className="text-[#A3A6A9] text-xs min-w-fit">Name:</div>
               <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]" />
               <div className="poppins-semibold text-xs text-[#232B31] min-w-fit">
-                {invoiceDetail.name || "test"}
+                {invoiceDetail.beneficiary_name || "test"}
               </div>
             </div>
             <div className="flex items-center justify-between  gap-1">
