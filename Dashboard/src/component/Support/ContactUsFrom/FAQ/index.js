@@ -19,7 +19,7 @@ function FAQ() {
     const fetchFaqs = setTimeout(async () => {
       const query = searchValue.trim() ? `&search=${searchValue}` : null;
       const data = await handleGetFaq(faq[faqIndex], query);
-      setFaqs(data);
+      setFaqs(data.results);
     }, 500);
 
     return () => {

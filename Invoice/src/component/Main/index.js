@@ -53,7 +53,7 @@ function MainInvoice() {
       setIsLoading(true)
      const query =  queryCheck(isInvoiceSend,filterState,searchValue,orderingState)
       const data = await handleInvoiceData(query);
-      setInvoices(data);
+      setInvoices(data.results);
       setIsLoading(false)
     },500);
     
@@ -755,7 +755,8 @@ export default MainInvoice;
 function queryCheck(isInvoiceSend,filterState,searchValue,orderingState){
   let query = null
     if(searchValue.trim()){
-      query =`?search=${searchValue}`
+      // query =`?search=${searchValue}`
+       query =`?search=1`
     }
     else if(filterState.succeeded){
       query = `?status=paid`

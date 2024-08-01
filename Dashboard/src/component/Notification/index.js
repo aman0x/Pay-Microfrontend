@@ -27,7 +27,7 @@ function Notification() {
       const topic = menu[tophead].toLowerCase();
       const data = await handleGetNotification(topic);
       console.log("nI", data);
-      setNotificationData(data);
+      setNotificationData(data.results);
     };
 
     fetchNotificationData();

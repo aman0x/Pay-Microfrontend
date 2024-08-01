@@ -233,25 +233,16 @@ export function useStatistic(){
     const handleStatisticData =async(index,query="")=>{
 
         try{
-            const arr = []
+           
            const response = await ApiCall({
             url: index>0?PRIVATE_ENDPOINTS.GET_ALL_INVOICE+query:PRIVATE_ENDPOINTS.GET_STATISTIC_TRANSACTION+query, 
             method:"GET",
             PRIVATE_API:true,
             current_user:user
         })
-           console.log(response)
-           if(Array.isArray(response.data)){
-            return response.data;
-            }
-            else{
-                arr.push(response.data)
-                return arr;
-            }
-            
+            return response.data;   
         }
         catch(e){
-            // toast("Error in getting Latest Actions");
             return [];
         }
     }
@@ -261,17 +252,12 @@ export function useNotfication(){
     const user = useSelector(state=>state.auth.user)
     const handleGetNotification = async(topic)=>{
         try{
-            const arr = []
-           const response = await ApiCall({url:PRIVATE_ENDPOINTS.GET_NOTIFICATION+'?topic='+topic
+            
+           const response = await ApiCall({url:PRIVATE_ENDPOINTS.GET_NOTIFICATION+'?topic__name='+topic
             ,method:"GET",PRIVATE_API:true,current_user:user})
-           console.log(response)
-           if(Array.isArray(response.data)){
+         
             return response.data;
-            }
-            else{
-                arr.push(response.data)
-                return arr;
-            }
+           
             
         }
         catch(e){
@@ -320,15 +306,9 @@ export function useSupport(){
             const arr = []
            const response = await ApiCall({url:query?PRIVATE_ENDPOINTS.GET_FAQS+`?topic=${topic}`+query:PRIVATE_ENDPOINTS.GET_FAQS+`?topic=${topic}`
             ,method:"GET",PRIVATE_API:true,current_user:user})
-           console.log(response)
-           if(Array.isArray(response.data)){
+         
             return response.data;
-            }
-            else{
-                arr.push(response.data)
-                return arr;
-            }
-            
+           
         }
         catch(e){
             //toast("Error in getting Faqs");

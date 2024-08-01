@@ -44,7 +44,7 @@ function StatsTable({ transactionDatas, reportIndex = 0 }) {
       setIsLoading(true)
       const query = queryCheck(filterState,searchValue,orderingState)
       const data = await handleStatisticData(reportIndex,query);
-      setTransactionData(data);
+      setTransactionData(data.results);
       setIsLoading(false)
     };
     fetchStats();
