@@ -260,9 +260,9 @@ function NewPayment({ isRepeatPayment = false }) {
           <PaymentStep3
             setStepIndex={setStepIndex}
             data={{
-              amount: amount,
-              payment_type: "INDIVIDUAL",
-              receiver: beneficiaries[receiverIndex],
+              transaction_amount: amount,
+              transaction_type:"card",
+              beneficiary: beneficiaries[receiverIndex],
             }}
             paymentDetail={paymentDetail}
             bankDetail={bankDetail}
@@ -594,9 +594,9 @@ function NewPayment({ isRepeatPayment = false }) {
           <PaymentStep2
             setStepIndex={setStepIndex}
             data={{
-              amount: amount,
-              payment_type: types[typeIndex],
-              receiver: beneficiaries[receiverIndex],
+              transaction_amount: amount,
+              transaction_type:"card",
+              beneficiary: beneficiaries[receiverIndex],
             }}
             bankDetail={bankDetail}
             setPaymentDetail={setPaymentDetail}
@@ -607,9 +607,9 @@ function NewPayment({ isRepeatPayment = false }) {
           <PaymentStep3
             setStepIndex={setStepIndex}
             data={{
-              amount: amount,
-              payment_type: "INDIVIDUAL",
-              receiver: beneficiaries[receiverIndex],
+              transaction_amount: amount,
+              transaction_type:"card",
+              beneficiary: beneficiaries[receiverIndex],
             }}
             paymentDetail={paymentDetail}
             bankDetail={bankDetail}

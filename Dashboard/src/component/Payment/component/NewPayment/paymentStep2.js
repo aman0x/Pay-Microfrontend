@@ -366,7 +366,7 @@ function PaymentStep2({ setStepIndex, data, bankDetail, setPaymentDetail }) {
                 Name:
               </div>
               <div className="poppins-semibold text-xs text-[#232B31]">
-                {data.receiver.name}
+                {data.beneficiary.name}
               </div>
               <div className="text-[#4E5459] text-sm poppins-semibold">
                 Contact Details:
@@ -376,14 +376,14 @@ function PaymentStep2({ setStepIndex, data, bankDetail, setPaymentDetail }) {
                   <div className="text-[#A3A6A9] text-xs">Phone</div>
                   <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]" />
                   <div className="poppins-semibold text-xs">
-                    {data.receiver.phone_number}
+                    {data.beneficiary.phone_number}
                   </div>
                 </div>
                 <div className="flex gap-2 items-center">
                   <div className="text-[#A3A6A9] text-xs">Mail</div>
                   <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]" />
                   <div className="poppins-semibold text-xs">
-                    {data.receiver.email}
+                    {data.beneficiary.email}
                   </div>
                 </div>
               </div>
@@ -450,7 +450,7 @@ function PaymentStep2({ setStepIndex, data, bankDetail, setPaymentDetail }) {
                   </div>
                   <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]" />
                   <div className="poppins-semibold text-xs min-w-fit">
-                    ₹ {data.amount}
+                    ₹ {data.transaction_amount}
                   </div>
                 </div>
                 <div className="flex gap-2 items-center">
@@ -459,20 +459,20 @@ function PaymentStep2({ setStepIndex, data, bankDetail, setPaymentDetail }) {
                   </div>
                   <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]" />
                   <div className="poppins-semibold text-xs min-w-fit">
-                    ₹ {data.amount * 0.02}
+                    ₹ {data.transaction_amount * 0.02}
                   </div>
                 </div>
                 <div className="flex gap-2 items-center">
                   <div className="text-[#A3A6A9] text-xs min-w-fit">TAX</div>
                   <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]" />
                   <div className="poppins-semibold text-xs min-w-fit">
-                    ₹ {data.amount * 0.18}
+                    ₹ {data.transaction_amount * 0.18}
                   </div>
                 </div>
               </div>
               <div className="flex justify-between color-linear poppins-semibold text-sm">
                 <div>Checkout Amount:</div>
-                <div>₹ {data.amount * 0.8}</div>
+                <div>₹ {data.transaction_amount * 0.8}</div>
               </div>
             </div>
           </div>

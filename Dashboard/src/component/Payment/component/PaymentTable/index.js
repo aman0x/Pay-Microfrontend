@@ -353,7 +353,7 @@ function PaymentTable({ handlePaymentData,toggleFilter,filterState }) {
                 </td>
                 <td>
                   <div className="td-element text-[10px]">
-                    {transaction.transaction_id}
+                    {transaction.transaction_number}
                   </div>
                 </td>
                 <td>
@@ -371,14 +371,14 @@ function PaymentTable({ handlePaymentData,toggleFilter,filterState }) {
                           cy="4.5"
                           r="4.5"
                           fill={`${
-                            transaction.status === "Succeeded"
+                            transaction.transaction_status === "completed"
                               ? "#27A963"
                               : "#FFB442"
                           }`}
                         />
                       </svg>
                     </div>
-                    <div>{transaction.status}</div>
+                    <div>{transaction.transaction_status}</div>
                   </div>
                 </td>
                 <td>

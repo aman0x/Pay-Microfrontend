@@ -16,7 +16,7 @@ import reduxStore from "./store";
 console.log("work",window.root)
 const Auth = () => (
   
-  <div className="bg-[#f8fafc] min-h-screen">
+  <div className="bg-[#fcfcfc] min-h-screen">
     {/* <ToastContainer/> */}
   <Routes>
     <Route path="/" element={<LoginUser />} />
