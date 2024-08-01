@@ -53,10 +53,13 @@ input[type=text]:focus {
   -webkit-text-fill-color: transparent;
   -webkit-background-clip :text;
 }
-.primary-linear-gr-bg{
-  background-image: linear-gradient(to right, #F6DEC6, #E872D4, #C190D9, #A2DCFE);
-  
+
+.primary-border-dashed{
+  border-style: dashed;
+  border-width: 2px;
+  border-color: linear-gradient(to right, #F6DEC6, #E872D4, #C190D9, #A2DCFE);
 }
+
 .primary-linear-gr-bg-up{
   background-image: linear-gradient(to top, #F6DEC6, #E872D4, #C190D9, #A2DCFE);
   
