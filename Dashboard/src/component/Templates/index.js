@@ -26,7 +26,7 @@ function Templates({ userId = null, handleTemplateData }) {
         const fetchTemplates = async () => {
             const data = await handleTemplateData()
             console.log(data)
-            setTemplates(data)
+            setTemplates(data.results)
         }
         fetchTemplates();
 

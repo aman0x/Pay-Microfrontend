@@ -17,13 +17,9 @@ export function useDashboard(){
           PRIVATE_API: true, 
           current_user: user 
         });
-        if(Array.isArray(response.data)){
+       
             return response.data;
-        }
-        else{
-            arr.push(response.data)
-            return arr;
-        }
+        
             
        
       }
@@ -35,15 +31,11 @@ export function useDashboard(){
 
    const handlePaymentCardData=async()=>{
     try{
-        const arr = []
+       
        const response = await ApiCall({url:PRIVATE_ENDPOINTS.GET_CARDS,method:"GET",PRIVATE_API:true,current_user:user})
-       if(Array.isArray(response.data)){
+      
         return response.data;
-    }
-    else{
-        arr.push(response.data)
-        return arr;
-    }
+    
         
     }
     catch(e){
@@ -85,15 +77,9 @@ export function useDashboard(){
 
     const handleQuickSendData=async()=>{
         try{
-            const arr = []
-           const response = await ApiCall({url:PRIVATE_ENDPOINTS.GET_QUICK_SEND,method:"GET",PRIVATE_API:true,current_user:user})
-           if(Array.isArray(response.data)){
+           const response = await ApiCall({url:PRIVATE_ENDPOINTS.GET_BENEFICIARY_LIST,method:"GET",PRIVATE_API:true,current_user:user})
             return response.data;
-        }
-        else{
-            arr.push(response.data)
-            return arr;
-        }
+       
             
         }
         catch(e){
@@ -104,16 +90,12 @@ export function useDashboard(){
     
     const handleLatestActionData=async(query)=>{
         try{
-            const arr = []
+            
            const response = await ApiCall({url:query?PRIVATE_ENDPOINTS.GET_ALL_TRANSACTIONS+query:PRIVATE_ENDPOINTS.GET_ALL_TRANSACTIONS,method:"GET",PRIVATE_API:true,current_user:user})
            
-           if(Array.isArray(response.data)){
+           
             return response.data;
-            }
-            else{
-                arr.push(response.data)
-                return arr;
-            }
+            
             
         }
         catch(e){
@@ -146,20 +128,16 @@ export function usePayment(){
     }
     const handlePaymentData=async(query='')=>{
         try {
-            const arr = []
             const response = await ApiCall({ 
               url: PRIVATE_ENDPOINTS.GET_ALL_TRANSACTIONS+query, 
               method: "GET", 
               PRIVATE_API: true, 
               current_user: user 
             });
-            if(Array.isArray(response.data)){
-                return response.data;
-            }
-            else{
-                arr.push(response.data)
-                return arr;
-            }
+            
+            return response.data;
+            
+            
                 
            
           }
@@ -365,22 +343,18 @@ export function useAccounts(){
     const user = useSelector(state=>state.auth.user)
     const user_id = useSelector(state=>state.auth.user_id)
     const navigate = useNavigate()
-    const handleGetBankAccount = async() =>{
+    const handleGetBankAccount = async(query=null) =>{
         try{
-            const arr = []
-           const response = await ApiCall({url:PRIVATE_ENDPOINTS.GET_CREATE_BANK_ACCOUNT_LIST,method:"GET",PRIVATE_API:true,current_user:user})
-           console.log(response)
-           if(Array.isArray(response.data)){
+           const response = await ApiCall({
+            url:query?PRIVATE_ENDPOINTS.GET_CREATE_BANK_ACCOUNT_LIST+`${query}`:PRIVATE_ENDPOINTS.GET_CREATE_BANK_ACCOUNT_LIST,
+            method:"GET",PRIVATE_API:true,current_user:user})
+           
             return response.data;
-            }
-            else{
-                arr.push(response.data)
-                return arr;
-            }
+           
             
         }
         catch(e){
-            toast("Error in getting Latest Actions");
+            toast("Error in getting Bank");
             return [];
         }
     }
@@ -398,21 +372,52 @@ export function useAccounts(){
             return response.data;
           }
         catch (error) {
-        toast("Error Sending Support");
+        toast("Error Adding Bank");
         }
     }
+    const handleDeleteBankAccount = async(id)=>{
+        try {
+            const response = await ApiCall({ 
+              url: PRIVATE_ENDPOINTS.GET_CREATE_BANK_ACCOUNT_LIST+id+'/delete/', 
+              method: "PUT", 
+              PRIVATE_API: true, 
+              current_user: user 
+            });
+            navigate(-1)
+            toast.success("Account Deleted!!")
+            return response.data;
+          }
+        catch (error) {
+        toast("Error Deleting Bank");
+        }
+    }
+    // const handleAddBankAccount = async(data,id)=>{
+    //     try {
+    //         const response = await ApiCall({ 
+    //           url: PRIVATE_ENDPOINTS.GET_CREATE_BANK_ACCOUNT_LIST+'add/', 
+    //           method: "POST", 
+    //           body:data,
+    //           PRIVATE_API: true, 
+    //           current_user: user 
+    //         });
+    //         navigate(-1)
+    //         toast.success("Account Added!!")
+    //         return response.data;
+    //       }
+    //     catch (error) {
+    //     toast("Error Adding Bank");
+    //     }
+    // }
     const handleGetBeneficiary = async() =>{
         try{
-            const arr = []
+            
            const response = await ApiCall({url:PRIVATE_ENDPOINTS.GET_BENEFICIARY_LIST,method:"GET",PRIVATE_API:true,current_user:user})
            console.log(response)
-           if(Array.isArray(response.data)){
+           
             return response.data;
-            }
-            else{
-                arr.push(response.data)
-                return arr;
-            }
+        
+           
+            
             
         }
         catch(e){
@@ -486,21 +491,6 @@ export function useAccounts(){
             toast("Error in User Profile");
         }
     }
-    const handleDeleteBank = async()=>{
-        try{
-            const response = await ApiCall({ 
-                url: PRIVATE_ENDPOINTS.GET_CREATE_USER_KYC+'1/',
-                method: data?"PUT":"GET", 
-                body:data,
-                PRIVATE_API: true, 
-                current_user: user 
-              });
-              return response.data;
-        }
-        catch(e){
-            toast("Error in KYC");
-        }
-    }
     const handleGetBankById = async(id=1)=>{
         try{
             const response = await ApiCall({ 
@@ -517,5 +507,5 @@ export function useAccounts(){
         }
     }
    
-    return{handleAddBankAccount,handleGetBankAccount,handleGetBeneficiary,handleAddBeneficiary,handleAddBeneficiaryBank,handleGetCreateUserKyc,handleUserProfile,handleGetBankById}
+    return { handleAddBankAccount,handleDeleteBankAccount, handleGetBankAccount, handleGetBeneficiary, handleAddBeneficiary, handleAddBeneficiaryBank, handleGetCreateUserKyc, handleUserProfile, handleGetBankById }
 }

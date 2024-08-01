@@ -52,7 +52,8 @@ export function QuickSend({ handleQuickSendData }) {
     useEffect(() => {
         const fetchQuickSend = async () => {
             const data = await handleQuickSendData()
-            setQuickSend(data)
+            setQuickSend(data.results)
+            console.log("Qs",data)
         }
         fetchQuickSend()
 

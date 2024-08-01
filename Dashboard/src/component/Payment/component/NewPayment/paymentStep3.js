@@ -69,7 +69,7 @@ function PaymentStep3({data,setStepIndex,bankDetail,paymentDetail}){
                         Checkout Amount:
                     </div>
                     <div>
-                    ₹ {data.amount}
+                    ₹ {data.transaction_amount}
                     </div>
                 </div>
                 <div className='flex  gap-3'>
@@ -102,7 +102,7 @@ function PaymentStep3({data,setStepIndex,bankDetail,paymentDetail}){
                             <path fillRule="evenodd" clipRule="evenodd" d="M16.25 8.5C16.25 12.9182 12.6682 16.5 8.25 16.5C3.83172 16.5 0.25 12.9182 0.25 8.5C0.25 4.08172 3.83172 0.5 8.25 0.5C12.6682 0.5 16.25 4.08172 16.25 8.5ZM11.4742 6.07574C11.7086 6.31005 11.7086 6.68995 11.4742 6.92424L7.47424 10.9242C7.23992 11.1586 6.86008 11.1586 6.62574 10.9242L5.02574 9.32424C4.79142 9.08992 4.79142 8.71008 5.02574 8.47576C5.26005 8.24144 5.63995 8.24144 5.87426 8.47576L7.05 9.65144L8.83784 7.8636L10.6258 6.07574C10.8601 5.84142 11.2399 5.84142 11.4742 6.07574Z" fill="#4E5459"/>
                             </svg>
                         </span>
-                        <div>{`Confirm And Pay (₹ ${data.amount})`}</div>
+                        <div>{`Confirm And Pay (₹ ${data.transaction_amount})`}</div>
                 
                 </button>
                 </div>

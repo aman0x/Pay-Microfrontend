@@ -21,7 +21,7 @@ export const PRIVATE_ENDPOINTS = {
     CREATE_CARD:BASE_URL+'/api/card/cards/',
     CREATE_SUPPORT:BASE_URL+'/api/support/contact/',
     GET_CREATE_BANK_ACCOUNT_LIST:BASE_URL+'/api/user/bank-accounts/',
-    GET_BENEFICIARY_LIST:BASE_URL+'/api/user/beneficiaries/list',
+    GET_BENEFICIARY_LIST:BASE_URL+'/api/user/beneficiaries/',
     CREATE_BENEFICIARY_STEP_1:BASE_URL+'/api/user/beneficiaries/',
     CREATE_BENEFICIARY_STEP_2:BASE_URL+'/api/user/beneficiaries/',
     GET_CREATE_USER_KYC:BASE_URL+'/api/user/kyc/',

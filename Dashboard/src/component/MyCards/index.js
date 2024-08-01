@@ -7,6 +7,7 @@ function MyCards() {
   const navigate = useNavigate();
   const { handlePaymentCardData } = useDashboard();
   const [CardIndex, setCardIndex] = useState(0);
+  const [queryCard,setQueryCard] = useState([])
   const [cards, setCards] = useState([
     {
       card_holder_name: "Holder Name",
@@ -22,7 +23,7 @@ function MyCards() {
   useEffect(() => {
     const fetchCards = async () => {
       const data = await handlePaymentCardData();
-      setCards(data);
+      setCards(data.results);
     };
     fetchCards();
   }, []);
@@ -63,7 +64,11 @@ function MyCards() {
                   ? "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
                   : null,
             }}
-            onClick={() => setCardIndex(1)}
+            onClick={() => {
+              setCardIndex(1)
+              const VerifiedCards = cards.filter(card => card.status === "verified");
+              setQueryCard(VerifiedCards)
+            }}
           >
             Verified
           </button>
@@ -79,7 +84,11 @@ function MyCards() {
                   ? "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
                   : null,
             }}
-            onClick={() => setCardIndex(2)}
+            onClick={() => {
+            const notVerifiedCards = cards.filter(card => card.status === "not_verified");
+            setQueryCard(notVerifiedCards)   
+              setCardIndex(2)
+            }}
           >
             No Verified
           </button>
@@ -114,7 +123,7 @@ function MyCards() {
         </div>
       </div>
       <div className="grid md:grid-cols-2 divide-three gap-4">
-        {cards.map((card) => {
+        {(CardIndex>0?queryCard:cards).map((card) => {
           return (
             <FlipCard
               isArrowShown={false}

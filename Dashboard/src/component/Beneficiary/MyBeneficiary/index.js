@@ -24,7 +24,8 @@ function MyBeneficiary(){
     useEffect(()=>{
         const fetchBeneficiary = async()=>{
             const data = await handleGetBeneficiary()
-            setBeneficiary(data)
+            setBeneficiary(data.results)
+            console.log("bnef",data.results)
         }
         fetchBeneficiary()
     },[])

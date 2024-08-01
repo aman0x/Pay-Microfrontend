@@ -3,7 +3,7 @@ import { TiTick } from "react-icons/ti";
 import "./style.css"
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
-function BanksTable({banks}){
+function BanksTable({banks,handleDeleteBankAccount,setBank}){
   const navigate = useNavigate()
     const [isDateClicked,setIsDateClicked] = useState(false)
     const [dateIndex,setDateIndex] = useState([])
@@ -72,7 +72,7 @@ function BanksTable({banks}){
                         key={transaction.id}
                         onClick={()=>
                             console.log("clicked")
-                            //navigate(`/dashboard/payment/payment-detail?${i}`)
+                            
                         }
                         className="text-[10px] text-[#232B31] poppins-regular"
                         >
@@ -102,7 +102,11 @@ function BanksTable({banks}){
                         </td>
                         <td>
                             <div className="flex gap-6 items-center td-element">
-                            <div>
+                            <div onClick={()=>{
+                                handleDeleteBankAccount(transaction.id)
+                                const newBank = banks.filter(bank=>bank.id !== transaction.id)
+                                setBank(newBank)
+                            }}>
                                 <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M13.2487 2.66666H11.182C10.8631 1.11572 9.49875 0.002 7.91534 0H6.582C4.99859 0.002 3.63428 1.11572 3.31534 2.66666H1.24869C0.8805 2.66666 0.582031 2.96513 0.582031 3.33331C0.582031 3.7015 0.8805 4 1.24869 4H1.91534V12.6667C1.91756 14.5067 3.40866 15.9978 5.24869 16H9.24869C11.0887 15.9978 12.5798 14.5067 12.582 12.6667V4H13.2487C13.6169 4 13.9153 3.70153 13.9153 3.33334C13.9153 2.96516 13.6169 2.66666 13.2487 2.66666ZM6.58203 11.3333C6.58203 11.7015 6.28356 12 5.91537 12C5.54716 12 5.24869 11.7015 5.24869 11.3333V7.33334C5.24869 6.96516 5.54716 6.66669 5.91534 6.66669C6.28353 6.66669 6.582 6.96516 6.582 7.33334V11.3333H6.58203ZM9.24869 11.3333C9.24869 11.7015 8.95022 12 8.58203 12C8.21384 12 7.91538 11.7015 7.91538 11.3333V7.33334C7.91538 6.96516 8.21384 6.66669 8.58203 6.66669C8.95022 6.66669 9.24869 6.96516 9.24869 7.33334V11.3333ZM4.69603 2.66666C4.97959 1.86819 5.73472 1.33434 6.58203 1.33331H7.91538C8.76269 1.33434 9.51781 1.86819 9.80138 2.66666H4.69603Z" fill="#CDCED1"/>
                                 </svg>

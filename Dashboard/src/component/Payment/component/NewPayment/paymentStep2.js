@@ -6,7 +6,7 @@ import { maskCardNumber } from "#utils/Helpers";
 import { useDispatch } from "react-redux";
 import { authActions } from "Auth/authReducer";
 import { useDashboard } from "#hooks/index";
-function PaymentStep2({ setStepIndex, data, bankDetail, setPaymentDetail }) {
+function PaymentStep2({ setStepIndex, data, bankDetail, setPaymentDetail,setCardId }) {
   const [paymentIndex, setPaymentIndex] = useState(0);
   const { handlePaymentCardData } = useDashboard();
   const dispatch = useDispatch();
@@ -508,6 +508,7 @@ function PaymentStep2({ setStepIndex, data, bankDetail, setPaymentDetail }) {
             type="submit"
             onClick={() => {
               setStepIndex(2);
+              setCardId(card[cardIndex].id)
               //navigate('/accounts/type')
               // withEmail ? handleUserLoginWithEmail():handleLoginWithPhone()
             }}

@@ -6,11 +6,25 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 function LatestActions({ handleLatestActionData }) {
   const [latestActions, setLatestActions] = useState([]);
+  const [filterState, setFilterState] = useState({
+    succeeded: false,
+    inProgress: false,
+    failed: false,
+    refunded: false,
+  });
   const navigate = useNavigate();
+  const toggleFilter = (filter) => {
+    setFilterState((prev) => ({
+      ...prev,
+      [filter]: !prev[filter],
+    }));
+  };
+
   useEffect(() => {
     const fetchLatestAction = async () => {
+     
       const data = await handleLatestActionData();
-      setLatestActions(data);
+      setLatestActions(data.results);
     };
     fetchLatestAction();
   }, []);
@@ -39,7 +53,7 @@ function LatestActions({ handleLatestActionData }) {
               </div>
             </div>
           </div>
-          <FilterComponent />
+          <FilterComponent filterState={filterState} toggleFilter={toggleFilter} />
           <div className="my-4">
             <a
               onClick={() => {
@@ -130,4 +144,27 @@ function LatestActions({ handleLatestActionData }) {
   );
 }
 
+function queryCheck(filterState,searchValue){
+  let query = null
+    if(searchValue.trim()){
+      query =`?search=${searchValue}`
+    }
+    else if(filterState.succeeded){
+      query = `?status=paid`
+    }
+    else if(filterState.inProgress){
+      query = `?status=draft`
+    }
+    else if(filterState.failed){
+      query = `?status=cancelled`
+    }
+    else if(filterState.refunded){
+      query = `?status=refunded`
+    }
+    else{
+      query = null
+    }
+
+  return query;
+}
 export default LatestActions;

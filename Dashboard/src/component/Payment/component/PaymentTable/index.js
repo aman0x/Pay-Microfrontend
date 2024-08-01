@@ -31,7 +31,7 @@ function PaymentTable({ handlePaymentData,toggleFilter,filterState }) {
       setIsLoading(true)
       const query = queryCheck(filterState,searchValue,orderingState)
       const data = await handlePaymentData(query);
-      setPaymentData(data);
+      setPaymentData(data.results);
       setIsLoading(false)
     },500);
     return () => {
@@ -348,7 +348,7 @@ function PaymentTable({ handlePaymentData,toggleFilter,filterState }) {
                 </td>
                 <td>
                   <div className="td-element text-[10px]">
-                    {transaction.bank}
+                    {transaction.beneficiary_bank_account?.bank_name||"HDFC Bank"}
                   </div>
                 </td>
                 <td>

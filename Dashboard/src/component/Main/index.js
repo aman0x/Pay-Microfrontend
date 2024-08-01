@@ -24,7 +24,7 @@ function DashboardMain() {
   useEffect(() => {
     const fetchLatestAction = async () => {
       const data = await handleLatestActionData();
-      setLatestActions(data);
+      setLatestActions(data.results);
     };
     fetchLatestAction();
   }, []);
@@ -106,15 +106,15 @@ function DashboardMain() {
               >
                 <div className="flex justify-start items-center">
                   <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
-                    <img src="/images/red-transaction.svg" alt="transaction" />
+                    {card.transaction_status === "completed"?<img src="/images/green-transaction.svg" alt="Status" />:<img src="/images/red-transaction.svg" alt="Status" />}
                   </div>
                 </div>
                 <div className="flex flex-col col-span-3">
                   <p className="text-[#4E5459] text-sm">
-                    {card.payment_type || "Vendor Payment"}
+                    {card.beneficiary_name|| "Vendor Payment"}
                   </p>
                   <p className="text-[#787D81] text-xs">
-                    {moment(card.payment_datetime).format("DD MMMM YYYY HH:mm")}
+                    {moment(card.created_at).format("DD MMMM YYYY HH:mm")}
                   </p>
                 </div>
                 <div className="flex flex-col col-span-2 items-end">
@@ -122,8 +122,8 @@ function DashboardMain() {
                     - ₹ {card.transaction_amount}
                   </p>
                   <div className="flex gap-2">
-                    <img src="/images/green-status.svg" alt="Status" />
-                    <p className="text-[#787D81] text-xs">In Progress</p>
+                    {card.transaction_status === "completed"?<img src="/images/green-status.svg" alt="Status" />:<img src="/images/yellow-status.svg" alt="Status" />}
+                    <p className="text-[#787D81] text-xs">{card.transaction_status}</p>
                   </div>
                 </div>
               </div>

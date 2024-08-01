@@ -3,6 +3,7 @@ import moment from "moment";
 import { useNavigate } from "react-router-dom";
 function ActionCards({ data }) {
   console.log("cards", data);
+  
   const navigate = useNavigate();
   return (
     <div className="flex flex-col gap-3">
@@ -48,7 +49,7 @@ function ActionCards({ data }) {
                       />
                     </svg>
                   </span>
-                  {card.bank_account?.bank_name||"HDFC BANK " }{card.bank_account?.ifsc_code}
+                  {card.beneficiary_bank_account?.bank_name||"HDFC BANK " },{card.beneficiary_bank_account?.ifsc_code}
                 </p>
               </div>
               <div>- ₹ {card.transaction_amount}</div>

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 function MyAccounts() {
   const navigate = useNavigate();
+  const [searchValue,setSearchValue] = useState('')
   const [banks, setBank] = useState([
     {
       id: 1,
@@ -21,15 +22,21 @@ function MyAccounts() {
       user: 2,
     },
   ]);
-  const { handleGetBankAccount } = useAccounts();
+  const { handleGetBankAccount ,handleDeleteBankAccount} = useAccounts();
   useEffect(() => {
-    const fetchBankAccounts = async () => {
-      const data = await handleGetBankAccount();
+    const fetchBankAccounts = setTimeout(async () => {
+      let query = null
+      if(searchValue.trim().length>2){
+        query = `?serach=${searchValue}`
+      }
+      const data = await handleGetBankAccount(query);
       console.log("Bank data", data);
-      setBank(data);
+      setBank(data.results);
+    },500);
+    return () => {
+      clearTimeout(fetchBankAccounts);
     };
-    fetchBankAccounts();
-  }, []);
+  }, [searchValue]);
   return (
     <>
       {/* MobileCotent */}
@@ -39,6 +46,8 @@ function MyAccounts() {
             <input
               type="text"
               id="voice-search"
+              value={searchValue}
+              onChange={(e)=>{setSearchValue(e.target.value)}}
               className="bg-[#F0F1F2] h-14 w-full focus:outline-none focus:ring-1 focus:ring-gray-300 border border-gray-300 text-gray-900 text-sm rounded-2xl block py-[0.7rem] px-5 poppins-light-italic"
               placeholder="Search for Bank Accounts..."
               required
@@ -120,7 +129,10 @@ function MyAccounts() {
                         {bank.bank_name || "HDFC BANK,KODAK"}
                       </div>
                     </div>
-                    <div onClick={() => null}>
+                    <div onClick={(e) => {
+                      e.stopPropagation()
+                      handleDeleteBankAccount(bank.id)}
+                      }>
                       <svg
                         width="14"
                         height="17"
@@ -190,7 +202,7 @@ function MyAccounts() {
         <div className="flex justify-between">
           <div className="flex gap-1 items-center">
             <div className="poppins-semibold">All Bank Accounts</div>
-            <div className="text-xs poppins-light text-[#787D81] ">(7)</div>
+            <div className="text-xs poppins-light text-[#787D81] ">({banks.length})</div>
           </div>
           <div
             onClick={() => navigate("/dashboard/accounts/add-new")}
@@ -215,7 +227,7 @@ function MyAccounts() {
             </div>
           </div>
         </div>
-        <BanksTable banks={banks} />
+        <BanksTable banks={banks} handleDeleteBankAccount={handleDeleteBankAccount} setBank={setBank} />
         <div className="flex justify-center">
           <div className="primary-linear-gr-bg p-[2px] rounded-xl">
             <button

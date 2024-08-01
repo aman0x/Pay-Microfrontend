@@ -2,7 +2,7 @@ import { Checkbox } from '@mui/material';
 import { useState } from 'react';
 import { FaSquare } from "react-icons/fa6";
 
-function FilterComponent(){
+function FilterComponent({filterState,toggleFilter}){
     const [filterIndex,setFilterIndex] = useState(0)
     return(
         <div className='flex flex-col gap-2 mt-2'>

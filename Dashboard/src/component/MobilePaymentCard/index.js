@@ -43,9 +43,8 @@ export function MobilePaymentCard({ handlePaymentCardData }) {
   useEffect(() => {
     const fetchCards = async () => {
       const data = await handlePaymentCardData();
-      setCards(data);
+      setCards(data.results);
       console.log("payMentcards", data);
-      dispatch(authActions.setCards({ cards: data }));
     };
     fetchCards();
   }, []);
@@ -68,7 +67,7 @@ export function MobilePaymentCard({ handlePaymentCardData }) {
         className="mySwiper h-[17rem]"
       >
         {
-          cardData.map((card,i) => {
+          cards.map((card,i) => {
             return (
               <SwiperSlide key={i}>
                 <div className="card-size flex justify-center">

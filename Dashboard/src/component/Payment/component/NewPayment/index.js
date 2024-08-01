@@ -23,10 +23,11 @@ function NewPayment({ isRepeatPayment = false }) {
   const [receiverIndex, setReceiverIndex] = useState(0);
   const [paymentDetail, setPaymentDetail] = useState({});
   const [typeIndex, setTypeIndex] = useState(0);
+  const [cardId,setCardId] = useState(0)
   const [amount, setAmount] = useState("");
   const [searchParams] = useSearchParams();
   const bankId = searchParams.get("bankId");
-  const [beneficiaries, setBeneficiaries] = useState(receivers);
+  const [beneficiaries, setBeneficiaries] = useState(receivers)
   const [bankDetail, setBankDetail] = useState({
     id: 10,
     user: 1,
@@ -598,6 +599,7 @@ function NewPayment({ isRepeatPayment = false }) {
               transaction_type:"card",
               beneficiary: beneficiaries[receiverIndex],
             }}
+            setCardId={setCardId}
             bankDetail={bankDetail}
             setPaymentDetail={setPaymentDetail}
           />
@@ -610,6 +612,8 @@ function NewPayment({ isRepeatPayment = false }) {
               transaction_amount: amount,
               transaction_type:"card",
               beneficiary: beneficiaries[receiverIndex],
+              card_id:cardId,
+              bank_id:beneficiaries[receiverIndex].bank_account
             }}
             paymentDetail={paymentDetail}
             bankDetail={bankDetail}
