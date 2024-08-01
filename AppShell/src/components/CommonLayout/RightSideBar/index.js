@@ -4,7 +4,6 @@ import Stats from "../Stats";
 import { useLocation, useNavigate } from "react-router-dom";
 function RightSideBar() {
   const location = useLocation();
-  console.log("location", location.pathname);
 
   return location.pathname !== "/dashboard/support" &&
     location.pathname !== "/dashboard/notification" &&

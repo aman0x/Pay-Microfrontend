@@ -72,7 +72,6 @@ function ProfileOrKyc() {
                   ...values,
                 };
                 delete data.password;
-                console.log(data);
                 await handleUserProfile(data);
               }}
             >
@@ -537,7 +536,6 @@ function ProfileOrKyc() {
                   ...values,
                 };
                 delete data.password;
-                console.log(data);
                 await handleUserProfile(data);
               }}
             >

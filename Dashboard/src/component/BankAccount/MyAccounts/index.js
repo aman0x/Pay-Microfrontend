@@ -30,7 +30,6 @@ function MyAccounts() {
         query = `?serach=${searchValue}`
       }
       const data = await handleGetBankAccount(query);
-      console.log("Bank data", data);
       setBank(data.results);
     },500);
     return () => {

@@ -44,7 +44,6 @@ export function MobilePaymentCard({ handlePaymentCardData }) {
     const fetchCards = async () => {
       const data = await handlePaymentCardData();
       setCards(data.results);
-      console.log("payMentcards", data);
     };
     fetchCards();
   }, []);

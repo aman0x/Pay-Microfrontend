@@ -18,7 +18,6 @@ export function useInvoice(){
             return response.data;
             }
         catch (error) {
-            console.log("dataHok",error)
         toast("Error in getting Templates");
         }
     }

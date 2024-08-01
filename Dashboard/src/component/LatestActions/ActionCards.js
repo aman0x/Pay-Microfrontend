@@ -2,7 +2,6 @@ import { BsBank2 } from "react-icons/bs";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
 function ActionCards({ data }) {
-  console.log("cards", data);
   
   const navigate = useNavigate();
   return (

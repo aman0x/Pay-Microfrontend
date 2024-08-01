@@ -11,7 +11,7 @@ module.exports = (env) => {
   const envVars = require("dotenv").config({ path: envPath }).parsed || {};
   return {
     output: {
-      publicPath: `${envVars.APP_URL}:8003/`,
+      publicPath: `${envVars.APP_URL}/`,
     },
     resolve: {
       alias: {
@@ -21,7 +21,6 @@ module.exports = (env) => {
     },
 
     devServer: {
-      port: 8003,
       historyApiFallback: true,
       client: {
         overlay: false,
@@ -56,11 +55,11 @@ module.exports = (env) => {
         name: "AppShell",
         filename: "remoteEntry.js",
         remotes: {
-          Auth: `Auth@${envVars.APP_URL}:8004/remoteEntry.js`,
-          Dashboard: `Dashboard@${envVars.APP_URL}:8005/remoteEntry.js`,
-          Invoice: `Invoice@${envVars.APP_URL}:8001/remoteEntry.js`,
-          Report: `Report@${envVars.APP_URL}:8002/remoteEntry.js`,
-          Admin:`Admin@${envVars.APP_URL}:8006/remoteEntry.js`
+          Auth: `Auth@${envVars.APP_URL}/auth/remoteEntry.js`,
+          Dashboard: `Dashboard@${envVars.APP_URL}/dashboard/remoteEntry.js`,
+          Invoice: `Invoice@${envVars.APP_URL}/invoice/remoteEntry.js`,
+          Report: `Report@${envVars.APP_URL}/report/remoteEntry.js`,
+          Admin:`Admin@${envVars.APP_URL}/admin/remoteEntry.js`
         },
         exposes: {
           "./AxiosInstance":"./src/utils/ApiCall.js"

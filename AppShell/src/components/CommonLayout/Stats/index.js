@@ -25,7 +25,6 @@ function Stats() {
     const fetchStats = async () => {
       const stats = await handleTotalStats();
       const data1 = await handleMonthStats();
-      console.log("je", stats, data1);
       setTotalStats(stats);
       setMonthStats(data1);
     };

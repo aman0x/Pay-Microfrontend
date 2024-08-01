@@ -28,7 +28,6 @@ function AddCard() {
       if (cardNumber.replace(/\s+/g, "").length < 16) {
         setIsValid(false);
       }
-      console.log();
       // setIsValid(false)
       toast.error("fail");
     }

@@ -317,7 +317,6 @@ export default function AccountType() {
             return errors;
           }}
           onSubmit={(values, { setSubmitting }) => {
-            console.log(values);
             handleUserSignup(values, userId, (isError) => {
               if (!isError) {
                 navigate("/dashboard");

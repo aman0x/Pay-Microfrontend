@@ -28,7 +28,6 @@ export function PaymentCard({ handlePaymentCardData }) {
     const fetchCards = async () => {
       const data = await handlePaymentCardData();
       setCards(data.results);
-      console.log("cards", cards);
       dispatch(authActions.setCards({ cards: data.results }));
     };
     fetchCards();

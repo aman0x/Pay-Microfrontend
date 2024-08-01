@@ -96,7 +96,6 @@ export default function SignUpUser() {
                 ...values,
                 phone: "+91" + values.phone,
               };
-              console.log(newVal);
               pageIndex === 1 ? setPageIndex(2) : handleUserSignup(newVal);
             }}
           >

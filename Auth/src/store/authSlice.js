@@ -30,7 +30,6 @@ const authSlice = createSlice({
         },
         deleteCard(state, action) {
             state.cards = state.cards.filter(card => card.id !== action.payload.cardId);
-            console.log("cards",state.cards)
         }
     }
 })

@@ -82,7 +82,6 @@ export default function LoginUser() {
             }}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(false);
-              console.log(values);
               withEmail
                 ? handleUserLoginWithEmail(values)
                 : handleLoginWithPhone(values.phone);

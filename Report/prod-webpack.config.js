@@ -1,18 +1,21 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+
 const deps = require("./package.json").dependencies;
-const path = require("path");
-const webpack = require("webpack");
+const path = require('path');
+const webpack = require('webpack');
 
 module.exports = (env) => {
   const envFile =  '../.env'; 
   const envPath = path.resolve(__dirname, envFile);
-  const envVars = require("dotenv").config({ path: envPath }).parsed || {};
+  const envVars = require('dotenv').config({ path: envPath }).parsed || {};
+
   return {
     output: {
-      publicPath: `${envVars.APP_URL}:8003/`,
+      publicPath: `${envVars.APP_URL}/report/`,
     },
+
     resolve: {
       alias: {
         controllers: path.resolve(__dirname, '../Controllers'),
@@ -21,7 +24,6 @@ module.exports = (env) => {
     },
 
     devServer: {
-      port: 8003,
       historyApiFallback: true,
       client: {
         overlay: false,
@@ -53,17 +55,11 @@ module.exports = (env) => {
 
     plugins: [
       new ModuleFederationPlugin({
-        name: "AppShell",
+        name: "Report",
         filename: "remoteEntry.js",
-        remotes: {
-          Auth: `Auth@${envVars.APP_URL}:8004/remoteEntry.js`,
-          Dashboard: `Dashboard@${envVars.APP_URL}:8005/remoteEntry.js`,
-          Invoice: `Invoice@${envVars.APP_URL}:8001/remoteEntry.js`,
-          Report: `Report@${envVars.APP_URL}:8002/remoteEntry.js`,
-          Admin:`Admin@${envVars.APP_URL}:8006/remoteEntry.js`
-        },
+        remotes: {},
         exposes: {
-          "./AxiosInstance":"./src/utils/ApiCall.js"
+          "./Report": "./src/App.js",
         },
         shared: {
           ...deps,
@@ -81,7 +77,7 @@ module.exports = (env) => {
         template: "./src/index.html",
       }),
       new webpack.DefinePlugin({
-        "process.env": JSON.stringify(envVars),
+        'process.env': JSON.stringify(envVars),
       }),
       new CopyWebpackPlugin({
         patterns: [

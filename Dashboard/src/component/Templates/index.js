@@ -25,7 +25,6 @@ function Templates({ userId = null, handleTemplateData }) {
     useEffect(() => {
         const fetchTemplates = async () => {
             const data = await handleTemplateData()
-            console.log(data)
             setTemplates(data.results)
         }
         fetchTemplates();

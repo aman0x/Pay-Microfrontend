@@ -16,7 +16,6 @@ export function useSideBar(){
             return response.data;
           }
         catch (error) {
-            console.log("dataHok",error)
             toast("Error in getting Templates");
         }
     }
@@ -31,7 +30,6 @@ export function useSideBar(){
             return response.data;
           }
         catch (error) {
-            console.log("dataHok",error)
             toast("Error in getting Templates");
         }
     }
@@ -56,7 +54,6 @@ export function useUserCommon(){
         
     }
     catch(e){
-        console.log("error",e)
         toast("Error in getting Payment Cards1");
         return [];
     }
@@ -74,7 +71,6 @@ export function useUserCommon(){
           
         }
       catch (error) {
-        console.log(error)
       //toast("Error Sending Support");
       }
   }

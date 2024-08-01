@@ -17,7 +17,6 @@ function CommonLayout({ children }) {
   useEffect(() => {
     const fetchUser = async () => {
       const data = await handleGetUserDetail();
-      console.log("user", data);
     };
     fetchUser();
   }, []);

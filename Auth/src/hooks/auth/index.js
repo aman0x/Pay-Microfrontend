@@ -13,12 +13,10 @@ export function useUserLoginAuth(){
     const dispatch = useDispatch()
     const current_user = useSelector(state => state.auth.user)
     const handleLoginWithGoogle = () =>{
-        console.log("login with google")
     const provider = new GoogleAuthProvider();
         signInWithPopup(firebaseAuth, provider)
             .then(async (result) => {
                 const userData = result.user
-                console.log("google-login",result)
                 const token = result.user.accessToken;
                 const login_data = {
                     firebase_id_token:token,
@@ -38,7 +36,6 @@ export function useUserLoginAuth(){
                     }
                     else{
                         toast.error("Error in Login")
-                        console.log("login_error_data",e)
                     }
                 
                 
@@ -57,7 +54,6 @@ export function useUserLoginAuth(){
             });
     }
     const handleUserLoginWithEmail = (data) =>{
-        console.log("login with email")
         const login_data = {
             email:data.email,
             password:data.password,
@@ -76,7 +72,6 @@ export function useUserLoginAuth(){
             }
             else{
                 toast.error("Error in Login")
-                console.log("login_error_data",e)
             }
         })
        
@@ -84,14 +79,12 @@ export function useUserLoginAuth(){
     }
 
     const handleLoginWithPhone = (phone) =>{
-        console.log("Login with phoen")
         const login_data = {
             phone:phone,
             is_social_login:false
         }
         AxiosCall({url:PUBLIC_ENDPOINTS.login,method:"POST",body:login_data})
         .then((data)=>{
-            console.log("login_data",data)
             navigate('/accounts/otp-verification',{state:{phoneNumber:phone}})
           
         })
@@ -109,7 +102,6 @@ export function useUserLoginAuth(){
     }
 
     const handleLoginWithFacebook = () =>{
-        console.log("Login with facebook")
         // const provider = new FacebookAuthProvider();
         // signInWithPopup(firebaseAuth, provider)
         // .then((result) => {
@@ -158,7 +150,6 @@ export function useUserLoginAuth(){
           
         })
         .catch((e)=>{
-            console.log("valdate_otp",e)
             toast(e.message)
            
         })
@@ -173,7 +164,6 @@ export function useUserSignupAuth(){
     const dispatch  = useDispatch()
     const navigate = useNavigate()
     const handleUserSignup = (data,userId=null,cb) =>{
-        console.log("hook_data",data)
       
         AxiosCall({
             url:userId?PUBLIC_ENDPOINTS.signIn+`${userId}/`:PUBLIC_ENDPOINTS.signIn,
@@ -182,7 +172,6 @@ export function useUserSignupAuth(){
             body:data
         })
         .then((response)=>{
-            console.log("signup",response.data)
             if(!userId){
                 sessionStorage.setItem("user_id",response.data.id)
                 navigate('/accounts/type',{ state:{userId:response.data.id}})
@@ -198,7 +187,6 @@ export function useUserSignupAuth(){
             }
             else{
                 toast.error("Error in Signup")
-                console.error("error",e)
             }
         })
     }

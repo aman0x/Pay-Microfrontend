@@ -71,8 +71,7 @@ function BanksTable({banks,handleDeleteBankAccount,setBank}){
                         <tr 
                         key={transaction.id}
                         onClick={()=>
-                            console.log("clicked")
-                            
+                            console.log("clicked")  
                         }
                         className="text-[10px] text-[#232B31] poppins-regular"
                         >

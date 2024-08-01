@@ -36,7 +36,6 @@ async function ApiCall({url,method,body,PRIVATE_API = false,header}){
 
     }
     catch(error){
-        console.log("AXIOS_ERROR",error)
         throw error;
     }
     

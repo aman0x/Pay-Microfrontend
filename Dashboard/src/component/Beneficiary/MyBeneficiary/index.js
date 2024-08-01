@@ -25,7 +25,6 @@ function MyBeneficiary(){
         const fetchBeneficiary = async()=>{
             const data = await handleGetBeneficiary()
             setBeneficiary(data.results)
-            console.log("bnef",data.results)
         }
         fetchBeneficiary()
     },[])

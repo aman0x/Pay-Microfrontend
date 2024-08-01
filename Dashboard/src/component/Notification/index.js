@@ -26,7 +26,6 @@ function Notification() {
     const fetchNotificationData = async () => {
       const topic = menu[tophead].toLowerCase();
       const data = await handleGetNotification(topic);
-      console.log("nI", data);
       setNotificationData(data.results);
     };
 

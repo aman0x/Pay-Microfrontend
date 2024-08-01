@@ -13,7 +13,6 @@ import AxiosInstance from "controllers/AxiosInstance/index"
 import ErrorBoundary from "./component/ErrorBoundary/index.js";
 import NotFound from "./component/Error";
 import reduxStore from "./store";
-console.log("work",window.root)
 const Auth = () => (
   
   <div className="bg-[#fcfcfc] min-h-screen">

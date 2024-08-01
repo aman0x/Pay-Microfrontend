@@ -1,7 +1,5 @@
 import axios from "axios"
 async function ApiCall({url,method,body,PRIVATE_API = false,header,current_user=null}){
-    console.log(url)
-    console.log("user",current_user)
     let token =""
     if (PRIVATE_API) {
         const accessToken = localStorage.getItem("access_token");
@@ -45,7 +43,6 @@ async function ApiCall({url,method,body,PRIVATE_API = false,header,current_user=
 
     }
     catch(error){
-        console.log("AXIOS_ERROR",error)
         throw error;
     }
     

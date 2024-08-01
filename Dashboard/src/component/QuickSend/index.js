@@ -53,7 +53,6 @@ export function QuickSend({ handleQuickSendData }) {
         const fetchQuickSend = async () => {
             const data = await handleQuickSendData()
             setQuickSend(data.results)
-            console.log("Qs",data)
         }
         fetchQuickSend()
 

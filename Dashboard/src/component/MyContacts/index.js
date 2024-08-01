@@ -14,9 +14,8 @@ const MyContacts = () => {
 
   useEffect(() => {
     const fetchQuickSend = async () => {
-      const data = await handleQuickSendData(serachValue);
-      console.log("List of users", data.results);
-      setQuickSend(data.results);
+      const data = await handleQuickSendData();
+      setQuickSend(data);
     };
     fetchQuickSend();
   }, [serachValue]);

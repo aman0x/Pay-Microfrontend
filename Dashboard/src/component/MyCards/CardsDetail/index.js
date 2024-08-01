@@ -25,7 +25,6 @@ function CardsDetail() {
     const fetchCardDetail = async () => {
       const data = await handlePaymentCardDetail(cardId);
       setCardDetail(data);
-      console.log("Card-data", data);
     };
     fetchCardDetail();
   }, [cardId]);

@@ -187,7 +187,6 @@ function AddNewBeneficiary({isRepeatPayment=false}){
                                     phone_number:accountNumber
                                 })
                                 setFinalData(data)
-                                console.log("beneficiary-data",data)
                                 setStepIndex(1)
                             }
                         }}
