@@ -50,7 +50,7 @@ function NewPayment({ isRepeatPayment = false }) {
     };
     const fetchBeneficiary = async () => {
       const beneficiaries = await handleGetBeneficiary();
-      setBeneficiaries(beneficiaries);
+      setBeneficiaries(beneficiaries.results);
     };
     if (bankId) {
       fetchBankDetails(bankId);

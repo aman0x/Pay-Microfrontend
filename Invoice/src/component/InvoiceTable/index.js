@@ -353,7 +353,7 @@ function InvoiceTable({ invoiceData,filterState,toggleFilter,searchValue,setSear
                 </td>
                 <td>
                   <div className="td-element text-[10px]">
-                    {transaction.account_type}
+                    {transaction.beneficiary_bank_account?.account_type}
                   </div>
                 </td>
                 <td>

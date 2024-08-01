@@ -9,17 +9,17 @@ import { MdDone } from "react-icons/md";
 const MyContacts = () => {
   const [quickSend, setQuickSend] = useState([]);
   const navigate = useNavigate();
-
+  const [serachValue,setSearchValue] = useState('')
   const { handleQuickSendData } = useDashboard();
 
   useEffect(() => {
     const fetchQuickSend = async () => {
-      const data = await handleQuickSendData();
-      console.log("List of users", data);
-      setQuickSend(data);
+      const data = await handleQuickSendData(serachValue);
+      console.log("List of users", data.results);
+      setQuickSend(data.results);
     };
     fetchQuickSend();
-  }, []);
+  }, [serachValue]);
 
   return (
     <div className="md:hidden w-full p-5">
@@ -27,6 +27,8 @@ const MyContacts = () => {
         <input
           type="text"
           id="voice-search"
+          value={serachValue}
+          onChange={(e)=>setSearchValue(e.target.value)}
           className="bg-[#F0F1F2] h-14 w-full focus:outline-none focus:ring-1 focus:ring-gray-300 border border-gray-300 text-gray-900 text-sm rounded-2xl block py-[0.7rem] px-5 poppins-light-italic"
           placeholder="Search for Contacts..."
           required

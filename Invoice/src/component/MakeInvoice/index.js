@@ -28,7 +28,7 @@ function MakeInvoice({ isRepeatPayment = false }) {
   useEffect(() => {
     const fetchBeneficiary = async () => {
       const beneficiaries = await handleGetBeneficiary();
-      setBeneficiaries(beneficiaries);
+      setBeneficiaries(beneficiaries.results);
     };
 
     fetchBeneficiary();
@@ -311,6 +311,7 @@ function MakeInvoice({ isRepeatPayment = false }) {
             amount: amount,
             payment_type: cards[1],
             beneficiary: beneficiaries[receiverIndex],
+            service_ids:[1]
           }}
         />
       )}

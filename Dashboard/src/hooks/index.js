@@ -75,9 +75,9 @@ export function useDashboard(){
            
     }
 
-    const handleQuickSendData=async()=>{
+    const handleQuickSendData=async(query=null)=>{
         try{
-           const response = await ApiCall({url:PRIVATE_ENDPOINTS.GET_BENEFICIARY_LIST,method:"GET",PRIVATE_API:true,current_user:user})
+           const response = await ApiCall({url:query?PRIVATE_ENDPOINTS.GET_BENEFICIARY_LIST+`?search=${query}`:PRIVATE_ENDPOINTS.GET_BENEFICIARY_LIST,method:"GET",PRIVATE_API:true,current_user:user})
             return response.data;
        
             
@@ -301,17 +301,16 @@ export function useSupport(){
         toast("Error Getting Support Info");
         }
     }
-    const handleGetFaq = async(topic="general",query=null)=>{
+    const handleGetFaq = async(topic="search=general")=>{
         try{
-            const arr = []
-           const response = await ApiCall({url:query?PRIVATE_ENDPOINTS.GET_FAQS+`?topic=${topic}`+query:PRIVATE_ENDPOINTS.GET_FAQS+`?topic=${topic}`
+           const response = await ApiCall({url:PRIVATE_ENDPOINTS.GET_FAQS+`?${topic}`
             ,method:"GET",PRIVATE_API:true,current_user:user})
          
             return response.data;
            
         }
         catch(e){
-            //toast("Error in getting Faqs");
+            toast("Error in getting Faqs");
             return [];
         }
     }

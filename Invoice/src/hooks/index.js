@@ -107,16 +107,11 @@ export function useCommon(){
     const user = useSelector(state=>state.auth.user)
     const handleGetBeneficiary = async() =>{
         try{
-            const arr = []
+           
            const response = await ApiCall({url:PRIVATE_ENDPOINTS.GET_BENEFICIARY_LIST,method:"GET",PRIVATE_API:true,current_user:user})
-           console.log(response)
-           if(Array.isArray(response.data)){
+        
             return response.data;
-            }
-            else{
-                arr.push(response.data)
-                return arr;
-            }
+            
             
         }
         catch(e){

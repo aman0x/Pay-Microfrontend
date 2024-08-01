@@ -17,8 +17,8 @@ function FAQ() {
   const [faqs, setFaqs] = useState([]);
   useEffect(() => {
     const fetchFaqs = setTimeout(async () => {
-      const query = searchValue.trim() ? `&search=${searchValue}` : null;
-      const data = await handleGetFaq(faq[faqIndex], query);
+      const query = searchValue.trim() ? `search=${searchValue}` : `search=${faq[faqIndex]}`;
+      const data = await handleGetFaq(query);
       setFaqs(data.results);
     }, 500);
 

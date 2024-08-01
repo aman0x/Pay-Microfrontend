@@ -9,7 +9,7 @@ export const PRIVATE_ENDPOINTS = {
    GET_NEW_INVOICE_LIST:BASE_URL+'/api/invoice/all-invoices/',
    CREATE_INVOICE:BASE_URL+'/api/invoice/invoices/',
    GET_NEW_INVOICES:BASE_URL+'/api/invoice/new-invoices/',
-   GET_BENEFICIARY_LIST:BASE_URL+'/api/user/beneficiaries/list',
+   GET_BENEFICIARY_LIST:BASE_URL+'/api/user/beneficiaries/',
 }
 
 

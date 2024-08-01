@@ -17,7 +17,7 @@ function PaymentStep2({ setStepIndex, data, bankDetail, setPaymentDetail,setCard
   useEffect(() => {
     const fetchCards = async () => {
       const data = await handlePaymentCardData();
-      dispatch(authActions.setCards({ cards: data }));
+      dispatch(authActions.setCards({ cards: data.results }));
     };
     if (card.length < 1) {
       fetchCards();
