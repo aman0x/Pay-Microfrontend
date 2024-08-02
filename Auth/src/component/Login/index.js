@@ -112,7 +112,7 @@ export default function LoginUser() {
                           onChange={handleChange}
                           onBlur={handleBlur}
                           value={values.email}
-                          className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-xl w-full !ps-14 p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-xl w-full !ps-14 p-3.5"
                           placeholder="Enter Your Mail."
                         />
                       </div>
@@ -188,7 +188,7 @@ export default function LoginUser() {
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.phone}
-                        className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full !ps-14 p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full !ps-14 p-3.5"
                         placeholder="Enter Phone Number..."
                       />
                     </div>

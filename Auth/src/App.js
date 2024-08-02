@@ -28,13 +28,13 @@ const Auth = () => (
   </div>
 
 );
-// const root = ReactDOM.createRoot(document.getElementById("app"));
-// root.render(
-//   <Provider store={reduxStore}>
-//   <BrowserRouter>
-//     <Auth />
-//   </BrowserRouter>
-//   </Provider>
-// )
+const root = ReactDOM.createRoot(document.getElementById("app"));
+root.render(
+  <Provider store={reduxStore}>
+  <BrowserRouter>
+    <Auth />
+  </BrowserRouter>
+  </Provider>
+)
 
 export default Auth;

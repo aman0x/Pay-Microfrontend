@@ -36,7 +36,7 @@ function InvoiceDetail() {
     fetchInvoiceDetail();
   }, [invoiceId]);
   return (
-    <div className="mt-5 mb-5 bg-primary p-[2rem] rounded-2xl flex flex-col gap-3 w-full ">
+    <div className="mb-16 md:mb-0 mt-5 bg-primary p-[2rem] rounded-2xl flex flex-col gap-3 w-full ">
       <div className="flex justify-between">
         <div className="flex gap-1 items-center">
           <div>
@@ -111,8 +111,8 @@ function InvoiceDetail() {
         </div>
       </div>
       <div className="flex flex-col gap-4 rounded-2xl bg-white p-[1.5rem] w-full">
-        <div className="flex justify-between">
-          <div className="flex flex-col gap-1">
+        <div className="flex justify-between items-center gap-4">
+          <div className="flex flex-col gap-4">
             <div className="poppins-semibold text-base text-[#232B31]">
               {invoiceDetail.invoice_title}
             </div>
@@ -140,8 +140,8 @@ function InvoiceDetail() {
             </div>
           </div>
         </div>
-        <div className="w-full">
-          <table className="w-full  rounded-2xl overflow-hidden text-sm poppins-regular">
+        <div className="w-full overflow-x-auto">
+          <table className="w-full  rounded-2xl text-sm poppins-regular">
             <tr className="poppins-regular text-[10px] text-white bg-black-primary items-center">
               <td>Particular</td>
               <td>Quantity</td>
@@ -176,7 +176,7 @@ function InvoiceDetail() {
           </div>
         </div>
         <hr />
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid md:grid-cols-2 gap-4">
           <div className="bg-primary p-[1rem] rounded-xl gap-4">
             <div className="text-[#4E5459] poppins-semibold text-xs mb-2">
               Sent To:

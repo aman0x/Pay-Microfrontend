@@ -23,7 +23,7 @@ function NewPayment({ isRepeatPayment = false }) {
   const [isValid, setIsValid] = useState(true);
   const [isReceiverMenu, setReceiversMenuView] = useState(false);
   const [stepIndex, setStepIndex] = useState(0);
-  const [mobileIndex,setMobileIndex] = useState(0)
+  const [mobileIndex, setMobileIndex] = useState(0);
   const [receiverIndex, setReceiverIndex] = useState(0);
   const [paymentDetail, setPaymentDetail] = useState({});
   const [typeIndex, setTypeIndex] = useState(0);
@@ -45,10 +45,10 @@ function NewPayment({ isRepeatPayment = false }) {
   });
 
   const [selectedName, setSelectedName] = useState("");
-  const [selectedBeneficiary,setSelectedBeneficiary] = useState()
+  const [selectedBeneficiary, setSelectedBeneficiary] = useState();
 
   const { handleGetBankById, handleGetBeneficiary } = useAccounts();
-  const [bankId,setBankId] = useState(searchParams.get("bankId"))
+  const [bankId, setBankId] = useState(searchParams.get("bankId"));
   useEffect(() => {
     const fetchBeneficiary = async () => {
       const beneficiaries = await handleGetBeneficiary();
@@ -113,7 +113,7 @@ function NewPayment({ isRepeatPayment = false }) {
           <PaymentSuccessfull
             stepIndex={mobileIndex}
             setStepIndex={setMobileIndex}
-            paymentDetail = {paymentDetail}
+            paymentDetail={paymentDetail}
           />
         )}
       </div>
@@ -314,7 +314,7 @@ function NewPayment({ isRepeatPayment = false }) {
                     type="text"
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
-                    className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-16 placeholder:italic placeholder:text-xs p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-16 placeholder:italic placeholder:text-xs p-3.5  "
                     placeholder="Enter Amount."
                   />
                 </div>
@@ -330,7 +330,7 @@ function NewPayment({ isRepeatPayment = false }) {
                     <input
                       type="text"
                       value={beneficiaries[receiverIndex].name}
-                      className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-xs p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-xs p-3.5 "
                       placeholder="Receiver"
                     />
                     <button
@@ -379,7 +379,7 @@ function NewPayment({ isRepeatPayment = false }) {
                   <input
                     type="text"
                     value={types[typeIndex]}
-                    className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-xs p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-xs p-3.5 "
                     placeholder="Vendor Payment, Vendor Payment"
                     required
                   />
@@ -607,8 +607,8 @@ export function ReceiversMenu({
                   color={`${cardIndex === i ? "black" : "white"}`}
                   className="rounded-sm p-[1px]"
                   onClick={() => {
-                    setBankId(card.bank_account)
-                    setCardIndex(i)
+                    setBankId(card.bank_account);
+                    setCardIndex(i);
                   }}
                 />
               </div>

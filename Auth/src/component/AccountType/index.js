@@ -352,7 +352,7 @@ export default function AccountType() {
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.pan_no}
-                        className="bg-white border-0 border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 py-3.5 pr-3.5 pl-10 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:outline-none"
+                        className="bg-white border-0 border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 py-3.5 pr-3.5 pl-10 focus:outline-none"
                         placeholder="PAN Number"
                       />
                     </div>
@@ -400,7 +400,7 @@ export default function AccountType() {
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.adhaar_no}
-                        className="bg-white border-0 border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 py-3.5 pr-3.5 pl-10 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:outline-none"
+                        className="bg-white border-0 border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 py-3.5 pr-3.5 pl-10 focus:outline-none"
                         placeholder="Adhaar Card"
                       />
                     </div>
@@ -424,7 +424,7 @@ export default function AccountType() {
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.company_pan_no}
-                        className=" bg-white border-0 border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 py-3.5 pr-3.5 pl-10  dark:placeholder-gray-400 focus:outline-none"
+                        className=" bg-white border-0 border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 py-3.5 pr-3.5 pl-10 focus:outline-none"
                         placeholder="Company PAN"
                       />
                     </div>
@@ -477,7 +477,7 @@ export default function AccountType() {
                         onBlur={handleBlur}
                         value={values.company_name}
                         disabled
-                        className=" bg-white border-0 border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 py-3.5 pr-3.5 pl-10  dark:placeholder-gray-400 focus:outline-none"
+                        className=" bg-white border-0 border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 py-3.5 pr-3.5 pl-10 focus:outline-none"
                         placeholder="Company Name"
                       />
                     </div>
@@ -499,7 +499,7 @@ export default function AccountType() {
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.company_adhaar_no}
-                        className="bg-white border-0 border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 py-3.5 pr-3.5 pl-10  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:outline-none"
+                        className="bg-white border-0 border-gray-300 text-gray-900 text-sm rounded-xl block w-full ps-14 py-3.5 pr-3.5 pl-10"
                         placeholder="Aadhar Card"
                       />
                     </div>

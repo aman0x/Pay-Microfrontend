@@ -298,7 +298,7 @@ function QuickPayment({ isRepeatPayment = false }) {
                     type="text"
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
-                    className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-16 placeholder:italic placeholder:text-xs p-3.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-16 placeholder:italic placeholder:text-xs p-3.5 "
                     placeholder="Enter Amount."
                   />
                 </div>
@@ -314,7 +314,7 @@ function QuickPayment({ isRepeatPayment = false }) {
                     <input
                       type="text"
                       value={beneficiaries[receiverIndex].name}
-                      className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-xs p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-xs p-3.5"
                       placeholder="Receiver"
                     />
                     <button
@@ -363,7 +363,7 @@ function QuickPayment({ isRepeatPayment = false }) {
                   <input
                     type="text"
                     value={types[typeIndex]}
-                    className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-xs p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-xs p-3.5"
                     placeholder="Vendor Payment, Vendor Payment"
                     required
                   />
