@@ -81,9 +81,10 @@ function MainPayment() {
           </h1>
         </div>
         <div className="p-4">
-          {paymentData.map((card)=>{
+          {paymentData.map((card,i)=>{
             return(
               <div 
+              key={i}
               onClick={() => navigate(`/dashboard/payment/payment-detail?paymentId=${card.id}`)}
               className="grid grid-cols-6 gap-4 mt-4">
             <div className="flex justify-startitems-center">

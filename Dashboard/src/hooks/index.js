@@ -158,7 +158,7 @@ export function usePayment() {
             return {};
         }
     };
-    const handlePaymentCreate = async (data) => {
+    const handlePaymentCreate = async (data,navigateN = true) => {
         const user_data = {
             ...data,
             user: user_id,
@@ -171,8 +171,10 @@ export function usePayment() {
                 PRIVATE_API: true,
                 current_user: user,
             });
-            toast.success("Payment Created!!");
-            navigate(-1);
+            if(navigateN){
+                toast.success("Payment Created!!");
+                navigate(-1);
+            }
             return response.data;
         } catch (error) {
             toast("Error creating payment");

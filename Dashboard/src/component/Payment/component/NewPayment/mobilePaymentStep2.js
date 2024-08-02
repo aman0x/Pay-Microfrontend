@@ -28,6 +28,7 @@ export function MobilePaymentStep2({
   setStepIndex,
   selectedName,
   setSelectedName,
+  setSelectedBeneficiary
 }) {
   const [quickSend, setQuickSend] = useState([]);
   const navigate = useNavigate();
@@ -38,7 +39,6 @@ export function MobilePaymentStep2({
   useEffect(() => {
     const fetchQuickSend = async () => {
       const data = await handleQuickSendData();
-      console.log("Contacts", data.results);
       setQuickSend(data.results);
     };
     fetchQuickSend();
@@ -104,7 +104,10 @@ export function MobilePaymentStep2({
               <div key={i} className="flex flex-col gap-0.5 items-center">
                 <div
                   className="size-20 mb-1"
-                  onClick={() => setSelectedName(user.name)}
+                  onClick={() => {
+                    setSelectedName(user.name)
+                    setSelectedBeneficiary(user)
+                  }}
                 >
                   <Avatar
                     sx={{

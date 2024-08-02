@@ -2,18 +2,28 @@ import Avatar from "@mui/material/Avatar";
 import { IoAdd } from "react-icons/io5";
 import { FaCircleArrowRight } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
-import { useDashboard } from "#hooks/index";
+import { useDashboard,useAccounts } from "#hooks/index";
 import { PaymentCard } from "./PaymentCard";
-import { useState } from "react";
-
-const MobilePaymentStep3 = ({ stepIndex, setStepIndex, selectedName }) => {
-  //   console.log("Selected Name", selectedName);
+import { useEffect, useState } from "react";
+import { usePayment } from "#hooks/index";
+const MobilePaymentStep3 = ({ stepIndex, setStepIndex, selectedName,beneficiary,bankDetail,setBankDetail,amount,setPaymentDetail }) => {
   const navigate = useNavigate();
-
+  const {handlePaymentCreate} = usePayment()
   const { handlePaymentCardData } = useDashboard();
-
+  const {handleGetBankById} = useAccounts()
   const [cardSelected, setCardSelected] = useState(false);
+  useEffect(()=>{
+    const fetchBankDetails = async(bankId)=>{
+     const data = await handleGetBankById(bankId)
+     setBankDetail(data)
+    }
+    fetchBankDetails(beneficiary?.bank_account)
+  },[beneficiary?.bank_account])
 
+  const handlePayment = async(newData)=>{
+    const paymentData = await handlePaymentCreate(newData,false)
+    setPaymentDetail(paymentData)
+  }
   return (
     <>
       <div className="p-5 mt-2 w-full mb-16 md:mb-0">
@@ -99,7 +109,7 @@ const MobilePaymentStep3 = ({ stepIndex, setStepIndex, selectedName }) => {
             <div className="poppins-regular text-[#A3A6A9]">Bank:</div>
             <hr className="border-t-2 border-dashed border-[#CDCED1] flex-grow mx-1" />
             <div className="poppins-bold text-[#787D81]">
-              {"50100350093919"}
+              {bankDetail.account_number}
             </div>
           </div>
           <div className="flex w-full items-center mb-1">
@@ -107,19 +117,19 @@ const MobilePaymentStep3 = ({ stepIndex, setStepIndex, selectedName }) => {
               Convenience Fees 1.99%
             </div>
             <hr className="border-t-2 border-dashed border-[#CDCED1] flex-grow mx-1" />
-            <div className="poppins-bold text-[#787D81]">{"₹ 24,000.24"}</div>
+            <div className="poppins-bold text-[#787D81]">{"₹"}{amount*0.02}</div>
           </div>
           <div className="flex w-full items-center mb-1">
             <div className="poppins-regular text-[#A3A6A9]">TAX</div>
             <hr className="border-t-2 border-dashed border-[#CDCED1] flex-grow mx-1" />
-            <div className="poppins-bold text-[#787D81]">{"₹ 24,000.24"}</div>
+            <div className="poppins-bold text-[#787D81]">{"₹"}{amount*0.12}</div>
           </div>
           <div className="flex w-full items-center mb-1">
             <div className="poppins-regular text-[#A3A6A9]">
               Receiver will receive
             </div>
             <hr className="border-t-2 border-dashed border-[#CDCED1] flex-grow mx-1" />
-            <div className="poppins-bold text-[#787D81]">{"₹ 24,000.24"}</div>
+            <div className="poppins-bold text-[#787D81]">{"₹"}{amount*0.86}</div>
           </div>
           <div className="flex w-full items-center mt-2">
             <div className="poppins-semibold text-[14px] text-gradient">
@@ -127,7 +137,7 @@ const MobilePaymentStep3 = ({ stepIndex, setStepIndex, selectedName }) => {
             </div>
             <hr className="border-t-2 border-dashed border-[#CDCED1] flex-grow mx-1" />
             <div className="poppins-bold text-[14px] text-gradient">
-              {"₹ 24,000.24"}
+              {"₹"}{amount}
             </div>
           </div>
 
@@ -135,7 +145,7 @@ const MobilePaymentStep3 = ({ stepIndex, setStepIndex, selectedName }) => {
             Choose Card :
           </p>
           <div onClick={() => setCardSelected(true)}>
-            <PaymentCard handlePaymentCardData={handlePaymentCardData} />
+            <PaymentCard handlePaymentCardData={handlePaymentCardData}  />
           </div>
         </div>
 
@@ -144,14 +154,25 @@ const MobilePaymentStep3 = ({ stepIndex, setStepIndex, selectedName }) => {
           onClick={() => {
             if (cardSelected) {
               setStepIndex(3);
+              const newData= {
+                transaction_amount:amount,
+                beneficiary:beneficiary.id,
+                service_ids:[1],
+                transaction_type:"card",
+                //temp
+                card_id:11
+            } 
+            handlePayment(newData)
+           
             }
+            
           }}
           className={`my-4 flex primary-btn items-center w-full justify-center rounded-[1.25rem] ${
             cardSelected ? "bg-[#232B31]" : "bg-[#cdced0]"
           } px-3 p-[1.095rem] text-sm font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
         >
           <div className="text-[12px] pr-2">Pay</div>
-          <span className="text-[12px] text-gradient">₹ 24,000.24</span>
+          <span className="text-[12px] text-gradient">₹ {amount}</span>
           <span className="flex justify-center items-center size-8">
             <FaCircleArrowRight style={{ color: "white" }} />
           </span>

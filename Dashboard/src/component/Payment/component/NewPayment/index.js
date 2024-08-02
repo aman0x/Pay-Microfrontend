@@ -23,6 +23,7 @@ function NewPayment({ isRepeatPayment = false }) {
   const [isValid, setIsValid] = useState(true);
   const [isReceiverMenu, setReceiversMenuView] = useState(false);
   const [stepIndex, setStepIndex] = useState(0);
+  const [mobileIndex,setMobileIndex] = useState(0)
   const [receiverIndex, setReceiverIndex] = useState(0);
   const [paymentDetail, setPaymentDetail] = useState({});
   const [typeIndex, setTypeIndex] = useState(0);
@@ -44,6 +45,7 @@ function NewPayment({ isRepeatPayment = false }) {
   });
 
   const [selectedName, setSelectedName] = useState("");
+  const [selectedBeneficiary,setSelectedBeneficiary] = useState()
 
   const { handleGetBankById, handleGetBeneficiary } = useAccounts();
   const [bankId,setBankId] = useState(searchParams.get("bankId"))
@@ -65,10 +67,10 @@ function NewPayment({ isRepeatPayment = false }) {
   return (
     <>
       <div className="md:hidden w-full">
-        {stepIndex === 0 && (
+        {mobileIndex === 0 && (
           <MobilePaymentStep1
-            stepIndex={stepIndex}
-            setStepIndex={setStepIndex}
+            stepIndex={mobileIndex}
+            setStepIndex={setMobileIndex}
             typeIndex={typeIndex}
             setTypeIndex={setTypeIndex}
             isPaymentTypeMenu={isPaymentTypeMenu}
@@ -79,29 +81,39 @@ function NewPayment({ isRepeatPayment = false }) {
             setReceiversMenuView={setReceiversMenuView}
             receiverIndex={receiverIndex}
             setReceiverIndex={setReceiverIndex}
+            setBankId={setBankId}
+            amount={amount}
+            setAmount={setAmount}
           />
         )}
-        {stepIndex === 1 && (
+        {mobileIndex === 1 && (
           <MobilePaymentStep2
-            stepIndex={stepIndex}
-            setStepIndex={setStepIndex}
+            stepIndex={mobileIndex}
+            setStepIndex={setMobileIndex}
             selectedName={selectedName}
             setSelectedName={setSelectedName}
+            setSelectedBeneficiary={setSelectedBeneficiary}
           />
         )}
 
-        {stepIndex === 2 && (
+        {mobileIndex === 2 && (
           <MobilePaymentStep3
-            stepIndex={stepIndex}
-            setStepIndex={setStepIndex}
+            stepIndex={mobileIndex}
+            setStepIndex={setMobileIndex}
             selectedName={selectedName}
+            beneficiary={selectedBeneficiary}
+            bankDetail={bankDetail}
+            amount={amount}
+            setBankDetail={setBankDetail}
+            setPaymentDetail={setPaymentDetail}
           />
         )}
 
-        {stepIndex === 3 && (
+        {mobileIndex === 3 && (
           <PaymentSuccessfull
-            stepIndex={stepIndex}
-            setStepIndex={setStepIndex}
+            stepIndex={mobileIndex}
+            setStepIndex={setMobileIndex}
+            paymentDetail = {paymentDetail}
           />
         )}
       </div>
@@ -537,6 +549,7 @@ export function ReceiversMenu({
   cardIndex,
   setCardIndex,
   beneficiaries,
+  setBankId,
   setReceiversMenuView,
 }) {
   return (
