@@ -237,7 +237,11 @@ function MainInvoice() {
           {
             invoices.map((data) => {
               return (
-                <div className="bg-white rounded-3xl w-96 shadow-md p-5 mb-4">
+                <div className="bg-white rounded-3xl w-96 shadow-md p-5 mb-4"
+                onClick={() => {
+                  navigate(`/invoice/invoice-detail?invoiceId=${data.id}`);
+                }}
+                >
                   <div className="flex justify-between items-center w-full pb-4 gap-4">
                     <div className="rounded-full w-12 h-12 shadow-inner bg-white flex justify-center items-center">
                       {

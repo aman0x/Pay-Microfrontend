@@ -33,10 +33,10 @@ function CardsDetail() {
       <div className="flex flex-col gap-4 rounded-2xl bg-white p-[1.5rem] w-full">
         <div className="md:flex md:justify-between">
           <div className="flex flex-col gap-1">
-            <div className="poppins-semibold">Card Name</div>
+            <div className="poppins-semibold">{cardDetail.card_holder_name}</div>
             <div className="flex gap-2 items-center">
               <div className="text-xs text-[#4E5459]">Status:</div>
-              <div className="text-xs text-[#E45757]">Not verified</div>
+              <div className="text-xs text-[#E45757]">{cardDetail.status}</div>
               <div className="text-xs underline cursor-pointer">Verify</div>
             </div>
             <div className="flex gap-2 items-center">
@@ -109,7 +109,7 @@ function CardsDetail() {
         <div className="flex flex-col gap-1 mb-2">
           <div className="flex gap-1">
             <span className="poppins-semibold text-base">Transactions</span>
-            <span className="text-gray-600 poppins-light">(2)</span>
+            <span className="text-gray-600 poppins-light">(0)</span>
           </div>
           <div className="poppins-light text-sm text-gray-600">
             Click to Row For Details

@@ -201,7 +201,7 @@ function Stats() {
                   height="40"
                   rx="20"
                   fill="url(#paint0_linear_1_4412)"
-                  fillOpacity="0.26"
+                  fill-opacity="0.26"
                 />
                 <g clipPath="url(#clip0_1_4412)">
                   <path

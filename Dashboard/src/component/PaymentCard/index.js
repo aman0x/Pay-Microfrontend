@@ -153,26 +153,14 @@ export function FlipCard({
               </p>
               <p>₹{cardData.balance || 0}</p>
             </div>
-            <div
-              onClick={() =>
-                navigate(`/dashboard/card/card-detail?id=${cardData.id}`)
-              }
-              className="mt-6 underline poppins-thin text-xs hover:text-rose-300 "
-            >
-              <a href="#" className="invisible">
-                Details
-              </a>
-            </div>
           </div>
           <div
             onClick={() =>
               navigate(`/dashboard/card/card-detail?id=${cardData.id}`)
             }
-            className="mt-2 underline poppins-thin text-xs hover:text-rose-300 text-right"
+            className="mt-2 underline poppins-thin text-xs hover:text-rose-300 text-right cursor-pointer"
           >
-            <a href="#" className="">
-              Details
-            </a>
+              Details            
           </div>
           <div></div>
         </div>

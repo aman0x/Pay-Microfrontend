@@ -68,7 +68,7 @@ function ActionCards({ data }) {
                       height="18"
                       rx="9"
                       fill="#FFAC2F"
-                      fillOpacity="0.15"
+                      fill-opacity="0.15"
                     />
                     <circle cx="9" cy="9" r="4" fill="#FFB442" />
                   </svg>

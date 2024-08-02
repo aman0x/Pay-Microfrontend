@@ -220,7 +220,10 @@ export function MobilePaymentStep2({
               <div key={i} className="flex flex-col gap-0.5 items-center">
                 <div
                   className="size-16 mb-2"
-                  onClick={() => setSelectedName(user.name)}
+                  onClick={() => {
+                    setSelectedName(user.name)
+                    setSelectedBeneficiary(user)
+                  }}
                 >
                   <Avatar
                     sx={{

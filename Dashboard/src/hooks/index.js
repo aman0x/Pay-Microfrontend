@@ -248,10 +248,10 @@ export function useStatistic() {
 }
 export function useNotfication() {
     const user = useSelector((state) => state.auth.user);
-    const handleGetNotification = async (topic) => {
+    const handleGetNotification = async (topic=null) => {
         try {
             const response = await ApiCall({
-                url: PRIVATE_ENDPOINTS.GET_NOTIFICATION + "?topic__name=" + topic,
+                url: topic?PRIVATE_ENDPOINTS.GET_NOTIFICATION + "?topic__name=" + topic:PRIVATE_ENDPOINTS.GET_NOTIFICATION,
                 method: "GET",
                 PRIVATE_API: true,
                 current_user: user,
@@ -301,9 +301,7 @@ export function useSupport() {
         try {
             const arr = [];
             const response = await ApiCall({
-                url: query
-                    ? PRIVATE_ENDPOINTS.GET_FAQS + `?topic=${topic}` + query
-                    : PRIVATE_ENDPOINTS.GET_FAQS + `?topic=${topic}`,
+                url: PRIVATE_ENDPOINTS.GET_FAQS + `?${topic}`,
                 method: "GET",
                 PRIVATE_API: true,
                 current_user: user,

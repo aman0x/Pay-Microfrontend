@@ -52,7 +52,7 @@ function InvoiceDetail() {
                 height="18"
                 rx="9"
                 fill="#55C861"
-                fillOpacity="0.15"
+                fill-opacity="0.15"
               />
               <circle cx="9" cy="9" r="4" fill="#27A963" />
             </svg>
@@ -211,21 +211,21 @@ function InvoiceDetail() {
               <div className="text-[#A3A6A9] text-xs min-w-fit">A/C No.</div>
               <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]" />
               <div className="poppins-semibold text-xs text-[#232B31] min-w-fit">
-                {invoiceDetail.account_number || "5768933787686894"}
+                {invoiceDetail?.beneficiary_bank_account?.account_number}
               </div>
             </div>
             <div className="flex items-center justify-between  gap-1">
               <div className="text-[#A3A6A9] text-xs min-w-fit">Bank</div>
               <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]" />
               <div className="poppins-semibold text-xs text-[#232B31] min-w-fit">
-                {invoiceDetail.bank || "HDFC Bank"}
+                {invoiceDetail?.beneficiary_bank_account?.bank_name }
               </div>
             </div>
             <div className="flex items-center justify-between  gap-1">
               <div className="text-[#A3A6A9] text-xs min-w-fit">IFS Code</div>
               <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]" />
               <div className="poppins-semibold text-xs text-[#232B31] min-w-fit">
-                {invoiceDetail.ifsc_code || "HDFC0932"}
+                {invoiceDetail?.beneficiary_bank_account?.ifsc_code }
               </div>
             </div>
           </div>

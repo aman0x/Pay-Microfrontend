@@ -188,16 +188,6 @@ export function FlipCard({
               </p>
               <p>₹{cardData.balance || 0}</p>
             </div>
-            <div
-              onClick={() =>
-                navigate(`/dashboard/card/card-detail?id=${cardData.id}`)
-              }
-              className="mt-6 underline poppins-thin text-xs hover:text-rose-300 "
-            >
-              <a href="#" className="invisible">
-                Details
-              </a>
-            </div>
           </div>
           <div
             onClick={() =>
@@ -205,9 +195,9 @@ export function FlipCard({
             }
             className="mt-2 underline poppins-thin text-xs hover:text-rose-300 text-right"
           >
-            <a href="#" className="">
+            
               Details
-            </a>
+            
           </div>
           <div></div>
         </div>
@@ -234,11 +224,11 @@ export function FlipCard({
                 </div>
               </div>
               <div className="mt-6 ">
-                <a href="#" onClick={()=>{
+                <div  onClick={()=>{
                   handlePaymentCardDelete(cardData.id)
                 }}>
                   <RiDeleteBin5Fill color="red" size="16px" />
-                </a>
+                </div>
               </div>
             </div>
             <div>

@@ -11,6 +11,7 @@ function Notification() {
   const [notificationIndex5, setnotificationIndex5] = useState(false);
   const [tophead, setTopHead] = useState(0);
   const [CardIndex, setCardIndex] = useState(0);
+  const [mobileData,setMobileData] = useState([])
   const [notificationData, setNotificationData] = useState([
     {
       date: "2024-06-21T10:21:17.116232Z",
@@ -26,6 +27,8 @@ function Notification() {
     const fetchNotificationData = async () => {
       const topic = menu[tophead].toLowerCase();
       const data = await handleGetNotification(topic);
+      const mobileData = await handleGetNotification()
+      setMobileData(mobileData.results)
       setNotificationData(data.results);
     };
 
@@ -89,147 +92,86 @@ function Notification() {
         </div>
         {CardIndex === 0 && (
           <div className="mt-8">
-            <div className="bg-white rounded-3xl shadow-md p-5 mb-4">
-              <div className="flex justify-between items-center w-full gap-4">
-                <div className="rounded-full w-12 h-12 shadow-inner bg-white flex justify-center items-center">
-                  <img src="/images/red-notice.svg" alt="notice" />
-                </div>
-                <div className="flex-1 poppins-semibold justify-center items-center text-[#232B31]">
-                  <p>Title of Message</p>
-                </div>
-                <div className="poppins-regular">
-                  <p className="text-right text-[#787D81]">12.05.2024</p>
-                </div>
-              </div>
-              <div className="w-full pl-16">
-                <p className="text-[#A3A6A9] text-left poppins-light">
-                  Lorem ipsum dolor sit amet consectetur. Erat eros tincidunt
-                  eleifend egestas.
-                </p>
-              </div>
-            </div>
-            <div className="bg-white rounded-3xl shadow-md p-5 mb-4">
-              <div className="flex justify-between items-center w-full gap-4">
-                <div className="rounded-full w-12 h-12 shadow-inner bg-white flex justify-center items-center">
-                  <img src="/images/green-notice.svg" alt="notice" />
-                </div>
-                <div className="flex-1 poppins-semibold justify-center items-center text-[#232B31]">
-                  <p>Title of Message</p>
-                </div>
-                <div className="poppins-regular">
-                  <p className="text-right text-[#787D81]">12.05.2024</p>
-                </div>
-              </div>
-              <div className="w-full pl-16">
-                <p className="text-[#A3A6A9] text-left poppins-light">
-                  Lorem ipsum dolor sit amet consectetur. Erat eros tincidunt
-                  eleifend egestas.
-                </p>
-              </div>
-            </div>
-            <div className="bg-white rounded-3xl shadow-md p-5 mb-4">
-              <div className="flex justify-between items-center w-full gap-4">
-                <div className="rounded-full w-12 h-12 shadow-inner bg-white flex justify-center items-center">
-                  <img src="/images/yellow-notice.svg" alt="notice" />
-                </div>
-                <div className="flex-1 poppins-semibold justify-center items-center text-[#232B31]">
-                  <p>Title of Message</p>
-                </div>
-                <div className="poppins-regular">
-                  <p className="text-right text-[#787D81]">12.05.2024</p>
-                </div>
-              </div>
-              <div className="w-full pl-16">
-                <p className="text-[#A3A6A9] text-left poppins-light">
-                  Lorem ipsum dolor sit amet consectetur. Erat eros tincidunt
-                  eleifend egestas.
-                </p>
-              </div>
-            </div>
-            <div className="bg-white rounded-3xl shadow-md p-5 mb-4">
-              <div className="flex justify-between items-center w-full gap-4">
-                <div className="rounded-full w-12 h-12 shadow-inner bg-white flex justify-center items-center">
-                  <img src="/images/green-notice.svg" alt="notice" />
-                </div>
-                <div className="flex-1 poppins-semibold justify-center items-center text-[#232B31]">
-                  <p>Title of Message</p>
-                </div>
-                <div className="poppins-regular">
-                  <p className="text-right text-[#787D81]">12.05.2024</p>
-                </div>
-              </div>
-              <div className="w-full pl-16">
-                <p className="text-[#A3A6A9] text-left poppins-light">
-                  Lorem ipsum dolor sit amet consectetur. Erat eros tincidunt
-                  eleifend egestas.
-                </p>
-              </div>
-            </div>
+            {mobileData.map((val)=>{
+                return(
+                  <div className="bg-white rounded-3xl shadow-md p-5 mb-4">
+                    <div className="flex justify-between items-center w-full gap-4">
+                      <div className="rounded-full w-12 h-12 shadow-inner bg-white flex justify-center items-center">
+                        <img src="/images/red-notice.svg" alt="notice" />
+                      </div>
+                      <div className="flex-1 poppins-semibold justify-center items-center text-[#232B31]">
+                        <p>{val.title}</p>
+                      </div>
+                      <div className="poppins-regular">
+                        <p className="text-right text-[#787D81]">{moment(val.created_at)
+                          .locale("en")
+                          .format("DD MMMM YYYY HH:mm")}</p>
+                      </div>
+                    </div>
+                    <div className="w-full pl-16">
+                      <p className="text-[#A3A6A9] text-left poppins-light">
+                        {val.description}
+                      </p>
+                    </div>
+                  </div>
+                )
+              })}
           </div>
         )}
         {CardIndex === 1 && (
           <div className="mt-8">
-            <div className="bg-white rounded-3xl shadow-md p-5 mb-4">
-              <div className="flex justify-between items-center w-full gap-4">
-                <div className="rounded-full w-12 h-12 shadow-inner bg-white flex justify-center items-center">
-                  <img src="/images/red-notice.svg" alt="notice" />
-                </div>
-                <div className="flex-1 poppins-semibold justify-center items-center text-[#232B31]">
-                  <p>Title of Message</p>
-                </div>
-                <div className="poppins-regular">
-                  <p className="text-right text-[#787D81]">12.05.2024</p>
-                </div>
-              </div>
-              <div className="w-full pl-16">
-                <p className="text-[#A3A6A9] text-left poppins-light">
-                  Lorem ipsum dolor sit amet consectetur. Erat eros tincidunt
-                  eleifend egestas.
-                </p>
-              </div>
-            </div>
+            {mobileData.map((val)=>{
+                return(
+                  <div className="bg-white rounded-3xl shadow-md p-5 mb-4">
+                    <div className="flex justify-between items-center w-full gap-4">
+                      <div className="rounded-full w-12 h-12 shadow-inner bg-white flex justify-center items-center">
+                        <img src="/images/red-notice.svg" alt="notice" />
+                      </div>
+                      <div className="flex-1 poppins-semibold justify-center items-center text-[#232B31]">
+                        <p>{val.title}</p>
+                      </div>
+                      <div className="poppins-regular">
+                        <p className="text-right text-[#787D81]">{moment(val.created_at)
+                          .locale("en")
+                          .format("DD MMMM YYYY HH:mm")}</p>
+                      </div>
+                    </div>
+                    <div className="w-full pl-16">
+                      <p className="text-[#A3A6A9] text-left poppins-light">
+                        {val.description}
+                      </p>
+                    </div>
+                  </div>
+                )
+              })}
           </div>
         )}
         {CardIndex === 2 && (
           <div className="mt-8">
-            <div className="bg-white rounded-3xl shadow-md p-5 mb-4">
-              <div className="flex justify-between items-center w-full gap-4">
-                <div className="rounded-full w-12 h-12 shadow-inner bg-white flex justify-center items-center">
-                  <img src="/images/green-notice.svg" alt="notice" />
-                </div>
-                <div className="flex-1 poppins-semibold justify-center items-center text-[#232B31]">
-                  <p>Title of Message</p>
-                </div>
-                <div className="poppins-regular">
-                  <p className="text-right text-[#787D81]">12.05.2024</p>
-                </div>
-              </div>
-              <div className="w-full pl-16">
-                <p className="text-[#A3A6A9] text-left poppins-light">
-                  Lorem ipsum dolor sit amet consectetur. Erat eros tincidunt
-                  eleifend egestas.
-                </p>
-              </div>
-            </div>
-            <div className="bg-white rounded-3xl shadow-md p-5 mb-4">
-              <div className="flex justify-between items-center w-full gap-4">
-                <div className="rounded-full w-12 h-12 shadow-inner bg-white flex justify-center items-center">
-                  <img src="/images/yellow-notice.svg" alt="notice" />
-                </div>
-                <div className="flex-1 poppins-semibold justify-center items-center text-[#232B31]">
-                  <p>Title of Message</p>
-                </div>
-                <div className="poppins-regular">
-                  <p className="text-right text-[#787D81]">12.05.2024</p>
-                </div>
-              </div>
-              <div className="w-full pl-16">
-                <p className="text-[#A3A6A9] text-left poppins-light">
-                  Lorem ipsum dolor sit amet consectetur. Erat eros tincidunt
-                  eleifend egestas.
-                </p>
-              </div>
-            </div>
+            {mobileData.map((val)=>{
+                return(
+                  <div className="bg-white rounded-3xl shadow-md p-5 mb-4">
+                    <div className="flex justify-between items-center w-full gap-4">
+                      <div className="rounded-full w-12 h-12 shadow-inner bg-white flex justify-center items-center">
+                        <img src="/images/green-notice.svg" alt="notice" />
+                      </div>
+                      <div className="flex-1 poppins-semibold justify-center items-center text-[#232B31]">
+                        <p>{val.title}</p>
+                      </div>
+                      <div className="poppins-regular">
+                        <p className="text-right text-[#787D81]">{moment(val.created_at)
+                          .locale("en")
+                          .format("DD MMMM YYYY HH:mm")}</p>
+                      </div>
+                    </div>
+                    <div className="w-full pl-16">
+                      <p className="text-[#A3A6A9] text-left poppins-light">
+                        {val.description}
+                      </p>
+                    </div>
+                  </div>
+                )
+              })}
           </div>
         )}
       </div>
