@@ -75,9 +75,9 @@ input[type="text"]:focus {
 .primary-color {
   color: var(--primary);
 }
- .shadow-large {
+.shadow-large {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
- }
+}
 .primary-btn:hover {
   background-image: linear-gradient(
     to right,
@@ -196,8 +196,15 @@ input[type="text"]:focus {
   }
 }
 
-@media (min-width : 1440px) {
-  .divide-three{
+@media (min-width: 1440px) {
+  .divide-three {
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
   }
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #F6DEC6, #E872D4, #C190D9, #A2DCFE);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }

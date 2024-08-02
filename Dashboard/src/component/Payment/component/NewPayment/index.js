@@ -8,6 +8,9 @@ import { toast } from "react-toastify";
 import { useSearchParams } from "react-router-dom";
 import { useAccounts } from "#hooks/index";
 import { MobilePaymentStep2 } from "./mobilePaymentStep2";
+import MobilePaymentStep1 from "./mobilePaymentStep1";
+import MobilePaymentStep3 from "./mobilePaymentStep3";
+import PaymentSuccessfull from "./paymentSuccessfull";
 const receivers = [
   {
     name: "test",
@@ -23,11 +26,11 @@ function NewPayment({ isRepeatPayment = false }) {
   const [receiverIndex, setReceiverIndex] = useState(0);
   const [paymentDetail, setPaymentDetail] = useState({});
   const [typeIndex, setTypeIndex] = useState(0);
-  const [cardId,setCardId] = useState(0)
+  const [cardId, setCardId] = useState(0);
   const [amount, setAmount] = useState("");
   const [searchParams] = useSearchParams();
   const bankId = searchParams.get("bankId");
-  const [beneficiaries, setBeneficiaries] = useState(receivers)
+  const [beneficiaries, setBeneficiaries] = useState(receivers);
   const [bankDetail, setBankDetail] = useState({
     id: 10,
     user: 1,
@@ -40,8 +43,9 @@ function NewPayment({ isRepeatPayment = false }) {
     pan: null,
     bank_name: "SBI BANK",
   });
-  const [total, setTotal] = useState(0);
-  const isTyping = amount.length > 0;
+
+  const [selectedName, setSelectedName] = useState("");
+
   const { handleGetBankById, handleGetBeneficiary } = useAccounts();
   useEffect(() => {
     const fetchBankDetails = async (bankId) => {
@@ -58,218 +62,48 @@ function NewPayment({ isRepeatPayment = false }) {
     fetchBeneficiary();
   }, [bankId]);
 
-
-  useEffect(() => {
-    const numericAmount = parseFloat(amount);
-    if (!isNaN(numericAmount) && numericAmount > 10) {
-      const tax = numericAmount * 0.12;
-      setTotal(numericAmount - tax);
-    } else {
-      setTotal(0);
-    }
-  }, [amount]);
-
-
   return (
-
     <>
-
-      <div className="md:hidden m-auto full">
+      <div className="md:hidden w-full">
         {stepIndex === 0 && (
-          <div className="mx-auto w-3/4 form-width flex flex-col gap-8 mt-4">
-           <div className="flex flex-col items-center justify-center">
-           <div className="text-center poppins-semibold">Enter Data</div>
-            <div className="text-[10px]">
-              {`0${stepIndex}/03`}
-            </div>
-           </div>
-            <div className="flex flex-col gap-24">
-
-              <div className="flex flex-col gap-8">
-             
-
-                <div className="relative">
-                  <div className="relative">
-                    <input
-                      type="text"
-                      value={types[typeIndex]}
-                      className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-xs p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-none"
-                      placeholder="Vendor Payment, Vendor Payment"
-                      required
-                    />
-                    <button
-                      type="button"
-                      className="absolute inset-y-0 end-0 flex items-center pe-3"
-                      onClick={() => setPaymentMenuView(!isPaymentTypeMenu)}
-                    >
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 18 18"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <rect
-                          x="18"
-                          width="18"
-                          height="18"
-                          rx="8"
-                          transform="rotate(90 18 0)"
-                          fill="#DFE0E2"
-                        />
-                        <path
-                          d="M11 8L9 10L7 8"
-                          stroke="#4E5459"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-
-                  {isPaymentTypeMenu && (
-                    <PaymentTypeMenu
-                      setCardIndex={setTypeIndex}
-                      cardIndex={typeIndex}
-                      setPaymentMenuView={setPaymentMenuView}
-                    />
-                  )}
-                </div>
-
-                {!isRepeatPayment ? (
-                  <div className="relative">
-                    <div className="relative">
-                      <input
-                        type="text"
-                        value={beneficiaries[receiverIndex].name}
-                        className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-xs p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-none"
-                        placeholder="Receiver"
-                      />
-                      <button
-                        type="button"
-                        className="absolute inset-y-0 end-0 flex items-center pe-3"
-                        onClick={() => setReceiversMenuView(!isReceiverMenu)}
-                      >
-                        <svg
-                          width="18"
-                          height="18"
-                          viewBox="0 0 18 18"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <rect
-                            x="18"
-                            width="18"
-                            height="18"
-                            rx="8"
-                            transform="rotate(90 18 0)"
-                            fill="#DFE0E2"
-                          />
-                          <path
-                            d="M11 8L9 10L7 8"
-                            stroke="#4E5459"
-                            strokeWidth="1.5"
-                            strokeLinecap="round"
-                          />
-                        </svg>
-                      </button>
-                    </div>
-                    {isReceiverMenu && (
-                      <ReceiversMenu
-                        cardIndex={receiverIndex}
-                        setCardIndex={setReceiverIndex}
-                        beneficiaries={beneficiaries}
-                        setReceiversMenuView={setReceiversMenuView}
-                      />
-                    )}
-                  </div>
-                ) : null}
-
-              </div>
-              <div className="w-full flex flex-col justify-center items-center">
-                <div className="relative w-4/5 border-b-[1px] border-gray-300">
-                  <div className={`absolute inset-y-0 left-0 flex gap-2 items-center pl-5 pointer-events-none text-3xl poppins-semibold italic ${isTyping ? 'gradient-text' : 'text-gray-400'}`}>
-                    <span className={`currency-symbol ${isTyping ? 'gradient-text' : ''}`}>₹</span>
-
-                  </div>
-                  <input
-                    type="text"
-                    value={amount}
-                    onChange={(e) => setAmount(e.target.value)}
-                    className="bg-white border-none text-3xl rounded-2xl w-full pl-16 placeholder:italic placeholder:text-xl py-3.5 focus:outline-none focus:ring-0 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white gradient-text"
-                    placeholder="Enter Amount."
-                  />
-                </div>
-                {isTyping ? <div className="w-4/5 mt-4">
-                  <div className="flex justify-between">
-                    <p className="text-[10px]">Tax</p>
-                    <p className="text-[10px]">12%</p>
-                  </div>
-                  <div className="flex justify-between mt-2 gradient-text">
-                    <p className="text-xs">Total</p>
-                    <p className="text-xs">₹{total.toFixed(2)}</p>
-                  </div>
-                </div> : null}
-                {!isValid && (
-                  <div className="text-red-400 text-xs mt-1">
-                    Amount should be greater than 10.
-                  </div>
-                )}
-              </div>
-
-            </div>
-
-            <div className="mt-28 ">
-              <button
-                type="submit"
-                onClick={() => {
-                  if (amount.length > 1) {
-                    setStepIndex(1);
-                  } else {
-                    setIsValid(false);
-                    toast.error("Set Valid Amount!!");
-                  }
-                }}
-                className="flex primary-btn items-center w-full justify-center rounded-xl bg-gray-950 px-3 p-4 text-sm font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >
-                <div>{"Next Step"}</div>
-                <span className="py-1.5 pl-2 size-6">
-                  <FaCircleArrowRight style={{ color: "white" }} />
-                </span>
-              </button>
-            </div>
-          </div>
+          <MobilePaymentStep1
+            stepIndex={stepIndex}
+            setStepIndex={setStepIndex}
+            typeIndex={typeIndex}
+            setTypeIndex={setTypeIndex}
+            isPaymentTypeMenu={isPaymentTypeMenu}
+            setPaymentMenuView={setPaymentMenuView}
+            beneficiaries={beneficiaries}
+            setBeneficiaries={setBeneficiaries}
+            isReceiverMenu={isReceiverMenu}
+            setReceiversMenuView={setReceiversMenuView}
+            receiverIndex={receiverIndex}
+            setReceiverIndex={setReceiverIndex}
+          />
         )}
         {stepIndex === 1 && (
           <MobilePaymentStep2
-          stepIndex={stepIndex}
-          setStepIndex={setStepIndex}
+            stepIndex={stepIndex}
+            setStepIndex={setStepIndex}
+            selectedName={selectedName}
+            setSelectedName={setSelectedName}
           />
-          // <PaymentStep2
-          //   setStepIndex={setStepIndex}
-          //   data={{
-          //     amount: amount,
-          //     payment_type: types[typeIndex],
-          //     receiver: beneficiaries[receiverIndex],
-          //   }}
-          //   bankDetail={bankDetail}
-          //   setPaymentDetail={setPaymentDetail}
-          // />
         )}
 
         {stepIndex === 2 && (
-          <PaymentStep3
+          <MobilePaymentStep3
+            stepIndex={stepIndex}
             setStepIndex={setStepIndex}
-            data={{
-              transaction_amount: amount,
-              transaction_type:"card",
-              beneficiary: beneficiaries[receiverIndex],
-            }}
-            paymentDetail={paymentDetail}
-            bankDetail={bankDetail}
+            selectedName={selectedName}
           />
         )}
 
+        {stepIndex === 3 && (
+          <PaymentSuccessfull
+            stepIndex={stepIndex}
+            setStepIndex={setStepIndex}
+          />
+        )}
       </div>
 
       <div className="hidden mt-5 bg-primary p-[2rem] rounded-2xl md:flex md:flex-col gap-3 w-full min-h-[600px] mb-4 ">
@@ -330,8 +164,11 @@ function NewPayment({ isRepeatPayment = false }) {
             </div>
           </div>
           <hr
-            className={`my-2 ${stepIndex > 0 ? "hr-gradient" : "w-full border-t-2 border-gray-200"
-              }`}
+            className={`my-2 ${
+              stepIndex > 0
+                ? "hr-gradient"
+                : "w-full border-t-2 border-gray-200"
+            }`}
           />
           <div className="flex flex-col items-center gap-1">
             {stepIndex <= 1 ? (
@@ -389,8 +226,11 @@ function NewPayment({ isRepeatPayment = false }) {
             </div>
           </div>
           <hr
-            className={`my-2 ${stepIndex > 1 ? "hr-gradient" : "w-full border-t-2 border-gray-200"
-              }`}
+            className={`my-2 ${
+              stepIndex > 1
+                ? "hr-gradient"
+                : "w-full border-t-2 border-gray-200"
+            }`}
           />
           <div className="flex flex-col items-center gap-1">
             {stepIndex <= 2 ? (
@@ -596,7 +436,7 @@ function NewPayment({ isRepeatPayment = false }) {
             setStepIndex={setStepIndex}
             data={{
               transaction_amount: amount,
-              transaction_type:"card",
+              transaction_type: "card",
               beneficiary: beneficiaries[receiverIndex],
             }}
             setCardId={setCardId}
@@ -610,28 +450,31 @@ function NewPayment({ isRepeatPayment = false }) {
             setStepIndex={setStepIndex}
             data={{
               transaction_amount: amount,
-              transaction_type:"card",
+              transaction_type: "card",
               beneficiary: beneficiaries[receiverIndex],
-              card_id:cardId,
-              bank_id:beneficiaries[receiverIndex].bank_account
+              card_id: cardId,
+              bank_id: beneficiaries[receiverIndex].bank_account,
             }}
             paymentDetail={paymentDetail}
             bankDetail={bankDetail}
           />
         )}
       </div>
-
     </>
-
   );
 }
-function PaymentTypeMenu({ cardIndex, setCardIndex ,setPaymentMenuView}) {
+export function PaymentTypeMenu({
+  cardIndex,
+  setCardIndex,
+  setPaymentMenuView,
+}) {
   return (
-    <div className="absolute w-[100%] top-10 bg-white rounded-2xl shadow-lg py-[1rem] px-[1.2rem] gap-4 z-50"
-      onClick={()=>{
-        setTimeout(()=>{
-          setPaymentMenuView(false)
-        },100)
+    <div
+      className="absolute w-[100%] top-10 bg-white rounded-2xl shadow-lg py-[1rem] px-[1.2rem] gap-4 z-50"
+      onClick={() => {
+        setTimeout(() => {
+          setPaymentMenuView(false);
+        }, 100);
       }}
     >
       <div className="text-sm poppins-semibold my-2 flex gap-1 items-start">
@@ -663,16 +506,18 @@ function PaymentTypeMenu({ cardIndex, setCardIndex ,setPaymentMenuView}) {
       <div className="flex flex-col gap-2 mt-4">
         {types.map((card, i) => {
           return (
-            <div className="flex gap-4 justify-between items-center" key={i} >
+            <div className="flex gap-4 justify-between items-center" key={i}>
               <div
-                className={`${cardIndex === i ? "poppins-bold" : "text-[#A3A6A9]"
-                  } flex gap-1 items-center text-sm`}
+                className={`${
+                  cardIndex === i ? "poppins-bold" : "text-[#A3A6A9]"
+                } flex gap-1 items-center text-sm`}
               >
                 {card}
               </div>
               <div
-                className={`max-w-[15px]  max-h-[15px] rounded-sm   ${cardIndex === i ? "primary-linear-gr-bg" : "bg-gray-300"
-                  }`}
+                className={`max-w-[15px]  max-h-[15px] rounded-sm   ${
+                  cardIndex === i ? "primary-linear-gr-bg" : "bg-gray-300"
+                }`}
               >
                 <FaSquare
                   color={`${cardIndex === i ? "black" : "white"}`}
@@ -687,14 +532,21 @@ function PaymentTypeMenu({ cardIndex, setCardIndex ,setPaymentMenuView}) {
     </div>
   );
 }
-function ReceiversMenu({ cardIndex, setCardIndex, beneficiaries,setReceiversMenuView }) {
+export function ReceiversMenu({
+  cardIndex,
+  setCardIndex,
+  beneficiaries,
+  setReceiversMenuView,
+}) {
   return (
-    <div className="absolute w-[100%] bg-white rounded-2xl shadow-lg top-10  py-[1rem] px-[1.2rem] gap-4 z-50" 
-    onClick={()=>
-      setTimeout(()=>{
-        setReceiversMenuView(false)
-      },100)
-    }>
+    <div
+      className="absolute w-[100%] bg-white rounded-2xl shadow-lg top-10  py-[1rem] px-[1.2rem] gap-4 z-50"
+      onClick={() =>
+        setTimeout(() => {
+          setReceiversMenuView(false);
+        }, 100)
+      }
+    >
       <div className="text-sm poppins-semibold my-2 flex gap-1 items-start">
         <span>
           <svg
@@ -726,14 +578,16 @@ function ReceiversMenu({ cardIndex, setCardIndex, beneficiaries,setReceiversMenu
           return (
             <div className="flex gap-4 justify-between items-center " key={i}>
               <div
-                className={`${cardIndex === i ? "poppins-bold" : "text-[#A3A6A9]"
-                  } flex gap-1 items-center text-sm`}
+                className={`${
+                  cardIndex === i ? "poppins-bold" : "text-[#A3A6A9]"
+                } flex gap-1 items-center text-sm`}
               >
                 {card.name}
               </div>
               <div
-                className={`max-w-[15px]  max-h-[15px] rounded-sm   ${cardIndex === i ? "primary-linear-gr-bg" : "bg-gray-300"
-                  }`}
+                className={`max-w-[15px]  max-h-[15px] rounded-sm   ${
+                  cardIndex === i ? "primary-linear-gr-bg" : "bg-gray-300"
+                }`}
               >
                 <FaSquare
                   color={`${cardIndex === i ? "black" : "white"}`}

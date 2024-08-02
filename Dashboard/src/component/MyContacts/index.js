@@ -15,7 +15,7 @@ const MyContacts = () => {
   useEffect(() => {
     const fetchQuickSend = async () => {
       const data = await handleQuickSendData();
-      setQuickSend(data);
+      setQuickSend(data.results);
     };
     fetchQuickSend();
   }, [serachValue]);
@@ -54,7 +54,7 @@ const MyContacts = () => {
       <div className="flex justify-between mt-4">
         <div className="flex gap-1 items-center mt-4 mb-2">
           <div className="poppins-semibold">All Users</div>
-          <div className="text-xs poppins-light text-[#787D81] ">(4)</div>
+          <div className="text-xs poppins-light text-[#787D81] ">({quickSend?.length})</div>
         </div>
         <div
           onClick={() => navigate("/dashboard/accounts/add-new")}
