@@ -410,7 +410,7 @@ function PaymentStep2({ setStepIndex, data, bankDetail, setPaymentDetail,setCard
                     IFS Code
                   </div>
                   <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]" />
-                  <div className="poppins-semibold text-xs">HDFC0003242</div>
+                  <div className="poppins-semibold text-xs">{bankDetail.ifsc_code}</div>
                 </div>
               </div>
             </div>

@@ -1,4 +1,22 @@
+
+  import jsPDF from 'jspdf';
+  import html2canvas from 'html2canvas';
 function ReportDownloadButtons({vertical=false}){
+    const downloadPDF = async () => {
+    const element = document.getElementById('report-content');
+    const canvas = await html2canvas(element);
+    const imgData = canvas.toDataURL('image/png');
+
+    const doc = new jsPDF('p', 'mm', 'a4');
+    const pdfWidth = doc.internal.pageSize.getWidth();
+    const pdfHeight = doc.internal.pageSize.getHeight();
+    const margin = 10;
+    const imgWidth = pdfWidth - 2 * margin;
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+    doc.addImage(imgData, 'PNG', margin, margin, imgWidth, imgHeight);
+    doc.save('report.pdf');
+      };
     return(
         <div className={`${vertical?"flex flex-col":"flex"} gap-4 p-1 justify-center `}>
                 <button className="poppins-medium text-sm flex items-center bg p-[1rem] bg-black-primary rounded-xl min-h-[3.0rem]  gap-4 primary-btn ">
@@ -16,7 +34,7 @@ function ReportDownloadButtons({vertical=false}){
                         </defs>
                         </svg>
                     </div>
-                    <div ><a href="#" download="report.txt">Download PDF</a></div>
+                    <div onClick={()=>{downloadPDF()}}><a >Download PDF</a></div>
                 </button>
                 <button className="poppins-medium text-sm flex items-center bg p-[1rem] bg-black-primary rounded-xl min-h-[3.0rem] gap-4 primary-btn">
                     <div>
@@ -33,7 +51,7 @@ function ReportDownloadButtons({vertical=false}){
                         </defs>
                         </svg>
                     </div>
-                    <div>Download XLS</div>
+                    <div onClick={()=>{downloadPDF()}}>Download XLS</div>
                 </button>
             </div>
     )

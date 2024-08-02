@@ -13,7 +13,7 @@ function MainReport(){
     useEffect(()=>{
         const fetchReport =async()=>{
            const data = await  handleReportData()
-           setTableData(data)
+           setTableData(data.results)
         }
         fetchReport()
 

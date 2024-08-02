@@ -21,13 +21,14 @@ function LatestActions({ handleLatestActionData }) {
   };
 
   useEffect(() => {
+
     const fetchLatestAction = async () => {
-     
-      const data = await handleLatestActionData();
+     const query = queryCheck(filterState)
+      const data = await handleLatestActionData(query);
       setLatestActions(data.results);
     };
     fetchLatestAction();
-  }, []);
+  }, [filterState]);
   return (
     <div className="mb-[2rem]">
       <div className="flex justify-between mb-5 items-center gap-6">
@@ -144,12 +145,10 @@ function LatestActions({ handleLatestActionData }) {
   );
 }
 
-function queryCheck(filterState,searchValue){
+function queryCheck(filterState){
   let query = null
-    if(searchValue.trim()){
-      query =`?search=${searchValue}`
-    }
-    else if(filterState.succeeded){
+    
+     if(filterState.succeeded){
       query = `?status=paid`
     }
     else if(filterState.inProgress){

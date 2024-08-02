@@ -1,8 +1,32 @@
 import { FaCreditCard } from "react-icons/fa6";
 import { useInvoice } from "#hooks/index.js";
 import moment from "moment";
+import { useEffect, useState } from "react";
 function NewInvoiceStep2({ setStepIndex, data }) {
-  const { handleInvoiceCreate } = useInvoice();
+  const { handleInvoiceCreate,handleBankDetail } = useInvoice();
+  const [bankDetail,setBankDetail] = useState({
+    "id": 10,
+    "user": 1,
+    "account_name": "RAJIV",
+    "account_number": "23647586473424574",
+    "ifsc_code": "sfsdg",
+    "account_type": "INDIVIDUAL",
+    "account_type_2": "SAVINGS",
+    "gstin": null,
+    "pan": null,
+    "bank_name": "SBI BANK",
+    "deleted": false
+})
+  useEffect(()=>{
+    const fetchBankDetails=async (data)=>{
+      const newData = await handleBankDetail(data?.beneficiary?.bank_account)
+      setBankDetail(newData)
+    }
+    if(data){
+      fetchBankDetails(data)
+    }
+    
+  },[])
   return (
     <div className="flex flex-col gap-2 mb-20 md:mb-0">
       <div className="flex flex-col gap-4 rounded-2xl bg-white p-[1.5rem] w-full">
@@ -32,7 +56,7 @@ function NewInvoiceStep2({ setStepIndex, data }) {
                 </svg>
               </div>
               <div className="text-[#E45757]  poppins-light-italic text-[16px]">
-                New Invoice Title
+                Vendor Payment
               </div>
             </div>
             <div className="flex gap-2 items-center">
@@ -134,21 +158,21 @@ function NewInvoiceStep2({ setStepIndex, data }) {
               <div className="text-[#A3A6A9] text-xs min-w-fit">A/C No.</div>
               <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]" />
               <div className="poppins-semibold text-sm min-w-fit">
-                50100350093919
+                {bankDetail.account_number}
               </div>
             </div>
             <div className="flex items-center justify-between gap-1">
               <div className="text-[#A3A6A9] text-xs min-w-fit">Bank</div>
               <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]" />
               <div className="poppins-semibold text-sm min-w-fit">
-                HDFC Bank
+                {bankDetail.bank_name}
               </div>
             </div>
             <div className="flex items-center justify-between gap-1">
               <div className="text-[#A3A6A9] text-xs min-w-fit">IFS Code</div>
               <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]" />
               <div className="poppins-semibold text-sm min-w-fit">
-                HDFC0001642
+                {bankDetail.ifsc_code}
               </div>
             </div>
           </div>
@@ -476,6 +500,7 @@ function NewInvoiceStep2({ setStepIndex, data }) {
               const newData = {
                 ...data,
                 beneficiary: data.beneficiary.id,
+                user_id:2
               };
               handleInvoiceCreate(newData);
             }}

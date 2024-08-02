@@ -1,7 +1,7 @@
 import ReportDownloadButtons from "../ReportFooter"
 
 function ReportTop({reportIndex,setReportIndex}){
-    const currentDisplayDate = reportIndex===0?'2024':'March 2024'
+    const currentDisplayDate = reportIndex===0?'2024':'August 2024'
     return(
         <div className="">
             <div className="flex w-full mt-4 bg-[#FFFF] py-[8px] rounded-xl justify-evenly px-2 ">

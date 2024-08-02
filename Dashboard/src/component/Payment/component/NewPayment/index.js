@@ -29,7 +29,6 @@ function NewPayment({ isRepeatPayment = false }) {
   const [cardId, setCardId] = useState(0);
   const [amount, setAmount] = useState("");
   const [searchParams] = useSearchParams();
-  const bankId = searchParams.get("bankId");
   const [beneficiaries, setBeneficiaries] = useState(receivers);
   const [bankDetail, setBankDetail] = useState({
     id: 10,
@@ -47,14 +46,15 @@ function NewPayment({ isRepeatPayment = false }) {
   const [selectedName, setSelectedName] = useState("");
 
   const { handleGetBankById, handleGetBeneficiary } = useAccounts();
+  const [bankId,setBankId] = useState(searchParams.get("bankId"))
   useEffect(() => {
-    const fetchBankDetails = async (bankId) => {
-      const data = await handleGetBankById(bankId);
-      setBankDetail(data);
-    };
     const fetchBeneficiary = async () => {
       const beneficiaries = await handleGetBeneficiary();
       setBeneficiaries(beneficiaries.results);
+    };
+    const fetchBankDetails = async (bankId) => {
+      const data = await handleGetBankById(bankId);
+      setBankDetail(data);
     };
     if (bankId) {
       fetchBankDetails(bankId);
@@ -355,6 +355,7 @@ function NewPayment({ isRepeatPayment = false }) {
                       cardIndex={receiverIndex}
                       setCardIndex={setReceiverIndex}
                       beneficiaries={beneficiaries}
+                      setBankId={setBankId}
                       setReceiversMenuView={setReceiversMenuView}
                     />
                   )}
@@ -592,7 +593,10 @@ export function ReceiversMenu({
                 <FaSquare
                   color={`${cardIndex === i ? "black" : "white"}`}
                   className="rounded-sm p-[1px]"
-                  onClick={() => setCardIndex(i)}
+                  onClick={() => {
+                    setBankId(card.bank_account)
+                    setCardIndex(i)
+                  }}
                 />
               </div>
             </div>

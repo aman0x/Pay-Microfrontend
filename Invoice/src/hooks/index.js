@@ -97,7 +97,22 @@ export function useInvoice(){
         toast("Error in Sending Invoice");
         }
     }
-    return {handleInvoiceStats,handleInvoiceData,handleInvoiceDetail,handleInvoiceCreate,handleNewInvoiceData}
+    const handleBankDetail=async(bankId=1)=>{
+        try {
+            const response = await ApiCall({ 
+                url: PRIVATE_ENDPOINTS.GET_BANK_DETAIL+ `${bankId}/`, 
+                method: "GET", 
+                PRIVATE_API: true, 
+                current_user: user 
+            });
+            return response.data;
+            }
+        catch (error) {
+            return {}
+        // toast("Error in getting Bank");
+        }
+    }
+    return {handleInvoiceStats,handleInvoiceData,handleInvoiceDetail,handleInvoiceCreate,handleNewInvoiceData,handleBankDetail}
     
 }
 
