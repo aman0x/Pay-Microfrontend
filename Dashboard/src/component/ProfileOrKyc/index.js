@@ -400,7 +400,7 @@ function ProfileOrKyc() {
                   <div className="flex items-center justify-center">
                     <div className="w-[295px] h-[195px] flex items-center justify-center  rounded-2xl">
                       <img
-                        src="/dashboard/paymentCard.png"
+                        src="/images/paymentCard.png"
                         alt="documet_image"
                         className="max-h-full w-auto"
                       />
@@ -1042,7 +1042,7 @@ function ProfileOrKyc() {
                 ) : (
                   <div className="w-[306px] h-[195px] flex items-center justify-center  rounded-2xl">
                     <img
-                      src="/dashboard/paymentCard.png"
+                      src="/images/paymentCard.png"
                       alt="documet_image"
                       className="max-h-full w-auto"
                     />

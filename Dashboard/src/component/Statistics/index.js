@@ -382,15 +382,24 @@ function Statistic() {
                 <div className="grid grid-cols-6 gap-4 mt-4">
                   <div className="flex justify-startitems-center">
                     <div className="rounded-full w-10 h-10 shadow-inner bg-white flex justify-center items-center">
+                      {data.transaction_status === "pending"
+                      ?
                       <img
-                        src="/images/red-transaction.svg"
-                        alt="transaction"
+                      src="/images/red-transaction.svg"
+                      alt="transaction"
                       />
+                    :
+                      <img
+                      src="/images/green-transaction.svg"
+                      alt="transaction"
+                      />
+                      }
+                      
                     </div>
                   </div>
                   <div className="flex flex-col col-span-3">
                     <p className="text-[#4E5459] text-sm">
-                      {data.payment_type || "Vendor Payment"}
+                      {data.beneficiary_name}
                     </p>
                     <p className="text-[#787D81] text-xs">
                       {moment(data.created_at).format("DD MM YYYY HH:mm")}
@@ -401,9 +410,18 @@ function Statistic() {
                       - ₹ {data.transaction_amount}
                     </p>
                     <div className="flex gap-2">
-                      <img src="/images/green-status.svg" alt="Status" />
+                    {data.transaction_status === "pending"
+                      ?
+                      <img
+                      src="/images/yellow-status.svg"
+                      alt="transaction"
+                      />
+                    :
+                    <img src="/images/green-status.svg" alt="Status" />
+                      }
+                      
                       <p className="text-[#787D81] text-xs">
-                        {data.status || "In progress"}
+                        {data.transaction_status }
                       </p>
                     </div>
                   </div>

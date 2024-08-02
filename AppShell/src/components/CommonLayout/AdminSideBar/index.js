@@ -23,7 +23,7 @@ function AdminSideBar() {
         onClick={() => setNavOpen(!isNavOpen)}
       >
         <img
-          src="/dashboard/paymorz-logo.png"
+          src="/images/paymorz-logo.png"
           alt="paymorz-logo"
           width={isNavOpen ? "25px" : "40px"}
           style={{

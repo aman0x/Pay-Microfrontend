@@ -163,7 +163,7 @@ export function FlipCard({
               </div>
             </div>
             <div>
-              <img src="/dashboard/visa.png" alt="paymorz-logo" width="60px" />
+              <img src="/images/visa.png" alt="paymorz-logo" width="60px" />
             </div>
           </div>
           <div>
@@ -251,19 +251,19 @@ export function FlipCard({
               <div className="flex gap-2">
                 <img
                   onClick={() => setCardColor("#232B31")}
-                  src="/dashboard/color1.png"
+                  src="/images/color1.png"
                 />
                 <img
                   onClick={() => setCardColor("#E872D4")}
-                  src="/dashboard/color2.png"
+                  src="/images/color2.png"
                 />
                 <img
                   onClick={() => setCardColor("#964EC2")}
-                  src="/dashboard/color3.png"
+                  src="/images/color3.png"
                 />
                 <img
                   onClick={() => setCardColor("#F6DEC6")}
-                  src="/dashboard/color4.png"
+                  src="/images/color4.png"
                 />
               </div>
             </div>

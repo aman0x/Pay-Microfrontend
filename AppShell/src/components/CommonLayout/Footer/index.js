@@ -5,7 +5,7 @@ function MainFooter() {
         <div className="poppins-regular">Quick Links</div>
         <div className="flex gap-1 items-center pl-4">
           <img
-            src="/dashboard/paymorz-logo.png"
+            src="/images/paymorz-logo.png"
             alt="paymorz-logo"
             width="25px"
           />
