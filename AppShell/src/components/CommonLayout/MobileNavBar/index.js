@@ -125,7 +125,7 @@ export function MobileNavBar() {
           </div>
         ))}
         <div className="flex">
-          <div className="shadow-sm shadow-[#EC8AD1] w-14 h-14 flex justify-center items-center add-btn rounded-full -mt-4 mx-2">
+          <div onClick={() => navigate('/dashboard/payment/quick-payment')} className="shadow-sm shadow-[#EC8AD1] w-14 h-14 flex justify-center items-center add-btn rounded-full -mt-4 mx-2">
             <FaPlus className="text-white text-[1.375rem] poppins-bold" />
           </div>
         </div>

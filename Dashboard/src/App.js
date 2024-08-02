@@ -22,6 +22,7 @@ import { ToastContainer } from "react-toastify";
 import ProfileOrKyc from "./component/ProfileOrKyc";
 import MyContacts from "./component/MyContacts";
 import BankDetails from "./component/BankDetails";
+import QuickPayment from "./component/Payment/component/QuickPayment";
 const Dashboard = () => {
   return (
     <>
@@ -34,6 +35,7 @@ const Dashboard = () => {
         <Route path="/statistic" element={<Statistic />} />
         <Route path="/payment/payment-detail" element={<PaymentDetailPage />} />
         <Route path="/payment/new-payment" element={<NewPayment />} />
+        <Route path="/payment/quick-payment" element={<QuickPayment />} />
         <Route path="/my-contacts" element={<MyContacts />} />
         <Route path="/profile" element={<ProfileOrKyc />} />
         <Route path="/kyc" element={<ProfileOrKyc />} />
