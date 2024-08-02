@@ -43,7 +43,7 @@ function QuickPayment({ isRepeatPayment = false }) {
   });
 
   const [selectedName, setSelectedName] = useState("");
-
+  const [selectedBeneficiary,setSelectedBeneficiary] = useState({})
   const { handleGetBankById, handleGetBeneficiary } = useAccounts();
   const [bankId, setBankId] = useState(searchParams.get("bankId"));
   useEffect(() => {
@@ -66,13 +66,17 @@ function QuickPayment({ isRepeatPayment = false }) {
       <div className="md:hidden w-full">
         {stepIndex === 0 && (
           <QuickPaymentStep1
+            amount={amount}
+            setAmount={setAmount}
             setStepIndex={setStepIndex}
             selectedName={selectedName}
             setSelectedName={setSelectedName}
+            setSelectedBeneficiary={setSelectedBeneficiary}
           />
         )}
         {stepIndex === 1 && (
           <QuickPaymentStep2
+            amount={amount}
             stepIndex={stepIndex}
             setStepIndex={setStepIndex}
             isReceiverMenu={isReceiverMenu}
@@ -84,6 +88,8 @@ function QuickPayment({ isRepeatPayment = false }) {
             beneficiaries={beneficiaries}
             receiverIndex={receiverIndex}
             setReceiverIndex={setReceiverIndex}
+            beneficiary={selectedBeneficiary}
+            setPaymentDetail={setPaymentDetail}
           />
         )}
 
@@ -91,6 +97,7 @@ function QuickPayment({ isRepeatPayment = false }) {
           <PaymentSuccessfull
             stepIndex={stepIndex}
             setStepIndex={setStepIndex}
+            paymentDetail={paymentDetail}
           />
         )}
       </div>

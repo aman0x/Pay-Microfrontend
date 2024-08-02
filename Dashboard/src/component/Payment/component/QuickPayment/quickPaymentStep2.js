@@ -3,8 +3,8 @@ import { PaymentTypeMenu, ReceiversMenu } from ".";
 import { FaCircleArrowRight } from "react-icons/fa6";
 import { PaymentCard } from "./PaymentCard";
 import { useNavigate } from "react-router-dom";
-import { useDashboard } from "#hooks/index";
-
+import { useDashboard,usePayment } from "#hooks/index";
+import { BearerMenu } from "../NewPayment/mobilePaymentStep1";
 const QuickPaymentStep2 = ({
   setStepIndex,
   isReceiverMenu,
@@ -16,15 +16,25 @@ const QuickPaymentStep2 = ({
   beneficiaries,
   receiverIndex,
   setReceiverIndex,
+  amount,
+  beneficiary,
+  setPaymentDetail
 }) => {
   const types = ["Vendor Payment"];
 
   const navigate = useNavigate();
 
   const { handlePaymentCardData } = useDashboard();
-
+  const {handlePaymentCreate} = usePayment()
   const [cardSelected, setCardSelected] = useState(false);
-
+  const [bearerIndex,setBearerIndex] = useState(0)
+  const [bearerMenuView,setBererMenuView] = useState(false)
+  
+  const receiver = ["Me","Receiver"]
+  const handlePayment = async(newData)=>{
+    const paymentData = await handlePaymentCreate(newData,false)
+    setPaymentDetail(paymentData)
+  }
   return (
     <>
       <div className="p-5 mt-2 w-full mb-16 md:mb-0">
@@ -113,14 +123,14 @@ const QuickPaymentStep2 = ({
           <div className="relative">
             <input
               type="text"
-              value={beneficiaries[receiverIndex].name}
+              value={receiver[bearerIndex]}
               className=" bg-white drop-shadow-sm text-gray-900 text-[12px] rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-[12px] p-4 outline-none"
               placeholder="Receiver"
             />
             <button
               type="button"
               className="absolute inset-y-0 end-0 flex items-center pe-3"
-              onClick={() => setReceiversMenuView(!isReceiverMenu)}
+              onClick={() => setBererMenuView(!bearerMenuView)}
             >
               <svg
                 width="18"
@@ -146,14 +156,14 @@ const QuickPaymentStep2 = ({
               </svg>
             </button>
           </div>
-          {isReceiverMenu && (
-            <ReceiversMenu
-              cardIndex={receiverIndex}
-              setCardIndex={setReceiverIndex}
-              beneficiaries={beneficiaries}
-              setReceiversMenuView={setReceiversMenuView}
-            />
-          )}
+          {bearerMenuView && (
+              <BearerMenu
+              cardIndex={bearerIndex}
+              setCardIndex={setBearerIndex}
+              setReceiverMenuView={setBererMenuView}
+              types={receiver}
+              />
+            )}
         </div>
 
         <div className="flex flex-col gap-1 mb-1 text-[12px] mt-8">
@@ -162,19 +172,19 @@ const QuickPaymentStep2 = ({
               Convenience Fees 1.99%
             </div>
             <hr className="border-t-2 border-dashed border-[#CDCED1] flex-grow mx-1" />
-            <div className="poppins-bold text-[#787D81]">{"₹ 24,000.24"}</div>
+            <div className="poppins-bold text-[#787D81]">₹{amount*0.02}</div>
           </div>
           <div className="flex w-full items-center mb-1">
             <div className="poppins-regular text-[#A3A6A9]">TAX</div>
             <hr className="border-t-2 border-dashed border-[#CDCED1] flex-grow mx-1" />
-            <div className="poppins-bold text-[#787D81]">{"₹ 24,000.24"}</div>
+            <div className="poppins-bold text-[#787D81]">₹{amount*0.12}</div>
           </div>
           <div className="flex w-full items-center mb-1">
             <div className="poppins-regular text-[#A3A6A9]">
               Receiver will receive
             </div>
             <hr className="border-t-2 border-dashed border-[#CDCED1] flex-grow mx-1" />
-            <div className="poppins-bold text-[#787D81]">{"₹ 24,000.24"}</div>
+            <div className="poppins-bold text-[#787D81]">₹{amount*0.86}</div>
           </div>
           <div className="flex w-full items-center mt-2">
             <div className="poppins-semibold text-[14px] text-gradient">
@@ -182,7 +192,7 @@ const QuickPaymentStep2 = ({
             </div>
             <hr className="border-t-2 border-dashed border-[#CDCED1] flex-grow mx-1" />
             <div className="poppins-bold text-[14px] text-gradient">
-              {"₹ 24,000.24"}
+              ₹{amount}
             </div>
           </div>
 
@@ -199,6 +209,15 @@ const QuickPaymentStep2 = ({
           onClick={() => {
             if (cardSelected) {
               setStepIndex(2);
+              const newData= {
+                transaction_amount:amount,
+                beneficiary:beneficiary.id,
+                service_ids:[1],
+                transaction_type:"card",
+                //temp
+                card_id:11
+            } 
+              handlePayment(newData)
             }
           }}
           className={`my-4 flex primary-btn items-center w-full justify-center rounded-[1.25rem] ${

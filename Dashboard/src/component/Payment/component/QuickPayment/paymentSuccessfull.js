@@ -1,10 +1,10 @@
 import { maskCardNumber } from "#utils/Helpers";
+import moment from "moment";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const PaymentSuccessfull = () => {
+const PaymentSuccessfull = ({paymentDetail}) => {
   const navigate = useNavigate();
-
   return (
     <>
       <div className="relative p-5 w-full mb-20 md:mb-0">
@@ -45,7 +45,7 @@ const PaymentSuccessfull = () => {
           Payment Successful !
         </p>
         <p className="text-center mb-6 color-linear poppins-semibold text-[30px]">
-          - ₹ 24,000.24
+          - ₹ {paymentDetail.transaction_amount}
         </p>
 
         <div className="flex flex-col ">
@@ -85,7 +85,7 @@ const PaymentSuccessfull = () => {
                 Transaction ID:
               </div>
               <hr className="border-t-2 border-dashed border-[#CDCED1] flex-grow mx-1" />
-              <div className="poppins-bold text-[#787D81]">{"54653747"}</div>
+              <div className="poppins-bold text-[#787D81]">{paymentDetail.transaction_number}</div>
               <div className="mx-1">
                 <svg
                   width="11"
@@ -105,7 +105,7 @@ const PaymentSuccessfull = () => {
               <div className="poppins-regular text-[#A3A6A9]">Date:</div>
               <hr className="border-t-2 border-dashed border-[#CDCED1] flex-grow mx-1" />
               <div className="poppins-bold text-[#787D81]">
-                {"4th Apr 2024  01:41 pm"}
+                {moment(paymentDetail.created_at).format("DD MM YYYY HH:mm")}
               </div>
             </div>
             <div className="flex w-full items-center">
@@ -131,7 +131,7 @@ const PaymentSuccessfull = () => {
                   </svg>
                 </div>
                 <div className="poppins-semibold text-[#787D81]">
-                  {"InProgress"}
+                  {paymentDetail.transaction_status}
                 </div>
               </div>
             </div>
@@ -172,7 +172,7 @@ const PaymentSuccessfull = () => {
               </svg>
             </div>
             <div className="text-[#787D81] poppins-semibold text-[12px] pl-2">
-              {"Alice Jackson"}
+              {paymentDetail.beneficiary_name}
             </div>
           </div>
           <div className="mt-3 flex flex-col gap-2">
@@ -180,14 +180,14 @@ const PaymentSuccessfull = () => {
               <div className="poppins-regular text-[#A3A6A9]">Phone:</div>
               <hr className="border-t-2 border-dashed border-[#CDCED1] flex-grow mx-1" />
               <div className="poppins-semibold text-[#787D81]">
-                {"832563634758"}
+                {paymentDetail.phone_number||"9832532464"}
               </div>
             </div>
             <div className="flex w-full items-center">
               <div className="poppins-regular text-[#A3A6A9]">Mail:</div>
               <hr className="border-t-2 border-dashed border-[#CDCED1] flex-grow mx-1" />
               <div className="poppins-semibold text-[#787D81]">
-                {"contact@gmail.com"}
+                {paymentDetail.email||"contact@gmail.com"}
               </div>
             </div>
           </div>
@@ -221,7 +221,7 @@ const PaymentSuccessfull = () => {
             </div>
 
             <div className="text-[#787D81] poppins-semibold text-[12px] pl-2">
-              {"HDFC BANK,KODAK"}
+              {paymentDetail?.beneficiary_bank_account?.bank_name}
             </div>
           </div>
           <div className="mt-3 flex flex-col gap-2">
@@ -229,13 +229,13 @@ const PaymentSuccessfull = () => {
               <div className="poppins-regular text-[#A3A6A9]">A/C No:</div>
               <hr className="border-t-2 border-dashed border-[#CDCED1] flex-grow mx-1" />
               <div className="poppins-semibold text-[#787D81]">
-                {"50100350093919"}
+                {paymentDetail?.beneficiary_bank_account?.account_number}
               </div>
             </div>
             <div className="flex w-full items-center">
               <div className="poppins-regular text-[#A3A6A9]">IFS Code:</div>
               <hr className="border-t-2 border-dashed border-[#CDCED1] flex-grow mx-1" />
-              <div className="poppins-semibold text-[#787D81]">{"HDFC09241"}</div>
+              <div className="poppins-semibold text-[#787D81]">{paymentDetail?.beneficiary_bank_account?.ifsc_code}</div>
             </div>
           </div>
         </div>
@@ -278,7 +278,7 @@ const PaymentSuccessfull = () => {
                 </svg>
               </div>
               <div className="text-[#787D81] poppins-semibold text-[12px]">
-                {maskCardNumber("34385835683628568")}
+                {maskCardNumber(paymentDetail?.card?.card_no)}
               </div>
             </div>
           </div>
@@ -288,32 +288,34 @@ const PaymentSuccessfull = () => {
                 Convenience Fee 1.99%:
               </div>
               <hr className="border-t-2 border-dashed border-[#CDCED1] flex-grow mx-1" />
-              <div className="poppins-semibold text-[#787D81]">₹{"2"}</div>
+              <div className="poppins-semibold text-[#787D81]">₹{paymentDetail.transaction_amount*0.02}</div>
             </div>
             <div className="flex w-full items-center">
               <div className="poppins-regular text-[#A3A6A9]">TAX:</div>
               <hr className="border-t-2 border-dashed border-[#CDCED1] flex-grow mx-1" />
-              <div className="poppins-semibold text-[#787D81]">₹{"18"}</div>
+              <div className="poppins-semibold text-[#787D81]">₹{paymentDetail.transaction_amount*0.12}</div>
             </div>
             <div className="flex w-full items-center">
               <div className="poppins-regular text-[#A3A6A9]">
                 Receiver Will receive:
               </div>
               <hr className="border-t-2 border-dashed border-[#CDCED1] flex-grow mx-1" />
-              <div className="poppins-semibold text-[#787D81]">₹{"2000"}</div>
+              <div className="poppins-semibold text-[#787D81]">₹{paymentDetail.transaction_amount}</div>
             </div>
           </div>
         </div>
         <div className="flex justify-between mt-4">
           <div className="color-linear text-[14px] poppins-semibold">TOTAL:</div>
           <div className="color-linear text-[14px] poppins-semibold">
-            ₹{"24,000"}
+            ₹{paymentDetail.transaction_amount}
           </div>
         </div>
 
         <button
           type="submit"
-          onClick={() => {}}
+          onClick={() => {
+            navigate('/')
+          }}
           className={`my-4 flex primary-btn items-center w-full justify-center rounded-[1.25rem] ${"bg-[#232B31]"} px-3 p-[1.095rem] text-sm font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
         >
           <div className="text-[12px] pr-2">Get Receipt</div>

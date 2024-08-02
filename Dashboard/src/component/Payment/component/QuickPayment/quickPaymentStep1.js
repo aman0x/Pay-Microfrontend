@@ -4,14 +4,12 @@ import React, { useEffect, useState } from "react";
 import { FaCircleArrowRight } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 
-const QuickPaymentStep1 = ({ setStepIndex, selectedName, setSelectedName }) => {
+const QuickPaymentStep1 = ({ setStepIndex, selectedName, setSelectedName,setAmount ,amount,setSelectedBeneficiary}) => {
   const [quickSend, setQuickSend] = useState([]);
   const navigate = useNavigate();
 
   const [serachValue, setSearchValue] = useState("");
   const { handleQuickSendData } = useDashboard();
-
-  const [amount, setAmount] = useState("");
   const [total, setTotal] = useState(0);
   const [isValid, setIsValid] = useState(true);
 
@@ -30,7 +28,6 @@ const QuickPaymentStep1 = ({ setStepIndex, selectedName, setSelectedName }) => {
   useEffect(() => {
     const fetchQuickSend = async () => {
       const data = await handleQuickSendData();
-      console.log("Contacts", data.results);
       setQuickSend(data.results);
     };
     fetchQuickSend();
@@ -83,7 +80,10 @@ const QuickPaymentStep1 = ({ setStepIndex, selectedName, setSelectedName }) => {
               <div key={i} className="flex flex-col gap-0.5 items-center">
                 <div
                   className="size-20 mb-1"
-                  onClick={() => setSelectedName(user.name)}
+                  onClick={() => {
+                    setSelectedBeneficiary(user)
+                    setSelectedName(user.name)
+                  }}
                 >
                   <Avatar
                     sx={{

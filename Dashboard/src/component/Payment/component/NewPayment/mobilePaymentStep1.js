@@ -210,7 +210,7 @@ const MobilePaymentStep1 = ({
   );
 };
 
-function BearerMenu({
+export function BearerMenu({
   cardIndex,
   setCardIndex,
   setReceiverMenuView,
