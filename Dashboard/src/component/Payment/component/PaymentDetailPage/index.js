@@ -511,7 +511,7 @@ function PaymentDetailPage() {
                 <div className="poppins-regular text-[#A3A6A9]">A/C No:</div>
                 <hr className="border-t-2 border-dashed border-[#CDCED1] flex-grow mx-1" />
                 <div className="poppins-bold text-[#787D81]">
-                  {paymentDetail.bank_account?.split("-")[1]}
+                  {paymentDetail.bank_account.account_number}
                 </div>
               </div>
               <div className="flex w-full items-center">
@@ -746,7 +746,7 @@ function PaymentDetailPage() {
                 <div className="text-[#A3A6A9] min-w-fit">Bank</div>
                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]" />
                 <div className="min-w-fit">
-                  {paymentDetail.bank_account?.split("-")[1]}
+                  {paymentDetail.bank_account.account_number}
                 </div>
               </div>
               <div className="flex text-xs justify-between">
