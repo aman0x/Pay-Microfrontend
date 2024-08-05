@@ -18,23 +18,23 @@ const Auth = () => (
   <div className="bg-[#fcfcfc] min-h-screen">
     {/* <ToastContainer/> */}
   <Routes>
-    <Route path="/" element={<LoginUser />} />
-    <Route path="/accounts/login" element={<LoginUser />} />
-    <Route path="/accounts/signup" element={<SignUpUser />} />
-    <Route path="/accounts/type" element={<AccountType />} />
-    <Route path="/accounts/otp-verification" element={<OtpScreen />} />
-    <Route path="*" element={<Navigate to="/" replace />} />
+    {/* <Route path="/" element={<LoginUser />} /> */}
+    <Route path="/login" element={<LoginUser />} />
+    <Route path="/signup" element={<SignUpUser />} />
+    <Route path="/type" element={<AccountType />} />
+    <Route path="/otp-verification" element={<OtpScreen />} />
+    {/* <Route path="*" element={<Navigate to="/login" replace />} /> */}
   </Routes>
   </div>
 
 );
-const root = ReactDOM.createRoot(document.getElementById("app"));
-root.render(
-  <Provider store={reduxStore}>
-  <BrowserRouter>
-    <Auth />
-  </BrowserRouter>
-  </Provider>
-)
+// const root = ReactDOM.createRoot(document.getElementById("app"));
+// root.render(
+//   <Provider store={reduxStore}>
+//   <BrowserRouter>
+//     <Auth />
+//   </BrowserRouter>
+//   </Provider>
+// )
 
 export default Auth;

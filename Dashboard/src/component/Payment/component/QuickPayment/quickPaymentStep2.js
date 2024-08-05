@@ -199,7 +199,7 @@ const QuickPaymentStep2 = ({
           <p className="text-[12px] mt-6 mb-4 poppins-semibold text-[#232B31]">
             Choose Card :
           </p>
-          <div onClick={() => setCardSelected(true)}>
+          <div onClick={() => setCardSelected(true)} >
             <PaymentCard handlePaymentCardData={handlePaymentCardData} />
           </div>
         </div>

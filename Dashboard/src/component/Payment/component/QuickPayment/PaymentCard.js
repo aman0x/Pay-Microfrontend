@@ -49,7 +49,10 @@ export function PaymentCard({ handlePaymentCardData }) {
   }, []);
   return (
     <div className="flex flex-col gap-2 w-full justify-center">
-      <div className="flex justify-center w-svw">
+      
+        <div className="flex justify-start w-svw mx-auto">
+        {
+        cards.length>1?
         <Swiper
           onSwiper={(swiper) => {
             swiperRef.current = swiper;
@@ -63,12 +66,12 @@ export function PaymentCard({ handlePaymentCardData }) {
           onSlideChange={handleSlideChange}
           defaultValue={0}
           modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-          className="mySwiper h-[17rem]"
+          className="mySwiper h-[17rem] max-w-[100%]"
         >
           {cards.map((card, i) => {
             return (
               <SwiperSlide key={i}>
-                <div className="payment-card-size flex justify-center">
+                <div className="card-size flex justify-center">
                   <FlipCard
                     index={cardIndex}
                     cardData={card}
@@ -79,6 +82,11 @@ export function PaymentCard({ handlePaymentCardData }) {
             );
           })}
         </Swiper>
+        :
+      <div className="m-2 max-w-[300px]  w-full flex justify-center">
+      <FlipCard index={cardIndex} cardData={cards[0]} isArrowShown={false} />
+      </div>
+      }
       </div>
       <div className="flex gap-1 justify-center items-center">
         {cards.map((_, i) => {
@@ -113,7 +121,7 @@ export function FlipCard({
   const [cardColor, setCardColor] = useState(cardColorbg);
   const [isCvvShown, setCVV] = useState(false);
   return (
-    <div className={`flip-card relative shadow-xl rounded-3xl h-60 w-full`}>
+    <div className={`flip-card relative shadow-xl max-w-[300px] rounded-3xl h-60 w-full`}>
       {isArrowShown ? (
         <div
           onClick={() => setCardClicked(!isCardClicked)}

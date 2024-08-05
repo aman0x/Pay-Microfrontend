@@ -50,7 +50,9 @@ export function MobilePaymentCard({ handlePaymentCardData }) {
   return (
     <div className="flex flex-col gap-2 w-full justify-center"> 
       <div className="flex justify-center w-svw">
-      <Swiper
+        {
+          cards?.length>1?
+        <Swiper
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
         }}
@@ -77,7 +79,14 @@ export function MobilePaymentCard({ handlePaymentCardData }) {
           })
         }
       </Swiper> 
+      :
+      <div className=" m-2 max-w-[300px] sm:max-w-[400px] w-full flex justify-center">
+      <FlipCard index={cardIndex} cardData={cards[0]} isArrowShown={false} />
       </div>
+      }
+      </div>
+      
+      
       <div className="flex gap-1 justify-center items-center">
         {cards.map((_, i) => {
           return (

@@ -17,6 +17,7 @@ import CommonLayout from "./components/CommonLayout";
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 import AxiosInstance from "controllers/AxiosInstance/index";
 import NotFound from "./components/Error";
+import Home from "./components/LandingPage/page";
 function App() {
   const isLogin = useSelector((state) => state.auth.isLogin);
   const location = useLocation();
@@ -38,7 +39,8 @@ function App() {
           !isLogin ? (
             <ErrorBoundary>
               <Routes>
-                <Route path="/*" element={<Auth />} />
+                <Route path="/"  element={<Home/>}/>
+                 <Route path="/accounts/*" element={<Auth />} />
               </Routes>
             </ErrorBoundary>
           ) : (
@@ -77,10 +79,10 @@ function App() {
                     </ErrorBoundary>
                   }
                 />
-                <Route
+                {/* <Route
                   path="*"
                   element={<Navigate to="/dashboard" replace />}
-                />
+                /> */}
               </Routes>
             </CommonLayout>
           )

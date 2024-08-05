@@ -63,7 +63,8 @@ module.exports = (env) => {
           Admin:`Admin@${envVars.APP_URL}:8006/remoteEntry.js`
         },
         exposes: {
-          "./AxiosInstance":"./src/utils/ApiCall.js"
+          "./AxiosInstance":"./src/utils/ApiCall.js",
+          "./shellStore":"./src/store/index.js"
         },
         shared: {
           ...deps,

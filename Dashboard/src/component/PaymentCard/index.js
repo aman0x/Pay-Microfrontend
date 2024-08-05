@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { authActions } from "Auth/authReducer";
+import {useDashboard} from "#hooks/index.js"
 import moment from "moment";
 export function PaymentCard({ handlePaymentCardData }) {
   const navigate = useNavigate();
@@ -75,6 +76,7 @@ export function FlipCard({
   const [isCardClicked, setCardClicked] = useState(false);
   const [cardColor, setCardColor] = useState(cardColorbg);
   const [isCvvShown, setCVV] = useState(false);
+  const {handlePaymentCardDelete} = useDashboard()
   return (
     <div className={`flip-card relative shadow-xl rounded-3xl h-60 w-full max-w-[400px]`}>
       {isArrowShown ? (
@@ -187,9 +189,9 @@ export function FlipCard({
                 </div>
               </div>
               <div className="mt-6 ">
-                <a href="#">
+                <div onClick={()=>handlePaymentCardDelete(cardData.id)}>
                   <RiDeleteBin5Fill color="red" size="16px" />
-                </a>
+                </div>
               </div>
             </div>
             <div>
