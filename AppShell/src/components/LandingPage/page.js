@@ -97,7 +97,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="flex overflow-hidden gap-2 justify-center items-center py-5 pr-8 pl-9 text-sm font-semibold shadow-xl bg-[linear-gradient(108deg,#FFF_-0.37%,#F4F4F6_98.96%)] rounded-[100px]">
+          <div onClick={()=>navigate('/accounts/signup')} className="flex overflow-hidden gap-2 justify-center items-center py-5 pr-8 pl-9 text-sm font-semibold shadow-xl bg-[linear-gradient(108deg,#FFF_-0.37%,#F4F4F6_98.96%)] rounded-[100px]">
             <div className="self-stretch my-auto bg-clip-text bg-[linear-gradient(99deg,#D33DBC_1%,#7A6AE4_51.23%)]">
               Create an Account
             </div>
@@ -163,7 +163,7 @@ export default function Home() {
       {/* Features */}
 
 
-      <div className="flex flex-col z-0 items-center py-3 px-16 max-md:px-5 max-md:max-w-full " id="features">
+      <div className="flex flex-col z-0 items-center pt-3 pb-12 px-16 max-md:px-5 max-md:max-w-full " id="features">
         <div className="responsive flex-wrap gap-5 justify-between md:!items-end max-w-full w-[1180px]">
           <div className="flex flex-col  font-semibold min-w-[240px]">
             <div className="flex gap-2.5 items-center md:self-start px-5 py-2.5 text-sm text-center whitespace-nowrap rounded-[94px]">
@@ -255,7 +255,7 @@ export default function Home() {
             our user
           </div>
           <div className="flex overflow-hidden gap-2 justify-center items-center py-5 pr-8 pl-9 mt-5 text-sm font-semibold shadow-xl bg-[linear-gradient(108deg,#FFF_-0.37%,#F4F4F6_98.96%)] rounded-[100px] max-md:px-5">
-            <div className="self-stretch my-auto bg-clip-text bg-[linear-gradient(99deg,#D33DBC_1%,#7A6AE4_51.23%)]">
+            <div onClick={()=>navigate('/accounts/signup')} className="self-stretch my-auto bg-clip-text bg-[linear-gradient(99deg,#D33DBC_1%,#7A6AE4_51.23%)]">
               Sign Up Now
             </div>
             <img
@@ -356,7 +356,7 @@ export default function Home() {
 
 
         <div className="flex flex-col justify-center items-center pt-5">
-          <div className="text-lg leading-6 text-center text-gray-800 bg-clip-text bg-[linear-gradient(99deg,#D33DBC_1%,#7A6AE4_51.23%)] w-[400px]">
+          <div className="text-lg leading-6 text-center text-gray-800 bg-clip-text bg-[linear-gradient(99deg,#D33DBC_1%,#7A6AE4_51.23%)]">
             <span className="font-bold gradient-text">Download our app</span> right now to make
             your payment process easier
           </div>
@@ -553,7 +553,7 @@ export default function Home() {
           <div className="flex mt-5 rounded-2xl bg-[linear-gradient(99deg,#D33DBC_1%,#7A6AE4_51.23%)] min-h-[3px] w-[85px]" />
         </div>
         <div className="flex flex-col mt-16 w-full max-w-[1180px] max-md:mt-10 max-md:max-w-full">
-          <div className="md:flex relative gap-5 justify-center w-full min-h-[420px] max-md:max-w-full">
+          <div className="md:flex relative gap-10 justify-center w-full min-h-[420px] max-md:max-w-full">
             <div className="flex absolute top-0 left-0 z-0 shrink-0 self-start h-[278px] min-w-[240px] rounded-[1327px] w-[312px]" />
             <div className="flex relative z-0 flex-col flex-1 shrink justify-center items-start basis-0 min-h-[420px] min-w-[240px] rounded-[30px] max-md:max-w-full">
               <img
@@ -605,7 +605,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col-reverse md:flex md:flex-row relative gap-5 justify-center mt-16 w-full min-h-[420px] max-md:mt-10 max-md:max-w-full">
+          <div className="flex flex-col-reverse md:flex md:flex-row relative gap-10 justify-center mt-16 w-full min-h-[420px] max-md:mt-10 max-md:max-w-full">
             <div className="flex absolute top-0 right-0 z-0 shrink-0 self-start h-[278px] min-w-[240px] rounded-[1327px] w-[312px]" />
             <div className="mb-4 md:mb-0 flex relative z-0 flex-col flex-1 shrink justify-center my-auto basis-0 max-w-[400px] min-w-[240px]">
               <div className="flex absolute bottom-0 left-3.5 z-0 flex-col max-w-full h-[352px] w-[352px]">
@@ -750,7 +750,7 @@ export default function Home() {
 
       <div className="px-4 lg:px-16 max-md:px-5 max-md:max-w-full">
         <div className="flex flex-col items-center  max-md:pt-24">
-          <div className="flex overflow-hidden relative gap-5 pl-20 mt-24 w-full bg-[linear-gradient(66deg,#F6DEC6_-13.84%,#E872D4_39.06%,#C190D9_67.76%,#A2DCFE_114.04%)] max-w-[1286px] rounded-[30px] max-md:pl-5 max-md:mt-10 max-md:max-w-full">
+          <div className="flex flex-wrap overflow-hidden relative gap-5 md:pl-20 mt-24 w-full bg-[linear-gradient(66deg,#F6DEC6_-13.84%,#E872D4_39.06%,#C190D9_67.76%,#A2DCFE_114.04%)] max-w-[1286px] rounded-[30px] max-md:px-5 max-md:mt-10 max-md:max-w-full">
             <div className="flex absolute z-0 flex-col self-start pt-24 h-[366px] min-w-[240px] right-[447px] top-[-101px] w-[366px] max-md:pt-24">
               <div className="flex flex-col px-9 pb-9 rounded-full max-md:px-5">
                 <div className="flex flex-col px-8 pb-8 rounded-full max-md:px-5">
@@ -761,7 +761,7 @@ export default function Home() {
               </div>
             </div>
             <div className="flex absolute right-0 top-2/4 z-0 shrink-0 self-start rounded-full -translate-y-2/4 aspect-square bg-[linear-gradient(77deg,#F6DEC6_-5.32%,#E872D4_48.06%,#C190D9_69.25%,#A2DCFE_94.8%)] h-[272px] min-w-[240px] translate-x-[0%] w-[272px]" />
-            <div className="flex z-0 flex-col flex-1 shrink justify-center py-10 my-auto basis-0 max-w-[400px] min-w-[300px]">
+            <div className="flex z-0 flex-col flex-1 shrink justify-center py-10 my-auto basis-0 md:max-w-[400px] md:min-w-[300px]">
               <div className="flex flex-col justify-center w-full">
                 <div className="flex flex-col justify-center w-full text-white">
                   <div className="text-3xl font-semibold">
@@ -774,7 +774,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="flex overflow-hidden gap-2 justify-center items-center py-5 pr-8 pl-9 mt-10 w-full text-sm font-semibold shadow-xl bg-[linear-gradient(108deg,#FFF_-0.37%,#F4F4F6_98.96%)] rounded-[100px] max-md:px-5">
-                  <div className="gradient-text self-stretch my-auto bg-clip-text bg-[linear-gradient(99deg,#D33DBC_1%,#7A6AE4_51.23%)]">
+                  <div onClick={()=>navigate('/accounts/signup')} className="gradient-text self-stretch my-auto bg-clip-text bg-[linear-gradient(99deg,#D33DBC_1%,#7A6AE4_51.23%)]">
                     Join Now
                   </div>
                 </div>
@@ -816,7 +816,7 @@ export default function Home() {
             <img
               loading="lazy"
               srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/c00351e53bbd34f60910e05a0dc33985b9bdbff829700a8c5b9073d7351579af?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/c00351e53bbd34f60910e05a0dc33985b9bdbff829700a8c5b9073d7351579af?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/c00351e53bbd34f60910e05a0dc33985b9bdbff829700a8c5b9073d7351579af?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/c00351e53bbd34f60910e05a0dc33985b9bdbff829700a8c5b9073d7351579af?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/c00351e53bbd34f60910e05a0dc33985b9bdbff829700a8c5b9073d7351579af?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/c00351e53bbd34f60910e05a0dc33985b9bdbff829700a8c5b9073d7351579af?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/c00351e53bbd34f60910e05a0dc33985b9bdbff829700a8c5b9073d7351579af?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/c00351e53bbd34f60910e05a0dc33985b9bdbff829700a8c5b9073d7351579af?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d"
-              className="object-contain z-0 flex-1 shrink w-full aspect-[1.87] basis-0 min-w-[240px] max-md:max-w-full"
+              className="hidden md:block object-contain z-0 flex-1 shrink w-full aspect-[1.87] basis-0 min-w-[240px] max-md:max-w-full"
             />
             
           </div>
@@ -1121,8 +1121,8 @@ export default function Home() {
 
       <div className="flex overflow-hidden flex-col bg-gray-200">
         <div className="flex flex-col px-16 pt-16 pb-20 w-full max-md:px-5 max-md:max-w-full">
-          <div className="flex flex-wrap gap-36 items-start w-full max-md:max-w-full">
-            <div className="flex flex-col max-w-[400px] min-w-[320px]">
+          <div className="flex flex-wrap gap-20 md:gap-36 items-start w-full max-md:max-w-full">
+            <div className="flex flex-col md:max-w-[400px] md:min-w-[320px]">
               <div className="flex flex-col w-full text-xs leading-5 text-zinc-500">
                 <img
                   loading="lazy"
