@@ -3,7 +3,7 @@ import { PaymentTypeMenu, ReceiversMenu } from ".";
 import { FaCircleArrowRight } from "react-icons/fa6";
 import { PaymentCard } from "./PaymentCard";
 import { useNavigate } from "react-router-dom";
-import { useDashboard,usePayment } from "#hooks/index";
+import { useDashboard, usePayment } from "#hooks/index";
 import { BearerMenu } from "../NewPayment/mobilePaymentStep1";
 const QuickPaymentStep2 = ({
   setStepIndex,
@@ -18,23 +18,23 @@ const QuickPaymentStep2 = ({
   setReceiverIndex,
   amount,
   beneficiary,
-  setPaymentDetail
+  setPaymentDetail,
 }) => {
   const types = ["Vendor Payment"];
 
   const navigate = useNavigate();
 
   const { handlePaymentCardData } = useDashboard();
-  const {handlePaymentCreate} = usePayment()
+  const { handlePaymentCreate } = usePayment();
   const [cardSelected, setCardSelected] = useState(false);
-  const [bearerIndex,setBearerIndex] = useState(0)
-  const [bearerMenuView,setBererMenuView] = useState(false)
-  
-  const receiver = ["Me","Receiver"]
-  const handlePayment = async(newData)=>{
-    const paymentData = await handlePaymentCreate(newData,false)
-    setPaymentDetail(paymentData)
-  }
+  const [bearerIndex, setBearerIndex] = useState(0);
+  const [bearerMenuView, setBererMenuView] = useState(false);
+
+  const receiver = ["Me", "Receiver"];
+  const handlePayment = async (newData) => {
+    const paymentData = await handlePaymentCreate(newData, false);
+    setPaymentDetail(paymentData);
+  };
   return (
     <>
       <div className="p-5 mt-2 w-full mb-16 md:mb-0">
@@ -157,13 +157,13 @@ const QuickPaymentStep2 = ({
             </button>
           </div>
           {bearerMenuView && (
-              <BearerMenu
+            <BearerMenu
               cardIndex={bearerIndex}
               setCardIndex={setBearerIndex}
               setReceiverMenuView={setBererMenuView}
               types={receiver}
-              />
-            )}
+            />
+          )}
         </div>
 
         <div className="flex flex-col gap-1 mb-1 text-[12px] mt-8">
@@ -172,19 +172,19 @@ const QuickPaymentStep2 = ({
               Convenience Fees 1.99%
             </div>
             <hr className="border-t-2 border-dashed border-[#CDCED1] flex-grow mx-1" />
-            <div className="poppins-bold text-[#787D81]">₹{amount*0.02}</div>
+            <div className="poppins-bold text-[#787D81]">₹{amount * 0.02}</div>
           </div>
           <div className="flex w-full items-center mb-1">
             <div className="poppins-regular text-[#A3A6A9]">TAX</div>
             <hr className="border-t-2 border-dashed border-[#CDCED1] flex-grow mx-1" />
-            <div className="poppins-bold text-[#787D81]">₹{amount*0.12}</div>
+            <div className="poppins-bold text-[#787D81]">₹{amount * 0.12}</div>
           </div>
           <div className="flex w-full items-center mb-1">
             <div className="poppins-regular text-[#A3A6A9]">
               Receiver will receive
             </div>
             <hr className="border-t-2 border-dashed border-[#CDCED1] flex-grow mx-1" />
-            <div className="poppins-bold text-[#787D81]">₹{amount*0.86}</div>
+            <div className="poppins-bold text-[#787D81]">₹{amount * 0.86}</div>
           </div>
           <div className="flex w-full items-center mt-2">
             <div className="poppins-semibold text-[14px] text-gradient">
@@ -207,22 +207,18 @@ const QuickPaymentStep2 = ({
         <button
           type="submit"
           onClick={() => {
-            if (cardSelected) {
-              setStepIndex(2);
-              const newData= {
-                transaction_amount:amount,
-                beneficiary:beneficiary.id,
-                service_ids:[1],
-                transaction_type:"card",
-                //temp
-                card_id:11
-            } 
-              handlePayment(newData)
-            }
+            setStepIndex(2);
+            const newData = {
+              transaction_amount: amount,
+              beneficiary: beneficiary.id,
+              service_ids: [1],
+              transaction_type: "card",
+              //temp
+              card_id: 11,
+            };
+            handlePayment(newData);
           }}
-          className={`my-4 flex primary-btn items-center w-full justify-center rounded-[1.25rem] ${
-            cardSelected ? "bg-[#232B31]" : "bg-[#cdced0]"
-          } px-3 p-[1.095rem] text-sm font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
+          className={`my-4 flex primary-btn items-center w-full justify-center rounded-[1.25rem] bg-[#232B31] px-3 p-[1.095rem] text-sm font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
         >
           <div className="text-[12px] pr-2">Pay</div>
           <span className="text-[12px] text-gradient">₹ 24,000.24</span>

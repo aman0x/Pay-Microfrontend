@@ -35,6 +35,13 @@ const MobilePaymentStep1 = ({
     }
   }, [amount]);
 
+  const handleKeyPress = (e) => {
+    const charCode = e.charCode || e.keyCode;
+    if (charCode < 48 || charCode > 57) {
+      e.preventDefault();
+    }
+  };
+
   return (
     <>
       <div className="p-5 mt-2 w-full mb-16 md:mb-0">
@@ -159,7 +166,9 @@ const MobilePaymentStep1 = ({
                 </span>
               </div>
               <input
-                type="text"
+                type="tel"
+                onKeyPress={handleKeyPress}
+                autoComplete="off"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
                 className="poppins-light bg-transparent border-none text-3xl rounded-2xl w-full pl-16 placeholder:italic placeholder:text-2xl placeholder:text-[#B6B8BA] py-3.5 focus:outline-none focus:ring-0 text-gradient caret-black"

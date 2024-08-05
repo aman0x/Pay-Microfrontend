@@ -1,6 +1,5 @@
 import Avatar from "@mui/material/Avatar";
 import { IoAdd } from "react-icons/io5";
-import { FaCircleArrowRight } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import { useDashboard,useAccounts } from "#hooks/index";
 import { PaymentCard } from "./PaymentCard";
@@ -145,38 +144,9 @@ const MobilePaymentStep3 = ({ stepIndex, setStepIndex, selectedName,beneficiary,
             Choose Card :
           </p>
           <div onClick={() => setCardSelected(true)}>
-            <PaymentCard handlePaymentCardData={handlePaymentCardData}  />
+            <PaymentCard handlePaymentCardData={handlePaymentCardData} setStepIndex={setStepIndex} amount={amount} beneficiary={beneficiary} />
           </div>
         </div>
-
-        <button
-          type="submit"
-          onClick={() => {
-            if (cardSelected) {
-              setStepIndex(3);
-              const newData= {
-                transaction_amount:amount,
-                beneficiary:beneficiary.id,
-                service_ids:[1],
-                transaction_type:"card",
-                //temp
-                card_id:11
-            } 
-            handlePayment(newData)
-           
-            }
-            
-          }}
-          className={`my-4 flex primary-btn items-center w-full justify-center rounded-[1.25rem] ${
-            cardSelected ? "bg-[#232B31]" : "bg-[#cdced0]"
-          } px-3 p-[1.095rem] text-sm font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
-        >
-          <div className="text-[12px] pr-2">Pay</div>
-          <span className="text-[12px] text-gradient">₹ {amount}</span>
-          <span className="flex justify-center items-center size-8">
-            <FaCircleArrowRight style={{ color: "white" }} />
-          </span>
-        </button>
 
         {/* <button
           type="submit"

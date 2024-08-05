@@ -59,13 +59,8 @@
   padding: 1rem 1rem;
 }
 
-@media (min-width: 319px) and (max-width: 375px) {
+@media (min-width: 319px) {
   .payment-card-size {
     padding: 0.8rem 2rem 0.7rem 0.1rem;
-  }
-}
-@media (min-width: 376px) and (max-width: 425px) {
-  .payment-card-size {
-    padding: 1rem 1rem;
   }
 }

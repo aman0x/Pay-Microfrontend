@@ -97,7 +97,7 @@ function MyCards() {
       <div className="flex justify-between">
         <div className="flex gap-1 items-center">
           <div className="poppins-semibold">All Cards</div>
-          <div className="text-xs poppins-light text-[#787D81] ">(4)</div>
+          <div className="text-xs poppins-light text-[#787D81] ">({cards.length || 0})</div>
         </div>
         <div
           onClick={() => navigate("/dashboard/card/add-card")}

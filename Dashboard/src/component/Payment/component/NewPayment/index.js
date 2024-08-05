@@ -64,6 +64,13 @@ function NewPayment({ isRepeatPayment = false }) {
     fetchBeneficiary();
   }, [bankId]);
 
+  const handleKeyPress = (e) => {
+    const charCode = e.charCode || e.keyCode;
+    if (charCode < 48 || charCode > 57) {
+      e.preventDefault();
+    }
+  };
+
   return (
     <>
       <div className="md:hidden w-full">
@@ -311,7 +318,9 @@ function NewPayment({ isRepeatPayment = false }) {
                     <PiLineVertical color="gray" />
                   </div>
                   <input
-                    type="text"
+                    type="tel"
+                    onKeyPress={handleKeyPress}
+                    autoComplete="off"
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
                     className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-16 placeholder:italic placeholder:text-xs p-3.5  "

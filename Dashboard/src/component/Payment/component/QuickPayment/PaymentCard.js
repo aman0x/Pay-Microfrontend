@@ -109,7 +109,7 @@ export function FlipCard({
 }) {
   const { handlePaymentCardDelete } = useDashboard();
   const navigate = useNavigate();
-  const [isCardClicked, setCardClicked] = useState(false);
+  // const [isCardClicked, setCardClicked] = useState(false);
   const [cardColor, setCardColor] = useState(cardColorbg);
   const [isCvvShown, setCVV] = useState(false);
   return (
@@ -135,12 +135,7 @@ export function FlipCard({
           </svg>
         </div>
       ) : null}
-      <div
-        onClick={() => setCardClicked(!isCardClicked)}
-        className={`flip-card-inner ${
-          isCardClicked ? "flip-card-transform" : ""
-        }`}
-      >
+      <div className={`flip-card-inner`}>
         <div
           className={`flip-card-front flex flex-col p-[2rem] justify-between rounded-3xl h-full`}
           style={{
@@ -182,7 +177,7 @@ export function FlipCard({
               <p className="poppins-thin text-[10px] text-[#787D81] mb-2">
                 CVV
               </p>
-              <p>***</p>
+              <p><img src="/images/small-green-tick.svg" alt="tick icon"/></p>
             </div>
             <div>
               <p className="poppins-thin text-[10px] text-[#787D81] mb-2">
@@ -201,19 +196,19 @@ export function FlipCard({
               </a>
             </div>
           </div>
-          <div
-            onClick={() =>
-              navigate(`/dashboard/card/card-detail?id=${cardData.id}`)
-            }
-            className="mt-2 underline poppins-thin text-xs hover:text-rose-300 text-right"
-          >
-            <a href="#" className="">
+          <div className="mt-2 underline poppins-thin text-xs hover:text-rose-300 text-right">
+            <p
+              onClick={() =>
+                navigate(`/dashboard/card/card-detail?id=${cardData.id}`)
+              }
+              className="underline text-white"
+            >
               Details
-            </a>
+            </p>
           </div>
           <div></div>
         </div>
-        <div
+        {/* <div
           className={`flip-card-back rounded-3xl`}
           style={{
             backgroundColor: cardColor,
@@ -282,7 +277,7 @@ export function FlipCard({
               </p>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
