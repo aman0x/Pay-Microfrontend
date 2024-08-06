@@ -298,6 +298,7 @@ export default function Home() {
 
           <div>
             <div className="flex flex-col md:!flex-row  justify-center items-center  ">
+              <p className="md:hidden gradient-text poppins-bold">Step-1</p>
               <div className="flex justify-center md:w-1/2">
                 <img
                   loading="lazy"
@@ -305,8 +306,8 @@ export default function Home() {
               </div>
               <div className="md:w-1/2 flex md:justify-end">
                 <div className="w-4/5">
-                  <p className="gradient-text" >Step-1</p>
-                  <p className="font-medium text-lg lg:text-2xl text-gray-900">Choose the amount you want to pay and the type of payment.</p>
+                  <p className="hidden md:flex gradient-text" >Step-1</p>
+                  <p className="font-medium text-xl lg:text-2xl text-gray-900">Choose the amount you want to pay and the type of payment.</p>
                   <p className=" font-normal text-xs lg:text-sm text-gray-800">Torem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
                 </div>
               </div>
