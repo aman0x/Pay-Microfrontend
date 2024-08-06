@@ -29,7 +29,7 @@ export default function LoginUser() {
       <div className="p-6">
         <HeaderNavbar />
 
-        <div className="sm:mx-auto sm:w-full  mt-2 lg:mt-12">
+        <div className="sm:mx-auto sm:w-full  mt-5 lg:mt-20">
           <h2 className="my-6 lg:my-10 text-center text-xs  text-[#A3A6A9]">
             Log in With:
           </h2>
@@ -266,7 +266,7 @@ export default function LoginUser() {
           </div>
         </div>
       </div>
-      <div className="hide md:block">
+      <div className="hide lg:block">
         <PaymorzSider />
       </div>
     </div>

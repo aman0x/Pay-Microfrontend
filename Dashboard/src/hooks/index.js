@@ -54,11 +54,12 @@ export function useDashboard() {
             toast("Error in getting Payment Cards1");
         }
     };
+    
     const handlePaymentCardDelete = async (id = 1) => {
         try {
             const response = await ApiCall({
-                url: PRIVATE_ENDPOINTS.GET_CARDS + `${id}/`,
-                method: "DELETE",
+                url: PRIVATE_ENDPOINTS.GET_CARDS + `${id}/delete_card/`,
+                method: "POST",
                 PRIVATE_API: true,
                 current_user: user,
             });
@@ -108,7 +109,7 @@ export function useDashboard() {
         handleQuickSendData,
         handlePaymentCardData,
         handlePaymentCardDetail,
-        handlePaymentCardDelete,
+        handlePaymentCardDelete
     };
 }
 
@@ -178,6 +179,7 @@ export function usePayment() {
             return response.data;
         } catch (error) {
             toast("Error creating payment");
+            return {}
         }
     };
 
@@ -198,12 +200,26 @@ export function usePayment() {
             toast("Error in getting Templates");
         }
     };
+    const handlePaymentCardCheck = async (id = 1) => {
+        try {
+            const response = await ApiCall({
+                url: PRIVATE_ENDPOINTS.CARD_CHECK + `${id}/`,
+                method: "GET",
+                PRIVATE_API: true,
+                current_user: user,
+            });
+            return response.data;
+        } catch (e) {
+            toast("Error in getting Card Detail");
+        }
+    };
     return {
         handlePaymentCreate,
         handlePaymentDetail,
         handlePaymentStats,
         handlePaymentData,
         handleAddCard,
+        handlePaymentCardCheck
     };
 }
 

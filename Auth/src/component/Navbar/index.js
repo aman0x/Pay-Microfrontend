@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 export function HeaderNavbar({ isLogin = false }) {
   return (
     <>
-      <div className="lg:hidden">
+      <div className="md:hidden">
         {!isLogin ? (
           <div className="flex flex-col items-center w-full">
             <img

@@ -81,7 +81,13 @@ export function MobilePaymentCard({ handlePaymentCardData }) {
       </Swiper> 
       :
       <div className=" m-2 max-w-[300px] sm:max-w-[400px] w-full flex justify-center">
-      <FlipCard index={cardIndex} cardData={cards[0]} isArrowShown={false} />
+        {
+          cards.lengh?
+          <FlipCard index={cardIndex} cardData={cards[0]} isArrowShown={false} />
+          :
+          <></>
+        }
+      
       </div>
       }
       </div>

@@ -1,0 +1,31 @@
+{
+  "name": "microfrontend-container",
+  "version": "1.0.0",
+  "scripts": {
+    "start:appshell": "cd AppShell && npm start",
+    "start:auth": "cd Auth && npm start",
+    "start:dashboard": "cd Dashboard && npm start",
+    "start:invoice": "cd Invoice && npm start",
+    "start:report": "cd Report && npm start",
+    "start:admin": "cd Admin_dashboard && npm start",
+    "start:all": "concurrently \"npm:start:appshell\" \"npm:start:auth\" \"npm:start:dashboard\" \"npm:start:invoice\" \"npm:start:report\" \"npm:start:admin\"",
+    "build:appshell": "cd AppShell && npm run build",
+    "build:auth": "cd Auth && npm run build",
+    "build:dashboard": "cd Dashboard && npm run build",
+    "build:invoice": "cd Invoice && npm run build",
+    "build:report": "cd Report && npm run build",
+    "build:admin": "cd Admin && npm run build",
+    "build:all": "concurrently \"npm run build:appshell\" \"npm run build:auth\" \"npm run build:dashboard\" \"npm run build:invoice\" \"npm run build:report\" \"npm run build:admin\"",
+    "build-and-start:appshell": "cd AppShell && npm run build && npm run start",
+    "build-and-start:auth": "cd Auth && npm run build && npm run start",
+    "build-and-start:dashboard": "cd Dashboard && npm run build && npm run start",
+    "build-and-start:invoice": "cd Invoice && npm run build && npm run start",
+    "build-and-start:report": "cd Report && npm run build && npm run start",
+    "build-and-start:admin": "cd Admin_dashboard && npm run build && npm run start",
+    "build-and-start:all": "concurrently \"npm run build-and-start:appshell\" \"npm run build-and-start:auth\" \"npm run build-and-start:dashboard\" \"npm run build-and-start:invoice\" \"npm run build-and-start:report\" \"npm run build-and-start:admin\"",
+    "stop:all": "pkill -f 'npm start'"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

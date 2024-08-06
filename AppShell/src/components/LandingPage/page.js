@@ -163,7 +163,7 @@ export default function Home() {
 
 
       <div className="flex flex-col z-0 items-center pt-3 pb-12 px-16 max-md:px-5 max-md:max-w-full " id="features">
-        <div className="flex flex-col lg:!flex-row  flex-wrap gap-5 justify-between lg:!items-end max-w-full w-[1180px]">
+        <div className=" flex flex-col lg:!flex-row  flex-wrap gap-5 justify-between  max-w-full w-[1180px]">
           <div className="flex flex-col  font-semibold min-w-[240px]">
             <div className="flex gap-2.5 items-center md:self-start px-5 py-2.5 text-sm text-center whitespace-nowrap rounded-[94px]">
               <img
@@ -181,7 +181,7 @@ export default function Home() {
               Paymorz Provides To You
             </div>
           </div>
-          <div className="flex-1 shrink text-sm leading-6 basis-0 max-w-[470px] text-zinc-400 max-md:max-w-full">
+          <div className="flex-1 shrink text-sm leading-6 basis-0 max-w-[470px] text-zinc-400 max-md:max-w-full  mt-auto">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
             vulputate libero et velit interdum, ac aliquet odio mattis.
             Class aptent taciti sociosqu ad litora torquent per conubia
@@ -193,7 +193,7 @@ export default function Home() {
             <img
               loading="lazy"
               srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/208e7380373cd6a5b534c863bd18227bdbed7e11c686734be2d253eaaed14ec8?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/208e7380373cd6a5b534c863bd18227bdbed7e11c686734be2d253eaaed14ec8?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/208e7380373cd6a5b534c863bd18227bdbed7e11c686734be2d253eaaed14ec8?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/208e7380373cd6a5b534c863bd18227bdbed7e11c686734be2d253eaaed14ec8?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/208e7380373cd6a5b534c863bd18227bdbed7e11c686734be2d253eaaed14ec8?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/208e7380373cd6a5b534c863bd18227bdbed7e11c686734be2d253eaaed14ec8?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/208e7380373cd6a5b534c863bd18227bdbed7e11c686734be2d253eaaed14ec8?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/208e7380373cd6a5b534c863bd18227bdbed7e11c686734be2d253eaaed14ec8?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d"
-              className="object-contain w-full aspect-[1.66] min-h-[354px] max-md:max-w-full"
+              className="object-contain w-full aspect-[1.66]  max-md:max-w-full"
             />
             <div className="flex flex-col justify-center px-5 mt-3.5 w-full max-md:max-w-full">
               <div className="text-lg font-medium leading-tight text-gray-800 max-md:max-w-full">
@@ -212,7 +212,7 @@ export default function Home() {
             <img
               loading="lazy"
               srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/ea55eec7ddd17d9ee480c92628a654356df3ed06a82f8f219a4d158e5eafc8c0?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/ea55eec7ddd17d9ee480c92628a654356df3ed06a82f8f219a4d158e5eafc8c0?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/ea55eec7ddd17d9ee480c92628a654356df3ed06a82f8f219a4d158e5eafc8c0?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/ea55eec7ddd17d9ee480c92628a654356df3ed06a82f8f219a4d158e5eafc8c0?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/ea55eec7ddd17d9ee480c92628a654356df3ed06a82f8f219a4d158e5eafc8c0?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/ea55eec7ddd17d9ee480c92628a654356df3ed06a82f8f219a4d158e5eafc8c0?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/ea55eec7ddd17d9ee480c92628a654356df3ed06a82f8f219a4d158e5eafc8c0?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/ea55eec7ddd17d9ee480c92628a654356df3ed06a82f8f219a4d158e5eafc8c0?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d"
-              className="object-contain w-full aspect-[1.66] min-h-[354px] max-md:max-w-full"
+              className="object-contain w-full aspect-[1.66]  max-md:max-w-full"
             />
             <div className="flex flex-col justify-center px-5 mt-3.5 w-full max-md:max-w-full">
               <div className="text-lg font-medium leading-tight text-gray-800 max-md:max-w-full">
@@ -231,7 +231,7 @@ export default function Home() {
             <img
               loading="lazy"
               srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/48b40f1251d7700eb06fdb57a139997c994887307cb47dfaff50380718a912f4?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/48b40f1251d7700eb06fdb57a139997c994887307cb47dfaff50380718a912f4?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/48b40f1251d7700eb06fdb57a139997c994887307cb47dfaff50380718a912f4?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/48b40f1251d7700eb06fdb57a139997c994887307cb47dfaff50380718a912f4?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/48b40f1251d7700eb06fdb57a139997c994887307cb47dfaff50380718a912f4?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/48b40f1251d7700eb06fdb57a139997c994887307cb47dfaff50380718a912f4?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/48b40f1251d7700eb06fdb57a139997c994887307cb47dfaff50380718a912f4?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/48b40f1251d7700eb06fdb57a139997c994887307cb47dfaff50380718a912f4?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d"
-              className="object-contain w-full aspect-[1.66] min-h-[354px] max-md:max-w-full"
+              className="object-contain w-full aspect-[1.66]  max-md:max-w-full"
             />
             <div className="flex flex-col justify-center px-5 mt-3.5 w-full max-md:max-w-full">
               <div className="text-lg font-medium leading-tight text-gray-800 max-md:max-w-full">
@@ -297,15 +297,17 @@ export default function Home() {
         <div className="flex flex-col items-center justify-center py-6 gap-2">
 
           <div>
-            <div className="flex flex-col md:!flex-row  justify-center items-center  ">
+            <div className="flex flex-col md:!flex-row justify-center items-center gap-4">
               <p className="md:hidden gradient-text poppins-bold">Step-1</p>
               <div className="flex justify-center md:w-1/2">
                 <img
                   loading="lazy"
-                  src="./images/step.png" />
+                  src="./images/step.png"
+                  className="object-cover rounded-2xl mix-blend-multiply"
+                   />
               </div>
               <div className="md:w-1/2 flex md:justify-end">
-                <div className="w-4/5">
+                <div className="flex flex-col w-4/5 gap-2">
                   <p className="hidden md:flex gradient-text" >Step-1</p>
                   <p className="font-medium text-xl lg:text-2xl text-gray-900">Choose the amount you want to pay and the type of payment.</p>
                   <p className=" font-normal text-xs lg:text-sm text-gray-800">Torem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
@@ -316,35 +318,40 @@ export default function Home() {
           </div>
 
           <div>
-            <div className="flex flex-col-reverse md:!flex-row  justify-center items-center">
+            <div className="flex flex-col-reverse md:!flex-row  justify-center items-center gap-4">
               <div className="flex md:justify-center md:w-1/2">
-                <div className="w-4/5">
-                  <p className="gradient-text" >Step-2</p>
-                  <p className="font-medium text-lg lg:text-2xl text-gray-900">Select one or more recipients to whom you want to send the payment.</p>
+                <div className="flex flex-col w-4/5 gap-2">
+                  <p className="hidden md:flex gradient-text" >Step-2</p>
+                  <p className="font-medium text-xl lg:text-2xl text-gray-900">Select one or more recipients to whom you want to send the payment.</p>
                   <p className=" font-normal text-xs lg:text-sm text-gray-800">Torem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
                 </div>
               </div>
-              <div className="flex justify-center md:w-1/2">
+              <div className="flex justify-center md:w-1/2 ">
                 <img
                   loading="lazy"
-                  src="./images/step.png" />
+                  src="./images/step.png" 
+                  className="object-cover rounded-2xl mix-blend-multiply"
+                  />
               </div>
-
+              <p className="md:hidden gradient-text poppins-bold">Step-2</p>
 
             </div>
           </div>
 
           <div>
-            <div className="flex flex-col md:!flex-row  justify-center items-center">
+            <div className="flex flex-col md:!flex-row  justify-center items-center gap-4">
+            <p className="md:hidden gradient-text poppins-bold">Step-3</p>
               <div className="flex justify-center md:w-1/2">
                 <img
                   loading="lazy"
-                  src="./images/step.png" />
+                  src="./images/step.png" 
+                  className="object-cover rounded-2xl mix-blend-multiply"
+                  />
               </div>
               <div className="md:w-1/2 flex md:justify-end ">
-                <div className="w-4/5">
-                  <p className="gradient-text" >Step-3</p>
-                  <p className="font-medium text-lg lg:text-2xl text-gray-900">Choose the card you want to pay with and confirm the payment</p>
+                <div className="flex flex-col w-4/5 gap-2">
+                  <p className="hidden md:flex gradient-text" >Step-3</p>
+                  <p className="font-medium text-xl lg:text-2xl text-gray-900">Choose the card you want to pay with and confirm the payment</p>
                   <p className=" font-normal text-xs lg:text-sm text-gray-800">Torem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
                 </div>
               </div>

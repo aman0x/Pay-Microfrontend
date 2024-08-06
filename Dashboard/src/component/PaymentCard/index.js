@@ -47,7 +47,13 @@ export function PaymentCard({ handlePaymentCardData }) {
           <p className="poppins-regular text-[#787D81] text-xs">New Card</p>
         </div>
       </div>
-      <FlipCard index={cardIndex} cardData={cards[cardIndex]} />
+      {
+        cards.length?
+        <FlipCard index={cardIndex} cardData={cards[cardIndex]} />
+        :
+        <></>
+      }
+      
       <div className="flex gap-1 justify-center items-center">
         {cards.map((_, i) => {
           return (

@@ -1,5 +1,5 @@
 import { useDashboard, usePayment } from "#hooks/index";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaCircleArrowRight } from "react-icons/fa6";
 import { toast } from "react-toastify";
 import InputMask from "react-input-mask";
@@ -9,7 +9,7 @@ function AddCard() {
   const [cardHolderName, setCardHolderName] = useState("");
   const [cardExpDate, setExpDate] = useState("");
   const [cardCVV, setCardCVV] = useState("");
-  const { handleAddCard } = usePayment();
+  const { handleAddCard,handlePaymentCardCheck } = usePayment();
 
   const handleSubmit = () => {
     if (
@@ -32,6 +32,13 @@ function AddCard() {
       toast.error("fail");
     }
   };
+  useEffect(()=>{
+    const fetchCardDetail = async()=>{
+      const data  = await handlePaymentCardCheck()
+      
+    }
+    fetchCardDetail()
+  })
   return (
     <div className="mt-5 bg-primary p-[2rem] w-full h-[75vh] max-h-[800px] rounded-2xl">
       <div className="mx-auto form-width flex flex-col gap-8 mt-8">

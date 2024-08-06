@@ -5,12 +5,14 @@ import { useDashboard,useAccounts } from "#hooks/index";
 import { PaymentCard } from "./PaymentCard";
 import { useEffect, useState } from "react";
 import { usePayment } from "#hooks/index";
+import { FaCircleArrowRight } from "react-icons/fa6";
 const MobilePaymentStep3 = ({ stepIndex, setStepIndex, selectedName,beneficiary,bankDetail,setBankDetail,amount,setPaymentDetail }) => {
   const navigate = useNavigate();
   const {handlePaymentCreate} = usePayment()
   const { handlePaymentCardData } = useDashboard();
   const {handleGetBankById} = useAccounts()
   const [cardSelected, setCardSelected] = useState(false);
+  const [buttonEnabled, setButtonEnabled] = useState(false);
   useEffect(()=>{
     const fetchBankDetails = async(bankId)=>{
      const data = await handleGetBankById(bankId)
@@ -144,26 +146,49 @@ const MobilePaymentStep3 = ({ stepIndex, setStepIndex, selectedName,beneficiary,
             Choose Card :
           </p>
           <div onClick={() => setCardSelected(true)}>
-            <PaymentCard handlePaymentCardData={handlePaymentCardData} setStepIndex={setStepIndex} amount={amount} beneficiary={beneficiary} />
+            <PaymentCard handlePaymentCardData={handlePaymentCardData} setStepIndex={setStepIndex} amount={amount} beneficiary={beneficiary} buttonEnabled={buttonEnabled} setButtonEnabled={setButtonEnabled}/>
           </div>
         </div>
 
-        {/* <button
-          type="submit"
-          onClick={() => {
-            if (selectedName !== "") {
-              setStepIndex(3);
-            }
-          }}
-          className={`my-4 flex primary-btn items-center w-full justify-center rounded-[1.25rem] ${
-            selectedName !== "" ? "bg-[#232B31]" : "bg-[#cdced0]"
-          } px-3 p-[1.095rem] text-sm font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
+        <button
+        type="submit"
+        disabled={!buttonEnabled}
+        onClick={() => {
+          setStepIndex(3);
+          const newData = {
+            transaction_amount: amount,
+            beneficiary: beneficiary.id,
+            service_ids: [1],
+            transaction_type: "card",
+            //temp
+            card_id: 12,
+          };
+          handlePayment(newData);
+        }}
+        className={`my-4 flex primary-btn items-center w-full justify-center rounded-[1.25rem] ${
+          buttonEnabled ? "bg-[#232B31]" : "bg-[#CCCDD0]"
+        }  px-3 p-[1.095rem] text-sm font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
+      >
+        <div
+          className={`text-[12px] ${
+            buttonEnabled ? "text-white" : "#B6B8BA"
+          } pr-2`}
         >
-          <div className="text-[12px]">Next</div>
-          <span className="flex justify-center items-center size-8">
-            <FaCircleArrowRight style={{ color: "white" }} />
-          </span>
-        </button> */}
+          Pay
+        </div>
+        <span
+          className={`text-[12px] ${
+            buttonEnabled ? "text-gradient" : "#B6B8BA"
+          }`}
+        >
+          ₹ {amount}
+        </span>
+        <span className="flex justify-center items-center size-8">
+          <FaCircleArrowRight
+            style={{ color: buttonEnabled ? "white" : "#B6B8BA" }}
+          />
+        </span>
+      </button>
       </div>
     </>
   );

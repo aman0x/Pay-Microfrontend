@@ -2,10 +2,9 @@
 
 In the Main directory
 
-1. chmod +x start-all.sh
-2. ./start-all.sh
 
-
-## Will get a message All microfrontend Started
+## Start : npm run start:all
+## Build : npm run build:all
+## Stop : npm run stop:all 
 
 

@@ -19,10 +19,9 @@ export function useUserLoginAuth(){
                 const userData = result.user
                 const token = result.user.accessToken;
                 const login_data = {
-                    firebase_id_token:token,
-                    is_social_login:true
+                    id_token:token
                 }
-                AxiosCall({url:PUBLIC_ENDPOINTS.login,method:"POST",body:login_data})
+                AxiosCall({url:PUBLIC_ENDPOINTS.GOOGLE_LOGIN,method:"POST",body:login_data})
                 .then((data)=>{
                     STORE_IN_LOCAL_STORAGE("access_token",data.data.access_token)
                     STORE_IN_LOCAL_STORAGE("user_id",data.data.user_id)
@@ -80,12 +79,14 @@ export function useUserLoginAuth(){
 
     const handleLoginWithPhone = (phone) =>{
         const login_data = {
-            phone:phone,
-            is_social_login:false
+            phone:phone
         }
-        AxiosCall({url:PUBLIC_ENDPOINTS.login,method:"POST",body:login_data})
+        AxiosCall({url:PUBLIC_ENDPOINTS.PHONE_LOGIN,method:"POST",body:login_data})
         .then((data)=>{
-            navigate('/accounts/otp-verification',{state:{phoneNumber:phone}})
+            console.log("login_phone_data",data)
+            // navigate('/accounts/otp-verification',{state:{phoneNumber:phone,
+
+            // }})
           
         })
         .catch((e)=>{
@@ -143,7 +144,7 @@ export function useUserLoginAuth(){
 
     const handleValidateOtp=(data)=>{
 
-        AxiosCall({url:PUBLIC_ENDPOINTS.login,method:"POST",body:data})
+        AxiosCall({url:PUBLIC_ENDPOINTS.OTP_VERIFY,method:"POST",body:data})
         .then((data)=>{
             console.log("validate_otp",data)
            

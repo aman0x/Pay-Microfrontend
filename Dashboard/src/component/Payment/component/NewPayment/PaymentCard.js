@@ -20,6 +20,8 @@ export function PaymentCard({
   setStepIndex,
   amount,
   beneficiary,
+  buttonEnabled,
+  setButtonEnabled
 }) {
   const navigate = useNavigate();
   const swiperRef = useRef(null);
@@ -38,7 +40,6 @@ export function PaymentCard({
       verified: true,
     },
   ]);
-  const [buttonEnabled, setButtonEnabled] = useState(false);
 
   const handleSlideChange = (swiper) => {
     setCardIndex(swiper.activeIndex);
@@ -106,7 +107,7 @@ export function PaymentCard({
           );
         })}
       </div>
-      <button
+      {/* <button
         type="submit"
         disabled={!buttonEnabled}
         onClick={() => {
@@ -144,7 +145,7 @@ export function PaymentCard({
             style={{ color: buttonEnabled ? "white" : "#B6B8BA" }}
           />
         </span>
-      </button>
+      </button> */}
     </div>
   );
 }
