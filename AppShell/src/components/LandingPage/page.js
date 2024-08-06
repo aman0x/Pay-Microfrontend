@@ -30,27 +30,9 @@ export default function Home() {
               loading="lazy"
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/ee0f76d2bdea7f403ab163842ac4a0749d8d8daea00cb51fea4c7381b361e07a?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d"
               className="object-contain shrink-0 self-stretch my-auto aspect-[3.04] w-[170px]"
-            />
-            <div className="md:hidden" onClick={()=>setInDropDown(true)}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g clip-path="url(#clip0_3_456)">
-              <path d="M1 5.99994H23C23.2652 5.99994 23.5196 5.89458 23.7071 5.70704C23.8946 5.51951 24 5.26515 24 4.99994C24 4.73472 23.8946 4.48037 23.7071 4.29283C23.5196 4.1053 23.2652 3.99994 23 3.99994H1C0.734784 3.99994 0.48043 4.1053 0.292893 4.29283C0.105357 4.48037 0 4.73472 0 4.99994C0 5.26515 0.105357 5.51951 0.292893 5.70704C0.48043 5.89458 0.734784 5.99994 1 5.99994Z" fill="white"/>
-              <path d="M23 9H9C8.73478 9 8.48043 9.10536 8.29289 9.29289C8.10536 9.48043 8 9.73478 8 10C8 10.2652 8.10536 10.5196 8.29289 10.7071C8.48043 10.8946 8.73478 11 9 11H23C23.2652 11 23.5196 10.8946 23.7071 10.7071C23.8946 10.5196 24 10.2652 24 10C24 9.73478 23.8946 9.48043 23.7071 9.29289C23.5196 9.10536 23.2652 9 23 9Z" fill="white"/>
-              <path d="M23 19H9C8.73478 19 8.48043 19.1054 8.29289 19.2929C8.10536 19.4804 8 19.7348 8 20C8 20.2652 8.10536 20.5196 8.29289 20.7071C8.48043 20.8947 8.73478 21 9 21H23C23.2652 21 23.5196 20.8947 23.7071 20.7071C23.8946 20.5196 24 20.2652 24 20C24 19.7348 23.8946 19.4804 23.7071 19.2929C23.5196 19.1054 23.2652 19 23 19Z" fill="white"/>
-              <path d="M23 14H1C0.734784 14 0.48043 14.1054 0.292893 14.2929C0.105357 14.4804 0 14.7348 0 15C0 15.2652 0.105357 15.5196 0.292893 15.7071C0.48043 15.8947 0.734784 16 1 16H23C23.2652 16 23.5196 15.8947 23.7071 15.7071C23.8946 15.5196 24 15.2652 24 15C24 14.7348 23.8946 14.4804 23.7071 14.2929C23.5196 14.1054 23.2652 14 23 14Z" fill="white"/>
-              </g>
-              <defs>
-              <clipPath id="clip0_3_456">
-              <rect width="24" height="24" fill="white"/>
-              </clipPath>
-              </defs>
-              </svg>
-            </div>
-            
-             {IsDropdown && <Dropdown setDropdown={setInDropDown} scrollToDiv={scrollToDiv}/>}
-            
+            /> 
             <div className="hidden md:flex flex-wrap gap-2.5 justify-center items-center self-stretch my-auto min-w-[240px] max-md:max-w-full">
-              <div className="flex gap-5 items-start self-stretch pr-16 my-auto text-white min-w-[240px]">
+              <div className="hidden lg:flex gap-5 items-start self-stretch pr-16 my-auto text-white min-w-[240px]">
                 <div onClick={()=>scrollToDiv('features')} className="cursor-pointer">Features</div>
                 <div onClick={()=>scrollToDiv('howitworks')} className="cursor-pointer">How it Works</div>
                 <div onClick={()=>scrollToDiv('payment')} className="cursor-pointer">Payments</div>
@@ -76,6 +58,23 @@ export default function Home() {
                 </div>
               </div>
             </div>
+            <div className="lg:hidden" onClick={()=>setInDropDown(true)}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_3_456)">
+              <path d="M1 5.99994H23C23.2652 5.99994 23.5196 5.89458 23.7071 5.70704C23.8946 5.51951 24 5.26515 24 4.99994C24 4.73472 23.8946 4.48037 23.7071 4.29283C23.5196 4.1053 23.2652 3.99994 23 3.99994H1C0.734784 3.99994 0.48043 4.1053 0.292893 4.29283C0.105357 4.48037 0 4.73472 0 4.99994C0 5.26515 0.105357 5.51951 0.292893 5.70704C0.48043 5.89458 0.734784 5.99994 1 5.99994Z" fill="white"/>
+              <path d="M23 9H9C8.73478 9 8.48043 9.10536 8.29289 9.29289C8.10536 9.48043 8 9.73478 8 10C8 10.2652 8.10536 10.5196 8.29289 10.7071C8.48043 10.8946 8.73478 11 9 11H23C23.2652 11 23.5196 10.8946 23.7071 10.7071C23.8946 10.5196 24 10.2652 24 10C24 9.73478 23.8946 9.48043 23.7071 9.29289C23.5196 9.10536 23.2652 9 23 9Z" fill="white"/>
+              <path d="M23 19H9C8.73478 19 8.48043 19.1054 8.29289 19.2929C8.10536 19.4804 8 19.7348 8 20C8 20.2652 8.10536 20.5196 8.29289 20.7071C8.48043 20.8947 8.73478 21 9 21H23C23.2652 21 23.5196 20.8947 23.7071 20.7071C23.8946 20.5196 24 20.2652 24 20C24 19.7348 23.8946 19.4804 23.7071 19.2929C23.5196 19.1054 23.2652 19 23 19Z" fill="white"/>
+              <path d="M23 14H1C0.734784 14 0.48043 14.1054 0.292893 14.2929C0.105357 14.4804 0 14.7348 0 15C0 15.2652 0.105357 15.5196 0.292893 15.7071C0.48043 15.8947 0.734784 16 1 16H23C23.2652 16 23.5196 15.8947 23.7071 15.7071C23.8946 15.5196 24 15.2652 24 15C24 14.7348 23.8946 14.4804 23.7071 14.2929C23.5196 14.1054 23.2652 14 23 14Z" fill="white"/>
+              </g>
+              <defs>
+              <clipPath id="clip0_3_456">
+              <rect width="24" height="24" fill="white"/>
+              </clipPath>
+              </defs>
+              </svg>
+            </div>
+            
+             {IsDropdown && <Dropdown setDropdown={setInDropDown} scrollToDiv={scrollToDiv}/>}
           </div>
         </div>
 
@@ -164,7 +163,7 @@ export default function Home() {
 
 
       <div className="flex flex-col z-0 items-center pt-3 pb-12 px-16 max-md:px-5 max-md:max-w-full " id="features">
-        <div className="responsive flex-wrap gap-5 justify-between md:!items-end max-w-full w-[1180px]">
+        <div className="flex flex-col lg:!flex-row  flex-wrap gap-5 justify-between lg:!items-end max-w-full w-[1180px]">
           <div className="flex flex-col  font-semibold min-w-[240px]">
             <div className="flex gap-2.5 items-center md:self-start px-5 py-2.5 text-sm text-center whitespace-nowrap rounded-[94px]">
               <img
@@ -189,7 +188,7 @@ export default function Home() {
             nostra.
           </div>
         </div>
-        <div className="flex flex-wrap gap-5 justify-center items-start self-stretch mt-16 w-full max-md:mt-10 max-md:max-w-full">
+        <div className="flex flex-col lg:!flex-row gap-5 justify-center items-start self-stretch mt-16 w-full max-md:mt-10 max-md:max-w-full">
           <div className="flex flex-col flex-1 shrink basis-0 min-w-[240px] max-md:max-w-full">
             <img
               loading="lazy"
@@ -295,20 +294,20 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-center py-6">
+        <div className="flex flex-col items-center justify-center py-6 gap-2">
 
           <div>
-            <div className="flex  justify-center items-center ">
-              <div className="flex justify-center w-1/2">
+            <div className="flex flex-col md:!flex-row  justify-center items-center  ">
+              <div className="flex justify-center md:w-1/2">
                 <img
                   loading="lazy"
                   src="./images/step.png" />
               </div>
-              <div className="w-1/2 flex justify-end">
+              <div className="md:w-1/2 flex md:justify-end">
                 <div className="w-4/5">
                   <p className="gradient-text" >Step-1</p>
-                  <p className="font-medium text-2xl text-gray-900">Choose the amount you want to pay and the type of payment.</p>
-                  <p className=" font-normal text-sm text-gray-800">Torem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+                  <p className="font-medium text-lg lg:text-2xl text-gray-900">Choose the amount you want to pay and the type of payment.</p>
+                  <p className=" font-normal text-xs lg:text-sm text-gray-800">Torem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
                 </div>
               </div>
 
@@ -317,11 +316,11 @@ export default function Home() {
 
           <div>
             <div className="flex  justify-center items-center ">
-              <div className="w-1/2 flex justify-end">
+              <div className="w-1/2 flex md:justify-end">
                 <div className="w-4/5">
                   <p className="gradient-text" >Step-2</p>
-                  <p className="font-medium text-2xl text-gray-900">Select one or more recipients to whom you want to send the payment.</p>
-                  <p className=" font-normal text-sm text-gray-800">Torem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+                  <p className="font-medium text-lg lg:text-2xl text-gray-900">Select one or more recipients to whom you want to send the payment.</p>
+                  <p className=" font-normal text-xs lg:text-sm text-gray-800">Torem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
                 </div>
               </div>
               <div className="flex justify-cente w-1/2">
@@ -341,11 +340,11 @@ export default function Home() {
                   loading="lazy"
                   src="./images/step.png" />
               </div>
-              <div className="w-1/2 flex justify-end ">
+              <div className="w-1/2 flex md:justify-end ">
                 <div className="w-4/5">
                   <p className="gradient-text" >Step-3</p>
-                  <p className="font-medium text-2xl text-gray-900">Choose the card you want to pay with and confirm the payment</p>
-                  <p className=" font-normal text-sm text-gray-800">Torem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+                  <p className="font-medium text-lg lg:text-2xl text-gray-900">Choose the card you want to pay with and confirm the payment</p>
+                  <p className=" font-normal text-xs lg:text-sm text-gray-800">Torem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
                 </div>
               </div>
 
@@ -1265,6 +1264,7 @@ export default function Home() {
 }
 
 function Dropdown({setDropdown,scrollToDiv}){
+  const navigate = useNavigate()
   return(
     <div className="absolute right-1 top-10 flex flex-col justify-between bg-[linear-gradient(108deg,#FFF_-0.37%,#F4F4F6_98.96%)] w-72 p-10 rounded-2xl h-[40rem]">
       <div className="text-right flex justify-end" onClick={()=>setDropdown(false)}>
@@ -1285,7 +1285,7 @@ function Dropdown({setDropdown,scrollToDiv}){
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/7bcf79772331b6463b14d15b883d2d46099bfdb56f3081b43b28b479e8fddad4?apiKey=02c907f9d629401e9ee2b64d643cae1d&&apiKey=02c907f9d629401e9ee2b64d643cae1d"
             className="object-contain shrink-0 self-stretch my-auto aspect-square w-[18px]"
           />
-          <div className="self-stretch my-auto bg-clip-text bg-[linear-gradient(99deg,#D33DBC_1%,#7A6AE4_51.23%)]">
+          <div className="self-stretch my-auto bg-clip-text bg-[linear-gradient(99deg,#D33DBC_1%,#7A6AE4_51.23%)]" onClick={()=>navigate('/accounts/signup')}>
             Sign Up
           </div>
         </div>
@@ -1294,7 +1294,7 @@ function Dropdown({setDropdown,scrollToDiv}){
           <path d="M6.3352 0C3.97719 0 2.06018 1.91701 2.06018 4.27502C2.06018 6.58803 3.86919 8.46004 6.2272 8.54104C6.2992 8.53204 6.3712 8.53204 6.4252 8.54104C6.4432 8.54104 6.4522 8.54104 6.4702 8.54104C6.4792 8.54104 6.4792 8.54104 6.4882 8.54104C8.79221 8.46004 10.6012 6.58803 10.6102 4.27502C10.6102 1.91701 8.69321 0 6.3352 0Z" fill="#9CA3AF"/>
           <path d="M10.908 10.935C8.397 9.26096 4.30202 9.26096 1.77301 10.935C0.630003 11.7 0 12.735 0 13.842C0 14.949 0.630003 15.975 1.76401 16.731C3.02401 17.577 4.67999 18 6.33599 18C7.992 18 9.64801 17.577 10.908 16.731C12.042 15.966 12.672 14.94 12.672 13.824C12.663 12.717 12.042 11.691 10.908 10.935Z" fill="#9CA3AF"/>
           </svg>
-          <div className="self-stretch my-auto">Log In</div>
+          <div className="self-stretch my-auto" onClick={()=>navigate('/accounts/login')}>Log In</div>
         </div>
       </div>
     </div>

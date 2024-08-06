@@ -1,7 +1,6 @@
 // Dashboard.js
 import React from "react";
 import ReactDOM from "react-dom/client";
-
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import "./index.css";
 import DashboardMain from "./component/Main/index.js";
@@ -24,7 +23,6 @@ import ProfileOrKyc from "./component/ProfileOrKyc";
 import MyContacts from "./component/MyContacts";
 import BankDetails from "./component/BankDetails";
 import QuickPayment from "./component/Payment/component/QuickPayment";
-import ShellStore from "AppShell/shellStore";
 import { Provider } from "react-redux";
 const Dashboard = () => {
   return (

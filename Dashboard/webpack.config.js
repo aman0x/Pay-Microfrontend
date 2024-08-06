@@ -60,7 +60,6 @@ module.exports = (env) => {
         filename: "remoteEntry.js",
         remotes: {
           Auth: `Auth@${envVars.APP_URL}:8004/remoteEntry.js`,
-          AppShell:`AppShell@${envVars.APP_URL}:8003/remoteEntry.js`
         },
         exposes: {
           "./Dashboard": "./src/App.js",
