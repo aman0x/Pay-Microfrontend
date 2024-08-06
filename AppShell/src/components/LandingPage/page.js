@@ -315,15 +315,15 @@ export default function Home() {
           </div>
 
           <div>
-            <div className="flex  justify-center items-center ">
-              <div className="w-1/2 flex md:justify-end">
+            <div className="flex flex-col-reverse md:!flex-row  justify-center items-center">
+              <div className="flex md:justify-center md:w-1/2">
                 <div className="w-4/5">
                   <p className="gradient-text" >Step-2</p>
                   <p className="font-medium text-lg lg:text-2xl text-gray-900">Select one or more recipients to whom you want to send the payment.</p>
                   <p className=" font-normal text-xs lg:text-sm text-gray-800">Torem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
                 </div>
               </div>
-              <div className="flex justify-cente w-1/2">
+              <div className="flex justify-center md:w-1/2">
                 <img
                   loading="lazy"
                   src="./images/step.png" />
@@ -334,13 +334,13 @@ export default function Home() {
           </div>
 
           <div>
-            <div className="flex  justify-center items-center ">
-              <div className="flex justify-center w-1/2">
+            <div className="flex flex-col md:!flex-row  justify-center items-center">
+              <div className="flex justify-center md:w-1/2">
                 <img
                   loading="lazy"
                   src="./images/step.png" />
               </div>
-              <div className="w-1/2 flex md:justify-end ">
+              <div className="md:w-1/2 flex md:justify-end ">
                 <div className="w-4/5">
                   <p className="gradient-text" >Step-3</p>
                   <p className="font-medium text-lg lg:text-2xl text-gray-900">Choose the card you want to pay with and confirm the payment</p>
