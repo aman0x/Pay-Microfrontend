@@ -12,8 +12,12 @@ module.exports = (env) => {
   const envVars = require('dotenv').config({ path: envPath }).parsed || {};
 
   return {
+    // output: {
+    //   publicPath: `${envVars.APP_URL}/dashboard/`,
+    // },
     output: {
-      publicPath: `${envVars.APP_URL}/dashboard/`,
+      filename: 'main.js',
+      path: path.resolve(__dirname, 'dist')
     },
 
     resolve: {

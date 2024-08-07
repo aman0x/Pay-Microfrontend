@@ -215,7 +215,6 @@ const QuickPaymentStep2 = ({
               beneficiary: beneficiary.id,
               service_ids: [1],
               transaction_type: "card",
-              //temp
               card_id: cardId,
             };
             handlePayment(newData);

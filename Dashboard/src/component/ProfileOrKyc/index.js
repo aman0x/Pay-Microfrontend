@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Formik } from "formik";
 import { useAccounts } from "#hooks/index";
@@ -8,7 +8,7 @@ function ProfileOrKyc() {
   const location = useLocation();
   const [pathName, setPathName] = useState(null);
   const dispatch = useDispatch();
-
+  const fileInputRef = useRef()
   useEffect(() => {
     if (location) {
       let tmp = location.pathname.slice(location.pathname.lastIndexOf("/") + 1);
@@ -21,6 +21,21 @@ function ProfileOrKyc() {
   useEffect(() => {
     setProfileIndex(pathName);
   }, [pathName]);
+
+  const handleInputClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const uploadFile = (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+    const fileName =
+      file.name.length > 20
+        ? `${file.name.substring(0, 13)}... .${file.name.split(".")[1]}`
+        : file.name;
+    const formData = new FormData();
+    formData.append("file", file);
+  };
 
   const [isDataShown, setDataShown] = useState(false);
   const { handleGetCreateUserKyc, handleUserProfile } = useAccounts();
@@ -558,12 +573,23 @@ function ProfileOrKyc() {
                     <div className="flex gap-4 items-center">
                       <div className="relative">
                         <div className="primary-linear-gr-bg p-[2px] rounded-full">
-                          <div className="w-24 h-24 bg-white rounded-full"></div>
-                          {/* <img
-                              src="#"
-                          /> */}
+                          <div className="w-24 h-24 bg-white rounded-full">
+                          <img
+                              src="/images/profile.png"
+                              
+                              className="rounded-full w-full h-full"
+                          />
+                         </div>
+                          <input
+                          type="file"
+                          accept="image/*"
+                          hidden
+                          ref={fileInputRef}
+                          onChange={uploadFile}
+                          />
+                          {/*  */}
                         </div>
-                        <div className="absolute bottom-2 right-1">
+                        <div className="absolute bottom-2 right-1" onClick={()=>handleInputClick()}>
                               <svg
                                 width="19"
                                 height="18"

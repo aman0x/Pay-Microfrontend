@@ -259,3 +259,39 @@ function maskCardNumber(cardNumber) {
   const formattedCardNumber = maskedCardNumber.match(/.{1,4}/g).join(" ");
   return formattedCardNumber;
 }
+
+export function UploadCardStatement({isOpen,setOpen=()=>{}}){
+  if (!isOpen) return null;
+  return(
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+      <div className="flex overflow-hidden flex-col p-7 max-w-xs bg-white rounded-3xl">
+        <div className="flex gap-5 justify-between w-full">
+          <div className="text-xs font-semibold text-gray-800">
+            Upload Card Steatement
+          </div>
+          <div className="flex gap-2.5 justify-center items-center px-2 bg-gray-100 rounded-lg h-[18px] min-h-[18px] w-[18px]"
+          onClick={()=>{
+            setOpen(false)
+          }}
+          >
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="18" height="18" rx="8" transform="matrix(1 -8.74228e-08 -8.74228e-08 -1 0 18)" fill="#F0F1F2"/>
+            <path d="M7 11L9 9L7 7" stroke="#A3A6A9" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M11 7L9 9L11 11" stroke="#A3A6A9" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+        <div className="flex overflow-hidden flex-col justify-center px-9 py-11 mt-5 font-light bg-gray-100 rounded-2xl">
+          <div className="flex flex-col">
+            <div className="text-xs italic text-center text-zinc-500">
+              Tap here to choose a file on your device...
+            </div>
+            <div className="mt-1.5 text-xs italic text-zinc-400">
+              Acceptable files .JPG, .PNG or .PDF up to 5 MB size
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+  )
+}

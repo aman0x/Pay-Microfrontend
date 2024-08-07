@@ -210,7 +210,7 @@ export function usePayment() {
             });
             return response.data;
         } catch (e) {
-            toast("Error in getting Card Detail");
+            return {}
         }
     };
     return {

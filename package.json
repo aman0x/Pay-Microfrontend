@@ -23,6 +23,13 @@
     "build-and-start:report": "cd Report && npm run build && npm run start",
     "build-and-start:admin": "cd Admin_dashboard && npm run build && npm run start",
     "build-and-start:all": "concurrently \"npm run build-and-start:appshell\" \"npm run build-and-start:auth\" \"npm run build-and-start:dashboard\" \"npm run build-and-start:invoice\" \"npm run build-and-start:report\" \"npm run build-and-start:admin\"",
+    "install:appshell": "cd AppShell && npm install",
+    "install:auth": "cd Auth && npm install",
+    "install:dashboard": "cd Dashboard && npm install",
+    "install:invoice": "cd Invoice && npm install",
+    "install:report": "cd Report && npm install",
+    "install:admin": "cd Admin_dashboard && npm install",
+   "install:all": "concurrently \"npm run install:appshell\" \"npm run install:auth\" \"npm run install:dashboard\" \"npm run install:invoice\" \"npm run install:report\" \"npm run install:admin\"",
     "stop:all": "pkill -f 'npm start'"
   },
   "devDependencies": {

@@ -343,7 +343,7 @@ function InvoiceTable({ invoiceData,filterState,toggleFilter,searchValue,setSear
                 </td>
                 <td>
                   <div className="td-element text-[10px]">
-                    {transaction.type}
+                    {transaction.invoice_type}
                   </div>
                 </td>
                 <td>
