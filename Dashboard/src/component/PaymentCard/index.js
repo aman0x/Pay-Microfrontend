@@ -49,7 +49,7 @@ export function PaymentCard({ handlePaymentCardData }) {
       </div>
       {
         cards.length?
-        <FlipCard index={cardIndex} cardData={cards[cardIndex]} />
+        <FlipCard index={cardIndex} cardData={cards[cardIndex]} setCards={setCards} cards={cards} />
         :
         <></>
       }
@@ -77,6 +77,8 @@ export function FlipCard({
   cardColorbg = "#232B31",
   isArrowShown = true,
   cardData = {},
+  cards=[],
+  setCards =()=>{}
 }) {
   const navigate = useNavigate();
   const [isCardClicked, setCardClicked] = useState(false);
@@ -195,7 +197,13 @@ export function FlipCard({
                 </div>
               </div>
               <div className="mt-6 ">
-                <div onClick={()=>handlePaymentCardDelete(cardData.id)}>
+                <div onClick={()=>{
+                  handlePaymentCardDelete(cardData.id)
+                  const newCards = cards.filter(
+                    (card) => card.id !== cardData.id
+                  );
+                  setCards(newCards)
+                }}>
                   <RiDeleteBin5Fill color="red" size="16px" />
                 </div>
               </div>

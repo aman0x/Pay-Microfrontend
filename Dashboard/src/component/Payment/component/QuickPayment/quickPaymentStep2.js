@@ -29,6 +29,8 @@ const QuickPaymentStep2 = ({
   const [cardSelected, setCardSelected] = useState(false);
   const [bearerIndex, setBearerIndex] = useState(0);
   const [bearerMenuView, setBererMenuView] = useState(false);
+  const [buttonEnabled, setButtonEnabled] = useState(false);
+  const [cardId,setCardId] = useState(0)
 
   const receiver = ["Me", "Receiver"];
   const handlePayment = async (newData) => {
@@ -200,7 +202,7 @@ const QuickPaymentStep2 = ({
             Choose Card :
           </p>
           <div onClick={() => setCardSelected(true)} >
-            <PaymentCard handlePaymentCardData={handlePaymentCardData} />
+            <PaymentCard handlePaymentCardData={handlePaymentCardData} setButtonEnabled={setButtonEnabled} setCardId={setCardId} />
           </div>
         </div>
 
@@ -214,7 +216,7 @@ const QuickPaymentStep2 = ({
               service_ids: [1],
               transaction_type: "card",
               //temp
-              card_id: 11,
+              card_id: cardId,
             };
             handlePayment(newData);
           }}

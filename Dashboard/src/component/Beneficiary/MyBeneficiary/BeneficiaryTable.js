@@ -3,7 +3,7 @@ import { TiTick } from "react-icons/ti";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
-function BeneficiaryTable({ beneficiary }) {
+function BeneficiaryTable({ beneficiary, handleDeleteBeneficiaryAccount }) {
   const navigate = useNavigate();
   const [isDateClicked, setIsDateClicked] = useState(false);
   const [dateIndex, setDateIndex] = useState([]);
@@ -188,7 +188,9 @@ function BeneficiaryTable({ beneficiary }) {
                 </td>
                 <td>
                   <div className="flex gap-6 items-center td-element">
-                    <div>
+                    <div onClick={async()=>{
+                      await handleDeleteBeneficiaryAccount(transaction.id)
+                    }}>
                       <svg
                         width="14"
                         height="16"

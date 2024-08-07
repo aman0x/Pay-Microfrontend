@@ -374,34 +374,30 @@ export function useAccounts() {
         try {
             const response = await ApiCall({
                 url: PRIVATE_ENDPOINTS.GET_CREATE_BANK_ACCOUNT_LIST + id + "/delete/",
-                method: "PUT",
+                method: "PATCH",
                 PRIVATE_API: true,
                 current_user: user,
             });
-            navigate(-1);
             toast.success("Account Deleted!!");
             return response.data;
         } catch (error) {
             toast("Error Deleting Bank");
         }
     };
-    // const handleAddBankAccount = async(data,id)=>{
-    //     try {
-    //         const response = await ApiCall({
-    //           url: PRIVATE_ENDPOINTS.GET_CREATE_BANK_ACCOUNT_LIST+'add/',
-    //           method: "POST",
-    //           body:data,
-    //           PRIVATE_API: true,
-    //           current_user: user
-    //         });
-    //         navigate(-1)
-    //         toast.success("Account Added!!")
-    //         return response.data;
-    //       }
-    //     catch (error) {
-    //     toast("Error Adding Bank");
-    //     }
-    // }
+    const handleDeleteBeneficiaryAccount = async (id) => {
+        try {
+            const response = await ApiCall({
+                url: PRIVATE_ENDPOINTS.GET_BENEFICIARY_LIST + id + "/delete/",
+                method: "PATCH",
+                PRIVATE_API: true,
+                current_user: user,
+            });
+            toast.success("Beneficiary Deleted!!");
+            return response.data;
+        } catch (error) {
+            toast("Error Deleting Beneficiaries");
+        }
+    }; 
     const handleGetBeneficiary = async () => {
         try {
             const response = await ApiCall({
@@ -493,5 +489,5 @@ export function useAccounts() {
         }
     }
 
-    return { handleAddBankAccount, handleDeleteBankAccount, handleGetBankAccount, handleGetBeneficiary, handleAddBeneficiary, handleAddBeneficiaryBank, handleGetCreateUserKyc, handleUserProfile, handleGetBankById }
+    return { handleAddBankAccount, handleDeleteBankAccount, handleGetBankAccount, handleGetBeneficiary, handleAddBeneficiary, handleAddBeneficiaryBank, handleGetCreateUserKyc, handleUserProfile, handleGetBankById,handleDeleteBeneficiaryAccount }
 }

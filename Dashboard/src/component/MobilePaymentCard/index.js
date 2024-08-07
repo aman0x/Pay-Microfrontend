@@ -82,7 +82,7 @@ export function MobilePaymentCard({ handlePaymentCardData }) {
       :
       <div className=" m-2 max-w-[300px] sm:max-w-[400px] w-full flex justify-center">
         {
-          cards.lengh?
+          cards.length?
           <FlipCard index={cardIndex} cardData={cards[0]} isArrowShown={false} />
           :
           <></>

@@ -32,13 +32,13 @@ function AddCard() {
       toast.error("fail");
     }
   };
-  useEffect(()=>{
-    const fetchCardDetail = async()=>{
-      const data  = await handlePaymentCardCheck()
+  // useEffect(()=>{
+  //   const fetchCardDetail = async()=>{
+  //     const data  = await handlePaymentCardCheck()
       
-    }
-    fetchCardDetail()
-  })
+  //   }
+  //   fetchCardDetail()
+  // })
   return (
     <div className="mt-5 bg-primary p-[2rem] w-full h-[75vh] max-h-[800px] rounded-2xl">
       <div className="mx-auto form-width flex flex-col gap-8 mt-8">

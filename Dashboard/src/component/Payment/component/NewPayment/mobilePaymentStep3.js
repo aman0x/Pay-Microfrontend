@@ -13,6 +13,7 @@ const MobilePaymentStep3 = ({ stepIndex, setStepIndex, selectedName,beneficiary,
   const {handleGetBankById} = useAccounts()
   const [cardSelected, setCardSelected] = useState(false);
   const [buttonEnabled, setButtonEnabled] = useState(false);
+  const [cardId,setCardId] = useState(0)
   useEffect(()=>{
     const fetchBankDetails = async(bankId)=>{
      const data = await handleGetBankById(bankId)
@@ -146,7 +147,7 @@ const MobilePaymentStep3 = ({ stepIndex, setStepIndex, selectedName,beneficiary,
             Choose Card :
           </p>
           <div onClick={() => setCardSelected(true)}>
-            <PaymentCard handlePaymentCardData={handlePaymentCardData} setStepIndex={setStepIndex} amount={amount} beneficiary={beneficiary} buttonEnabled={buttonEnabled} setButtonEnabled={setButtonEnabled}/>
+            <PaymentCard handlePaymentCardData={handlePaymentCardData} setCardId={setCardId} setStepIndex={setStepIndex} amount={amount} beneficiary={beneficiary} buttonEnabled={buttonEnabled} setButtonEnabled={setButtonEnabled}/>
           </div>
         </div>
 
@@ -160,8 +161,7 @@ const MobilePaymentStep3 = ({ stepIndex, setStepIndex, selectedName,beneficiary,
             beneficiary: beneficiary.id,
             service_ids: [1],
             transaction_type: "card",
-            //temp
-            card_id: 12,
+            card_id: cardId,
           };
           handlePayment(newData);
         }}

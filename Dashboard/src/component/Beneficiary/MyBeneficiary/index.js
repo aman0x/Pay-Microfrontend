@@ -20,7 +20,7 @@ function MyBeneficiary(){
             "user": 2
         }
     ])
-    const {handleGetBeneficiary} = useAccounts()
+    const {handleGetBeneficiary,handleDeleteBeneficiaryAccount} = useAccounts()
     useEffect(()=>{
         const fetchBeneficiary = async()=>{
             const data = await handleGetBeneficiary()
@@ -53,7 +53,7 @@ function MyBeneficiary(){
                     </div>
                 </div>                
             </div>
-           <BeneficiaryTable beneficiary={beneficiary}/> 
+           <BeneficiaryTable beneficiary={beneficiary} handleDeleteBeneficiaryAccount={handleDeleteBeneficiaryAccount}/> 
            <div className="flex justify-center mt-4 mb-20 md:mb-0">
                 <div className="primary-linear-gr-bg p-[2px] rounded-xl">
                 <button 

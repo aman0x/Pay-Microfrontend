@@ -21,7 +21,8 @@ export function PaymentCard({
   amount,
   beneficiary,
   buttonEnabled,
-  setButtonEnabled
+  setButtonEnabled,
+  setCardId
 }) {
   const navigate = useNavigate();
   const swiperRef = useRef(null);
@@ -43,6 +44,7 @@ export function PaymentCard({
 
   const handleSlideChange = (swiper) => {
     setCardIndex(swiper.activeIndex);
+    setCardId(cards[swiper.activeIndex].id)
   };
   const goToSlide = (index) => {
     if (swiperRef.current) {
@@ -53,6 +55,9 @@ export function PaymentCard({
     const fetchCards = async () => {
       const data = await handlePaymentCardData();
       setCards(data.results);
+      if(data.results.length>0){
+        setCardId(data.results[0].id)
+      }
     };
     fetchCards();
   }, []);

@@ -500,7 +500,6 @@ function NewInvoiceStep2({ setStepIndex, data }) {
               const newData = {
                 ...data,
                 beneficiary: data.beneficiary.id,
-                user_id:2
               };
               handleInvoiceCreate(newData);
             }}
