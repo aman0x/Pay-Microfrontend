@@ -79,10 +79,10 @@ function App() {
                     </ErrorBoundary>
                   }
                 />
-                {/* <Route
+                <Route
                   path="*"
                   element={<Navigate to="/dashboard" replace />}
-                /> */}
+                />
               </Routes>
             </CommonLayout>
           )
