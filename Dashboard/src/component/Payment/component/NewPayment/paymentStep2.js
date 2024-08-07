@@ -366,7 +366,7 @@ function PaymentStep2({ setStepIndex, data, bankDetail, setPaymentDetail,setCard
                 Name:
               </div>
               <div className="poppins-semibold text-xs text-[#232B31]">
-                {data.beneficiary.name}
+                {data?.beneficiary?.name}
               </div>
               <div className="text-[#4E5459] text-sm poppins-semibold">
                 Contact Details:
@@ -376,14 +376,14 @@ function PaymentStep2({ setStepIndex, data, bankDetail, setPaymentDetail,setCard
                   <div className="text-[#A3A6A9] text-xs">Phone</div>
                   <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]" />
                   <div className="poppins-semibold text-xs">
-                    {data.beneficiary.phone_number}
+                    {data?.beneficiary?.phone_number}
                   </div>
                 </div>
                 <div className="flex gap-2 items-center">
                   <div className="text-[#A3A6A9] text-xs">Mail</div>
                   <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]" />
                   <div className="poppins-semibold text-xs">
-                    {data.beneficiary.email}
+                    {data?.beneficiary?.email}
                   </div>
                 </div>
               </div>

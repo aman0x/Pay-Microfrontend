@@ -201,7 +201,7 @@ function MakeInvoice({ isRepeatPayment = false }) {
                 <div className="relative">
                   <input
                     type="text"
-                    value={beneficiaries[receiverIndex].name}
+                    value={beneficiaries[receiverIndex]?.name||''}
                     className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 p-3.5 "
                     placeholder="Receiver"
                   />

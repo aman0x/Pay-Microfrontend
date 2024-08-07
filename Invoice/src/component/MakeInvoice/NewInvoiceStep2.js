@@ -132,21 +132,21 @@ function NewInvoiceStep2({ setStepIndex, data }) {
               <div className="text-[#A3A6A9] text-xs min-w-fit">Name:</div>
               <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]" />
               <div className="poppins-semibold text-sm min-w-fit">
-                {data.beneficiary.name}
+                {data?.beneficiary?.name}
               </div>
             </div>
             <div className="flex items-center justify-between gap-1">
               <div className="text-[#A3A6A9] text-xs min-w-fit">Phone:</div>
               <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]" />
               <div className="poppins-semibold text-sm min-w-fit">
-                {data.beneficiary.phone_number}
+                {data?.beneficiary?.phone_number}
               </div>
             </div>
             <div className="flex items-center justify-between gap-1">
               <div className="text-[#A3A6A9] text-xs min-w-fit">Mail:</div>
               <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]" />
               <div className="poppins-semibold text-sm min-w-fit">
-                {data.beneficiary.email}
+                {data?.beneficiary?.email}
               </div>
             </div>
           </div>

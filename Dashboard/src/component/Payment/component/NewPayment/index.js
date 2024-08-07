@@ -31,18 +31,19 @@ function NewPayment({ isRepeatPayment = false }) {
   const [amount, setAmount] = useState("");
   const [searchParams] = useSearchParams();
   const [beneficiaries, setBeneficiaries] = useState(receivers);
-  const [bankDetail, setBankDetail] = useState({
-    id: 10,
-    user: 1,
-    account_name: "test",
-    account_number: "23647586473424574",
-    ifsc_code: "sfsdg",
-    account_type: "INDIVIDUAL",
-    account_type_2: "SAVINGS",
-    gstin: null,
-    pan: null,
-    bank_name: "SBI BANK",
-  });
+  const [bankDetail, setBankDetail] = useState({})
+  // {
+  //   id: 10,
+  //   user: 1,
+  //   account_name: "test",
+  //   account_number: "23647586473424574",
+  //   ifsc_code: "sfsdg",
+  //   account_type: "INDIVIDUAL",
+  //   account_type_2: "SAVINGS",
+  //   gstin: null,
+  //   pan: null,
+  //   bank_name: "SBI BANK",
+  // });
 
   const [selectedName, setSelectedName] = useState("");
   const [selectedBeneficiary, setSelectedBeneficiary] = useState();
@@ -338,7 +339,7 @@ function NewPayment({ isRepeatPayment = false }) {
                   <div className="relative">
                     <input
                       type="text"
-                      value={beneficiaries[receiverIndex].name}
+                      value={beneficiaries[receiverIndex]?.name||''}
                       className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-xs p-3.5 "
                       placeholder="Receiver"
                     />
@@ -475,7 +476,7 @@ function NewPayment({ isRepeatPayment = false }) {
               transaction_type: "card",
               beneficiary: beneficiaries[receiverIndex],
               card_id: cardId,
-              bank_id: beneficiaries[receiverIndex].bank_account,
+              bank_id: beneficiaries[receiverIndex]?.bank_account,
             }}
             paymentDetail={paymentDetail}
             bankDetail={bankDetail}

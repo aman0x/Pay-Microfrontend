@@ -13,17 +13,17 @@ function PaymentStep3({data,setStepIndex,bankDetail,paymentDetail}){
                             <div className="flex gap-2 items-center ">
                                 <div className="text-[#A3A6A9] text-sm ">Name</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-sm min-w-fit">{data.beneficiary.name}</div>
+                                <div className="poppins-semibold text-sm min-w-fit">{data?.beneficiary?.name}</div>
                             </div>
                             <div className="flex gap-2 items-center">
                                         <div className="text-[#A3A6A9] text-sm">Phone</div>
                                         <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                        <div className="poppins-semibold text-sm min-w-fit">{data.beneficiary.phone_number}</div>
+                                        <div className="poppins-semibold text-sm min-w-fit">{data?.beneficiary?.phone_number}</div>
                             </div>
                             <div className="flex gap-2 items-center">
                                 <div className="text-[#A3A6A9] text-sm">Mail</div>
                                 <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                <div className="poppins-semibold text-sm min-w-fit">{data.beneficiary.email}</div>
+                                <div className="poppins-semibold text-sm min-w-fit">{data?.beneficiary?.email}</div>
                             </div>
                         </div>     
                     </div>
@@ -43,7 +43,7 @@ function PaymentStep3({data,setStepIndex,bankDetail,paymentDetail}){
                                 <div className="flex gap-2 items-center">
                                         <div className="text-[#A3A6A9] text-sm min-w-fit">IFS Code</div>
                                         <hr className="my-2 w-full border-t-2 border-dashed border-[#CDCED1]"/>
-                                        <div className="poppins-semibold text-sm min-w-fit" >HDFC0003242</div>
+                                        <div className="poppins-semibold text-sm min-w-fit" >{bankDetail.ifsc_code}</div>
                                 </div>   
                                 </div>
                     </div>
@@ -91,7 +91,7 @@ function PaymentStep3({data,setStepIndex,bankDetail,paymentDetail}){
                     onClick={() => {
                         const newData= {
                             ...data,
-                            beneficiary:data.beneficiary.id,
+                            beneficiary:data?.beneficiary?.id,
                             service_ids:[1]
                         } 
                     handlePaymentCreate(newData)
