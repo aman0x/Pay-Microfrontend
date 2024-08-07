@@ -12,7 +12,7 @@ module.exports = (env) => {
 
   return {
     output: {
-      publicPath: `${envVars.APP_URL}/admin`,
+      publicPath: `${envVars.APP_URL}/admin/`,
     },
 
     resolve: {
