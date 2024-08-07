@@ -39,7 +39,7 @@ function App() {
           !isLogin ? (
             <ErrorBoundary>
               <Routes>
-                <Route path="/"  element={<Auth/>}/>
+                <Route path="/"  element={<Home/>}/>
                  <Route path="/accounts/*" element={<Auth />} />
               </Routes>
             </ErrorBoundary>
