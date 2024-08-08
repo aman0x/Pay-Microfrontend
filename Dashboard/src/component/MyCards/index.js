@@ -9,16 +9,7 @@ function MyCards() {
   const [CardIndex, setCardIndex] = useState(0);
   const [queryCard,setQueryCard] = useState([])
   const [cards, setCards] = useState([
-    {
-      card_holder_name: "Holder Name",
-      card_no: "1234567824681257",
-      card_type: "VISA",
-      expiry_date: "02/28",
-      cvv_no: "123",
-      balance: 12000,
-      payments: 12,
-      verified: true,
-    },
+   
   ]);
   useEffect(() => {
     const fetchCards = async () => {

@@ -4,18 +4,7 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { useNavigate } from 'react-router-dom';
 const DUMMY_BANKS = [
-    {
-        bank_name: " HDFC Bank",
-        bank_branch_name: "KODAK",
-        ifsc_code: " HDFC000162",
-        account_holder_name: "ANANTHARAPU ARUNA THEJASWINI"
-    },
-    {
-        bank_name: " HDFC Bank",
-        bank_branch_name: "KODAK",
-        ifsc_code: " HDFC000162",
-        account_holder_name: "ANANTHARAPU ARUNA THEJASWINI"
-    }
+   
 ]
 
 

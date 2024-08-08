@@ -166,7 +166,7 @@ function AddNewAccount({ isRepeatPayment = false }) {
                                             </button>
 
                                         </div>
-                                        {isReceiverMenu && <ReceiversMenu cardIndex={accountTypeIndex} setCardIndex={setAccountTypeIndex} />}
+                                        {isReceiverMenu && <ReceiversMenu cardIndex={accountTypeIndex} setCardIndex={setAccountTypeIndex} setReceiversMenuView={setReceiversMenuView} />}
                                     </div>
 
                                     <div className="relative">
@@ -181,7 +181,7 @@ function AddNewAccount({ isRepeatPayment = false }) {
 
                                         </div>
 
-                                        {isPaymentTypeMenu && <PaymentTypeMenu cardIndex={bankTypeIndex} setCardIndex={setBankTypeIndex} />}
+                                        {isPaymentTypeMenu && <PaymentTypeMenu cardIndex={bankTypeIndex} setCardIndex={setBankTypeIndex} setPaymentMenuView={setPaymentMenuView}/>}
                                     </div>
                                     <div className="relative">
                                         <input type="text" name="pan_no" value={values.pan_no} onChange={handleChange} onBlur={handleBlur} className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-xs  p-3.5" placeholder="PAN" />
@@ -227,10 +227,16 @@ function AddNewAccount({ isRepeatPayment = false }) {
         </div>
     )
 }
-function PaymentTypeMenu({ cardIndex, setCardIndex }) {
+function PaymentTypeMenu({ cardIndex, setCardIndex,setPaymentMenuView }) {
 
     return (
-        <div className=" w-[100%] mt-2 bg-white rounded-2xl shadow-lg py-[1rem] px-[1.2rem] gap-4 absolute z-50">
+        <div className=" w-[100%] mt-2 bg-white rounded-2xl shadow-lg py-[1rem] px-[1.2rem] gap-4 absolute z-50"
+        onClick={() =>
+            setTimeout(() => {
+              setPaymentMenuView(false)
+            }, 100)
+          }
+        >
             <div className="text-sm poppins-semibold my-2 flex items-center gap-1">
                 <span>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -264,10 +270,16 @@ function PaymentTypeMenu({ cardIndex, setCardIndex }) {
         </div>
     )
 }
-function ReceiversMenu({ cardIndex, setCardIndex }) {
+function ReceiversMenu({ cardIndex, setCardIndex,setReceiversMenuView }) {
 
     return (
-        <div className="w-[100%] bg-white rounded-2xl shadow-lg mt-2  py-[1rem] px-[1.2rem] gap-4 absolute z-50">
+        <div className="w-[100%] bg-white rounded-2xl shadow-lg mt-2  py-[1rem] px-[1.2rem] gap-4 absolute z-50"
+        onClick={() =>
+            setTimeout(() => {
+              setReceiversMenuView(false);
+            }, 100)
+          }
+        >
             <div className="text-sm poppins-semibold my-2 flex items-center gap-1 ">
                 <span>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

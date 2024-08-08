@@ -11,7 +11,7 @@ import { FaSquare } from "react-icons/fa"
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-
+import { PuffLoader } from "react-spinners";
 import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper/modules";
 function MainInvoice() {
   const { handleInvoiceStats, handleInvoiceData } = useInvoice();
@@ -77,7 +77,9 @@ function MainInvoice() {
           </p>
         </div>
         <div className="flex w-full justify-center items-center my-2 ">
-          <Swiper
+          {
+            !isLoading?
+            <Swiper
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
             }}
@@ -156,9 +158,16 @@ function MainInvoice() {
               );
             })}
           </Swiper>
+          :
+          <div className="flex justify-center items-center w-full h-full py-5">
+          <PuffLoader color="#ff0b0b" />
+          </div>
+          }
+
         </div>
         <div className="flex gap-2 justify-center items-center">
-          {invoices.map((_, i) => {
+          {
+          invoices.map((_, i) => {
             return (
               <div
                 key={i}
@@ -235,6 +244,11 @@ function MainInvoice() {
 
         <div className="flex flex-col w-full items-center my-2">
           {
+             isLoading?
+             <div className="flex justify-center items-center w-full h-full py-5">
+                   <PuffLoader color="#ff0b0b" />
+             </div>
+             :
             invoices.map((data) => {
               return (
                 <div className="bg-white rounded-3xl w-96 shadow-md p-5 mb-4"

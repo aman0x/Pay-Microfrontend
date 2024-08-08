@@ -57,13 +57,10 @@ const MyContacts = () => {
           <div className="text-xs poppins-light text-[#787D81] ">({quickSend?.length})</div>
         </div>
         <div
-          onClick={() => navigate("/dashboard/accounts/add-new")}
+          onClick={() => navigate("/dashboard/beneficiary/add-new")}
           className="flex gap-2 items-center"
         >
           <div
-            onClick={() => {
-              navigate("/dashboard/beneficiary/add-new");
-            }}
             className="text-xs text-[#787D81] poppins-lights cursor-pointer"
           >
             Add New

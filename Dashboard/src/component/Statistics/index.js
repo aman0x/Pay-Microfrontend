@@ -12,6 +12,7 @@ import { maskCardNumber } from "#utils/Helpers";
 import { useDashboard } from "#hooks/index";
 import CircularChart from "./StatsCards/CircularChart";
 import moment from "moment";
+import CalenderComponent from "./Calender/calender";
 function Statistic() {
   const [reportIndex, setReportIndex] = useState(0);
   const {handlePaymentCardData} = useDashboard()
@@ -21,6 +22,7 @@ function Statistic() {
   const [calenderIndex, setcalenderIndex] = useState(0);
   const card = useSelector((state) => state.auth.cards);
   const { handleStatisticStats, handleStatisticData } = useStatistic();
+  const [isCalenderOpen,setIsCalendarOpen] = useState(false)
   const [stats, setStats] = useState({
     card_number: "1234567824681257",
     incomes: 124000.7,
@@ -108,7 +110,8 @@ function Statistic() {
               Set Option to show :
             </div>
           </div>
-          <div className="flex  bg-[#F0F1F2] py-[8px] rounded-xl justify-evenly px-2 ">
+          <div className="flex gap-2">
+          <div className="flex  bg-[#F0F1F2] py-[8px] rounded-xl justify-evenly px-2 w-full ">
             <button
               className="px-2 py-4 rounded-xl poppins-light text-xs"
               style={{
@@ -174,6 +177,19 @@ function Statistic() {
               Year
             </button>
           </div>
+          <button className="rounded-2xl p-6 bg-white cursor-pointer"
+           onClick={()=>{
+            setIsCalendarOpen(!isCalenderOpen)
+          }}>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M3.96805 -1.14441e-05C4.30207 -1.14441e-05 4.57285 0.258289 4.57285 0.576912V1.74068C5.10931 1.73076 5.71063 1.73076 6.38721 1.73076H6.38723H9.6128H9.61283C10.2894 1.73076 10.8907 1.73076 11.4272 1.74068V0.576912C11.4272 0.258289 11.698 -1.14441e-05 12.032 -1.14441e-05C12.366 -1.14441e-05 12.6368 0.258289 12.6368 0.576912V1.79173C13.7974 1.88038 14.5594 2.09797 15.1192 2.63197C15.679 3.16597 15.9071 3.89281 16 4.99999H0C0.0929368 3.89281 0.321033 3.16597 0.880831 2.63197C1.44063 2.09797 2.20259 1.88038 3.36326 1.79173V0.576912C3.36326 0.258289 3.63403 -1.14441e-05 3.96805 -1.14441e-05ZM0.0103201 5.99999C0 6.54309 0 7.15183 0 7.83672V9.46938C0 12.5479 0 14.0873 0.937256 15.0436C1.87452 16 3.38301 16 6.4 16H9.6C12.617 16 14.1255 16 15.0627 15.0436C16 14.0873 16 12.5479 16 9.46938V7.83672C16 7.15183 16 6.54309 15.9897 5.99999H0.0103201ZM12.8 8.65305C12.8 9.10391 12.4418 9.46938 12 9.46938C11.5582 9.46938 11.2 9.10391 11.2 8.65305C11.2 8.20219 11.5582 7.83672 12 7.83672C12.4418 7.83672 12.8 8.20219 12.8 8.65305ZM12.8 11.9184C12.8 12.3692 12.4418 12.7347 12 12.7347C11.5582 12.7347 11.2 12.3692 11.2 11.9184C11.2 11.4675 11.5582 11.102 12 11.102C12.4418 11.102 12.8 11.4675 12.8 11.9184ZM8 9.46938C8.44184 9.46938 8.8 9.10391 8.8 8.65305C8.8 8.20219 8.44184 7.83672 8 7.83672C7.55816 7.83672 7.2 8.20219 7.2 8.65305C7.2 9.10391 7.55816 9.46938 8 9.46938ZM8 12.7347C8.44184 12.7347 8.8 12.3692 8.8 11.9184C8.8 11.4675 8.44184 11.102 8 11.102C7.55816 11.102 7.2 11.4675 7.2 11.9184C7.2 12.3692 7.55816 12.7347 8 12.7347ZM4.8 8.65305C4.8 9.10391 4.44182 9.46938 4 9.46938C3.55818 9.46938 3.2 9.10391 3.2 8.65305C3.2 8.20219 3.55818 7.83672 4 7.83672C4.44182 7.83672 4.8 8.20219 4.8 8.65305ZM4.8 11.9184C4.8 12.3692 4.44182 12.7347 4 12.7347C3.55818 12.7347 3.2 12.3692 3.2 11.9184C3.2 11.4675 3.55818 11.102 4 11.102C4.44182 11.102 4.8 11.4675 4.8 11.9184Z" fill="#232B31"/>
+            </svg>
+          </button>
+          <div className="relative">
+          {isCalenderOpen && <CalenderComponent/>}
+          </div>
+          </div>
+          
           <div className="flex flex-col mt-1 gap-2 poppins-light text-sm text-gray-600 ">
             <div className="text-[10px] mt-2 mb-1 text-[#A3A6A9]">
               Choose the Card
