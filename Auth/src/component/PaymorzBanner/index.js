@@ -2,7 +2,11 @@ import "./style.css"
 
 export default function PaymorzBanner() {
   return (
-    <div className="w-full h-screen max-h-screen  bg-cover bg-center banner">
+    <div className="w-full h-screen max-h-screen  bg-cover bg-center"
+    style={{
+      backgroundImage: `url('/images/banner.png')`
+    }}
+    >
       <div className="flex flex-col font-semibold  pt-16 pl-20 gap-2">
         <div className="text-lg italic leading-tight welcome-color" 
         >
