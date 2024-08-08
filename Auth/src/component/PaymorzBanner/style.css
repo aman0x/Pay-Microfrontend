@@ -1,7 +1,6 @@
 .banner{
-    background-image: url('../../../public/images/banner.png');
+    /* background-image: url('../../../public/images/banner.png'); */
 }
-
 .welcome-color{
     background: linear-gradient(77.11deg, #F6DEC6 -5.32%, #E872D4 48.06%, #C190D9 69.25%, #A2DCFE 94.8%);
     -webkit-text-fill-color: transparent;

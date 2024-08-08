@@ -1,4 +1,5 @@
 import "./style.css"
+
 export default function PaymorzBanner() {
   return (
     <div className="w-full h-screen max-h-screen banner bg-cover bg-center">

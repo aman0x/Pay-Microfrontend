@@ -267,9 +267,9 @@ export default function LoginUser() {
           </div>
         </div>
       </div>
-      <div className="hide lg:block">
-        {/* <PaymorzSider /> */}
-        <PaymorzBanner/>
+      <div className="hide md:block">
+        <PaymorzSider />
+        {/* <PaymorzBanner/> */}
       </div>
     </div>
   );

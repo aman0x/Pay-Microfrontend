@@ -8,6 +8,7 @@ import { FaCreditCard, FaCircleArrowRight } from "react-icons/fa6";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Formik } from "formik";
 import { useUserSignupAuth } from "#hooks/auth/index.js";
+import PaymorzBanner from "../PaymorzBanner";
 export default function AccountType() {
   const navigate = useNavigate();
   const { handleUserSignup } = useUserSignupAuth();
@@ -56,9 +57,9 @@ export default function AccountType() {
   };
 
   return (
-    <div className="grid  lg:grid-cols-2 gap-4">
+    <div className="grid  lg:grid-cols-2 gap-4 max-h-screen">
       <div className="flex min-h-full flex-col py-[2rem] px-[2em] gap-2 sm:mx-auto sm:w-full sm:max-w-lg">
-        <div className="text-center mt-[2rem] mb-4">
+        <div className="text-center mt-[1rem] mb-4">
           <h2 className="poppins-bold">
             Enter following details to complete your KYC <br></br>verification!
           </h2>
@@ -66,7 +67,7 @@ export default function AccountType() {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
             vulputate libero et velit interdum, ac aliquet odio mattis.
           </p>
-          <p className="poppins-regular text-base mb-3">Choose Account Type</p>
+          <p className="poppins-regular text-base mb-1">Choose Account Type</p>
         </div>
         <div className="flex flex-row gap-12 justify-center">
           {isIndividual ? (
@@ -547,8 +548,8 @@ export default function AccountType() {
           </p>
         </div>
       </div>
-      <div className="hidden lg:flex">
-        <PaymorzSider />
+      <div className="hide md:block">
+       <PaymorzSider/>
       </div>
     </div>
   );
