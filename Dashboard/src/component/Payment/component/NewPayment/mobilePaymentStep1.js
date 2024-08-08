@@ -16,7 +16,8 @@ const MobilePaymentStep1 = ({
   setReceiverIndex,
   setBankId,
   amount,
-  setAmount
+  setAmount,
+  paymentType
 }) => {
   const [total, setTotal] = useState(0);
   const [isValid, setIsValid] = useState(true);
@@ -62,7 +63,7 @@ const MobilePaymentStep1 = ({
             <div className="relative">
               <input
                 type="text"
-                value={types[typeIndex]}
+                value={paymentType[typeIndex]?.name}
                 className=" bg-white drop-shadow-sm text-gray-900 text-[12px] rounded-2xl w-full !ps-5 placeholder:italic placeholder:text-[12px] p-4 outline-none"
                 placeholder="Vendor Payment, Vendor Payment"
                 required
@@ -102,6 +103,7 @@ const MobilePaymentStep1 = ({
                 setCardIndex={setTypeIndex}
                 cardIndex={typeIndex}
                 setPaymentMenuView={setPaymentMenuView}
+                paymentType={paymentType}
               />
             )}
           </div>

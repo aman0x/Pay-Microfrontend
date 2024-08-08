@@ -74,7 +74,9 @@ body {
 .bg-primary {
   background-color: var(--primary);
 }
-
+.shadow-small{
+  box-shadow: rgba(149, 157, 165, 0.2) 2px 2px 10px;
+}
 .input-linear {
   border: 2px solid transparent;
   border-radius: 20px;

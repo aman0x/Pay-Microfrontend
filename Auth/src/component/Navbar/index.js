@@ -72,22 +72,20 @@ export function HeaderNavbar({ isLogin = false }) {
           </div>
         </div>
         {!isLogin ? (
-          <div className="flex flex-col">
+          <div className="flex items-center gap-1">
             <span className="text-right poppins-regular">New in Paymorz?</span>{" "}
             <span className="text-right">
               <Link
                 to="/accounts/signup"
-                className="color-linear underline"
-                style={{
-                  textDecoration: "underline",
-                }}
+                className="color-linear"
+                
               >
                 Sign Up
               </Link>
             </span>
           </div>
         ) : (
-          <div className="flex flex-col">
+          <div className="flex items-center gap-1">
             <span className="text-right poppins-regular">
               Already Have An Account?
             </span>{" "}

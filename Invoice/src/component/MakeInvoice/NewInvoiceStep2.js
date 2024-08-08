@@ -5,17 +5,7 @@ import { useEffect, useState } from "react";
 function NewInvoiceStep2({ setStepIndex, data }) {
   const { handleInvoiceCreate,handleBankDetail } = useInvoice();
   const [bankDetail,setBankDetail] = useState({
-    "id": 10,
-    "user": 1,
-    "account_name": "RAJIV",
-    "account_number": "23647586473424574",
-    "ifsc_code": "sfsdg",
-    "account_type": "INDIVIDUAL",
-    "account_type_2": "SAVINGS",
-    "gstin": null,
-    "pan": null,
-    "bank_name": "SBI BANK",
-    "deleted": false
+    
 })
   useEffect(()=>{
     const fetchBankDetails=async (data)=>{
@@ -178,7 +168,7 @@ function NewInvoiceStep2({ setStepIndex, data }) {
           </div>
         </div>
       </div>
-      <div className="lg:flex gap-2 items-center">
+      <div className="lg:!flex gap-2 items-center">
         <div className="w-full h-16 primary-linear-gr-bg flex  items-center px-[1rem] rounded-2xl ">
           <svg
             width="100"
@@ -486,14 +476,14 @@ function NewInvoiceStep2({ setStepIndex, data }) {
               />
             </g>
           </svg>
-          <div className="flex gap-1">
+          <div className="flex gap-1 md:gap-0 text-[10px] md:text-base">
             <div className="poppins-bold text-white">Note!:</div>
             <div className="poppins-extralight text-white">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </div>
           </div>
         </div>
-        <div className="flex md:block w-full justify-center mt-5 lg:mt-0">
+        <div className="flex md:!block w-full  lg:!w-auto justify-center mt-5 lg:!mt-0">
           <button
             className="poppins-medium text-sm flex items-center bg p-[1rem] bg-black-primary rounded-xl min-w-56 gap-4 primary-btn "
             onClick={() => {

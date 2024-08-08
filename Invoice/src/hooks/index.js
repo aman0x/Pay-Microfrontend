@@ -97,7 +97,7 @@ export function useInvoice(){
         toast("Error in Sending Invoice");
         }
     }
-    const handleBankDetail=async(bankId=1)=>{
+    const handleBankDetail=async(bankId)=>{
         try {
             const response = await ApiCall({ 
                 url: PRIVATE_ENDPOINTS.GET_BANK_DETAIL+ `${bankId}/`, 
@@ -112,7 +112,21 @@ export function useInvoice(){
         // toast("Error in getting Bank");
         }
     }
-    return {handleInvoiceStats,handleInvoiceData,handleInvoiceDetail,handleInvoiceCreate,handleNewInvoiceData,handleBankDetail}
+    const handleGetInvoiceService=async()=>{
+        try {
+            const response = await ApiCall({ 
+                url: PRIVATE_ENDPOINTS.GET_INVOICE_SERVICES, 
+                method: "GET", 
+                PRIVATE_API: true, 
+                current_user: user 
+            });
+            return response.data;
+            }
+        catch (error) {
+            return {}
+        }
+    }
+    return {handleInvoiceStats,handleInvoiceData,handleInvoiceDetail,handleInvoiceCreate,handleNewInvoiceData,handleBankDetail,handleGetInvoiceService}
     
 }
 
@@ -133,6 +147,20 @@ export function useCommon(){
             return [];
         }
     }
+    const handleGetInvoiceService=async()=>{
+        try {
+            const response = await ApiCall({ 
+                url: PRIVATE_ENDPOINTS.GET_INVOICE_SERVICES, 
+                method: "GET", 
+                PRIVATE_API: true, 
+                current_user: user 
+            });
+            return response.data;
+            }
+        catch (error) {
+            return {}
+        }
+    }
 
-    return {handleGetBeneficiary}
+    return {handleGetBeneficiary,handleGetInvoiceService}
 }

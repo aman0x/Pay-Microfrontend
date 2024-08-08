@@ -16,7 +16,7 @@ const receivers = [
 ];
 const cards = ["Vendor Payment"];
 function MakeInvoice({ isRepeatPayment = false }) {
-  const { handleGetBeneficiary } = useCommon();
+  const { handleGetBeneficiary,handleGetInvoiceService } = useCommon();
   const [isPaymentTypeMenu, setPaymentMenuView] = useState(false);
   const [isReceiverMenu, setReceiversMenuView] = useState(false);
   const [beneficiaries, setBeneficiaries] = useState(receivers);
@@ -25,13 +25,19 @@ function MakeInvoice({ isRepeatPayment = false }) {
   const [typeIndex, setTypeIndex] = useState(0);
   const [amount, setAmount] = useState("");
   const [isValid, setIsValid] = useState(true);
+  const [paymentType,setPaymentType] = useState([])
   useEffect(() => {
     const fetchBeneficiary = async () => {
       const beneficiaries = await handleGetBeneficiary();
-      setBeneficiaries(beneficiaries.results);
+      setBeneficiaries(beneficiaries.results||[]);
+    };
+    const fetchServices = async () => {
+      const services = await handleGetInvoiceService();
+      setPaymentType(services.results||[]);
     };
 
     fetchBeneficiary();
+    fetchServices();
   }, []);
 
   const handleKeyPress = (e) => {
@@ -249,7 +255,7 @@ function MakeInvoice({ isRepeatPayment = false }) {
               <div className="relative">
                 <input
                   type="text"
-                  value={cards[typeIndex]}
+                  value={paymentType[typeIndex]?.name}
                   className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-2xl w-full !ps-5 p-3.5 "
                   placeholder="Vendor Payment, Vendor Payment"
                   required
@@ -289,6 +295,7 @@ function MakeInvoice({ isRepeatPayment = false }) {
                   setCardIndex={setTypeIndex}
                   cardIndex={typeIndex}
                   setPaymentMenuView={setPaymentMenuView}
+                  paymentType={paymentType}
                 />
               )}
             </div>
@@ -321,14 +328,14 @@ function MakeInvoice({ isRepeatPayment = false }) {
             amount: amount,
             payment_type: cards[1],
             beneficiary: beneficiaries[receiverIndex],
-            service_ids: [1],
+            service_ids: [paymentType[typeIndex]?.id],
           }}
         />
       )}
     </div>
   );
 }
-function PaymentTypeMenu({ cardIndex, setCardIndex, setPaymentMenuView }) {
+function PaymentTypeMenu({ cardIndex, setCardIndex, setPaymentMenuView,paymentType }) {
   return (
     <div className="absolute w-[100%] top-10 bg-white rounded-2xl shadow-lg  py-[1rem] px-[1.2rem] gap-4 z-50">
       <div className="text-sm poppins-semibold my-2 flex gap-1 items-start">
@@ -358,7 +365,7 @@ function PaymentTypeMenu({ cardIndex, setCardIndex, setPaymentMenuView }) {
         </div>
       </div>
       <div className="flex flex-col gap-2 mt-4">
-        {cards.map((card, i) => {
+        {paymentType.map((card, i) => {
           return (
             <div className="flex gap-4 justify-between items-center " key={i}>
               <div
@@ -366,7 +373,7 @@ function PaymentTypeMenu({ cardIndex, setCardIndex, setPaymentMenuView }) {
                   cardIndex === i ? "poppins-bold" : "text-[#A3A6A9]"
                 } flex gap-1 items-center text-sm`}
               >
-                {card}
+                {card.name}
               </div>
               <div
                 className={`max-w-[15px]  max-h-[15px] rounded-sm   ${
@@ -385,6 +392,16 @@ function PaymentTypeMenu({ cardIndex, setCardIndex, setPaymentMenuView }) {
             </div>
           );
         })}
+        <div className="relative w-full mt-4" onClick={(e)=>{
+          e.stopPropagation()
+        }}>
+          <input type="text" id="voice-search" className="bg-[#F0F1F2] focus:outline-none focus:ring-1 focus:ring-gray-300 border border-gray-300 text-gray-900 text-sm rounded-2xl block w-full !ps-5  poppins-light-italic p-2" placeholder="Search..." required />
+          <button type="button" className="absolute inset-y-0 end-0 flex items-center pe-3">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M17.7896 16.73L13.3166 12.2569C14.5355 10.7661 15.1349 8.86379 14.9906 6.94347C14.8463 5.02315 13.9694 3.23175 12.5414 1.9398C11.1133 0.647857 9.24335 -0.0457868 7.31822 0.00234752C5.39309 0.0504818 3.56011 0.836711 2.19841 2.19841C0.836711 3.56011 0.0504818 5.39309 0.00234752 7.31822C-0.0457868 9.24335 0.647857 11.1133 1.9398 12.5414C3.23175 13.9694 5.02315 14.8463 6.94347 14.9906C8.86379 15.1349 10.7661 14.5355 12.2569 13.3166L16.73 17.7896C16.8713 17.9261 17.0606 18.0017 17.2571 18C17.4536 17.9983 17.6416 17.9195 17.7805 17.7805C17.9195 17.6416 17.9983 17.4536 18 17.2571C18.0017 17.0606 17.9261 16.8713 17.7896 16.73ZM7.51783 13.5129C6.33212 13.5129 5.17303 13.1613 4.18714 12.5026C3.20126 11.8438 2.43286 10.9075 1.9791 9.81204C1.52535 8.71659 1.40663 7.51118 1.63795 6.34825C1.86927 5.18532 2.44025 4.1171 3.27867 3.27867C4.1171 2.44025 5.18532 1.86927 6.34825 1.63795C7.51118 1.40663 8.71659 1.52535 9.81204 1.9791C10.9075 2.43286 11.8438 3.20126 12.5026 4.18714C13.1613 5.17303 13.5129 6.33212 13.5129 7.51783C13.5111 9.10727 12.8789 10.6311 11.755 11.755C10.6311 12.8789 9.10727 13.5111 7.51783 13.5129Z" fill="#232B31" />
+              </svg>
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -424,7 +441,7 @@ function ReceiversMenu({
         </div>
       </div>
       <div className="flex flex-col gap-2 mt-4">
-        {beneficiaries.map((card, i) => {
+        {beneficiaries.slice(0,8).map((card, i) => {
           return (
             <div className="flex gap-4 justify-between items-center " key={i}>
               <div
@@ -453,6 +470,16 @@ function ReceiversMenu({
             </div>
           );
         })}
+        <div className="relative w-full mt-4" onClick={(e)=>{
+          e.stopPropagation()
+        }}>
+          <input type="text" id="voice-search" className="bg-[#F0F1F2] focus:outline-none focus:ring-1 focus:ring-gray-300 border border-gray-300 text-gray-900 text-sm rounded-2xl block w-full !ps-5  poppins-light-italic p-2" placeholder="Search..." required />
+          <button type="button" className="absolute inset-y-0 end-0 flex items-center pe-3">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M17.7896 16.73L13.3166 12.2569C14.5355 10.7661 15.1349 8.86379 14.9906 6.94347C14.8463 5.02315 13.9694 3.23175 12.5414 1.9398C11.1133 0.647857 9.24335 -0.0457868 7.31822 0.00234752C5.39309 0.0504818 3.56011 0.836711 2.19841 2.19841C0.836711 3.56011 0.0504818 5.39309 0.00234752 7.31822C-0.0457868 9.24335 0.647857 11.1133 1.9398 12.5414C3.23175 13.9694 5.02315 14.8463 6.94347 14.9906C8.86379 15.1349 10.7661 14.5355 12.2569 13.3166L16.73 17.7896C16.8713 17.9261 17.0606 18.0017 17.2571 18C17.4536 17.9983 17.6416 17.9195 17.7805 17.7805C17.9195 17.6416 17.9983 17.4536 18 17.2571C18.0017 17.0606 17.9261 16.8713 17.7896 16.73ZM7.51783 13.5129C6.33212 13.5129 5.17303 13.1613 4.18714 12.5026C3.20126 11.8438 2.43286 10.9075 1.9791 9.81204C1.52535 8.71659 1.40663 7.51118 1.63795 6.34825C1.86927 5.18532 2.44025 4.1171 3.27867 3.27867C4.1171 2.44025 5.18532 1.86927 6.34825 1.63795C7.51118 1.40663 8.71659 1.52535 9.81204 1.9791C10.9075 2.43286 11.8438 3.20126 12.5026 4.18714C13.1613 5.17303 13.5129 6.33212 13.5129 7.51783C13.5111 9.10727 12.8789 10.6311 11.755 11.755C10.6311 12.8789 9.10727 13.5111 7.51783 13.5129Z" fill="#232B31" />
+              </svg>
+          </button>
+        </div>
       </div>
     </div>
   );

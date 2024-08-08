@@ -69,7 +69,7 @@ export function useDashboard() {
         } catch (e) {
             toast("Error in Deleting Card");
         }
-    };
+    }
 
     const handleQuickSendData = async () => {
         try {
@@ -181,8 +181,7 @@ export function usePayment() {
             toast("Error creating payment");
             return {}
         }
-    };
-
+    }
     const handleAddCard = async (data) => {
         const user_data = { ...data, user: user_id };
         try {
@@ -488,6 +487,20 @@ export function useAccounts() {
             return {}
         }
     }
+    const handleGetInvoiceService=async()=>{
+        try {
+            const response = await ApiCall({ 
+                url: PRIVATE_ENDPOINTS.GET_INVOICE_SERVICES, 
+                method: "GET", 
+                PRIVATE_API: true, 
+                current_user: user 
+            });
+            return response.data;
+            }
+        catch (error) {
+            return {}
+        }
+    }
 
-    return { handleAddBankAccount, handleDeleteBankAccount, handleGetBankAccount, handleGetBeneficiary, handleAddBeneficiary, handleAddBeneficiaryBank, handleGetCreateUserKyc, handleUserProfile, handleGetBankById,handleDeleteBeneficiaryAccount }
+    return { handleAddBankAccount, handleGetInvoiceService, handleDeleteBankAccount, handleGetBankAccount, handleGetBeneficiary, handleAddBeneficiary, handleAddBeneficiaryBank, handleGetCreateUserKyc, handleUserProfile, handleGetBankById, handleDeleteBeneficiaryAccount }
 }

@@ -29,7 +29,8 @@ export const PRIVATE_ENDPOINTS = {
     UPDATE_USER_PROFILE:BASE_URL+'/api/user/profile/',
     GET_FAQS:BASE_URL+'/api/support/faqs/',
     GET_SUPPORT_INFO:BASE_URL+'/api/support/support-info/',
-    GET_ALL_INVOICE:BASE_URL+'/api/invoice/invoices/'
+    GET_ALL_INVOICE:BASE_URL+'/api/invoice/invoices/',
+    GET_INVOICE_SERVICES:BASE_URL+'/api/invoice/services/'
 }
 
 

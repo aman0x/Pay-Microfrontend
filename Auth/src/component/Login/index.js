@@ -13,6 +13,7 @@ import * as Yup from "yup";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { authActions } from "../../store/authSlice";
+import PaymorzBanner from "../PaymorzBanner";
 export default function LoginUser() {
   const navigate = useNavigate();
   const {
@@ -29,19 +30,19 @@ export default function LoginUser() {
       <div className="p-6">
         <HeaderNavbar />
 
-        <div className="sm:mx-auto sm:w-full  mt-5 lg:mt-20">
+        <div className="sm:mx-auto sm:w-full   mt-5 lg:!mt-16">
           <h2 className="my-6 lg:my-10 text-center text-xs  text-[#A3A6A9]">
             Log in With:
           </h2>
         </div>
 
-        <div className="sm:mx-auto sm:w-full sm:max-w-md text-sm ">
-          <div className="flex sm:mx-auto sm:w-full sm:max-w-md mt-4 bg-gray-100 py-2 rounded-xl justify-evenly ">
+        <div className="sm:mx-auto sm:w-full sm:max-w-md text-sm">
+          <div className="flex sm:mx-auto sm:w-full sm:max-w-md mt-4 bg-gray-100 py-[6px] rounded-2xl justify-evenly ">
             <button
-              className="py-3 px-9 rounded-lg"
+              className={`py-3 px-9 rounded-xl ${withEmail?"shadow-small":""}`}
               style={{
                 backgroundColor: withEmail ? "#FFFFFF" : null,
-                width: "45%",
+                width: "48%",
                 fontWeight: withEmail ? "bold" : "normal",
               }}
               onClick={() => setWithEmail(true)}
@@ -49,7 +50,7 @@ export default function LoginUser() {
               Email / Password
             </button>
             <button
-              className="py-2 rounded-lg"
+              className={`py-2 rounded-xl ${!withEmail?"shadow-small":""}`}
               style={{
                 backgroundColor: !withEmail ? "#FFFFFF" : null,
                 width: "45%",
@@ -267,7 +268,8 @@ export default function LoginUser() {
         </div>
       </div>
       <div className="hide lg:block">
-        <PaymorzSider />
+        {/* <PaymorzSider /> */}
+        <PaymorzBanner/>
       </div>
     </div>
   );
