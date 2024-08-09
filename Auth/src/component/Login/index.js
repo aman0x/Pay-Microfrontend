@@ -26,12 +26,12 @@ export default function LoginUser() {
   const [withEmail, setWithEmail] = useState(true);
   const [isPasswordShown, setPasswordShown] = useState(false);
   return (
-    <div className="grid lg:grid-cols-2 gap-4 min-h-screen">
-      <div className="p-6">
+    <div className="grid lg:grid-cols-2">
+      <div className="flex md:!block flex-col justify-center p-6 min-h-screen">
         <HeaderNavbar />
 
         <div className="sm:mx-auto sm:w-full   mt-5 lg:!mt-16">
-          <h2 className="my-6 lg:my-10 text-center text-xs  text-[#A3A6A9]">
+          <h2 className="my-2 lg:my-10 text-center text-xs  text-[#A3A6A9]">
             Log in With:
           </h2>
         </div>

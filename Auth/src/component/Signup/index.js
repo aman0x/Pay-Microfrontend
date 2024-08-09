@@ -11,6 +11,7 @@ import { CiCircleChevLeft } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import PaymorzBanner from "../PaymorzBanner";
 
 export default function SignUpUser() {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ export default function SignUpUser() {
 
   return (
     <div className="grid  lg:grid-cols-2">
-      <div className="flex min-h-full flex-col p-6 sm:p-[0px] ">
+      <div className="flex min-h-full justify-center md:!justify-normal flex-col p-6">
         <HeaderNavbar isLogin={true} />
         <div className="sm:mx-auto sm:w-full mt-5 lg:mt-20">
           <div className="flex justify-center text-sm text-gray-900 lg:mt-10 lg:mb-6">
@@ -396,7 +397,7 @@ export default function SignUpUser() {
         </div>
       </div>
       <div className="hide md:block">
-        <PaymorzSider />
+        <PaymorzBanner/>
       </div>
     </div>
   );
