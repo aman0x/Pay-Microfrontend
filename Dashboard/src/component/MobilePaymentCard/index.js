@@ -30,6 +30,11 @@ export function MobilePaymentCard({ handlePaymentCardData }) {
       swiperRef.current.slideTo(index);
     }
   };
+  const colors = ["#E872D4", "#964EC2", "#232B31", "#232B31"];
+
+  const getRandomColor = () => {
+    return colors[Math.floor(Math.random() * colors.length)];
+  };
   useEffect(() => {
     const fetchCards = async () => {
       const data = await handlePaymentCardData();
@@ -62,7 +67,7 @@ export function MobilePaymentCard({ handlePaymentCardData }) {
             return (
               <SwiperSlide key={i}>
                 <div className="card-size flex justify-center">
-                  <FlipCard index={cardIndex} cardData={card} isArrowShown={false} />
+                  <FlipCard index={cardIndex} cardData={card} isArrowShown={false} cardColorbg={getRandomColor()} />
                 </div>
               </SwiperSlide>
             )
@@ -73,7 +78,7 @@ export function MobilePaymentCard({ handlePaymentCardData }) {
       <div className=" m-2 max-w-[300px] sm:max-w-[400px] w-full flex justify-center">
         {
           cards.length===1?
-          <FlipCard index={cardIndex} cardData={cards[0]} isArrowShown={false}/>
+          <FlipCard index={cardIndex} cardData={cards[0]} isArrowShown={false} />
           :
           <div className="primary-linear-gr-bg p-[2px] flex w-[400px] justify-center rounded-3xl max-w-[400px] h-60">
           <div

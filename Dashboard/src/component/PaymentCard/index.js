@@ -38,7 +38,7 @@ export function PaymentCard({ handlePaymentCardData }) {
         </div>
       </div>
       {
-        cards.length===1?
+        cards.length>0?
         <FlipCard index={cardIndex} cardData={cards[cardIndex]} setCards={setCards} cards={cards} />
         :
         <div className="primary-linear-gr-bg p-[2px] flex w-[400px] justify-center rounded-3xl max-w-[400px] h-60">

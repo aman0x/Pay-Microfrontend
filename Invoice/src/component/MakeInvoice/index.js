@@ -48,7 +48,7 @@ function MakeInvoice({ isRepeatPayment = false }) {
   };
 
   return (
-    <div className="mt-5 mb-5 bg-primary p-[2rem] rounded-2xl flex flex-col gap-3 w-full ">
+    <div className="mt-5 mb-5 bg-primary p-[2rem] h-[75vh] max-h-[800px] rounded-2xl flex flex-col gap-3 w-full ">
       <div className="flex justify-around gap-2">
         <hr
           className={`my-2 max-w-[20%] ${

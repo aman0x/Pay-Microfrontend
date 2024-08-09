@@ -94,7 +94,7 @@ function DashboardMain() {
             </p>
           </div>
 
-          {latestActions.map((card) => {
+          {latestActions.map((card,i) => {
             return (
               <div
                 onClick={() =>
@@ -102,6 +102,7 @@ function DashboardMain() {
                     `/dashboard/payment/payment-detail?paymentId=${card.id}`
                   )
                 }
+                key={i}
                 className="grid grid-cols-6 gap-4 mt-4"
               >
                 <div className="flex justify-start items-center">

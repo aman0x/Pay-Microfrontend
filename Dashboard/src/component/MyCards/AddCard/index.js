@@ -22,7 +22,8 @@ function AddCard() {
         card_holder_name: cardHolderName,
         card_no: cardNumber.replace(/\s+/g, ""),
         expiry_date: cardExpDate,
-        cvv_no: cardCVV
+        cvv_no: cardCVV,
+        bank:cardCheck
       });
     } else {
       if (cardNumber.replace(/\s+/g, "").length < 16) {
