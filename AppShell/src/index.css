@@ -99,39 +99,29 @@ body {
 }
 
 .color-linear {
-  background: linear-gradient(to right, #f6dec6, #e872d4, #c190d9, #a2dcfe);
+  background: linear-gradient(180deg, #CDE8E5 0%, rgba(18, 74, 232, 0.7) 100%);
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
 }
 
 .color-linear-top {
-  background: linear-gradient(to top, #f6dec6, #e872d4, #c190d9, #a2dcfe);
+  background: linear-gradient(180deg, #CDE8E5 0%, rgba(18, 74, 232, 0.7) 100%);
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
 }
 
+.primary-linear-gr-bg1 {
+  background-image:  linear-gradient(180deg, #CDE8E5 0%, rgba(18, 74, 232, 0.7) 100%);
+}
 .primary-linear-gr-bg {
-  background-image: linear-gradient(
-    to right,
-    #f6dec6,
-    #e872d4,
-    #c190d9,
-    #a2dcfe
-  );
+  background-image:  linear-gradient(180deg, #CDE8E5 0%, rgba(18, 74, 232, 0.7) 100%);
 }
-
 .primary-linear-gr-bg-up {
-  background-image: linear-gradient(to top, #f6dec6, #e872d4, #c190d9, #a2dcfe);
+  background-image:  linear-gradient(180deg, #CDE8E5 0%, rgba(18, 74, 232, 0.7) 100%);
 }
-
 .primary-linear-gr-bg-light {
-  background: linear-gradient(
-    77.11deg,
-    rgba(246, 222, 198, 0.26) -5.32%,
-    rgba(232, 114, 212, 0.26) 48.06%,
-    rgba(193, 144, 217, 0.26) 69.25%,
-    rgba(162, 220, 254, 0.26) 94.8%
-  );
+  background-image:  linear-gradient(180deg, #CDE8E5 0%, rgba(18, 74, 232, 0.7) 100%);
+  
 }
 
 .primary-color {
@@ -139,13 +129,7 @@ body {
 }
 
 .primary-btn:hover {
-  background-image: linear-gradient(
-    to right,
-    #f6dec6,
-    #e872d4,
-    #c190d9,
-    #a2dcfe
-  );
+  background-image:  linear-gradient(180deg, #CDE8E5 0%, rgba(18, 74, 232, 0.7) 100%);
   /* border: 1px solid #e9b6e0; */
   transition: border 300ms;
 }

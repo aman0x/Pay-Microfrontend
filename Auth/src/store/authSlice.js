@@ -7,7 +7,6 @@ const authSlice = createSlice({
     initialState:{
         user_id:'1',
         user:{
-           
         },
         isLogin:isLogin,
         token:'',

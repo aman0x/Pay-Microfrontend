@@ -35,7 +35,8 @@ function Templates({ userId = null, handleTemplateData }) {
             </div>
             <div className="flex flex-col gap-3">
                 {
-                    templates.slice(templates.length-2,templates.length).map((bank, i) => {
+                    templates?.length > 0 ?
+                    templates.map((bank, i) => {
                         return (
                             <div key={i} className="flex flex-col bg-white p-[1.2rem] rounded-2xl min-h-[5.6rem] justify-between">
                                 <div className="flex justify-between leading-[20px] poppins-regular text-[10px] text-[#4E5459]">
@@ -68,6 +69,8 @@ function Templates({ userId = null, handleTemplateData }) {
                             </div>
                         )
                     })
+                    :
+                    <></>
                 }
             </div>
             <div 

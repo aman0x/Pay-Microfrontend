@@ -17,7 +17,7 @@ function TopNavbar() {
         <div className="hide md:flex items-center justify-between w-full mt-[1rem] gap-2">
             <div className="ml-4">
                 <div className="poppins-medium text-base text-[#4E5459]">{TopHead}</div>
-                <p className="poppins-light text-xs text-[#A3A6A9]">🤨 Get more out of <span className="lg:hidden"><br /></span>Paymorz everyday!</p>
+                <p className="poppins-light text-xs text-[#A3A6A9]">🤨 Get more out of <span className="lg:hidden"><br /></span>BillBash everyday!</p>
             </div>
             <div className="lg:w-96">
                 <div className="relative w-full">

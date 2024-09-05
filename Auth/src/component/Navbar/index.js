@@ -6,16 +6,16 @@ export function HeaderNavbar({ isLogin = false }) {
         {!isLogin ? (
           <div className="flex flex-col items-center w-full">
             <img
-              src="/images/login-user.svg"
+              src="/images/billbash.png"
               className="mt-12 md:mt-6"
-              width={85}
-              height={85}
+              width={65}
+              height={65}
               alt="login icon"
             />
             <h1 className="poppins-semibold mt-2 mb-4 text-base">Log In</h1>
             <div className="flex gap-2">
               <span className="text-right poppins-regular">
-                New in Paymorz?
+                New in BillBash?
               </span>{" "}
               <span className="text-right">
                 <Link
@@ -33,13 +33,13 @@ export function HeaderNavbar({ isLogin = false }) {
         ) : (
           <>
             <div className="flex flex-col items-center w-full">
-              <img
-                src="/images/login-user.svg"
-                className="mt-12 md:mt-6"
-                width={85}
-                height={85}
-                alt="login icon"
-              />
+            <img
+              src="/images/billbash.png"
+              className="mt-12 md:mt-6"
+              width={65}
+              height={65}
+              alt="login icon"
+            />
               <h1 className="poppins-semibold mt-2 mb-4 text-base">Sign Up</h1>
               <div className="flex gap-2">
                 <span className="text-right poppins-regular">
@@ -63,12 +63,9 @@ export function HeaderNavbar({ isLogin = false }) {
       </div>
       <div className="hide md:flex justify-between sm:pt-8 sm:px-12">
         <div className="flex">
-          <img src="/images/paymorz-logo.png" alt="paymorz-logo" />
+          <img src="/images/billbash.png" alt="paymorz-logo" className="h-[30px]"/>
           <div className="italic pl-1 font-extrabold from-neutral-900 text-xl">
-            Paymorz
-            <span className="pl-1 text-2xl font-extrabold size-14 color-linear">
-              .
-            </span>
+            BillBash
           </div>
         </div>
         {!isLogin ? (

@@ -12,7 +12,7 @@ function NoitificationBar() {
     }
   };
   return (
-    <div className="flex relative min-h-28 gap-2 w-full primary-linear-gr-bg justify-evenly items-center px-[1rem] py-[1.5rem] rounded-2xl "
+    <div className="flex relative min-h-28 gap-2 w-full primary-linear-gr-bg1 justify-evenly items-center px-[1rem] py-[1.5rem] rounded-2xl "
     onWheel={handleWheel}
     >
       <div onClick={()=>{

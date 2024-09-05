@@ -539,7 +539,7 @@ export default function AccountType() {
         </Formik>
         <div className="mt-auto mx-2 poppins-extralight-italic text-xs px-2">
           <p>
-            By clicking Continue, you agree to Paymorz's{" "}
+            By clicking Continue, you agree to BillBash's{" "}
             <span>
               <a className="underline font-semibold" href="#">
                 Terms & Conditions & Privacy Policy.

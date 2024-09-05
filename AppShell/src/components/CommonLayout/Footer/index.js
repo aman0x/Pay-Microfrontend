@@ -5,15 +5,13 @@ function MainFooter() {
         <div className="poppins-regular">Quick Links</div>
         <div className="flex gap-1 items-center pl-4">
           <img
-            src="/images/paymorz-logo.png"
+            src="/images/billbash.png"
             alt="paymorz-logo"
             width="25px"
           />
           <p className="italic pl-1 font-extrabold from-neutral-900 text-base">
-            Paymorz
-            <span className="pl-1 text-xl font-extrabold size-8 color-linear">
-              .
-            </span>
+            BillBash
+            
           </p>
         </div>
       </div>
@@ -30,7 +28,7 @@ function MainFooter() {
       <div className="flex justify-between">
         <div className="flex gap-2 text-sm">
           <div className="text-[#CDCED1]">© 2024.</div>
-          <div className="poppins-semibold">Paymorz</div>
+          <div className="poppins-semibold">BillBash</div>
           <div className="text-[#CDCED1]">All Rights Reserved.</div>
         </div>
         <div className="hidden sm:flex gap-4">

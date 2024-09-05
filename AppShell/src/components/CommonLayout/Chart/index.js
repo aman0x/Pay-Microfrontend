@@ -48,17 +48,16 @@ function ChartComp({ index = 0, data1 = dataDemo, data2 = {} }) {
         ? {
             data: amounts1,
             pointRadius: 0,
-            borderColor: "#E872D4",
-            backgroundColor: "rgba(162, 220, 254, 0.5)",
-            fill: true,
+            borderColor: "#f71616",
+            backgroundColor: "#d1e3ed",
           }
         : {},
       index === 2 || index === 0
         ? {
             data: amounts2,
             pointRadius: 0,
-            borderColor: "rgb(255, 99, 132)",
-            backgroundColor: "rgba(255, 99, 132, 0.5)",
+            borderColor: "#088bd4",
+            backgroundColor: "#9db1fa",
           }
         : {},
     ],

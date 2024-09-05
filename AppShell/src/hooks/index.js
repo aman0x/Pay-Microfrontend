@@ -68,6 +68,7 @@ export function useUserCommon(){
             PRIVATE_API: true, 
           });
           dispatch(authActions.setUser({user:response.data}))
+          // console.clear()
           return response.data;
           
         }

@@ -15,6 +15,23 @@ export const STORE_IN_LOCAL_STORAGE = (key, data) => {
         console.log("INVALID DATA FOR STORE");
     }
 }
+export const GET_FROM_SESSION_STORAGE = (key) => {
+    if (!key) throw new Error("Invalid key");
+    if (typeof window !== 'undefined' && sessionStorage && sessionStorage.getItem(key)) {
+        return JSON.parse(sessionStorage.getItem(key));
+    }
+    return null;
+}
+
+export const STORE_IN_SESSION_STORAGE = (key, data) => {
+    if (key && data) {
+        if (typeof window !== 'undefined' && sessionStorage) {
+            sessionStorage.setItem(key, JSON.stringify(data));
+        }
+    } else {
+        console.log("INVALID DATA FOR STORE");
+    }
+}
 
 export function setCookie(name, value, minutes) {
     var expires = "";

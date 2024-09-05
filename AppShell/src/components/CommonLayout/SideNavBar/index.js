@@ -48,7 +48,7 @@ export function SideNavBar() {
           onClick={() => setNavOpen(!isNavOpen)}
         >
           <img
-            src="/images/paymorz-logo.png"
+            src="/images/billbash.png"
             alt="paymorz-logo"
             width={isNavOpen ? "34px" : "34px"}
             style={{
@@ -75,10 +75,7 @@ export function SideNavBar() {
             </svg>
           </span>
           <p className="italic pl-2 font-extrabold from-neutral-900 text-base">
-            Paymorz
-            <span className="pl-1 text-xl font-extrabold size-8 color-linear">
-              .
-            </span>
+            BillBash
           </p>
           <span className="ml-9 cursor-pointer">
             {" "}
@@ -107,7 +104,7 @@ export function SideNavBar() {
             style={{ color: "grey" }}
           >
             {navIndex === 0 ? (
-              <div className="primary-linear-gr-bg-up h-6 active-bar"></div>
+              <div className="bg-[#00B5E8] h-6 active-bar"></div>
             ) : (
               <div className="h-[40px] w-[2.5px]"></div>
             )}
@@ -142,7 +139,7 @@ export function SideNavBar() {
             style={{ color: "grey" }}
           >
             {navIndex === 1 ? (
-              <div className="primary-linear-gr-bg-up h-6 active-bar"></div>
+              <div className="bg-[#00B5E8] h-6 active-bar"></div>
             ) : (
               <div className="h-[40px] w-[2.5px]"></div>
             )}
@@ -177,7 +174,7 @@ export function SideNavBar() {
             style={{ color: "grey" }}
           >
             {navIndex === 2 ? (
-              <div className="primary-linear-gr-bg-up h-6 active-bar"></div>
+              <div className="bg-[#00B5E8] h-6 active-bar"></div>
             ) : (
               <div className="h-[40px] w-[2.5px]"></div>
             )}
@@ -212,7 +209,7 @@ export function SideNavBar() {
             style={{ color: "grey" }}
           >
             {navIndex === 3 ? (
-              <div className="primary-linear-gr-bg-up h-6 active-bar"></div>
+              <div className="bg-[#00B5E8] h-6 active-bar"></div>
             ) : (
               <div className="h-[40px] w-[2.5px]"></div>
             )}
@@ -220,7 +217,7 @@ export function SideNavBar() {
               <img
                 src={
                   navIndex === 3
-                    ? "/images/statistics_selected.png"
+                    ? "/images/statistics_selected.svg"
                     : "/images/statistics.svg"
                 }
                 className={`${isNavOpen ? "" : "mobile-nav"}`}
@@ -247,7 +244,7 @@ export function SideNavBar() {
             style={{ color: "grey" }}
           >
             {navIndex === 4 ? (
-              <div className="primary-linear-gr-bg-up h-6 active-bar"></div>
+              <div className="bg-[#00B5E8] h-6 active-bar"></div>
             ) : (
               <div className="h-[40px] w-[2.5px]"></div>
             )}
@@ -282,7 +279,7 @@ export function SideNavBar() {
             style={{ color: "grey" }}
           >
             {navIndex === 5 ? (
-              <div className="primary-linear-gr-bg-up h-6 active-bar"></div>
+              <div className="bg-[#00B5E8] h-6 active-bar"></div>
             ) : (
               <div className="h-[40px] w-[2.5px]"></div>
             )}

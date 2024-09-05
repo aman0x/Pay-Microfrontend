@@ -11,7 +11,7 @@ export default function PaymorzBanner() {
         <div className="text-lg italic leading-tight welcome-color" 
         >
           <span className="font-light">Welcome To</span>{" "}
-          <span className="italic font-bold">Paymorz</span>
+          <span className="italic font-bold">BillBash</span>
         </div>
         <div className="mt-5 text-3xl leading-9 opacity-90 text-white">
           Payments Have Newer Been 

@@ -1,13 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 const shellSlice = createSlice({
-    name:'test',
+    name:'shell',
     initialState:{
-        value:1
+        
     },
     reducers:{
-        increaseValue(state){
-            state.value = state.value+1;
-        }
+       
     }
 })
 

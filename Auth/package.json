@@ -55,6 +55,7 @@
     "yup": "^1.4.0"
   },
   "imports": {
-    "#hooks/*": "./src/hooks/*"
+    "#hooks/*": "./src/hooks/*",
+    "#utils/*": "./src/utils/*"
   }
 }

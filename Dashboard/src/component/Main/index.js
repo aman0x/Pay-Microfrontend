@@ -24,7 +24,7 @@ function DashboardMain() {
   useEffect(() => {
     const fetchLatestAction = async () => {
       const data = await handleLatestActionData();
-      setLatestActions(data.results);
+      setLatestActions(data?.results||[]);
     };
     fetchLatestAction();
   }, []);
@@ -94,7 +94,7 @@ function DashboardMain() {
             </p>
           </div>
 
-          {latestActions.map((card,i) => {
+          {latestActions?.map((card,i) => {
             return (
               <div
                 onClick={() =>
@@ -160,4 +160,4 @@ function DashboardMain() {
   );
 }
 
-export default DashboardMain;
+export default DashboardMain; 

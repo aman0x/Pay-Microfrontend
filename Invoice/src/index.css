@@ -72,9 +72,7 @@
   color: var(--primary);
 }
 .primary-btn:hover{
-  background-image: linear-gradient(to right, #F6DEC6, #E872D4, #C190D9, #A2DCFE);
-  border: 4px solid #e9b6e0;
-  transition: border 300ms;
+  background-image:  linear-gradient(180deg, #CDE8E5 0%, rgba(18, 74, 232, 0.7) 100%);
 }
 .poppins-thin {
   font-family: "Poppins", sans-serif;

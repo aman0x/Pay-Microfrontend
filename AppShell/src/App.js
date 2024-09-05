@@ -31,6 +31,7 @@ function App() {
           autoClose={2000}
           transition={Slide}
           pauseOnHover={false}
+          
           limit={1}
         />
         {

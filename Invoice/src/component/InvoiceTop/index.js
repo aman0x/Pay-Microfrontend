@@ -110,7 +110,7 @@ function InvoiceTop({ handleInvoiceStats,isInvoiceSend,setIsInvoiceSend }) {
               className="h-14  relative"
               value={percentage1}
             >
-              <div className="primary-linear-gr-bg-light rounded-[50%]  h-11 w-11  flex justify-center items-center  absolute top-[23px] sm:top-[29.2px] ">
+              <div className="bg-[#f3f1f1] rounded-[50%]  h-11 w-11  flex justify-center items-center  absolute top-[23px] sm:top-[29.2px] ">
                 <div className="color-linear poppins-semibold text-xs">
                   {percentage1}%
                 </div>
@@ -143,7 +143,7 @@ function InvoiceTop({ handleInvoiceStats,isInvoiceSend,setIsInvoiceSend }) {
               className="h-14 relative"
               value={percentage2}
             >
-              <div className="primary-linear-gr-bg-light rounded-[50%]  h-11 w-11  flex justify-center items-center  absolute top-[23px] sm:top-[29.2px]">
+              <div className="bg-[#f3f1f1] rounded-[50%]  h-11 w-11  flex justify-center items-center  absolute top-[23px] sm:top-[29.2px]">
                 <div className="color-linear poppins-semibold text-xs">
                   {percentage2}%
                 </div>
@@ -172,7 +172,7 @@ function InvoiceTop({ handleInvoiceStats,isInvoiceSend,setIsInvoiceSend }) {
               className="h-14  relative"
               value={percentage3}
             >
-              <div className="primary-linear-gr-bg-light rounded-[50%]  h-11 w-11  flex justify-center items-center  absolute top-[23px] sm:top-[29.2px]  ">
+              <div className="bg-[#f3f1f1] rounded-[50%]  h-11 w-11  flex justify-center items-center  absolute top-[23px] sm:top-[29.2px]  ">
                 <div className="color-linear poppins-semibold text-xs">
                   {percentage3}%
                 </div>
@@ -205,7 +205,7 @@ function InvoiceTop({ handleInvoiceStats,isInvoiceSend,setIsInvoiceSend }) {
               className="h-14  relative"
               value={percentage4}
             >
-              <div className="primary-linear-gr-bg-light rounded-[50%]  h-11 w-11  flex justify-center items-center  absolute top-[23px] sm:top-[29.2px] ">
+              <div className="bg-[#f3f1f1] rounded-[50%]  h-11 w-11  flex justify-center items-center  absolute top-[23px] sm:top-[29.2px] ">
                 <div className="color-linear poppins-semibold text-xs">
                   {percentage4}%
                 </div>

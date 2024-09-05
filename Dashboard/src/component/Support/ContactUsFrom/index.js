@@ -206,7 +206,7 @@ function ContactForm() {
             </div>
             <div className="flex flex-col">
               <div className="poppins-semibold">
-                {supportInfo.time_we_operate}
+                {supportInfo?.time_we_operate}
               </div>
               <div className="poppins-regular text-xs ">
                 We respond within 24 hrs.

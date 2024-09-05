@@ -1,7 +1,7 @@
 import { GoogleAuthProvider,signInWithPopup,FacebookAuthProvider,signInWithEmailAndPassword, signInWithPhoneNumber ,createUserWithEmailAndPassword,RecaptchaVerifier} from "firebase/auth";
 import { firebaseAuth } from "../../firebase/firebaseConfig";
 import { authActions } from "../../store/authSlice";
-import AxiosCall from "../../utils/ApiCall.js"
+import AxiosCall from "controllers/AxiosInstance/index.js";
 import { useDispatch } from "react-redux"
 import { PUBLIC_ENDPOINTS ,PRIVATE_ENDPOINTS} from "../../utils/Constants.js"
 import { toast } from "react-toastify"
@@ -79,14 +79,18 @@ export function useUserLoginAuth(){
 
     const handleLoginWithPhone = (phone) =>{
         const login_data = {
-            phone:phone
+            phone:"+91"+phone
         }
         AxiosCall({url:PUBLIC_ENDPOINTS.PHONE_LOGIN,method:"POST",body:login_data})
         .then((data)=>{
             console.log("login_phone_data",data)
-            // navigate('/accounts/otp-verification',{state:{phoneNumber:phone,
-
-            // }})
+            navigate('/accounts/otp-verification',
+                {
+                    state:{
+                        phoneNumber:"+91"+phone,
+                        session_id:data.data.session_id
+                    }
+                })
           
         })
         .catch((e)=>{
@@ -146,15 +150,17 @@ export function useUserLoginAuth(){
 
         AxiosCall({url:PUBLIC_ENDPOINTS.OTP_VERIFY,method:"POST",body:data})
         .then((data)=>{
-            console.log("validate_otp",data)
-           
+        console.log("validate_otp",data)
+          STORE_IN_LOCAL_STORAGE("access_token",data.data.access)
+          toast.success("OTP verified Successfully!!")
+          navigate('/dashboard')
           
         })
         .catch((e)=>{
             toast(e.message)
            
         })
-        navigate('/dashboard')
+       
     }
 
     
@@ -167,12 +173,13 @@ export function useUserSignupAuth(){
     const handleUserSignup = (data,userId=null,cb) =>{
       
         AxiosCall({
-            url:userId?PUBLIC_ENDPOINTS.signIn+`${userId}/`:PUBLIC_ENDPOINTS.signIn,
-            method:userId?"PUT":"POST",
+            url:PUBLIC_ENDPOINTS.SIGN_IN_STEP_1,
+            method:"POST",
             PRIVATE_API:false,
             body:data
         })
         .then((response)=>{
+            console.log("user",response.data)
             if(!userId){
                 sessionStorage.setItem("user_id",response.data.id)
                 navigate('/accounts/type',{ state:{userId:response.data.id}})
@@ -190,6 +197,34 @@ export function useUserSignupAuth(){
                 toast.error("Error in Signup")
             }
         })
+    }
+    const handleUserSignupStep2 = (data) =>{
+        AxiosCall({
+            url:PUBLIC_ENDPOINTS.SIGN_IN_STEP_2,
+            method:"POST",
+            PRIVATE_API:false,
+            body:data
+        })
+        .then((response)=>{
+            console.log("user",response.data)
+            if(!userId){
+                sessionStorage.setItem("user_id",response.data.id)
+                navigate('/accounts/type',{ state:{userId:response.data.id}})
+            }
+            else{
+                toast.success('Account Created Succesfully')
+                navigate('/')
+            }
+        })
+        .catch((e)=>{
+            if(e?.response?.data?.message){
+                toast.error(e.response.data.message)
+            }
+            else{
+                toast.error("Error in Signup")
+            }
+        })
+        
     }
     return {handleUserSignup}
 }

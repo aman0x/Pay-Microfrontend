@@ -9,8 +9,20 @@ const months = [
 ];
 const years = [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024,2025];
 function CalenderComponent(){
-    const [value, onChange] = useState(new Date());
+    const [value, setValue] = useState(new Date());
     const [isCalenderSheetOpen,setCalenderSheet] = useState(false)
+    const onChange = (newValue) => {
+        setValue(newValue);
+    
+        if (Array.isArray(newValue)) {
+          
+          const [start, end] = newValue;
+          console.log("Range selected:", start, end);
+        } else {
+          
+          console.log("Date selected:", newValue);
+        }
+      };
     return(
         <div className="absolute right-4 top-8 z-50">   
         <div className="flex justify-between  relative">
